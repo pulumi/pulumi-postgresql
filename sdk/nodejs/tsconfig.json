@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "outDir": "bin",
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "sourceMap": true,
+        "stripInternal": true,
+        "experimentalDecorators": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true
+    },
+    "files": [
+        "config/index.ts",
+        "config/vars.ts",
+        "database.ts",
+        "defaultPrivileg.ts",
+        "extension.ts",
+        "grant.ts",
+        "index.ts",
+        "provider.ts",
+        "role.ts",
+        "schema.ts",
+        "utilities.ts"
+    ]
+}
+

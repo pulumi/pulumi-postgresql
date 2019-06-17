@@ -1,0 +1,12 @@
+/vendor/
+.pulumi
+**/bin/
+Pulumi.*.yaml
+sdk/nodejs/node_modules
+
+**/command-output/
+
+.idea/
+*.iml
+
+yarn.lock
