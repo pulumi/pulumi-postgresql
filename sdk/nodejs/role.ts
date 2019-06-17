@@ -4,6 +4,41 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The ``postgresql_role`` resource creates and manages a role on a PostgreSQL
+ * server.
+ * 
+ * When a ``postgresql_role`` resource is removed, the PostgreSQL ROLE will
+ * automatically run a [`REASSIGN
+ * OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html)
+ * and [`DROP
+ * OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html) to
+ * the `CURRENT_USER` (normally the connected user for the provider).  If the
+ * specified PostgreSQL ROLE owns objects in multiple PostgreSQL databases in the
+ * same PostgreSQL Cluster, one PostgreSQL provider per database must be created
+ * and all but the final ``postgresql_role`` must specify a `skip_drop_role`.
+ * 
+ * > **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
+ * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ * 
+ * ## Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ * 
+ * const myReplicationRole = new postgresql.Role("my_replication_role", {
+ *     connectionLimit: 5,
+ *     login: true,
+ *     password: "md5c98cbfeb6a347a47eb8e96cfb4c4b890",
+ *     replication: true,
+ * });
+ * const myRole = new postgresql.Role("my_role", {
+ *     login: true,
+ *     password: "mypass",
+ * });
+ * ```
+ */
 export class Role extends pulumi.CustomResource {
     /**
      * Get an existing Role resource's state with the given name, ID, and optional extra
@@ -32,64 +67,100 @@ export class Role extends pulumi.CustomResource {
     }
 
     /**
-     * Determine whether a role bypasses every row-level security (RLS) policy
+     * Defines whether a role bypasses every
+     * row-level security (RLS) policy.  Default value is `false`.
      */
     public readonly bypassRowLevelSecurity!: pulumi.Output<boolean | undefined>;
     /**
-     * How many concurrent connections can be made with this role
+     * If this role can log in, this specifies how
+     * many concurrent connections the role can establish. `-1` (the default) means no
+     * limit.
      */
     public readonly connectionLimit!: pulumi.Output<number | undefined>;
     /**
-     * Define a role's ability to create databases
+     * Defines a role's ability to execute `CREATE
+     * DATABASE`.  Default value is `false`.
      */
     public readonly createDatabase!: pulumi.Output<boolean | undefined>;
     /**
-     * Determine whether this role will be permitted to create new roles
+     * Defines a role's ability to execute `CREATE ROLE`.
+     * A role with this privilege can also alter and drop other roles.  Default value
+     * is `false`.
      */
     public readonly createRole!: pulumi.Output<boolean | undefined>;
     public readonly encrypted!: pulumi.Output<string | undefined>;
     /**
-     * Control whether the password is stored encrypted in the system catalogs
+     * Defines whether the password is stored
+     * encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
+     * is always set (to the conservative and safe value), but may interfere with the
+     * behavior of
+     * [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
      */
     public readonly encryptedPassword!: pulumi.Output<boolean | undefined>;
     /**
-     * Determine whether a role "inherits" the privileges of roles it is a member of
+     * Defines whether a role "inherits" the privileges of
+     * roles it is a member of.  Default value is `true`.
      */
     public readonly inherit!: pulumi.Output<boolean | undefined>;
     /**
-     * Determine whether a role is allowed to log in
+     * Defines whether role is allowed to log in.  Roles without
+     * this attribute are useful for managing database privileges, but are not users
+     * in the usual sense of the word.  Default value is `false`.
      */
     public readonly login!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the role
+     * The name of the role. Must be unique on the PostgreSQL
+     * server instance where it is configured.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Sets the role's password
+     * Sets the role's password. A password is only of use
+     * for roles having the `login` attribute set to true.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * Determine whether a role is allowed to initiate streaming replication or put the system in and out of backup mode
+     * Defines whether a role is allowed to initiate
+     * streaming replication or put the system in and out of backup mode.  Default
+     * value is `false`
      */
     public readonly replication!: pulumi.Output<boolean | undefined>;
     /**
-     * Role(s) to grant to this new role
+     * Defines list of roles which will be granted to this new role.
      */
     public readonly roles!: pulumi.Output<string[] | undefined>;
     /**
-     * Skip actually running the DROP ROLE command when removing a ROLE from PostgreSQL
+     * When a PostgreSQL ROLE exists in multiple
+     * databases and the ROLE is dropped, the
+     * [cleanup of ownership of objects](https://www.postgresql.org/docs/current/static/role-removal.html)
+     * in each of the respective databases must occur before the ROLE can be dropped
+     * from the catalog.  Set this option to true when there are multiple databases
+     * in a PostgreSQL cluster using the same PostgreSQL ROLE for object ownership.
+     * This is the third and final step taken when removing a ROLE from a database.
      */
     public readonly skipDropRole!: pulumi.Output<boolean | undefined>;
     /**
-     * Skip actually running the REASSIGN OWNED command when removing a role from PostgreSQL
+     * When a PostgreSQL ROLE exists in multiple
+     * databases and the ROLE is dropped, a
+     * [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
+     * must be executed on each of the respective databases before the `DROP ROLE`
+     * can be executed to dropped the ROLE from the catalog.  This is the first and
+     * second steps taken when removing a ROLE from a database (the second step being
+     * an implicit
+     * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
      */
     public readonly skipReassignOwned!: pulumi.Output<boolean | undefined>;
     /**
-     * Determine whether the new role is a "superuser"
+     * Defines whether the role is a "superuser", and
+     * therefore can override all access restrictions within the database.  Default
+     * value is `false`.
      */
     public readonly superuser!: pulumi.Output<boolean | undefined>;
     /**
-     * Sets a date and time after which the role's password is no longer valid
+     * Defines the date and time after which the role's
+     * password is no longer valid.  Established connections past this `valid_time`
+     * will have to be manually terminated.  This value corresponds to a PostgreSQL
+     * datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
+     * set to `infinity`.  Default is `NULL`, therefore `infinity`.
      */
     public readonly validUntil!: pulumi.Output<string | undefined>;
 
@@ -149,64 +220,100 @@ export class Role extends pulumi.CustomResource {
  */
 export interface RoleState {
     /**
-     * Determine whether a role bypasses every row-level security (RLS) policy
+     * Defines whether a role bypasses every
+     * row-level security (RLS) policy.  Default value is `false`.
      */
     readonly bypassRowLevelSecurity?: pulumi.Input<boolean>;
     /**
-     * How many concurrent connections can be made with this role
+     * If this role can log in, this specifies how
+     * many concurrent connections the role can establish. `-1` (the default) means no
+     * limit.
      */
     readonly connectionLimit?: pulumi.Input<number>;
     /**
-     * Define a role's ability to create databases
+     * Defines a role's ability to execute `CREATE
+     * DATABASE`.  Default value is `false`.
      */
     readonly createDatabase?: pulumi.Input<boolean>;
     /**
-     * Determine whether this role will be permitted to create new roles
+     * Defines a role's ability to execute `CREATE ROLE`.
+     * A role with this privilege can also alter and drop other roles.  Default value
+     * is `false`.
      */
     readonly createRole?: pulumi.Input<boolean>;
     readonly encrypted?: pulumi.Input<string>;
     /**
-     * Control whether the password is stored encrypted in the system catalogs
+     * Defines whether the password is stored
+     * encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
+     * is always set (to the conservative and safe value), but may interfere with the
+     * behavior of
+     * [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
      */
     readonly encryptedPassword?: pulumi.Input<boolean>;
     /**
-     * Determine whether a role "inherits" the privileges of roles it is a member of
+     * Defines whether a role "inherits" the privileges of
+     * roles it is a member of.  Default value is `true`.
      */
     readonly inherit?: pulumi.Input<boolean>;
     /**
-     * Determine whether a role is allowed to log in
+     * Defines whether role is allowed to log in.  Roles without
+     * this attribute are useful for managing database privileges, but are not users
+     * in the usual sense of the word.  Default value is `false`.
      */
     readonly login?: pulumi.Input<boolean>;
     /**
-     * The name of the role
+     * The name of the role. Must be unique on the PostgreSQL
+     * server instance where it is configured.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Sets the role's password
+     * Sets the role's password. A password is only of use
+     * for roles having the `login` attribute set to true.
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * Determine whether a role is allowed to initiate streaming replication or put the system in and out of backup mode
+     * Defines whether a role is allowed to initiate
+     * streaming replication or put the system in and out of backup mode.  Default
+     * value is `false`
      */
     readonly replication?: pulumi.Input<boolean>;
     /**
-     * Role(s) to grant to this new role
+     * Defines list of roles which will be granted to this new role.
      */
     readonly roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Skip actually running the DROP ROLE command when removing a ROLE from PostgreSQL
+     * When a PostgreSQL ROLE exists in multiple
+     * databases and the ROLE is dropped, the
+     * [cleanup of ownership of objects](https://www.postgresql.org/docs/current/static/role-removal.html)
+     * in each of the respective databases must occur before the ROLE can be dropped
+     * from the catalog.  Set this option to true when there are multiple databases
+     * in a PostgreSQL cluster using the same PostgreSQL ROLE for object ownership.
+     * This is the third and final step taken when removing a ROLE from a database.
      */
     readonly skipDropRole?: pulumi.Input<boolean>;
     /**
-     * Skip actually running the REASSIGN OWNED command when removing a role from PostgreSQL
+     * When a PostgreSQL ROLE exists in multiple
+     * databases and the ROLE is dropped, a
+     * [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
+     * must be executed on each of the respective databases before the `DROP ROLE`
+     * can be executed to dropped the ROLE from the catalog.  This is the first and
+     * second steps taken when removing a ROLE from a database (the second step being
+     * an implicit
+     * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
      */
     readonly skipReassignOwned?: pulumi.Input<boolean>;
     /**
-     * Determine whether the new role is a "superuser"
+     * Defines whether the role is a "superuser", and
+     * therefore can override all access restrictions within the database.  Default
+     * value is `false`.
      */
     readonly superuser?: pulumi.Input<boolean>;
     /**
-     * Sets a date and time after which the role's password is no longer valid
+     * Defines the date and time after which the role's
+     * password is no longer valid.  Established connections past this `valid_time`
+     * will have to be manually terminated.  This value corresponds to a PostgreSQL
+     * datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
+     * set to `infinity`.  Default is `NULL`, therefore `infinity`.
      */
     readonly validUntil?: pulumi.Input<string>;
 }
@@ -216,64 +323,100 @@ export interface RoleState {
  */
 export interface RoleArgs {
     /**
-     * Determine whether a role bypasses every row-level security (RLS) policy
+     * Defines whether a role bypasses every
+     * row-level security (RLS) policy.  Default value is `false`.
      */
     readonly bypassRowLevelSecurity?: pulumi.Input<boolean>;
     /**
-     * How many concurrent connections can be made with this role
+     * If this role can log in, this specifies how
+     * many concurrent connections the role can establish. `-1` (the default) means no
+     * limit.
      */
     readonly connectionLimit?: pulumi.Input<number>;
     /**
-     * Define a role's ability to create databases
+     * Defines a role's ability to execute `CREATE
+     * DATABASE`.  Default value is `false`.
      */
     readonly createDatabase?: pulumi.Input<boolean>;
     /**
-     * Determine whether this role will be permitted to create new roles
+     * Defines a role's ability to execute `CREATE ROLE`.
+     * A role with this privilege can also alter and drop other roles.  Default value
+     * is `false`.
      */
     readonly createRole?: pulumi.Input<boolean>;
     readonly encrypted?: pulumi.Input<string>;
     /**
-     * Control whether the password is stored encrypted in the system catalogs
+     * Defines whether the password is stored
+     * encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
+     * is always set (to the conservative and safe value), but may interfere with the
+     * behavior of
+     * [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
      */
     readonly encryptedPassword?: pulumi.Input<boolean>;
     /**
-     * Determine whether a role "inherits" the privileges of roles it is a member of
+     * Defines whether a role "inherits" the privileges of
+     * roles it is a member of.  Default value is `true`.
      */
     readonly inherit?: pulumi.Input<boolean>;
     /**
-     * Determine whether a role is allowed to log in
+     * Defines whether role is allowed to log in.  Roles without
+     * this attribute are useful for managing database privileges, but are not users
+     * in the usual sense of the word.  Default value is `false`.
      */
     readonly login?: pulumi.Input<boolean>;
     /**
-     * The name of the role
+     * The name of the role. Must be unique on the PostgreSQL
+     * server instance where it is configured.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Sets the role's password
+     * Sets the role's password. A password is only of use
+     * for roles having the `login` attribute set to true.
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * Determine whether a role is allowed to initiate streaming replication or put the system in and out of backup mode
+     * Defines whether a role is allowed to initiate
+     * streaming replication or put the system in and out of backup mode.  Default
+     * value is `false`
      */
     readonly replication?: pulumi.Input<boolean>;
     /**
-     * Role(s) to grant to this new role
+     * Defines list of roles which will be granted to this new role.
      */
     readonly roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Skip actually running the DROP ROLE command when removing a ROLE from PostgreSQL
+     * When a PostgreSQL ROLE exists in multiple
+     * databases and the ROLE is dropped, the
+     * [cleanup of ownership of objects](https://www.postgresql.org/docs/current/static/role-removal.html)
+     * in each of the respective databases must occur before the ROLE can be dropped
+     * from the catalog.  Set this option to true when there are multiple databases
+     * in a PostgreSQL cluster using the same PostgreSQL ROLE for object ownership.
+     * This is the third and final step taken when removing a ROLE from a database.
      */
     readonly skipDropRole?: pulumi.Input<boolean>;
     /**
-     * Skip actually running the REASSIGN OWNED command when removing a role from PostgreSQL
+     * When a PostgreSQL ROLE exists in multiple
+     * databases and the ROLE is dropped, a
+     * [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
+     * must be executed on each of the respective databases before the `DROP ROLE`
+     * can be executed to dropped the ROLE from the catalog.  This is the first and
+     * second steps taken when removing a ROLE from a database (the second step being
+     * an implicit
+     * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
      */
     readonly skipReassignOwned?: pulumi.Input<boolean>;
     /**
-     * Determine whether the new role is a "superuser"
+     * Defines whether the role is a "superuser", and
+     * therefore can override all access restrictions within the database.  Default
+     * value is `false`.
      */
     readonly superuser?: pulumi.Input<boolean>;
     /**
-     * Sets a date and time after which the role's password is no longer valid
+     * Defines the date and time after which the role's
+     * password is no longer valid.  Established connections past this `valid_time`
+     * will have to be manually terminated.  This value corresponds to a PostgreSQL
+     * datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
+     * set to `infinity`.  Default is `NULL`, therefore `infinity`.
      */
     readonly validUntil?: pulumi.Input<string>;
 }

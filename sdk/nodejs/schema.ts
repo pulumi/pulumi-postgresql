@@ -4,6 +4,44 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The ``postgresql_schema`` resource creates and manages [schema
+ * objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
+ * a PostgreSQL database.
+ * 
+ * 
+ * ## Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ * 
+ * const appDba = new postgresql.Role("app_dba", {});
+ * const appReleng = new postgresql.Role("app_releng", {});
+ * const appWww = new postgresql.Role("app_www", {});
+ * const mySchema = new postgresql.Schema("my_schema", {
+ *     owner: "postgres",
+ *     policies: [
+ *         {
+ *             role: appWww.name,
+ *             usage: true,
+ *         },
+ *         // app_releng can create new objects in the schema.  This is the role that
+ *         // migrations are executed as.
+ *         {
+ *             create: true,
+ *             role: appReleng.name,
+ *             usage: true,
+ *         },
+ *         {
+ *             createWithGrant: true,
+ *             role: appDba.name,
+ *             usageWithGrant: true,
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export class Schema extends pulumi.CustomResource {
     /**
      * Get an existing Schema resource's state with the given name, ID, and optional extra
@@ -32,17 +70,22 @@ export class Schema extends pulumi.CustomResource {
     }
 
     /**
-     * When true, use the existing schema if it exists
+     * When true, use the existing schema if it exists. (Default: true)
      */
     public readonly ifNotExists!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the schema
+     * The name of the schema. Must be unique in the PostgreSQL
+     * database instance where it is configured.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The ROLE name who owns the schema
+     * The ROLE who owns the schema.
      */
     public readonly owner!: pulumi.Output<string>;
+    /**
+     * Can be specified multiple times for each policy.  Each
+     * policy block supports fields documented below.
+     */
     public readonly policies!: pulumi.Output<{ create?: boolean, createWithGrant?: boolean, role?: string, usage?: boolean, usageWithGrant?: boolean }[]>;
 
     /**
@@ -77,17 +120,22 @@ export class Schema extends pulumi.CustomResource {
  */
 export interface SchemaState {
     /**
-     * When true, use the existing schema if it exists
+     * When true, use the existing schema if it exists. (Default: true)
      */
     readonly ifNotExists?: pulumi.Input<boolean>;
     /**
-     * The name of the schema
+     * The name of the schema. Must be unique in the PostgreSQL
+     * database instance where it is configured.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ROLE name who owns the schema
+     * The ROLE who owns the schema.
      */
     readonly owner?: pulumi.Input<string>;
+    /**
+     * Can be specified multiple times for each policy.  Each
+     * policy block supports fields documented below.
+     */
     readonly policies?: pulumi.Input<pulumi.Input<{ create?: pulumi.Input<boolean>, createWithGrant?: pulumi.Input<boolean>, role?: pulumi.Input<string>, usage?: pulumi.Input<boolean>, usageWithGrant?: pulumi.Input<boolean> }>[]>;
 }
 
@@ -96,16 +144,21 @@ export interface SchemaState {
  */
 export interface SchemaArgs {
     /**
-     * When true, use the existing schema if it exists
+     * When true, use the existing schema if it exists. (Default: true)
      */
     readonly ifNotExists?: pulumi.Input<boolean>;
     /**
-     * The name of the schema
+     * The name of the schema. Must be unique in the PostgreSQL
+     * database instance where it is configured.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ROLE name who owns the schema
+     * The ROLE who owns the schema.
      */
     readonly owner?: pulumi.Input<string>;
+    /**
+     * Can be specified multiple times for each policy.  Each
+     * policy block supports fields documented below.
+     */
     readonly policies?: pulumi.Input<pulumi.Input<{ create?: pulumi.Input<boolean>, createWithGrant?: pulumi.Input<boolean>, role?: pulumi.Input<string>, usage?: pulumi.Input<boolean>, usageWithGrant?: pulumi.Input<boolean> }>[]>;
 }

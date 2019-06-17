@@ -4,6 +4,27 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The ``postgresql_default_privileges`` resource creates and manages default privileges given to a user for a database schema.
+ * 
+ * > **Note:** This resource needs Postgresql version 9 or above.
+ * 
+ * ## Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ * 
+ * const readOnlyTables = new postgresql.DefaultPrivileg("read_only_tables", {
+ *     database: "test_db",
+ *     objectType: "table",
+ *     owner: "db_owner",
+ *     privileges: ["SELECT"],
+ *     role: "test_role",
+ *     schema: "public",
+ * });
+ * ```
+ */
 export class DefaultPrivileg extends pulumi.CustomResource {
     /**
      * Get an existing DefaultPrivileg resource's state with the given name, ID, and optional extra
@@ -32,28 +53,27 @@ export class DefaultPrivileg extends pulumi.CustomResource {
     }
 
     /**
-     * The database to grant default privileges for this role
+     * The database to grant default privileges for this role.
      */
     public readonly database!: pulumi.Output<string>;
     /**
-     * The PostgreSQL object type to set the default privileges on (one of: table, sequence)
+     * The PostgreSQL object type to set the default privileges on (one of: table, sequence).
      */
     public readonly objectType!: pulumi.Output<string>;
     /**
-     * Role for which apply default privileges (You can change default privileges only for objects that will be created by
-     * yourself or by roles that you are a member of)
+     * Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
      */
     public readonly owner!: pulumi.Output<string>;
     /**
-     * The list of privileges to apply as default privileges
+     * The list of privileges to apply as default privileges.
      */
     public readonly privileges!: pulumi.Output<string[]>;
     /**
-     * The name of the role to which grant default privileges on
+     * The name of the role to which grant default privileges on.
      */
     public readonly role!: pulumi.Output<string>;
     /**
-     * The database schema to set default privileges for this role
+     * The database schema to set default privileges for this role.
      */
     public readonly schema!: pulumi.Output<string>;
 
@@ -111,28 +131,27 @@ export class DefaultPrivileg extends pulumi.CustomResource {
  */
 export interface DefaultPrivilegState {
     /**
-     * The database to grant default privileges for this role
+     * The database to grant default privileges for this role.
      */
     readonly database?: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to set the default privileges on (one of: table, sequence)
+     * The PostgreSQL object type to set the default privileges on (one of: table, sequence).
      */
     readonly objectType?: pulumi.Input<string>;
     /**
-     * Role for which apply default privileges (You can change default privileges only for objects that will be created by
-     * yourself or by roles that you are a member of)
+     * Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
      */
     readonly owner?: pulumi.Input<string>;
     /**
-     * The list of privileges to apply as default privileges
+     * The list of privileges to apply as default privileges.
      */
     readonly privileges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the role to which grant default privileges on
+     * The name of the role to which grant default privileges on.
      */
     readonly role?: pulumi.Input<string>;
     /**
-     * The database schema to set default privileges for this role
+     * The database schema to set default privileges for this role.
      */
     readonly schema?: pulumi.Input<string>;
 }
@@ -142,28 +161,27 @@ export interface DefaultPrivilegState {
  */
 export interface DefaultPrivilegArgs {
     /**
-     * The database to grant default privileges for this role
+     * The database to grant default privileges for this role.
      */
     readonly database: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to set the default privileges on (one of: table, sequence)
+     * The PostgreSQL object type to set the default privileges on (one of: table, sequence).
      */
     readonly objectType: pulumi.Input<string>;
     /**
-     * Role for which apply default privileges (You can change default privileges only for objects that will be created by
-     * yourself or by roles that you are a member of)
+     * Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
      */
     readonly owner: pulumi.Input<string>;
     /**
-     * The list of privileges to apply as default privileges
+     * The list of privileges to apply as default privileges.
      */
     readonly privileges: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the role to which grant default privileges on
+     * The name of the role to which grant default privileges on.
      */
     readonly role: pulumi.Input<string>;
     /**
-     * The database schema to set default privileges for this role
+     * The database schema to set default privileges for this role.
      */
     readonly schema: pulumi.Input<string>;
 }

@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The ``postgresql_extension`` resource creates and manages an extension on a PostgreSQL
+ * server.
+ * 
+ * 
+ * ## Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ * 
+ * const myExtension = new postgresql.Extension("my_extension", {});
+ * ```
+ */
 export class Extension extends pulumi.CustomResource {
     /**
      * Get an existing Extension resource's state with the given name, ID, and optional extra
@@ -31,13 +45,16 @@ export class Extension extends pulumi.CustomResource {
         return obj['__pulumiType'] === Extension.__pulumiType;
     }
 
+    /**
+     * The name of the extension.
+     */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Sets the schema of an extension
+     * Sets the schema of an extension.
      */
     public readonly schema!: pulumi.Output<string>;
     /**
-     * Sets the version number of the extension
+     * Sets the version number of the extension.
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -70,13 +87,16 @@ export class Extension extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Extension resources.
  */
 export interface ExtensionState {
+    /**
+     * The name of the extension.
+     */
     readonly name?: pulumi.Input<string>;
     /**
-     * Sets the schema of an extension
+     * Sets the schema of an extension.
      */
     readonly schema?: pulumi.Input<string>;
     /**
-     * Sets the version number of the extension
+     * Sets the version number of the extension.
      */
     readonly version?: pulumi.Input<string>;
 }
@@ -85,13 +105,16 @@ export interface ExtensionState {
  * The set of arguments for constructing a Extension resource.
  */
 export interface ExtensionArgs {
+    /**
+     * The name of the extension.
+     */
     readonly name?: pulumi.Input<string>;
     /**
-     * Sets the schema of an extension
+     * Sets the schema of an extension.
      */
     readonly schema?: pulumi.Input<string>;
     /**
-     * Sets the version number of the extension
+     * Sets the version number of the extension.
      */
     readonly version?: pulumi.Input<string>;
 }

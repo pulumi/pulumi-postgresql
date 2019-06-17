@@ -4,6 +4,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The ``postgresql_grant`` resource creates and manages privileges given to a user for a database schema.
+ * 
+ * > **Note:** This resource needs Postgresql version 9 or above.
+ * 
+ * ## Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ * 
+ * const readonlyTables = new postgresql.Grant("readonly_tables", {
+ *     database: "test_db",
+ *     objectType: "table",
+ *     privileges: ["SELECT"],
+ *     role: "test_role",
+ *     schema: "public",
+ * });
+ * ```
+ */
 export class Grant extends pulumi.CustomResource {
     /**
      * Get an existing Grant resource's state with the given name, ID, and optional extra
@@ -32,23 +52,23 @@ export class Grant extends pulumi.CustomResource {
     }
 
     /**
-     * The database to grant privileges on for this role
+     * The database to grant privileges on for this role.
      */
     public readonly database!: pulumi.Output<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: table, sequence)
+     * The PostgreSQL object type to grant the privileges on (one of: table, sequence).
      */
     public readonly objectType!: pulumi.Output<string>;
     /**
-     * The list of privileges to grant
+     * The list of privileges to grant.
      */
     public readonly privileges!: pulumi.Output<string[]>;
     /**
-     * The name of the role to grant privileges on
+     * The name of the role to grant privileges on.
      */
     public readonly role!: pulumi.Output<string>;
     /**
-     * The database schema to grant privileges on for this role
+     * The database schema to grant privileges on for this role.
      */
     public readonly schema!: pulumi.Output<string>;
 
@@ -101,23 +121,23 @@ export class Grant extends pulumi.CustomResource {
  */
 export interface GrantState {
     /**
-     * The database to grant privileges on for this role
+     * The database to grant privileges on for this role.
      */
     readonly database?: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: table, sequence)
+     * The PostgreSQL object type to grant the privileges on (one of: table, sequence).
      */
     readonly objectType?: pulumi.Input<string>;
     /**
-     * The list of privileges to grant
+     * The list of privileges to grant.
      */
     readonly privileges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the role to grant privileges on
+     * The name of the role to grant privileges on.
      */
     readonly role?: pulumi.Input<string>;
     /**
-     * The database schema to grant privileges on for this role
+     * The database schema to grant privileges on for this role.
      */
     readonly schema?: pulumi.Input<string>;
 }
@@ -127,23 +147,23 @@ export interface GrantState {
  */
 export interface GrantArgs {
     /**
-     * The database to grant privileges on for this role
+     * The database to grant privileges on for this role.
      */
     readonly database: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: table, sequence)
+     * The PostgreSQL object type to grant the privileges on (one of: table, sequence).
      */
     readonly objectType: pulumi.Input<string>;
     /**
-     * The list of privileges to grant
+     * The list of privileges to grant.
      */
     readonly privileges: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the role to grant privileges on
+     * The name of the role to grant privileges on.
      */
     readonly role: pulumi.Input<string>;
     /**
-     * The database schema to grant privileges on for this role
+     * The database schema to grant privileges on for this role.
      */
     readonly schema: pulumi.Input<string>;
 }
