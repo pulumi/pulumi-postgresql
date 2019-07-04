@@ -1,4 +1,8 @@
 ## HEAD (Unreleased)
+___NULL___
+
+
+## 0.18.2 (2019-07-04)
 * Upgrade to `v1.1.0` of the postgresql Terraform provider.
 
 ## 0.18.1 (2019-06-21)
