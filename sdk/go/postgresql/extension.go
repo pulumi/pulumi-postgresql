@@ -18,10 +18,12 @@ func NewExtension(ctx *pulumi.Context,
 	name string, args *ExtensionArgs, opts ...pulumi.ResourceOpt) (*Extension, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["database"] = nil
 		inputs["name"] = nil
 		inputs["schema"] = nil
 		inputs["version"] = nil
 	} else {
+		inputs["database"] = args.Database
 		inputs["name"] = args.Name
 		inputs["schema"] = args.Schema
 		inputs["version"] = args.Version
@@ -39,6 +41,7 @@ func GetExtension(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ExtensionState, opts ...pulumi.ResourceOpt) (*Extension, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["database"] = state.Database
 		inputs["name"] = state.Name
 		inputs["schema"] = state.Schema
 		inputs["version"] = state.Version
@@ -60,6 +63,11 @@ func (r *Extension) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Which database to create the extension on. Defaults to provider database.
+func (r *Extension) Database() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["database"])
+}
+
 // The name of the extension.
 func (r *Extension) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
@@ -77,6 +85,8 @@ func (r *Extension) Version() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Extension resources.
 type ExtensionState struct {
+	// Which database to create the extension on. Defaults to provider database.
+	Database interface{}
 	// The name of the extension.
 	Name interface{}
 	// Sets the schema of an extension.
@@ -87,6 +97,8 @@ type ExtensionState struct {
 
 // The set of arguments for constructing a Extension resource.
 type ExtensionArgs struct {
+	// Which database to create the extension on. Defaults to provider database.
+	Database interface{}
 	// The name of the extension.
 	Name interface{}
 	// Sets the schema of an extension.

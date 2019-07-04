@@ -1,5 +1,5 @@
 ## HEAD (Unreleased)
-___HEAD___
+* Upgrade to `v1.1.0` of the postgresql Terraform provider.
 
 ## 0.18.1 (2019-06-21)
 * Update to pulumi-terraform@3635bed3a5 which stops maps containing `.` being treated as nested maps.

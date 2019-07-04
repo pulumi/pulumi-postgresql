@@ -46,6 +46,10 @@ export class Extension extends pulumi.CustomResource {
     }
 
     /**
+     * Which database to create the extension on. Defaults to provider database.
+     */
+    public readonly database!: pulumi.Output<string>;
+    /**
      * The name of the extension.
      */
     public readonly name!: pulumi.Output<string>;
@@ -70,11 +74,13 @@ export class Extension extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ExtensionState | undefined;
+            inputs["database"] = state ? state.database : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["schema"] = state ? state.schema : undefined;
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as ExtensionArgs | undefined;
+            inputs["database"] = args ? args.database : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["schema"] = args ? args.schema : undefined;
             inputs["version"] = args ? args.version : undefined;
@@ -87,6 +93,10 @@ export class Extension extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Extension resources.
  */
 export interface ExtensionState {
+    /**
+     * Which database to create the extension on. Defaults to provider database.
+     */
+    readonly database?: pulumi.Input<string>;
     /**
      * The name of the extension.
      */
@@ -105,6 +115,10 @@ export interface ExtensionState {
  * The set of arguments for constructing a Extension resource.
  */
 export interface ExtensionArgs {
+    /**
+     * Which database to create the extension on. Defaults to provider database.
+     */
+    readonly database?: pulumi.Input<string>;
     /**
      * The name of the extension.
      */

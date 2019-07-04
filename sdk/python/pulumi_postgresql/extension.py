@@ -9,6 +9,10 @@ import pulumi.runtime
 from . import utilities, tables
 
 class Extension(pulumi.CustomResource):
+    database: pulumi.Output[str]
+    """
+    Which database to create the extension on. Defaults to provider database.
+    """
     name: pulumi.Output[str]
     """
     The name of the extension.
@@ -21,13 +25,14 @@ class Extension(pulumi.CustomResource):
     """
     Sets the version number of the extension.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, schema=None, version=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, database=None, name=None, schema=None, version=None, __name__=None, __opts__=None):
         """
         The ``postgresql_extension`` resource creates and manages an extension on a PostgreSQL
         server.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] database: Which database to create the extension on. Defaults to provider database.
         :param pulumi.Input[str] name: The name of the extension.
         :param pulumi.Input[str] schema: Sets the schema of an extension.
         :param pulumi.Input[str] version: Sets the version number of the extension.
@@ -46,6 +51,8 @@ class Extension(pulumi.CustomResource):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
+
+        __props__['database'] = database
 
         __props__['name'] = name
 

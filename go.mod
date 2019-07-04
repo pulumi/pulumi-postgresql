@@ -18,7 +18,6 @@ require (
 	github.com/coreos/go-systemd v0.0.0-20190612170431-362f06ec6bc1 // indirect
 	github.com/go-critic/go-critic v0.3.4 // indirect
 	github.com/go-ole/go-ole v1.2.4 // indirect
-	github.com/golang/mock v1.3.1 // indirect
 	github.com/golangci/errcheck v0.0.0-20181223084120-ef45e06d44b6 // indirect
 	github.com/golangci/go-tools v0.0.0-20190124090046-35a9f45a5db0 // indirect
 	github.com/golangci/gocyclo v0.0.0-20180528144436-0a533e8fa43d // indirect
@@ -35,7 +34,7 @@ require (
 	github.com/hashicorp/go-immutable-radix v1.0.0 // indirect
 	github.com/hashicorp/go-sockaddr v1.0.0 // indirect
 	github.com/hashicorp/serf v0.8.2-0.20171022020050-c20a0b1b1ea9 // indirect
-	github.com/hashicorp/terraform v0.12.0-rc1.0.20190509225429-28b2383eacae
+	github.com/hashicorp/terraform v0.12.2
 	github.com/kisielk/errcheck v1.2.0 // indirect
 	github.com/klauspost/compress v1.7.0 // indirect
 	github.com/klauspost/cpuid v1.2.1 // indirect
@@ -58,13 +57,14 @@ require (
 	github.com/shirou/gopsutil v2.18.12+incompatible // indirect
 	github.com/shurcooL/go v0.0.0-20190330031554-6713ea532688 // indirect
 	github.com/sirupsen/logrus v1.4.2 // indirect
+	github.com/smartystreets/assertions v0.0.0-20190215210624-980c5ac6f3ac // indirect
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/spf13/cobra v0.0.5 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/viper v1.4.0 // indirect
 	github.com/stretchr/objx v0.2.0 // indirect
 	github.com/stretchr/testify v1.3.1-0.20190311161405-34c6fa2dc709
-	github.com/terraform-providers/terraform-provider-postgresql v0.4.0
+	github.com/terraform-providers/terraform-provider-postgresql v1.1.0
 	github.com/ugorji/go v1.1.5-pre // indirect
 	github.com/valyala/fasthttp v1.3.0 // indirect
 	go.etcd.io/bbolt v1.3.3 // indirect
