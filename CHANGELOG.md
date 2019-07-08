@@ -1,6 +1,8 @@
 ## HEAD (Unreleased)
 ___NULL___
 
+## 0.18.3 (2019-07-08) 
+* Communicate detailed information about the difference between a resource's desired and actual state during a Pulumi update
 
 ## 0.18.2 (2019-07-04)
 * Upgrade to `v1.1.0` of the postgresql Terraform provider.
