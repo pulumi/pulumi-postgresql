@@ -21,13 +21,13 @@ To use from JavaScript or TypeScript in Node.js, install using either
 
 ::
 
-    $ npm install @pulumi/postgresql
+   $ npm install @pulumi/postgresql
 
 or ``yarn``:
 
 ::
 
-    $ yarn add @pulumi/postgresql
+   $ yarn add @pulumi/postgresql
 
 Python
 ~~~~~~
@@ -36,7 +36,7 @@ To use from Python, install using ``pip``:
 
 ::
 
-    $ pip install pulumi_postgresql
+   $ pip install pulumi_postgresql
 
 Go
 ~~
@@ -45,7 +45,7 @@ To use from Go, use ``go get`` to grab the latest version of the library
 
 ::
 
-    $ go get github.com/pulumi/pulumi-postgresql/sdk/go/...
+   $ go get github.com/pulumi/pulumi-postgresql/sdk/go/...
 
 Configuration
 -------------
