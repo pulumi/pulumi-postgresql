@@ -21,14 +21,6 @@ class Database(pulumi.CustomResource):
     established to this database. `-1` (the default) means no limit.
     """
     encoding: pulumi.Output[str]
-    """
-    Character set encoding to use in the database.
-    Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
-    number.  If unset or set to an empty string the default encoding is set to
-    `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
-    template database.  Changing this value will force the creation of a new
-    resource as this value can only be changed when a database is created.
-    """
     is_template: pulumi.Output[bool]
     """
     If `true`, then this database can be cloned by any
@@ -36,25 +28,7 @@ class Database(pulumi.CustomResource):
     superusers or the owner of the database can clone it.
     """
     lc_collate: pulumi.Output[str]
-    """
-    Collation order (`LC_COLLATE`) to use in the
-    database.  This affects the sort order applied to strings, e.g. in queries
-    with `ORDER BY`, as well as the order used in indexes on text columns. If
-    unset or set to an empty string the default collation is set to `C`.  If set
-    to `DEFAULT` Terraform will use the same collation order as the specified
-    `template` database.  Changing this value will force the creation of a new
-    resource as this value can only be changed when a database is created.
-    """
     lc_ctype: pulumi.Output[str]
-    """
-    Character classification (`LC_CTYPE`) to use in the
-    database. This affects the categorization of characters, e.g. lower, upper and
-    digit. If unset or set to an empty string the default character classification
-    is set to `C`.  If set to `DEFAULT` Terraform will use the character
-    classification of the specified `template` database.  Changing this value will
-    force the creation of a new resource as this value can only be changed when a
-    database is created.
-    """
     name: pulumi.Output[str]
     """
     The name of the database. Must be unique on the PostgreSQL
@@ -76,13 +50,6 @@ class Database(pulumi.CustomResource):
     created in this database.
     """
     template: pulumi.Output[str]
-    """
-    The name of the template database from which to create
-    the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
-    the default in Terraform is `template0`, not `template1`.  Changing this value
-    will force the creation of a new resource as this value can only be changed
-    when a database is created.
-    """
     def __init__(__self__, resource_name, opts=None, allow_connections=None, connection_limit=None, encoding=None, is_template=None, lc_collate=None, lc_ctype=None, name=None, owner=None, tablespace_name=None, template=None, __name__=None, __opts__=None):
         """
         The ``postgresql_database`` resource creates and manages [database
@@ -96,29 +63,9 @@ class Database(pulumi.CustomResource):
                other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
         :param pulumi.Input[float] connection_limit: How many concurrent connections can be
                established to this database. `-1` (the default) means no limit.
-        :param pulumi.Input[str] encoding: Character set encoding to use in the database.
-               Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
-               number.  If unset or set to an empty string the default encoding is set to
-               `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
-               template database.  Changing this value will force the creation of a new
-               resource as this value can only be changed when a database is created.
         :param pulumi.Input[bool] is_template: If `true`, then this database can be cloned by any
                user with `CREATEDB` privileges; if `false` (the default), then only
                superusers or the owner of the database can clone it.
-        :param pulumi.Input[str] lc_collate: Collation order (`LC_COLLATE`) to use in the
-               database.  This affects the sort order applied to strings, e.g. in queries
-               with `ORDER BY`, as well as the order used in indexes on text columns. If
-               unset or set to an empty string the default collation is set to `C`.  If set
-               to `DEFAULT` Terraform will use the same collation order as the specified
-               `template` database.  Changing this value will force the creation of a new
-               resource as this value can only be changed when a database is created.
-        :param pulumi.Input[str] lc_ctype: Character classification (`LC_CTYPE`) to use in the
-               database. This affects the categorization of characters, e.g. lower, upper and
-               digit. If unset or set to an empty string the default character classification
-               is set to `C`.  If set to `DEFAULT` Terraform will use the character
-               classification of the specified `template` database.  Changing this value will
-               force the creation of a new resource as this value can only be changed when a
-               database is created.
         :param pulumi.Input[str] name: The name of the database. Must be unique on the PostgreSQL
                server instance where it is configured.
         :param pulumi.Input[str] owner: The role name of the user who will own the database, or
@@ -130,11 +77,8 @@ class Database(pulumi.CustomResource):
                associated with the database, or `DEFAULT` to use the template database's
                tablespace.  This tablespace will be the default tablespace used for objects
                created in this database.
-        :param pulumi.Input[str] template: The name of the template database from which to create
-               the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
-               the default in Terraform is `template0`, not `template1`.  Changing this value
-               will force the creation of a new resource as this value can only be changed
-               when a database is created.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/database.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

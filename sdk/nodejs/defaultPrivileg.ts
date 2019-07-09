@@ -24,6 +24,8 @@ import * as utilities from "./utilities";
  *     schema: "public",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/default_privileges.html.markdown.
  */
 export class DefaultPrivileg extends pulumi.CustomResource {
     /**

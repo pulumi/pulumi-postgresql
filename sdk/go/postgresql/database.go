@@ -10,6 +10,8 @@ import (
 // The ``postgresql_database`` resource creates and manages [database
 // objects](https://www.postgresql.org/docs/current/static/managing-databases.html)
 // within a PostgreSQL server instance.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/database.html.markdown.
 type Database struct {
 	s *pulumi.ResourceState
 }
@@ -95,12 +97,7 @@ func (r *Database) ConnectionLimit() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["connectionLimit"])
 }
 
-// Character set encoding to use in the database.
-// Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
-// number.  If unset or set to an empty string the default encoding is set to
-// `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
-// template database.  Changing this value will force the creation of a new
-// resource as this value can only be changed when a database is created.
+// Character set encoding to use in the new database
 func (r *Database) Encoding() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["encoding"])
 }
@@ -112,24 +109,12 @@ func (r *Database) IsTemplate() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["isTemplate"])
 }
 
-// Collation order (`LC_COLLATE`) to use in the
-// database.  This affects the sort order applied to strings, e.g. in queries
-// with `ORDER BY`, as well as the order used in indexes on text columns. If
-// unset or set to an empty string the default collation is set to `C`.  If set
-// to `DEFAULT` Terraform will use the same collation order as the specified
-// `template` database.  Changing this value will force the creation of a new
-// resource as this value can only be changed when a database is created.
+// Collation order (LC_COLLATE) to use in the new database
 func (r *Database) LcCollate() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["lcCollate"])
 }
 
-// Character classification (`LC_CTYPE`) to use in the
-// database. This affects the categorization of characters, e.g. lower, upper and
-// digit. If unset or set to an empty string the default character classification
-// is set to `C`.  If set to `DEFAULT` Terraform will use the character
-// classification of the specified `template` database.  Changing this value will
-// force the creation of a new resource as this value can only be changed when a
-// database is created.
+// Character classification (LC_CTYPE) to use in the new database
 func (r *Database) LcCtype() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["lcCtype"])
 }
@@ -157,11 +142,7 @@ func (r *Database) TablespaceName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["tablespaceName"])
 }
 
-// The name of the template database from which to create
-// the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
-// the default in Terraform is `template0`, not `template1`.  Changing this value
-// will force the creation of a new resource as this value can only be changed
-// when a database is created.
+// The name of the template from which to create the new database
 func (r *Database) Template() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["template"])
 }
@@ -175,32 +156,15 @@ type DatabaseState struct {
 	// How many concurrent connections can be
 	// established to this database. `-1` (the default) means no limit.
 	ConnectionLimit interface{}
-	// Character set encoding to use in the database.
-	// Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
-	// number.  If unset or set to an empty string the default encoding is set to
-	// `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
-	// template database.  Changing this value will force the creation of a new
-	// resource as this value can only be changed when a database is created.
+	// Character set encoding to use in the new database
 	Encoding interface{}
 	// If `true`, then this database can be cloned by any
 	// user with `CREATEDB` privileges; if `false` (the default), then only
 	// superusers or the owner of the database can clone it.
 	IsTemplate interface{}
-	// Collation order (`LC_COLLATE`) to use in the
-	// database.  This affects the sort order applied to strings, e.g. in queries
-	// with `ORDER BY`, as well as the order used in indexes on text columns. If
-	// unset or set to an empty string the default collation is set to `C`.  If set
-	// to `DEFAULT` Terraform will use the same collation order as the specified
-	// `template` database.  Changing this value will force the creation of a new
-	// resource as this value can only be changed when a database is created.
+	// Collation order (LC_COLLATE) to use in the new database
 	LcCollate interface{}
-	// Character classification (`LC_CTYPE`) to use in the
-	// database. This affects the categorization of characters, e.g. lower, upper and
-	// digit. If unset or set to an empty string the default character classification
-	// is set to `C`.  If set to `DEFAULT` Terraform will use the character
-	// classification of the specified `template` database.  Changing this value will
-	// force the creation of a new resource as this value can only be changed when a
-	// database is created.
+	// Character classification (LC_CTYPE) to use in the new database
 	LcCtype interface{}
 	// The name of the database. Must be unique on the PostgreSQL
 	// server instance where it is configured.
@@ -216,11 +180,7 @@ type DatabaseState struct {
 	// tablespace.  This tablespace will be the default tablespace used for objects
 	// created in this database.
 	TablespaceName interface{}
-	// The name of the template database from which to create
-	// the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
-	// the default in Terraform is `template0`, not `template1`.  Changing this value
-	// will force the creation of a new resource as this value can only be changed
-	// when a database is created.
+	// The name of the template from which to create the new database
 	Template interface{}
 }
 
@@ -233,32 +193,15 @@ type DatabaseArgs struct {
 	// How many concurrent connections can be
 	// established to this database. `-1` (the default) means no limit.
 	ConnectionLimit interface{}
-	// Character set encoding to use in the database.
-	// Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
-	// number.  If unset or set to an empty string the default encoding is set to
-	// `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
-	// template database.  Changing this value will force the creation of a new
-	// resource as this value can only be changed when a database is created.
+	// Character set encoding to use in the new database
 	Encoding interface{}
 	// If `true`, then this database can be cloned by any
 	// user with `CREATEDB` privileges; if `false` (the default), then only
 	// superusers or the owner of the database can clone it.
 	IsTemplate interface{}
-	// Collation order (`LC_COLLATE`) to use in the
-	// database.  This affects the sort order applied to strings, e.g. in queries
-	// with `ORDER BY`, as well as the order used in indexes on text columns. If
-	// unset or set to an empty string the default collation is set to `C`.  If set
-	// to `DEFAULT` Terraform will use the same collation order as the specified
-	// `template` database.  Changing this value will force the creation of a new
-	// resource as this value can only be changed when a database is created.
+	// Collation order (LC_COLLATE) to use in the new database
 	LcCollate interface{}
-	// Character classification (`LC_CTYPE`) to use in the
-	// database. This affects the categorization of characters, e.g. lower, upper and
-	// digit. If unset or set to an empty string the default character classification
-	// is set to `C`.  If set to `DEFAULT` Terraform will use the character
-	// classification of the specified `template` database.  Changing this value will
-	// force the creation of a new resource as this value can only be changed when a
-	// database is created.
+	// Character classification (LC_CTYPE) to use in the new database
 	LcCtype interface{}
 	// The name of the database. Must be unique on the PostgreSQL
 	// server instance where it is configured.
@@ -274,10 +217,6 @@ type DatabaseArgs struct {
 	// tablespace.  This tablespace will be the default tablespace used for objects
 	// created in this database.
 	TablespaceName interface{}
-	// The name of the template database from which to create
-	// the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
-	// the default in Terraform is `template0`, not `template1`.  Changing this value
-	// will force the creation of a new resource as this value can only be changed
-	// when a database is created.
+	// The name of the template from which to create the new database
 	Template interface{}
 }

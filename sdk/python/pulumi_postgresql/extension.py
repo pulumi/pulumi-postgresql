@@ -36,6 +36,8 @@ class Extension(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the extension.
         :param pulumi.Input[str] schema: Sets the schema of an extension.
         :param pulumi.Input[str] version: Sets the version number of the extension.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/extension.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -38,6 +38,8 @@ import * as utilities from "./utilities";
  *     password: "mypass",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/role.html.markdown.
  */
 export class Role extends pulumi.CustomResource {
     /**

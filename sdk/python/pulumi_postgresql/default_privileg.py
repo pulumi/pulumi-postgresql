@@ -47,6 +47,8 @@ class DefaultPrivileg(pulumi.CustomResource):
         :param pulumi.Input[list] privileges: The list of privileges to apply as default privileges.
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on.
         :param pulumi.Input[str] schema: The database schema to set default privileges for this role.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/default_privileges.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
