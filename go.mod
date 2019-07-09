@@ -51,7 +51,7 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/prometheus/client_golang v1.0.0 // indirect
 	github.com/pulumi/pulumi v0.17.22-0.20190702185104-ebceea93a5da
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20190703150544-a9a9ca8157ca
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20190709052202-629f7c54269d
 	github.com/rogpeppe/fastuuid v1.1.0 // indirect
 	github.com/russross/blackfriday v2.0.0+incompatible // indirect
 	github.com/shirou/gopsutil v2.18.12+incompatible // indirect

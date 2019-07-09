@@ -42,6 +42,8 @@ class Grant(pulumi.CustomResource):
         :param pulumi.Input[list] privileges: The list of privileges to grant.
         :param pulumi.Input[str] role: The name of the role to grant privileges on.
         :param pulumi.Input[str] schema: The database schema to grant privileges on for this role.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/grant.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

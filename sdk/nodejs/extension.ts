@@ -17,6 +17,8 @@ import * as utilities from "./utilities";
  * 
  * const myExtension = new postgresql.Extension("my_extension", {});
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/extension.html.markdown.
  */
 export class Extension extends pulumi.CustomResource {
     /**

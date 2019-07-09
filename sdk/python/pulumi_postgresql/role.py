@@ -177,6 +177,8 @@ class Role(pulumi.CustomResource):
                will have to be manually terminated.  This value corresponds to a PostgreSQL
                datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
                set to `infinity`.  Default is `NULL`, therefore `infinity`.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/role.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

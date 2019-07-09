@@ -22,6 +22,8 @@ import (
 // 
 // > **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
 // [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/role.html.markdown.
 type Role struct {
 	s *pulumi.ResourceState
 }
