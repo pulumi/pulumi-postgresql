@@ -1,5 +1,7 @@
 ## HEAD (Unreleased)
-___NULL___
+* Update pulumi-terraform to fdafc00b3f
+
+---
 
 ## 0.18.4 (2019-07-09)
 * Fix detailed diffs with nested computed values.
