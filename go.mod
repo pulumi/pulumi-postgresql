@@ -49,8 +49,8 @@ require (
 	github.com/pelletier/go-toml v1.4.0 // indirect
 	github.com/pkg/errors v0.8.1
 	github.com/prometheus/client_golang v1.0.0 // indirect
-	github.com/pulumi/pulumi v0.17.23-0.20190715212628-02ffff88409f
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20190716112909-08d502e9b427
+	github.com/pulumi/pulumi v0.17.26-0.20190723034217-ed5b8437d126
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20190724233644-fdafc00b3f6a
 	github.com/rogpeppe/fastuuid v1.1.0 // indirect
 	github.com/russross/blackfriday v2.0.0+incompatible // indirect
 	github.com/shirou/gopsutil v2.18.12+incompatible // indirect
