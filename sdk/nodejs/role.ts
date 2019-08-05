@@ -213,6 +213,13 @@ export class Role extends pulumi.CustomResource {
             inputs["superuser"] = args ? args.superuser : undefined;
             inputs["validUntil"] = args ? args.validUntil : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Role.__pulumiType, name, inputs, opts);
     }
 }

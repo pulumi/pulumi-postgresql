@@ -124,6 +124,13 @@ export class DefaultPrivileg extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["schema"] = args ? args.schema : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(DefaultPrivileg.__pulumiType, name, inputs, opts);
     }
 }
