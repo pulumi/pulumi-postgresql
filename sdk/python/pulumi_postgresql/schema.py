@@ -67,6 +67,10 @@ class Schema(pulumi.CustomResource):
 
         __props__['policies'] = policies
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Schema, __self__).__init__(
             'postgresql:index/schema:Schema',
             resource_name,

@@ -143,6 +143,13 @@ export class Database extends pulumi.CustomResource {
             inputs["tablespaceName"] = args ? args.tablespaceName : undefined;
             inputs["template"] = args ? args.template : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Database.__pulumiType, name, inputs, opts);
     }
 }

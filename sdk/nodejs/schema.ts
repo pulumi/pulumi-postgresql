@@ -113,6 +113,13 @@ export class Schema extends pulumi.CustomResource {
             inputs["owner"] = args ? args.owner : undefined;
             inputs["policies"] = args ? args.policies : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Schema.__pulumiType, name, inputs, opts);
     }
 }

@@ -87,6 +87,13 @@ export class Extension extends pulumi.CustomResource {
             inputs["schema"] = args ? args.schema : undefined;
             inputs["version"] = args ? args.version : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Extension.__pulumiType, name, inputs, opts);
     }
 }

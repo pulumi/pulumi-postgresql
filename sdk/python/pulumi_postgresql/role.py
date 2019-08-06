@@ -227,6 +227,10 @@ class Role(pulumi.CustomResource):
 
         __props__['valid_until'] = valid_until
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Role, __self__).__init__(
             'postgresql:index/role:Role',
             resource_name,

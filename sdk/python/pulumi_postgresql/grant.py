@@ -80,6 +80,10 @@ class Grant(pulumi.CustomResource):
             raise TypeError("Missing required property 'schema'")
         __props__['schema'] = schema
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Grant, __self__).__init__(
             'postgresql:index/grant:Grant',
             resource_name,
