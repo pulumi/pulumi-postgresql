@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform 9db2fc93cd
+___NULL___
 
 ---
+
+## 0.18.6 (2019-08-09)
+* Upgrade to pulumi-terraform 9db2fc93cd
 
 ## 0.18.5 (2019-08-08)
 * Update to pulumi-terraform@013b95b1c
