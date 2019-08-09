@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql_schema`` resource creates and manages [schema
+ * The ``postgresql..Schema`` resource creates and manages [schema
  * objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
  * a PostgreSQL database.
  * 
@@ -16,17 +16,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  * 
- * const appDba = new postgresql.Role("app_dba", {});
- * const appReleng = new postgresql.Role("app_releng", {});
- * const appWww = new postgresql.Role("app_www", {});
- * const mySchema = new postgresql.Schema("my_schema", {
+ * const appDba = new postgresql.Role("appDba", {});
+ * const appReleng = new postgresql.Role("appReleng", {});
+ * const appWww = new postgresql.Role("appWww", {});
+ * const mySchema = new postgresql.Schema("mySchema", {
  *     owner: "postgres",
  *     policies: [
  *         {
  *             role: appWww.name,
  *             usage: true,
  *         },
- *         // app_releng can create new objects in the schema.  This is the role that
+ *         // appReleng can create new objects in the schema.  This is the role that
  *         // migrations are executed as.
  *         {
  *             create: true,

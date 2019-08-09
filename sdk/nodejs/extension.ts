@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql_extension`` resource creates and manages an extension on a PostgreSQL
+ * The ``postgresql..Extension`` resource creates and manages an extension on a PostgreSQL
  * server.
  * 
  * 
@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  * 
- * const myExtension = new postgresql.Extension("my_extension", {});
+ * const myExtension = new postgresql.Extension("myExtension", {});
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/extension.html.markdown.

@@ -7,10 +7,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The ``postgresql_role`` resource creates and manages a role on a PostgreSQL
+// The ``.Role`` resource creates and manages a role on a PostgreSQL
 // server.
 // 
-// When a ``postgresql_role`` resource is removed, the PostgreSQL ROLE will
+// When a ``.Role`` resource is removed, the PostgreSQL ROLE will
 // automatically run a [`REASSIGN
 // OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html)
 // and [`DROP
@@ -18,7 +18,7 @@ import (
 // the `CURRENT_USER` (normally the connected user for the provider).  If the
 // specified PostgreSQL ROLE owns objects in multiple PostgreSQL databases in the
 // same PostgreSQL Cluster, one PostgreSQL provider per database must be created
-// and all but the final ``postgresql_role`` must specify a `skip_drop_role`.
+// and all but the final ``.Role`` must specify a `skipDropRole`.
 // 
 // > **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
 // [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
@@ -148,7 +148,7 @@ func (r *Role) Encrypted() *pulumi.StringOutput {
 // encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
 // is always set (to the conservative and safe value), but may interfere with the
 // behavior of
-// [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
+// [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
 func (r *Role) EncryptedPassword() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["encryptedPassword"])
 }
@@ -221,9 +221,9 @@ func (r *Role) Superuser() *pulumi.BoolOutput {
 }
 
 // Defines the date and time after which the role's
-// password is no longer valid.  Established connections past this `valid_time`
+// password is no longer valid.  Established connections past this `validTime`
 // will have to be manually terminated.  This value corresponds to a PostgreSQL
-// datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
+// datetime. If omitted or the magic value `NULL` is used, `validUntil` will be
 // set to `infinity`.  Default is `NULL`, therefore `infinity`.
 func (r *Role) ValidUntil() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["validUntil"])
@@ -250,7 +250,7 @@ type RoleState struct {
 	// encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
 	// is always set (to the conservative and safe value), but may interfere with the
 	// behavior of
-	// [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
+	// [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
 	EncryptedPassword interface{}
 	// Defines whether a role "inherits" the privileges of
 	// roles it is a member of.  Default value is `true`.
@@ -293,9 +293,9 @@ type RoleState struct {
 	// value is `false`.
 	Superuser interface{}
 	// Defines the date and time after which the role's
-	// password is no longer valid.  Established connections past this `valid_time`
+	// password is no longer valid.  Established connections past this `validTime`
 	// will have to be manually terminated.  This value corresponds to a PostgreSQL
-	// datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
+	// datetime. If omitted or the magic value `NULL` is used, `validUntil` will be
 	// set to `infinity`.  Default is `NULL`, therefore `infinity`.
 	ValidUntil interface{}
 }
@@ -321,7 +321,7 @@ type RoleArgs struct {
 	// encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
 	// is always set (to the conservative and safe value), but may interfere with the
 	// behavior of
-	// [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
+	// [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
 	EncryptedPassword interface{}
 	// Defines whether a role "inherits" the privileges of
 	// roles it is a member of.  Default value is `true`.
@@ -364,9 +364,9 @@ type RoleArgs struct {
 	// value is `false`.
 	Superuser interface{}
 	// Defines the date and time after which the role's
-	// password is no longer valid.  Established connections past this `valid_time`
+	// password is no longer valid.  Established connections past this `validTime`
 	// will have to be manually terminated.  This value corresponds to a PostgreSQL
-	// datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
+	// datetime. If omitted or the magic value `NULL` is used, `validUntil` will be
 	// set to `infinity`.  Default is `NULL`, therefore `infinity`.
 	ValidUntil interface{}
 }
