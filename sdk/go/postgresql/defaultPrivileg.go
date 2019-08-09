@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The ``postgresql_default_privileges`` resource creates and manages default privileges given to a user for a database schema.
+// The ``.DefaultPrivileg`` resource creates and manages default privileges given to a user for a database schema.
 // 
 // > **Note:** This resource needs Postgresql version 9 or above.
 //

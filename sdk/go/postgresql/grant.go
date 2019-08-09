@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The ``postgresql_grant`` resource creates and manages privileges given to a user for a database schema.
+// The ``.Grant`` resource creates and manages privileges given to a user for a database schema.
 // 
 // > **Note:** This resource needs Postgresql version 9 or above.
 //

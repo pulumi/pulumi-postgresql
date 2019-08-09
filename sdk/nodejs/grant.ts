@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql_grant`` resource creates and manages privileges given to a user for a database schema.
+ * The ``postgresql..Grant`` resource creates and manages privileges given to a user for a database schema.
  * 
  * > **Note:** This resource needs Postgresql version 9 or above.
  * 
@@ -15,11 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  * 
- * const readonlyTables = new postgresql.Grant("readonly_tables", {
- *     database: "test_db",
+ * const readonlyTables = new postgresql.Grant("readonlyTables", {
+ *     database: "testDb",
  *     objectType: "table",
  *     privileges: ["SELECT"],
- *     role: "test_role",
+ *     role: "testRole",
  *     schema: "public",
  * });
  * ```

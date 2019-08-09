@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The ``postgresql_extension`` resource creates and manages an extension on a PostgreSQL
+// The ``.Extension`` resource creates and manages an extension on a PostgreSQL
 // server.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/extension.html.markdown.

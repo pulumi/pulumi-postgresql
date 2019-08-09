@@ -33,9 +33,9 @@ class DefaultPrivileg(pulumi.CustomResource):
     """
     The database schema to set default privileges for this role.
     """
-    def __init__(__self__, resource_name, opts=None, database=None, object_type=None, owner=None, privileges=None, role=None, schema=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, database=None, object_type=None, owner=None, privileges=None, role=None, schema=None, __props__=None, __name__=None, __opts__=None):
         """
-        The ``postgresql_default_privileges`` resource creates and manages default privileges given to a user for a database schema.
+        The ``.DefaultPrivileg`` resource creates and manages default privileges given to a user for a database schema.
         
         > **Note:** This resource needs Postgresql version 9 or above.
         
@@ -56,50 +56,68 @@ class DefaultPrivileg(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if database is None:
-            raise TypeError("Missing required property 'database'")
-        __props__['database'] = database
-
-        if object_type is None:
-            raise TypeError("Missing required property 'object_type'")
-        __props__['object_type'] = object_type
-
-        if owner is None:
-            raise TypeError("Missing required property 'owner'")
-        __props__['owner'] = owner
-
-        if privileges is None:
-            raise TypeError("Missing required property 'privileges'")
-        __props__['privileges'] = privileges
-
-        if role is None:
-            raise TypeError("Missing required property 'role'")
-        __props__['role'] = role
-
-        if schema is None:
-            raise TypeError("Missing required property 'schema'")
-        __props__['schema'] = schema
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if database is None:
+                raise TypeError("Missing required property 'database'")
+            __props__['database'] = database
+            if object_type is None:
+                raise TypeError("Missing required property 'object_type'")
+            __props__['object_type'] = object_type
+            if owner is None:
+                raise TypeError("Missing required property 'owner'")
+            __props__['owner'] = owner
+            if privileges is None:
+                raise TypeError("Missing required property 'privileges'")
+            __props__['privileges'] = privileges
+            if role is None:
+                raise TypeError("Missing required property 'role'")
+            __props__['role'] = role
+            if schema is None:
+                raise TypeError("Missing required property 'schema'")
+            __props__['schema'] = schema
         super(DefaultPrivileg, __self__).__init__(
             'postgresql:index/defaultPrivileg:DefaultPrivileg',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, database=None, object_type=None, owner=None, privileges=None, role=None, schema=None):
+        """
+        Get an existing DefaultPrivileg resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] database: The database to grant default privileges for this role.
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence).
+        :param pulumi.Input[str] owner: Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+        :param pulumi.Input[list] privileges: The list of privileges to apply as default privileges.
+        :param pulumi.Input[str] role: The name of the role to which grant default privileges on.
+        :param pulumi.Input[str] schema: The database schema to set default privileges for this role.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/default_privileges.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["database"] = database
+        __props__["object_type"] = object_type
+        __props__["owner"] = owner
+        __props__["privileges"] = privileges
+        __props__["role"] = role
+        __props__["schema"] = schema
+        return DefaultPrivileg(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
