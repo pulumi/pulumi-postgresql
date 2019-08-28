@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -88,7 +90,7 @@ export class Schema extends pulumi.CustomResource {
      * Can be specified multiple times for each policy.  Each
      * policy block supports fields documented below.
      */
-    public readonly policies!: pulumi.Output<{ create?: boolean, createWithGrant?: boolean, role?: string, usage?: boolean, usageWithGrant?: boolean }[]>;
+    public readonly policies!: pulumi.Output<outputs.SchemaPolicy[]>;
 
     /**
      * Create a Schema resource with the given unique name, arguments, and options.
@@ -145,7 +147,7 @@ export interface SchemaState {
      * Can be specified multiple times for each policy.  Each
      * policy block supports fields documented below.
      */
-    readonly policies?: pulumi.Input<pulumi.Input<{ create?: pulumi.Input<boolean>, createWithGrant?: pulumi.Input<boolean>, role?: pulumi.Input<string>, usage?: pulumi.Input<boolean>, usageWithGrant?: pulumi.Input<boolean> }>[]>;
+    readonly policies?: pulumi.Input<pulumi.Input<inputs.SchemaPolicy>[]>;
 }
 
 /**
@@ -169,5 +171,5 @@ export interface SchemaArgs {
      * Can be specified multiple times for each policy.  Each
      * policy block supports fields documented below.
      */
-    readonly policies?: pulumi.Input<pulumi.Input<{ create?: pulumi.Input<boolean>, createWithGrant?: pulumi.Input<boolean>, role?: pulumi.Input<string>, usage?: pulumi.Input<boolean>, usageWithGrant?: pulumi.Input<boolean> }>[]>;
+    readonly policies?: pulumi.Input<pulumi.Input<inputs.SchemaPolicy>[]>;
 }
