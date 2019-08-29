@@ -23,6 +23,9 @@
         "provider.ts",
         "role.ts",
         "schema.ts",
+        "types/index.ts",
+        "types/input.ts",
+        "types/output.ts",
         "utilities.ts"
     ]
 }

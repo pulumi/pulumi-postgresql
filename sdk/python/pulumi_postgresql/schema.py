@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class Schema(pulumi.CustomResource):
@@ -26,6 +27,12 @@ class Schema(pulumi.CustomResource):
     """
     Can be specified multiple times for each policy.  Each
     policy block supports fields documented below.
+    
+      * `create` (`bool`)
+      * `createWithGrant` (`bool`)
+      * `role` (`str`)
+      * `usage` (`bool`)
+      * `usageWithGrant` (`bool`)
     """
     def __init__(__self__, resource_name, opts=None, if_not_exists=None, name=None, owner=None, policies=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -41,6 +48,14 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[str] owner: The ROLE who owns the schema.
         :param pulumi.Input[list] policies: Can be specified multiple times for each policy.  Each
                policy block supports fields documented below.
+        
+        The **policies** object supports the following:
+        
+          * `create` (`pulumi.Input[bool]`)
+          * `createWithGrant` (`pulumi.Input[bool]`)
+          * `role` (`pulumi.Input[str]`)
+          * `usage` (`pulumi.Input[bool]`)
+          * `usageWithGrant` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/schema.html.markdown.
         """
@@ -76,6 +91,7 @@ class Schema(pulumi.CustomResource):
         """
         Get an existing Schema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -85,10 +101,18 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[str] owner: The ROLE who owns the schema.
         :param pulumi.Input[list] policies: Can be specified multiple times for each policy.  Each
                policy block supports fields documented below.
+        
+        The **policies** object supports the following:
+        
+          * `create` (`pulumi.Input[bool]`)
+          * `createWithGrant` (`pulumi.Input[bool]`)
+          * `role` (`pulumi.Input[str]`)
+          * `usage` (`pulumi.Input[bool]`)
+          * `usageWithGrant` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/schema.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["if_not_exists"] = if_not_exists
