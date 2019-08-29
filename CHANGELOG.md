@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
-* Upgrade pulumi-terraform to 3f206601e7
+_(none)_
 
 ---
+
+## 0.18.8 (2019-08-29)
+* Upgrade pulumi-terraform to 3f206601e7
 
 ## 0.18.7 (2019-08-20)
 * Depend on latest pulumi package
@@ -15,7 +18,7 @@
 ## 0.18.4 (2019-07-09)
 * Fix detailed diffs with nested computed values.
 
-## 0.18.3 (2019-07-08) 
+## 0.18.3 (2019-07-08)
 * Communicate detailed information about the difference between a resource's desired and actual state during a Pulumi update
 
 ## 0.18.2 (2019-07-04)
