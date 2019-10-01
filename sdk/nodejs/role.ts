@@ -27,15 +27,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  * 
+ * const myRole = new postgresql.Role("myRole", {
+ *     login: true,
+ *     password: "mypass",
+ * });
  * const myReplicationRole = new postgresql.Role("myReplicationRole", {
  *     connectionLimit: 5,
  *     login: true,
  *     password: "md5c98cbfeb6a347a47eb8e96cfb4c4b890",
  *     replication: true,
- * });
- * const myRole = new postgresql.Role("myRole", {
- *     login: true,
- *     password: "mypass",
  * });
  * ```
  *

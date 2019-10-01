@@ -18,9 +18,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  * 
+ * const appWww = new postgresql.Role("appWww", {});
  * const appDba = new postgresql.Role("appDba", {});
  * const appReleng = new postgresql.Role("appReleng", {});
- * const appWww = new postgresql.Role("appWww", {});
  * const mySchema = new postgresql.Schema("mySchema", {
  *     owner: "postgres",
  *     policies: [
