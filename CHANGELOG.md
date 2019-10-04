@@ -1,5 +1,6 @@
 ## HEAD (Unreleased)
 * Regenerate SDK based on tf2pulumi 0.6.0
+* Upgrade to v1.2.0 of the Postgresql Terraform Providers 
 
 ---
 
