@@ -1,5 +1,5 @@
 ## HEAD (Unreleased)
-_(none)_
+* Add support for DotNet SDK Generation
 
 ---
 
