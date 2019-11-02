@@ -72,6 +72,12 @@ class Role(pulumi.CustomResource):
     """
     Defines list of roles which will be granted to this new role.
     """
+    search_paths: pulumi.Output[list]
+    """
+    Alters the search path of this new role. Note that
+    due to limitations in the implementation, values cannot contain the substring
+    `", "`.
+    """
     skip_drop_role: pulumi.Output[bool]
     """
     When a PostgreSQL ROLE exists in multiple
@@ -107,7 +113,7 @@ class Role(pulumi.CustomResource):
     datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
     set to `infinity`.  Default is `NULL`, therefore `infinity`.
     """
-    def __init__(__self__, resource_name, opts=None, bypass_row_level_security=None, connection_limit=None, create_database=None, create_role=None, encrypted=None, encrypted_password=None, inherit=None, login=None, name=None, password=None, replication=None, roles=None, skip_drop_role=None, skip_reassign_owned=None, superuser=None, valid_until=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bypass_row_level_security=None, connection_limit=None, create_database=None, create_role=None, encrypted=None, encrypted_password=None, inherit=None, login=None, name=None, password=None, replication=None, roles=None, search_paths=None, skip_drop_role=None, skip_reassign_owned=None, superuser=None, valid_until=None, __props__=None, __name__=None, __opts__=None):
         """
         The ``.Role`` resource creates and manages a role on a PostgreSQL
         server.
@@ -155,6 +161,9 @@ class Role(pulumi.CustomResource):
                streaming replication or put the system in and out of backup mode.  Default
                value is `false`
         :param pulumi.Input[list] roles: Defines list of roles which will be granted to this new role.
+        :param pulumi.Input[list] search_paths: Alters the search path of this new role. Note that
+               due to limitations in the implementation, values cannot contain the substring
+               `", "`.
         :param pulumi.Input[bool] skip_drop_role: When a PostgreSQL ROLE exists in multiple
                databases and the ROLE is dropped, the
                [cleanup of ownership of objects](https://www.postgresql.org/docs/current/static/role-removal.html)
@@ -210,6 +219,7 @@ class Role(pulumi.CustomResource):
             __props__['password'] = password
             __props__['replication'] = replication
             __props__['roles'] = roles
+            __props__['search_paths'] = search_paths
             __props__['skip_drop_role'] = skip_drop_role
             __props__['skip_reassign_owned'] = skip_reassign_owned
             __props__['superuser'] = superuser
@@ -221,7 +231,7 @@ class Role(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bypass_row_level_security=None, connection_limit=None, create_database=None, create_role=None, encrypted=None, encrypted_password=None, inherit=None, login=None, name=None, password=None, replication=None, roles=None, skip_drop_role=None, skip_reassign_owned=None, superuser=None, valid_until=None):
+    def get(resource_name, id, opts=None, bypass_row_level_security=None, connection_limit=None, create_database=None, create_role=None, encrypted=None, encrypted_password=None, inherit=None, login=None, name=None, password=None, replication=None, roles=None, search_paths=None, skip_drop_role=None, skip_reassign_owned=None, superuser=None, valid_until=None):
         """
         Get an existing Role resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -257,6 +267,9 @@ class Role(pulumi.CustomResource):
                streaming replication or put the system in and out of backup mode.  Default
                value is `false`
         :param pulumi.Input[list] roles: Defines list of roles which will be granted to this new role.
+        :param pulumi.Input[list] search_paths: Alters the search path of this new role. Note that
+               due to limitations in the implementation, values cannot contain the substring
+               `", "`.
         :param pulumi.Input[bool] skip_drop_role: When a PostgreSQL ROLE exists in multiple
                databases and the ROLE is dropped, the
                [cleanup of ownership of objects](https://www.postgresql.org/docs/current/static/role-removal.html)
@@ -298,6 +311,7 @@ class Role(pulumi.CustomResource):
         __props__["password"] = password
         __props__["replication"] = replication
         __props__["roles"] = roles
+        __props__["search_paths"] = search_paths
         __props__["skip_drop_role"] = skip_drop_role
         __props__["skip_reassign_owned"] = skip_reassign_owned
         __props__["superuser"] = superuser

@@ -115,6 +115,14 @@ namespace Pulumi.Postgresql
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
 
         /// <summary>
+        /// Alters the search path of this new role. Note that
+        /// due to limitations in the implementation, values cannot contain the substring
+        /// `", "`.
+        /// </summary>
+        [Output("searchPaths")]
+        public Output<ImmutableArray<string>> SearchPaths { get; private set; } = null!;
+
+        /// <summary>
         /// When a PostgreSQL ROLE exists in multiple
         /// databases and the ROLE is dropped, the
         /// [cleanup of ownership of objects](https://www.postgresql.org/docs/current/static/role-removal.html)
@@ -295,6 +303,20 @@ namespace Pulumi.Postgresql
             set => _roles = value;
         }
 
+        [Input("searchPaths")]
+        private InputList<string>? _searchPaths;
+
+        /// <summary>
+        /// Alters the search path of this new role. Note that
+        /// due to limitations in the implementation, values cannot contain the substring
+        /// `", "`.
+        /// </summary>
+        public InputList<string> SearchPaths
+        {
+            get => _searchPaths ?? (_searchPaths = new InputList<string>());
+            set => _searchPaths = value;
+        }
+
         /// <summary>
         /// When a PostgreSQL ROLE exists in multiple
         /// databases and the ROLE is dropped, the
@@ -435,6 +457,20 @@ namespace Pulumi.Postgresql
         {
             get => _roles ?? (_roles = new InputList<string>());
             set => _roles = value;
+        }
+
+        [Input("searchPaths")]
+        private InputList<string>? _searchPaths;
+
+        /// <summary>
+        /// Alters the search path of this new role. Note that
+        /// due to limitations in the implementation, values cannot contain the substring
+        /// `", "`.
+        /// </summary>
+        public InputList<string> SearchPaths
+        {
+            get => _searchPaths ?? (_searchPaths = new InputList<string>());
+            set => _searchPaths = value;
         }
 
         /// <summary>

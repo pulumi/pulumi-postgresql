@@ -131,6 +131,12 @@ export class Role extends pulumi.CustomResource {
      */
     public readonly roles!: pulumi.Output<string[] | undefined>;
     /**
+     * Alters the search path of this new role. Note that
+     * due to limitations in the implementation, values cannot contain the substring
+     * `", "`.
+     */
+    public readonly searchPaths!: pulumi.Output<string[] | undefined>;
+    /**
      * When a PostgreSQL ROLE exists in multiple
      * databases and the ROLE is dropped, the
      * [cleanup of ownership of objects](https://www.postgresql.org/docs/current/static/role-removal.html)
@@ -190,6 +196,7 @@ export class Role extends pulumi.CustomResource {
             inputs["password"] = state ? state.password : undefined;
             inputs["replication"] = state ? state.replication : undefined;
             inputs["roles"] = state ? state.roles : undefined;
+            inputs["searchPaths"] = state ? state.searchPaths : undefined;
             inputs["skipDropRole"] = state ? state.skipDropRole : undefined;
             inputs["skipReassignOwned"] = state ? state.skipReassignOwned : undefined;
             inputs["superuser"] = state ? state.superuser : undefined;
@@ -208,6 +215,7 @@ export class Role extends pulumi.CustomResource {
             inputs["password"] = args ? args.password : undefined;
             inputs["replication"] = args ? args.replication : undefined;
             inputs["roles"] = args ? args.roles : undefined;
+            inputs["searchPaths"] = args ? args.searchPaths : undefined;
             inputs["skipDropRole"] = args ? args.skipDropRole : undefined;
             inputs["skipReassignOwned"] = args ? args.skipReassignOwned : undefined;
             inputs["superuser"] = args ? args.superuser : undefined;
@@ -290,6 +298,12 @@ export interface RoleState {
      * Defines list of roles which will be granted to this new role.
      */
     readonly roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Alters the search path of this new role. Note that
+     * due to limitations in the implementation, values cannot contain the substring
+     * `", "`.
+     */
+    readonly searchPaths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * When a PostgreSQL ROLE exists in multiple
      * databases and the ROLE is dropped, the
@@ -393,6 +407,12 @@ export interface RoleArgs {
      * Defines list of roles which will be granted to this new role.
      */
     readonly roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Alters the search path of this new role. Note that
+     * due to limitations in the implementation, values cannot contain the substring
+     * `", "`.
+     */
+    readonly searchPaths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * When a PostgreSQL ROLE exists in multiple
      * databases and the ROLE is dropped, the
