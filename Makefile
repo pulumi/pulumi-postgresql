@@ -37,9 +37,9 @@ build:: tfgen provider
 		sed -i.bak -e "s/\$${VERSION}/$(PYPI_VERSION)/g" -e "s/\$${PLUGIN_VERSION}/$(VERSION)/g" ./bin/setup.py && \
 		rm ./bin/setup.py.bak && \
 		cd ./bin && $(PYTHON) setup.py build sdist
-    	cd ${PACKDIR}/dotnet/ && \
-        	echo "${VERSION:v%=%}" >version.txt && \
-        	dotnet build /p:Version=${DOTNET_VERSION}
+	cd ${PACKDIR}/dotnet/ && \
+  	echo "${VERSION:v%=%}" >version.txt && \
+  	dotnet build /p:Version=${DOTNET_VERSION}
 
 tfgen::
 	go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${TFGEN}
