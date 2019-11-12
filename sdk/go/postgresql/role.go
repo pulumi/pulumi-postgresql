@@ -45,6 +45,7 @@ func NewRole(ctx *pulumi.Context,
 		inputs["password"] = nil
 		inputs["replication"] = nil
 		inputs["roles"] = nil
+		inputs["searchPaths"] = nil
 		inputs["skipDropRole"] = nil
 		inputs["skipReassignOwned"] = nil
 		inputs["superuser"] = nil
@@ -62,6 +63,7 @@ func NewRole(ctx *pulumi.Context,
 		inputs["password"] = args.Password
 		inputs["replication"] = args.Replication
 		inputs["roles"] = args.Roles
+		inputs["searchPaths"] = args.SearchPaths
 		inputs["skipDropRole"] = args.SkipDropRole
 		inputs["skipReassignOwned"] = args.SkipReassignOwned
 		inputs["superuser"] = args.Superuser
@@ -92,6 +94,7 @@ func GetRole(ctx *pulumi.Context,
 		inputs["password"] = state.Password
 		inputs["replication"] = state.Replication
 		inputs["roles"] = state.Roles
+		inputs["searchPaths"] = state.SearchPaths
 		inputs["skipDropRole"] = state.SkipDropRole
 		inputs["skipReassignOwned"] = state.SkipReassignOwned
 		inputs["superuser"] = state.Superuser
@@ -190,6 +193,13 @@ func (r *Role) Roles() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["roles"])
 }
 
+// Alters the search path of this new role. Note that
+// due to limitations in the implementation, values cannot contain the substring
+// `", "`.
+func (r *Role) SearchPaths() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["searchPaths"])
+}
+
 // When a PostgreSQL ROLE exists in multiple
 // databases and the ROLE is dropped, the
 // [cleanup of ownership of objects](https://www.postgresql.org/docs/current/static/role-removal.html)
@@ -271,6 +281,10 @@ type RoleState struct {
 	Replication interface{}
 	// Defines list of roles which will be granted to this new role.
 	Roles interface{}
+	// Alters the search path of this new role. Note that
+	// due to limitations in the implementation, values cannot contain the substring
+	// `", "`.
+	SearchPaths interface{}
 	// When a PostgreSQL ROLE exists in multiple
 	// databases and the ROLE is dropped, the
 	// [cleanup of ownership of objects](https://www.postgresql.org/docs/current/static/role-removal.html)
@@ -342,6 +356,10 @@ type RoleArgs struct {
 	Replication interface{}
 	// Defines list of roles which will be granted to this new role.
 	Roles interface{}
+	// Alters the search path of this new role. Note that
+	// due to limitations in the implementation, values cannot contain the substring
+	// `", "`.
+	SearchPaths interface{}
 	// When a PostgreSQL ROLE exists in multiple
 	// databases and the ROLE is dropped, the
 	// [cleanup of ownership of objects](https://www.postgresql.org/docs/current/static/role-removal.html)
