@@ -1,8 +1,11 @@
 ## HEAD (Unreleased)
-* Add support for DotNet SDK Generation
-* Upgrade to v1.3.0 of the Postgresql Terraform Provider
+_(none)_
 
 ---
+
+## 1.1.0 (2019-11-15)
+* Add support for DotNet SDK Generation
+* Upgrade to v1.3.0 of the Postgresql Terraform Provider
 
 ## 1.0.0 (2019-10-04)
 * Regenerate SDK based on tf2pulumi 0.6.0
