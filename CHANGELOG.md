@@ -1,5 +1,5 @@
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to support go 1.13.x
 
 ---
 
