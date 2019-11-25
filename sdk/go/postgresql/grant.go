@@ -76,38 +76,38 @@ func GetGrant(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Grant) URN() *pulumi.URNOutput {
+func (r *Grant) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Grant) ID() *pulumi.IDOutput {
+func (r *Grant) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The database to grant privileges on for this role.
-func (r *Grant) Database() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["database"])
+func (r *Grant) Database() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["database"])
 }
 
 // The PostgreSQL object type to grant the privileges on (one of: table, sequence).
-func (r *Grant) ObjectType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["objectType"])
+func (r *Grant) ObjectType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["objectType"])
 }
 
 // The list of privileges to grant.
-func (r *Grant) Privileges() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["privileges"])
+func (r *Grant) Privileges() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["privileges"])
 }
 
 // The name of the role to grant privileges on.
-func (r *Grant) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *Grant) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // The database schema to grant privileges on for this role.
-func (r *Grant) Schema() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["schema"])
+func (r *Grant) Schema() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["schema"])
 }
 
 // Input properties used for looking up and filtering Grant resources.

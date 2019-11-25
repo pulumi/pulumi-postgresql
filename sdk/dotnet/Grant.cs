@@ -55,7 +55,7 @@ namespace Pulumi.Postgresql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Grant(string name, GrantArgs args, CustomResourceOptions? options = null)
-            : base("postgresql:index/grant:Grant", name, args, MakeResourceOptions(options, ""))
+            : base("postgresql:index/grant:Grant", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

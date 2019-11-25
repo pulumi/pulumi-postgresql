@@ -25,7 +25,7 @@ namespace Pulumi.Postgresql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Provider(string name, ProviderArgs? args = null, ResourceOptions? options = null)
-            : base("postgresql", name, args, MakeResourceOptions(options, ""))
+            : base("postgresql", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

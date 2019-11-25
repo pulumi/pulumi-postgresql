@@ -3,7 +3,7 @@
 
 using System.Collections.Immutable;
 
-namespace Pulumi.Postgresql.Config
+namespace Pulumi.Postgresql
 {
     public static class Config
     {
