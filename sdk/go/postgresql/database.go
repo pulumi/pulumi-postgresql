@@ -75,54 +75,54 @@ func GetDatabase(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Database) URN() *pulumi.URNOutput {
+func (r *Database) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Database) ID() *pulumi.IDOutput {
+func (r *Database) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // If `false` then no one can connect to this
 // database. The default is `true`, allowing connections (except as restricted by
 // other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
-func (r *Database) AllowConnections() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["allowConnections"])
+func (r *Database) AllowConnections() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["allowConnections"])
 }
 
 // How many concurrent connections can be
 // established to this database. `-1` (the default) means no limit.
-func (r *Database) ConnectionLimit() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["connectionLimit"])
+func (r *Database) ConnectionLimit() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["connectionLimit"])
 }
 
 // Character set encoding to use in the new database
-func (r *Database) Encoding() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["encoding"])
+func (r *Database) Encoding() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["encoding"])
 }
 
 // If `true`, then this database can be cloned by any
 // user with `CREATEDB` privileges; if `false` (the default), then only
 // superusers or the owner of the database can clone it.
-func (r *Database) IsTemplate() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isTemplate"])
+func (r *Database) IsTemplate() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isTemplate"])
 }
 
 // Collation order (LC_COLLATE) to use in the new database
-func (r *Database) LcCollate() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lcCollate"])
+func (r *Database) LcCollate() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lcCollate"])
 }
 
 // Character classification (LC_CTYPE) to use in the new database
-func (r *Database) LcCtype() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lcCtype"])
+func (r *Database) LcCtype() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lcCtype"])
 }
 
 // The name of the database. Must be unique on the PostgreSQL
 // server instance where it is configured.
-func (r *Database) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Database) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The role name of the user who will own the database, or
@@ -130,21 +130,21 @@ func (r *Database) Name() *pulumi.StringOutput {
 // create a database owned by another role or to change the owner of an existing
 // database, you must be a direct or indirect member of the specified role, or
 // the username in the provider is a superuser.
-func (r *Database) Owner() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["owner"])
+func (r *Database) Owner() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["owner"])
 }
 
 // The name of the tablespace that will be
 // associated with the database, or `DEFAULT` to use the template database's
 // tablespace.  This tablespace will be the default tablespace used for objects
 // created in this database.
-func (r *Database) TablespaceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tablespaceName"])
+func (r *Database) TablespaceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tablespaceName"])
 }
 
 // The name of the template from which to create the new database
-func (r *Database) Template() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["template"])
+func (r *Database) Template() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["template"])
 }
 
 // Input properties used for looking up and filtering Database resources.

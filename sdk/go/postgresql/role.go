@@ -108,43 +108,43 @@ func GetRole(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Role) URN() *pulumi.URNOutput {
+func (r *Role) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Role) ID() *pulumi.IDOutput {
+func (r *Role) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Defines whether a role bypasses every
 // row-level security (RLS) policy.  Default value is `false`.
-func (r *Role) BypassRowLevelSecurity() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["bypassRowLevelSecurity"])
+func (r *Role) BypassRowLevelSecurity() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["bypassRowLevelSecurity"])
 }
 
 // If this role can log in, this specifies how
 // many concurrent connections the role can establish. `-1` (the default) means no
 // limit.
-func (r *Role) ConnectionLimit() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["connectionLimit"])
+func (r *Role) ConnectionLimit() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["connectionLimit"])
 }
 
 // Defines a role's ability to execute `CREATE
 // DATABASE`.  Default value is `false`.
-func (r *Role) CreateDatabase() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["createDatabase"])
+func (r *Role) CreateDatabase() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["createDatabase"])
 }
 
 // Defines a role's ability to execute `CREATE ROLE`.
 // A role with this privilege can also alter and drop other roles.  Default value
 // is `false`.
-func (r *Role) CreateRole() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["createRole"])
+func (r *Role) CreateRole() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["createRole"])
 }
 
-func (r *Role) Encrypted() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["encrypted"])
+func (r *Role) Encrypted() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["encrypted"])
 }
 
 // Defines whether the password is stored
@@ -152,52 +152,52 @@ func (r *Role) Encrypted() *pulumi.StringOutput {
 // is always set (to the conservative and safe value), but may interfere with the
 // behavior of
 // [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
-func (r *Role) EncryptedPassword() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["encryptedPassword"])
+func (r *Role) EncryptedPassword() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["encryptedPassword"])
 }
 
 // Defines whether a role "inherits" the privileges of
 // roles it is a member of.  Default value is `true`.
-func (r *Role) Inherit() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["inherit"])
+func (r *Role) Inherit() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["inherit"])
 }
 
 // Defines whether role is allowed to log in.  Roles without
 // this attribute are useful for managing database privileges, but are not users
 // in the usual sense of the word.  Default value is `false`.
-func (r *Role) Login() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["login"])
+func (r *Role) Login() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["login"])
 }
 
 // The name of the role. Must be unique on the PostgreSQL
 // server instance where it is configured.
-func (r *Role) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Role) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Sets the role's password. A password is only of use
 // for roles having the `login` attribute set to true.
-func (r *Role) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *Role) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // Defines whether a role is allowed to initiate
 // streaming replication or put the system in and out of backup mode.  Default
 // value is `false`
-func (r *Role) Replication() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["replication"])
+func (r *Role) Replication() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["replication"])
 }
 
 // Defines list of roles which will be granted to this new role.
-func (r *Role) Roles() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["roles"])
+func (r *Role) Roles() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["roles"])
 }
 
 // Alters the search path of this new role. Note that
 // due to limitations in the implementation, values cannot contain the substring
 // `", "`.
-func (r *Role) SearchPaths() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["searchPaths"])
+func (r *Role) SearchPaths() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["searchPaths"])
 }
 
 // When a PostgreSQL ROLE exists in multiple
@@ -207,8 +207,8 @@ func (r *Role) SearchPaths() *pulumi.ArrayOutput {
 // from the catalog.  Set this option to true when there are multiple databases
 // in a PostgreSQL cluster using the same PostgreSQL ROLE for object ownership.
 // This is the third and final step taken when removing a ROLE from a database.
-func (r *Role) SkipDropRole() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["skipDropRole"])
+func (r *Role) SkipDropRole() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["skipDropRole"])
 }
 
 // When a PostgreSQL ROLE exists in multiple
@@ -219,15 +219,15 @@ func (r *Role) SkipDropRole() *pulumi.BoolOutput {
 // second steps taken when removing a ROLE from a database (the second step being
 // an implicit
 // [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
-func (r *Role) SkipReassignOwned() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["skipReassignOwned"])
+func (r *Role) SkipReassignOwned() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["skipReassignOwned"])
 }
 
 // Defines whether the role is a "superuser", and
 // therefore can override all access restrictions within the database.  Default
 // value is `false`.
-func (r *Role) Superuser() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["superuser"])
+func (r *Role) Superuser() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["superuser"])
 }
 
 // Defines the date and time after which the role's
@@ -235,8 +235,8 @@ func (r *Role) Superuser() *pulumi.BoolOutput {
 // will have to be manually terminated.  This value corresponds to a PostgreSQL
 // datetime. If omitted or the magic value `NULL` is used, `validUntil` will be
 // set to `infinity`.  Default is `NULL`, therefore `infinity`.
-func (r *Role) ValidUntil() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["validUntil"])
+func (r *Role) ValidUntil() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["validUntil"])
 }
 
 // Input properties used for looking up and filtering Role resources.

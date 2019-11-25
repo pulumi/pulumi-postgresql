@@ -48,7 +48,7 @@ namespace Pulumi.Postgresql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Extension(string name, ExtensionArgs? args = null, CustomResourceOptions? options = null)
-            : base("postgresql:index/extension:Extension", name, args, MakeResourceOptions(options, ""))
+            : base("postgresql:index/extension:Extension", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

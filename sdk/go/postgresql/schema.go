@@ -57,35 +57,35 @@ func GetSchema(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Schema) URN() *pulumi.URNOutput {
+func (r *Schema) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Schema) ID() *pulumi.IDOutput {
+func (r *Schema) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // When true, use the existing schema if it exists. (Default: true)
-func (r *Schema) IfNotExists() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["ifNotExists"])
+func (r *Schema) IfNotExists() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["ifNotExists"])
 }
 
 // The name of the schema. Must be unique in the PostgreSQL
 // database instance where it is configured.
-func (r *Schema) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Schema) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The ROLE who owns the schema.
-func (r *Schema) Owner() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["owner"])
+func (r *Schema) Owner() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["owner"])
 }
 
 // Can be specified multiple times for each policy.  Each
 // policy block supports fields documented below.
-func (r *Schema) Policies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["policies"])
+func (r *Schema) Policies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["policies"])
 }
 
 // Input properties used for looking up and filtering Schema resources.

@@ -82,43 +82,43 @@ func GetDefaultPrivileg(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DefaultPrivileg) URN() *pulumi.URNOutput {
+func (r *DefaultPrivileg) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DefaultPrivileg) ID() *pulumi.IDOutput {
+func (r *DefaultPrivileg) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The database to grant default privileges for this role.
-func (r *DefaultPrivileg) Database() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["database"])
+func (r *DefaultPrivileg) Database() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["database"])
 }
 
 // The PostgreSQL object type to set the default privileges on (one of: table, sequence).
-func (r *DefaultPrivileg) ObjectType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["objectType"])
+func (r *DefaultPrivileg) ObjectType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["objectType"])
 }
 
 // Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
-func (r *DefaultPrivileg) Owner() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["owner"])
+func (r *DefaultPrivileg) Owner() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["owner"])
 }
 
 // The list of privileges to apply as default privileges.
-func (r *DefaultPrivileg) Privileges() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["privileges"])
+func (r *DefaultPrivileg) Privileges() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["privileges"])
 }
 
 // The name of the role to which grant default privileges on.
-func (r *DefaultPrivileg) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *DefaultPrivileg) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // The database schema to set default privileges for this role.
-func (r *DefaultPrivileg) Schema() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["schema"])
+func (r *DefaultPrivileg) Schema() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["schema"])
 }
 
 // Input properties used for looking up and filtering DefaultPrivileg resources.
