@@ -6,7 +6,7 @@ using System.IO;
 using System.Reflection;
 using Pulumi;
 
-namespace Pulumi.Postgresql
+namespace Pulumi.PostgreSql
 {
     static class Utilities
     {
@@ -66,7 +66,7 @@ namespace Pulumi.Postgresql
         static Utilities()
         {
             var assembly = typeof(Utilities).GetTypeInfo().Assembly;
-            using var stream = assembly.GetManifestResourceStream("Pulumi.Postgresql.version.txt");
+            using var stream = assembly.GetManifestResourceStream("Pulumi.PostgreSql.version.txt");
             using var reader = new StreamReader(stream ?? throw new NotSupportedException("Missing embedded version.txt file"));
             version = reader.ReadToEnd().Trim();
         }

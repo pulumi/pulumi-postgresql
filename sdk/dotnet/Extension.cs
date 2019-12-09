@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Postgresql
+namespace Pulumi.PostgreSql
 {
     /// <summary>
     /// The ``postgresql..Extension`` resource creates and manages an extension on a PostgreSQL
