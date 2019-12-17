@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Postgresql
+namespace Pulumi.PostgreSql
 {
     /// <summary>
     /// The provider type for the postgresql package. By default, resources use package-wide configuration
