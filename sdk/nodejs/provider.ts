@@ -40,18 +40,18 @@ export class Provider extends pulumi.ProviderResource {
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
-            inputs["connectTimeout"] = pulumi.output(args ? args.connectTimeout : undefined).apply(JSON.stringify);
-            inputs["database"] = args ? args.database : undefined;
+            inputs["connectTimeout"] = pulumi.output((args ? args.connectTimeout : undefined) || utilities.getEnvNumber("PGCONNECT_TIMEOUT")).apply(JSON.stringify);
+            inputs["database"] = (args ? args.database : undefined) || utilities.getEnv("PGDATABASE");
             inputs["databaseUsername"] = args ? args.databaseUsername : undefined;
             inputs["expectedVersion"] = args ? args.expectedVersion : undefined;
-            inputs["host"] = args ? args.host : undefined;
+            inputs["host"] = (args ? args.host : undefined) || utilities.getEnv("PGHOST");
             inputs["maxConnections"] = pulumi.output(args ? args.maxConnections : undefined).apply(JSON.stringify);
-            inputs["password"] = args ? args.password : undefined;
-            inputs["port"] = pulumi.output(args ? args.port : undefined).apply(JSON.stringify);
+            inputs["password"] = (args ? args.password : undefined) || utilities.getEnv("PGPASSWORD");
+            inputs["port"] = pulumi.output((args ? args.port : undefined) || (utilities.getEnvNumber("PGPORT") || 5432)).apply(JSON.stringify);
             inputs["sslMode"] = args ? args.sslMode : undefined;
-            inputs["sslmode"] = args ? args.sslmode : undefined;
+            inputs["sslmode"] = (args ? args.sslmode : undefined) || utilities.getEnv("PGSSLMODE");
             inputs["superuser"] = pulumi.output(args ? args.superuser : undefined).apply(JSON.stringify);
-            inputs["username"] = args ? args.username : undefined;
+            inputs["username"] = (args ? args.username : undefined) || utilities.getEnv("PGUSER");
         }
         if (!opts) {
             opts = {}

@@ -12,12 +12,12 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         /// </summary>
-        public static int? ConnectTimeout { get; set; } = __config.GetInt32("connectTimeout");
+        public static int? ConnectTimeout { get; set; } = __config.GetInt32("connectTimeout") ?? Utilities.GetEnvInt32("PGCONNECT_TIMEOUT");
 
         /// <summary>
         /// The name of the database to connect to in order to conenct to (defaults to `postgres`).
         /// </summary>
-        public static string? Database { get; set; } = __config.Get("database");
+        public static string? Database { get; set; } = __config.Get("database") ?? Utilities.GetEnv("PGDATABASE");
 
         /// <summary>
         /// Database username associated to the connected user (for user name maps)
@@ -32,7 +32,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Name of PostgreSQL server address to connect to
         /// </summary>
-        public static string? Host { get; set; } = __config.Get("host");
+        public static string? Host { get; set; } = __config.Get("host") ?? Utilities.GetEnv("PGHOST");
 
         /// <summary>
         /// Maximum number of connections to establish to the database. Zero means unlimited.
@@ -42,13 +42,13 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Password to be used if the PostgreSQL server demands password authentication
         /// </summary>
-        public static string? Password { get; set; } = __config.Get("password");
+        public static string? Password { get; set; } = __config.Get("password") ?? Utilities.GetEnv("PGPASSWORD");
 
         /// <summary>
         /// The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain
         /// connections
         /// </summary>
-        public static int? Port { get; set; } = __config.GetInt32("port");
+        public static int? Port { get; set; } = __config.GetInt32("port") ?? Utilities.GetEnvInt32("PGPORT") ?? 5432;
 
         public static string? SslMode { get; set; } = __config.Get("sslMode");
 
@@ -56,7 +56,7 @@ namespace Pulumi.PostgreSql
         /// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with
         /// the PostgreSQL server
         /// </summary>
-        public static string? Sslmode { get; set; } = __config.Get("sslmode");
+        public static string? Sslmode { get; set; } = __config.Get("sslmode") ?? Utilities.GetEnv("PGSSLMODE");
 
         /// <summary>
         /// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled
@@ -67,7 +67,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// PostgreSQL user name to connect as
         /// </summary>
-        public static string? Username { get; set; } = __config.Get("username");
+        public static string? Username { get; set; } = __config.Get("username") ?? Utilities.GetEnv("PGUSER");
 
     }
     namespace ConfigTypes

@@ -64,14 +64,51 @@ func Provider() tfbridge.ProviderInfo {
 	p := postgresql.Provider().(*schema.Provider)
 
 	prov := tfbridge.ProviderInfo{
-		P:                    p,
-		Name:                 "postgresql",
-		Description:          "A Pulumi package for creating and managing postgresql cloud resources.",
-		Keywords:             []string{"pulumi", "postgresql"},
-		License:              "Apache-2.0",
-		Homepage:             "https://pulumi.io",
-		Repository:           "https://github.com/pulumi/pulumi-postgresql",
-		Config:               map[string]*tfbridge.SchemaInfo{},
+		P:           p,
+		Name:        "postgresql",
+		Description: "A Pulumi package for creating and managing postgresql cloud resources.",
+		Keywords:    []string{"pulumi", "postgresql"},
+		License:     "Apache-2.0",
+		Homepage:    "https://pulumi.io",
+		Repository:  "https://github.com/pulumi/pulumi-postgresql",
+		Config: map[string]*tfbridge.SchemaInfo{
+			"host": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"PGHOST"},
+				},
+			},
+			"port": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"PGPORT"},
+					Value:   5432,
+				},
+			},
+			"database": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"PGDATABASE"},
+				},
+			},
+			"username": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"PGUSER"},
+				},
+			},
+			"password": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"PGPASSWORD"},
+				},
+			},
+			"sslmode": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"PGSSLMODE"},
+				},
+			},
+			"connect_timeout": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"PGCONNECT_TIMEOUT"},
+				},
+			},
+		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"postgresql_database":           {Tok: makeResource(mainMod, "Database")},
