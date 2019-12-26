@@ -10,6 +10,11 @@ from typing import Union
 from . import utilities, tables
 
 class Schema(pulumi.CustomResource):
+    database: pulumi.Output[str]
+    drop_cascade: pulumi.Output[bool]
+    """
+    When true, will also drop all the objects that are contained in the schema. (Default: false)
+    """
     if_not_exists: pulumi.Output[bool]
     """
     When true, use the existing schema if it exists. (Default: true)
@@ -34,7 +39,7 @@ class Schema(pulumi.CustomResource):
       * `usage` (`bool`)
       * `usageWithGrant` (`bool`)
     """
-    def __init__(__self__, resource_name, opts=None, if_not_exists=None, name=None, owner=None, policies=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, database=None, drop_cascade=None, if_not_exists=None, name=None, owner=None, policies=None, __props__=None, __name__=None, __opts__=None):
         """
         The ``.Schema`` resource creates and manages [schema
         objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
@@ -42,6 +47,7 @@ class Schema(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that are contained in the schema. (Default: false)
         :param pulumi.Input[bool] if_not_exists: When true, use the existing schema if it exists. (Default: true)
         :param pulumi.Input[str] name: The name of the schema. Must be unique in the PostgreSQL
                database instance where it is configured.
@@ -76,6 +82,8 @@ class Schema(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['database'] = database
+            __props__['drop_cascade'] = drop_cascade
             __props__['if_not_exists'] = if_not_exists
             __props__['name'] = name
             __props__['owner'] = owner
@@ -87,7 +95,7 @@ class Schema(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, if_not_exists=None, name=None, owner=None, policies=None):
+    def get(resource_name, id, opts=None, database=None, drop_cascade=None, if_not_exists=None, name=None, owner=None, policies=None):
         """
         Get an existing Schema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -95,6 +103,7 @@ class Schema(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that are contained in the schema. (Default: false)
         :param pulumi.Input[bool] if_not_exists: When true, use the existing schema if it exists. (Default: true)
         :param pulumi.Input[str] name: The name of the schema. Must be unique in the PostgreSQL
                database instance where it is configured.
@@ -115,6 +124,8 @@ class Schema(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["database"] = database
+        __props__["drop_cascade"] = drop_cascade
         __props__["if_not_exists"] = if_not_exists
         __props__["name"] = name
         __props__["owner"] = owner

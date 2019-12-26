@@ -18,6 +18,18 @@ namespace Pulumi.PostgreSql
     public partial class Schema : Pulumi.CustomResource
     {
         /// <summary>
+        /// The database name to alter schema
+        /// </summary>
+        [Output("database")]
+        public Output<string> Database { get; private set; } = null!;
+
+        /// <summary>
+        /// When true, will also drop all the objects that are contained in the schema. (Default: false)
+        /// </summary>
+        [Output("dropCascade")]
+        public Output<bool?> DropCascade { get; private set; } = null!;
+
+        /// <summary>
         /// When true, use the existing schema if it exists. (Default: true)
         /// </summary>
         [Output("ifNotExists")]
@@ -90,6 +102,18 @@ namespace Pulumi.PostgreSql
     public sealed class SchemaArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The database name to alter schema
+        /// </summary>
+        [Input("database")]
+        public Input<string>? Database { get; set; }
+
+        /// <summary>
+        /// When true, will also drop all the objects that are contained in the schema. (Default: false)
+        /// </summary>
+        [Input("dropCascade")]
+        public Input<bool>? DropCascade { get; set; }
+
+        /// <summary>
         /// When true, use the existing schema if it exists. (Default: true)
         /// </summary>
         [Input("ifNotExists")]
@@ -128,6 +152,18 @@ namespace Pulumi.PostgreSql
 
     public sealed class SchemaState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The database name to alter schema
+        /// </summary>
+        [Input("database")]
+        public Input<string>? Database { get; set; }
+
+        /// <summary>
+        /// When true, will also drop all the objects that are contained in the schema. (Default: false)
+        /// </summary>
+        [Input("dropCascade")]
+        public Input<bool>? DropCascade { get; set; }
+
         /// <summary>
         /// When true, use the existing schema if it exists. (Default: true)
         /// </summary>
