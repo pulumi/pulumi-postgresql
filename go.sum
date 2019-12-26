@@ -428,8 +428,8 @@ github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXf
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
 github.com/stretchr/testify v1.4.0 h1:2E4SXV/wtOkTonXsotYi4li6zVWxYlZuYNCXe9XRJyk=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
-github.com/terraform-providers/terraform-provider-postgresql v1.3.0 h1:yVY8zC63NxieVK7Xdy6iKg71do6F3s9dHCxUqZRr6p8=
-github.com/terraform-providers/terraform-provider-postgresql v1.3.0/go.mod h1:PlzeB9cOot8e8zHQ/v2rULPM7p8615D/UMR9ZQ5eR94=
+github.com/terraform-providers/terraform-provider-postgresql v1.4.0 h1:58XBnDxXh2KqDWb7MvmYk0Buo4i3B7xWPJ93zngtW00=
+github.com/terraform-providers/terraform-provider-postgresql v1.4.0/go.mod h1:PlzeB9cOot8e8zHQ/v2rULPM7p8615D/UMR9ZQ5eR94=
 github.com/texttheater/golang-levenshtein v0.0.0-20180516184445-d188e65d659e h1:T5PdfK/M1xyrHwynxMIVMWLS7f/qHwfslZphxtGnw7s=
 github.com/texttheater/golang-levenshtein v0.0.0-20180516184445-d188e65d659e/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
 github.com/tidwall/pretty v0.0.0-20190325153808-1166b9ac2b65/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=
