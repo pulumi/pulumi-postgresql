@@ -9,11 +9,11 @@ let __config = new pulumi.Config("postgresql");
 /**
  * Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
  */
-export let connectTimeout: number | undefined = __config.getObject<number>("connectTimeout");
+export let connectTimeout: number | undefined = __config.getObject<number>("connectTimeout") || utilities.getEnvNumber("PGCONNECT_TIMEOUT");
 /**
  * The name of the database to connect to in order to conenct to (defaults to `postgres`).
  */
-export let database: string | undefined = __config.get("database");
+export let database: string | undefined = __config.get("database") || utilities.getEnv("PGDATABASE");
 /**
  * Database username associated to the connected user (for user name maps)
  */
@@ -25,7 +25,7 @@ export let expectedVersion: string | undefined = __config.get("expectedVersion")
 /**
  * Name of PostgreSQL server address to connect to
  */
-export let host: string | undefined = __config.get("host");
+export let host: string | undefined = __config.get("host") || utilities.getEnv("PGHOST");
 /**
  * Maximum number of connections to establish to the database. Zero means unlimited.
  */
@@ -33,17 +33,17 @@ export let maxConnections: number | undefined = __config.getObject<number>("maxC
 /**
  * Password to be used if the PostgreSQL server demands password authentication
  */
-export let password: string | undefined = __config.get("password");
+export let password: string | undefined = __config.get("password") || utilities.getEnv("PGPASSWORD");
 /**
  * The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
  */
-export let port: number | undefined = __config.getObject<number>("port");
+export let port: number | undefined = __config.getObject<number>("port") || (utilities.getEnvNumber("PGPORT") || 5432);
 export let sslMode: string | undefined = __config.get("sslMode");
 /**
  * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
  * PostgreSQL server
  */
-export let sslmode: string | undefined = __config.get("sslmode");
+export let sslmode: string | undefined = __config.get("sslmode") || utilities.getEnv("PGSSLMODE");
 /**
  * Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
  * Refreshing state password from Postgres)
@@ -52,4 +52,4 @@ export let superuser: boolean | undefined = __config.getObject<boolean>("superus
 /**
  * PostgreSQL user name to connect as
  */
-export let username: string | undefined = __config.get("username");
+export let username: string | undefined = __config.get("username") || utilities.getEnv("PGUSER");

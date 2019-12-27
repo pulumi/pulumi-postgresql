@@ -21,11 +21,15 @@ func NewSchema(ctx *pulumi.Context,
 	name string, args *SchemaArgs, opts ...pulumi.ResourceOpt) (*Schema, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["database"] = nil
+		inputs["dropCascade"] = nil
 		inputs["ifNotExists"] = nil
 		inputs["name"] = nil
 		inputs["owner"] = nil
 		inputs["policies"] = nil
 	} else {
+		inputs["database"] = args.Database
+		inputs["dropCascade"] = args.DropCascade
 		inputs["ifNotExists"] = args.IfNotExists
 		inputs["name"] = args.Name
 		inputs["owner"] = args.Owner
@@ -44,6 +48,8 @@ func GetSchema(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *SchemaState, opts ...pulumi.ResourceOpt) (*Schema, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["database"] = state.Database
+		inputs["dropCascade"] = state.DropCascade
 		inputs["ifNotExists"] = state.IfNotExists
 		inputs["name"] = state.Name
 		inputs["owner"] = state.Owner
@@ -64,6 +70,16 @@ func (r *Schema) URN() pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Schema) ID() pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// The database name to alter schema
+func (r *Schema) Database() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["database"])
+}
+
+// When true, will also drop all the objects that are contained in the schema. (Default: false)
+func (r *Schema) DropCascade() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["dropCascade"])
 }
 
 // When true, use the existing schema if it exists. (Default: true)
@@ -90,6 +106,10 @@ func (r *Schema) Policies() pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering Schema resources.
 type SchemaState struct {
+	// The database name to alter schema
+	Database interface{}
+	// When true, will also drop all the objects that are contained in the schema. (Default: false)
+	DropCascade interface{}
 	// When true, use the existing schema if it exists. (Default: true)
 	IfNotExists interface{}
 	// The name of the schema. Must be unique in the PostgreSQL
@@ -104,6 +124,10 @@ type SchemaState struct {
 
 // The set of arguments for constructing a Schema resource.
 type SchemaArgs struct {
+	// The database name to alter schema
+	Database interface{}
+	// When true, will also drop all the objects that are contained in the schema. (Default: false)
+	DropCascade interface{}
 	// When true, use the existing schema if it exists. (Default: true)
 	IfNotExists interface{}
 	// The name of the schema. Must be unique in the PostgreSQL

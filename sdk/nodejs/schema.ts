@@ -74,6 +74,14 @@ export class Schema extends pulumi.CustomResource {
     }
 
     /**
+     * The database name to alter schema
+     */
+    public readonly database!: pulumi.Output<string>;
+    /**
+     * When true, will also drop all the objects that are contained in the schema. (Default: false)
+     */
+    public readonly dropCascade!: pulumi.Output<boolean | undefined>;
+    /**
      * When true, use the existing schema if it exists. (Default: true)
      */
     public readonly ifNotExists!: pulumi.Output<boolean | undefined>;
@@ -104,12 +112,16 @@ export class Schema extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as SchemaState | undefined;
+            inputs["database"] = state ? state.database : undefined;
+            inputs["dropCascade"] = state ? state.dropCascade : undefined;
             inputs["ifNotExists"] = state ? state.ifNotExists : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["owner"] = state ? state.owner : undefined;
             inputs["policies"] = state ? state.policies : undefined;
         } else {
             const args = argsOrState as SchemaArgs | undefined;
+            inputs["database"] = args ? args.database : undefined;
+            inputs["dropCascade"] = args ? args.dropCascade : undefined;
             inputs["ifNotExists"] = args ? args.ifNotExists : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["owner"] = args ? args.owner : undefined;
@@ -130,6 +142,14 @@ export class Schema extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Schema resources.
  */
 export interface SchemaState {
+    /**
+     * The database name to alter schema
+     */
+    readonly database?: pulumi.Input<string>;
+    /**
+     * When true, will also drop all the objects that are contained in the schema. (Default: false)
+     */
+    readonly dropCascade?: pulumi.Input<boolean>;
     /**
      * When true, use the existing schema if it exists. (Default: true)
      */
@@ -154,6 +174,14 @@ export interface SchemaState {
  * The set of arguments for constructing a Schema resource.
  */
 export interface SchemaArgs {
+    /**
+     * The database name to alter schema
+     */
+    readonly database?: pulumi.Input<string>;
+    /**
+     * When true, will also drop all the objects that are contained in the schema. (Default: false)
+     */
+    readonly dropCascade?: pulumi.Input<boolean>;
     /**
      * When true, use the existing schema if it exists. (Default: true)
      */

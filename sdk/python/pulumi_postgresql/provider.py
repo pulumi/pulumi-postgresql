@@ -39,17 +39,31 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if connect_timeout is None:
+                connect_timeout = utilities.get_env_int('PGCONNECT_TIMEOUT')
             __props__['connect_timeout'] = pulumi.Output.from_input(connect_timeout).apply(json.dumps) if connect_timeout is not None else None
+            if database is None:
+                database = utilities.get_env('PGDATABASE')
             __props__['database'] = database
             __props__['database_username'] = database_username
             __props__['expected_version'] = expected_version
+            if host is None:
+                host = utilities.get_env('PGHOST')
             __props__['host'] = host
             __props__['max_connections'] = pulumi.Output.from_input(max_connections).apply(json.dumps) if max_connections is not None else None
+            if password is None:
+                password = utilities.get_env('PGPASSWORD')
             __props__['password'] = password
+            if port is None:
+                port = (utilities.get_env_int('PGPORT') or 5432)
             __props__['port'] = pulumi.Output.from_input(port).apply(json.dumps) if port is not None else None
             __props__['ssl_mode'] = ssl_mode
+            if sslmode is None:
+                sslmode = utilities.get_env('PGSSLMODE')
             __props__['sslmode'] = sslmode
             __props__['superuser'] = pulumi.Output.from_input(superuser).apply(json.dumps) if superuser is not None else None
+            if username is None:
+                username = utilities.get_env('PGUSER')
             __props__['username'] = username
         super(Provider, __self__).__init__(
             'postgresql',

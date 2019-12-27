@@ -1,6 +1,8 @@
 ## HEAD (Unreleased)
 * Namespace names in .NET SDK are adjusted to PascalCase
 ([#28](https://github.com/pulumi/pulumi-postgresql/pull/28)).
+* Upgrade to pulumi-terraform-bridge v1.5.2
+* Upgrade to v1.4.0 of the Postgresql Terraform Provider
 
 ---
 
