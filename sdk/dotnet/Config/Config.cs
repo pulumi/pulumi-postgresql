@@ -12,12 +12,12 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         /// </summary>
-        public static int? ConnectTimeout { get; set; } = __config.GetInt32("connectTimeout") ?? Utilities.GetEnvInt32("PGCONNECT_TIMEOUT");
+        public static int? ConnectTimeout { get; set; } = __config.GetInt32("connectTimeout") ?? Utilities.GetEnvInt32("PGCONNECT_TIMEOUT") ?? 180;
 
         /// <summary>
         /// The name of the database to connect to in order to conenct to (defaults to `postgres`).
         /// </summary>
-        public static string? Database { get; set; } = __config.Get("database") ?? Utilities.GetEnv("PGDATABASE");
+        public static string? Database { get; set; } = __config.Get("database") ?? Utilities.GetEnv("PGDATABASE") ?? "postgres";
 
         /// <summary>
         /// Database username associated to the connected user (for user name maps)
@@ -67,7 +67,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// PostgreSQL user name to connect as
         /// </summary>
-        public static string? Username { get; set; } = __config.Get("username") ?? Utilities.GetEnv("PGUSER");
+        public static string? Username { get; set; } = __config.Get("username") ?? Utilities.GetEnv("PGUSER") ?? "postgres";
 
     }
     namespace ConfigTypes

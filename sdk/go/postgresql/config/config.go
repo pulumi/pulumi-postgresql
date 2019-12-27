@@ -14,7 +14,7 @@ func GetConnectTimeout(ctx *pulumi.Context) int {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault(0, parseEnvInt, "PGCONNECT_TIMEOUT").(int); ok {
+	if dv, ok := getEnvOrDefault(180, parseEnvInt, "PGCONNECT_TIMEOUT").(int); ok {
 		return dv
 	}
 	return v
@@ -26,7 +26,7 @@ func GetDatabase(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "PGDATABASE").(string); ok {
+	if dv, ok := getEnvOrDefault("postgres", nil, "PGDATABASE").(string); ok {
 		return dv
 	}
 	return v
@@ -112,7 +112,7 @@ func GetUsername(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "PGUSER").(string); ok {
+	if dv, ok := getEnvOrDefault("postgres", nil, "PGUSER").(string); ok {
 		return dv
 	}
 	return v

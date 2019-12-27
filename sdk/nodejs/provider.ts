@@ -40,8 +40,8 @@ export class Provider extends pulumi.ProviderResource {
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
-            inputs["connectTimeout"] = pulumi.output((args ? args.connectTimeout : undefined) || utilities.getEnvNumber("PGCONNECT_TIMEOUT")).apply(JSON.stringify);
-            inputs["database"] = (args ? args.database : undefined) || utilities.getEnv("PGDATABASE");
+            inputs["connectTimeout"] = pulumi.output((args ? args.connectTimeout : undefined) || (utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180)).apply(JSON.stringify);
+            inputs["database"] = (args ? args.database : undefined) || (utilities.getEnv("PGDATABASE") || "postgres");
             inputs["databaseUsername"] = args ? args.databaseUsername : undefined;
             inputs["expectedVersion"] = args ? args.expectedVersion : undefined;
             inputs["host"] = (args ? args.host : undefined) || utilities.getEnv("PGHOST");
@@ -51,7 +51,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["sslMode"] = args ? args.sslMode : undefined;
             inputs["sslmode"] = (args ? args.sslmode : undefined) || utilities.getEnv("PGSSLMODE");
             inputs["superuser"] = pulumi.output(args ? args.superuser : undefined).apply(JSON.stringify);
-            inputs["username"] = (args ? args.username : undefined) || utilities.getEnv("PGUSER");
+            inputs["username"] = (args ? args.username : undefined) || (utilities.getEnv("PGUSER") || "postgres");
         }
         if (!opts) {
             opts = {}

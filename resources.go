@@ -86,11 +86,13 @@ func Provider() tfbridge.ProviderInfo {
 			"database": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"PGDATABASE"},
+					Value:   "postgres",
 				},
 			},
 			"username": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"PGUSER"},
+					Value:   "postgres",
 				},
 			},
 			"password": {
@@ -106,6 +108,7 @@ func Provider() tfbridge.ProviderInfo {
 			"connect_timeout": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"PGCONNECT_TIMEOUT"},
+					Value:   180,
 				},
 			},
 		},

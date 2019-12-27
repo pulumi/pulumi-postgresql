@@ -40,10 +40,10 @@ class Provider(pulumi.ProviderResource):
             __props__ = dict()
 
             if connect_timeout is None:
-                connect_timeout = utilities.get_env_int('PGCONNECT_TIMEOUT')
+                connect_timeout = (utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
             __props__['connect_timeout'] = pulumi.Output.from_input(connect_timeout).apply(json.dumps) if connect_timeout is not None else None
             if database is None:
-                database = utilities.get_env('PGDATABASE')
+                database = (utilities.get_env('PGDATABASE') or 'postgres')
             __props__['database'] = database
             __props__['database_username'] = database_username
             __props__['expected_version'] = expected_version
@@ -63,7 +63,7 @@ class Provider(pulumi.ProviderResource):
             __props__['sslmode'] = sslmode
             __props__['superuser'] = pulumi.Output.from_input(superuser).apply(json.dumps) if superuser is not None else None
             if username is None:
-                username = utilities.get_env('PGUSER')
+                username = (utilities.get_env('PGUSER') or 'postgres')
             __props__['username'] = username
         super(Provider, __self__).__init__(
             'postgresql',
