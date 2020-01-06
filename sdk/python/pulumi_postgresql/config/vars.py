@@ -11,12 +11,12 @@ from .. import utilities, tables
 
 __config__ = pulumi.Config('postgresql')
 
-connect_timeout = __config__.get('connectTimeout') or utilities.get_env_int('PGCONNECT_TIMEOUT')
+connect_timeout = __config__.get('connectTimeout') or (utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
 """
 Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
 """
 
-database = __config__.get('database') or utilities.get_env('PGDATABASE')
+database = __config__.get('database') or (utilities.get_env('PGDATABASE') or 'postgres')
 """
 The name of the database to connect to in order to conenct to (defaults to `postgres`).
 """
@@ -65,7 +65,7 @@ Specify if the user to connect as is a Postgres superuser or not.If not, some fe
 Refreshing state password from Postgres)
 """
 
-username = __config__.get('username') or utilities.get_env('PGUSER')
+username = __config__.get('username') or (utilities.get_env('PGUSER') or 'postgres')
 """
 PostgreSQL user name to connect as
 """

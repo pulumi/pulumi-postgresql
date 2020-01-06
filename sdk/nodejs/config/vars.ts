@@ -9,11 +9,11 @@ let __config = new pulumi.Config("postgresql");
 /**
  * Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
  */
-export let connectTimeout: number | undefined = __config.getObject<number>("connectTimeout") || utilities.getEnvNumber("PGCONNECT_TIMEOUT");
+export let connectTimeout: number | undefined = __config.getObject<number>("connectTimeout") || (utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180);
 /**
  * The name of the database to connect to in order to conenct to (defaults to `postgres`).
  */
-export let database: string | undefined = __config.get("database") || utilities.getEnv("PGDATABASE");
+export let database: string | undefined = __config.get("database") || (utilities.getEnv("PGDATABASE") || "postgres");
 /**
  * Database username associated to the connected user (for user name maps)
  */
@@ -52,4 +52,4 @@ export let superuser: boolean | undefined = __config.getObject<boolean>("superus
 /**
  * PostgreSQL user name to connect as
  */
-export let username: string | undefined = __config.get("username") || utilities.getEnv("PGUSER");
+export let username: string | undefined = __config.get("username") || (utilities.getEnv("PGUSER") || "postgres");
