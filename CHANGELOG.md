@@ -1,5 +1,5 @@
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to pulumi-terraform-bridge v1.6.4
 
 ---
 
