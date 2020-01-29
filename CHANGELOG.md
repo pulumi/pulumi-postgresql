@@ -1,9 +1,12 @@
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v1.6.4
+_(none)_
 
 ---
 
-## 1.3.0
+## 1.4.0 (2020-01-29)
+* Upgrade to pulumi-terraform-bridge v1.6.4
+
+## 1.3.0 (2019-12-27)
 * Namespace names in .NET SDK are adjusted to PascalCase
 ([#28](https://github.com/pulumi/pulumi-postgresql/pull/28)).
 * Upgrade to pulumi-terraform-bridge v1.5.2
