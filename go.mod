@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-postgresql
 
-go 1.12
+go 1.13
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.1.1
