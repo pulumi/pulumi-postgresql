@@ -18,7 +18,7 @@ namespace Pulumi.PostgreSql
     public partial class Schema : Pulumi.CustomResource
     {
         /// <summary>
-        /// The database name to alter schema
+        /// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
         /// </summary>
         [Output("database")]
         public Output<string> Database { get; private set; } = null!;
@@ -102,7 +102,7 @@ namespace Pulumi.PostgreSql
     public sealed class SchemaArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The database name to alter schema
+        /// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
@@ -153,7 +153,7 @@ namespace Pulumi.PostgreSql
     public sealed class SchemaState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The database name to alter schema
+        /// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }

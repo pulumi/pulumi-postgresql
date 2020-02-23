@@ -11,6 +11,9 @@ from . import utilities, tables
 
 class Schema(pulumi.CustomResource):
     database: pulumi.Output[str]
+    """
+    The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
+    """
     drop_cascade: pulumi.Output[bool]
     """
     When true, will also drop all the objects that are contained in the schema. (Default: false)
@@ -47,6 +50,7 @@ class Schema(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] database: The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
         :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that are contained in the schema. (Default: false)
         :param pulumi.Input[bool] if_not_exists: When true, use the existing schema if it exists. (Default: true)
         :param pulumi.Input[str] name: The name of the schema. Must be unique in the PostgreSQL
@@ -103,6 +107,7 @@ class Schema(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] database: The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
         :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that are contained in the schema. (Default: false)
         :param pulumi.Input[bool] if_not_exists: When true, use the existing schema if it exists. (Default: true)
         :param pulumi.Input[str] name: The name of the schema. Must be unique in the PostgreSQL

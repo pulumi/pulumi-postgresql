@@ -158,6 +158,10 @@ export class Role extends pulumi.CustomResource {
      */
     public readonly skipReassignOwned!: pulumi.Output<boolean | undefined>;
     /**
+     * Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+     */
+    public readonly statementTimeout!: pulumi.Output<number | undefined>;
+    /**
      * Defines whether the role is a "superuser", and
      * therefore can override all access restrictions within the database.  Default
      * value is `false`.
@@ -199,6 +203,7 @@ export class Role extends pulumi.CustomResource {
             inputs["searchPaths"] = state ? state.searchPaths : undefined;
             inputs["skipDropRole"] = state ? state.skipDropRole : undefined;
             inputs["skipReassignOwned"] = state ? state.skipReassignOwned : undefined;
+            inputs["statementTimeout"] = state ? state.statementTimeout : undefined;
             inputs["superuser"] = state ? state.superuser : undefined;
             inputs["validUntil"] = state ? state.validUntil : undefined;
         } else {
@@ -218,6 +223,7 @@ export class Role extends pulumi.CustomResource {
             inputs["searchPaths"] = args ? args.searchPaths : undefined;
             inputs["skipDropRole"] = args ? args.skipDropRole : undefined;
             inputs["skipReassignOwned"] = args ? args.skipReassignOwned : undefined;
+            inputs["statementTimeout"] = args ? args.statementTimeout : undefined;
             inputs["superuser"] = args ? args.superuser : undefined;
             inputs["validUntil"] = args ? args.validUntil : undefined;
         }
@@ -325,6 +331,10 @@ export interface RoleState {
      * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
      */
     readonly skipReassignOwned?: pulumi.Input<boolean>;
+    /**
+     * Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+     */
+    readonly statementTimeout?: pulumi.Input<number>;
     /**
      * Defines whether the role is a "superuser", and
      * therefore can override all access restrictions within the database.  Default
@@ -434,6 +444,10 @@ export interface RoleArgs {
      * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
      */
     readonly skipReassignOwned?: pulumi.Input<boolean>;
+    /**
+     * Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+     */
+    readonly statementTimeout?: pulumi.Input<number>;
     /**
      * Defines whether the role is a "superuser", and
      * therefore can override all access restrictions within the database.  Default
