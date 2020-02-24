@@ -115,7 +115,7 @@ func Provider() tfbridge.ProviderInfo {
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"postgresql_database":           {Tok: makeResource(mainMod, "Database")},
-			"postgresql_default_privileges": {Tok: makeResource(mainMod, "DefaultPrivileg")},
+			"postgresql_default_privileges": {Tok: makeResource(mainMod, "DefaultPrivileges")},
 			"postgresql_extension":          {Tok: makeResource(mainMod, "Extension")},
 			"postgresql_grant":              {Tok: makeResource(mainMod, "Grant")},
 			"postgresql_role":               {Tok: makeResource(mainMod, "Role")},
