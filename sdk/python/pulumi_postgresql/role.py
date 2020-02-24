@@ -99,6 +99,10 @@ class Role(pulumi.CustomResource):
     an implicit
     [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
     """
+    statement_timeout: pulumi.Output[float]
+    """
+    Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+    """
     superuser: pulumi.Output[bool]
     """
     Defines whether the role is a "superuser", and
@@ -113,7 +117,7 @@ class Role(pulumi.CustomResource):
     datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
     set to `infinity`.  Default is `NULL`, therefore `infinity`.
     """
-    def __init__(__self__, resource_name, opts=None, bypass_row_level_security=None, connection_limit=None, create_database=None, create_role=None, encrypted=None, encrypted_password=None, inherit=None, login=None, name=None, password=None, replication=None, roles=None, search_paths=None, skip_drop_role=None, skip_reassign_owned=None, superuser=None, valid_until=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bypass_row_level_security=None, connection_limit=None, create_database=None, create_role=None, encrypted=None, encrypted_password=None, inherit=None, login=None, name=None, password=None, replication=None, roles=None, search_paths=None, skip_drop_role=None, skip_reassign_owned=None, statement_timeout=None, superuser=None, valid_until=None, __props__=None, __name__=None, __opts__=None):
         """
         The ``.Role`` resource creates and manages a role on a PostgreSQL
         server.
@@ -179,6 +183,7 @@ class Role(pulumi.CustomResource):
                second steps taken when removing a ROLE from a database (the second step being
                an implicit
                [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
+        :param pulumi.Input[float] statement_timeout: Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
         :param pulumi.Input[bool] superuser: Defines whether the role is a "superuser", and
                therefore can override all access restrictions within the database.  Default
                value is `false`.
@@ -222,6 +227,7 @@ class Role(pulumi.CustomResource):
             __props__['search_paths'] = search_paths
             __props__['skip_drop_role'] = skip_drop_role
             __props__['skip_reassign_owned'] = skip_reassign_owned
+            __props__['statement_timeout'] = statement_timeout
             __props__['superuser'] = superuser
             __props__['valid_until'] = valid_until
         super(Role, __self__).__init__(
@@ -231,7 +237,7 @@ class Role(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bypass_row_level_security=None, connection_limit=None, create_database=None, create_role=None, encrypted=None, encrypted_password=None, inherit=None, login=None, name=None, password=None, replication=None, roles=None, search_paths=None, skip_drop_role=None, skip_reassign_owned=None, superuser=None, valid_until=None):
+    def get(resource_name, id, opts=None, bypass_row_level_security=None, connection_limit=None, create_database=None, create_role=None, encrypted=None, encrypted_password=None, inherit=None, login=None, name=None, password=None, replication=None, roles=None, search_paths=None, skip_drop_role=None, skip_reassign_owned=None, statement_timeout=None, superuser=None, valid_until=None):
         """
         Get an existing Role resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -285,6 +291,7 @@ class Role(pulumi.CustomResource):
                second steps taken when removing a ROLE from a database (the second step being
                an implicit
                [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
+        :param pulumi.Input[float] statement_timeout: Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
         :param pulumi.Input[bool] superuser: Defines whether the role is a "superuser", and
                therefore can override all access restrictions within the database.  Default
                value is `false`.
@@ -314,6 +321,7 @@ class Role(pulumi.CustomResource):
         __props__["search_paths"] = search_paths
         __props__["skip_drop_role"] = skip_drop_role
         __props__["skip_reassign_owned"] = skip_reassign_owned
+        __props__["statement_timeout"] = statement_timeout
         __props__["superuser"] = superuser
         __props__["valid_until"] = valid_until
         return Role(resource_name, opts=opts, __props__=__props__)

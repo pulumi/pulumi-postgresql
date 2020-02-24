@@ -91,6 +91,8 @@ type Role struct {
 	// an implicit
 	// [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
 	SkipReassignOwned pulumi.BoolPtrOutput `pulumi:"skipReassignOwned"`
+	// Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+	StatementTimeout pulumi.IntPtrOutput `pulumi:"statementTimeout"`
 	// Defines whether the role is a "superuser", and
 	// therefore can override all access restrictions within the database.  Default
 	// value is `false`.
@@ -192,6 +194,8 @@ type roleState struct {
 	// an implicit
 	// [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
 	SkipReassignOwned *bool `pulumi:"skipReassignOwned"`
+	// Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+	StatementTimeout *int `pulumi:"statementTimeout"`
 	// Defines whether the role is a "superuser", and
 	// therefore can override all access restrictions within the database.  Default
 	// value is `false`.
@@ -266,6 +270,8 @@ type RoleState struct {
 	// an implicit
 	// [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
 	SkipReassignOwned pulumi.BoolPtrInput
+	// Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+	StatementTimeout pulumi.IntPtrInput
 	// Defines whether the role is a "superuser", and
 	// therefore can override all access restrictions within the database.  Default
 	// value is `false`.
@@ -344,6 +350,8 @@ type roleArgs struct {
 	// an implicit
 	// [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
 	SkipReassignOwned *bool `pulumi:"skipReassignOwned"`
+	// Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+	StatementTimeout *int `pulumi:"statementTimeout"`
 	// Defines whether the role is a "superuser", and
 	// therefore can override all access restrictions within the database.  Default
 	// value is `false`.
@@ -419,6 +427,8 @@ type RoleArgs struct {
 	// an implicit
 	// [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
 	SkipReassignOwned pulumi.BoolPtrInput
+	// Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+	StatementTimeout pulumi.IntPtrInput
 	// Defines whether the role is a "superuser", and
 	// therefore can override all access restrictions within the database.  Default
 	// value is `false`.

@@ -1,5 +1,5 @@
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v1.5.0 of the Postgresql Terraform Provider
 
 ---
 

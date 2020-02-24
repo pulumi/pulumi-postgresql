@@ -149,6 +149,12 @@ namespace Pulumi.PostgreSql
         public Output<bool?> SkipReassignOwned { get; private set; } = null!;
 
         /// <summary>
+        /// Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+        /// </summary>
+        [Output("statementTimeout")]
+        public Output<int?> StatementTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// Defines whether the role is a "superuser", and
         /// therefore can override all access restrictions within the database.  Default
         /// value is `false`.
@@ -344,6 +350,12 @@ namespace Pulumi.PostgreSql
         public Input<bool>? SkipReassignOwned { get; set; }
 
         /// <summary>
+        /// Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+        /// </summary>
+        [Input("statementTimeout")]
+        public Input<int>? StatementTimeout { get; set; }
+
+        /// <summary>
         /// Defines whether the role is a "superuser", and
         /// therefore can override all access restrictions within the database.  Default
         /// value is `false`.
@@ -498,6 +510,12 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Input("skipReassignOwned")]
         public Input<bool>? SkipReassignOwned { get; set; }
+
+        /// <summary>
+        /// Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+        /// </summary>
+        [Input("statementTimeout")]
+        public Input<int>? StatementTimeout { get; set; }
 
         /// <summary>
         /// Defines whether the role is a "superuser", and

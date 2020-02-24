@@ -74,7 +74,7 @@ export class Schema extends pulumi.CustomResource {
     }
 
     /**
-     * The database name to alter schema
+     * The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
      */
     public readonly database!: pulumi.Output<string>;
     /**
@@ -143,7 +143,7 @@ export class Schema extends pulumi.CustomResource {
  */
 export interface SchemaState {
     /**
-     * The database name to alter schema
+     * The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
      */
     readonly database?: pulumi.Input<string>;
     /**
@@ -175,7 +175,7 @@ export interface SchemaState {
  */
 export interface SchemaArgs {
     /**
-     * The database name to alter schema
+     * The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
      */
     readonly database?: pulumi.Input<string>;
     /**

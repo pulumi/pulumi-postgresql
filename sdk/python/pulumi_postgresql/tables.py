@@ -23,6 +23,7 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
     "skip_drop_role": "skipDropRole",
     "skip_reassign_owned": "skipReassignOwned",
     "ssl_mode": "sslMode",
+    "statement_timeout": "statementTimeout",
     "tablespace_name": "tablespaceName",
     "valid_until": "validUntil",
 }
@@ -48,6 +49,7 @@ _CAMEL_TO_SNAKE_CASE_TABLE = {
     "skipDropRole": "skip_drop_role",
     "skipReassignOwned": "skip_reassign_owned",
     "sslMode": "ssl_mode",
+    "statementTimeout": "statement_timeout",
     "tablespaceName": "tablespace_name",
     "validUntil": "valid_until",
 }

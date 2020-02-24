@@ -18,7 +18,7 @@ import (
 type Schema struct {
 	pulumi.CustomResourceState
 
-	// The database name to alter schema
+	// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
 	Database pulumi.StringOutput `pulumi:"database"`
 	// When true, will also drop all the objects that are contained in the schema. (Default: false)
 	DropCascade pulumi.BoolPtrOutput `pulumi:"dropCascade"`
@@ -62,7 +62,7 @@ func GetSchema(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Schema resources.
 type schemaState struct {
-	// The database name to alter schema
+	// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
 	Database *string `pulumi:"database"`
 	// When true, will also drop all the objects that are contained in the schema. (Default: false)
 	DropCascade *bool `pulumi:"dropCascade"`
@@ -79,7 +79,7 @@ type schemaState struct {
 }
 
 type SchemaState struct {
-	// The database name to alter schema
+	// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
 	Database pulumi.StringPtrInput
 	// When true, will also drop all the objects that are contained in the schema. (Default: false)
 	DropCascade pulumi.BoolPtrInput
@@ -100,7 +100,7 @@ func (SchemaState) ElementType() reflect.Type {
 }
 
 type schemaArgs struct {
-	// The database name to alter schema
+	// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
 	Database *string `pulumi:"database"`
 	// When true, will also drop all the objects that are contained in the schema. (Default: false)
 	DropCascade *bool `pulumi:"dropCascade"`
@@ -118,7 +118,7 @@ type schemaArgs struct {
 
 // The set of arguments for constructing a Schema resource.
 type SchemaArgs struct {
-	// The database name to alter schema
+	// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
 	Database pulumi.StringPtrInput
 	// When true, will also drop all the objects that are contained in the schema. (Default: false)
 	DropCascade pulumi.BoolPtrInput
