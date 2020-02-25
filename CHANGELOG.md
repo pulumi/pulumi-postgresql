@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
-* Upgrade to v1.5.0 of the Postgresql Terraform Provider
+_(none)_
 
 ---
+
+## v1.5.0 (2020-02-25)
+* Upgrade to v1.5.0 of the Postgresql Terraform Provider
 
 ## 1.4.0 (2020-01-29)
 * Upgrade to pulumi-terraform-bridge v1.6.4
