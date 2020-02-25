@@ -1,5 +1,5 @@
 ## HEAD (Unreleased)
-_(none)_
+* Rename `defaultPrivileg` to `defaultPrivileges`
 
 ---
 
