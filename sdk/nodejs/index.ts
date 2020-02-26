@@ -4,6 +4,7 @@
 // Export members:
 export * from "./database";
 export * from "./defaultPrivileg";
+export * from "./defaultPrivileges";
 export * from "./extension";
 export * from "./grant";
 export * from "./provider";

@@ -114,12 +114,11 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"postgresql_database":           {Tok: makeResource(mainMod, "Database")},
-			"postgresql_default_privileges": {Tok: makeResource(mainMod, "DefaultPrivileg")},
-			"postgresql_extension":          {Tok: makeResource(mainMod, "Extension")},
-			"postgresql_grant":              {Tok: makeResource(mainMod, "Grant")},
-			"postgresql_role":               {Tok: makeResource(mainMod, "Role")},
-			"postgresql_schema":             {Tok: makeResource(mainMod, "Schema")},
+			"postgresql_database":  {Tok: makeResource(mainMod, "Database")},
+			"postgresql_extension": {Tok: makeResource(mainMod, "Extension")},
+			"postgresql_grant":     {Tok: makeResource(mainMod, "Grant")},
+			"postgresql_role":      {Tok: makeResource(mainMod, "Role")},
+			"postgresql_schema":    {Tok: makeResource(mainMod, "Schema")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
@@ -148,6 +147,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 	}
+
+	prov.RenameResourceWithAlias("postgresql_default_privileges", makeResource(mainMod, "DefaultPrivileg"),
+		makeResource(mainMod, "DefaultPrivileges"), mainMod, mainMod, nil)
 
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).

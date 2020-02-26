@@ -17,6 +17,7 @@
         "config/vars.ts",
         "database.ts",
         "defaultPrivileg.ts",
+        "defaultPrivileges.ts",
         "extension.ts",
         "grant.ts",
         "index.ts",
