@@ -12,8 +12,8 @@ import (
 
 // The ``.Extension`` resource creates and manages an extension on a PostgreSQL
 // server.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/extension.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_extension.html.markdown.
 type Extension struct {
 	pulumi.CustomResourceState
 

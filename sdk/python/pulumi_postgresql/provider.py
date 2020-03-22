@@ -16,11 +16,24 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
-        
-        :param str resource_name: The name of the resource.
-        :param pulumi.ResourceOptions opts: Options for the resource.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/index.html.markdown.
+
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[float] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
+        :param pulumi.Input[str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
+        :param pulumi.Input[str] database_username: Database username associated to the connected user (for user name maps)
+        :param pulumi.Input[str] expected_version: Specify the expected version of PostgreSQL.
+        :param pulumi.Input[str] host: Name of PostgreSQL server address to connect to
+        :param pulumi.Input[float] max_connections: Maximum number of connections to establish to the database. Zero means unlimited.
+        :param pulumi.Input[str] password: Password to be used if the PostgreSQL server demands password authentication
+        :param pulumi.Input[float] port: The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
+        :param pulumi.Input[str] sslmode: This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
+               PostgreSQL server
+        :param pulumi.Input[bool] superuser: Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
+               Refreshing state password from Postgres)
+        :param pulumi.Input[str] username: PostgreSQL user name to connect as
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,22 +84,6 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
-    @staticmethod
-    def get(resource_name, id, opts=None):
-        """
-        Get an existing Provider resource's state with the given name, id, and optional extra
-        properties used to qualify the lookup.
-        
-        :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
-        :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/index.html.markdown.
-        """
-        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
-
-        __props__ = dict()
-        return Provider(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

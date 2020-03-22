@@ -13,8 +13,8 @@ import (
 // The ``.Schema`` resource creates and manages [schema
 // objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
 // a PostgreSQL database.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/schema.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_schema.html.markdown.
 type Schema struct {
 	pulumi.CustomResourceState
 

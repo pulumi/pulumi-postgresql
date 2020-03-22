@@ -22,6 +22,9 @@ class Database(pulumi.CustomResource):
     established to this database. `-1` (the default) means no limit.
     """
     encoding: pulumi.Output[str]
+    """
+    Character set encoding to use in the new database
+    """
     is_template: pulumi.Output[bool]
     """
     If `true`, then this database can be cloned by any
@@ -29,7 +32,13 @@ class Database(pulumi.CustomResource):
     superusers or the owner of the database can clone it.
     """
     lc_collate: pulumi.Output[str]
+    """
+    Collation order (LC_COLLATE) to use in the new database
+    """
     lc_ctype: pulumi.Output[str]
+    """
+    Character classification (LC_CTYPE) to use in the new database
+    """
     name: pulumi.Output[str]
     """
     The name of the database. Must be unique on the PostgreSQL
@@ -51,12 +60,17 @@ class Database(pulumi.CustomResource):
     created in this database.
     """
     template: pulumi.Output[str]
+    """
+    The name of the template from which to create the new database
+    """
     def __init__(__self__, resource_name, opts=None, allow_connections=None, connection_limit=None, encoding=None, is_template=None, lc_collate=None, lc_ctype=None, name=None, owner=None, tablespace_name=None, template=None, __props__=None, __name__=None, __opts__=None):
         """
         The ``.Database`` resource creates and manages [database
         objects](https://www.postgresql.org/docs/current/static/managing-databases.html)
         within a PostgreSQL server instance.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_database.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_connections: If `false` then no one can connect to this
@@ -64,9 +78,12 @@ class Database(pulumi.CustomResource):
                other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
         :param pulumi.Input[float] connection_limit: How many concurrent connections can be
                established to this database. `-1` (the default) means no limit.
+        :param pulumi.Input[str] encoding: Character set encoding to use in the new database
         :param pulumi.Input[bool] is_template: If `true`, then this database can be cloned by any
                user with `CREATEDB` privileges; if `false` (the default), then only
                superusers or the owner of the database can clone it.
+        :param pulumi.Input[str] lc_collate: Collation order (LC_COLLATE) to use in the new database
+        :param pulumi.Input[str] lc_ctype: Character classification (LC_CTYPE) to use in the new database
         :param pulumi.Input[str] name: The name of the database. Must be unique on the PostgreSQL
                server instance where it is configured.
         :param pulumi.Input[str] owner: The role name of the user who will own the database, or
@@ -78,8 +95,7 @@ class Database(pulumi.CustomResource):
                associated with the database, or `DEFAULT` to use the template database's
                tablespace.  This tablespace will be the default tablespace used for objects
                created in this database.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/database.html.markdown.
+        :param pulumi.Input[str] template: The name of the template from which to create the new database
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -119,7 +135,7 @@ class Database(pulumi.CustomResource):
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -128,9 +144,12 @@ class Database(pulumi.CustomResource):
                other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
         :param pulumi.Input[float] connection_limit: How many concurrent connections can be
                established to this database. `-1` (the default) means no limit.
+        :param pulumi.Input[str] encoding: Character set encoding to use in the new database
         :param pulumi.Input[bool] is_template: If `true`, then this database can be cloned by any
                user with `CREATEDB` privileges; if `false` (the default), then only
                superusers or the owner of the database can clone it.
+        :param pulumi.Input[str] lc_collate: Collation order (LC_COLLATE) to use in the new database
+        :param pulumi.Input[str] lc_ctype: Character classification (LC_CTYPE) to use in the new database
         :param pulumi.Input[str] name: The name of the database. Must be unique on the PostgreSQL
                server instance where it is configured.
         :param pulumi.Input[str] owner: The role name of the user who will own the database, or
@@ -142,12 +161,12 @@ class Database(pulumi.CustomResource):
                associated with the database, or `DEFAULT` to use the template database's
                tablespace.  This tablespace will be the default tablespace used for objects
                created in this database.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/database.html.markdown.
+        :param pulumi.Input[str] template: The name of the template from which to create the new database
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["allow_connections"] = allow_connections
         __props__["connection_limit"] = connection_limit
         __props__["encoding"] = encoding

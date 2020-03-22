@@ -12,10 +12,10 @@ import (
 )
 
 // The ``.Grant`` resource creates and manages privileges given to a user for a database schema.
-// 
+//
 // > **Note:** This resource needs Postgresql version 9 or above.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/grant.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_grant.html.markdown.
 type Grant struct {
 	pulumi.CustomResourceState
 

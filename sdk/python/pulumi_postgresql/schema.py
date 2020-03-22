@@ -35,7 +35,7 @@ class Schema(pulumi.CustomResource):
     """
     Can be specified multiple times for each policy.  Each
     policy block supports fields documented below.
-    
+
       * `create` (`bool`)
       * `createWithGrant` (`bool`)
       * `role` (`str`)
@@ -47,7 +47,9 @@ class Schema(pulumi.CustomResource):
         The ``.Schema`` resource creates and manages [schema
         objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
         a PostgreSQL database.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_schema.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
@@ -58,16 +60,14 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[str] owner: The ROLE who owns the schema.
         :param pulumi.Input[list] policies: Can be specified multiple times for each policy.  Each
                policy block supports fields documented below.
-        
+
         The **policies** object supports the following:
-        
+
           * `create` (`pulumi.Input[bool]`)
           * `createWithGrant` (`pulumi.Input[bool]`)
           * `role` (`pulumi.Input[str]`)
           * `usage` (`pulumi.Input[bool]`)
           * `usageWithGrant` (`pulumi.Input[bool]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/schema.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -103,7 +103,7 @@ class Schema(pulumi.CustomResource):
         """
         Get an existing Schema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -115,20 +115,19 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[str] owner: The ROLE who owns the schema.
         :param pulumi.Input[list] policies: Can be specified multiple times for each policy.  Each
                policy block supports fields documented below.
-        
+
         The **policies** object supports the following:
-        
+
           * `create` (`pulumi.Input[bool]`)
           * `createWithGrant` (`pulumi.Input[bool]`)
           * `role` (`pulumi.Input[str]`)
           * `usage` (`pulumi.Input[bool]`)
           * `usageWithGrant` (`pulumi.Input[bool]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/schema.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["database"] = database
         __props__["drop_cascade"] = drop_cascade
         __props__["if_not_exists"] = if_not_exists
