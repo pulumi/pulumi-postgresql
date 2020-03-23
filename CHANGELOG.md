@@ -1,9 +1,12 @@
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 1.6.0 (2020-03-23)
 * Rename `defaultPrivileg` to `defaultPrivileges`
 * Upgrade to Pulumi v1.12.1
 * Upgrade to pulumi-terraform-bridge v1.8.2
-
----
 
 ## v1.5.0 (2020-02-25)
 * Upgrade to v1.5.0 of the Postgresql Terraform Provider
