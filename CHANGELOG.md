@@ -1,5 +1,7 @@
 ## HEAD (Unreleased)
 * Rename `defaultPrivileg` to `defaultPrivileges`
+* Upgrade to Pulumi v1.12.1
+* Upgrade to pulumi-terraform-bridge v1.8.2
 
 ---
 

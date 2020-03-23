@@ -11,17 +11,40 @@ from . import utilities, tables
 
 class DefaultPrivileg(pulumi.CustomResource):
     database: pulumi.Output[str]
+    """
+    The database to grant default privileges for this role
+    """
     object_type: pulumi.Output[str]
+    """
+    The PostgreSQL object type to set the default privileges on (one of: table, sequence)
+    """
     owner: pulumi.Output[str]
+    """
+    Target role for which to alter default privileges.
+    """
     privileges: pulumi.Output[list]
+    """
+    The list of privileges to apply as default privileges
+    """
     role: pulumi.Output[str]
+    """
+    The name of the role to which grant default privileges on
+    """
     schema: pulumi.Output[str]
+    """
+    The database schema to set default privileges for this role
+    """
     def __init__(__self__, resource_name, opts=None, database=None, object_type=None, owner=None, privileges=None, role=None, schema=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a DefaultPrivileg resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] database: The database to grant default privileges for this role
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence)
+        :param pulumi.Input[str] owner: Target role for which to alter default privileges.
+        :param pulumi.Input[list] privileges: The list of privileges to apply as default privileges
+        :param pulumi.Input[str] role: The name of the role to which grant default privileges on
+        :param pulumi.Input[str] schema: The database schema to set default privileges for this role
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,14 +92,21 @@ class DefaultPrivileg(pulumi.CustomResource):
         """
         Get an existing DefaultPrivileg resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] database: The database to grant default privileges for this role
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence)
+        :param pulumi.Input[str] owner: Target role for which to alter default privileges.
+        :param pulumi.Input[list] privileges: The list of privileges to apply as default privileges
+        :param pulumi.Input[str] role: The name of the role to which grant default privileges on
+        :param pulumi.Input[str] schema: The database schema to set default privileges for this role
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["database"] = database
         __props__["object_type"] = object_type
         __props__["owner"] = owner

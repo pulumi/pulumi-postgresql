@@ -37,9 +37,11 @@ class DefaultPrivileges(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, database=None, object_type=None, owner=None, privileges=None, role=None, schema=None, __props__=None, __name__=None, __opts__=None):
         """
         The ``.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
-        
+
         > **Note:** This resource needs Postgresql version 9 or above.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_default_privileges.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant default privileges for this role.
@@ -48,8 +50,6 @@ class DefaultPrivileges(pulumi.CustomResource):
         :param pulumi.Input[list] privileges: The list of privileges to apply as default privileges.
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on.
         :param pulumi.Input[str] schema: The database schema to set default privileges for this role.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/default_privileges.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,7 +99,7 @@ class DefaultPrivileges(pulumi.CustomResource):
         """
         Get an existing DefaultPrivileges resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -109,12 +109,11 @@ class DefaultPrivileges(pulumi.CustomResource):
         :param pulumi.Input[list] privileges: The list of privileges to apply as default privileges.
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on.
         :param pulumi.Input[str] schema: The database schema to set default privileges for this role.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/default_privileges.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["database"] = database
         __props__["object_type"] = object_type
         __props__["owner"] = owner

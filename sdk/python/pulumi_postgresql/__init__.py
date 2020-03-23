@@ -11,10 +11,10 @@ for pkg in __all__:
 
 # Export this package's modules as members:
 from .database import *
-from .default_privileges import *
 from .default_privileg import *
+from .default_privileges import *
 from .extension import *
 from .grant import *
+from .provider import *
 from .role import *
 from .schema import *
-from .provider import *

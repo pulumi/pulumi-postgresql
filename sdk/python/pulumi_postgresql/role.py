@@ -121,7 +121,7 @@ class Role(pulumi.CustomResource):
         """
         The ``.Role`` resource creates and manages a role on a PostgreSQL
         server.
-        
+
         When a ``.Role`` resource is removed, the PostgreSQL ROLE will
         automatically run a [`REASSIGN
         OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html)
@@ -131,10 +131,12 @@ class Role(pulumi.CustomResource):
         specified PostgreSQL ROLE owns objects in multiple PostgreSQL databases in the
         same PostgreSQL Cluster, one PostgreSQL provider per database must be created
         and all but the final ``.Role`` must specify a `skip_drop_role`.
-        
+
         > **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_role.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] bypass_row_level_security: Defines whether a role bypasses every
@@ -192,8 +194,6 @@ class Role(pulumi.CustomResource):
                will have to be manually terminated.  This value corresponds to a PostgreSQL
                datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
                set to `infinity`.  Default is `NULL`, therefore `infinity`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/role.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -241,7 +241,7 @@ class Role(pulumi.CustomResource):
         """
         Get an existing Role resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -300,12 +300,11 @@ class Role(pulumi.CustomResource):
                will have to be manually terminated.  This value corresponds to a PostgreSQL
                datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
                set to `infinity`.  Default is `NULL`, therefore `infinity`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/role.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bypass_row_level_security"] = bypass_row_level_security
         __props__["connection_limit"] = connection_limit
         __props__["create_database"] = create_database

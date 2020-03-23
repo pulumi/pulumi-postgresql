@@ -12,7 +12,7 @@ import (
 
 // The ``.Role`` resource creates and manages a role on a PostgreSQL
 // server.
-// 
+//
 // When a ``.Role`` resource is removed, the PostgreSQL ROLE will
 // automatically run a [`REASSIGN
 // OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html)
@@ -22,11 +22,11 @@ import (
 // specified PostgreSQL ROLE owns objects in multiple PostgreSQL databases in the
 // same PostgreSQL Cluster, one PostgreSQL provider per database must be created
 // and all but the final ``.Role`` must specify a `skipDropRole`.
-// 
+//
 // > **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
 // [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/role.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_role.html.markdown.
 type Role struct {
 	pulumi.CustomResourceState
 

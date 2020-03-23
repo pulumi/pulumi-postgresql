@@ -12,10 +12,10 @@ import (
 )
 
 // The ``.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
-// 
+//
 // > **Note:** This resource needs Postgresql version 9 or above.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/default_privileges.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_default_privileges.html.markdown.
 type DefaultPrivileges struct {
 	pulumi.CustomResourceState
 

@@ -13,8 +13,8 @@ import (
 // The ``.Database`` resource creates and manages [database
 // objects](https://www.postgresql.org/docs/current/static/managing-databases.html)
 // within a PostgreSQL server instance.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/database.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_database.html.markdown.
 type Database struct {
 	pulumi.CustomResourceState
 
