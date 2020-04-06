@@ -57,6 +57,12 @@ func NewDefaultPrivileges(ctx *pulumi.Context,
 	if args == nil {
 		args = &DefaultPrivilegesArgs{}
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("postgresql:index/defaultPrivileg:DefaultPrivileg"),
+		},
+	})
+	opts = append(opts, aliases)
 	var resource DefaultPrivileges
 	err := ctx.RegisterResource("postgresql:index/defaultPrivileges:DefaultPrivileges", name, args, &resource, opts...)
 	if err != nil {
@@ -146,4 +152,3 @@ type DefaultPrivilegesArgs struct {
 func (DefaultPrivilegesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultPrivilegesArgs)(nil)).Elem()
 }
-

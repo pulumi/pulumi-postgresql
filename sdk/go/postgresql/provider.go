@@ -18,7 +18,6 @@ import (
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/index.html.markdown.
 type Provider struct {
 	pulumi.ProviderResourceState
-
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -72,7 +71,7 @@ type providerArgs struct {
 	// Password to be used if the PostgreSQL server demands password authentication
 	Password *string `pulumi:"password"`
 	// The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
-	Port *int `pulumi:"port"`
+	Port    *int    `pulumi:"port"`
 	SslMode *string `pulumi:"sslMode"`
 	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
 	// PostgreSQL server
@@ -101,7 +100,7 @@ type ProviderArgs struct {
 	// Password to be used if the PostgreSQL server demands password authentication
 	Password pulumi.StringPtrInput
 	// The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
-	Port pulumi.IntPtrInput
+	Port    pulumi.IntPtrInput
 	SslMode pulumi.StringPtrInput
 	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
 	// PostgreSQL server
@@ -116,4 +115,3 @@ type ProviderArgs struct {
 func (ProviderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*providerArgs)(nil)).Elem()
 }
-

@@ -5,9 +5,24 @@ import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 
 export interface SchemaPolicy {
+    /**
+     * Should the specified ROLE have CREATE privileges to the specified SCHEMA.
+     */
     create?: boolean;
+    /**
+     * Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
+     */
     createWithGrant?: boolean;
+    /**
+     * The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
+     */
     role?: string;
+    /**
+     * Should the specified ROLE have USAGE privileges to the specified SCHEMA.
+     */
     usage?: boolean;
+    /**
+     * Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
+     */
     usageWithGrant?: boolean;
 }

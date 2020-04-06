@@ -43,8 +43,8 @@ type Role struct {
 	// Defines a role's ability to execute `CREATE ROLE`.
 	// A role with this privilege can also alter and drop other roles.  Default value
 	// is `false`.
-	CreateRole pulumi.BoolPtrOutput `pulumi:"createRole"`
-	Encrypted pulumi.StringPtrOutput `pulumi:"encrypted"`
+	CreateRole pulumi.BoolPtrOutput   `pulumi:"createRole"`
+	Encrypted  pulumi.StringPtrOutput `pulumi:"encrypted"`
 	// Defines whether the password is stored
 	// encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
 	// is always set (to the conservative and safe value), but may interfere with the
@@ -146,8 +146,8 @@ type roleState struct {
 	// Defines a role's ability to execute `CREATE ROLE`.
 	// A role with this privilege can also alter and drop other roles.  Default value
 	// is `false`.
-	CreateRole *bool `pulumi:"createRole"`
-	Encrypted *string `pulumi:"encrypted"`
+	CreateRole *bool   `pulumi:"createRole"`
+	Encrypted  *string `pulumi:"encrypted"`
 	// Defines whether the password is stored
 	// encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
 	// is always set (to the conservative and safe value), but may interfere with the
@@ -223,7 +223,7 @@ type RoleState struct {
 	// A role with this privilege can also alter and drop other roles.  Default value
 	// is `false`.
 	CreateRole pulumi.BoolPtrInput
-	Encrypted pulumi.StringPtrInput
+	Encrypted  pulumi.StringPtrInput
 	// Defines whether the password is stored
 	// encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
 	// is always set (to the conservative and safe value), but may interfere with the
@@ -302,8 +302,8 @@ type roleArgs struct {
 	// Defines a role's ability to execute `CREATE ROLE`.
 	// A role with this privilege can also alter and drop other roles.  Default value
 	// is `false`.
-	CreateRole *bool `pulumi:"createRole"`
-	Encrypted *string `pulumi:"encrypted"`
+	CreateRole *bool   `pulumi:"createRole"`
+	Encrypted  *string `pulumi:"encrypted"`
 	// Defines whether the password is stored
 	// encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
 	// is always set (to the conservative and safe value), but may interfere with the
@@ -380,7 +380,7 @@ type RoleArgs struct {
 	// A role with this privilege can also alter and drop other roles.  Default value
 	// is `false`.
 	CreateRole pulumi.BoolPtrInput
-	Encrypted pulumi.StringPtrInput
+	Encrypted  pulumi.StringPtrInput
 	// Defines whether the password is stored
 	// encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
 	// is always set (to the conservative and safe value), but may interfere with the
@@ -444,4 +444,3 @@ type RoleArgs struct {
 func (RoleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleArgs)(nil)).Elem()
 }
-

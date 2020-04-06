@@ -141,4 +141,3 @@ type DefaultPrivilegArgs struct {
 func (DefaultPrivilegArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultPrivilegArgs)(nil)).Elem()
 }
-

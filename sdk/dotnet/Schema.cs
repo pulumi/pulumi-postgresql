@@ -207,18 +207,33 @@ namespace Pulumi.PostgreSql
 
     public sealed class SchemaPoliciesArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Should the specified ROLE have CREATE privileges to the specified SCHEMA.
+        /// </summary>
         [Input("create")]
         public Input<bool>? Create { get; set; }
 
+        /// <summary>
+        /// Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
+        /// </summary>
         [Input("createWithGrant")]
         public Input<bool>? CreateWithGrant { get; set; }
 
+        /// <summary>
+        /// The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
+        /// <summary>
+        /// Should the specified ROLE have USAGE privileges to the specified SCHEMA.
+        /// </summary>
         [Input("usage")]
         public Input<bool>? Usage { get; set; }
 
+        /// <summary>
+        /// Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
+        /// </summary>
         [Input("usageWithGrant")]
         public Input<bool>? UsageWithGrant { get; set; }
 
@@ -229,18 +244,33 @@ namespace Pulumi.PostgreSql
 
     public sealed class SchemaPoliciesGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Should the specified ROLE have CREATE privileges to the specified SCHEMA.
+        /// </summary>
         [Input("create")]
         public Input<bool>? Create { get; set; }
 
+        /// <summary>
+        /// Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
+        /// </summary>
         [Input("createWithGrant")]
         public Input<bool>? CreateWithGrant { get; set; }
 
+        /// <summary>
+        /// The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
+        /// <summary>
+        /// Should the specified ROLE have USAGE privileges to the specified SCHEMA.
+        /// </summary>
         [Input("usage")]
         public Input<bool>? Usage { get; set; }
 
+        /// <summary>
+        /// Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
+        /// </summary>
         [Input("usageWithGrant")]
         public Input<bool>? UsageWithGrant { get; set; }
 
@@ -256,10 +286,25 @@ namespace Pulumi.PostgreSql
     [OutputType]
     public sealed class SchemaPolicies
     {
+        /// <summary>
+        /// Should the specified ROLE have CREATE privileges to the specified SCHEMA.
+        /// </summary>
         public readonly bool? Create;
+        /// <summary>
+        /// Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
+        /// </summary>
         public readonly bool? CreateWithGrant;
+        /// <summary>
+        /// The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
+        /// </summary>
         public readonly string? Role;
+        /// <summary>
+        /// Should the specified ROLE have USAGE privileges to the specified SCHEMA.
+        /// </summary>
         public readonly bool? Usage;
+        /// <summary>
+        /// Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
+        /// </summary>
         public readonly bool? UsageWithGrant;
 
         [OutputConstructor]

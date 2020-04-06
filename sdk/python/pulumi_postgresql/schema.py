@@ -36,11 +36,11 @@ class Schema(pulumi.CustomResource):
     Can be specified multiple times for each policy.  Each
     policy block supports fields documented below.
 
-      * `create` (`bool`)
-      * `createWithGrant` (`bool`)
-      * `role` (`str`)
-      * `usage` (`bool`)
-      * `usageWithGrant` (`bool`)
+      * `create` (`bool`) - Should the specified ROLE have CREATE privileges to the specified SCHEMA.
+      * `createWithGrant` (`bool`) - Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
+      * `role` (`str`) - The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
+      * `usage` (`bool`) - Should the specified ROLE have USAGE privileges to the specified SCHEMA.
+      * `usageWithGrant` (`bool`) - Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
     """
     def __init__(__self__, resource_name, opts=None, database=None, drop_cascade=None, if_not_exists=None, name=None, owner=None, policies=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -63,11 +63,11 @@ class Schema(pulumi.CustomResource):
 
         The **policies** object supports the following:
 
-          * `create` (`pulumi.Input[bool]`)
-          * `createWithGrant` (`pulumi.Input[bool]`)
-          * `role` (`pulumi.Input[str]`)
-          * `usage` (`pulumi.Input[bool]`)
-          * `usageWithGrant` (`pulumi.Input[bool]`)
+          * `create` (`pulumi.Input[bool]`) - Should the specified ROLE have CREATE privileges to the specified SCHEMA.
+          * `createWithGrant` (`pulumi.Input[bool]`) - Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
+          * `role` (`pulumi.Input[str]`) - The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
+          * `usage` (`pulumi.Input[bool]`) - Should the specified ROLE have USAGE privileges to the specified SCHEMA.
+          * `usageWithGrant` (`pulumi.Input[bool]`) - Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -118,11 +118,11 @@ class Schema(pulumi.CustomResource):
 
         The **policies** object supports the following:
 
-          * `create` (`pulumi.Input[bool]`)
-          * `createWithGrant` (`pulumi.Input[bool]`)
-          * `role` (`pulumi.Input[str]`)
-          * `usage` (`pulumi.Input[bool]`)
-          * `usageWithGrant` (`pulumi.Input[bool]`)
+          * `create` (`pulumi.Input[bool]`) - Should the specified ROLE have CREATE privileges to the specified SCHEMA.
+          * `createWithGrant` (`pulumi.Input[bool]`) - Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
+          * `role` (`pulumi.Input[str]`) - The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
+          * `usage` (`pulumi.Input[bool]`) - Should the specified ROLE have USAGE privileges to the specified SCHEMA.
+          * `usageWithGrant` (`pulumi.Input[bool]`) - Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
