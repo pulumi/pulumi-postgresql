@@ -106,4 +106,3 @@ type ExtensionArgs struct {
 func (ExtensionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*extensionArgs)(nil)).Elem()
 }
-
