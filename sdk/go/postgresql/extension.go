@@ -7,7 +7,7 @@ package postgresql
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The ``.Extension`` resource creates and manages an extension on a PostgreSQL

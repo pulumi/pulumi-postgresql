@@ -17,10 +17,9 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
-
-	postgresql "github.com/pulumi/pulumi-postgresql/provider"
-	"github.com/pulumi/pulumi-postgresql/provider/pkg/version"
+	postgresql "github.com/pulumi/pulumi-postgresql/provider/v2"
+	"github.com/pulumi/pulumi-postgresql/provider/v2/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 )
 
 func main() {
