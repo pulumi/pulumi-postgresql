@@ -40,8 +40,6 @@ class DefaultPrivileges(pulumi.CustomResource):
 
         > **Note:** This resource needs Postgresql version 9 or above.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_default_privileges.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant default privileges for this role.
