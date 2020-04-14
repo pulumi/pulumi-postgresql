@@ -1,9 +1,12 @@
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 1.7.0 (2020-04-14)
 * Upgrade to Pulumi v1.13.1
 * Upgrade to pulumi-terraform-bridge v1.8.4
 * Refactor layout to support Go modules
-
----
 
 ## 1.6.0 (2020-03-23)
 * Rename `defaultPrivileg` to `defaultPrivileges`
