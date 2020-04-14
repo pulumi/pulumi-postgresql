@@ -13,8 +13,6 @@ namespace Pulumi.PostgreSql
     /// The ``postgresql..Database`` resource creates and manages [database
     /// objects](https://www.postgresql.org/docs/current/static/managing-databases.html)
     /// within a PostgreSQL server instance.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_database.html.markdown.
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {
@@ -100,7 +98,7 @@ namespace Pulumi.PostgreSql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Database(string name, DatabaseArgs? args = null, CustomResourceOptions? options = null)
-            : base("postgresql:index/database:Database", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("postgresql:index/database:Database", name, args ?? new DatabaseArgs(), MakeResourceOptions(options, ""))
         {
         }
 

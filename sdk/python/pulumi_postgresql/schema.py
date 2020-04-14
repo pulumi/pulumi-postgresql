@@ -48,8 +48,6 @@ class Schema(pulumi.CustomResource):
         objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
         a PostgreSQL database.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_schema.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)

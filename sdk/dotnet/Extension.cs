@@ -12,8 +12,6 @@ namespace Pulumi.PostgreSql
     /// <summary>
     /// The ``postgresql..Extension`` resource creates and manages an extension on a PostgreSQL
     /// server.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_extension.html.markdown.
     /// </summary>
     public partial class Extension : Pulumi.CustomResource
     {
@@ -50,7 +48,7 @@ namespace Pulumi.PostgreSql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Extension(string name, ExtensionArgs? args = null, CustomResourceOptions? options = null)
-            : base("postgresql:index/extension:Extension", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("postgresql:index/extension:Extension", name, args ?? new ExtensionArgs(), MakeResourceOptions(options, ""))
         {
         }
 

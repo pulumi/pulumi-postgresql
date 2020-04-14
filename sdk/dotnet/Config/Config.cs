@@ -8,7 +8,6 @@ namespace Pulumi.PostgreSql
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("postgresql");
-
         /// <summary>
         /// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         /// </summary>
@@ -45,22 +44,21 @@ namespace Pulumi.PostgreSql
         public static string? Password { get; set; } = __config.Get("password") ?? Utilities.GetEnv("PGPASSWORD");
 
         /// <summary>
-        /// The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain
-        /// connections
+        /// The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
         /// </summary>
         public static int? Port { get; set; } = __config.GetInt32("port") ?? Utilities.GetEnvInt32("PGPORT") ?? 5432;
 
         public static string? SslMode { get; set; } = __config.Get("sslMode");
 
         /// <summary>
-        /// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with
-        /// the PostgreSQL server
+        /// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
+        /// PostgreSQL server
         /// </summary>
         public static string? Sslmode { get; set; } = __config.Get("sslmode") ?? Utilities.GetEnv("PGSSLMODE");
 
         /// <summary>
-        /// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled
-        /// (e.g.: Refreshing state password from Postgres)
+        /// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
+        /// Refreshing state password from Postgres)
         /// </summary>
         public static bool? Superuser { get; set; } = __config.GetBoolean("superuser");
 
@@ -69,8 +67,5 @@ namespace Pulumi.PostgreSql
         /// </summary>
         public static string? Username { get; set; } = __config.Get("username") ?? Utilities.GetEnv("PGUSER") ?? "postgres";
 
-    }
-    namespace ConfigTypes
-    {
     }
 }

@@ -14,8 +14,6 @@ namespace Pulumi.PostgreSql
     /// settings, however an explicit `Provider` instance may be created and passed during resource
     /// construction to achieve fine-grained programmatic control over provider settings. See the
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/index.html.markdown.
     /// </summary>
     public partial class Provider : Pulumi.ProviderResource
     {
@@ -27,7 +25,7 @@ namespace Pulumi.PostgreSql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
-            : base("postgresql", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("postgresql", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -89,8 +87,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain
-        /// connections
+        /// The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
         /// </summary>
         [Input("port", json: true)]
         public Input<int>? Port { get; set; }
@@ -99,15 +96,15 @@ namespace Pulumi.PostgreSql
         public Input<string>? SslMode { get; set; }
 
         /// <summary>
-        /// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with
-        /// the PostgreSQL server
+        /// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
+        /// PostgreSQL server
         /// </summary>
         [Input("sslmode")]
         public Input<string>? Sslmode { get; set; }
 
         /// <summary>
-        /// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled
-        /// (e.g.: Refreshing state password from Postgres)
+        /// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
+        /// Refreshing state password from Postgres)
         /// </summary>
         [Input("superuser", json: true)]
         public Input<bool>? Superuser { get; set; }

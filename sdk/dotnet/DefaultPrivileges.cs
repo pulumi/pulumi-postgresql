@@ -13,8 +13,6 @@ namespace Pulumi.PostgreSql
     /// The ``postgresql..DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
     /// 
     /// &gt; **Note:** This resource needs Postgresql version 9 or above.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_default_privileges.html.markdown.
     /// </summary>
     public partial class DefaultPrivileges : Pulumi.CustomResource
     {
@@ -63,7 +61,7 @@ namespace Pulumi.PostgreSql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DefaultPrivileges(string name, DefaultPrivilegesArgs args, CustomResourceOptions? options = null)
-            : base("postgresql:index/defaultPrivileges:DefaultPrivileges", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("postgresql:index/defaultPrivileges:DefaultPrivileges", name, args ?? new DefaultPrivilegesArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -76,7 +74,7 @@ namespace Pulumi.PostgreSql
         {
             var defaultOptions = new CustomResourceOptions
             {
-                Version = Utilities.Version,                Aliases = { new Alias { Type = "postgresql:index/defaultPrivileg:DefaultPrivileg" } },
+                Version = Utilities.Version,                Aliases = { new Alias { Type = "postgresql:index/defaultPrivileg:DefaultPrivileg"} },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

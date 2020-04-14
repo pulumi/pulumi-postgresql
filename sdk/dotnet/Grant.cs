@@ -13,8 +13,6 @@ namespace Pulumi.PostgreSql
     /// The ``postgresql..Grant`` resource creates and manages privileges given to a user for a database schema.
     /// 
     /// &gt; **Note:** This resource needs Postgresql version 9 or above.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_grant.html.markdown.
     /// </summary>
     public partial class Grant : Pulumi.CustomResource
     {
@@ -57,7 +55,7 @@ namespace Pulumi.PostgreSql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Grant(string name, GrantArgs args, CustomResourceOptions? options = null)
-            : base("postgresql:index/grant:Grant", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("postgresql:index/grant:Grant", name, args ?? new GrantArgs(), MakeResourceOptions(options, ""))
         {
         }
 

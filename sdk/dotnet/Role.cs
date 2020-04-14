@@ -25,8 +25,6 @@ namespace Pulumi.PostgreSql
     /// 
     /// &gt; **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
     /// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_role.html.markdown.
     /// </summary>
     public partial class Role : Pulumi.CustomResource
     {
@@ -182,7 +180,7 @@ namespace Pulumi.PostgreSql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Role(string name, RoleArgs? args = null, CustomResourceOptions? options = null)
-            : base("postgresql:index/role:Role", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("postgresql:index/role:Role", name, args ?? new RoleArgs(), MakeResourceOptions(options, ""))
         {
         }
 
