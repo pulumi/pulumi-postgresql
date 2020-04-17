@@ -1,8 +1,11 @@
 ## HEAD (Unreleased)
-* Upgrade to Pulumi v2.0.0
-* Upgrade to pulumi-terraform-bridge v2.0.0
+_(none)_
 
 ---
+
+## 2.0.0 (2020-04-17)
+* Upgrade to Pulumi v2.0.0
+* Upgrade to pulumi-terraform-bridge v2.0.0
 
 ## 1.7.0 (2020-04-14)
 * Upgrade to Pulumi v1.13.1
