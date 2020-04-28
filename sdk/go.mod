@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-postgresql/sdk
+module github.com/pulumi/pulumi-postgresql/sdk/v2
 
 go 1.13
 
