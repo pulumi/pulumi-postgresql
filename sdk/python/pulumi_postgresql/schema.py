@@ -48,6 +48,36 @@ class Schema(pulumi.CustomResource):
         objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
         a PostgreSQL database.
 
+
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        app_www = postgresql.Role("appWww")
+        app_dba = postgresql.Role("appDba")
+        app_releng = postgresql.Role("appReleng")
+        my_schema = postgresql.Schema("mySchema",
+            owner="postgres",
+            policies=[
+                {
+                    "role": app_www.name,
+                    "usage": True,
+                },
+                {
+                    "create": True,
+                    "role": app_releng.name,
+                    "usage": True,
+                },
+                {
+                    "createWithGrant": True,
+                    "role": app_dba.name,
+                    "usageWithGrant": True,
+                },
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)

@@ -36,6 +36,20 @@ class Grant(pulumi.CustomResource):
 
         > **Note:** This resource needs Postgresql version 9 or above.
 
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        readonly_tables = postgresql.Grant("readonlyTables",
+            database="test_db",
+            object_type="table",
+            privileges=["SELECT"],
+            role="test_role",
+            schema="public")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant privileges on for this role.

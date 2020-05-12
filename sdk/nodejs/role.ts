@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The ``postgresql..Role`` resource creates and manages a role on a PostgreSQL
  * server.
- * 
+ *
  * When a ``postgresql..Role`` resource is removed, the PostgreSQL ROLE will
  * automatically run a [`REASSIGN
  * OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html)
@@ -17,16 +17,16 @@ import * as utilities from "./utilities";
  * specified PostgreSQL ROLE owns objects in multiple PostgreSQL databases in the
  * same PostgreSQL Cluster, one PostgreSQL provider per database must be created
  * and all but the final ``postgresql..Role`` must specify a `skipDropRole`.
- * 
+ *
  * > **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- * 
+ *
  * ## Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
- * 
+ *
  * const myRole = new postgresql.Role("myRole", {
  *     login: true,
  *     password: "mypass",
