@@ -4,7 +4,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/** @deprecated postgresql.DefaultPrivileg has been deprecated in favour of postgresql.DefaultPrivileges */
+/** @deprecated postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges */
 export class DefaultPrivileg extends pulumi.CustomResource {
     /**
      * Get an existing DefaultPrivileg resource's state with the given name, ID, and optional extra
@@ -15,7 +15,7 @@ export class DefaultPrivileg extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DefaultPrivilegState, opts?: pulumi.CustomResourceOptions): DefaultPrivileg {
-        pulumi.log.warn("DefaultPrivileg is deprecated: postgresql.DefaultPrivileg has been deprecated in favour of postgresql.DefaultPrivileges")
+        pulumi.log.warn("DefaultPrivileg is deprecated: postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges")
         return new DefaultPrivileg(name, <any>state, { ...opts, id: id });
     }
 
@@ -65,11 +65,11 @@ export class DefaultPrivileg extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated postgresql.DefaultPrivileg has been deprecated in favour of postgresql.DefaultPrivileges */
+    /** @deprecated postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges */
     constructor(name: string, args: DefaultPrivilegArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated postgresql.DefaultPrivileg has been deprecated in favour of postgresql.DefaultPrivileges */
+    /** @deprecated postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges */
     constructor(name: string, argsOrState?: DefaultPrivilegArgs | DefaultPrivilegState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("DefaultPrivileg is deprecated: postgresql.DefaultPrivileg has been deprecated in favour of postgresql.DefaultPrivileges")
+        pulumi.log.warn("DefaultPrivileg is deprecated: postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges")
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DefaultPrivilegState | undefined;

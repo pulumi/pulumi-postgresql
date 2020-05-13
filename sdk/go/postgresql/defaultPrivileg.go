@@ -11,7 +11,7 @@ import (
 )
 
 //
-// Deprecated: postgresql.DefaultPrivileg has been deprecated in favour of postgresql.DefaultPrivileges
+// Deprecated: postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges
 type DefaultPrivileg struct {
 	pulumi.CustomResourceState
 

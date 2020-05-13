@@ -6,15 +6,15 @@ import * as utilities from "./utilities";
 
 /**
  * The ``postgresql..Grant`` resource creates and manages privileges given to a user for a database schema.
- * 
+ *
  * > **Note:** This resource needs Postgresql version 9 or above.
- * 
+ *
  * ## Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
- * 
+ *
  * const readonlyTables = new postgresql.Grant("readonlyTables", {
  *     database: "testDb",
  *     objectType: "table",

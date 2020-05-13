@@ -8,14 +8,14 @@ import * as utilities from "./utilities";
  * The ``postgresql..Database`` resource creates and manages [database
  * objects](https://www.postgresql.org/docs/current/static/managing-databases.html)
  * within a PostgreSQL server instance.
- * 
- * 
+ *
+ *
  * ## Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
- * 
+ *
  * const myDb = new postgresql.Database("myDb", {
  *     allowConnections: true,
  *     connectionLimit: -1,

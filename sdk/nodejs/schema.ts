@@ -10,14 +10,14 @@ import * as utilities from "./utilities";
  * The ``postgresql..Schema`` resource creates and manages [schema
  * objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
  * a PostgreSQL database.
- * 
- * 
+ *
+ *
  * ## Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
- * 
+ *
  * const appWww = new postgresql.Role("appWww", {});
  * const appDba = new postgresql.Role("appDba", {});
  * const appReleng = new postgresql.Role("appReleng", {});

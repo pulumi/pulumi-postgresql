@@ -135,6 +135,22 @@ class Role(pulumi.CustomResource):
         > **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        my_role = postgresql.Role("myRole",
+            login=True,
+            password="mypass")
+        my_replication_role = postgresql.Role("myReplicationRole",
+            connection_limit=5,
+            login=True,
+            password="md5c98cbfeb6a347a47eb8e96cfb4c4b890",
+            replication=True)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] bypass_row_level_security: Defines whether a role bypasses every

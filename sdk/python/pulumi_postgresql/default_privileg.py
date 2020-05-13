@@ -9,7 +9,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
-warnings.warn("postgresql.DefaultPrivileg has been deprecated in favour of postgresql.DefaultPrivileges", DeprecationWarning)
+warnings.warn("postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges", DeprecationWarning)
 class DefaultPrivileg(pulumi.CustomResource):
     database: pulumi.Output[str]
     """
@@ -35,11 +35,11 @@ class DefaultPrivileg(pulumi.CustomResource):
     """
     The database schema to set default privileges for this role
     """
-    warnings.warn("postgresql.DefaultPrivileg has been deprecated in favour of postgresql.DefaultPrivileges", DeprecationWarning)
+    warnings.warn("postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, database=None, object_type=None, owner=None, privileges=None, role=None, schema=None, __props__=None, __name__=None, __opts__=None):
         """
 
-        Deprecated: postgresql.DefaultPrivileg has been deprecated in favour of postgresql.DefaultPrivileges
+        Deprecated: postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -50,7 +50,7 @@ class DefaultPrivileg(pulumi.CustomResource):
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on
         :param pulumi.Input[str] schema: The database schema to set default privileges for this role
         """
-        pulumi.log.warn("DefaultPrivileg is deprecated: postgresql.DefaultPrivileg has been deprecated in favour of postgresql.DefaultPrivileges")
+        pulumi.log.warn("DefaultPrivileg is deprecated: postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -69,6 +69,21 @@ class Database(pulumi.CustomResource):
         objects](https://www.postgresql.org/docs/current/static/managing-databases.html)
         within a PostgreSQL server instance.
 
+
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        my_db = postgresql.Database("myDb",
+            allow_connections=True,
+            connection_limit=-1,
+            lc_collate="C",
+            owner="my_role",
+            template="template0")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_connections: If `false` then no one can connect to this
