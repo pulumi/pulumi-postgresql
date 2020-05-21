@@ -68,7 +68,8 @@ type providerArgs struct {
 	// Password to be used if the PostgreSQL server demands password authentication
 	Password *string `pulumi:"password"`
 	// The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
-	Port    *int    `pulumi:"port"`
+	Port *int `pulumi:"port"`
+	// Deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
 	SslMode *string `pulumi:"sslMode"`
 	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
 	// PostgreSQL server
@@ -97,7 +98,8 @@ type ProviderArgs struct {
 	// Password to be used if the PostgreSQL server demands password authentication
 	Password pulumi.StringPtrInput
 	// The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
-	Port    pulumi.IntPtrInput
+	Port pulumi.IntPtrInput
+	// Deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
 	SslMode pulumi.StringPtrInput
 	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
 	// PostgreSQL server
