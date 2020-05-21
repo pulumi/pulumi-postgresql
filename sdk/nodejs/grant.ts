@@ -23,8 +23,6 @@ import * as utilities from "./utilities";
  *     schema: "public",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-postgresql/blob/master/website/docs/r/postgresql_grant.html.markdown.
  */
 export class Grant extends pulumi.CustomResource {
     /**
