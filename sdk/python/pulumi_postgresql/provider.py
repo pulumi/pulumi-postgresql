@@ -10,7 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, connect_timeout=None, database=None, database_username=None, expected_version=None, host=None, max_connections=None, password=None, port=None, ssl_mode=None, sslmode=None, superuser=None, username=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, clientcert=None, connect_timeout=None, database=None, database_username=None, expected_version=None, host=None, max_connections=None, password=None, port=None, ssl_mode=None, sslmode=None, sslrootcert=None, superuser=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the postgresql package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -19,6 +19,7 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[float] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         :param pulumi.Input[str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
         :param pulumi.Input[str] database_username: Database username associated to the connected user (for user name maps)
@@ -29,9 +30,15 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[float] port: The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
         :param pulumi.Input[str] sslmode: This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
                PostgreSQL server
+        :param pulumi.Input[str] sslrootcert: The SSL server root certificate file path. The file must contain PEM encoded data.
         :param pulumi.Input[bool] superuser: Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
                Refreshing state password from Postgres)
         :param pulumi.Input[str] username: PostgreSQL user name to connect as
+
+        The **clientcert** object supports the following:
+
+          * `cert` (`pulumi.Input[str]`)
+          * `key` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,6 +57,7 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['clientcert'] = pulumi.Output.from_input(clientcert).apply(json.dumps) if clientcert is not None else None
             if connect_timeout is None:
                 connect_timeout = (utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
             __props__['connect_timeout'] = pulumi.Output.from_input(connect_timeout).apply(json.dumps) if connect_timeout is not None else None
@@ -72,6 +80,7 @@ class Provider(pulumi.ProviderResource):
             if sslmode is None:
                 sslmode = utilities.get_env('PGSSLMODE')
             __props__['sslmode'] = sslmode
+            __props__['sslrootcert'] = sslrootcert
             __props__['superuser'] = pulumi.Output.from_input(superuser).apply(json.dumps) if superuser is not None else None
             if username is None:
                 username = (utilities.get_env('PGUSER') or 'postgres')

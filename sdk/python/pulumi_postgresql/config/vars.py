@@ -11,6 +11,11 @@ from .. import utilities, tables
 
 __config__ = pulumi.Config('postgresql')
 
+clientcert = __config__.get('clientcert')
+"""
+SSL client certificate if required by the database.
+"""
+
 connect_timeout = __config__.get('connectTimeout') or (utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
 """
 Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
@@ -57,6 +62,11 @@ sslmode = __config__.get('sslmode') or utilities.get_env('PGSSLMODE')
 """
 This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
 PostgreSQL server
+"""
+
+sslrootcert = __config__.get('sslrootcert')
+"""
+The SSL server root certificate file path. The file must contain PEM encoded data.
 """
 
 superuser = __config__.get('superuser')

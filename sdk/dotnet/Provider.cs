@@ -45,6 +45,12 @@ namespace Pulumi.PostgreSql
     public sealed class ProviderArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// SSL client certificate if required by the database.
+        /// </summary>
+        [Input("clientcert", json: true)]
+        public Input<Inputs.ProviderClientcertArgs>? Clientcert { get; set; }
+
+        /// <summary>
         /// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         /// </summary>
         [Input("connectTimeout", json: true)]
@@ -101,6 +107,12 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Input("sslmode")]
         public Input<string>? Sslmode { get; set; }
+
+        /// <summary>
+        /// The SSL server root certificate file path. The file must contain PEM encoded data.
+        /// </summary>
+        [Input("sslrootcert")]
+        public Input<string>? Sslrootcert { get; set; }
 
         /// <summary>
         /// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:

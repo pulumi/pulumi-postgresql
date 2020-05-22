@@ -14,6 +14,10 @@
     },
     "config": {
         "variables": {
+            "clientcert": {
+                "$ref": "#/types/postgresql:config/clientcert:clientcert",
+                "description": "SSL client certificate if required by the database.\n"
+            },
             "connectTimeout": {
                 "type": "integer",
                 "description": "Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.\n",
@@ -86,6 +90,10 @@
                         "PGSSLMODE"
                     ]
                 }
+            },
+            "sslrootcert": {
+                "type": "string",
+                "description": "The SSL server root certificate file path. The file must contain PEM encoded data.\n"
             },
             "superuser": {
                 "type": "boolean",
@@ -153,11 +161,55 @@
                 }
             },
             "type": "object"
+        },
+        "postgresql:config/clientcert:clientcert": {
+            "properties": {
+                "cert": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cert",
+                "key"
+            ]
+        },
+        "postgresql:index/ProviderClientcert:ProviderClientcert": {
+            "properties": {
+                "cert": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "key": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "cert",
+                "key"
+            ]
         }
     },
     "provider": {
         "description": "The provider type for the postgresql package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "inputProperties": {
+            "clientcert": {
+                "$ref": "#/types/postgresql:index/ProviderClientcert:ProviderClientcert",
+                "description": "SSL client certificate if required by the database.\n"
+            },
             "connectTimeout": {
                 "type": "integer",
                 "description": "Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.\n",
@@ -230,6 +282,10 @@
                         "PGSSLMODE"
                     ]
                 }
+            },
+            "sslrootcert": {
+                "type": "string",
+                "description": "The SSL server root certificate file path. The file must contain PEM encoded data.\n"
             },
             "superuser": {
                 "type": "boolean",
@@ -708,14 +764,17 @@
                 "schema": {
                     "type": "string",
                     "description": "The database schema to grant privileges on for this role.\n"
+                },
+                "withGrantOption": {
+                    "type": "boolean",
+                    "description": "Permit the grant recipient to grant it to others\n"
                 }
             },
             "required": [
                 "database",
                 "objectType",
                 "privileges",
-                "role",
-                "schema"
+                "role"
             ],
             "inputProperties": {
                 "database": {
@@ -740,14 +799,17 @@
                 "schema": {
                     "type": "string",
                     "description": "The database schema to grant privileges on for this role.\n"
+                },
+                "withGrantOption": {
+                    "type": "boolean",
+                    "description": "Permit the grant recipient to grant it to others\n"
                 }
             },
             "requiredInputs": [
                 "database",
                 "objectType",
                 "privileges",
-                "role",
-                "schema"
+                "role"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Grant resources.\n",
@@ -774,6 +836,10 @@
                     "schema": {
                         "type": "string",
                         "description": "The database schema to grant privileges on for this role.\n"
+                    },
+                    "withGrantOption": {
+                        "type": "boolean",
+                        "description": "Permit the grant recipient to grant it to others\n"
                     }
                 },
                 "type": "object"

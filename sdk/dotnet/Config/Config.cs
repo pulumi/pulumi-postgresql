@@ -9,6 +9,11 @@ namespace Pulumi.PostgreSql
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("postgresql");
         /// <summary>
+        /// SSL client certificate if required by the database.
+        /// </summary>
+        public static Pulumi.PostgreSql.Config.Types.Clientcert? Clientcert { get; set; } = __config.GetObject<Pulumi.PostgreSql.Config.Types.Clientcert>("clientcert");
+
+        /// <summary>
         /// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         /// </summary>
         public static int? ConnectTimeout { get; set; } = __config.GetInt32("connectTimeout") ?? Utilities.GetEnvInt32("PGCONNECT_TIMEOUT") ?? 180;
@@ -57,6 +62,11 @@ namespace Pulumi.PostgreSql
         public static string? Sslmode { get; set; } = __config.Get("sslmode") ?? Utilities.GetEnv("PGSSLMODE");
 
         /// <summary>
+        /// The SSL server root certificate file path. The file must contain PEM encoded data.
+        /// </summary>
+        public static string? Sslrootcert { get; set; } = __config.Get("sslrootcert");
+
+        /// <summary>
         /// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
         /// Refreshing state password from Postgres)
         /// </summary>
@@ -67,5 +77,14 @@ namespace Pulumi.PostgreSql
         /// </summary>
         public static string? Username { get; set; } = __config.Get("username") ?? Utilities.GetEnv("PGUSER") ?? "postgres";
 
+        public static class Types
+        {
+
+             public class Clientcert
+             {
+                public string Cert { get; set; }
+                public string Key { get; set; }
+            }
+        }
     }
 }

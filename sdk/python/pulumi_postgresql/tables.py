@@ -21,6 +21,7 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
     "statement_timeout": "statementTimeout",
     "tablespace_name": "tablespaceName",
     "valid_until": "validUntil",
+    "with_grant_option": "withGrantOption",
 }
 
 _CAMEL_TO_SNAKE_CASE_TABLE = {
@@ -42,4 +43,5 @@ _CAMEL_TO_SNAKE_CASE_TABLE = {
     "statementTimeout": "statement_timeout",
     "tablespaceName": "tablespace_name",
     "validUntil": "valid_until",
+    "withGrantOption": "with_grant_option",
 }

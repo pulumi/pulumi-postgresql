@@ -70,7 +70,11 @@ export class Grant extends pulumi.CustomResource {
     /**
      * The database schema to grant privileges on for this role.
      */
-    public readonly schema!: pulumi.Output<string>;
+    public readonly schema!: pulumi.Output<string | undefined>;
+    /**
+     * Permit the grant recipient to grant it to others
+     */
+    public readonly withGrantOption!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Grant resource with the given unique name, arguments, and options.
@@ -89,6 +93,7 @@ export class Grant extends pulumi.CustomResource {
             inputs["privileges"] = state ? state.privileges : undefined;
             inputs["role"] = state ? state.role : undefined;
             inputs["schema"] = state ? state.schema : undefined;
+            inputs["withGrantOption"] = state ? state.withGrantOption : undefined;
         } else {
             const args = argsOrState as GrantArgs | undefined;
             if (!args || args.database === undefined) {
@@ -103,14 +108,12 @@ export class Grant extends pulumi.CustomResource {
             if (!args || args.role === undefined) {
                 throw new Error("Missing required property 'role'");
             }
-            if (!args || args.schema === undefined) {
-                throw new Error("Missing required property 'schema'");
-            }
             inputs["database"] = args ? args.database : undefined;
             inputs["objectType"] = args ? args.objectType : undefined;
             inputs["privileges"] = args ? args.privileges : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["schema"] = args ? args.schema : undefined;
+            inputs["withGrantOption"] = args ? args.withGrantOption : undefined;
         }
         if (!opts) {
             opts = {}
@@ -147,6 +150,10 @@ export interface GrantState {
      * The database schema to grant privileges on for this role.
      */
     readonly schema?: pulumi.Input<string>;
+    /**
+     * Permit the grant recipient to grant it to others
+     */
+    readonly withGrantOption?: pulumi.Input<boolean>;
 }
 
 /**
@@ -172,5 +179,9 @@ export interface GrantArgs {
     /**
      * The database schema to grant privileges on for this role.
      */
-    readonly schema: pulumi.Input<string>;
+    readonly schema?: pulumi.Input<string>;
+    /**
+     * Permit the grant recipient to grant it to others
+     */
+    readonly withGrantOption?: pulumi.Input<boolean>;
 }

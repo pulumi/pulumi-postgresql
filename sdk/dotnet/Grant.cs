@@ -44,7 +44,13 @@ namespace Pulumi.PostgreSql
         /// The database schema to grant privileges on for this role.
         /// </summary>
         [Output("schema")]
-        public Output<string> Schema { get; private set; } = null!;
+        public Output<string?> Schema { get; private set; } = null!;
+
+        /// <summary>
+        /// Permit the grant recipient to grant it to others
+        /// </summary>
+        [Output("withGrantOption")]
+        public Output<bool?> WithGrantOption { get; private set; } = null!;
 
 
         /// <summary>
@@ -125,8 +131,14 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// The database schema to grant privileges on for this role.
         /// </summary>
-        [Input("schema", required: true)]
-        public Input<string> Schema { get; set; } = null!;
+        [Input("schema")]
+        public Input<string>? Schema { get; set; }
+
+        /// <summary>
+        /// Permit the grant recipient to grant it to others
+        /// </summary>
+        [Input("withGrantOption")]
+        public Input<bool>? WithGrantOption { get; set; }
 
         public GrantArgs()
         {
@@ -170,6 +182,12 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
+
+        /// <summary>
+        /// Permit the grant recipient to grant it to others
+        /// </summary>
+        [Input("withGrantOption")]
+        public Input<bool>? WithGrantOption { get; set; }
 
         public GrantState()
         {

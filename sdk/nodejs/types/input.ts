@@ -4,6 +4,11 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 
+export interface ProviderClientcert {
+    cert: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+}
+
 export interface SchemaPolicy {
     /**
      * Should the specified ROLE have CREATE privileges to the specified SCHEMA.

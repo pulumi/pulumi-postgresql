@@ -7,6 +7,10 @@ import * as utilities from "../utilities";
 let __config = new pulumi.Config("postgresql");
 
 /**
+ * SSL client certificate if required by the database.
+ */
+export let clientcert: { cert: string, key: string } | undefined = __config.getObject<{ cert: string, key: string }>("clientcert");
+/**
  * Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
  */
 export let connectTimeout: number | undefined = __config.getObject<number>("connectTimeout") || (utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180);
@@ -44,6 +48,10 @@ export let sslMode: string | undefined = __config.get("sslMode");
  * PostgreSQL server
  */
 export let sslmode: string | undefined = __config.get("sslmode") || utilities.getEnv("PGSSLMODE");
+/**
+ * The SSL server root certificate file path. The file must contain PEM encoded data.
+ */
+export let sslrootcert: string | undefined = __config.get("sslrootcert");
 /**
  * Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
  * Refreshing state password from Postgres)
