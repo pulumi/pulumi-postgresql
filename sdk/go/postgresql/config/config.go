@@ -8,6 +8,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 )
 
+// SSL client certificate if required by the database.
+func GetClientcert(ctx *pulumi.Context) string {
+	return config.Get(ctx, "postgresql:clientcert")
+}
+
 // Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
 func GetConnectTimeout(ctx *pulumi.Context) int {
 	v, err := config.TryInt(ctx, "postgresql:connectTimeout")
@@ -81,6 +86,11 @@ func GetSslmode(ctx *pulumi.Context) string {
 		return v
 	}
 	return getEnvOrDefault("", nil, "PGSSLMODE").(string)
+}
+
+// The SSL server root certificate file path. The file must contain PEM encoded data.
+func GetSslrootcert(ctx *pulumi.Context) string {
+	return config.Get(ctx, "postgresql:sslrootcert")
 }
 
 // Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:

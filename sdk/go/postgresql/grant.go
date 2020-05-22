@@ -25,7 +25,9 @@ type Grant struct {
 	// The name of the role to grant privileges on.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// The database schema to grant privileges on for this role.
-	Schema pulumi.StringOutput `pulumi:"schema"`
+	Schema pulumi.StringPtrOutput `pulumi:"schema"`
+	// Permit the grant recipient to grant it to others
+	WithGrantOption pulumi.BoolPtrOutput `pulumi:"withGrantOption"`
 }
 
 // NewGrant registers a new resource with the given unique name, arguments, and options.
@@ -42,9 +44,6 @@ func NewGrant(ctx *pulumi.Context,
 	}
 	if args == nil || args.Role == nil {
 		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.Schema == nil {
-		return nil, errors.New("missing required argument 'Schema'")
 	}
 	if args == nil {
 		args = &GrantArgs{}
@@ -81,6 +80,8 @@ type grantState struct {
 	Role *string `pulumi:"role"`
 	// The database schema to grant privileges on for this role.
 	Schema *string `pulumi:"schema"`
+	// Permit the grant recipient to grant it to others
+	WithGrantOption *bool `pulumi:"withGrantOption"`
 }
 
 type GrantState struct {
@@ -94,6 +95,8 @@ type GrantState struct {
 	Role pulumi.StringPtrInput
 	// The database schema to grant privileges on for this role.
 	Schema pulumi.StringPtrInput
+	// Permit the grant recipient to grant it to others
+	WithGrantOption pulumi.BoolPtrInput
 }
 
 func (GrantState) ElementType() reflect.Type {
@@ -110,7 +113,9 @@ type grantArgs struct {
 	// The name of the role to grant privileges on.
 	Role string `pulumi:"role"`
 	// The database schema to grant privileges on for this role.
-	Schema string `pulumi:"schema"`
+	Schema *string `pulumi:"schema"`
+	// Permit the grant recipient to grant it to others
+	WithGrantOption *bool `pulumi:"withGrantOption"`
 }
 
 // The set of arguments for constructing a Grant resource.
@@ -124,7 +129,9 @@ type GrantArgs struct {
 	// The name of the role to grant privileges on.
 	Role pulumi.StringInput
 	// The database schema to grant privileges on for this role.
-	Schema pulumi.StringInput
+	Schema pulumi.StringPtrInput
+	// Permit the grant recipient to grant it to others
+	WithGrantOption pulumi.BoolPtrInput
 }
 
 func (GrantArgs) ElementType() reflect.Type {

@@ -53,6 +53,8 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
+	// SSL client certificate if required by the database.
+	Clientcert *ProviderClientcert `pulumi:"clientcert"`
 	// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
 	ConnectTimeout *int `pulumi:"connectTimeout"`
 	// The name of the database to connect to in order to conenct to (defaults to `postgres`).
@@ -74,6 +76,8 @@ type providerArgs struct {
 	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
 	// PostgreSQL server
 	Sslmode *string `pulumi:"sslmode"`
+	// The SSL server root certificate file path. The file must contain PEM encoded data.
+	Sslrootcert *string `pulumi:"sslrootcert"`
 	// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
 	// Refreshing state password from Postgres)
 	Superuser *bool `pulumi:"superuser"`
@@ -83,6 +87,8 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
+	// SSL client certificate if required by the database.
+	Clientcert ProviderClientcertPtrInput
 	// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
 	ConnectTimeout pulumi.IntPtrInput
 	// The name of the database to connect to in order to conenct to (defaults to `postgres`).
@@ -104,6 +110,8 @@ type ProviderArgs struct {
 	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
 	// PostgreSQL server
 	Sslmode pulumi.StringPtrInput
+	// The SSL server root certificate file path. The file must contain PEM encoded data.
+	Sslrootcert pulumi.StringPtrInput
 	// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
 	// Refreshing state password from Postgres)
 	Superuser pulumi.BoolPtrInput

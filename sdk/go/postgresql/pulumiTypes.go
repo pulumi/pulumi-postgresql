@@ -145,7 +145,152 @@ func (o SchemaPolicyArrayOutput) Index(i pulumi.IntInput) SchemaPolicyOutput {
 	}).(SchemaPolicyOutput)
 }
 
+type ProviderClientcert struct {
+	Cert string `pulumi:"cert"`
+	Key  string `pulumi:"key"`
+}
+
+// ProviderClientcertInput is an input type that accepts ProviderClientcertArgs and ProviderClientcertOutput values.
+// You can construct a concrete instance of `ProviderClientcertInput` via:
+//
+// 		 ProviderClientcertArgs{...}
+//
+type ProviderClientcertInput interface {
+	pulumi.Input
+
+	ToProviderClientcertOutput() ProviderClientcertOutput
+	ToProviderClientcertOutputWithContext(context.Context) ProviderClientcertOutput
+}
+
+type ProviderClientcertArgs struct {
+	Cert pulumi.StringInput `pulumi:"cert"`
+	Key  pulumi.StringInput `pulumi:"key"`
+}
+
+func (ProviderClientcertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderClientcert)(nil)).Elem()
+}
+
+func (i ProviderClientcertArgs) ToProviderClientcertOutput() ProviderClientcertOutput {
+	return i.ToProviderClientcertOutputWithContext(context.Background())
+}
+
+func (i ProviderClientcertArgs) ToProviderClientcertOutputWithContext(ctx context.Context) ProviderClientcertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderClientcertOutput)
+}
+
+func (i ProviderClientcertArgs) ToProviderClientcertPtrOutput() ProviderClientcertPtrOutput {
+	return i.ToProviderClientcertPtrOutputWithContext(context.Background())
+}
+
+func (i ProviderClientcertArgs) ToProviderClientcertPtrOutputWithContext(ctx context.Context) ProviderClientcertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderClientcertOutput).ToProviderClientcertPtrOutputWithContext(ctx)
+}
+
+// ProviderClientcertPtrInput is an input type that accepts ProviderClientcertArgs, ProviderClientcertPtr and ProviderClientcertPtrOutput values.
+// You can construct a concrete instance of `ProviderClientcertPtrInput` via:
+//
+// 		 ProviderClientcertArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ProviderClientcertPtrInput interface {
+	pulumi.Input
+
+	ToProviderClientcertPtrOutput() ProviderClientcertPtrOutput
+	ToProviderClientcertPtrOutputWithContext(context.Context) ProviderClientcertPtrOutput
+}
+
+type providerClientcertPtrType ProviderClientcertArgs
+
+func ProviderClientcertPtr(v *ProviderClientcertArgs) ProviderClientcertPtrInput {
+	return (*providerClientcertPtrType)(v)
+}
+
+func (*providerClientcertPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderClientcert)(nil)).Elem()
+}
+
+func (i *providerClientcertPtrType) ToProviderClientcertPtrOutput() ProviderClientcertPtrOutput {
+	return i.ToProviderClientcertPtrOutputWithContext(context.Background())
+}
+
+func (i *providerClientcertPtrType) ToProviderClientcertPtrOutputWithContext(ctx context.Context) ProviderClientcertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderClientcertPtrOutput)
+}
+
+type ProviderClientcertOutput struct{ *pulumi.OutputState }
+
+func (ProviderClientcertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderClientcert)(nil)).Elem()
+}
+
+func (o ProviderClientcertOutput) ToProviderClientcertOutput() ProviderClientcertOutput {
+	return o
+}
+
+func (o ProviderClientcertOutput) ToProviderClientcertOutputWithContext(ctx context.Context) ProviderClientcertOutput {
+	return o
+}
+
+func (o ProviderClientcertOutput) ToProviderClientcertPtrOutput() ProviderClientcertPtrOutput {
+	return o.ToProviderClientcertPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderClientcertOutput) ToProviderClientcertPtrOutputWithContext(ctx context.Context) ProviderClientcertPtrOutput {
+	return o.ApplyT(func(v ProviderClientcert) *ProviderClientcert {
+		return &v
+	}).(ProviderClientcertPtrOutput)
+}
+func (o ProviderClientcertOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v ProviderClientcert) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+func (o ProviderClientcertOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ProviderClientcert) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type ProviderClientcertPtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderClientcertPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderClientcert)(nil)).Elem()
+}
+
+func (o ProviderClientcertPtrOutput) ToProviderClientcertPtrOutput() ProviderClientcertPtrOutput {
+	return o
+}
+
+func (o ProviderClientcertPtrOutput) ToProviderClientcertPtrOutputWithContext(ctx context.Context) ProviderClientcertPtrOutput {
+	return o
+}
+
+func (o ProviderClientcertPtrOutput) Elem() ProviderClientcertOutput {
+	return o.ApplyT(func(v *ProviderClientcert) ProviderClientcert { return *v }).(ProviderClientcertOutput)
+}
+
+func (o ProviderClientcertPtrOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderClientcert) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cert
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderClientcertPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderClientcert) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SchemaPolicyOutput{})
 	pulumi.RegisterOutputType(SchemaPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ProviderClientcertOutput{})
+	pulumi.RegisterOutputType(ProviderClientcertPtrOutput{})
 }

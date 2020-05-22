@@ -30,7 +30,11 @@ class Grant(pulumi.CustomResource):
     """
     The database schema to grant privileges on for this role.
     """
-    def __init__(__self__, resource_name, opts=None, database=None, object_type=None, privileges=None, role=None, schema=None, __props__=None, __name__=None, __opts__=None):
+    with_grant_option: pulumi.Output[bool]
+    """
+    Permit the grant recipient to grant it to others
+    """
+    def __init__(__self__, resource_name, opts=None, database=None, object_type=None, privileges=None, role=None, schema=None, with_grant_option=None, __props__=None, __name__=None, __opts__=None):
         """
         The ``.Grant`` resource creates and manages privileges given to a user for a database schema.
 
@@ -57,6 +61,7 @@ class Grant(pulumi.CustomResource):
         :param pulumi.Input[list] privileges: The list of privileges to grant.
         :param pulumi.Input[str] role: The name of the role to grant privileges on.
         :param pulumi.Input[str] schema: The database schema to grant privileges on for this role.
+        :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,9 +92,8 @@ class Grant(pulumi.CustomResource):
             if role is None:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
-            if schema is None:
-                raise TypeError("Missing required property 'schema'")
             __props__['schema'] = schema
+            __props__['with_grant_option'] = with_grant_option
         super(Grant, __self__).__init__(
             'postgresql:index/grant:Grant',
             resource_name,
@@ -97,7 +101,7 @@ class Grant(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, database=None, object_type=None, privileges=None, role=None, schema=None):
+    def get(resource_name, id, opts=None, database=None, object_type=None, privileges=None, role=None, schema=None, with_grant_option=None):
         """
         Get an existing Grant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -110,6 +114,7 @@ class Grant(pulumi.CustomResource):
         :param pulumi.Input[list] privileges: The list of privileges to grant.
         :param pulumi.Input[str] role: The name of the role to grant privileges on.
         :param pulumi.Input[str] schema: The database schema to grant privileges on for this role.
+        :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -120,6 +125,7 @@ class Grant(pulumi.CustomResource):
         __props__["privileges"] = privileges
         __props__["role"] = role
         __props__["schema"] = schema
+        __props__["with_grant_option"] = with_grant_option
         return Grant(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
