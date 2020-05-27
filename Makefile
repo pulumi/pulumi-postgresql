@@ -60,7 +60,7 @@ provider:: generate_schema
 
 install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource $(PACK) $(PROVIDER_VERSION)
+	pulumi plugin install resource $(PACK) 2.1.1
 
 lint::
 	#golangci-lint run
