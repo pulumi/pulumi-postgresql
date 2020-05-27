@@ -66,6 +66,9 @@ The following configuration points are available:
 - `postgresql:expected_version` - (optional) Specify a hint to Terraform regarding the expected version that the provider will be talking with. This is a 
    required hint in order for the provider to talk with an ancient version of PostgreSQL. This parameter is expected to be a PostgreSQL Version or current. 
    Once a connection has been established, the provider will fingerprint the actual version. Default: 9.0.0.
+- `postgresql:clientcert` - (optional) Clientcert block for configuring SSL certificate. 
+  - `postgresql:clientcert.cert` - (required) The SSL client certificate file path. The file must contain PEM encoded data.
+  - `postgresql:clientcert.key` - (required) The SSL client certificate private key file path. The file must contain PEM encoded data.
 
 
 ## Reference
