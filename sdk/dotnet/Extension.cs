@@ -12,6 +12,25 @@ namespace Pulumi.PostgreSql
     /// <summary>
     /// The ``postgresql..Extension`` resource creates and manages an extension on a PostgreSQL
     /// server.
+    /// 
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myExtension = new PostgreSql.Extension("myExtension", new PostgreSql.ExtensionArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Extension : Pulumi.CustomResource
     {

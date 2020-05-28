@@ -13,6 +13,33 @@ namespace Pulumi.PostgreSql
     /// The ``postgresql..DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
     /// 
     /// &gt; **Note:** This resource needs Postgresql version 9 or above.
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var readOnlyTables = new PostgreSql.DefaultPrivileges("readOnlyTables", new PostgreSql.DefaultPrivilegesArgs
+    ///         {
+    ///             Database = "test_db",
+    ///             ObjectType = "table",
+    ///             Owner = "db_owner",
+    ///             Privileges = 
+    ///             {
+    ///                 "SELECT",
+    ///             },
+    ///             Role = "test_role",
+    ///             Schema = "public",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DefaultPrivileges : Pulumi.CustomResource
     {

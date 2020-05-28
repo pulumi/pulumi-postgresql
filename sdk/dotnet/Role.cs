@@ -25,6 +25,33 @@ namespace Pulumi.PostgreSql
     /// 
     /// &gt; **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
     /// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myRole = new PostgreSql.Role("myRole", new PostgreSql.RoleArgs
+    ///         {
+    ///             Login = true,
+    ///             Password = "mypass",
+    ///         });
+    ///         var myReplicationRole = new PostgreSql.Role("myReplicationRole", new PostgreSql.RoleArgs
+    ///         {
+    ///             ConnectionLimit = 5,
+    ///             Login = true,
+    ///             Password = "md5c98cbfeb6a347a47eb8e96cfb4c4b890",
+    ///             Replication = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Role : Pulumi.CustomResource
     {

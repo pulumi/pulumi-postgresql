@@ -13,6 +13,32 @@ namespace Pulumi.PostgreSql
     /// The ``postgresql..Grant`` resource creates and manages privileges given to a user for a database schema.
     /// 
     /// &gt; **Note:** This resource needs Postgresql version 9 or above.
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var readonlyTables = new PostgreSql.Grant("readonlyTables", new PostgreSql.GrantArgs
+    ///         {
+    ///             Database = "test_db",
+    ///             ObjectType = "table",
+    ///             Privileges = 
+    ///             {
+    ///                 "SELECT",
+    ///             },
+    ///             Role = "test_role",
+    ///             Schema = "public",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Grant : Pulumi.CustomResource
     {
