@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("postgresql");
@@ -9,11 +11,11 @@ let __config = new pulumi.Config("postgresql");
 /**
  * SSL client certificate if required by the database.
  */
-export let clientcert: { cert: string, key: string } | undefined = __config.getObject<{ cert: string, key: string }>("clientcert");
+export let clientcert: outputs.config.Clientcert | undefined = __config.getObject<outputs.config.Clientcert>("clientcert");
 /**
  * Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
  */
-export let connectTimeout: number | undefined = __config.getObject<number>("connectTimeout") || (utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180);
+export let connectTimeout: number | undefined = __config.getObject<number>("connectTimeout") || (<any>utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180);
 /**
  * The name of the database to connect to in order to conenct to (defaults to `postgres`).
  */
@@ -41,7 +43,7 @@ export let password: string | undefined = __config.get("password") || utilities.
 /**
  * The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
  */
-export let port: number | undefined = __config.getObject<number>("port") || (utilities.getEnvNumber("PGPORT") || 5432);
+export let port: number | undefined = __config.getObject<number>("port") || (<any>utilities.getEnvNumber("PGPORT") || 5432);
 export let sslMode: string | undefined = __config.get("sslMode");
 /**
  * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
