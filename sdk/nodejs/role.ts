@@ -47,6 +47,7 @@ export class Role extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RoleState, opts?: pulumi.CustomResourceOptions): Role {
         return new Role(name, <any>state, { ...opts, id: id });
@@ -88,6 +89,9 @@ export class Role extends pulumi.CustomResource {
      * is `false`.
      */
     public readonly createRole!: pulumi.Output<boolean | undefined>;
+    /**
+     * @deprecated Rename PostgreSQL role resource attribute "encrypted" to "encrypted_password"
+     */
     public readonly encrypted!: pulumi.Output<string | undefined>;
     /**
      * Defines whether the password is stored
@@ -262,6 +266,9 @@ export interface RoleState {
      * is `false`.
      */
     readonly createRole?: pulumi.Input<boolean>;
+    /**
+     * @deprecated Rename PostgreSQL role resource attribute "encrypted" to "encrypted_password"
+     */
     readonly encrypted?: pulumi.Input<string>;
     /**
      * Defines whether the password is stored
@@ -375,6 +382,9 @@ export interface RoleArgs {
      * is `false`.
      */
     readonly createRole?: pulumi.Input<boolean>;
+    /**
+     * @deprecated Rename PostgreSQL role resource attribute "encrypted" to "encrypted_password"
+     */
     readonly encrypted?: pulumi.Input<string>;
     /**
      * Defines whether the password is stored

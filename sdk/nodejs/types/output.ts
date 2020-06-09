@@ -2,7 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
+
+export interface ProviderClientcert {
+    cert?: string;
+    key?: string;
+}
 
 export interface SchemaPolicy {
     /**
@@ -26,3 +32,10 @@ export interface SchemaPolicy {
      */
     usageWithGrant?: boolean;
 }
+export namespace config {
+    export interface Clientcert {
+        cert: string;
+        key: string;
+    }
+}
+
