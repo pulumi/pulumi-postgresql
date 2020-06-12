@@ -22,7 +22,7 @@ func getBaseOptions() integration.ProgramTestOptions {
 	return integration.ProgramTestOptions{
 		Config: map[string]string{
 			"postgresql:host": "127.0.0.1",
-            "postgresql:port": 5432,
+            "postgresql:port": "5432",
 			"postgresql:username": "postgres",
 			"postgresql:password": "password",
 		},
