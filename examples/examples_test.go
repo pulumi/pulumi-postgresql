@@ -21,7 +21,8 @@ func getCwd(t *testing.T) string {
 func getBaseOptions() integration.ProgramTestOptions {
 	return integration.ProgramTestOptions{
 		Config: map[string]string{
-			"postgresql:endpoint": "127.0.0.1:5432",
+			"postgresql:host": "127.0.0.1",
+            "postgresql:port": 5432,
 			"postgresql:username": "postgres",
 			"postgresql:password": "password",
 		},
