@@ -25,6 +25,7 @@ func getBaseOptions() integration.ProgramTestOptions {
             "postgresql:port": "5432",
 			"postgresql:username": "postgres",
 			"postgresql:password": "password",
+            "postgresql:sslmode": "disable",
 		},
 	}
 }
