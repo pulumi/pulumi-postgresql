@@ -3,6 +3,9 @@ _(none)_
 
 ---
 
+## 2.2.2 (2020-06-12)
+* Switch to GitHub actions for build
+
 ## 2.2.1 (2020-05-28)
 * Upgrade to Pulumi v2.3.0
 * Upgrade to pulumi-terraform-bridge v2.4.0
