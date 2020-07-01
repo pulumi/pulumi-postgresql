@@ -9,21 +9,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The ``.Role`` resource creates and manages a role on a PostgreSQL
-// server.
-//
-// When a ``.Role`` resource is removed, the PostgreSQL ROLE will
-// automatically run a [`REASSIGN
-// OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html)
-// and [`DROP
-// OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html) to
-// the `CURRENT_USER` (normally the connected user for the provider).  If the
-// specified PostgreSQL ROLE owns objects in multiple PostgreSQL databases in the
-// same PostgreSQL Cluster, one PostgreSQL provider per database must be created
-// and all but the final ``.Role`` must specify a `skipDropRole`.
-//
-// > **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
-// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 type Role struct {
 	pulumi.CustomResourceState
 

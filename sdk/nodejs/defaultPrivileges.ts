@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql..DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
+ * The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
  *
  * > **Note:** This resource needs Postgresql version 9 or above.
  *
@@ -15,12 +15,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const readOnlyTables = new postgresql.DefaultPrivileges("readOnlyTables", {
- *     database: "testDb",
+ * const readOnlyTables = new postgresql.DefaultPrivileges("read_only_tables", {
+ *     database: "test_db",
  *     objectType: "table",
- *     owner: "dbOwner",
+ *     owner: "db_owner",
  *     privileges: ["SELECT"],
- *     role: "testRole",
+ *     role: "test_role",
  *     schema: "public",
  * });
  * ```

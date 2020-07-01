@@ -9,9 +9,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The ``.Schema`` resource creates and manages [schema
-// objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
-// a PostgreSQL database.
 type Schema struct {
 	pulumi.CustomResourceState
 

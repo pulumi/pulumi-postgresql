@@ -9,60 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.PostgreSql
 {
-    /// <summary>
-    /// The ``postgresql..Schema`` resource creates and manages [schema
-    /// objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
-    /// a PostgreSQL database.
-    /// 
-    /// 
-    /// ## Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using PostgreSql = Pulumi.PostgreSql;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var appWww = new PostgreSql.Role("appWww", new PostgreSql.RoleArgs
-    ///         {
-    ///         });
-    ///         var appDba = new PostgreSql.Role("appDba", new PostgreSql.RoleArgs
-    ///         {
-    ///         });
-    ///         var appReleng = new PostgreSql.Role("appReleng", new PostgreSql.RoleArgs
-    ///         {
-    ///         });
-    ///         var mySchema = new PostgreSql.Schema("mySchema", new PostgreSql.SchemaArgs
-    ///         {
-    ///             Owner = "postgres",
-    ///             Policies = 
-    ///             {
-    ///                 new PostgreSql.Inputs.SchemaPolicyArgs
-    ///                 {
-    ///                     Role = appWww.Name,
-    ///                     Usage = true,
-    ///                 },
-    ///                 new PostgreSql.Inputs.SchemaPolicyArgs
-    ///                 {
-    ///                     Create = true,
-    ///                     Role = appReleng.Name,
-    ///                     Usage = true,
-    ///                 },
-    ///                 new PostgreSql.Inputs.SchemaPolicyArgs
-    ///                 {
-    ///                     CreateWithGrant = true,
-    ///                     Role = appDba.Name,
-    ///                     UsageWithGrant = true,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Schema : Pulumi.CustomResource
     {
         /// <summary>

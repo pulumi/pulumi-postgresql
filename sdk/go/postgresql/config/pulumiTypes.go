@@ -18,8 +18,7 @@ type Clientcert struct {
 // ClientcertInput is an input type that accepts ClientcertArgs and ClientcertOutput values.
 // You can construct a concrete instance of `ClientcertInput` via:
 //
-// 		 ClientcertArgs{...}
-//
+//          ClientcertArgs{...}
 type ClientcertInput interface {
 	pulumi.Input
 

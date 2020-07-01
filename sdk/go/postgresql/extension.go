@@ -9,8 +9,29 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The ``.Extension`` resource creates and manages an extension on a PostgreSQL
+// The ``Extension`` resource creates and manages an extension on a PostgreSQL
 // server.
+//
+// ## Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := postgresql.NewExtension(ctx, "myExtension", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Extension struct {
 	pulumi.CustomResourceState
 
