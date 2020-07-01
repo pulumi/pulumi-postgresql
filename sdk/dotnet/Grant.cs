@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.PostgreSql
 {
     /// <summary>
-    /// The ``postgresql..Grant`` resource creates and manages privileges given to a user for a database schema.
+    /// The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.
     /// 
     /// &gt; **Note:** This resource needs Postgresql version 9 or above.
     /// 

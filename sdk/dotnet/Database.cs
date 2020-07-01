@@ -9,35 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.PostgreSql
 {
-    /// <summary>
-    /// The ``postgresql..Database`` resource creates and manages [database
-    /// objects](https://www.postgresql.org/docs/current/static/managing-databases.html)
-    /// within a PostgreSQL server instance.
-    /// 
-    /// 
-    /// ## Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using PostgreSql = Pulumi.PostgreSql;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myDb = new PostgreSql.Database("myDb", new PostgreSql.DatabaseArgs
-    ///         {
-    ///             AllowConnections = true,
-    ///             ConnectionLimit = -1,
-    ///             LcCollate = "C",
-    ///             Owner = "my_role",
-    ///             Template = "template0",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>

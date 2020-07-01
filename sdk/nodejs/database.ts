@@ -4,27 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The ``postgresql..Database`` resource creates and manages [database
- * objects](https://www.postgresql.org/docs/current/static/managing-databases.html)
- * within a PostgreSQL server instance.
- *
- *
- * ## Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as postgresql from "@pulumi/postgresql";
- *
- * const myDb = new postgresql.Database("myDb", {
- *     allowConnections: true,
- *     connectionLimit: -1,
- *     lcCollate: "C",
- *     owner: "myRole",
- *     template: "template0",
- * });
- * ```
- */
 export class Database extends pulumi.CustomResource {
     /**
      * Get an existing Database resource's state with the given name, ID, and optional extra

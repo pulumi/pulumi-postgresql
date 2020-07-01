@@ -10,9 +10,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The ``.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
+// The ``DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
 //
 // > **Note:** This resource needs Postgresql version 9 or above.
+//
+// ## Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := postgresql.NewDefaultPrivileges(ctx, "readOnlyTables", &postgresql.DefaultPrivilegesArgs{
+// 			Database:   pulumi.String("test_db"),
+// 			ObjectType: pulumi.String("table"),
+// 			Owner:      pulumi.String("db_owner"),
+// 			Privileges: pulumi.StringArray{
+// 				pulumi.String("SELECT"),
+// 			},
+// 			Role:   pulumi.String("test_role"),
+// 			Schema: pulumi.String("public"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DefaultPrivileges struct {
 	pulumi.CustomResourceState
 

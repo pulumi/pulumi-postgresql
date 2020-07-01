@@ -6,44 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * The ``postgresql..Schema`` resource creates and manages [schema
- * objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
- * a PostgreSQL database.
- *
- *
- * ## Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as postgresql from "@pulumi/postgresql";
- *
- * const appWww = new postgresql.Role("appWww", {});
- * const appDba = new postgresql.Role("appDba", {});
- * const appReleng = new postgresql.Role("appReleng", {});
- * const mySchema = new postgresql.Schema("mySchema", {
- *     owner: "postgres",
- *     policies: [
- *         {
- *             role: appWww.name,
- *             usage: true,
- *         },
- *         // appReleng can create new objects in the schema.  This is the role that
- *         // migrations are executed as.
- *         {
- *             create: true,
- *             role: appReleng.name,
- *             usage: true,
- *         },
- *         {
- *             createWithGrant: true,
- *             role: appDba.name,
- *             usageWithGrant: true,
- *         },
- *     ],
- * });
- * ```
- */
 export class Schema extends pulumi.CustomResource {
     /**
      * Get an existing Schema resource's state with the given name, ID, and optional extra

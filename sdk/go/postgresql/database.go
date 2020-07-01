@@ -9,9 +9,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The ``.Database`` resource creates and manages [database
-// objects](https://www.postgresql.org/docs/current/static/managing-databases.html)
-// within a PostgreSQL server instance.
 type Database struct {
 	pulumi.CustomResourceState
 
