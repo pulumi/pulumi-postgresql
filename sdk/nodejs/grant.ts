@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.
  *
+ * See [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)
+ *
  * > **Note:** This resource needs Postgresql version 9 or above.
  *
  * ## Usage
@@ -57,11 +59,11 @@ export class Grant extends pulumi.CustomResource {
      */
     public readonly database!: pulumi.Output<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: table, sequence).
+     * The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
      */
     public readonly objectType!: pulumi.Output<string>;
     /**
-     * The list of privileges to grant.
+     * The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
      */
     public readonly privileges!: pulumi.Output<string[]>;
     /**
@@ -136,11 +138,11 @@ export interface GrantState {
      */
     readonly database?: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: table, sequence).
+     * The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
      */
     readonly objectType?: pulumi.Input<string>;
     /**
-     * The list of privileges to grant.
+     * The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
      */
     readonly privileges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -166,11 +168,11 @@ export interface GrantArgs {
      */
     readonly database: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: table, sequence).
+     * The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
      */
     readonly objectType: pulumi.Input<string>;
     /**
-     * The list of privileges to grant.
+     * The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
      */
     readonly privileges: pulumi.Input<pulumi.Input<string>[]>;
     /**

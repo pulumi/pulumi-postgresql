@@ -464,7 +464,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence)\n"
+                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)\n"
                 },
                 "owner": {
                     "type": "string",
@@ -501,7 +501,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence)\n"
+                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)\n"
                 },
                 "owner": {
                     "type": "string",
@@ -540,7 +540,7 @@
                     },
                     "objectType": {
                         "type": "string",
-                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence)\n"
+                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)\n"
                     },
                     "owner": {
                         "type": "string",
@@ -575,7 +575,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence).\n"
+                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n"
                 },
                 "owner": {
                     "type": "string",
@@ -612,7 +612,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence).\n"
+                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n"
                 },
                 "owner": {
                     "type": "string",
@@ -651,7 +651,7 @@
                     },
                     "objectType": {
                         "type": "string",
-                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence).\n"
+                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n"
                     },
                     "owner": {
                         "type": "string",
@@ -749,7 +749,7 @@
             }
         },
         "postgresql:index/grant:Grant": {
-            "description": "The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readonlyTables = new postgresql.Grant(\"readonly_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nreadonly_tables = postgresql.Grant(\"readonlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var readonlyTables = new PostgreSql.Grant(\"readonlyTables\", new PostgreSql.GrantArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"table\",\n            Privileges = \n            {\n                \"SELECT\",\n            },\n            Role = \"test_role\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"readonlyTables\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n",
+            "description": "The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.\n\nSee [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readonlyTables = new postgresql.Grant(\"readonly_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nreadonly_tables = postgresql.Grant(\"readonlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var readonlyTables = new PostgreSql.Grant(\"readonlyTables\", new PostgreSql.GrantArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"table\",\n            Privileges = \n            {\n                \"SELECT\",\n            },\n            Role = \"test_role\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"readonlyTables\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n",
             "properties": {
                 "database": {
                     "type": "string",
@@ -757,14 +757,14 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to grant the privileges on (one of: table, sequence).\n"
+                    "description": "The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).\n"
                 },
                 "privileges": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of privileges to grant.\n"
+                    "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.\n"
                 },
                 "role": {
                     "type": "string",
@@ -792,14 +792,14 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to grant the privileges on (one of: table, sequence).\n"
+                    "description": "The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).\n"
                 },
                 "privileges": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of privileges to grant.\n"
+                    "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.\n"
                 },
                 "role": {
                     "type": "string",
@@ -829,14 +829,14 @@
                     },
                     "objectType": {
                         "type": "string",
-                        "description": "The PostgreSQL object type to grant the privileges on (one of: table, sequence).\n"
+                        "description": "The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).\n"
                     },
                     "privileges": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The list of privileges to grant.\n"
+                        "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.\n"
                     },
                     "role": {
                         "type": "string",

@@ -16,7 +16,7 @@ class DefaultPrivileges(pulumi.CustomResource):
     """
     object_type: pulumi.Output[str]
     """
-    The PostgreSQL object type to set the default privileges on (one of: table, sequence).
+    The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
     """
     owner: pulumi.Output[str]
     """
@@ -58,7 +58,7 @@ class DefaultPrivileges(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant default privileges for this role.
-        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence).
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
         :param pulumi.Input[str] owner: Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
         :param pulumi.Input[list] privileges: The list of privileges to apply as default privileges.
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on.
@@ -117,7 +117,7 @@ class DefaultPrivileges(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant default privileges for this role.
-        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence).
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
         :param pulumi.Input[str] owner: Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
         :param pulumi.Input[list] privileges: The list of privileges to apply as default privileges.
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on.

@@ -12,6 +12,8 @@ namespace Pulumi.PostgreSql
     /// <summary>
     /// The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.
     /// 
+    /// See [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)
+    /// 
     /// &gt; **Note:** This resource needs Postgresql version 9 or above.
     /// 
     /// ## Usage
@@ -49,13 +51,13 @@ namespace Pulumi.PostgreSql
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
-        /// The PostgreSQL object type to grant the privileges on (one of: table, sequence).
+        /// The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
         /// </summary>
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
 
         /// <summary>
-        /// The list of privileges to grant.
+        /// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
         /// </summary>
         [Output("privileges")]
         public Output<ImmutableArray<string>> Privileges { get; private set; } = null!;
@@ -131,7 +133,7 @@ namespace Pulumi.PostgreSql
         public Input<string> Database { get; set; } = null!;
 
         /// <summary>
-        /// The PostgreSQL object type to grant the privileges on (one of: table, sequence).
+        /// The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
@@ -140,7 +142,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _privileges;
 
         /// <summary>
-        /// The list of privileges to grant.
+        /// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
         /// </summary>
         public InputList<string> Privileges
         {
@@ -180,7 +182,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// The PostgreSQL object type to grant the privileges on (one of: table, sequence).
+        /// The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
@@ -189,7 +191,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _privileges;
 
         /// <summary>
-        /// The list of privileges to grant.
+        /// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
         /// </summary>
         public InputList<string> Privileges
         {

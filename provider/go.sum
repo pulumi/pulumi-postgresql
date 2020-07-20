@@ -523,6 +523,8 @@ github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18Cyd
 github.com/terraform-providers/terraform-provider-http v1.2.0/go.mod h1:2Iot921OkLVSZr8FbIkvRN84ZV3w+oFKb7RlmPTQQAQ=
 github.com/terraform-providers/terraform-provider-postgresql v1.6.0 h1:LToiRRbStXg2ub468ionUIn1u07YLQIgtYvVHxLHB5Y=
 github.com/terraform-providers/terraform-provider-postgresql v1.6.0/go.mod h1:YErEnZSfPs/A2awekouxN8/bpKftJz34M93NzteaP4M=
+github.com/terraform-providers/terraform-provider-postgresql v1.7.0 h1:lqVPOFz1l83qUsNVRgIk/lJnQXEWNtdBpstMTROQvXY=
+github.com/terraform-providers/terraform-provider-postgresql v1.7.0/go.mod h1:eBbxs4zKnCgnIanyoOzuD/ODwa7giezWDJqlUXQRHDM=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6 h1:9VTskZOIRf2vKF3UL8TuWElry5pgUpV1tFSe/e/0m/E=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
 github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=
