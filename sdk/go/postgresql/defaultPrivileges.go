@@ -48,7 +48,7 @@ type DefaultPrivileges struct {
 
 	// The database to grant default privileges for this role.
 	Database pulumi.StringOutput `pulumi:"database"`
-	// The PostgreSQL object type to set the default privileges on (one of: table, sequence).
+	// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
 	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
 	Owner pulumi.StringOutput `pulumi:"owner"`
@@ -114,7 +114,7 @@ func GetDefaultPrivileges(ctx *pulumi.Context,
 type defaultPrivilegesState struct {
 	// The database to grant default privileges for this role.
 	Database *string `pulumi:"database"`
-	// The PostgreSQL object type to set the default privileges on (one of: table, sequence).
+	// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
 	ObjectType *string `pulumi:"objectType"`
 	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
 	Owner *string `pulumi:"owner"`
@@ -129,7 +129,7 @@ type defaultPrivilegesState struct {
 type DefaultPrivilegesState struct {
 	// The database to grant default privileges for this role.
 	Database pulumi.StringPtrInput
-	// The PostgreSQL object type to set the default privileges on (one of: table, sequence).
+	// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
 	ObjectType pulumi.StringPtrInput
 	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
 	Owner pulumi.StringPtrInput
@@ -148,7 +148,7 @@ func (DefaultPrivilegesState) ElementType() reflect.Type {
 type defaultPrivilegesArgs struct {
 	// The database to grant default privileges for this role.
 	Database string `pulumi:"database"`
-	// The PostgreSQL object type to set the default privileges on (one of: table, sequence).
+	// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
 	ObjectType string `pulumi:"objectType"`
 	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
 	Owner string `pulumi:"owner"`
@@ -164,7 +164,7 @@ type defaultPrivilegesArgs struct {
 type DefaultPrivilegesArgs struct {
 	// The database to grant default privileges for this role.
 	Database pulumi.StringInput
-	// The PostgreSQL object type to set the default privileges on (one of: table, sequence).
+	// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
 	ObjectType pulumi.StringInput
 	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
 	Owner pulumi.StringInput
