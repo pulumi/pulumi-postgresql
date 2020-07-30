@@ -1,5 +1,5 @@
 ## HEAD (Unreleased)
-* Upgrade to v1.7.0 of the Postgresql Terraform Provider
+* Upgrade to v1.7.1 of the Postgresql Terraform Provider
 
 ---
 
