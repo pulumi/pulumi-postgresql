@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
-* Upgrade to v1.7.1 of the Postgresql Terraform Provider
+_(none)_
 
 ---
+
+## 2.3.0 (2020-07-30)
+* Upgrade to v1.7.1 of the Postgresql Terraform Provider
 
 ## 2.2.2 (2020-06-12)
 * Switch to GitHub actions for build
