@@ -5,36 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Grant']
 
 
 class Grant(pulumi.CustomResource):
-    database: pulumi.Output[str]
-    """
-    The database to grant privileges on for this role.
-    """
-    object_type: pulumi.Output[str]
-    """
-    The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
-    """
-    privileges: pulumi.Output[list]
-    """
-    The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
-    """
-    role: pulumi.Output[str]
-    """
-    The name of the role to grant privileges on.
-    """
-    schema: pulumi.Output[str]
-    """
-    The database schema to grant privileges on for this role.
-    """
-    with_grant_option: pulumi.Output[bool]
-    """
-    Permit the grant recipient to grant it to others
-    """
-    def __init__(__self__, resource_name, opts=None, database=None, object_type=None, privileges=None, role=None, schema=None, with_grant_option=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 database: Optional[pulumi.Input[str]] = None,
+                 object_type: Optional[pulumi.Input[str]] = None,
+                 privileges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
+                 with_grant_option: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The ``Grant`` resource creates and manages privileges given to a user for a database schema.
 
@@ -60,7 +49,7 @@ class Grant(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant privileges on for this role.
         :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
-        :param pulumi.Input[list] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
+        :param pulumi.Input[List[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
         :param pulumi.Input[str] role: The name of the role to grant privileges on.
         :param pulumi.Input[str] schema: The database schema to grant privileges on for this role.
         :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
@@ -76,7 +65,7 @@ class Grant(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -103,17 +92,25 @@ class Grant(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, database=None, object_type=None, privileges=None, role=None, schema=None, with_grant_option=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            database: Optional[pulumi.Input[str]] = None,
+            object_type: Optional[pulumi.Input[str]] = None,
+            privileges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            role: Optional[pulumi.Input[str]] = None,
+            schema: Optional[pulumi.Input[str]] = None,
+            with_grant_option: Optional[pulumi.Input[bool]] = None) -> 'Grant':
         """
         Get an existing Grant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant privileges on for this role.
         :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
-        :param pulumi.Input[list] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
+        :param pulumi.Input[List[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
         :param pulumi.Input[str] role: The name of the role to grant privileges on.
         :param pulumi.Input[str] schema: The database schema to grant privileges on for this role.
         :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
@@ -130,8 +127,57 @@ class Grant(pulumi.CustomResource):
         __props__["with_grant_option"] = with_grant_option
         return Grant(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        The database to grant privileges on for this role.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> str:
+        """
+        The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def privileges(self) -> List[str]:
+        """
+        The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
+        """
+        return pulumi.get(self, "privileges")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The name of the role to grant privileges on.
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[str]:
+        """
+        The database schema to grant privileges on for this role.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="withGrantOption")
+    def with_grant_option(self) -> Optional[bool]:
+        """
+        Permit the grant recipient to grant it to others
+        """
+        return pulumi.get(self, "with_grant_option")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

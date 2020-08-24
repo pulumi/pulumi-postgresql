@@ -5,119 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Role']
 
 
 class Role(pulumi.CustomResource):
-    bypass_row_level_security: pulumi.Output[bool]
-    """
-    Defines whether a role bypasses every
-    row-level security (RLS) policy.  Default value is `false`.
-    """
-    connection_limit: pulumi.Output[float]
-    """
-    If this role can log in, this specifies how
-    many concurrent connections the role can establish. `-1` (the default) means no
-    limit.
-    """
-    create_database: pulumi.Output[bool]
-    """
-    Defines a role's ability to execute `CREATE
-    DATABASE`.  Default value is `false`.
-    """
-    create_role: pulumi.Output[bool]
-    """
-    Defines a role's ability to execute `CREATE ROLE`.
-    A role with this privilege can also alter and drop other roles.  Default value
-    is `false`.
-    """
-    encrypted: pulumi.Output[str]
-    encrypted_password: pulumi.Output[bool]
-    """
-    Defines whether the password is stored
-    encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
-    is always set (to the conservative and safe value), but may interfere with the
-    behavior of
-    [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
-    """
-    inherit: pulumi.Output[bool]
-    """
-    Defines whether a role "inherits" the privileges of
-    roles it is a member of.  Default value is `true`.
-    """
-    login: pulumi.Output[bool]
-    """
-    Defines whether role is allowed to log in.  Roles without
-    this attribute are useful for managing database privileges, but are not users
-    in the usual sense of the word.  Default value is `false`.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the role. Must be unique on the PostgreSQL
-    server instance where it is configured.
-    """
-    password: pulumi.Output[str]
-    """
-    Sets the role's password. A password is only of use
-    for roles having the `login` attribute set to true.
-    """
-    replication: pulumi.Output[bool]
-    """
-    Defines whether a role is allowed to initiate
-    streaming replication or put the system in and out of backup mode.  Default
-    value is `false`
-    """
-    roles: pulumi.Output[list]
-    """
-    Defines list of roles which will be granted to this new role.
-    """
-    search_paths: pulumi.Output[list]
-    """
-    Alters the search path of this new role. Note that
-    due to limitations in the implementation, values cannot contain the substring
-    `", "`.
-    """
-    skip_drop_role: pulumi.Output[bool]
-    """
-    When a PostgreSQL ROLE exists in multiple
-    databases and the ROLE is dropped, the
-    [cleanup of ownership of objects](https://www.postgresql.org/docs/current/static/role-removal.html)
-    in each of the respective databases must occur before the ROLE can be dropped
-    from the catalog.  Set this option to true when there are multiple databases
-    in a PostgreSQL cluster using the same PostgreSQL ROLE for object ownership.
-    This is the third and final step taken when removing a ROLE from a database.
-    """
-    skip_reassign_owned: pulumi.Output[bool]
-    """
-    When a PostgreSQL ROLE exists in multiple
-    databases and the ROLE is dropped, a
-    [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
-    must be executed on each of the respective databases before the `DROP ROLE`
-    can be executed to dropped the ROLE from the catalog.  This is the first and
-    second steps taken when removing a ROLE from a database (the second step being
-    an implicit
-    [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
-    """
-    statement_timeout: pulumi.Output[float]
-    """
-    Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
-    """
-    superuser: pulumi.Output[bool]
-    """
-    Defines whether the role is a "superuser", and
-    therefore can override all access restrictions within the database.  Default
-    value is `false`.
-    """
-    valid_until: pulumi.Output[str]
-    """
-    Defines the date and time after which the role's
-    password is no longer valid.  Established connections past this `valid_time`
-    will have to be manually terminated.  This value corresponds to a PostgreSQL
-    datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
-    set to `infinity`.  Default is `NULL`, therefore `infinity`.
-    """
-    def __init__(__self__, resource_name, opts=None, bypass_row_level_security=None, connection_limit=None, create_database=None, create_role=None, encrypted=None, encrypted_password=None, inherit=None, login=None, name=None, password=None, replication=None, roles=None, search_paths=None, skip_drop_role=None, skip_reassign_owned=None, statement_timeout=None, superuser=None, valid_until=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bypass_row_level_security: Optional[pulumi.Input[bool]] = None,
+                 connection_limit: Optional[pulumi.Input[float]] = None,
+                 create_database: Optional[pulumi.Input[bool]] = None,
+                 create_role: Optional[pulumi.Input[bool]] = None,
+                 encrypted: Optional[pulumi.Input[str]] = None,
+                 encrypted_password: Optional[pulumi.Input[bool]] = None,
+                 inherit: Optional[pulumi.Input[bool]] = None,
+                 login: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 replication: Optional[pulumi.Input[bool]] = None,
+                 roles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 search_paths: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 skip_drop_role: Optional[pulumi.Input[bool]] = None,
+                 skip_reassign_owned: Optional[pulumi.Input[bool]] = None,
+                 statement_timeout: Optional[pulumi.Input[float]] = None,
+                 superuser: Optional[pulumi.Input[bool]] = None,
+                 valid_until: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a Role resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -149,8 +67,8 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[bool] replication: Defines whether a role is allowed to initiate
                streaming replication or put the system in and out of backup mode.  Default
                value is `false`
-        :param pulumi.Input[list] roles: Defines list of roles which will be granted to this new role.
-        :param pulumi.Input[list] search_paths: Alters the search path of this new role. Note that
+        :param pulumi.Input[List[pulumi.Input[str]]] roles: Defines list of roles which will be granted to this new role.
+        :param pulumi.Input[List[pulumi.Input[str]]] search_paths: Alters the search path of this new role. Note that
                due to limitations in the implementation, values cannot contain the substring
                `", "`.
         :param pulumi.Input[bool] skip_drop_role: When a PostgreSQL ROLE exists in multiple
@@ -189,7 +107,7 @@ class Role(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -223,13 +141,33 @@ class Role(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bypass_row_level_security=None, connection_limit=None, create_database=None, create_role=None, encrypted=None, encrypted_password=None, inherit=None, login=None, name=None, password=None, replication=None, roles=None, search_paths=None, skip_drop_role=None, skip_reassign_owned=None, statement_timeout=None, superuser=None, valid_until=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bypass_row_level_security: Optional[pulumi.Input[bool]] = None,
+            connection_limit: Optional[pulumi.Input[float]] = None,
+            create_database: Optional[pulumi.Input[bool]] = None,
+            create_role: Optional[pulumi.Input[bool]] = None,
+            encrypted: Optional[pulumi.Input[str]] = None,
+            encrypted_password: Optional[pulumi.Input[bool]] = None,
+            inherit: Optional[pulumi.Input[bool]] = None,
+            login: Optional[pulumi.Input[bool]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            password: Optional[pulumi.Input[str]] = None,
+            replication: Optional[pulumi.Input[bool]] = None,
+            roles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            search_paths: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            skip_drop_role: Optional[pulumi.Input[bool]] = None,
+            skip_reassign_owned: Optional[pulumi.Input[bool]] = None,
+            statement_timeout: Optional[pulumi.Input[float]] = None,
+            superuser: Optional[pulumi.Input[bool]] = None,
+            valid_until: Optional[pulumi.Input[str]] = None) -> 'Role':
         """
         Get an existing Role resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] bypass_row_level_security: Defines whether a role bypasses every
                row-level security (RLS) policy.  Default value is `false`.
@@ -258,8 +196,8 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[bool] replication: Defines whether a role is allowed to initiate
                streaming replication or put the system in and out of backup mode.  Default
                value is `false`
-        :param pulumi.Input[list] roles: Defines list of roles which will be granted to this new role.
-        :param pulumi.Input[list] search_paths: Alters the search path of this new role. Note that
+        :param pulumi.Input[List[pulumi.Input[str]]] roles: Defines list of roles which will be granted to this new role.
+        :param pulumi.Input[List[pulumi.Input[str]]] search_paths: Alters the search path of this new role. Note that
                due to limitations in the implementation, values cannot contain the substring
                `", "`.
         :param pulumi.Input[bool] skip_drop_role: When a PostgreSQL ROLE exists in multiple
@@ -311,8 +249,188 @@ class Role(pulumi.CustomResource):
         __props__["valid_until"] = valid_until
         return Role(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="bypassRowLevelSecurity")
+    def bypass_row_level_security(self) -> Optional[bool]:
+        """
+        Defines whether a role bypasses every
+        row-level security (RLS) policy.  Default value is `false`.
+        """
+        return pulumi.get(self, "bypass_row_level_security")
+
+    @property
+    @pulumi.getter(name="connectionLimit")
+    def connection_limit(self) -> Optional[float]:
+        """
+        If this role can log in, this specifies how
+        many concurrent connections the role can establish. `-1` (the default) means no
+        limit.
+        """
+        return pulumi.get(self, "connection_limit")
+
+    @property
+    @pulumi.getter(name="createDatabase")
+    def create_database(self) -> Optional[bool]:
+        """
+        Defines a role's ability to execute `CREATE
+        DATABASE`.  Default value is `false`.
+        """
+        return pulumi.get(self, "create_database")
+
+    @property
+    @pulumi.getter(name="createRole")
+    def create_role(self) -> Optional[bool]:
+        """
+        Defines a role's ability to execute `CREATE ROLE`.
+        A role with this privilege can also alter and drop other roles.  Default value
+        is `false`.
+        """
+        return pulumi.get(self, "create_role")
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[str]:
+        return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter(name="encryptedPassword")
+    def encrypted_password(self) -> Optional[bool]:
+        """
+        Defines whether the password is stored
+        encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
+        is always set (to the conservative and safe value), but may interfere with the
+        behavior of
+        [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
+        """
+        return pulumi.get(self, "encrypted_password")
+
+    @property
+    @pulumi.getter
+    def inherit(self) -> Optional[bool]:
+        """
+        Defines whether a role "inherits" the privileges of
+        roles it is a member of.  Default value is `true`.
+        """
+        return pulumi.get(self, "inherit")
+
+    @property
+    @pulumi.getter
+    def login(self) -> Optional[bool]:
+        """
+        Defines whether role is allowed to log in.  Roles without
+        this attribute are useful for managing database privileges, but are not users
+        in the usual sense of the word.  Default value is `false`.
+        """
+        return pulumi.get(self, "login")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the role. Must be unique on the PostgreSQL
+        server instance where it is configured.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Sets the role's password. A password is only of use
+        for roles having the `login` attribute set to true.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def replication(self) -> Optional[bool]:
+        """
+        Defines whether a role is allowed to initiate
+        streaming replication or put the system in and out of backup mode.  Default
+        value is `false`
+        """
+        return pulumi.get(self, "replication")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[List[str]]:
+        """
+        Defines list of roles which will be granted to this new role.
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter(name="searchPaths")
+    def search_paths(self) -> Optional[List[str]]:
+        """
+        Alters the search path of this new role. Note that
+        due to limitations in the implementation, values cannot contain the substring
+        `", "`.
+        """
+        return pulumi.get(self, "search_paths")
+
+    @property
+    @pulumi.getter(name="skipDropRole")
+    def skip_drop_role(self) -> Optional[bool]:
+        """
+        When a PostgreSQL ROLE exists in multiple
+        databases and the ROLE is dropped, the
+        [cleanup of ownership of objects](https://www.postgresql.org/docs/current/static/role-removal.html)
+        in each of the respective databases must occur before the ROLE can be dropped
+        from the catalog.  Set this option to true when there are multiple databases
+        in a PostgreSQL cluster using the same PostgreSQL ROLE for object ownership.
+        This is the third and final step taken when removing a ROLE from a database.
+        """
+        return pulumi.get(self, "skip_drop_role")
+
+    @property
+    @pulumi.getter(name="skipReassignOwned")
+    def skip_reassign_owned(self) -> Optional[bool]:
+        """
+        When a PostgreSQL ROLE exists in multiple
+        databases and the ROLE is dropped, a
+        [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
+        must be executed on each of the respective databases before the `DROP ROLE`
+        can be executed to dropped the ROLE from the catalog.  This is the first and
+        second steps taken when removing a ROLE from a database (the second step being
+        an implicit
+        [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
+        """
+        return pulumi.get(self, "skip_reassign_owned")
+
+    @property
+    @pulumi.getter(name="statementTimeout")
+    def statement_timeout(self) -> Optional[float]:
+        """
+        Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+        """
+        return pulumi.get(self, "statement_timeout")
+
+    @property
+    @pulumi.getter
+    def superuser(self) -> Optional[bool]:
+        """
+        Defines whether the role is a "superuser", and
+        therefore can override all access restrictions within the database.  Default
+        value is `false`.
+        """
+        return pulumi.get(self, "superuser")
+
+    @property
+    @pulumi.getter(name="validUntil")
+    def valid_until(self) -> Optional[str]:
+        """
+        Defines the date and time after which the role's
+        password is no longer valid.  Established connections past this `valid_time`
+        will have to be manually terminated.  This value corresponds to a PostgreSQL
+        datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
+        set to `infinity`.  Default is `NULL`, therefore `infinity`.
+        """
+        return pulumi.get(self, "valid_until")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
