@@ -37,20 +37,22 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        inputs["clientcert"] = pulumi.output(args ? args.clientcert : undefined).apply(JSON.stringify);
-        inputs["connectTimeout"] = pulumi.output((args ? args.connectTimeout : undefined) || (<any>utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180)).apply(JSON.stringify);
-        inputs["database"] = (args ? args.database : undefined) || (utilities.getEnv("PGDATABASE") || "postgres");
-        inputs["databaseUsername"] = args ? args.databaseUsername : undefined;
-        inputs["expectedVersion"] = args ? args.expectedVersion : undefined;
-        inputs["host"] = (args ? args.host : undefined) || utilities.getEnv("PGHOST");
-        inputs["maxConnections"] = pulumi.output(args ? args.maxConnections : undefined).apply(JSON.stringify);
-        inputs["password"] = (args ? args.password : undefined) || utilities.getEnv("PGPASSWORD");
-        inputs["port"] = pulumi.output((args ? args.port : undefined) || (<any>utilities.getEnvNumber("PGPORT") || 5432)).apply(JSON.stringify);
-        inputs["sslMode"] = args ? args.sslMode : undefined;
-        inputs["sslmode"] = (args ? args.sslmode : undefined) || utilities.getEnv("PGSSLMODE");
-        inputs["sslrootcert"] = args ? args.sslrootcert : undefined;
-        inputs["superuser"] = pulumi.output(args ? args.superuser : undefined).apply(JSON.stringify);
-        inputs["username"] = (args ? args.username : undefined) || (utilities.getEnv("PGUSER") || "postgres");
+        {
+            inputs["clientcert"] = pulumi.output(args ? args.clientcert : undefined).apply(JSON.stringify);
+            inputs["connectTimeout"] = pulumi.output((args ? args.connectTimeout : undefined) || (<any>utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180)).apply(JSON.stringify);
+            inputs["database"] = (args ? args.database : undefined) || (utilities.getEnv("PGDATABASE") || "postgres");
+            inputs["databaseUsername"] = args ? args.databaseUsername : undefined;
+            inputs["expectedVersion"] = args ? args.expectedVersion : undefined;
+            inputs["host"] = (args ? args.host : undefined) || utilities.getEnv("PGHOST");
+            inputs["maxConnections"] = pulumi.output(args ? args.maxConnections : undefined).apply(JSON.stringify);
+            inputs["password"] = (args ? args.password : undefined) || utilities.getEnv("PGPASSWORD");
+            inputs["port"] = pulumi.output((args ? args.port : undefined) || (<any>utilities.getEnvNumber("PGPORT") || 5432)).apply(JSON.stringify);
+            inputs["sslMode"] = args ? args.sslMode : undefined;
+            inputs["sslmode"] = (args ? args.sslmode : undefined) || utilities.getEnv("PGSSLMODE");
+            inputs["sslrootcert"] = args ? args.sslrootcert : undefined;
+            inputs["superuser"] = pulumi.output(args ? args.superuser : undefined).apply(JSON.stringify);
+            inputs["username"] = (args ? args.username : undefined) || (utilities.getEnv("PGUSER") || "postgres");
+        }
         if (!opts) {
             opts = {}
         }

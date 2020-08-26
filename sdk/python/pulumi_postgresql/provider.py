@@ -6,12 +6,34 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+
+__all__ = ['Provider']
 
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, clientcert=None, connect_timeout=None, database=None, database_username=None, expected_version=None, host=None, max_connections=None, password=None, port=None, ssl_mode=None, sslmode=None, sslrootcert=None, superuser=None, username=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 clientcert: Optional[pulumi.Input[pulumi.InputType['ProviderClientcertArgs']]] = None,
+                 connect_timeout: Optional[pulumi.Input[float]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
+                 database_username: Optional[pulumi.Input[str]] = None,
+                 expected_version: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 max_connections: Optional[pulumi.Input[float]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[float]] = None,
+                 ssl_mode: Optional[pulumi.Input[str]] = None,
+                 sslmode: Optional[pulumi.Input[str]] = None,
+                 sslrootcert: Optional[pulumi.Input[str]] = None,
+                 superuser: Optional[pulumi.Input[bool]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The provider type for the postgresql package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -20,7 +42,7 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] clientcert: SSL client certificate if required by the database.
+        :param pulumi.Input[pulumi.InputType['ProviderClientcertArgs']] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[float] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         :param pulumi.Input[str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
         :param pulumi.Input[str] database_username: Database username associated to the connected user (for user name maps)
@@ -35,11 +57,6 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[bool] superuser: Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
                Refreshing state password from Postgres)
         :param pulumi.Input[str] username: PostgreSQL user name to connect as
-
-        The **clientcert** object supports the following:
-
-          * `cert` (`pulumi.Input[str]`)
-          * `key` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -52,7 +69,7 @@ class Provider(pulumi.ProviderResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -60,34 +77,34 @@ class Provider(pulumi.ProviderResource):
 
             __props__['clientcert'] = pulumi.Output.from_input(clientcert).apply(json.dumps) if clientcert is not None else None
             if connect_timeout is None:
-                connect_timeout = (utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
+                connect_timeout = (_utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
             __props__['connect_timeout'] = pulumi.Output.from_input(connect_timeout).apply(json.dumps) if connect_timeout is not None else None
             if database is None:
-                database = (utilities.get_env('PGDATABASE') or 'postgres')
+                database = (_utilities.get_env('PGDATABASE') or 'postgres')
             __props__['database'] = database
             __props__['database_username'] = database_username
             __props__['expected_version'] = expected_version
             if host is None:
-                host = utilities.get_env('PGHOST')
+                host = _utilities.get_env('PGHOST')
             __props__['host'] = host
             __props__['max_connections'] = pulumi.Output.from_input(max_connections).apply(json.dumps) if max_connections is not None else None
             if password is None:
-                password = utilities.get_env('PGPASSWORD')
+                password = _utilities.get_env('PGPASSWORD')
             __props__['password'] = password
             if port is None:
-                port = (utilities.get_env_int('PGPORT') or 5432)
+                port = (_utilities.get_env_int('PGPORT') or 5432)
             __props__['port'] = pulumi.Output.from_input(port).apply(json.dumps) if port is not None else None
             if ssl_mode is not None:
                 warnings.warn("Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`", DeprecationWarning)
                 pulumi.log.warn("ssl_mode is deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`")
             __props__['ssl_mode'] = ssl_mode
             if sslmode is None:
-                sslmode = utilities.get_env('PGSSLMODE')
+                sslmode = _utilities.get_env('PGSSLMODE')
             __props__['sslmode'] = sslmode
             __props__['sslrootcert'] = sslrootcert
             __props__['superuser'] = pulumi.Output.from_input(superuser).apply(json.dumps) if superuser is not None else None
             if username is None:
-                username = (utilities.get_env('PGUSER') or 'postgres')
+                username = (_utilities.get_env('PGUSER') or 'postgres')
             __props__['username'] = username
         super(Provider, __self__).__init__(
             'postgresql',
@@ -96,7 +113,8 @@ class Provider(pulumi.ProviderResource):
             opts)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

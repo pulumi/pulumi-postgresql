@@ -5,40 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['DefaultPrivileg']
 
 warnings.warn("postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges", DeprecationWarning)
 
 
 class DefaultPrivileg(pulumi.CustomResource):
-    database: pulumi.Output[str]
-    """
-    The database to grant default privileges for this role
-    """
-    object_type: pulumi.Output[str]
-    """
-    The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)
-    """
-    owner: pulumi.Output[str]
-    """
-    Target role for which to alter default privileges.
-    """
-    privileges: pulumi.Output[list]
-    """
-    The list of privileges to apply as default privileges
-    """
-    role: pulumi.Output[str]
-    """
-    The name of the role to which grant default privileges on
-    """
-    schema: pulumi.Output[str]
-    """
-    The database schema to set default privileges for this role
-    """
     warnings.warn("postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges", DeprecationWarning)
 
-    def __init__(__self__, resource_name, opts=None, database=None, object_type=None, owner=None, privileges=None, role=None, schema=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 database: Optional[pulumi.Input[str]] = None,
+                 object_type: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
+                 privileges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a DefaultPrivileg resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -46,7 +35,7 @@ class DefaultPrivileg(pulumi.CustomResource):
         :param pulumi.Input[str] database: The database to grant default privileges for this role
         :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)
         :param pulumi.Input[str] owner: Target role for which to alter default privileges.
-        :param pulumi.Input[list] privileges: The list of privileges to apply as default privileges
+        :param pulumi.Input[List[pulumi.Input[str]]] privileges: The list of privileges to apply as default privileges
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on
         :param pulumi.Input[str] schema: The database schema to set default privileges for this role
         """
@@ -62,7 +51,7 @@ class DefaultPrivileg(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -93,18 +82,26 @@ class DefaultPrivileg(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, database=None, object_type=None, owner=None, privileges=None, role=None, schema=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            database: Optional[pulumi.Input[str]] = None,
+            object_type: Optional[pulumi.Input[str]] = None,
+            owner: Optional[pulumi.Input[str]] = None,
+            privileges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            role: Optional[pulumi.Input[str]] = None,
+            schema: Optional[pulumi.Input[str]] = None) -> 'DefaultPrivileg':
         """
         Get an existing DefaultPrivileg resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant default privileges for this role
         :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)
         :param pulumi.Input[str] owner: Target role for which to alter default privileges.
-        :param pulumi.Input[list] privileges: The list of privileges to apply as default privileges
+        :param pulumi.Input[List[pulumi.Input[str]]] privileges: The list of privileges to apply as default privileges
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on
         :param pulumi.Input[str] schema: The database schema to set default privileges for this role
         """
@@ -120,8 +117,57 @@ class DefaultPrivileg(pulumi.CustomResource):
         __props__["schema"] = schema
         return DefaultPrivileg(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        The database to grant default privileges for this role
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> str:
+        """
+        The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> str:
+        """
+        Target role for which to alter default privileges.
+        """
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter
+    def privileges(self) -> List[str]:
+        """
+        The list of privileges to apply as default privileges
+        """
+        return pulumi.get(self, "privileges")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The name of the role to which grant default privileges on
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        The database schema to set default privileges for this role
+        """
+        return pulumi.get(self, "schema")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

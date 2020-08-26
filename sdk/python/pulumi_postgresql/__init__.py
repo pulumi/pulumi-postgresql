@@ -11,3 +11,10 @@ from .grant import *
 from .provider import *
 from .role import *
 from .schema import *
+from ._inputs import *
+from . import outputs
+
+# Make subpackages available:
+from . import (
+    config,
+)

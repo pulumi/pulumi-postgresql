@@ -1,4 +1,10 @@
-[![Build Status](https://travis-ci.com/pulumi/pulumi-postgresql.svg?token=eHg7Zp5zdDDJfTjY8ejq&branch=master)](https://travis-ci.com/pulumi/pulumi-postgresql)
+[![Actions Status](https://github.com/pulumi/pulumi-postgresql/workflows/master/badge.svg)](https://github.com/pulumi/pulumi-postgresql/actions)
+[![Slack](http://www.pulumi.com/images/docs/badges/slack.svg)](https://slack.pulumi.com)
+[![NPM version](https://badge.fury.io/js/%40pulumi%2Fpostgresql.svg)](https://www.npmjs.com/package/@pulumi/postgresql)
+[![Python version](https://badge.fury.io/py/pulumi-postgresql.svg)](https://pypi.org/project/pulumi-postgresql)
+[![NuGet version](https://badge.fury.io/nu/pulumi.postgresql.svg)](https://badge.fury.io/nu/pulumi.postgresql)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-postgresql/sdk/v2/go)](https://pkg.go.dev/github.com/pulumi/pulumi-postgresql/sdk/v2/go)
+[![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-postgresql/blob/master/LICENSE)
 
 # postgresql Resource Provider
 

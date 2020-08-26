@@ -5,65 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Database']
 
 
 class Database(pulumi.CustomResource):
-    allow_connections: pulumi.Output[bool]
-    """
-    If `false` then no one can connect to this
-    database. The default is `true`, allowing connections (except as restricted by
-    other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
-    """
-    connection_limit: pulumi.Output[float]
-    """
-    How many concurrent connections can be
-    established to this database. `-1` (the default) means no limit.
-    """
-    encoding: pulumi.Output[str]
-    """
-    Character set encoding to use in the new database
-    """
-    is_template: pulumi.Output[bool]
-    """
-    If `true`, then this database can be cloned by any
-    user with `CREATEDB` privileges; if `false` (the default), then only
-    superusers or the owner of the database can clone it.
-    """
-    lc_collate: pulumi.Output[str]
-    """
-    Collation order (LC_COLLATE) to use in the new database
-    """
-    lc_ctype: pulumi.Output[str]
-    """
-    Character classification (LC_CTYPE) to use in the new database
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the database. Must be unique on the PostgreSQL
-    server instance where it is configured.
-    """
-    owner: pulumi.Output[str]
-    """
-    The role name of the user who will own the database, or
-    `DEFAULT` to use the default (namely, the user executing the command). To
-    create a database owned by another role or to change the owner of an existing
-    database, you must be a direct or indirect member of the specified role, or
-    the username in the provider is a superuser.
-    """
-    tablespace_name: pulumi.Output[str]
-    """
-    The name of the tablespace that will be
-    associated with the database, or `DEFAULT` to use the template database's
-    tablespace.  This tablespace will be the default tablespace used for objects
-    created in this database.
-    """
-    template: pulumi.Output[str]
-    """
-    The name of the template from which to create the new database
-    """
-    def __init__(__self__, resource_name, opts=None, allow_connections=None, connection_limit=None, encoding=None, is_template=None, lc_collate=None, lc_ctype=None, name=None, owner=None, tablespace_name=None, template=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_connections: Optional[pulumi.Input[bool]] = None,
+                 connection_limit: Optional[pulumi.Input[float]] = None,
+                 encoding: Optional[pulumi.Input[str]] = None,
+                 is_template: Optional[pulumi.Input[bool]] = None,
+                 lc_collate: Optional[pulumi.Input[str]] = None,
+                 lc_ctype: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
+                 tablespace_name: Optional[pulumi.Input[str]] = None,
+                 template: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a Database resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -103,7 +67,7 @@ class Database(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -126,13 +90,25 @@ class Database(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allow_connections=None, connection_limit=None, encoding=None, is_template=None, lc_collate=None, lc_ctype=None, name=None, owner=None, tablespace_name=None, template=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_connections: Optional[pulumi.Input[bool]] = None,
+            connection_limit: Optional[pulumi.Input[float]] = None,
+            encoding: Optional[pulumi.Input[str]] = None,
+            is_template: Optional[pulumi.Input[bool]] = None,
+            lc_collate: Optional[pulumi.Input[str]] = None,
+            lc_ctype: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            owner: Optional[pulumi.Input[str]] = None,
+            tablespace_name: Optional[pulumi.Input[str]] = None,
+            template: Optional[pulumi.Input[str]] = None) -> 'Database':
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_connections: If `false` then no one can connect to this
                database. The default is `true`, allowing connections (except as restricted by
@@ -174,8 +150,102 @@ class Database(pulumi.CustomResource):
         __props__["template"] = template
         return Database(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="allowConnections")
+    def allow_connections(self) -> Optional[bool]:
+        """
+        If `false` then no one can connect to this
+        database. The default is `true`, allowing connections (except as restricted by
+        other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
+        """
+        return pulumi.get(self, "allow_connections")
+
+    @property
+    @pulumi.getter(name="connectionLimit")
+    def connection_limit(self) -> Optional[float]:
+        """
+        How many concurrent connections can be
+        established to this database. `-1` (the default) means no limit.
+        """
+        return pulumi.get(self, "connection_limit")
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> str:
+        """
+        Character set encoding to use in the new database
+        """
+        return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter(name="isTemplate")
+    def is_template(self) -> bool:
+        """
+        If `true`, then this database can be cloned by any
+        user with `CREATEDB` privileges; if `false` (the default), then only
+        superusers or the owner of the database can clone it.
+        """
+        return pulumi.get(self, "is_template")
+
+    @property
+    @pulumi.getter(name="lcCollate")
+    def lc_collate(self) -> str:
+        """
+        Collation order (LC_COLLATE) to use in the new database
+        """
+        return pulumi.get(self, "lc_collate")
+
+    @property
+    @pulumi.getter(name="lcCtype")
+    def lc_ctype(self) -> str:
+        """
+        Character classification (LC_CTYPE) to use in the new database
+        """
+        return pulumi.get(self, "lc_ctype")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the database. Must be unique on the PostgreSQL
+        server instance where it is configured.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> str:
+        """
+        The role name of the user who will own the database, or
+        `DEFAULT` to use the default (namely, the user executing the command). To
+        create a database owned by another role or to change the owner of an existing
+        database, you must be a direct or indirect member of the specified role, or
+        the username in the provider is a superuser.
+        """
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="tablespaceName")
+    def tablespace_name(self) -> str:
+        """
+        The name of the tablespace that will be
+        associated with the database, or `DEFAULT` to use the template database's
+        tablespace.  This tablespace will be the default tablespace used for objects
+        created in this database.
+        """
+        return pulumi.get(self, "tablespace_name")
+
+    @property
+    @pulumi.getter
+    def template(self) -> str:
+        """
+        The name of the template from which to create the new database
+        """
+        return pulumi.get(self, "template")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
