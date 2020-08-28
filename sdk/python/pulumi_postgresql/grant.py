@@ -13,7 +13,7 @@ __all__ = ['Grant']
 
 class Grant(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  object_type: Optional[pulumi.Input[str]] = None,
@@ -129,7 +129,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def database(self) -> str:
+    def database(self) -> pulumi.Output[str]:
         """
         The database to grant privileges on for this role.
         """
@@ -137,7 +137,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="objectType")
-    def object_type(self) -> str:
+    def object_type(self) -> pulumi.Output[str]:
         """
         The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
         """
@@ -145,7 +145,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def privileges(self) -> List[str]:
+    def privileges(self) -> pulumi.Output[List[str]]:
         """
         The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
         """
@@ -153,7 +153,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The name of the role to grant privileges on.
         """
@@ -161,7 +161,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schema(self) -> Optional[str]:
+    def schema(self) -> pulumi.Output[Optional[str]]:
         """
         The database schema to grant privileges on for this role.
         """
@@ -169,7 +169,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="withGrantOption")
-    def with_grant_option(self) -> Optional[bool]:
+    def with_grant_option(self) -> pulumi.Output[Optional[bool]]:
         """
         Permit the grant recipient to grant it to others
         """

@@ -13,7 +13,7 @@ __all__ = ['Extension']
 
 class Extension(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -101,7 +101,7 @@ class Extension(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def database(self) -> str:
+    def database(self) -> pulumi.Output[str]:
         """
         Which database to create the extension on. Defaults to provider database.
         """
@@ -109,7 +109,7 @@ class Extension(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the extension.
         """
@@ -117,7 +117,7 @@ class Extension(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schema(self) -> str:
+    def schema(self) -> pulumi.Output[str]:
         """
         Sets the schema of an extension.
         """
@@ -125,7 +125,7 @@ class Extension(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> str:
+    def version(self) -> pulumi.Output[str]:
         """
         Sets the version number of the extension.
         """

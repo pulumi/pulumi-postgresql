@@ -13,7 +13,7 @@ __all__ = ['Role']
 
 class Role(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bypass_row_level_security: Optional[pulumi.Input[bool]] = None,
                  connection_limit: Optional[pulumi.Input[float]] = None,
@@ -251,7 +251,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bypassRowLevelSecurity")
-    def bypass_row_level_security(self) -> Optional[bool]:
+    def bypass_row_level_security(self) -> pulumi.Output[Optional[bool]]:
         """
         Defines whether a role bypasses every
         row-level security (RLS) policy.  Default value is `false`.
@@ -260,7 +260,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionLimit")
-    def connection_limit(self) -> Optional[float]:
+    def connection_limit(self) -> pulumi.Output[Optional[float]]:
         """
         If this role can log in, this specifies how
         many concurrent connections the role can establish. `-1` (the default) means no
@@ -270,7 +270,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createDatabase")
-    def create_database(self) -> Optional[bool]:
+    def create_database(self) -> pulumi.Output[Optional[bool]]:
         """
         Defines a role's ability to execute `CREATE
         DATABASE`.  Default value is `false`.
@@ -279,7 +279,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createRole")
-    def create_role(self) -> Optional[bool]:
+    def create_role(self) -> pulumi.Output[Optional[bool]]:
         """
         Defines a role's ability to execute `CREATE ROLE`.
         A role with this privilege can also alter and drop other roles.  Default value
@@ -289,12 +289,12 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def encrypted(self) -> Optional[str]:
+    def encrypted(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter(name="encryptedPassword")
-    def encrypted_password(self) -> Optional[bool]:
+    def encrypted_password(self) -> pulumi.Output[Optional[bool]]:
         """
         Defines whether the password is stored
         encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
@@ -306,7 +306,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def inherit(self) -> Optional[bool]:
+    def inherit(self) -> pulumi.Output[Optional[bool]]:
         """
         Defines whether a role "inherits" the privileges of
         roles it is a member of.  Default value is `true`.
@@ -315,7 +315,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def login(self) -> Optional[bool]:
+    def login(self) -> pulumi.Output[Optional[bool]]:
         """
         Defines whether role is allowed to log in.  Roles without
         this attribute are useful for managing database privileges, but are not users
@@ -325,7 +325,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the role. Must be unique on the PostgreSQL
         server instance where it is configured.
@@ -334,7 +334,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         """
         Sets the role's password. A password is only of use
         for roles having the `login` attribute set to true.
@@ -343,7 +343,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def replication(self) -> Optional[bool]:
+    def replication(self) -> pulumi.Output[Optional[bool]]:
         """
         Defines whether a role is allowed to initiate
         streaming replication or put the system in and out of backup mode.  Default
@@ -353,7 +353,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def roles(self) -> Optional[List[str]]:
+    def roles(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Defines list of roles which will be granted to this new role.
         """
@@ -361,7 +361,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="searchPaths")
-    def search_paths(self) -> Optional[List[str]]:
+    def search_paths(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Alters the search path of this new role. Note that
         due to limitations in the implementation, values cannot contain the substring
@@ -371,7 +371,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="skipDropRole")
-    def skip_drop_role(self) -> Optional[bool]:
+    def skip_drop_role(self) -> pulumi.Output[Optional[bool]]:
         """
         When a PostgreSQL ROLE exists in multiple
         databases and the ROLE is dropped, the
@@ -385,7 +385,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="skipReassignOwned")
-    def skip_reassign_owned(self) -> Optional[bool]:
+    def skip_reassign_owned(self) -> pulumi.Output[Optional[bool]]:
         """
         When a PostgreSQL ROLE exists in multiple
         databases and the ROLE is dropped, a
@@ -400,7 +400,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="statementTimeout")
-    def statement_timeout(self) -> Optional[float]:
+    def statement_timeout(self) -> pulumi.Output[Optional[float]]:
         """
         Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
         """
@@ -408,7 +408,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def superuser(self) -> Optional[bool]:
+    def superuser(self) -> pulumi.Output[Optional[bool]]:
         """
         Defines whether the role is a "superuser", and
         therefore can override all access restrictions within the database.  Default
@@ -418,7 +418,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validUntil")
-    def valid_until(self) -> Optional[str]:
+    def valid_until(self) -> pulumi.Output[Optional[str]]:
         """
         Defines the date and time after which the role's
         password is no longer valid.  Established connections past this `valid_time`
