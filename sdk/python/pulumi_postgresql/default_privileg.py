@@ -17,7 +17,7 @@ class DefaultPrivileg(pulumi.CustomResource):
     warnings.warn("postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges", DeprecationWarning)
 
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  object_type: Optional[pulumi.Input[str]] = None,
@@ -119,7 +119,7 @@ class DefaultPrivileg(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def database(self) -> str:
+    def database(self) -> pulumi.Output[str]:
         """
         The database to grant default privileges for this role
         """
@@ -127,7 +127,7 @@ class DefaultPrivileg(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="objectType")
-    def object_type(self) -> str:
+    def object_type(self) -> pulumi.Output[str]:
         """
         The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)
         """
@@ -135,7 +135,7 @@ class DefaultPrivileg(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def owner(self) -> str:
+    def owner(self) -> pulumi.Output[str]:
         """
         Target role for which to alter default privileges.
         """
@@ -143,7 +143,7 @@ class DefaultPrivileg(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def privileges(self) -> List[str]:
+    def privileges(self) -> pulumi.Output[List[str]]:
         """
         The list of privileges to apply as default privileges
         """
@@ -151,7 +151,7 @@ class DefaultPrivileg(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> str:
+    def role(self) -> pulumi.Output[str]:
         """
         The name of the role to which grant default privileges on
         """
@@ -159,7 +159,7 @@ class DefaultPrivileg(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schema(self) -> str:
+    def schema(self) -> pulumi.Output[str]:
         """
         The database schema to set default privileges for this role
         """

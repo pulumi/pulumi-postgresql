@@ -13,7 +13,7 @@ __all__ = ['Database']
 
 class Database(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_connections: Optional[pulumi.Input[bool]] = None,
                  connection_limit: Optional[pulumi.Input[float]] = None,
@@ -152,7 +152,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowConnections")
-    def allow_connections(self) -> Optional[bool]:
+    def allow_connections(self) -> pulumi.Output[Optional[bool]]:
         """
         If `false` then no one can connect to this
         database. The default is `true`, allowing connections (except as restricted by
@@ -162,7 +162,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionLimit")
-    def connection_limit(self) -> Optional[float]:
+    def connection_limit(self) -> pulumi.Output[Optional[float]]:
         """
         How many concurrent connections can be
         established to this database. `-1` (the default) means no limit.
@@ -171,7 +171,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def encoding(self) -> str:
+    def encoding(self) -> pulumi.Output[str]:
         """
         Character set encoding to use in the new database
         """
@@ -179,7 +179,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isTemplate")
-    def is_template(self) -> bool:
+    def is_template(self) -> pulumi.Output[bool]:
         """
         If `true`, then this database can be cloned by any
         user with `CREATEDB` privileges; if `false` (the default), then only
@@ -189,7 +189,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lcCollate")
-    def lc_collate(self) -> str:
+    def lc_collate(self) -> pulumi.Output[str]:
         """
         Collation order (LC_COLLATE) to use in the new database
         """
@@ -197,7 +197,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lcCtype")
-    def lc_ctype(self) -> str:
+    def lc_ctype(self) -> pulumi.Output[str]:
         """
         Character classification (LC_CTYPE) to use in the new database
         """
@@ -205,7 +205,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the database. Must be unique on the PostgreSQL
         server instance where it is configured.
@@ -214,7 +214,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def owner(self) -> str:
+    def owner(self) -> pulumi.Output[str]:
         """
         The role name of the user who will own the database, or
         `DEFAULT` to use the default (namely, the user executing the command). To
@@ -226,7 +226,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tablespaceName")
-    def tablespace_name(self) -> str:
+    def tablespace_name(self) -> pulumi.Output[str]:
         """
         The name of the tablespace that will be
         associated with the database, or `DEFAULT` to use the template database's
@@ -237,7 +237,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def template(self) -> str:
+    def template(self) -> pulumi.Output[str]:
         """
         The name of the template from which to create the new database
         """

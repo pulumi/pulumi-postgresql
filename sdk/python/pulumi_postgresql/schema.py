@@ -15,7 +15,7 @@ __all__ = ['Schema']
 
 class Schema(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
@@ -108,7 +108,7 @@ class Schema(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def database(self) -> str:
+    def database(self) -> pulumi.Output[str]:
         """
         The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
         """
@@ -116,7 +116,7 @@ class Schema(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dropCascade")
-    def drop_cascade(self) -> Optional[bool]:
+    def drop_cascade(self) -> pulumi.Output[Optional[bool]]:
         """
         When true, will also drop all the objects that are contained in the schema. (Default: false)
         """
@@ -124,7 +124,7 @@ class Schema(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ifNotExists")
-    def if_not_exists(self) -> Optional[bool]:
+    def if_not_exists(self) -> pulumi.Output[Optional[bool]]:
         """
         When true, use the existing schema if it exists. (Default: true)
         """
@@ -132,7 +132,7 @@ class Schema(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the schema. Must be unique in the PostgreSQL
         database instance where it is configured.
@@ -141,7 +141,7 @@ class Schema(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def owner(self) -> str:
+    def owner(self) -> pulumi.Output[str]:
         """
         The ROLE who owns the schema.
         """
@@ -149,7 +149,7 @@ class Schema(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policies(self) -> List['outputs.SchemaPolicy']:
+    def policies(self) -> pulumi.Output[List['outputs.SchemaPolicy']]:
         """
         Can be specified multiple times for each policy.  Each
         policy block supports fields documented below.
