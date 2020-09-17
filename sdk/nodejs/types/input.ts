@@ -34,4 +34,3 @@ export interface SchemaPolicy {
 }
 export namespace config {
 }
-
