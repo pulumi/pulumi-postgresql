@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Grant']
@@ -17,7 +17,7 @@ class Grant(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  object_type: Optional[pulumi.Input[str]] = None,
-                 privileges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  with_grant_option: Optional[pulumi.Input[bool]] = None,
@@ -49,7 +49,7 @@ class Grant(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant privileges on for this role.
         :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
-        :param pulumi.Input[List[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
         :param pulumi.Input[str] role: The name of the role to grant privileges on.
         :param pulumi.Input[str] schema: The database schema to grant privileges on for this role.
         :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
@@ -97,7 +97,7 @@ class Grant(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             database: Optional[pulumi.Input[str]] = None,
             object_type: Optional[pulumi.Input[str]] = None,
-            privileges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             role: Optional[pulumi.Input[str]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             with_grant_option: Optional[pulumi.Input[bool]] = None) -> 'Grant':
@@ -110,7 +110,7 @@ class Grant(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant privileges on for this role.
         :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
-        :param pulumi.Input[List[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
         :param pulumi.Input[str] role: The name of the role to grant privileges on.
         :param pulumi.Input[str] schema: The database schema to grant privileges on for this role.
         :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
@@ -145,7 +145,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def privileges(self) -> pulumi.Output[List[str]]:
+    def privileges(self) -> pulumi.Output[Sequence[str]]:
         """
         The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
         """

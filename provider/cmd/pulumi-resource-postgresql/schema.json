@@ -112,56 +112,6 @@
         }
     },
     "types": {
-        "postgresql:/SchemaPolicy:SchemaPolicy": {
-            "properties": {
-                "create": {
-                    "type": "boolean",
-                    "description": "Should the specified ROLE have CREATE privileges to the specified SCHEMA.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "createWithGrant": {
-                    "type": "boolean",
-                    "description": "Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "role": {
-                    "type": "string",
-                    "description": "The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "usage": {
-                    "type": "boolean",
-                    "description": "Should the specified ROLE have USAGE privileges to the specified SCHEMA.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "usageWithGrant": {
-                    "type": "boolean",
-                    "description": "Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object"
-        },
         "postgresql:config/clientcert:clientcert": {
             "properties": {
                 "cert": {
@@ -211,6 +161,56 @@
                     "requiredOutputs": []
                 }
             }
+        },
+        "postgresql:index/SchemaPolicy:SchemaPolicy": {
+            "properties": {
+                "create": {
+                    "type": "boolean",
+                    "description": "Should the specified ROLE have CREATE privileges to the specified SCHEMA.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createWithGrant": {
+                    "type": "boolean",
+                    "description": "Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usage": {
+                    "type": "boolean",
+                    "description": "Should the specified ROLE have USAGE privileges to the specified SCHEMA.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usageWithGrant": {
+                    "type": "boolean",
+                    "description": "Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         }
     },
     "provider": {
@@ -1128,7 +1128,7 @@
                 "policies": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/postgresql:/SchemaPolicy:SchemaPolicy"
+                        "$ref": "#/types/postgresql:index/SchemaPolicy:SchemaPolicy"
                     },
                     "description": "Can be specified multiple times for each policy.  Each\npolicy block supports fields documented below.\n"
                 }
@@ -1163,7 +1163,7 @@
                 "policies": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/postgresql:/SchemaPolicy:SchemaPolicy"
+                        "$ref": "#/types/postgresql:index/SchemaPolicy:SchemaPolicy"
                     },
                     "description": "Can be specified multiple times for each policy.  Each\npolicy block supports fields documented below.\n"
                 }
@@ -1194,7 +1194,7 @@
                     "policies": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/postgresql:/SchemaPolicy:SchemaPolicy"
+                            "$ref": "#/types/postgresql:index/SchemaPolicy:SchemaPolicy"
                         },
                         "description": "Can be specified multiple times for each policy.  Each\npolicy block supports fields documented below.\n"
                     }

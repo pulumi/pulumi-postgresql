@@ -10,139 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-type SchemaPolicy struct {
-	// Should the specified ROLE have CREATE privileges to the specified SCHEMA.
-	Create *bool `pulumi:"create"`
-	// Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
-	CreateWithGrant *bool `pulumi:"createWithGrant"`
-	// The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
-	Role *string `pulumi:"role"`
-	// Should the specified ROLE have USAGE privileges to the specified SCHEMA.
-	Usage *bool `pulumi:"usage"`
-	// Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
-	UsageWithGrant *bool `pulumi:"usageWithGrant"`
-}
-
-// SchemaPolicyInput is an input type that accepts SchemaPolicyArgs and SchemaPolicyOutput values.
-// You can construct a concrete instance of `SchemaPolicyInput` via:
-//
-//          SchemaPolicyArgs{...}
-type SchemaPolicyInput interface {
-	pulumi.Input
-
-	ToSchemaPolicyOutput() SchemaPolicyOutput
-	ToSchemaPolicyOutputWithContext(context.Context) SchemaPolicyOutput
-}
-
-type SchemaPolicyArgs struct {
-	// Should the specified ROLE have CREATE privileges to the specified SCHEMA.
-	Create pulumi.BoolPtrInput `pulumi:"create"`
-	// Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
-	CreateWithGrant pulumi.BoolPtrInput `pulumi:"createWithGrant"`
-	// The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
-	Role pulumi.StringPtrInput `pulumi:"role"`
-	// Should the specified ROLE have USAGE privileges to the specified SCHEMA.
-	Usage pulumi.BoolPtrInput `pulumi:"usage"`
-	// Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
-	UsageWithGrant pulumi.BoolPtrInput `pulumi:"usageWithGrant"`
-}
-
-func (SchemaPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchemaPolicy)(nil)).Elem()
-}
-
-func (i SchemaPolicyArgs) ToSchemaPolicyOutput() SchemaPolicyOutput {
-	return i.ToSchemaPolicyOutputWithContext(context.Background())
-}
-
-func (i SchemaPolicyArgs) ToSchemaPolicyOutputWithContext(ctx context.Context) SchemaPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaPolicyOutput)
-}
-
-// SchemaPolicyArrayInput is an input type that accepts SchemaPolicyArray and SchemaPolicyArrayOutput values.
-// You can construct a concrete instance of `SchemaPolicyArrayInput` via:
-//
-//          SchemaPolicyArray{ SchemaPolicyArgs{...} }
-type SchemaPolicyArrayInput interface {
-	pulumi.Input
-
-	ToSchemaPolicyArrayOutput() SchemaPolicyArrayOutput
-	ToSchemaPolicyArrayOutputWithContext(context.Context) SchemaPolicyArrayOutput
-}
-
-type SchemaPolicyArray []SchemaPolicyInput
-
-func (SchemaPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SchemaPolicy)(nil)).Elem()
-}
-
-func (i SchemaPolicyArray) ToSchemaPolicyArrayOutput() SchemaPolicyArrayOutput {
-	return i.ToSchemaPolicyArrayOutputWithContext(context.Background())
-}
-
-func (i SchemaPolicyArray) ToSchemaPolicyArrayOutputWithContext(ctx context.Context) SchemaPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaPolicyArrayOutput)
-}
-
-type SchemaPolicyOutput struct{ *pulumi.OutputState }
-
-func (SchemaPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchemaPolicy)(nil)).Elem()
-}
-
-func (o SchemaPolicyOutput) ToSchemaPolicyOutput() SchemaPolicyOutput {
-	return o
-}
-
-func (o SchemaPolicyOutput) ToSchemaPolicyOutputWithContext(ctx context.Context) SchemaPolicyOutput {
-	return o
-}
-
-// Should the specified ROLE have CREATE privileges to the specified SCHEMA.
-func (o SchemaPolicyOutput) Create() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SchemaPolicy) *bool { return v.Create }).(pulumi.BoolPtrOutput)
-}
-
-// Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
-func (o SchemaPolicyOutput) CreateWithGrant() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SchemaPolicy) *bool { return v.CreateWithGrant }).(pulumi.BoolPtrOutput)
-}
-
-// The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
-func (o SchemaPolicyOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SchemaPolicy) *string { return v.Role }).(pulumi.StringPtrOutput)
-}
-
-// Should the specified ROLE have USAGE privileges to the specified SCHEMA.
-func (o SchemaPolicyOutput) Usage() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SchemaPolicy) *bool { return v.Usage }).(pulumi.BoolPtrOutput)
-}
-
-// Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
-func (o SchemaPolicyOutput) UsageWithGrant() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SchemaPolicy) *bool { return v.UsageWithGrant }).(pulumi.BoolPtrOutput)
-}
-
-type SchemaPolicyArrayOutput struct{ *pulumi.OutputState }
-
-func (SchemaPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SchemaPolicy)(nil)).Elem()
-}
-
-func (o SchemaPolicyArrayOutput) ToSchemaPolicyArrayOutput() SchemaPolicyArrayOutput {
-	return o
-}
-
-func (o SchemaPolicyArrayOutput) ToSchemaPolicyArrayOutputWithContext(ctx context.Context) SchemaPolicyArrayOutput {
-	return o
-}
-
-func (o SchemaPolicyArrayOutput) Index(i pulumi.IntInput) SchemaPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SchemaPolicy {
-		return vs[0].([]SchemaPolicy)[vs[1].(int)]
-	}).(SchemaPolicyOutput)
-}
-
 type ProviderClientcert struct {
 	Cert string `pulumi:"cert"`
 	Key  string `pulumi:"key"`
@@ -284,9 +151,142 @@ func (o ProviderClientcertPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SchemaPolicy struct {
+	// Should the specified ROLE have CREATE privileges to the specified SCHEMA.
+	Create *bool `pulumi:"create"`
+	// Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
+	CreateWithGrant *bool `pulumi:"createWithGrant"`
+	// The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
+	Role *string `pulumi:"role"`
+	// Should the specified ROLE have USAGE privileges to the specified SCHEMA.
+	Usage *bool `pulumi:"usage"`
+	// Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
+	UsageWithGrant *bool `pulumi:"usageWithGrant"`
+}
+
+// SchemaPolicyInput is an input type that accepts SchemaPolicyArgs and SchemaPolicyOutput values.
+// You can construct a concrete instance of `SchemaPolicyInput` via:
+//
+//          SchemaPolicyArgs{...}
+type SchemaPolicyInput interface {
+	pulumi.Input
+
+	ToSchemaPolicyOutput() SchemaPolicyOutput
+	ToSchemaPolicyOutputWithContext(context.Context) SchemaPolicyOutput
+}
+
+type SchemaPolicyArgs struct {
+	// Should the specified ROLE have CREATE privileges to the specified SCHEMA.
+	Create pulumi.BoolPtrInput `pulumi:"create"`
+	// Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
+	CreateWithGrant pulumi.BoolPtrInput `pulumi:"createWithGrant"`
+	// The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
+	Role pulumi.StringPtrInput `pulumi:"role"`
+	// Should the specified ROLE have USAGE privileges to the specified SCHEMA.
+	Usage pulumi.BoolPtrInput `pulumi:"usage"`
+	// Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
+	UsageWithGrant pulumi.BoolPtrInput `pulumi:"usageWithGrant"`
+}
+
+func (SchemaPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaPolicy)(nil)).Elem()
+}
+
+func (i SchemaPolicyArgs) ToSchemaPolicyOutput() SchemaPolicyOutput {
+	return i.ToSchemaPolicyOutputWithContext(context.Background())
+}
+
+func (i SchemaPolicyArgs) ToSchemaPolicyOutputWithContext(ctx context.Context) SchemaPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaPolicyOutput)
+}
+
+// SchemaPolicyArrayInput is an input type that accepts SchemaPolicyArray and SchemaPolicyArrayOutput values.
+// You can construct a concrete instance of `SchemaPolicyArrayInput` via:
+//
+//          SchemaPolicyArray{ SchemaPolicyArgs{...} }
+type SchemaPolicyArrayInput interface {
+	pulumi.Input
+
+	ToSchemaPolicyArrayOutput() SchemaPolicyArrayOutput
+	ToSchemaPolicyArrayOutputWithContext(context.Context) SchemaPolicyArrayOutput
+}
+
+type SchemaPolicyArray []SchemaPolicyInput
+
+func (SchemaPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SchemaPolicy)(nil)).Elem()
+}
+
+func (i SchemaPolicyArray) ToSchemaPolicyArrayOutput() SchemaPolicyArrayOutput {
+	return i.ToSchemaPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i SchemaPolicyArray) ToSchemaPolicyArrayOutputWithContext(ctx context.Context) SchemaPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaPolicyArrayOutput)
+}
+
+type SchemaPolicyOutput struct{ *pulumi.OutputState }
+
+func (SchemaPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaPolicy)(nil)).Elem()
+}
+
+func (o SchemaPolicyOutput) ToSchemaPolicyOutput() SchemaPolicyOutput {
+	return o
+}
+
+func (o SchemaPolicyOutput) ToSchemaPolicyOutputWithContext(ctx context.Context) SchemaPolicyOutput {
+	return o
+}
+
+// Should the specified ROLE have CREATE privileges to the specified SCHEMA.
+func (o SchemaPolicyOutput) Create() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SchemaPolicy) *bool { return v.Create }).(pulumi.BoolPtrOutput)
+}
+
+// Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
+func (o SchemaPolicyOutput) CreateWithGrant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SchemaPolicy) *bool { return v.CreateWithGrant }).(pulumi.BoolPtrOutput)
+}
+
+// The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
+func (o SchemaPolicyOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaPolicy) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// Should the specified ROLE have USAGE privileges to the specified SCHEMA.
+func (o SchemaPolicyOutput) Usage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SchemaPolicy) *bool { return v.Usage }).(pulumi.BoolPtrOutput)
+}
+
+// Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
+func (o SchemaPolicyOutput) UsageWithGrant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SchemaPolicy) *bool { return v.UsageWithGrant }).(pulumi.BoolPtrOutput)
+}
+
+type SchemaPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (SchemaPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SchemaPolicy)(nil)).Elem()
+}
+
+func (o SchemaPolicyArrayOutput) ToSchemaPolicyArrayOutput() SchemaPolicyArrayOutput {
+	return o
+}
+
+func (o SchemaPolicyArrayOutput) ToSchemaPolicyArrayOutputWithContext(ctx context.Context) SchemaPolicyArrayOutput {
+	return o
+}
+
+func (o SchemaPolicyArrayOutput) Index(i pulumi.IntInput) SchemaPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SchemaPolicy {
+		return vs[0].([]SchemaPolicy)[vs[1].(int)]
+	}).(SchemaPolicyOutput)
+}
+
 func init() {
-	pulumi.RegisterOutputType(SchemaPolicyOutput{})
-	pulumi.RegisterOutputType(SchemaPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ProviderClientcertOutput{})
 	pulumi.RegisterOutputType(ProviderClientcertPtrOutput{})
+	pulumi.RegisterOutputType(SchemaPolicyOutput{})
+	pulumi.RegisterOutputType(SchemaPolicyArrayOutput{})
 }

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['DefaultPrivileg']
@@ -22,7 +22,7 @@ class DefaultPrivileg(pulumi.CustomResource):
                  database: Optional[pulumi.Input[str]] = None,
                  object_type: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 privileges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -35,7 +35,7 @@ class DefaultPrivileg(pulumi.CustomResource):
         :param pulumi.Input[str] database: The database to grant default privileges for this role
         :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)
         :param pulumi.Input[str] owner: Target role for which to alter default privileges.
-        :param pulumi.Input[List[pulumi.Input[str]]] privileges: The list of privileges to apply as default privileges
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to apply as default privileges
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on
         :param pulumi.Input[str] schema: The database schema to set default privileges for this role
         """
@@ -88,7 +88,7 @@ class DefaultPrivileg(pulumi.CustomResource):
             database: Optional[pulumi.Input[str]] = None,
             object_type: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
-            privileges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             role: Optional[pulumi.Input[str]] = None,
             schema: Optional[pulumi.Input[str]] = None) -> 'DefaultPrivileg':
         """
@@ -101,7 +101,7 @@ class DefaultPrivileg(pulumi.CustomResource):
         :param pulumi.Input[str] database: The database to grant default privileges for this role
         :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)
         :param pulumi.Input[str] owner: Target role for which to alter default privileges.
-        :param pulumi.Input[List[pulumi.Input[str]]] privileges: The list of privileges to apply as default privileges
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to apply as default privileges
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on
         :param pulumi.Input[str] schema: The database schema to set default privileges for this role
         """
@@ -143,7 +143,7 @@ class DefaultPrivileg(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def privileges(self) -> pulumi.Output[List[str]]:
+    def privileges(self) -> pulumi.Output[Sequence[str]]:
         """
         The list of privileges to apply as default privileges
         """
