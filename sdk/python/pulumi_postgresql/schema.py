@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -22,7 +22,7 @@ class Schema(pulumi.CustomResource):
                  if_not_exists: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SchemaPolicyArgs']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchemaPolicyArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -36,7 +36,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the schema. Must be unique in the PostgreSQL
                database instance where it is configured.
         :param pulumi.Input[str] owner: The ROLE who owns the schema.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SchemaPolicyArgs']]]] policies: Can be specified multiple times for each policy.  Each
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchemaPolicyArgs']]]] policies: Can be specified multiple times for each policy.  Each
                policy block supports fields documented below.
         """
         if __name__ is not None:
@@ -77,7 +77,7 @@ class Schema(pulumi.CustomResource):
             if_not_exists: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
-            policies: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SchemaPolicyArgs']]]]] = None) -> 'Schema':
+            policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchemaPolicyArgs']]]]] = None) -> 'Schema':
         """
         Get an existing Schema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -91,7 +91,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the schema. Must be unique in the PostgreSQL
                database instance where it is configured.
         :param pulumi.Input[str] owner: The ROLE who owns the schema.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SchemaPolicyArgs']]]] policies: Can be specified multiple times for each policy.  Each
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchemaPolicyArgs']]]] policies: Can be specified multiple times for each policy.  Each
                policy block supports fields documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -149,7 +149,7 @@ class Schema(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policies(self) -> pulumi.Output[List['outputs.SchemaPolicy']]:
+    def policies(self) -> pulumi.Output[Sequence['outputs.SchemaPolicy']]:
         """
         Can be specified multiple times for each policy.  Each
         policy block supports fields documented below.

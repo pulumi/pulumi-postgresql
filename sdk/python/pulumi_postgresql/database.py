@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Database']
@@ -16,7 +16,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_connections: Optional[pulumi.Input[bool]] = None,
-                 connection_limit: Optional[pulumi.Input[float]] = None,
+                 connection_limit: Optional[pulumi.Input[int]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  is_template: Optional[pulumi.Input[bool]] = None,
                  lc_collate: Optional[pulumi.Input[str]] = None,
@@ -35,7 +35,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_connections: If `false` then no one can connect to this
                database. The default is `true`, allowing connections (except as restricted by
                other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
-        :param pulumi.Input[float] connection_limit: How many concurrent connections can be
+        :param pulumi.Input[int] connection_limit: How many concurrent connections can be
                established to this database. `-1` (the default) means no limit.
         :param pulumi.Input[str] encoding: Character set encoding to use in the new database
         :param pulumi.Input[bool] is_template: If `true`, then this database can be cloned by any
@@ -94,7 +94,7 @@ class Database(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_connections: Optional[pulumi.Input[bool]] = None,
-            connection_limit: Optional[pulumi.Input[float]] = None,
+            connection_limit: Optional[pulumi.Input[int]] = None,
             encoding: Optional[pulumi.Input[str]] = None,
             is_template: Optional[pulumi.Input[bool]] = None,
             lc_collate: Optional[pulumi.Input[str]] = None,
@@ -113,7 +113,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_connections: If `false` then no one can connect to this
                database. The default is `true`, allowing connections (except as restricted by
                other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
-        :param pulumi.Input[float] connection_limit: How many concurrent connections can be
+        :param pulumi.Input[int] connection_limit: How many concurrent connections can be
                established to this database. `-1` (the default) means no limit.
         :param pulumi.Input[str] encoding: Character set encoding to use in the new database
         :param pulumi.Input[bool] is_template: If `true`, then this database can be cloned by any
@@ -162,7 +162,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionLimit")
-    def connection_limit(self) -> pulumi.Output[Optional[float]]:
+    def connection_limit(self) -> pulumi.Output[Optional[int]]:
         """
         How many concurrent connections can be
         established to this database. `-1` (the default) means no limit.

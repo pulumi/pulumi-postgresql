@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Role']
@@ -16,7 +16,7 @@ class Role(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bypass_row_level_security: Optional[pulumi.Input[bool]] = None,
-                 connection_limit: Optional[pulumi.Input[float]] = None,
+                 connection_limit: Optional[pulumi.Input[int]] = None,
                  create_database: Optional[pulumi.Input[bool]] = None,
                  create_role: Optional[pulumi.Input[bool]] = None,
                  encrypted: Optional[pulumi.Input[str]] = None,
@@ -26,11 +26,11 @@ class Role(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  replication: Optional[pulumi.Input[bool]] = None,
-                 roles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 search_paths: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 search_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  skip_drop_role: Optional[pulumi.Input[bool]] = None,
                  skip_reassign_owned: Optional[pulumi.Input[bool]] = None,
-                 statement_timeout: Optional[pulumi.Input[float]] = None,
+                 statement_timeout: Optional[pulumi.Input[int]] = None,
                  superuser: Optional[pulumi.Input[bool]] = None,
                  valid_until: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -42,7 +42,7 @@ class Role(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] bypass_row_level_security: Defines whether a role bypasses every
                row-level security (RLS) policy.  Default value is `false`.
-        :param pulumi.Input[float] connection_limit: If this role can log in, this specifies how
+        :param pulumi.Input[int] connection_limit: If this role can log in, this specifies how
                many concurrent connections the role can establish. `-1` (the default) means no
                limit.
         :param pulumi.Input[bool] create_database: Defines a role's ability to execute `CREATE
@@ -67,8 +67,8 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[bool] replication: Defines whether a role is allowed to initiate
                streaming replication or put the system in and out of backup mode.  Default
                value is `false`
-        :param pulumi.Input[List[pulumi.Input[str]]] roles: Defines list of roles which will be granted to this new role.
-        :param pulumi.Input[List[pulumi.Input[str]]] search_paths: Alters the search path of this new role. Note that
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Defines list of roles which will be granted to this new role.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] search_paths: Alters the search path of this new role. Note that
                due to limitations in the implementation, values cannot contain the substring
                `", "`.
         :param pulumi.Input[bool] skip_drop_role: When a PostgreSQL ROLE exists in multiple
@@ -86,7 +86,7 @@ class Role(pulumi.CustomResource):
                second steps taken when removing a ROLE from a database (the second step being
                an implicit
                [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
-        :param pulumi.Input[float] statement_timeout: Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+        :param pulumi.Input[int] statement_timeout: Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
         :param pulumi.Input[bool] superuser: Defines whether the role is a "superuser", and
                therefore can override all access restrictions within the database.  Default
                value is `false`.
@@ -145,7 +145,7 @@ class Role(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bypass_row_level_security: Optional[pulumi.Input[bool]] = None,
-            connection_limit: Optional[pulumi.Input[float]] = None,
+            connection_limit: Optional[pulumi.Input[int]] = None,
             create_database: Optional[pulumi.Input[bool]] = None,
             create_role: Optional[pulumi.Input[bool]] = None,
             encrypted: Optional[pulumi.Input[str]] = None,
@@ -155,11 +155,11 @@ class Role(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             replication: Optional[pulumi.Input[bool]] = None,
-            roles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            search_paths: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            search_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             skip_drop_role: Optional[pulumi.Input[bool]] = None,
             skip_reassign_owned: Optional[pulumi.Input[bool]] = None,
-            statement_timeout: Optional[pulumi.Input[float]] = None,
+            statement_timeout: Optional[pulumi.Input[int]] = None,
             superuser: Optional[pulumi.Input[bool]] = None,
             valid_until: Optional[pulumi.Input[str]] = None) -> 'Role':
         """
@@ -171,7 +171,7 @@ class Role(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] bypass_row_level_security: Defines whether a role bypasses every
                row-level security (RLS) policy.  Default value is `false`.
-        :param pulumi.Input[float] connection_limit: If this role can log in, this specifies how
+        :param pulumi.Input[int] connection_limit: If this role can log in, this specifies how
                many concurrent connections the role can establish. `-1` (the default) means no
                limit.
         :param pulumi.Input[bool] create_database: Defines a role's ability to execute `CREATE
@@ -196,8 +196,8 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[bool] replication: Defines whether a role is allowed to initiate
                streaming replication or put the system in and out of backup mode.  Default
                value is `false`
-        :param pulumi.Input[List[pulumi.Input[str]]] roles: Defines list of roles which will be granted to this new role.
-        :param pulumi.Input[List[pulumi.Input[str]]] search_paths: Alters the search path of this new role. Note that
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Defines list of roles which will be granted to this new role.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] search_paths: Alters the search path of this new role. Note that
                due to limitations in the implementation, values cannot contain the substring
                `", "`.
         :param pulumi.Input[bool] skip_drop_role: When a PostgreSQL ROLE exists in multiple
@@ -215,7 +215,7 @@ class Role(pulumi.CustomResource):
                second steps taken when removing a ROLE from a database (the second step being
                an implicit
                [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
-        :param pulumi.Input[float] statement_timeout: Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+        :param pulumi.Input[int] statement_timeout: Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
         :param pulumi.Input[bool] superuser: Defines whether the role is a "superuser", and
                therefore can override all access restrictions within the database.  Default
                value is `false`.
@@ -260,7 +260,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionLimit")
-    def connection_limit(self) -> pulumi.Output[Optional[float]]:
+    def connection_limit(self) -> pulumi.Output[Optional[int]]:
         """
         If this role can log in, this specifies how
         many concurrent connections the role can establish. `-1` (the default) means no
@@ -353,7 +353,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def roles(self) -> pulumi.Output[Optional[List[str]]]:
+    def roles(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Defines list of roles which will be granted to this new role.
         """
@@ -361,7 +361,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="searchPaths")
-    def search_paths(self) -> pulumi.Output[Optional[List[str]]]:
+    def search_paths(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Alters the search path of this new role. Note that
         due to limitations in the implementation, values cannot contain the substring
@@ -400,7 +400,7 @@ class Role(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="statementTimeout")
-    def statement_timeout(self) -> pulumi.Output[Optional[float]]:
+    def statement_timeout(self) -> pulumi.Output[Optional[int]]:
         """
         Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
         """

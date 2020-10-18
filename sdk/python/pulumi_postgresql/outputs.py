@@ -5,13 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
-    'SchemaPolicy',
     'ProviderClientcert',
+    'SchemaPolicy',
 ]
+
+@pulumi.output_type
+class ProviderClientcert(dict):
+    def __init__(__self__, *,
+                 cert: str,
+                 key: str):
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def cert(self) -> str:
+        return pulumi.get(self, "cert")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class SchemaPolicy(dict):
@@ -78,28 +100,6 @@ class SchemaPolicy(dict):
         Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
         """
         return pulumi.get(self, "usage_with_grant")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-
-@pulumi.output_type
-class ProviderClientcert(dict):
-    def __init__(__self__, *,
-                 cert: str,
-                 key: str):
-        pulumi.set(__self__, "cert", cert)
-        pulumi.set(__self__, "key", key)
-
-    @property
-    @pulumi.getter
-    def cert(self) -> str:
-        return pulumi.get(self, "cert")
-
-    @property
-    @pulumi.getter
-    def key(self) -> str:
-        return pulumi.get(self, "key")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

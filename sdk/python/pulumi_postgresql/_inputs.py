@@ -5,13 +5,40 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
-    'SchemaPolicyArgs',
     'ProviderClientcertArgs',
+    'SchemaPolicyArgs',
 ]
+
+@pulumi.input_type
+class ProviderClientcertArgs:
+    def __init__(__self__, *,
+                 cert: pulumi.Input[str],
+                 key: pulumi.Input[str]):
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def cert(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cert")
+
+    @cert.setter
+    def cert(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cert", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
 
 @pulumi.input_type
 class SchemaPolicyArgs:
@@ -98,32 +125,5 @@ class SchemaPolicyArgs:
     @usage_with_grant.setter
     def usage_with_grant(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "usage_with_grant", value)
-
-
-@pulumi.input_type
-class ProviderClientcertArgs:
-    def __init__(__self__, *,
-                 cert: pulumi.Input[str],
-                 key: pulumi.Input[str]):
-        pulumi.set(__self__, "cert", cert)
-        pulumi.set(__self__, "key", key)
-
-    @property
-    @pulumi.getter
-    def cert(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "cert")
-
-    @cert.setter
-    def cert(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cert", value)
-
-    @property
-    @pulumi.getter
-    def key(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: pulumi.Input[str]):
-        pulumi.set(self, "key", value)
 
 
