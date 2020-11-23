@@ -4,6 +4,7 @@
 package postgresql
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -130,4 +131,43 @@ type SchemaArgs struct {
 
 func (SchemaArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*schemaArgs)(nil)).Elem()
+}
+
+type SchemaInput interface {
+	pulumi.Input
+
+	ToSchemaOutput() SchemaOutput
+	ToSchemaOutputWithContext(ctx context.Context) SchemaOutput
+}
+
+func (Schema) ElementType() reflect.Type {
+	return reflect.TypeOf((*Schema)(nil)).Elem()
+}
+
+func (i Schema) ToSchemaOutput() SchemaOutput {
+	return i.ToSchemaOutputWithContext(context.Background())
+}
+
+func (i Schema) ToSchemaOutputWithContext(ctx context.Context) SchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaOutput)
+}
+
+type SchemaOutput struct {
+	*pulumi.OutputState
+}
+
+func (SchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaOutput)(nil)).Elem()
+}
+
+func (o SchemaOutput) ToSchemaOutput() SchemaOutput {
+	return o
+}
+
+func (o SchemaOutput) ToSchemaOutputWithContext(ctx context.Context) SchemaOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SchemaOutput{})
 }

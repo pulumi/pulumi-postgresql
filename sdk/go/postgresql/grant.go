@@ -4,6 +4,7 @@
 package postgresql
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -167,4 +168,43 @@ type GrantArgs struct {
 
 func (GrantArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*grantArgs)(nil)).Elem()
+}
+
+type GrantInput interface {
+	pulumi.Input
+
+	ToGrantOutput() GrantOutput
+	ToGrantOutputWithContext(ctx context.Context) GrantOutput
+}
+
+func (Grant) ElementType() reflect.Type {
+	return reflect.TypeOf((*Grant)(nil)).Elem()
+}
+
+func (i Grant) ToGrantOutput() GrantOutput {
+	return i.ToGrantOutputWithContext(context.Background())
+}
+
+func (i Grant) ToGrantOutputWithContext(ctx context.Context) GrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrantOutput)
+}
+
+type GrantOutput struct {
+	*pulumi.OutputState
+}
+
+func (GrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrantOutput)(nil)).Elem()
+}
+
+func (o GrantOutput) ToGrantOutput() GrantOutput {
+	return o
+}
+
+func (o GrantOutput) ToGrantOutputWithContext(ctx context.Context) GrantOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GrantOutput{})
 }
