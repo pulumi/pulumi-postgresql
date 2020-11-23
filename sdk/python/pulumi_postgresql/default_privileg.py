@@ -10,11 +10,11 @@ from . import _utilities, _tables
 
 __all__ = ['DefaultPrivileg']
 
-warnings.warn("postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges", DeprecationWarning)
+warnings.warn("""postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges""", DeprecationWarning)
 
 
 class DefaultPrivileg(pulumi.CustomResource):
-    warnings.warn("postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges", DeprecationWarning)
+    warnings.warn("""postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

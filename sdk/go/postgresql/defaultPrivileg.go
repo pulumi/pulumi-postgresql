@@ -4,6 +4,7 @@
 package postgresql
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -140,4 +141,43 @@ type DefaultPrivilegArgs struct {
 
 func (DefaultPrivilegArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultPrivilegArgs)(nil)).Elem()
+}
+
+type DefaultPrivilegInput interface {
+	pulumi.Input
+
+	ToDefaultPrivilegOutput() DefaultPrivilegOutput
+	ToDefaultPrivilegOutputWithContext(ctx context.Context) DefaultPrivilegOutput
+}
+
+func (DefaultPrivileg) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPrivileg)(nil)).Elem()
+}
+
+func (i DefaultPrivileg) ToDefaultPrivilegOutput() DefaultPrivilegOutput {
+	return i.ToDefaultPrivilegOutputWithContext(context.Background())
+}
+
+func (i DefaultPrivileg) ToDefaultPrivilegOutputWithContext(ctx context.Context) DefaultPrivilegOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegOutput)
+}
+
+type DefaultPrivilegOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultPrivilegOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPrivilegOutput)(nil)).Elem()
+}
+
+func (o DefaultPrivilegOutput) ToDefaultPrivilegOutput() DefaultPrivilegOutput {
+	return o
+}
+
+func (o DefaultPrivilegOutput) ToDefaultPrivilegOutputWithContext(ctx context.Context) DefaultPrivilegOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DefaultPrivilegOutput{})
 }
