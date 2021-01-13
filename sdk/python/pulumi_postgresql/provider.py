@@ -7,7 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
-from . import outputs
+from ._inputs import *
 
 __all__ = ['Provider']
 
@@ -93,7 +93,7 @@ class Provider(pulumi.ProviderResource):
             if port is None:
                 port = (_utilities.get_env_int('PGPORT') or 5432)
             __props__['port'] = pulumi.Output.from_input(port).apply(pulumi.runtime.to_json) if port is not None else None
-            if ssl_mode is not None:
+            if ssl_mode is not None and not opts.urn:
                 warnings.warn("""Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""", DeprecationWarning)
                 pulumi.log.warn("ssl_mode is deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`")
             __props__['ssl_mode'] = ssl_mode

@@ -84,22 +84,22 @@ export class DefaultPrivileg extends pulumi.CustomResource {
             inputs["schema"] = state ? state.schema : undefined;
         } else {
             const args = argsOrState as DefaultPrivilegArgs | undefined;
-            if (!args || args.database === undefined) {
+            if ((!args || args.database === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'database'");
             }
-            if (!args || args.objectType === undefined) {
+            if ((!args || args.objectType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'objectType'");
             }
-            if (!args || args.owner === undefined) {
+            if ((!args || args.owner === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'owner'");
             }
-            if (!args || args.privileges === undefined) {
+            if ((!args || args.privileges === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'privileges'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
-            if (!args || args.schema === undefined) {
+            if ((!args || args.schema === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'schema'");
             }
             inputs["database"] = args ? args.database : undefined;

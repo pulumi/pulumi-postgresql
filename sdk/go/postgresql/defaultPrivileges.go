@@ -64,26 +64,27 @@ type DefaultPrivileges struct {
 // NewDefaultPrivileges registers a new resource with the given unique name, arguments, and options.
 func NewDefaultPrivileges(ctx *pulumi.Context,
 	name string, args *DefaultPrivilegesArgs, opts ...pulumi.ResourceOption) (*DefaultPrivileges, error) {
-	if args == nil || args.Database == nil {
-		return nil, errors.New("missing required argument 'Database'")
-	}
-	if args == nil || args.ObjectType == nil {
-		return nil, errors.New("missing required argument 'ObjectType'")
-	}
-	if args == nil || args.Owner == nil {
-		return nil, errors.New("missing required argument 'Owner'")
-	}
-	if args == nil || args.Privileges == nil {
-		return nil, errors.New("missing required argument 'Privileges'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.Schema == nil {
-		return nil, errors.New("missing required argument 'Schema'")
-	}
 	if args == nil {
-		args = &DefaultPrivilegesArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Database == nil {
+		return nil, errors.New("invalid value for required argument 'Database'")
+	}
+	if args.ObjectType == nil {
+		return nil, errors.New("invalid value for required argument 'ObjectType'")
+	}
+	if args.Owner == nil {
+		return nil, errors.New("invalid value for required argument 'Owner'")
+	}
+	if args.Privileges == nil {
+		return nil, errors.New("invalid value for required argument 'Privileges'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.Schema == nil {
+		return nil, errors.New("invalid value for required argument 'Schema'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{

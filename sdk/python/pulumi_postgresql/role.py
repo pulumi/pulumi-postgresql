@@ -117,7 +117,7 @@ class Role(pulumi.CustomResource):
             __props__['connection_limit'] = connection_limit
             __props__['create_database'] = create_database
             __props__['create_role'] = create_role
-            if encrypted is not None:
+            if encrypted is not None and not opts.urn:
                 warnings.warn("""Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"""", DeprecationWarning)
                 pulumi.log.warn("encrypted is deprecated: Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"")
             __props__['encrypted'] = encrypted
