@@ -57,22 +57,22 @@ class DefaultPrivileg(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if database is None:
+            if database is None and not opts.urn:
                 raise TypeError("Missing required property 'database'")
             __props__['database'] = database
-            if object_type is None:
+            if object_type is None and not opts.urn:
                 raise TypeError("Missing required property 'object_type'")
             __props__['object_type'] = object_type
-            if owner is None:
+            if owner is None and not opts.urn:
                 raise TypeError("Missing required property 'owner'")
             __props__['owner'] = owner
-            if privileges is None:
+            if privileges is None and not opts.urn:
                 raise TypeError("Missing required property 'privileges'")
             __props__['privileges'] = privileges
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
-            if schema is None:
+            if schema is None and not opts.urn:
                 raise TypeError("Missing required property 'schema'")
             __props__['schema'] = schema
         super(DefaultPrivileg, __self__).__init__(

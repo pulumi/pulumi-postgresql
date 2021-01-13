@@ -65,20 +65,21 @@ type Grant struct {
 // NewGrant registers a new resource with the given unique name, arguments, and options.
 func NewGrant(ctx *pulumi.Context,
 	name string, args *GrantArgs, opts ...pulumi.ResourceOption) (*Grant, error) {
-	if args == nil || args.Database == nil {
-		return nil, errors.New("missing required argument 'Database'")
-	}
-	if args == nil || args.ObjectType == nil {
-		return nil, errors.New("missing required argument 'ObjectType'")
-	}
-	if args == nil || args.Privileges == nil {
-		return nil, errors.New("missing required argument 'Privileges'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &GrantArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Database == nil {
+		return nil, errors.New("invalid value for required argument 'Database'")
+	}
+	if args.ObjectType == nil {
+		return nil, errors.New("invalid value for required argument 'ObjectType'")
+	}
+	if args.Privileges == nil {
+		return nil, errors.New("invalid value for required argument 'Privileges'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource Grant
 	err := ctx.RegisterResource("postgresql:index/grant:Grant", name, args, &resource, opts...)

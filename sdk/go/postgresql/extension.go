@@ -52,6 +52,7 @@ func NewExtension(ctx *pulumi.Context,
 	if args == nil {
 		args = &ExtensionArgs{}
 	}
+
 	var resource Extension
 	err := ctx.RegisterResource("postgresql:index/extension:Extension", name, args, &resource, opts...)
 	if err != nil {

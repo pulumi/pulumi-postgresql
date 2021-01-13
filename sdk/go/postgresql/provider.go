@@ -24,6 +24,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProviderArgs{}
 	}
+
 	if args.ConnectTimeout == nil {
 		args.ConnectTimeout = pulumi.IntPtr(getEnvOrDefault(180, parseEnvInt, "PGCONNECT_TIMEOUT").(int))
 	}

@@ -35,6 +35,7 @@ func NewSchema(ctx *pulumi.Context,
 	if args == nil {
 		args = &SchemaArgs{}
 	}
+
 	var resource Schema
 	err := ctx.RegisterResource("postgresql:index/schema:Schema", name, args, &resource, opts...)
 	if err != nil {

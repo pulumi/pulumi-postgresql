@@ -18,3 +18,59 @@ from . import outputs
 from . import (
     config,
 )
+
+def _register_module():
+    import pulumi
+    from . import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "postgresql:index/database:Database":
+                return Database(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "postgresql:index/defaultPrivileg:DefaultPrivileg":
+                return DefaultPrivileg(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "postgresql:index/defaultPrivileges:DefaultPrivileges":
+                return DefaultPrivileges(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "postgresql:index/extension:Extension":
+                return Extension(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "postgresql:index/grant:Grant":
+                return Grant(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "postgresql:index/role:Role":
+                return Role(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "postgresql:index/schema:Schema":
+                return Schema(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("postgresql", "index/database", _module_instance)
+    pulumi.runtime.register_resource_module("postgresql", "index/defaultPrivileg", _module_instance)
+    pulumi.runtime.register_resource_module("postgresql", "index/defaultPrivileges", _module_instance)
+    pulumi.runtime.register_resource_module("postgresql", "index/extension", _module_instance)
+    pulumi.runtime.register_resource_module("postgresql", "index/grant", _module_instance)
+    pulumi.runtime.register_resource_module("postgresql", "index/role", _module_instance)
+    pulumi.runtime.register_resource_module("postgresql", "index/schema", _module_instance)
+
+
+    class Package(pulumi.runtime.ResourcePackage):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Package._version
+
+        def construct_provider(self, name: str, typ: str, urn: str) -> pulumi.ProviderResource:
+            if typ != "pulumi:providers:postgresql":
+                raise Exception(f"unknown provider type {typ}")
+            return Provider(name, pulumi.ResourceOptions(urn=urn))
+
+
+    pulumi.runtime.register_resource_package("postgresql", Package())
+
+_register_module()

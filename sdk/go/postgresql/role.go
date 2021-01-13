@@ -95,6 +95,7 @@ func NewRole(ctx *pulumi.Context,
 	if args == nil {
 		args = &RoleArgs{}
 	}
+
 	var resource Role
 	err := ctx.RegisterResource("postgresql:index/role:Role", name, args, &resource, opts...)
 	if err != nil {

@@ -99,16 +99,16 @@ export class Grant extends pulumi.CustomResource {
             inputs["withGrantOption"] = state ? state.withGrantOption : undefined;
         } else {
             const args = argsOrState as GrantArgs | undefined;
-            if (!args || args.database === undefined) {
+            if ((!args || args.database === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'database'");
             }
-            if (!args || args.objectType === undefined) {
+            if ((!args || args.objectType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'objectType'");
             }
-            if (!args || args.privileges === undefined) {
+            if ((!args || args.privileges === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'privileges'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["database"] = args ? args.database : undefined;
