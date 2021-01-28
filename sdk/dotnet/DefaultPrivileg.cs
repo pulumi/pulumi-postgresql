@@ -10,6 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.PostgreSql
 {
     [Obsolete(@"postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges")]
+    [PostgreSqlResourceType("postgresql:index/defaultPrivileg:DefaultPrivileg")]
     public partial class DefaultPrivileg : Pulumi.CustomResource
     {
         /// <summary>

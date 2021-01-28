@@ -31,6 +31,7 @@ namespace Pulumi.PostgreSql
     /// }
     /// ```
     /// </summary>
+    [PostgreSqlResourceType("postgresql:index/extension:Extension")]
     public partial class Extension : Pulumi.CustomResource
     {
         /// <summary>

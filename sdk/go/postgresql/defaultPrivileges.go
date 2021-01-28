@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql"
+// 	"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -189,15 +189,15 @@ type DefaultPrivilegesInput interface {
 	ToDefaultPrivilegesOutputWithContext(ctx context.Context) DefaultPrivilegesOutput
 }
 
-func (DefaultPrivileges) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultPrivileges)(nil)).Elem()
+func (*DefaultPrivileges) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPrivileges)(nil))
 }
 
-func (i DefaultPrivileges) ToDefaultPrivilegesOutput() DefaultPrivilegesOutput {
+func (i *DefaultPrivileges) ToDefaultPrivilegesOutput() DefaultPrivilegesOutput {
 	return i.ToDefaultPrivilegesOutputWithContext(context.Background())
 }
 
-func (i DefaultPrivileges) ToDefaultPrivilegesOutputWithContext(ctx context.Context) DefaultPrivilegesOutput {
+func (i *DefaultPrivileges) ToDefaultPrivilegesOutputWithContext(ctx context.Context) DefaultPrivilegesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegesOutput)
 }
 
@@ -206,7 +206,7 @@ type DefaultPrivilegesOutput struct {
 }
 
 func (DefaultPrivilegesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultPrivilegesOutput)(nil)).Elem()
+	return reflect.TypeOf((*DefaultPrivileges)(nil))
 }
 
 func (o DefaultPrivilegesOutput) ToDefaultPrivilegesOutput() DefaultPrivilegesOutput {

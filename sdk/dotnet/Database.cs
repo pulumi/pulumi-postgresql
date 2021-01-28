@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.PostgreSql
 {
+    [PostgreSqlResourceType("postgresql:index/database:Database")]
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>

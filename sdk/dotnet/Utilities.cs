@@ -77,4 +77,11 @@ namespace Pulumi.PostgreSql
             }
         }
     }
+
+    internal sealed class PostgreSqlResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public PostgreSqlResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

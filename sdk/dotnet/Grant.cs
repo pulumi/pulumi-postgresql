@@ -42,6 +42,7 @@ namespace Pulumi.PostgreSql
     /// }
     /// ```
     /// </summary>
+    [PostgreSqlResourceType("postgresql:index/grant:Grant")]
     public partial class Grant : Pulumi.CustomResource
     {
         /// <summary>
