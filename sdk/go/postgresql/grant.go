@@ -23,7 +23,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql"
+// 	"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -178,15 +178,15 @@ type GrantInput interface {
 	ToGrantOutputWithContext(ctx context.Context) GrantOutput
 }
 
-func (Grant) ElementType() reflect.Type {
-	return reflect.TypeOf((*Grant)(nil)).Elem()
+func (*Grant) ElementType() reflect.Type {
+	return reflect.TypeOf((*Grant)(nil))
 }
 
-func (i Grant) ToGrantOutput() GrantOutput {
+func (i *Grant) ToGrantOutput() GrantOutput {
 	return i.ToGrantOutputWithContext(context.Background())
 }
 
-func (i Grant) ToGrantOutputWithContext(ctx context.Context) GrantOutput {
+func (i *Grant) ToGrantOutputWithContext(ctx context.Context) GrantOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GrantOutput)
 }
 
@@ -195,7 +195,7 @@ type GrantOutput struct {
 }
 
 func (GrantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GrantOutput)(nil)).Elem()
+	return reflect.TypeOf((*Grant)(nil))
 }
 
 func (o GrantOutput) ToGrantOutput() GrantOutput {

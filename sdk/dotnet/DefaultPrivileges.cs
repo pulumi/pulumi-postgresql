@@ -41,6 +41,7 @@ namespace Pulumi.PostgreSql
     /// }
     /// ```
     /// </summary>
+    [PostgreSqlResourceType("postgresql:index/defaultPrivileges:DefaultPrivileges")]
     public partial class DefaultPrivileges : Pulumi.CustomResource
     {
         /// <summary>

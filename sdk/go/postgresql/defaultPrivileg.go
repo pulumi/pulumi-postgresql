@@ -151,15 +151,15 @@ type DefaultPrivilegInput interface {
 	ToDefaultPrivilegOutputWithContext(ctx context.Context) DefaultPrivilegOutput
 }
 
-func (DefaultPrivileg) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultPrivileg)(nil)).Elem()
+func (*DefaultPrivileg) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultPrivileg)(nil))
 }
 
-func (i DefaultPrivileg) ToDefaultPrivilegOutput() DefaultPrivilegOutput {
+func (i *DefaultPrivileg) ToDefaultPrivilegOutput() DefaultPrivilegOutput {
 	return i.ToDefaultPrivilegOutputWithContext(context.Background())
 }
 
-func (i DefaultPrivileg) ToDefaultPrivilegOutputWithContext(ctx context.Context) DefaultPrivilegOutput {
+func (i *DefaultPrivileg) ToDefaultPrivilegOutputWithContext(ctx context.Context) DefaultPrivilegOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegOutput)
 }
 
@@ -168,7 +168,7 @@ type DefaultPrivilegOutput struct {
 }
 
 func (DefaultPrivilegOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultPrivilegOutput)(nil)).Elem()
+	return reflect.TypeOf((*DefaultPrivileg)(nil))
 }
 
 func (o DefaultPrivilegOutput) ToDefaultPrivilegOutput() DefaultPrivilegOutput {
