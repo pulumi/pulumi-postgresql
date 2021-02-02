@@ -25,6 +25,23 @@ import * as utilities from "./utilities";
  *     schema: "public",
  * });
  * ```
+ *
+ * ## Examples
+ *
+ * Revoke default accesses for public schema:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * const revokePublic = new postgresql.Grant("revoke_public", {
+ *     database: "test_db",
+ *     objectType: "schema",
+ *     privileges: [],
+ *     role: "public",
+ *     schema: "public",
+ * });
+ * ```
  */
 export class Grant extends pulumi.CustomResource {
     /**
@@ -59,19 +76,19 @@ export class Grant extends pulumi.CustomResource {
      */
     public readonly database!: pulumi.Output<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
+     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
      */
     public readonly objectType!: pulumi.Output<string>;
     /**
-     * The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
+     * The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
      */
     public readonly privileges!: pulumi.Output<string[]>;
     /**
-     * The name of the role to grant privileges on.
+     * The name of the role to grant privileges on, Set it to "public" for all roles.
      */
     public readonly role!: pulumi.Output<string>;
     /**
-     * The database schema to grant privileges on for this role.
+     * The database schema to grant privileges on for this role (Required except if objectType is "database")
      */
     public readonly schema!: pulumi.Output<string | undefined>;
     /**
@@ -138,19 +155,19 @@ export interface GrantState {
      */
     readonly database?: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
+     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
      */
     readonly objectType?: pulumi.Input<string>;
     /**
-     * The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
+     * The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
      */
     readonly privileges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the role to grant privileges on.
+     * The name of the role to grant privileges on, Set it to "public" for all roles.
      */
     readonly role?: pulumi.Input<string>;
     /**
-     * The database schema to grant privileges on for this role.
+     * The database schema to grant privileges on for this role (Required except if objectType is "database")
      */
     readonly schema?: pulumi.Input<string>;
     /**
@@ -168,19 +185,19 @@ export interface GrantArgs {
      */
     readonly database: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
+     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
      */
     readonly objectType: pulumi.Input<string>;
     /**
-     * The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
+     * The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
      */
     readonly privileges: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the role to grant privileges on.
+     * The name of the role to grant privileges on, Set it to "public" for all roles.
      */
     readonly role: pulumi.Input<string>;
     /**
-     * The database schema to grant privileges on for this role.
+     * The database schema to grant privileges on for this role (Required except if objectType is "database")
      */
     readonly schema?: pulumi.Input<string>;
     /**

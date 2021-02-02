@@ -72,6 +72,9 @@ func GetPort(ctx *pulumi.Context) int {
 	}
 	return getEnvOrDefault(5432, parseEnvInt, "PGPORT").(int)
 }
+func GetScheme(ctx *pulumi.Context) string {
+	return config.Get(ctx, "postgresql:scheme")
+}
 
 // Deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
 func GetSslMode(ctx *pulumi.Context) string {

@@ -19,6 +19,7 @@ __all__ = [
     'max_connections',
     'password',
     'port',
+    'scheme',
     'ssl_mode',
     'sslmode',
     'sslrootcert',
@@ -72,6 +73,8 @@ port = __config__.get('port') or (_utilities.get_env_int('PGPORT') or 5432)
 """
 The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
 """
+
+scheme = __config__.get('scheme')
 
 ssl_mode = __config__.get('sslMode')
 

@@ -41,6 +41,13 @@ namespace Pulumi.PostgreSql
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
+        /// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+        /// objects
+        /// </summary>
+        [Output("dropCascade")]
+        public Output<bool?> DropCascade { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the extension.
         /// </summary>
         [Output("name")]
@@ -111,6 +118,13 @@ namespace Pulumi.PostgreSql
         public Input<string>? Database { get; set; }
 
         /// <summary>
+        /// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+        /// objects
+        /// </summary>
+        [Input("dropCascade")]
+        public Input<bool>? DropCascade { get; set; }
+
+        /// <summary>
         /// The name of the extension.
         /// </summary>
         [Input("name")]
@@ -140,6 +154,13 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
+
+        /// <summary>
+        /// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+        /// objects
+        /// </summary>
+        [Input("dropCascade")]
+        public Input<bool>? DropCascade { get; set; }
 
         /// <summary>
         /// The name of the extension.

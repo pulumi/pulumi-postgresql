@@ -41,6 +41,31 @@ namespace Pulumi.PostgreSql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Examples
+    /// 
+    /// Revoke default accesses for public schema:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var revokePublic = new PostgreSql.Grant("revokePublic", new PostgreSql.GrantArgs
+    ///         {
+    ///             Database = "test_db",
+    ///             ObjectType = "schema",
+    ///             Privileges = {},
+    ///             Role = "public",
+    ///             Schema = "public",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/grant:Grant")]
     public partial class Grant : Pulumi.CustomResource
@@ -52,25 +77,25 @@ namespace Pulumi.PostgreSql
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
-        /// The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
+        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
         /// </summary>
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
 
         /// <summary>
-        /// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
+        /// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
         /// </summary>
         [Output("privileges")]
         public Output<ImmutableArray<string>> Privileges { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the role to grant privileges on.
+        /// The name of the role to grant privileges on, Set it to "public" for all roles.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
         /// <summary>
-        /// The database schema to grant privileges on for this role.
+        /// The database schema to grant privileges on for this role (Required except if object_type is "database")
         /// </summary>
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
@@ -134,7 +159,7 @@ namespace Pulumi.PostgreSql
         public Input<string> Database { get; set; } = null!;
 
         /// <summary>
-        /// The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
+        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
@@ -143,7 +168,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _privileges;
 
         /// <summary>
-        /// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
+        /// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
         /// </summary>
         public InputList<string> Privileges
         {
@@ -152,13 +177,13 @@ namespace Pulumi.PostgreSql
         }
 
         /// <summary>
-        /// The name of the role to grant privileges on.
+        /// The name of the role to grant privileges on, Set it to "public" for all roles.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// The database schema to grant privileges on for this role.
+        /// The database schema to grant privileges on for this role (Required except if object_type is "database")
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
@@ -183,7 +208,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
+        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
@@ -192,7 +217,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _privileges;
 
         /// <summary>
-        /// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
+        /// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
         /// </summary>
         public InputList<string> Privileges
         {
@@ -201,13 +226,13 @@ namespace Pulumi.PostgreSql
         }
 
         /// <summary>
-        /// The name of the role to grant privileges on.
+        /// The name of the role to grant privileges on, Set it to "public" for all roles.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// The database schema to grant privileges on for this role.
+        /// The database schema to grant privileges on for this role (Required except if object_type is "database")
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }

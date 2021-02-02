@@ -57,6 +57,8 @@ export class Schema extends pulumi.CustomResource {
     /**
      * Can be specified multiple times for each policy.  Each
      * policy block supports fields documented below.
+     *
+     * @deprecated Use postgresql_grant resource instead (with object_type="schema")
      */
     public readonly policies!: pulumi.Output<outputs.SchemaPolicy[]>;
 
@@ -126,6 +128,8 @@ export interface SchemaState {
     /**
      * Can be specified multiple times for each policy.  Each
      * policy block supports fields documented below.
+     *
+     * @deprecated Use postgresql_grant resource instead (with object_type="schema")
      */
     readonly policies?: pulumi.Input<pulumi.Input<inputs.SchemaPolicy>[]>;
 }
@@ -158,6 +162,8 @@ export interface SchemaArgs {
     /**
      * Can be specified multiple times for each policy.  Each
      * policy block supports fields documented below.
+     *
+     * @deprecated Use postgresql_grant resource instead (with object_type="schema")
      */
     readonly policies?: pulumi.Input<pulumi.Input<inputs.SchemaPolicy>[]>;
 }

@@ -134,6 +134,7 @@ namespace Pulumi.PostgreSql
         /// Can be specified multiple times for each policy.  Each
         /// policy block supports fields documented below.
         /// </summary>
+        [Obsolete(@"Use postgresql_grant resource instead (with object_type=""schema"")")]
         public InputList<Inputs.SchemaPolicyArgs> Policies
         {
             get => _policies ?? (_policies = new InputList<Inputs.SchemaPolicyArgs>());
@@ -185,6 +186,7 @@ namespace Pulumi.PostgreSql
         /// Can be specified multiple times for each policy.  Each
         /// policy block supports fields documented below.
         /// </summary>
+        [Obsolete(@"Use postgresql_grant resource instead (with object_type=""schema"")")]
         public InputList<Inputs.SchemaPolicyGetArgs> Policies
         {
             get => _policies ?? (_policies = new InputList<Inputs.SchemaPolicyGetArgs>());
