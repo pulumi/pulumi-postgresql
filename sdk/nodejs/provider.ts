@@ -46,6 +46,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["maxConnections"] = pulumi.output(args ? args.maxConnections : undefined).apply(JSON.stringify);
             inputs["password"] = (args ? args.password : undefined) || utilities.getEnv("PGPASSWORD");
             inputs["port"] = pulumi.output((args ? args.port : undefined) || (<any>utilities.getEnvNumber("PGPORT") || 5432)).apply(JSON.stringify);
+            inputs["scheme"] = args ? args.scheme : undefined;
             inputs["sslMode"] = args ? args.sslMode : undefined;
             inputs["sslmode"] = (args ? args.sslmode : undefined) || utilities.getEnv("PGSSLMODE");
             inputs["sslrootcert"] = args ? args.sslrootcert : undefined;
@@ -103,6 +104,7 @@ export interface ProviderArgs {
      * The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
      */
     readonly port?: pulumi.Input<number>;
+    readonly scheme?: pulumi.Input<string>;
     /**
      * @deprecated Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
      */

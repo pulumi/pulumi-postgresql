@@ -16,6 +16,7 @@ class Extension(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: Optional[pulumi.Input[str]] = None,
+                 drop_cascade: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -38,6 +39,8 @@ class Extension(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: Which database to create the extension on. Defaults to provider database.
+        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+               objects
         :param pulumi.Input[str] name: The name of the extension.
         :param pulumi.Input[str] schema: Sets the schema of an extension.
         :param pulumi.Input[str] version: Sets the version number of the extension.
@@ -60,6 +63,7 @@ class Extension(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['database'] = database
+            __props__['drop_cascade'] = drop_cascade
             __props__['name'] = name
             __props__['schema'] = schema
             __props__['version'] = version
@@ -74,6 +78,7 @@ class Extension(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             database: Optional[pulumi.Input[str]] = None,
+            drop_cascade: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'Extension':
@@ -85,6 +90,8 @@ class Extension(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: Which database to create the extension on. Defaults to provider database.
+        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+               objects
         :param pulumi.Input[str] name: The name of the extension.
         :param pulumi.Input[str] schema: Sets the schema of an extension.
         :param pulumi.Input[str] version: Sets the version number of the extension.
@@ -94,6 +101,7 @@ class Extension(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["database"] = database
+        __props__["drop_cascade"] = drop_cascade
         __props__["name"] = name
         __props__["schema"] = schema
         __props__["version"] = version
@@ -106,6 +114,15 @@ class Extension(pulumi.CustomResource):
         Which database to create the extension on. Defaults to provider database.
         """
         return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="dropCascade")
+    def drop_cascade(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+        objects
+        """
+        return pulumi.get(self, "drop_cascade")
 
     @property
     @pulumi.getter

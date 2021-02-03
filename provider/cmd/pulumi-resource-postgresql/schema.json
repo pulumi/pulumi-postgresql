@@ -78,6 +78,9 @@
                     ]
                 }
             },
+            "scheme": {
+                "type": "string"
+            },
             "sslMode": {
                 "type": "string",
                 "deprecationMessage": "Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`"
@@ -279,6 +282,9 @@
                         "PGPORT"
                     ]
                 }
+            },
+            "scheme": {
+                "type": "string"
             },
             "sslMode": {
                 "type": "string",
@@ -688,6 +694,10 @@
                     "type": "string",
                     "description": "Which database to create the extension on. Defaults to provider database.\n"
                 },
+                "dropCascade": {
+                    "type": "boolean",
+                    "description": "When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those\nobjects\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the extension.\n"
@@ -712,6 +722,10 @@
                     "type": "string",
                     "description": "Which database to create the extension on. Defaults to provider database.\n"
                 },
+                "dropCascade": {
+                    "type": "boolean",
+                    "description": "When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those\nobjects\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the extension.\n"
@@ -732,6 +746,10 @@
                         "type": "string",
                         "description": "Which database to create the extension on. Defaults to provider database.\n"
                     },
+                    "dropCascade": {
+                        "type": "boolean",
+                        "description": "When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those\nobjects\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the extension.\n"
@@ -749,7 +767,7 @@
             }
         },
         "postgresql:index/grant:Grant": {
-            "description": "The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.\n\nSee [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readonlyTables = new postgresql.Grant(\"readonly_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nreadonly_tables = postgresql.Grant(\"readonlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var readonlyTables = new PostgreSql.Grant(\"readonlyTables\", new PostgreSql.GrantArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"table\",\n            Privileges = \n            {\n                \"SELECT\",\n            },\n            Role = \"test_role\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"readonlyTables\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n",
+            "description": "The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.\n\nSee [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readonlyTables = new postgresql.Grant(\"readonly_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nreadonly_tables = postgresql.Grant(\"readonlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var readonlyTables = new PostgreSql.Grant(\"readonlyTables\", new PostgreSql.GrantArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"table\",\n            Privileges = \n            {\n                \"SELECT\",\n            },\n            Role = \"test_role\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"readonlyTables\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n## Examples\n\nRevoke default accesses for public schema:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.Grant(\"revoke_public\", {\n    database: \"test_db\",\n    objectType: \"schema\",\n    privileges: [],\n    role: \"public\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.Grant(\"revokePublic\",\n    database=\"test_db\",\n    object_type=\"schema\",\n    privileges=[],\n    role=\"public\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var revokePublic = new PostgreSql.Grant(\"revokePublic\", new PostgreSql.GrantArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"schema\",\n            Privileges = {},\n            Role = \"public\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"revokePublic\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"schema\"),\n\t\t\tPrivileges: []interface{}{},\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tSchema:     pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n",
             "properties": {
                 "database": {
                     "type": "string",
@@ -757,22 +775,22 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).\n"
+                    "description": "The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).\n"
                 },
                 "privileges": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.\n"
+                    "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.\n"
                 },
                 "role": {
                     "type": "string",
-                    "description": "The name of the role to grant privileges on.\n"
+                    "description": "The name of the role to grant privileges on, Set it to \"public\" for all roles.\n"
                 },
                 "schema": {
                     "type": "string",
-                    "description": "The database schema to grant privileges on for this role.\n"
+                    "description": "The database schema to grant privileges on for this role (Required except if object_type is \"database\")\n"
                 },
                 "withGrantOption": {
                     "type": "boolean",
@@ -792,22 +810,22 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).\n"
+                    "description": "The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).\n"
                 },
                 "privileges": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.\n"
+                    "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.\n"
                 },
                 "role": {
                     "type": "string",
-                    "description": "The name of the role to grant privileges on.\n"
+                    "description": "The name of the role to grant privileges on, Set it to \"public\" for all roles.\n"
                 },
                 "schema": {
                     "type": "string",
-                    "description": "The database schema to grant privileges on for this role.\n"
+                    "description": "The database schema to grant privileges on for this role (Required except if object_type is \"database\")\n"
                 },
                 "withGrantOption": {
                     "type": "boolean",
@@ -829,26 +847,98 @@
                     },
                     "objectType": {
                         "type": "string",
-                        "description": "The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).\n"
+                        "description": "The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).\n"
                     },
                     "privileges": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.\n"
+                        "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.\n"
                     },
                     "role": {
                         "type": "string",
-                        "description": "The name of the role to grant privileges on.\n"
+                        "description": "The name of the role to grant privileges on, Set it to \"public\" for all roles.\n"
                     },
                     "schema": {
                         "type": "string",
-                        "description": "The database schema to grant privileges on for this role.\n"
+                        "description": "The database schema to grant privileges on for this role (Required except if object_type is \"database\")\n"
                     },
                     "withGrantOption": {
                         "type": "boolean",
                         "description": "Permit the grant recipient to grant it to others\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "postgresql:index/grantRole:GrantRole": {
+            "description": "The ``postgresql.GrantRole`` resource creates and manages membership in a role to one or more other roles in a non-authoritative way.\n\nWhen using ``postgresql.GrantRole`` resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.\n\n\u003e **Note:** This resource needs PostgreSQL version 9 or above.\n\n\u003e **Note:** `postgresql.GrantRole` **cannot** be used in conjunction with `postgresql.Role` or they will fight over what your role grants should be.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst grantRoot = new postgresql.GrantRole(\"grant_root\", {\n    grantRole: \"application\",\n    role: \"root\",\n    withAdminOption: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\ngrant_root = postgresql.GrantRole(\"grantRoot\",\n    grant_role=\"application\",\n    role=\"root\",\n    with_admin_option=True)\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var grantRoot = new PostgreSql.GrantRole(\"grantRoot\", new PostgreSql.GrantRoleArgs\n        {\n            GrantRole = \"application\",\n            Role = \"root\",\n            WithAdminOption = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrantRole(ctx, \"grantRoot\", \u0026postgresql.GrantRoleArgs{\n\t\t\tGrantRole:       pulumi.String(\"application\"),\n\t\t\tRole:            pulumi.String(\"root\"),\n\t\t\tWithAdminOption: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n",
+            "properties": {
+                "grantRole": {
+                    "type": "string",
+                    "description": "The name of the role that is added to `role`.\n",
+                    "language": {
+                        "csharp": {
+                            "name": "GrantRoleName"
+                        }
+                    }
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The name of the role that is granted a new membership.\n"
+                },
+                "withAdminOption": {
+                    "type": "boolean",
+                    "description": "Giving ability to grant membership to others or not for `role`. (Default: false)\n"
+                }
+            },
+            "required": [
+                "grantRole",
+                "role"
+            ],
+            "inputProperties": {
+                "grantRole": {
+                    "type": "string",
+                    "description": "The name of the role that is added to `role`.\n",
+                    "language": {
+                        "csharp": {
+                            "name": "GrantRoleName"
+                        }
+                    }
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The name of the role that is granted a new membership.\n"
+                },
+                "withAdminOption": {
+                    "type": "boolean",
+                    "description": "Giving ability to grant membership to others or not for `role`. (Default: false)\n"
+                }
+            },
+            "requiredInputs": [
+                "grantRole",
+                "role"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GrantRole resources.\n",
+                "properties": {
+                    "grantRole": {
+                        "type": "string",
+                        "description": "The name of the role that is added to `role`.\n",
+                        "language": {
+                            "csharp": {
+                                "name": "GrantRoleName"
+                            }
+                        }
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "The name of the role that is granted a new membership.\n"
+                    },
+                    "withAdminOption": {
+                        "type": "boolean",
+                        "description": "Giving ability to grant membership to others or not for `role`. (Default: false)\n"
                     }
                 },
                 "type": "object"
@@ -1130,7 +1220,8 @@
                     "items": {
                         "$ref": "#/types/postgresql:index/SchemaPolicy:SchemaPolicy"
                     },
-                    "description": "Can be specified multiple times for each policy.  Each\npolicy block supports fields documented below.\n"
+                    "description": "Can be specified multiple times for each policy.  Each\npolicy block supports fields documented below.\n",
+                    "deprecationMessage": "Use postgresql_grant resource instead (with object_type=\"schema\")"
                 }
             },
             "required": [
@@ -1165,7 +1256,8 @@
                     "items": {
                         "$ref": "#/types/postgresql:index/SchemaPolicy:SchemaPolicy"
                     },
-                    "description": "Can be specified multiple times for each policy.  Each\npolicy block supports fields documented below.\n"
+                    "description": "Can be specified multiple times for each policy.  Each\npolicy block supports fields documented below.\n",
+                    "deprecationMessage": "Use postgresql_grant resource instead (with object_type=\"schema\")"
                 }
             },
             "stateInputs": {
@@ -1196,7 +1288,8 @@
                         "items": {
                             "$ref": "#/types/postgresql:index/SchemaPolicy:SchemaPolicy"
                         },
-                        "description": "Can be specified multiple times for each policy.  Each\npolicy block supports fields documented below.\n"
+                        "description": "Can be specified multiple times for each policy.  Each\npolicy block supports fields documented below.\n",
+                        "deprecationMessage": "Use postgresql_grant resource instead (with object_type=\"schema\")"
                     }
                 },
                 "type": "object"

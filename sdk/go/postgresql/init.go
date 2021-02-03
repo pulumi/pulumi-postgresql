@@ -30,6 +30,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewExtension(ctx, name, nil, pulumi.URN_(urn))
 	case "postgresql:index/grant:Grant":
 		r, err = NewGrant(ctx, name, nil, pulumi.URN_(urn))
+	case "postgresql:index/grantRole:GrantRole":
+		r, err = NewGrantRole(ctx, name, nil, pulumi.URN_(urn))
 	case "postgresql:index/role:Role":
 		r, err = NewRole(ctx, name, nil, pulumi.URN_(urn))
 	case "postgresql:index/schema:Schema":
@@ -85,6 +87,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"postgresql",
 		"index/grant",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"postgresql",
+		"index/grantRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

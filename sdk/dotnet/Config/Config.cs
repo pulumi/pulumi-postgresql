@@ -53,6 +53,8 @@ namespace Pulumi.PostgreSql
         /// </summary>
         public static int? Port { get; set; } = __config.GetInt32("port") ?? Utilities.GetEnvInt32("PGPORT") ?? 5432;
 
+        public static string? Scheme { get; set; } = __config.Get("scheme");
+
         public static string? SslMode { get; set; } = __config.Get("sslMode");
 
         /// <summary>

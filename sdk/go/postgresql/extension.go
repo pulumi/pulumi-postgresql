@@ -38,6 +38,9 @@ type Extension struct {
 
 	// Which database to create the extension on. Defaults to provider database.
 	Database pulumi.StringOutput `pulumi:"database"`
+	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+	// objects
+	DropCascade pulumi.BoolPtrOutput `pulumi:"dropCascade"`
 	// The name of the extension.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Sets the schema of an extension.
@@ -77,6 +80,9 @@ func GetExtension(ctx *pulumi.Context,
 type extensionState struct {
 	// Which database to create the extension on. Defaults to provider database.
 	Database *string `pulumi:"database"`
+	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+	// objects
+	DropCascade *bool `pulumi:"dropCascade"`
 	// The name of the extension.
 	Name *string `pulumi:"name"`
 	// Sets the schema of an extension.
@@ -88,6 +94,9 @@ type extensionState struct {
 type ExtensionState struct {
 	// Which database to create the extension on. Defaults to provider database.
 	Database pulumi.StringPtrInput
+	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+	// objects
+	DropCascade pulumi.BoolPtrInput
 	// The name of the extension.
 	Name pulumi.StringPtrInput
 	// Sets the schema of an extension.
@@ -103,6 +112,9 @@ func (ExtensionState) ElementType() reflect.Type {
 type extensionArgs struct {
 	// Which database to create the extension on. Defaults to provider database.
 	Database *string `pulumi:"database"`
+	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+	// objects
+	DropCascade *bool `pulumi:"dropCascade"`
 	// The name of the extension.
 	Name *string `pulumi:"name"`
 	// Sets the schema of an extension.
@@ -115,6 +127,9 @@ type extensionArgs struct {
 type ExtensionArgs struct {
 	// Which database to create the extension on. Defaults to provider database.
 	Database pulumi.StringPtrInput
+	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+	// objects
+	DropCascade pulumi.BoolPtrInput
 	// The name of the extension.
 	Name pulumi.StringPtrInput
 	// Sets the schema of an extension.

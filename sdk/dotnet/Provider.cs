@@ -99,6 +99,9 @@ namespace Pulumi.PostgreSql
         [Input("port", json: true)]
         public Input<int>? Port { get; set; }
 
+        [Input("scheme")]
+        public Input<string>? Scheme { get; set; }
+
         [Input("sslMode")]
         public Input<string>? SslMode { get; set; }
 

@@ -45,13 +45,29 @@ class Grant(pulumi.CustomResource):
             schema="public")
         ```
 
+        ## Examples
+
+        Revoke default accesses for public schema:
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        revoke_public = postgresql.Grant("revokePublic",
+            database="test_db",
+            object_type="schema",
+            privileges=[],
+            role="public",
+            schema="public")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant privileges on for this role.
-        :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
-        :param pulumi.Input[str] role: The name of the role to grant privileges on.
-        :param pulumi.Input[str] schema: The database schema to grant privileges on for this role.
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
+        :param pulumi.Input[str] role: The name of the role to grant privileges on, Set it to "public" for all roles.
+        :param pulumi.Input[str] schema: The database schema to grant privileges on for this role (Required except if object_type is "database")
         :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
         """
         if __name__ is not None:
@@ -109,10 +125,10 @@ class Grant(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant privileges on for this role.
-        :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
-        :param pulumi.Input[str] role: The name of the role to grant privileges on.
-        :param pulumi.Input[str] schema: The database schema to grant privileges on for this role.
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
+        :param pulumi.Input[str] role: The name of the role to grant privileges on, Set it to "public" for all roles.
+        :param pulumi.Input[str] schema: The database schema to grant privileges on for this role (Required except if object_type is "database")
         :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -139,7 +155,7 @@ class Grant(pulumi.CustomResource):
     @pulumi.getter(name="objectType")
     def object_type(self) -> pulumi.Output[str]:
         """
-        The PostgreSQL object type to grant the privileges on (one of: database, table, sequence,function).
+        The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
         """
         return pulumi.get(self, "object_type")
 
@@ -147,7 +163,7 @@ class Grant(pulumi.CustomResource):
     @pulumi.getter
     def privileges(self) -> pulumi.Output[Sequence[str]]:
         """
-        The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE.
+        The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
         """
         return pulumi.get(self, "privileges")
 
@@ -155,7 +171,7 @@ class Grant(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
         """
-        The name of the role to grant privileges on.
+        The name of the role to grant privileges on, Set it to "public" for all roles.
         """
         return pulumi.get(self, "role")
 
@@ -163,7 +179,7 @@ class Grant(pulumi.CustomResource):
     @pulumi.getter
     def schema(self) -> pulumi.Output[Optional[str]]:
         """
-        The database schema to grant privileges on for this role.
+        The database schema to grant privileges on for this role (Required except if object_type is "database")
         """
         return pulumi.get(self, "schema")
 

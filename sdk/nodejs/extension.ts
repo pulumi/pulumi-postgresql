@@ -50,6 +50,11 @@ export class Extension extends pulumi.CustomResource {
      */
     public readonly database!: pulumi.Output<string>;
     /**
+     * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+     * objects
+     */
+    public readonly dropCascade!: pulumi.Output<boolean | undefined>;
+    /**
      * The name of the extension.
      */
     public readonly name!: pulumi.Output<string>;
@@ -75,12 +80,14 @@ export class Extension extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ExtensionState | undefined;
             inputs["database"] = state ? state.database : undefined;
+            inputs["dropCascade"] = state ? state.dropCascade : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["schema"] = state ? state.schema : undefined;
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as ExtensionArgs | undefined;
             inputs["database"] = args ? args.database : undefined;
+            inputs["dropCascade"] = args ? args.dropCascade : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["schema"] = args ? args.schema : undefined;
             inputs["version"] = args ? args.version : undefined;
@@ -105,6 +112,11 @@ export interface ExtensionState {
      */
     readonly database?: pulumi.Input<string>;
     /**
+     * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+     * objects
+     */
+    readonly dropCascade?: pulumi.Input<boolean>;
+    /**
      * The name of the extension.
      */
     readonly name?: pulumi.Input<string>;
@@ -126,6 +138,11 @@ export interface ExtensionArgs {
      * Which database to create the extension on. Defaults to provider database.
      */
     readonly database?: pulumi.Input<string>;
+    /**
+     * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+     * objects
+     */
+    readonly dropCascade?: pulumi.Input<boolean>;
     /**
      * The name of the extension.
      */

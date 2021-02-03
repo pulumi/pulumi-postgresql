@@ -123,6 +123,14 @@ func Provider() tfbridge.ProviderInfo {
 			"postgresql_grant":     {Tok: makeResource(mainMod, "Grant")},
 			"postgresql_role":      {Tok: makeResource(mainMod, "Role")},
 			"postgresql_schema":    {Tok: makeResource(mainMod, "Schema")},
+			"postgresql_grant_role": {
+				Tok: makeResource(mainMod, "GrantRole"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"grant_role": {
+						CSharpName: "GrantRoleName",
+					},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{

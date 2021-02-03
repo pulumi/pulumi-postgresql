@@ -9,4 +9,4 @@ require (
 	github.com/terraform-providers/terraform-provider-postgresql v1.7.1
 )
 
-replace github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
+replace github.com/terraform-providers/terraform-provider-postgresql => github.com/cyrilgdn/terraform-provider-postgresql v1.11.1

@@ -20,6 +20,7 @@
         "defaultPrivileges.ts",
         "extension.ts",
         "grant.ts",
+        "grantRole.ts",
         "index.ts",
         "provider.ts",
         "role.ts",

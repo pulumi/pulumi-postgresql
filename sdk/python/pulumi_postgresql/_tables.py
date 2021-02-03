@@ -13,6 +13,7 @@ SNAKE_TO_CAMEL_CASE_TABLE = {
     "drop_cascade": "dropCascade",
     "encrypted_password": "encryptedPassword",
     "expected_version": "expectedVersion",
+    "grant_role": "grantRole",
     "if_not_exists": "ifNotExists",
     "is_template": "isTemplate",
     "lc_collate": "lcCollate",
@@ -26,6 +27,7 @@ SNAKE_TO_CAMEL_CASE_TABLE = {
     "statement_timeout": "statementTimeout",
     "tablespace_name": "tablespaceName",
     "valid_until": "validUntil",
+    "with_admin_option": "withAdminOption",
     "with_grant_option": "withGrantOption",
 }
 
@@ -40,6 +42,7 @@ CAMEL_TO_SNAKE_CASE_TABLE = {
     "dropCascade": "drop_cascade",
     "encryptedPassword": "encrypted_password",
     "expectedVersion": "expected_version",
+    "grantRole": "grant_role",
     "ifNotExists": "if_not_exists",
     "isTemplate": "is_template",
     "lcCollate": "lc_collate",
@@ -53,5 +56,6 @@ CAMEL_TO_SNAKE_CASE_TABLE = {
     "statementTimeout": "statement_timeout",
     "tablespaceName": "tablespace_name",
     "validUntil": "valid_until",
+    "withAdminOption": "with_admin_option",
     "withGrantOption": "with_grant_option",
 }

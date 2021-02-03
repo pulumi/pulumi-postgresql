@@ -25,6 +25,7 @@ class Provider(pulumi.ProviderResource):
                  max_connections: Optional[pulumi.Input[int]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 scheme: Optional[pulumi.Input[str]] = None,
                  ssl_mode: Optional[pulumi.Input[str]] = None,
                  sslmode: Optional[pulumi.Input[str]] = None,
                  sslrootcert: Optional[pulumi.Input[str]] = None,
@@ -93,6 +94,7 @@ class Provider(pulumi.ProviderResource):
             if port is None:
                 port = (_utilities.get_env_int('PGPORT') or 5432)
             __props__['port'] = pulumi.Output.from_input(port).apply(pulumi.runtime.to_json) if port is not None else None
+            __props__['scheme'] = scheme
             if ssl_mode is not None and not opts.urn:
                 warnings.warn("""Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""", DeprecationWarning)
                 pulumi.log.warn("ssl_mode is deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`")

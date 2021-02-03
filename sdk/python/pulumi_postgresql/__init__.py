@@ -8,6 +8,7 @@ from .default_privileg import *
 from .default_privileges import *
 from .extension import *
 from .grant import *
+from .grant_role import *
 from .provider import *
 from .role import *
 from .schema import *
@@ -41,6 +42,8 @@ def _register_module():
                 return Extension(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "postgresql:index/grant:Grant":
                 return Grant(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "postgresql:index/grantRole:GrantRole":
+                return GrantRole(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "postgresql:index/role:Role":
                 return Role(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "postgresql:index/schema:Schema":
@@ -55,6 +58,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("postgresql", "index/defaultPrivileges", _module_instance)
     pulumi.runtime.register_resource_module("postgresql", "index/extension", _module_instance)
     pulumi.runtime.register_resource_module("postgresql", "index/grant", _module_instance)
+    pulumi.runtime.register_resource_module("postgresql", "index/grantRole", _module_instance)
     pulumi.runtime.register_resource_module("postgresql", "index/role", _module_instance)
     pulumi.runtime.register_resource_module("postgresql", "index/schema", _module_instance)
 

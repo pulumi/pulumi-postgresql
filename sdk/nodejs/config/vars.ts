@@ -43,6 +43,7 @@ export let password: string | undefined = __config.get("password") || utilities.
  * The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
  */
 export let port: number | undefined = __config.getObject<number>("port") || (<any>utilities.getEnvNumber("PGPORT") || 5432);
+export let scheme: string | undefined = __config.get("scheme");
 export let sslMode: string | undefined = __config.get("sslMode");
 /**
  * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the

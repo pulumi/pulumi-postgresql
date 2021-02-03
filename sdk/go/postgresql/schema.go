@@ -26,6 +26,8 @@ type Schema struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Can be specified multiple times for each policy.  Each
 	// policy block supports fields documented below.
+	//
+	// Deprecated: Use postgresql_grant resource instead (with object_type="schema")
 	Policies SchemaPolicyArrayOutput `pulumi:"policies"`
 }
 
@@ -71,6 +73,8 @@ type schemaState struct {
 	Owner *string `pulumi:"owner"`
 	// Can be specified multiple times for each policy.  Each
 	// policy block supports fields documented below.
+	//
+	// Deprecated: Use postgresql_grant resource instead (with object_type="schema")
 	Policies []SchemaPolicy `pulumi:"policies"`
 }
 
@@ -88,6 +92,8 @@ type SchemaState struct {
 	Owner pulumi.StringPtrInput
 	// Can be specified multiple times for each policy.  Each
 	// policy block supports fields documented below.
+	//
+	// Deprecated: Use postgresql_grant resource instead (with object_type="schema")
 	Policies SchemaPolicyArrayInput
 }
 
@@ -109,6 +115,8 @@ type schemaArgs struct {
 	Owner *string `pulumi:"owner"`
 	// Can be specified multiple times for each policy.  Each
 	// policy block supports fields documented below.
+	//
+	// Deprecated: Use postgresql_grant resource instead (with object_type="schema")
 	Policies []SchemaPolicy `pulumi:"policies"`
 }
 
@@ -127,6 +135,8 @@ type SchemaArgs struct {
 	Owner pulumi.StringPtrInput
 	// Can be specified multiple times for each policy.  Each
 	// policy block supports fields documented below.
+	//
+	// Deprecated: Use postgresql_grant resource instead (with object_type="schema")
 	Policies SchemaPolicyArrayInput
 }
 
