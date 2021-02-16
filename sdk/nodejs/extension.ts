@@ -77,7 +77,8 @@ export class Extension extends pulumi.CustomResource {
     constructor(name: string, args?: ExtensionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ExtensionArgs | ExtensionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ExtensionState | undefined;
             inputs["database"] = state ? state.database : undefined;
             inputs["dropCascade"] = state ? state.dropCascade : undefined;
@@ -92,12 +93,8 @@ export class Extension extends pulumi.CustomResource {
             inputs["schema"] = args ? args.schema : undefined;
             inputs["version"] = args ? args.version : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Extension.__pulumiType, name, inputs, opts);
     }

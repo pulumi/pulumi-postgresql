@@ -39,7 +39,7 @@ connect_timeout = __config__.get('connectTimeout') or (_utilities.get_env_int('P
 Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
 """
 
-database = __config__.get('database') or (_utilities.get_env('PGDATABASE') or 'postgres')
+database = __config__.get('database')
 """
 The name of the database to connect to in order to conenct to (defaults to `postgres`).
 """
@@ -54,7 +54,7 @@ expected_version = __config__.get('expectedVersion')
 Specify the expected version of PostgreSQL.
 """
 
-host = __config__.get('host') or _utilities.get_env('PGHOST')
+host = __config__.get('host')
 """
 Name of PostgreSQL server address to connect to
 """
@@ -64,12 +64,12 @@ max_connections = __config__.get('maxConnections')
 Maximum number of connections to establish to the database. Zero means unlimited.
 """
 
-password = __config__.get('password') or _utilities.get_env('PGPASSWORD')
+password = __config__.get('password')
 """
 Password to be used if the PostgreSQL server demands password authentication
 """
 
-port = __config__.get('port') or (_utilities.get_env_int('PGPORT') or 5432)
+port = __config__.get('port')
 """
 The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
 """
@@ -95,7 +95,7 @@ Specify if the user to connect as is a Postgres superuser or not.If not, some fe
 Refreshing state password from Postgres)
 """
 
-username = __config__.get('username') or (_utilities.get_env('PGUSER') or 'postgres')
+username = __config__.get('username')
 """
 PostgreSQL user name to connect as
 """

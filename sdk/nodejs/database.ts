@@ -96,7 +96,8 @@ export class Database extends pulumi.CustomResource {
     constructor(name: string, args?: DatabaseArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseArgs | DatabaseState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
             inputs["allowConnections"] = state ? state.allowConnections : undefined;
             inputs["connectionLimit"] = state ? state.connectionLimit : undefined;
@@ -121,12 +122,8 @@ export class Database extends pulumi.CustomResource {
             inputs["tablespaceName"] = args ? args.tablespaceName : undefined;
             inputs["template"] = args ? args.template : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Database.__pulumiType, name, inputs, opts);
     }

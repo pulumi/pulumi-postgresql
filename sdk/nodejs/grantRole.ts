@@ -77,29 +77,26 @@ export class GrantRole extends pulumi.CustomResource {
     constructor(name: string, args: GrantRoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GrantRoleArgs | GrantRoleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GrantRoleState | undefined;
             inputs["grantRole"] = state ? state.grantRole : undefined;
             inputs["role"] = state ? state.role : undefined;
             inputs["withAdminOption"] = state ? state.withAdminOption : undefined;
         } else {
             const args = argsOrState as GrantRoleArgs | undefined;
-            if ((!args || args.grantRole === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.grantRole === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'grantRole'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["grantRole"] = args ? args.grantRole : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["withAdminOption"] = args ? args.withAdminOption : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GrantRole.__pulumiType, name, inputs, opts);
     }

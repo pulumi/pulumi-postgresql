@@ -79,20 +79,12 @@ class Provider(pulumi.ProviderResource):
             if connect_timeout is None:
                 connect_timeout = (_utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
             __props__['connect_timeout'] = pulumi.Output.from_input(connect_timeout).apply(pulumi.runtime.to_json) if connect_timeout is not None else None
-            if database is None:
-                database = (_utilities.get_env('PGDATABASE') or 'postgres')
             __props__['database'] = database
             __props__['database_username'] = database_username
             __props__['expected_version'] = expected_version
-            if host is None:
-                host = _utilities.get_env('PGHOST')
             __props__['host'] = host
             __props__['max_connections'] = pulumi.Output.from_input(max_connections).apply(pulumi.runtime.to_json) if max_connections is not None else None
-            if password is None:
-                password = _utilities.get_env('PGPASSWORD')
             __props__['password'] = password
-            if port is None:
-                port = (_utilities.get_env_int('PGPORT') or 5432)
             __props__['port'] = pulumi.Output.from_input(port).apply(pulumi.runtime.to_json) if port is not None else None
             __props__['scheme'] = scheme
             if ssl_mode is not None and not opts.urn:
@@ -104,8 +96,6 @@ class Provider(pulumi.ProviderResource):
             __props__['sslmode'] = sslmode
             __props__['sslrootcert'] = sslrootcert
             __props__['superuser'] = pulumi.Output.from_input(superuser).apply(pulumi.runtime.to_json) if superuser is not None else None
-            if username is None:
-                username = (_utilities.get_env('PGUSER') or 'postgres')
             __props__['username'] = username
         super(Provider, __self__).__init__(
             'postgresql',

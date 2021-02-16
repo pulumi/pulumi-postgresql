@@ -106,7 +106,8 @@ export class Grant extends pulumi.CustomResource {
     constructor(name: string, args: GrantArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GrantArgs | GrantState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GrantState | undefined;
             inputs["database"] = state ? state.database : undefined;
             inputs["objectType"] = state ? state.objectType : undefined;
@@ -116,16 +117,16 @@ export class Grant extends pulumi.CustomResource {
             inputs["withGrantOption"] = state ? state.withGrantOption : undefined;
         } else {
             const args = argsOrState as GrantArgs | undefined;
-            if ((!args || args.database === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.database === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'database'");
             }
-            if ((!args || args.objectType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.objectType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'objectType'");
             }
-            if ((!args || args.privileges === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.privileges === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'privileges'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["database"] = args ? args.database : undefined;
@@ -135,12 +136,8 @@ export class Grant extends pulumi.CustomResource {
             inputs["schema"] = args ? args.schema : undefined;
             inputs["withGrantOption"] = args ? args.withGrantOption : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Grant.__pulumiType, name, inputs, opts);
     }

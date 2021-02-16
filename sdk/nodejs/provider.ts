@@ -36,29 +36,26 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
+        opts = opts || {};
         {
             inputs["clientcert"] = pulumi.output(args ? args.clientcert : undefined).apply(JSON.stringify);
             inputs["connectTimeout"] = pulumi.output((args ? args.connectTimeout : undefined) || (<any>utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180)).apply(JSON.stringify);
-            inputs["database"] = (args ? args.database : undefined) || (utilities.getEnv("PGDATABASE") || "postgres");
+            inputs["database"] = args ? args.database : undefined;
             inputs["databaseUsername"] = args ? args.databaseUsername : undefined;
             inputs["expectedVersion"] = args ? args.expectedVersion : undefined;
-            inputs["host"] = (args ? args.host : undefined) || utilities.getEnv("PGHOST");
+            inputs["host"] = args ? args.host : undefined;
             inputs["maxConnections"] = pulumi.output(args ? args.maxConnections : undefined).apply(JSON.stringify);
-            inputs["password"] = (args ? args.password : undefined) || utilities.getEnv("PGPASSWORD");
-            inputs["port"] = pulumi.output((args ? args.port : undefined) || (<any>utilities.getEnvNumber("PGPORT") || 5432)).apply(JSON.stringify);
+            inputs["password"] = args ? args.password : undefined;
+            inputs["port"] = pulumi.output(args ? args.port : undefined).apply(JSON.stringify);
             inputs["scheme"] = args ? args.scheme : undefined;
             inputs["sslMode"] = args ? args.sslMode : undefined;
             inputs["sslmode"] = (args ? args.sslmode : undefined) || utilities.getEnv("PGSSLMODE");
             inputs["sslrootcert"] = args ? args.sslrootcert : undefined;
             inputs["superuser"] = pulumi.output(args ? args.superuser : undefined).apply(JSON.stringify);
-            inputs["username"] = (args ? args.username : undefined) || (utilities.getEnv("PGUSER") || "postgres");
+            inputs["username"] = args ? args.username : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }

@@ -76,34 +76,6 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-postgresql",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"host": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"PGHOST"},
-				},
-			},
-			"port": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"PGPORT"},
-					Value:   5432,
-				},
-			},
-			"database": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"PGDATABASE"},
-					Value:   "postgres",
-				},
-			},
-			"username": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"PGUSER"},
-					Value:   "postgres",
-				},
-			},
-			"password": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"PGPASSWORD"},
-				},
-			},
 			"sslmode": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"PGSSLMODE"},

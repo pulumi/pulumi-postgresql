@@ -28,23 +28,8 @@ func NewProvider(ctx *pulumi.Context,
 	if args.ConnectTimeout == nil {
 		args.ConnectTimeout = pulumi.IntPtr(getEnvOrDefault(180, parseEnvInt, "PGCONNECT_TIMEOUT").(int))
 	}
-	if args.Database == nil {
-		args.Database = pulumi.StringPtr(getEnvOrDefault("postgres", nil, "PGDATABASE").(string))
-	}
-	if args.Host == nil {
-		args.Host = pulumi.StringPtr(getEnvOrDefault("", nil, "PGHOST").(string))
-	}
-	if args.Password == nil {
-		args.Password = pulumi.StringPtr(getEnvOrDefault("", nil, "PGPASSWORD").(string))
-	}
-	if args.Port == nil {
-		args.Port = pulumi.IntPtr(getEnvOrDefault(5432, parseEnvInt, "PGPORT").(int))
-	}
 	if args.Sslmode == nil {
 		args.Sslmode = pulumi.StringPtr(getEnvOrDefault("", nil, "PGSSLMODE").(string))
-	}
-	if args.Username == nil {
-		args.Username = pulumi.StringPtr(getEnvOrDefault("postgres", nil, "PGUSER").(string))
 	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:postgresql", name, args, &resource, opts...)
@@ -146,6 +131,35 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
+func (i *Provider) ToProviderPtrOutput() ProviderPtrOutput {
+	return i.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *Provider) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
+}
+
+type ProviderPtrInput interface {
+	pulumi.Input
+
+	ToProviderPtrOutput() ProviderPtrOutput
+	ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput
+}
+
+type providerPtrType ProviderArgs
+
+func (*providerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Provider)(nil))
+}
+
+func (i *providerPtrType) ToProviderPtrOutput() ProviderPtrOutput {
+	return i.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *providerPtrType) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
+}
+
 type ProviderOutput struct {
 	*pulumi.OutputState
 }
@@ -162,6 +176,33 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+func (o ProviderOutput) ToProviderPtrOutput() ProviderPtrOutput {
+	return o.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return o.ApplyT(func(v Provider) *Provider {
+		return &v
+	}).(ProviderPtrOutput)
+}
+
+type ProviderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Provider)(nil))
+}
+
+func (o ProviderPtrOutput) ToProviderPtrOutput() ProviderPtrOutput {
+	return o
+}
+
+func (o ProviderPtrOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProviderOutput{})
+	pulumi.RegisterOutputType(ProviderPtrOutput{})
 }

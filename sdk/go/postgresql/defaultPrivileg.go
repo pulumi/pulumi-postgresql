@@ -163,6 +163,85 @@ func (i *DefaultPrivileg) ToDefaultPrivilegOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegOutput)
 }
 
+func (i *DefaultPrivileg) ToDefaultPrivilegPtrOutput() DefaultPrivilegPtrOutput {
+	return i.ToDefaultPrivilegPtrOutputWithContext(context.Background())
+}
+
+func (i *DefaultPrivileg) ToDefaultPrivilegPtrOutputWithContext(ctx context.Context) DefaultPrivilegPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegPtrOutput)
+}
+
+type DefaultPrivilegPtrInput interface {
+	pulumi.Input
+
+	ToDefaultPrivilegPtrOutput() DefaultPrivilegPtrOutput
+	ToDefaultPrivilegPtrOutputWithContext(ctx context.Context) DefaultPrivilegPtrOutput
+}
+
+type defaultPrivilegPtrType DefaultPrivilegArgs
+
+func (*defaultPrivilegPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPrivileg)(nil))
+}
+
+func (i *defaultPrivilegPtrType) ToDefaultPrivilegPtrOutput() DefaultPrivilegPtrOutput {
+	return i.ToDefaultPrivilegPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPrivilegPtrType) ToDefaultPrivilegPtrOutputWithContext(ctx context.Context) DefaultPrivilegPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegPtrOutput)
+}
+
+// DefaultPrivilegArrayInput is an input type that accepts DefaultPrivilegArray and DefaultPrivilegArrayOutput values.
+// You can construct a concrete instance of `DefaultPrivilegArrayInput` via:
+//
+//          DefaultPrivilegArray{ DefaultPrivilegArgs{...} }
+type DefaultPrivilegArrayInput interface {
+	pulumi.Input
+
+	ToDefaultPrivilegArrayOutput() DefaultPrivilegArrayOutput
+	ToDefaultPrivilegArrayOutputWithContext(context.Context) DefaultPrivilegArrayOutput
+}
+
+type DefaultPrivilegArray []DefaultPrivilegInput
+
+func (DefaultPrivilegArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DefaultPrivileg)(nil))
+}
+
+func (i DefaultPrivilegArray) ToDefaultPrivilegArrayOutput() DefaultPrivilegArrayOutput {
+	return i.ToDefaultPrivilegArrayOutputWithContext(context.Background())
+}
+
+func (i DefaultPrivilegArray) ToDefaultPrivilegArrayOutputWithContext(ctx context.Context) DefaultPrivilegArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegArrayOutput)
+}
+
+// DefaultPrivilegMapInput is an input type that accepts DefaultPrivilegMap and DefaultPrivilegMapOutput values.
+// You can construct a concrete instance of `DefaultPrivilegMapInput` via:
+//
+//          DefaultPrivilegMap{ "key": DefaultPrivilegArgs{...} }
+type DefaultPrivilegMapInput interface {
+	pulumi.Input
+
+	ToDefaultPrivilegMapOutput() DefaultPrivilegMapOutput
+	ToDefaultPrivilegMapOutputWithContext(context.Context) DefaultPrivilegMapOutput
+}
+
+type DefaultPrivilegMap map[string]DefaultPrivilegInput
+
+func (DefaultPrivilegMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DefaultPrivileg)(nil))
+}
+
+func (i DefaultPrivilegMap) ToDefaultPrivilegMapOutput() DefaultPrivilegMapOutput {
+	return i.ToDefaultPrivilegMapOutputWithContext(context.Background())
+}
+
+func (i DefaultPrivilegMap) ToDefaultPrivilegMapOutputWithContext(ctx context.Context) DefaultPrivilegMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegMapOutput)
+}
+
 type DefaultPrivilegOutput struct {
 	*pulumi.OutputState
 }
@@ -179,6 +258,75 @@ func (o DefaultPrivilegOutput) ToDefaultPrivilegOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o DefaultPrivilegOutput) ToDefaultPrivilegPtrOutput() DefaultPrivilegPtrOutput {
+	return o.ToDefaultPrivilegPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPrivilegOutput) ToDefaultPrivilegPtrOutputWithContext(ctx context.Context) DefaultPrivilegPtrOutput {
+	return o.ApplyT(func(v DefaultPrivileg) *DefaultPrivileg {
+		return &v
+	}).(DefaultPrivilegPtrOutput)
+}
+
+type DefaultPrivilegPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultPrivilegPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPrivileg)(nil))
+}
+
+func (o DefaultPrivilegPtrOutput) ToDefaultPrivilegPtrOutput() DefaultPrivilegPtrOutput {
+	return o
+}
+
+func (o DefaultPrivilegPtrOutput) ToDefaultPrivilegPtrOutputWithContext(ctx context.Context) DefaultPrivilegPtrOutput {
+	return o
+}
+
+type DefaultPrivilegArrayOutput struct{ *pulumi.OutputState }
+
+func (DefaultPrivilegArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefaultPrivileg)(nil))
+}
+
+func (o DefaultPrivilegArrayOutput) ToDefaultPrivilegArrayOutput() DefaultPrivilegArrayOutput {
+	return o
+}
+
+func (o DefaultPrivilegArrayOutput) ToDefaultPrivilegArrayOutputWithContext(ctx context.Context) DefaultPrivilegArrayOutput {
+	return o
+}
+
+func (o DefaultPrivilegArrayOutput) Index(i pulumi.IntInput) DefaultPrivilegOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefaultPrivileg {
+		return vs[0].([]DefaultPrivileg)[vs[1].(int)]
+	}).(DefaultPrivilegOutput)
+}
+
+type DefaultPrivilegMapOutput struct{ *pulumi.OutputState }
+
+func (DefaultPrivilegMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DefaultPrivileg)(nil))
+}
+
+func (o DefaultPrivilegMapOutput) ToDefaultPrivilegMapOutput() DefaultPrivilegMapOutput {
+	return o
+}
+
+func (o DefaultPrivilegMapOutput) ToDefaultPrivilegMapOutputWithContext(ctx context.Context) DefaultPrivilegMapOutput {
+	return o
+}
+
+func (o DefaultPrivilegMapOutput) MapIndex(k pulumi.StringInput) DefaultPrivilegOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DefaultPrivileg {
+		return vs[0].(map[string]DefaultPrivileg)[vs[1].(string)]
+	}).(DefaultPrivilegOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DefaultPrivilegOutput{})
+	pulumi.RegisterOutputType(DefaultPrivilegPtrOutput{})
+	pulumi.RegisterOutputType(DefaultPrivilegArrayOutput{})
+	pulumi.RegisterOutputType(DefaultPrivilegMapOutput{})
 }

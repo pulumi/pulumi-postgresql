@@ -134,12 +134,7 @@ namespace Pulumi.PostgreSql
         public ProviderArgs()
         {
             ConnectTimeout = Utilities.GetEnvInt32("PGCONNECT_TIMEOUT") ?? 180;
-            Database = Utilities.GetEnv("PGDATABASE") ?? "postgres";
-            Host = Utilities.GetEnv("PGHOST");
-            Password = Utilities.GetEnv("PGPASSWORD");
-            Port = Utilities.GetEnvInt32("PGPORT") ?? 5432;
             Sslmode = Utilities.GetEnv("PGSSLMODE");
-            Username = Utilities.GetEnv("PGUSER") ?? "postgres";
         }
     }
 }
