@@ -21,7 +21,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// The name of the database to connect to in order to conenct to (defaults to `postgres`).
         /// </summary>
-        public static string? Database { get; set; } = __config.Get("database") ?? Utilities.GetEnv("PGDATABASE") ?? "postgres";
+        public static string? Database { get; set; } = __config.Get("database");
 
         /// <summary>
         /// Database username associated to the connected user (for user name maps)
@@ -36,7 +36,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Name of PostgreSQL server address to connect to
         /// </summary>
-        public static string? Host { get; set; } = __config.Get("host") ?? Utilities.GetEnv("PGHOST");
+        public static string? Host { get; set; } = __config.Get("host");
 
         /// <summary>
         /// Maximum number of connections to establish to the database. Zero means unlimited.
@@ -46,12 +46,12 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Password to be used if the PostgreSQL server demands password authentication
         /// </summary>
-        public static string? Password { get; set; } = __config.Get("password") ?? Utilities.GetEnv("PGPASSWORD");
+        public static string? Password { get; set; } = __config.Get("password");
 
         /// <summary>
         /// The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
         /// </summary>
-        public static int? Port { get; set; } = __config.GetInt32("port") ?? Utilities.GetEnvInt32("PGPORT") ?? 5432;
+        public static int? Port { get; set; } = __config.GetInt32("port");
 
         public static string? Scheme { get; set; } = __config.Get("scheme");
 
@@ -77,7 +77,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// PostgreSQL user name to connect as
         /// </summary>
-        public static string? Username { get; set; } = __config.Get("username") ?? Utilities.GetEnv("PGUSER") ?? "postgres";
+        public static string? Username { get; set; } = __config.Get("username");
 
         public static class Types
         {

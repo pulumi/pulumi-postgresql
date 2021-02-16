@@ -30,13 +30,7 @@
             },
             "database": {
                 "type": "string",
-                "description": "The name of the database to connect to in order to conenct to (defaults to `postgres`).\n",
-                "default": "postgres",
-                "defaultInfo": {
-                    "environment": [
-                        "PGDATABASE"
-                    ]
-                }
+                "description": "The name of the database to connect to in order to conenct to (defaults to `postgres`).\n"
             },
             "databaseUsername": {
                 "type": "string",
@@ -48,12 +42,7 @@
             },
             "host": {
                 "type": "string",
-                "description": "Name of PostgreSQL server address to connect to\n",
-                "defaultInfo": {
-                    "environment": [
-                        "PGHOST"
-                    ]
-                }
+                "description": "Name of PostgreSQL server address to connect to\n"
             },
             "maxConnections": {
                 "type": "integer",
@@ -61,22 +50,11 @@
             },
             "password": {
                 "type": "string",
-                "description": "Password to be used if the PostgreSQL server demands password authentication\n",
-                "defaultInfo": {
-                    "environment": [
-                        "PGPASSWORD"
-                    ]
-                }
+                "description": "Password to be used if the PostgreSQL server demands password authentication\n"
             },
             "port": {
                 "type": "integer",
-                "description": "The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections\n",
-                "default": 5432,
-                "defaultInfo": {
-                    "environment": [
-                        "PGPORT"
-                    ]
-                }
+                "description": "The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections\n"
             },
             "scheme": {
                 "type": "string"
@@ -104,13 +82,7 @@
             },
             "username": {
                 "type": "string",
-                "description": "PostgreSQL user name to connect as\n",
-                "default": "postgres",
-                "defaultInfo": {
-                    "environment": [
-                        "PGUSER"
-                    ]
-                }
+                "description": "PostgreSQL user name to connect as\n"
             }
         }
     },
@@ -235,13 +207,7 @@
             },
             "database": {
                 "type": "string",
-                "description": "The name of the database to connect to in order to conenct to (defaults to `postgres`).\n",
-                "default": "postgres",
-                "defaultInfo": {
-                    "environment": [
-                        "PGDATABASE"
-                    ]
-                }
+                "description": "The name of the database to connect to in order to conenct to (defaults to `postgres`).\n"
             },
             "databaseUsername": {
                 "type": "string",
@@ -253,12 +219,7 @@
             },
             "host": {
                 "type": "string",
-                "description": "Name of PostgreSQL server address to connect to\n",
-                "defaultInfo": {
-                    "environment": [
-                        "PGHOST"
-                    ]
-                }
+                "description": "Name of PostgreSQL server address to connect to\n"
             },
             "maxConnections": {
                 "type": "integer",
@@ -266,22 +227,11 @@
             },
             "password": {
                 "type": "string",
-                "description": "Password to be used if the PostgreSQL server demands password authentication\n",
-                "defaultInfo": {
-                    "environment": [
-                        "PGPASSWORD"
-                    ]
-                }
+                "description": "Password to be used if the PostgreSQL server demands password authentication\n"
             },
             "port": {
                 "type": "integer",
-                "description": "The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections\n",
-                "default": 5432,
-                "defaultInfo": {
-                    "environment": [
-                        "PGPORT"
-                    ]
-                }
+                "description": "The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections\n"
             },
             "scheme": {
                 "type": "string"
@@ -309,13 +259,7 @@
             },
             "username": {
                 "type": "string",
-                "description": "PostgreSQL user name to connect as\n",
-                "default": "postgres",
-                "defaultInfo": {
-                    "environment": [
-                        "PGUSER"
-                    ]
-                }
+                "description": "PostgreSQL user name to connect as\n"
             }
         }
     },
@@ -573,7 +517,7 @@
             "deprecationMessage": "postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges"
         },
         "postgresql:index/defaultPrivileges:DefaultPrivileges": {
-            "description": "The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readOnlyTables = new postgresql.DefaultPrivileges(\"read_only_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    owner: \"db_owner\",\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nread_only_tables = postgresql.DefaultPrivileges(\"readOnlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    owner=\"db_owner\",\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var readOnlyTables = new PostgreSql.DefaultPrivileges(\"readOnlyTables\", new PostgreSql.DefaultPrivilegesArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"table\",\n            Owner = \"db_owner\",\n            Privileges = \n            {\n                \"SELECT\",\n            },\n            Role = \"test_role\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"readOnlyTables\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tOwner:      pulumi.String(\"db_owner\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n",
+            "description": "The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readOnlyTables = new postgresql.DefaultPrivileges(\"read_only_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    owner: \"db_owner\",\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nread_only_tables = postgresql.DefaultPrivileges(\"readOnlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    owner=\"db_owner\",\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var readOnlyTables = new PostgreSql.DefaultPrivileges(\"readOnlyTables\", new PostgreSql.DefaultPrivilegesArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"table\",\n            Owner = \"db_owner\",\n            Privileges = \n            {\n                \"SELECT\",\n            },\n            Role = \"test_role\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"readOnlyTables\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tOwner:      pulumi.String(\"db_owner\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n",
             "properties": {
                 "database": {
                     "type": "string",
@@ -688,7 +632,7 @@
             ]
         },
         "postgresql:index/extension:Extension": {
-            "description": "The ``postgresql.Extension`` resource creates and manages an extension on a PostgreSQL\nserver.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst myExtension = new postgresql.Extension(\"my_extension\", {});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_extension = postgresql.Extension(\"myExtension\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myExtension = new PostgreSql.Extension(\"myExtension\", new PostgreSql.ExtensionArgs\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewExtension(ctx, \"myExtension\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n",
+            "description": "The ``postgresql.Extension`` resource creates and manages an extension on a PostgreSQL\nserver.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst myExtension = new postgresql.Extension(\"my_extension\", {});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_extension = postgresql.Extension(\"myExtension\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myExtension = new PostgreSql.Extension(\"myExtension\", new PostgreSql.ExtensionArgs\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewExtension(ctx, \"myExtension\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n",
             "properties": {
                 "database": {
                     "type": "string",
@@ -767,7 +711,7 @@
             }
         },
         "postgresql:index/grant:Grant": {
-            "description": "The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.\n\nSee [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readonlyTables = new postgresql.Grant(\"readonly_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nreadonly_tables = postgresql.Grant(\"readonlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var readonlyTables = new PostgreSql.Grant(\"readonlyTables\", new PostgreSql.GrantArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"table\",\n            Privileges = \n            {\n                \"SELECT\",\n            },\n            Role = \"test_role\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"readonlyTables\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n## Examples\n\nRevoke default accesses for public schema:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.Grant(\"revoke_public\", {\n    database: \"test_db\",\n    objectType: \"schema\",\n    privileges: [],\n    role: \"public\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.Grant(\"revokePublic\",\n    database=\"test_db\",\n    object_type=\"schema\",\n    privileges=[],\n    role=\"public\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var revokePublic = new PostgreSql.Grant(\"revokePublic\", new PostgreSql.GrantArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"schema\",\n            Privileges = {},\n            Role = \"public\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"revokePublic\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"schema\"),\n\t\t\tPrivileges: []interface{}{},\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tSchema:     pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n",
+            "description": "The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.\n\nSee [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readonlyTables = new postgresql.Grant(\"readonly_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nreadonly_tables = postgresql.Grant(\"readonlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var readonlyTables = new PostgreSql.Grant(\"readonlyTables\", new PostgreSql.GrantArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"table\",\n            Privileges = \n            {\n                \"SELECT\",\n            },\n            Role = \"test_role\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"readonlyTables\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n## Examples\n\nRevoke default accesses for public schema:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.Grant(\"revoke_public\", {\n    database: \"test_db\",\n    objectType: \"schema\",\n    privileges: [],\n    role: \"public\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.Grant(\"revokePublic\",\n    database=\"test_db\",\n    object_type=\"schema\",\n    privileges=[],\n    role=\"public\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var revokePublic = new PostgreSql.Grant(\"revokePublic\", new PostgreSql.GrantArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"schema\",\n            Privileges = {},\n            Role = \"public\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"revokePublic\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"schema\"),\n\t\t\tPrivileges: []interface{}{},\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tSchema:     pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n",
             "properties": {
                 "database": {
                     "type": "string",
@@ -873,7 +817,7 @@
             }
         },
         "postgresql:index/grantRole:GrantRole": {
-            "description": "The ``postgresql.GrantRole`` resource creates and manages membership in a role to one or more other roles in a non-authoritative way.\n\nWhen using ``postgresql.GrantRole`` resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.\n\n\u003e **Note:** This resource needs PostgreSQL version 9 or above.\n\n\u003e **Note:** `postgresql.GrantRole` **cannot** be used in conjunction with `postgresql.Role` or they will fight over what your role grants should be.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst grantRoot = new postgresql.GrantRole(\"grant_root\", {\n    grantRole: \"application\",\n    role: \"root\",\n    withAdminOption: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\ngrant_root = postgresql.GrantRole(\"grantRoot\",\n    grant_role=\"application\",\n    role=\"root\",\n    with_admin_option=True)\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var grantRoot = new PostgreSql.GrantRole(\"grantRoot\", new PostgreSql.GrantRoleArgs\n        {\n            GrantRole = \"application\",\n            Role = \"root\",\n            WithAdminOption = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrantRole(ctx, \"grantRoot\", \u0026postgresql.GrantRoleArgs{\n\t\t\tGrantRole:       pulumi.String(\"application\"),\n\t\t\tRole:            pulumi.String(\"root\"),\n\t\t\tWithAdminOption: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n",
+            "description": "The ``postgresql.GrantRole`` resource creates and manages membership in a role to one or more other roles in a non-authoritative way.\n\nWhen using ``postgresql.GrantRole`` resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.\n\n\u003e **Note:** This resource needs PostgreSQL version 9 or above.\n\n\u003e **Note:** `postgresql.GrantRole` **cannot** be used in conjunction with `postgresql.Role` or they will fight over what your role grants should be.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst grantRoot = new postgresql.GrantRole(\"grant_root\", {\n    grantRole: \"application\",\n    role: \"root\",\n    withAdminOption: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\ngrant_root = postgresql.GrantRole(\"grantRoot\",\n    grant_role=\"application\",\n    role=\"root\",\n    with_admin_option=True)\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var grantRoot = new PostgreSql.GrantRole(\"grantRoot\", new PostgreSql.GrantRoleArgs\n        {\n            GrantRole = \"application\",\n            Role = \"root\",\n            WithAdminOption = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrantRole(ctx, \"grantRoot\", \u0026postgresql.GrantRoleArgs{\n\t\t\tGrantRole:       pulumi.String(\"application\"),\n\t\t\tRole:            pulumi.String(\"root\"),\n\t\t\tWithAdminOption: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n",
             "properties": {
                 "grantRole": {
                     "type": "string",

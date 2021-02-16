@@ -74,7 +74,8 @@ export class DefaultPrivileg extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DefaultPrivilegArgs | DefaultPrivilegState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("DefaultPrivileg is deprecated: postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges")
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DefaultPrivilegState | undefined;
             inputs["database"] = state ? state.database : undefined;
             inputs["objectType"] = state ? state.objectType : undefined;
@@ -84,22 +85,22 @@ export class DefaultPrivileg extends pulumi.CustomResource {
             inputs["schema"] = state ? state.schema : undefined;
         } else {
             const args = argsOrState as DefaultPrivilegArgs | undefined;
-            if ((!args || args.database === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.database === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'database'");
             }
-            if ((!args || args.objectType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.objectType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'objectType'");
             }
-            if ((!args || args.owner === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.owner === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'owner'");
             }
-            if ((!args || args.privileges === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.privileges === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'privileges'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.schema === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.schema === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'schema'");
             }
             inputs["database"] = args ? args.database : undefined;
@@ -109,12 +110,8 @@ export class DefaultPrivileg extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["schema"] = args ? args.schema : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DefaultPrivileg.__pulumiType, name, inputs, opts);
     }

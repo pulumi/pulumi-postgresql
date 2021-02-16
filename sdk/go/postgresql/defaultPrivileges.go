@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql/"
+// 	"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -201,6 +201,85 @@ func (i *DefaultPrivileges) ToDefaultPrivilegesOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegesOutput)
 }
 
+func (i *DefaultPrivileges) ToDefaultPrivilegesPtrOutput() DefaultPrivilegesPtrOutput {
+	return i.ToDefaultPrivilegesPtrOutputWithContext(context.Background())
+}
+
+func (i *DefaultPrivileges) ToDefaultPrivilegesPtrOutputWithContext(ctx context.Context) DefaultPrivilegesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegesPtrOutput)
+}
+
+type DefaultPrivilegesPtrInput interface {
+	pulumi.Input
+
+	ToDefaultPrivilegesPtrOutput() DefaultPrivilegesPtrOutput
+	ToDefaultPrivilegesPtrOutputWithContext(ctx context.Context) DefaultPrivilegesPtrOutput
+}
+
+type defaultPrivilegesPtrType DefaultPrivilegesArgs
+
+func (*defaultPrivilegesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPrivileges)(nil))
+}
+
+func (i *defaultPrivilegesPtrType) ToDefaultPrivilegesPtrOutput() DefaultPrivilegesPtrOutput {
+	return i.ToDefaultPrivilegesPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultPrivilegesPtrType) ToDefaultPrivilegesPtrOutputWithContext(ctx context.Context) DefaultPrivilegesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegesPtrOutput)
+}
+
+// DefaultPrivilegesArrayInput is an input type that accepts DefaultPrivilegesArray and DefaultPrivilegesArrayOutput values.
+// You can construct a concrete instance of `DefaultPrivilegesArrayInput` via:
+//
+//          DefaultPrivilegesArray{ DefaultPrivilegesArgs{...} }
+type DefaultPrivilegesArrayInput interface {
+	pulumi.Input
+
+	ToDefaultPrivilegesArrayOutput() DefaultPrivilegesArrayOutput
+	ToDefaultPrivilegesArrayOutputWithContext(context.Context) DefaultPrivilegesArrayOutput
+}
+
+type DefaultPrivilegesArray []DefaultPrivilegesInput
+
+func (DefaultPrivilegesArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DefaultPrivileges)(nil))
+}
+
+func (i DefaultPrivilegesArray) ToDefaultPrivilegesArrayOutput() DefaultPrivilegesArrayOutput {
+	return i.ToDefaultPrivilegesArrayOutputWithContext(context.Background())
+}
+
+func (i DefaultPrivilegesArray) ToDefaultPrivilegesArrayOutputWithContext(ctx context.Context) DefaultPrivilegesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegesArrayOutput)
+}
+
+// DefaultPrivilegesMapInput is an input type that accepts DefaultPrivilegesMap and DefaultPrivilegesMapOutput values.
+// You can construct a concrete instance of `DefaultPrivilegesMapInput` via:
+//
+//          DefaultPrivilegesMap{ "key": DefaultPrivilegesArgs{...} }
+type DefaultPrivilegesMapInput interface {
+	pulumi.Input
+
+	ToDefaultPrivilegesMapOutput() DefaultPrivilegesMapOutput
+	ToDefaultPrivilegesMapOutputWithContext(context.Context) DefaultPrivilegesMapOutput
+}
+
+type DefaultPrivilegesMap map[string]DefaultPrivilegesInput
+
+func (DefaultPrivilegesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DefaultPrivileges)(nil))
+}
+
+func (i DefaultPrivilegesMap) ToDefaultPrivilegesMapOutput() DefaultPrivilegesMapOutput {
+	return i.ToDefaultPrivilegesMapOutputWithContext(context.Background())
+}
+
+func (i DefaultPrivilegesMap) ToDefaultPrivilegesMapOutputWithContext(ctx context.Context) DefaultPrivilegesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegesMapOutput)
+}
+
 type DefaultPrivilegesOutput struct {
 	*pulumi.OutputState
 }
@@ -217,6 +296,75 @@ func (o DefaultPrivilegesOutput) ToDefaultPrivilegesOutputWithContext(ctx contex
 	return o
 }
 
+func (o DefaultPrivilegesOutput) ToDefaultPrivilegesPtrOutput() DefaultPrivilegesPtrOutput {
+	return o.ToDefaultPrivilegesPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultPrivilegesOutput) ToDefaultPrivilegesPtrOutputWithContext(ctx context.Context) DefaultPrivilegesPtrOutput {
+	return o.ApplyT(func(v DefaultPrivileges) *DefaultPrivileges {
+		return &v
+	}).(DefaultPrivilegesPtrOutput)
+}
+
+type DefaultPrivilegesPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultPrivilegesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultPrivileges)(nil))
+}
+
+func (o DefaultPrivilegesPtrOutput) ToDefaultPrivilegesPtrOutput() DefaultPrivilegesPtrOutput {
+	return o
+}
+
+func (o DefaultPrivilegesPtrOutput) ToDefaultPrivilegesPtrOutputWithContext(ctx context.Context) DefaultPrivilegesPtrOutput {
+	return o
+}
+
+type DefaultPrivilegesArrayOutput struct{ *pulumi.OutputState }
+
+func (DefaultPrivilegesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefaultPrivileges)(nil))
+}
+
+func (o DefaultPrivilegesArrayOutput) ToDefaultPrivilegesArrayOutput() DefaultPrivilegesArrayOutput {
+	return o
+}
+
+func (o DefaultPrivilegesArrayOutput) ToDefaultPrivilegesArrayOutputWithContext(ctx context.Context) DefaultPrivilegesArrayOutput {
+	return o
+}
+
+func (o DefaultPrivilegesArrayOutput) Index(i pulumi.IntInput) DefaultPrivilegesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefaultPrivileges {
+		return vs[0].([]DefaultPrivileges)[vs[1].(int)]
+	}).(DefaultPrivilegesOutput)
+}
+
+type DefaultPrivilegesMapOutput struct{ *pulumi.OutputState }
+
+func (DefaultPrivilegesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DefaultPrivileges)(nil))
+}
+
+func (o DefaultPrivilegesMapOutput) ToDefaultPrivilegesMapOutput() DefaultPrivilegesMapOutput {
+	return o
+}
+
+func (o DefaultPrivilegesMapOutput) ToDefaultPrivilegesMapOutputWithContext(ctx context.Context) DefaultPrivilegesMapOutput {
+	return o
+}
+
+func (o DefaultPrivilegesMapOutput) MapIndex(k pulumi.StringInput) DefaultPrivilegesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DefaultPrivileges {
+		return vs[0].(map[string]DefaultPrivileges)[vs[1].(string)]
+	}).(DefaultPrivilegesOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DefaultPrivilegesOutput{})
+	pulumi.RegisterOutputType(DefaultPrivilegesPtrOutput{})
+	pulumi.RegisterOutputType(DefaultPrivilegesArrayOutput{})
+	pulumi.RegisterOutputType(DefaultPrivilegesMapOutput{})
 }

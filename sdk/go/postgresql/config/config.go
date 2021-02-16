@@ -24,11 +24,7 @@ func GetConnectTimeout(ctx *pulumi.Context) int {
 
 // The name of the database to connect to in order to conenct to (defaults to `postgres`).
 func GetDatabase(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "postgresql:database")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("postgres", nil, "PGDATABASE").(string)
+	return config.Get(ctx, "postgresql:database")
 }
 
 // Database username associated to the connected user (for user name maps)
@@ -43,11 +39,7 @@ func GetExpectedVersion(ctx *pulumi.Context) string {
 
 // Name of PostgreSQL server address to connect to
 func GetHost(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "postgresql:host")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "PGHOST").(string)
+	return config.Get(ctx, "postgresql:host")
 }
 
 // Maximum number of connections to establish to the database. Zero means unlimited.
@@ -57,20 +49,12 @@ func GetMaxConnections(ctx *pulumi.Context) int {
 
 // Password to be used if the PostgreSQL server demands password authentication
 func GetPassword(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "postgresql:password")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "PGPASSWORD").(string)
+	return config.Get(ctx, "postgresql:password")
 }
 
 // The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
 func GetPort(ctx *pulumi.Context) int {
-	v, err := config.TryInt(ctx, "postgresql:port")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault(5432, parseEnvInt, "PGPORT").(int)
+	return config.GetInt(ctx, "postgresql:port")
 }
 func GetScheme(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:scheme")
@@ -104,9 +88,5 @@ func GetSuperuser(ctx *pulumi.Context) bool {
 
 // PostgreSQL user name to connect as
 func GetUsername(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "postgresql:username")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("postgres", nil, "PGUSER").(string)
+	return config.Get(ctx, "postgresql:username")
 }

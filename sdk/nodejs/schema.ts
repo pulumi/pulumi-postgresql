@@ -72,7 +72,8 @@ export class Schema extends pulumi.CustomResource {
     constructor(name: string, args?: SchemaArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SchemaArgs | SchemaState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SchemaState | undefined;
             inputs["database"] = state ? state.database : undefined;
             inputs["dropCascade"] = state ? state.dropCascade : undefined;
@@ -89,12 +90,8 @@ export class Schema extends pulumi.CustomResource {
             inputs["owner"] = args ? args.owner : undefined;
             inputs["policies"] = args ? args.policies : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Schema.__pulumiType, name, inputs, opts);
     }
