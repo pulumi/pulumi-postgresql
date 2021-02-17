@@ -9,4 +9,4 @@ require (
 	github.com/terraform-providers/terraform-provider-postgresql v1.7.1
 )
 
-replace github.com/terraform-providers/terraform-provider-postgresql => github.com/cyrilgdn/terraform-provider-postgresql v1.11.1
+replace github.com/terraform-providers/terraform-provider-postgresql => github.com/cyrilgdn/terraform-provider-postgresql v1.11.2
