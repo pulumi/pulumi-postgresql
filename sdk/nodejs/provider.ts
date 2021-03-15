@@ -39,7 +39,7 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             inputs["clientcert"] = pulumi.output(args ? args.clientcert : undefined).apply(JSON.stringify);
-            inputs["connectTimeout"] = pulumi.output((args ? args.connectTimeout : undefined) || (<any>utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180)).apply(JSON.stringify);
+            inputs["connectTimeout"] = pulumi.output((args ? args.connectTimeout : undefined) ?? (<any>utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180)).apply(JSON.stringify);
             inputs["database"] = args ? args.database : undefined;
             inputs["databaseUsername"] = args ? args.databaseUsername : undefined;
             inputs["expectedVersion"] = args ? args.expectedVersion : undefined;
@@ -49,7 +49,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["port"] = pulumi.output(args ? args.port : undefined).apply(JSON.stringify);
             inputs["scheme"] = args ? args.scheme : undefined;
             inputs["sslMode"] = args ? args.sslMode : undefined;
-            inputs["sslmode"] = (args ? args.sslmode : undefined) || utilities.getEnv("PGSSLMODE");
+            inputs["sslmode"] = (args ? args.sslmode : undefined) ?? utilities.getEnv("PGSSLMODE");
             inputs["sslrootcert"] = args ? args.sslrootcert : undefined;
             inputs["superuser"] = pulumi.output(args ? args.superuser : undefined).apply(JSON.stringify);
             inputs["username"] = args ? args.username : undefined;
