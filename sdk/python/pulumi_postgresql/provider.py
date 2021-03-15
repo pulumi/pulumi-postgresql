@@ -89,7 +89,7 @@ class Provider(pulumi.ProviderResource):
             __props__['scheme'] = scheme
             if ssl_mode is not None and not opts.urn:
                 warnings.warn("""Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""", DeprecationWarning)
-                pulumi.log.warn("ssl_mode is deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`")
+                pulumi.log.warn("""ssl_mode is deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""")
             __props__['ssl_mode'] = ssl_mode
             if sslmode is None:
                 sslmode = _utilities.get_env('PGSSLMODE')

@@ -63,7 +63,7 @@ class Schema(pulumi.CustomResource):
             __props__['owner'] = owner
             if policies is not None and not opts.urn:
                 warnings.warn("""Use postgresql_grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
-                pulumi.log.warn("policies is deprecated: Use postgresql_grant resource instead (with object_type=\"schema\")")
+                pulumi.log.warn("""policies is deprecated: Use postgresql_grant resource instead (with object_type=\"schema\")""")
             __props__['policies'] = policies
         super(Schema, __self__).__init__(
             'postgresql:index/schema:Schema',
