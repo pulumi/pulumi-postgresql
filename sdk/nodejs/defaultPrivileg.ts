@@ -59,7 +59,11 @@ export class DefaultPrivileg extends pulumi.CustomResource {
     /**
      * The database schema to set default privileges for this role
      */
-    public readonly schema!: pulumi.Output<string>;
+    public readonly schema!: pulumi.Output<string | undefined>;
+    /**
+     * Permit the grant recipient to grant it to others
+     */
+    public readonly withGrantOption!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a DefaultPrivileg resource with the given unique name, arguments, and options.
@@ -83,6 +87,7 @@ export class DefaultPrivileg extends pulumi.CustomResource {
             inputs["privileges"] = state ? state.privileges : undefined;
             inputs["role"] = state ? state.role : undefined;
             inputs["schema"] = state ? state.schema : undefined;
+            inputs["withGrantOption"] = state ? state.withGrantOption : undefined;
         } else {
             const args = argsOrState as DefaultPrivilegArgs | undefined;
             if ((!args || args.database === undefined) && !opts.urn) {
@@ -100,15 +105,13 @@ export class DefaultPrivileg extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.schema === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'schema'");
-            }
             inputs["database"] = args ? args.database : undefined;
             inputs["objectType"] = args ? args.objectType : undefined;
             inputs["owner"] = args ? args.owner : undefined;
             inputs["privileges"] = args ? args.privileges : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["schema"] = args ? args.schema : undefined;
+            inputs["withGrantOption"] = args ? args.withGrantOption : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -145,6 +148,10 @@ export interface DefaultPrivilegState {
      * The database schema to set default privileges for this role
      */
     readonly schema?: pulumi.Input<string>;
+    /**
+     * Permit the grant recipient to grant it to others
+     */
+    readonly withGrantOption?: pulumi.Input<boolean>;
 }
 
 /**
@@ -174,5 +181,9 @@ export interface DefaultPrivilegArgs {
     /**
      * The database schema to set default privileges for this role
      */
-    readonly schema: pulumi.Input<string>;
+    readonly schema?: pulumi.Input<string>;
+    /**
+     * Permit the grant recipient to grant it to others
+     */
+    readonly withGrantOption?: pulumi.Input<boolean>;
 }

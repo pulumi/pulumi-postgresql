@@ -56,6 +56,12 @@ namespace Pulumi.PostgreSql
         public Output<bool?> EncryptedPassword { get; private set; } = null!;
 
         /// <summary>
+        /// Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
+        /// </summary>
+        [Output("idleInTransactionSessionTimeout")]
+        public Output<int?> IdleInTransactionSessionTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// Defines whether a role "inherits" the privileges of
         /// roles it is a member of.  Default value is `true`.
         /// </summary>
@@ -245,6 +251,12 @@ namespace Pulumi.PostgreSql
         public Input<bool>? EncryptedPassword { get; set; }
 
         /// <summary>
+        /// Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
+        /// </summary>
+        [Input("idleInTransactionSessionTimeout")]
+        public Input<int>? IdleInTransactionSessionTimeout { get; set; }
+
+        /// <summary>
         /// Defines whether a role "inherits" the privileges of
         /// roles it is a member of.  Default value is `true`.
         /// </summary>
@@ -405,6 +417,12 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Input("encryptedPassword")]
         public Input<bool>? EncryptedPassword { get; set; }
+
+        /// <summary>
+        /// Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
+        /// </summary>
+        [Input("idleInTransactionSessionTimeout")]
+        public Input<int>? IdleInTransactionSessionTimeout { get; set; }
 
         /// <summary>
         /// Defines whether a role "inherits" the privileges of

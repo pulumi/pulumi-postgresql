@@ -58,7 +58,9 @@ type DefaultPrivileges struct {
 	// The name of the role to which grant default privileges on.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// The database schema to set default privileges for this role.
-	Schema pulumi.StringOutput `pulumi:"schema"`
+	Schema pulumi.StringPtrOutput `pulumi:"schema"`
+	// Permit the grant recipient to grant it to others
+	WithGrantOption pulumi.BoolPtrOutput `pulumi:"withGrantOption"`
 }
 
 // NewDefaultPrivileges registers a new resource with the given unique name, arguments, and options.
@@ -82,9 +84,6 @@ func NewDefaultPrivileges(ctx *pulumi.Context,
 	}
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
-	}
-	if args.Schema == nil {
-		return nil, errors.New("invalid value for required argument 'Schema'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -126,6 +125,8 @@ type defaultPrivilegesState struct {
 	Role *string `pulumi:"role"`
 	// The database schema to set default privileges for this role.
 	Schema *string `pulumi:"schema"`
+	// Permit the grant recipient to grant it to others
+	WithGrantOption *bool `pulumi:"withGrantOption"`
 }
 
 type DefaultPrivilegesState struct {
@@ -141,6 +142,8 @@ type DefaultPrivilegesState struct {
 	Role pulumi.StringPtrInput
 	// The database schema to set default privileges for this role.
 	Schema pulumi.StringPtrInput
+	// Permit the grant recipient to grant it to others
+	WithGrantOption pulumi.BoolPtrInput
 }
 
 func (DefaultPrivilegesState) ElementType() reflect.Type {
@@ -159,7 +162,9 @@ type defaultPrivilegesArgs struct {
 	// The name of the role to which grant default privileges on.
 	Role string `pulumi:"role"`
 	// The database schema to set default privileges for this role.
-	Schema string `pulumi:"schema"`
+	Schema *string `pulumi:"schema"`
+	// Permit the grant recipient to grant it to others
+	WithGrantOption *bool `pulumi:"withGrantOption"`
 }
 
 // The set of arguments for constructing a DefaultPrivileges resource.
@@ -175,7 +180,9 @@ type DefaultPrivilegesArgs struct {
 	// The name of the role to which grant default privileges on.
 	Role pulumi.StringInput
 	// The database schema to set default privileges for this role.
-	Schema pulumi.StringInput
+	Schema pulumi.StringPtrInput
+	// Permit the grant recipient to grant it to others
+	WithGrantOption pulumi.BoolPtrInput
 }
 
 func (DefaultPrivilegesArgs) ElementType() reflect.Type {

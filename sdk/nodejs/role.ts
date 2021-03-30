@@ -67,6 +67,10 @@ export class Role extends pulumi.CustomResource {
      */
     public readonly encryptedPassword!: pulumi.Output<boolean | undefined>;
     /**
+     * Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
+     */
+    public readonly idleInTransactionSessionTimeout!: pulumi.Output<number | undefined>;
+    /**
      * Defines whether a role "inherits" the privileges of
      * roles it is a member of.  Default value is `true`.
      */
@@ -162,6 +166,7 @@ export class Role extends pulumi.CustomResource {
             inputs["createRole"] = state ? state.createRole : undefined;
             inputs["encrypted"] = state ? state.encrypted : undefined;
             inputs["encryptedPassword"] = state ? state.encryptedPassword : undefined;
+            inputs["idleInTransactionSessionTimeout"] = state ? state.idleInTransactionSessionTimeout : undefined;
             inputs["inherit"] = state ? state.inherit : undefined;
             inputs["login"] = state ? state.login : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -182,6 +187,7 @@ export class Role extends pulumi.CustomResource {
             inputs["createRole"] = args ? args.createRole : undefined;
             inputs["encrypted"] = args ? args.encrypted : undefined;
             inputs["encryptedPassword"] = args ? args.encryptedPassword : undefined;
+            inputs["idleInTransactionSessionTimeout"] = args ? args.idleInTransactionSessionTimeout : undefined;
             inputs["inherit"] = args ? args.inherit : undefined;
             inputs["login"] = args ? args.login : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -240,6 +246,10 @@ export interface RoleState {
      * [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
      */
     readonly encryptedPassword?: pulumi.Input<boolean>;
+    /**
+     * Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
+     */
+    readonly idleInTransactionSessionTimeout?: pulumi.Input<number>;
     /**
      * Defines whether a role "inherits" the privileges of
      * roles it is a member of.  Default value is `true`.
@@ -356,6 +366,10 @@ export interface RoleArgs {
      * [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
      */
     readonly encryptedPassword?: pulumi.Input<boolean>;
+    /**
+     * Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
+     */
+    readonly idleInTransactionSessionTimeout?: pulumi.Input<number>;
     /**
      * Defines whether a role "inherits" the privileges of
      * roles it is a member of.  Default value is `true`.

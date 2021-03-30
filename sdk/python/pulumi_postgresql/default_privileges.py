@@ -21,6 +21,7 @@ class DefaultPrivileges(pulumi.CustomResource):
                  privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
+                 with_grant_option: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -52,6 +53,7 @@ class DefaultPrivileges(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to apply as default privileges.
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on.
         :param pulumi.Input[str] schema: The database schema to set default privileges for this role.
+        :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -85,9 +87,8 @@ class DefaultPrivileges(pulumi.CustomResource):
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
-            if schema is None and not opts.urn:
-                raise TypeError("Missing required property 'schema'")
             __props__['schema'] = schema
+            __props__['with_grant_option'] = with_grant_option
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="postgresql:index/defaultPrivileg:DefaultPrivileg")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DefaultPrivileges, __self__).__init__(
@@ -105,7 +106,8 @@ class DefaultPrivileges(pulumi.CustomResource):
             owner: Optional[pulumi.Input[str]] = None,
             privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             role: Optional[pulumi.Input[str]] = None,
-            schema: Optional[pulumi.Input[str]] = None) -> 'DefaultPrivileges':
+            schema: Optional[pulumi.Input[str]] = None,
+            with_grant_option: Optional[pulumi.Input[bool]] = None) -> 'DefaultPrivileges':
         """
         Get an existing DefaultPrivileges resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -119,6 +121,7 @@ class DefaultPrivileges(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to apply as default privileges.
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on.
         :param pulumi.Input[str] schema: The database schema to set default privileges for this role.
+        :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -130,6 +133,7 @@ class DefaultPrivileges(pulumi.CustomResource):
         __props__["privileges"] = privileges
         __props__["role"] = role
         __props__["schema"] = schema
+        __props__["with_grant_option"] = with_grant_option
         return DefaultPrivileges(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -174,11 +178,19 @@ class DefaultPrivileges(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schema(self) -> pulumi.Output[str]:
+    def schema(self) -> pulumi.Output[Optional[str]]:
         """
         The database schema to set default privileges for this role.
         """
         return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="withGrantOption")
+    def with_grant_option(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Permit the grant recipient to grant it to others
+        """
+        return pulumi.get(self, "with_grant_option")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

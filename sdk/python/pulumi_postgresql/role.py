@@ -21,6 +21,7 @@ class Role(pulumi.CustomResource):
                  create_role: Optional[pulumi.Input[bool]] = None,
                  encrypted: Optional[pulumi.Input[str]] = None,
                  encrypted_password: Optional[pulumi.Input[bool]] = None,
+                 idle_in_transaction_session_timeout: Optional[pulumi.Input[int]] = None,
                  inherit: Optional[pulumi.Input[bool]] = None,
                  login: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -55,6 +56,7 @@ class Role(pulumi.CustomResource):
                is always set (to the conservative and safe value), but may interfere with the
                behavior of
                [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
+        :param pulumi.Input[int] idle_in_transaction_session_timeout: Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
         :param pulumi.Input[bool] inherit: Defines whether a role "inherits" the privileges of
                roles it is a member of.  Default value is `true`.
         :param pulumi.Input[bool] login: Defines whether role is allowed to log in.  Roles without
@@ -122,6 +124,7 @@ class Role(pulumi.CustomResource):
                 pulumi.log.warn("""encrypted is deprecated: Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"""")
             __props__['encrypted'] = encrypted
             __props__['encrypted_password'] = encrypted_password
+            __props__['idle_in_transaction_session_timeout'] = idle_in_transaction_session_timeout
             __props__['inherit'] = inherit
             __props__['login'] = login
             __props__['name'] = name
@@ -150,6 +153,7 @@ class Role(pulumi.CustomResource):
             create_role: Optional[pulumi.Input[bool]] = None,
             encrypted: Optional[pulumi.Input[str]] = None,
             encrypted_password: Optional[pulumi.Input[bool]] = None,
+            idle_in_transaction_session_timeout: Optional[pulumi.Input[int]] = None,
             inherit: Optional[pulumi.Input[bool]] = None,
             login: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -184,6 +188,7 @@ class Role(pulumi.CustomResource):
                is always set (to the conservative and safe value), but may interfere with the
                behavior of
                [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
+        :param pulumi.Input[int] idle_in_transaction_session_timeout: Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
         :param pulumi.Input[bool] inherit: Defines whether a role "inherits" the privileges of
                roles it is a member of.  Default value is `true`.
         :param pulumi.Input[bool] login: Defines whether role is allowed to log in.  Roles without
@@ -235,6 +240,7 @@ class Role(pulumi.CustomResource):
         __props__["create_role"] = create_role
         __props__["encrypted"] = encrypted
         __props__["encrypted_password"] = encrypted_password
+        __props__["idle_in_transaction_session_timeout"] = idle_in_transaction_session_timeout
         __props__["inherit"] = inherit
         __props__["login"] = login
         __props__["name"] = name
@@ -303,6 +309,14 @@ class Role(pulumi.CustomResource):
         [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
         """
         return pulumi.get(self, "encrypted_password")
+
+    @property
+    @pulumi.getter(name="idleInTransactionSessionTimeout")
+    def idle_in_transaction_session_timeout(self) -> pulumi.Output[Optional[int]]:
+        """
+        Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
+        """
+        return pulumi.get(self, "idle_in_transaction_session_timeout")
 
     @property
     @pulumi.getter

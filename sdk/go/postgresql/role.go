@@ -35,6 +35,8 @@ type Role struct {
 	// behavior of
 	// [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
 	EncryptedPassword pulumi.BoolPtrOutput `pulumi:"encryptedPassword"`
+	// Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
+	IdleInTransactionSessionTimeout pulumi.IntPtrOutput `pulumi:"idleInTransactionSessionTimeout"`
 	// Defines whether a role "inherits" the privileges of
 	// roles it is a member of.  Default value is `true`.
 	Inherit pulumi.BoolPtrOutput `pulumi:"inherit"`
@@ -140,6 +142,8 @@ type roleState struct {
 	// behavior of
 	// [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
 	EncryptedPassword *bool `pulumi:"encryptedPassword"`
+	// Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
+	IdleInTransactionSessionTimeout *int `pulumi:"idleInTransactionSessionTimeout"`
 	// Defines whether a role "inherits" the privileges of
 	// roles it is a member of.  Default value is `true`.
 	Inherit *bool `pulumi:"inherit"`
@@ -217,6 +221,8 @@ type RoleState struct {
 	// behavior of
 	// [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
 	EncryptedPassword pulumi.BoolPtrInput
+	// Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
+	IdleInTransactionSessionTimeout pulumi.IntPtrInput
 	// Defines whether a role "inherits" the privileges of
 	// roles it is a member of.  Default value is `true`.
 	Inherit pulumi.BoolPtrInput
@@ -298,6 +304,8 @@ type roleArgs struct {
 	// behavior of
 	// [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
 	EncryptedPassword *bool `pulumi:"encryptedPassword"`
+	// Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
+	IdleInTransactionSessionTimeout *int `pulumi:"idleInTransactionSessionTimeout"`
 	// Defines whether a role "inherits" the privileges of
 	// roles it is a member of.  Default value is `true`.
 	Inherit *bool `pulumi:"inherit"`
@@ -376,6 +384,8 @@ type RoleArgs struct {
 	// behavior of
 	// [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
 	EncryptedPassword pulumi.BoolPtrInput
+	// Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
+	IdleInTransactionSessionTimeout pulumi.IntPtrInput
 	// Defines whether a role "inherits" the privileges of
 	// roles it is a member of.  Default value is `true`.
 	Inherit pulumi.BoolPtrInput
