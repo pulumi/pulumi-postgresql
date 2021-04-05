@@ -19,6 +19,7 @@ import (
 	"path/filepath"
 	"unicode"
 
+	"github.com/cyrilgdn/terraform-provider-postgresql/postgresql"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-postgresql/provider/v2/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
@@ -26,7 +27,6 @@ import (
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-postgresql/postgresql"
 )
 
 // all of the token components used below.
@@ -75,6 +75,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-postgresql",
+		GitHubOrg:   "cyrilgdn",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"sslmode": {
 				Default: &tfbridge.DefaultInfo{

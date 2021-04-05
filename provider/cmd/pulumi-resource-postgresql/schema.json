@@ -7,7 +7,7 @@
     ],
     "homepage": "https://pulumi.io",
     "license": "Apache-2.0",
-    "attribution": "This Pulumi package is based on the [`postgresql` Terraform Provider](https://github.com/terraform-providers/terraform-provider-postgresql).",
+    "attribution": "This Pulumi package is based on the [`postgresql` Terraform Provider](https://github.com/cyrilgdn/terraform-provider-postgresql).",
     "repository": "https://github.com/pulumi/pulumi-postgresql",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -434,6 +434,10 @@
                 "schema": {
                     "type": "string",
                     "description": "The database schema to set default privileges for this role\n"
+                },
+                "withGrantOption": {
+                    "type": "boolean",
+                    "description": "Permit the grant recipient to grant it to others\n"
                 }
             },
             "required": [
@@ -441,8 +445,7 @@
                 "objectType",
                 "owner",
                 "privileges",
-                "role",
-                "schema"
+                "role"
             ],
             "inputProperties": {
                 "database": {
@@ -471,6 +474,10 @@
                 "schema": {
                     "type": "string",
                     "description": "The database schema to set default privileges for this role\n"
+                },
+                "withGrantOption": {
+                    "type": "boolean",
+                    "description": "Permit the grant recipient to grant it to others\n"
                 }
             },
             "requiredInputs": [
@@ -478,8 +485,7 @@
                 "objectType",
                 "owner",
                 "privileges",
-                "role",
-                "schema"
+                "role"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering DefaultPrivileg resources.\n",
@@ -510,6 +516,10 @@
                     "schema": {
                         "type": "string",
                         "description": "The database schema to set default privileges for this role\n"
+                    },
+                    "withGrantOption": {
+                        "type": "boolean",
+                        "description": "Permit the grant recipient to grant it to others\n"
                     }
                 },
                 "type": "object"
@@ -545,6 +555,10 @@
                 "schema": {
                     "type": "string",
                     "description": "The database schema to set default privileges for this role.\n"
+                },
+                "withGrantOption": {
+                    "type": "boolean",
+                    "description": "Permit the grant recipient to grant it to others\n"
                 }
             },
             "required": [
@@ -552,8 +566,7 @@
                 "objectType",
                 "owner",
                 "privileges",
-                "role",
-                "schema"
+                "role"
             ],
             "inputProperties": {
                 "database": {
@@ -582,6 +595,10 @@
                 "schema": {
                     "type": "string",
                     "description": "The database schema to set default privileges for this role.\n"
+                },
+                "withGrantOption": {
+                    "type": "boolean",
+                    "description": "Permit the grant recipient to grant it to others\n"
                 }
             },
             "requiredInputs": [
@@ -589,8 +606,7 @@
                 "objectType",
                 "owner",
                 "privileges",
-                "role",
-                "schema"
+                "role"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering DefaultPrivileges resources.\n",
@@ -621,6 +637,10 @@
                     "schema": {
                         "type": "string",
                         "description": "The database schema to set default privileges for this role.\n"
+                    },
+                    "withGrantOption": {
+                        "type": "boolean",
+                        "description": "Permit the grant recipient to grant it to others\n"
                     }
                 },
                 "type": "object"
@@ -914,6 +934,10 @@
                     "type": "boolean",
                     "description": "Defines whether the password is stored\nencrypted in the system catalogs.  Default value is `true`.  NOTE: this value\nis always set (to the conservative and safe value), but may interfere with the\nbehavior of\n[PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).\n"
                 },
+                "idleInTransactionSessionTimeout": {
+                    "type": "integer",
+                    "description": "Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds\n"
+                },
                 "inherit": {
                     "type": "boolean",
                     "description": "Defines whether a role \"inherits\" the privileges of\nroles it is a member of.  Default value is `true`.\n"
@@ -997,6 +1021,10 @@
                     "type": "boolean",
                     "description": "Defines whether the password is stored\nencrypted in the system catalogs.  Default value is `true`.  NOTE: this value\nis always set (to the conservative and safe value), but may interfere with the\nbehavior of\n[PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).\n"
                 },
+                "idleInTransactionSessionTimeout": {
+                    "type": "integer",
+                    "description": "Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds\n"
+                },
                 "inherit": {
                     "type": "boolean",
                     "description": "Defines whether a role \"inherits\" the privileges of\nroles it is a member of.  Default value is `true`.\n"
@@ -1078,6 +1106,10 @@
                     "encryptedPassword": {
                         "type": "boolean",
                         "description": "Defines whether the password is stored\nencrypted in the system catalogs.  Default value is `true`.  NOTE: this value\nis always set (to the conservative and safe value), but may interfere with the\nbehavior of\n[PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).\n"
+                    },
+                    "idleInTransactionSessionTimeout": {
+                        "type": "integer",
+                        "description": "Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds\n"
                     },
                     "inherit": {
                         "type": "boolean",
@@ -1265,11 +1297,11 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing postgresql cloud resources.",
             "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-postgresql)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-postgresql` repo](https://github.com/pulumi/pulumi-postgresql/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-postgresql` repo](https://github.com/terraform-providers/terraform-provider-postgresql/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/cyrilgdn/terraform-provider-postgresql)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-postgresql` repo](https://github.com/pulumi/pulumi-postgresql/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`cyrilgdn/terraform-provider-postgresql` repo](https://github.com/cyrilgdn/terraform-provider-postgresql/issues).",
             "typescriptVersion": ""
         },
         "python": {
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-postgresql)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-postgresql` repo](https://github.com/pulumi/pulumi-postgresql/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-postgresql` repo](https://github.com/terraform-providers/terraform-provider-postgresql/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/cyrilgdn/terraform-provider-postgresql)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-postgresql` repo](https://github.com/pulumi/pulumi-postgresql/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`cyrilgdn/terraform-provider-postgresql` repo](https://github.com/cyrilgdn/terraform-provider-postgresql/issues).",
             "requires": {
                 "pulumi": "\u003e=2.15.0,\u003c3.0.0"
             }
