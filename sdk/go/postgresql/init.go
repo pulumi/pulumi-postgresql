@@ -21,25 +21,26 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "postgresql:index/database:Database":
-		r, err = NewDatabase(ctx, name, nil, pulumi.URN_(urn))
+		r = &Database{}
 	case "postgresql:index/defaultPrivileg:DefaultPrivileg":
-		r, err = NewDefaultPrivileg(ctx, name, nil, pulumi.URN_(urn))
+		r = &DefaultPrivileg{}
 	case "postgresql:index/defaultPrivileges:DefaultPrivileges":
-		r, err = NewDefaultPrivileges(ctx, name, nil, pulumi.URN_(urn))
+		r = &DefaultPrivileges{}
 	case "postgresql:index/extension:Extension":
-		r, err = NewExtension(ctx, name, nil, pulumi.URN_(urn))
+		r = &Extension{}
 	case "postgresql:index/grant:Grant":
-		r, err = NewGrant(ctx, name, nil, pulumi.URN_(urn))
+		r = &Grant{}
 	case "postgresql:index/grantRole:GrantRole":
-		r, err = NewGrantRole(ctx, name, nil, pulumi.URN_(urn))
+		r = &GrantRole{}
 	case "postgresql:index/role:Role":
-		r, err = NewRole(ctx, name, nil, pulumi.URN_(urn))
+		r = &Role{}
 	case "postgresql:index/schema:Schema":
-		r, err = NewSchema(ctx, name, nil, pulumi.URN_(urn))
+		r = &Schema{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
@@ -56,7 +57,9 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 		return nil, fmt.Errorf("unknown provider type: %s", typ)
 	}
 
-	return NewProvider(ctx, name, nil, pulumi.URN_(urn))
+	r := &Provider{}
+	err := ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
+	return r, err
 }
 
 func init() {

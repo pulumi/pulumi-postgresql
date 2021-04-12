@@ -5,15 +5,126 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Schema']
+__all__ = ['SchemaArgs', 'Schema']
+
+@pulumi.input_type
+class SchemaArgs:
+    def __init__(__self__, *,
+                 database: Optional[pulumi.Input[str]] = None,
+                 drop_cascade: Optional[pulumi.Input[bool]] = None,
+                 if_not_exists: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]] = None):
+        """
+        The set of arguments for constructing a Schema resource.
+        :param pulumi.Input[str] database: The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
+        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that are contained in the schema. (Default: false)
+        :param pulumi.Input[bool] if_not_exists: When true, use the existing schema if it exists. (Default: true)
+        :param pulumi.Input[str] name: The name of the schema. Must be unique in the PostgreSQL
+               database instance where it is configured.
+        :param pulumi.Input[str] owner: The ROLE who owns the schema.
+        :param pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]] policies: Can be specified multiple times for each policy.  Each
+               policy block supports fields documented below.
+        """
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if drop_cascade is not None:
+            pulumi.set(__self__, "drop_cascade", drop_cascade)
+        if if_not_exists is not None:
+            pulumi.set(__self__, "if_not_exists", if_not_exists)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if policies is not None:
+            warnings.warn("""Use postgresql_grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
+            pulumi.log.warn("""policies is deprecated: Use postgresql_grant resource instead (with object_type=\"schema\")""")
+        if policies is not None:
+            pulumi.set(__self__, "policies", policies)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter(name="dropCascade")
+    def drop_cascade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, will also drop all the objects that are contained in the schema. (Default: false)
+        """
+        return pulumi.get(self, "drop_cascade")
+
+    @drop_cascade.setter
+    def drop_cascade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "drop_cascade", value)
+
+    @property
+    @pulumi.getter(name="ifNotExists")
+    def if_not_exists(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, use the existing schema if it exists. (Default: true)
+        """
+        return pulumi.get(self, "if_not_exists")
+
+    @if_not_exists.setter
+    def if_not_exists(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "if_not_exists", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the schema. Must be unique in the PostgreSQL
+        database instance where it is configured.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ROLE who owns the schema.
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]]:
+        """
+        Can be specified multiple times for each policy.  Each
+        policy block supports fields documented below.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]]):
+        pulumi.set(self, "policies", value)
 
 
 class Schema(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -39,6 +150,38 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchemaPolicyArgs']]]] policies: Can be specified multiple times for each policy.  Each
                policy block supports fields documented below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[SchemaArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a Schema resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param SchemaArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SchemaArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 database: Optional[pulumi.Input[str]] = None,
+                 drop_cascade: Optional[pulumi.Input[bool]] = None,
+                 if_not_exists: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchemaPolicyArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
