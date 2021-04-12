@@ -5,13 +5,113 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Grant']
+__all__ = ['GrantArgs', 'Grant']
+
+@pulumi.input_type
+class GrantArgs:
+    def __init__(__self__, *,
+                 database: pulumi.Input[str],
+                 object_type: pulumi.Input[str],
+                 privileges: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 role: pulumi.Input[str],
+                 schema: Optional[pulumi.Input[str]] = None,
+                 with_grant_option: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a Grant resource.
+        :param pulumi.Input[str] database: The database to grant privileges on for this role.
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
+        :param pulumi.Input[str] role: The name of the role to grant privileges on, Set it to "public" for all roles.
+        :param pulumi.Input[str] schema: The database schema to grant privileges on for this role (Required except if object_type is "database")
+        :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "privileges", privileges)
+        pulumi.set(__self__, "role", role)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if with_grant_option is not None:
+            pulumi.set(__self__, "with_grant_option", with_grant_option)
+
+    @property
+    @pulumi.getter
+    def database(self) -> pulumi.Input[str]:
+        """
+        The database to grant privileges on for this role.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> pulumi.Input[str]:
+        """
+        The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+        """
+        return pulumi.get(self, "object_type")
+
+    @object_type.setter
+    def object_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "object_type", value)
+
+    @property
+    @pulumi.getter
+    def privileges(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
+        """
+        return pulumi.get(self, "privileges")
+
+    @privileges.setter
+    def privileges(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "privileges", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[str]:
+        """
+        The name of the role to grant privileges on, Set it to "public" for all roles.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The database schema to grant privileges on for this role (Required except if object_type is "database")
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="withGrantOption")
+    def with_grant_option(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Permit the grant recipient to grant it to others
+        """
+        return pulumi.get(self, "with_grant_option")
+
+    @with_grant_option.setter
+    def with_grant_option(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "with_grant_option", value)
 
 
 class Grant(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -70,6 +170,73 @@ class Grant(pulumi.CustomResource):
         :param pulumi.Input[str] schema: The database schema to grant privileges on for this role (Required except if object_type is "database")
         :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GrantArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The ``Grant`` resource creates and manages privileges given to a user for a database schema.
+
+        See [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)
+
+        > **Note:** This resource needs Postgresql version 9 or above.
+
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        readonly_tables = postgresql.Grant("readonlyTables",
+            database="test_db",
+            object_type="table",
+            privileges=["SELECT"],
+            role="test_role",
+            schema="public")
+        ```
+
+        ## Examples
+
+        Revoke default accesses for public schema:
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        revoke_public = postgresql.Grant("revokePublic",
+            database="test_db",
+            object_type="schema",
+            privileges=[],
+            role="public",
+            schema="public")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param GrantArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GrantArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 database: Optional[pulumi.Input[str]] = None,
+                 object_type: Optional[pulumi.Input[str]] = None,
+                 privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
+                 with_grant_option: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

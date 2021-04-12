@@ -5,13 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['GrantRole']
+__all__ = ['GrantRoleArgs', 'GrantRole']
+
+@pulumi.input_type
+class GrantRoleArgs:
+    def __init__(__self__, *,
+                 grant_role: pulumi.Input[str],
+                 role: pulumi.Input[str],
+                 with_admin_option: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a GrantRole resource.
+        :param pulumi.Input[str] grant_role: The name of the role that is added to `role`.
+        :param pulumi.Input[str] role: The name of the role that is granted a new membership.
+        :param pulumi.Input[bool] with_admin_option: Giving ability to grant membership to others or not for `role`. (Default: false)
+        """
+        pulumi.set(__self__, "grant_role", grant_role)
+        pulumi.set(__self__, "role", role)
+        if with_admin_option is not None:
+            pulumi.set(__self__, "with_admin_option", with_admin_option)
+
+    @property
+    @pulumi.getter(name="grantRole")
+    def grant_role(self) -> pulumi.Input[str]:
+        """
+        The name of the role that is added to `role`.
+        """
+        return pulumi.get(self, "grant_role")
+
+    @grant_role.setter
+    def grant_role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "grant_role", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[str]:
+        """
+        The name of the role that is granted a new membership.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter(name="withAdminOption")
+    def with_admin_option(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Giving ability to grant membership to others or not for `role`. (Default: false)
+        """
+        return pulumi.get(self, "with_admin_option")
+
+    @with_admin_option.setter
+    def with_admin_option(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "with_admin_option", value)
 
 
 class GrantRole(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -48,6 +102,54 @@ class GrantRole(pulumi.CustomResource):
         :param pulumi.Input[str] role: The name of the role that is granted a new membership.
         :param pulumi.Input[bool] with_admin_option: Giving ability to grant membership to others or not for `role`. (Default: false)
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GrantRoleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The ``GrantRole`` resource creates and manages membership in a role to one or more other roles in a non-authoritative way.
+
+        When using ``GrantRole`` resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.
+
+        > **Note:** This resource needs PostgreSQL version 9 or above.
+
+        > **Note:** `GrantRole` **cannot** be used in conjunction with `Role` or they will fight over what your role grants should be.
+
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        grant_root = postgresql.GrantRole("grantRoot",
+            grant_role="application",
+            role="root",
+            with_admin_option=True)
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param GrantRoleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GrantRoleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 grant_role: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 with_admin_option: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
