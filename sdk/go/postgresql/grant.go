@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The ``Grant`` resource creates and manages privileges given to a user for a database schema.
@@ -23,8 +23,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -54,8 +54,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v2/go/postgresql"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

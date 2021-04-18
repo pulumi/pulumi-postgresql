@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
+	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
 func getCwd(t *testing.T) string {
@@ -21,11 +21,11 @@ func getCwd(t *testing.T) string {
 func getBaseOptions() integration.ProgramTestOptions {
 	return integration.ProgramTestOptions{
 		Config: map[string]string{
-			"postgresql:host": "127.0.0.1",
-            "postgresql:port": "5432",
+			"postgresql:host":     "127.0.0.1",
+			"postgresql:port":     "5432",
 			"postgresql:username": "postgres",
 			"postgresql:password": "password",
-            "postgresql:sslmode": "disable",
+			"postgresql:sslmode":  "disable",
 		},
 	}
 }

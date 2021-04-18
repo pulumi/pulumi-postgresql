@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['DatabaseArgs', 'Database']
 
@@ -25,6 +25,200 @@ class DatabaseArgs:
                  template: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Database resource.
+        :param pulumi.Input[bool] allow_connections: If `false` then no one can connect to this
+               database. The default is `true`, allowing connections (except as restricted by
+               other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
+        :param pulumi.Input[int] connection_limit: How many concurrent connections can be
+               established to this database. `-1` (the default) means no limit.
+        :param pulumi.Input[str] encoding: Character set encoding to use in the new database
+        :param pulumi.Input[bool] is_template: If `true`, then this database can be cloned by any
+               user with `CREATEDB` privileges; if `false` (the default), then only
+               superusers or the owner of the database can clone it.
+        :param pulumi.Input[str] lc_collate: Collation order (LC_COLLATE) to use in the new database
+        :param pulumi.Input[str] lc_ctype: Character classification (LC_CTYPE) to use in the new database
+        :param pulumi.Input[str] name: The name of the database. Must be unique on the PostgreSQL
+               server instance where it is configured.
+        :param pulumi.Input[str] owner: The role name of the user who will own the database, or
+               `DEFAULT` to use the default (namely, the user executing the command). To
+               create a database owned by another role or to change the owner of an existing
+               database, you must be a direct or indirect member of the specified role, or
+               the username in the provider is a superuser.
+        :param pulumi.Input[str] tablespace_name: The name of the tablespace that will be
+               associated with the database, or `DEFAULT` to use the template database's
+               tablespace.  This tablespace will be the default tablespace used for objects
+               created in this database.
+        :param pulumi.Input[str] template: The name of the template from which to create the new database
+        """
+        if allow_connections is not None:
+            pulumi.set(__self__, "allow_connections", allow_connections)
+        if connection_limit is not None:
+            pulumi.set(__self__, "connection_limit", connection_limit)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if is_template is not None:
+            pulumi.set(__self__, "is_template", is_template)
+        if lc_collate is not None:
+            pulumi.set(__self__, "lc_collate", lc_collate)
+        if lc_ctype is not None:
+            pulumi.set(__self__, "lc_ctype", lc_ctype)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if tablespace_name is not None:
+            pulumi.set(__self__, "tablespace_name", tablespace_name)
+        if template is not None:
+            pulumi.set(__self__, "template", template)
+
+    @property
+    @pulumi.getter(name="allowConnections")
+    def allow_connections(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `false` then no one can connect to this
+        database. The default is `true`, allowing connections (except as restricted by
+        other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
+        """
+        return pulumi.get(self, "allow_connections")
+
+    @allow_connections.setter
+    def allow_connections(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_connections", value)
+
+    @property
+    @pulumi.getter(name="connectionLimit")
+    def connection_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        How many concurrent connections can be
+        established to this database. `-1` (the default) means no limit.
+        """
+        return pulumi.get(self, "connection_limit")
+
+    @connection_limit.setter
+    def connection_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "connection_limit", value)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        Character set encoding to use in the new database
+        """
+        return pulumi.get(self, "encoding")
+
+    @encoding.setter
+    def encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encoding", value)
+
+    @property
+    @pulumi.getter(name="isTemplate")
+    def is_template(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, then this database can be cloned by any
+        user with `CREATEDB` privileges; if `false` (the default), then only
+        superusers or the owner of the database can clone it.
+        """
+        return pulumi.get(self, "is_template")
+
+    @is_template.setter
+    def is_template(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_template", value)
+
+    @property
+    @pulumi.getter(name="lcCollate")
+    def lc_collate(self) -> Optional[pulumi.Input[str]]:
+        """
+        Collation order (LC_COLLATE) to use in the new database
+        """
+        return pulumi.get(self, "lc_collate")
+
+    @lc_collate.setter
+    def lc_collate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lc_collate", value)
+
+    @property
+    @pulumi.getter(name="lcCtype")
+    def lc_ctype(self) -> Optional[pulumi.Input[str]]:
+        """
+        Character classification (LC_CTYPE) to use in the new database
+        """
+        return pulumi.get(self, "lc_ctype")
+
+    @lc_ctype.setter
+    def lc_ctype(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lc_ctype", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the database. Must be unique on the PostgreSQL
+        server instance where it is configured.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role name of the user who will own the database, or
+        `DEFAULT` to use the default (namely, the user executing the command). To
+        create a database owned by another role or to change the owner of an existing
+        database, you must be a direct or indirect member of the specified role, or
+        the username in the provider is a superuser.
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter(name="tablespaceName")
+    def tablespace_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the tablespace that will be
+        associated with the database, or `DEFAULT` to use the template database's
+        tablespace.  This tablespace will be the default tablespace used for objects
+        created in this database.
+        """
+        return pulumi.get(self, "tablespace_name")
+
+    @tablespace_name.setter
+    def tablespace_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tablespace_name", value)
+
+    @property
+    @pulumi.getter
+    def template(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the template from which to create the new database
+        """
+        return pulumi.get(self, "template")
+
+    @template.setter
+    def template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template", value)
+
+
+@pulumi.input_type
+class _DatabaseState:
+    def __init__(__self__, *,
+                 allow_connections: Optional[pulumi.Input[bool]] = None,
+                 connection_limit: Optional[pulumi.Input[int]] = None,
+                 encoding: Optional[pulumi.Input[str]] = None,
+                 is_template: Optional[pulumi.Input[bool]] = None,
+                 lc_collate: Optional[pulumi.Input[str]] = None,
+                 lc_ctype: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
+                 tablespace_name: Optional[pulumi.Input[str]] = None,
+                 template: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Database resources.
         :param pulumi.Input[bool] allow_connections: If `false` then no one can connect to this
                database. The default is `true`, allowing connections (except as restricted by
                other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
@@ -301,18 +495,18 @@ class Database(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
-            __props__['allow_connections'] = allow_connections
-            __props__['connection_limit'] = connection_limit
-            __props__['encoding'] = encoding
-            __props__['is_template'] = is_template
-            __props__['lc_collate'] = lc_collate
-            __props__['lc_ctype'] = lc_ctype
-            __props__['name'] = name
-            __props__['owner'] = owner
-            __props__['tablespace_name'] = tablespace_name
-            __props__['template'] = template
+            __props__.__dict__["allow_connections"] = allow_connections
+            __props__.__dict__["connection_limit"] = connection_limit
+            __props__.__dict__["encoding"] = encoding
+            __props__.__dict__["is_template"] = is_template
+            __props__.__dict__["lc_collate"] = lc_collate
+            __props__.__dict__["lc_ctype"] = lc_ctype
+            __props__.__dict__["name"] = name
+            __props__.__dict__["owner"] = owner
+            __props__.__dict__["tablespace_name"] = tablespace_name
+            __props__.__dict__["template"] = template
         super(Database, __self__).__init__(
             'postgresql:index/database:Database',
             resource_name,
@@ -366,18 +560,18 @@ class Database(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DatabaseState.__new__(_DatabaseState)
 
-        __props__["allow_connections"] = allow_connections
-        __props__["connection_limit"] = connection_limit
-        __props__["encoding"] = encoding
-        __props__["is_template"] = is_template
-        __props__["lc_collate"] = lc_collate
-        __props__["lc_ctype"] = lc_ctype
-        __props__["name"] = name
-        __props__["owner"] = owner
-        __props__["tablespace_name"] = tablespace_name
-        __props__["template"] = template
+        __props__.__dict__["allow_connections"] = allow_connections
+        __props__.__dict__["connection_limit"] = connection_limit
+        __props__.__dict__["encoding"] = encoding
+        __props__.__dict__["is_template"] = is_template
+        __props__.__dict__["lc_collate"] = lc_collate
+        __props__.__dict__["lc_ctype"] = lc_ctype
+        __props__.__dict__["name"] = name
+        __props__.__dict__["owner"] = owner
+        __props__.__dict__["tablespace_name"] = tablespace_name
+        __props__.__dict__["template"] = template
         return Database(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -472,10 +666,4 @@ class Database(pulumi.CustomResource):
         The name of the template from which to create the new database
         """
         return pulumi.get(self, "template")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

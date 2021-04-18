@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ExtensionArgs', 'Extension']
 
@@ -20,6 +20,96 @@ class ExtensionArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Extension resource.
+        :param pulumi.Input[str] database: Which database to create the extension on. Defaults to provider database.
+        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+               objects
+        :param pulumi.Input[str] name: The name of the extension.
+        :param pulumi.Input[str] schema: Sets the schema of an extension.
+        :param pulumi.Input[str] version: Sets the version number of the extension.
+        """
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if drop_cascade is not None:
+            pulumi.set(__self__, "drop_cascade", drop_cascade)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        Which database to create the extension on. Defaults to provider database.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter(name="dropCascade")
+    def drop_cascade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
+        objects
+        """
+        return pulumi.get(self, "drop_cascade")
+
+    @drop_cascade.setter
+    def drop_cascade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "drop_cascade", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the extension.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the schema of an extension.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the version number of the extension.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class _ExtensionState:
+    def __init__(__self__, *,
+                 database: Optional[pulumi.Input[str]] = None,
+                 drop_cascade: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Extension resources.
         :param pulumi.Input[str] database: Which database to create the extension on. Defaults to provider database.
         :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
                objects
@@ -192,13 +282,13 @@ class Extension(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ExtensionArgs.__new__(ExtensionArgs)
 
-            __props__['database'] = database
-            __props__['drop_cascade'] = drop_cascade
-            __props__['name'] = name
-            __props__['schema'] = schema
-            __props__['version'] = version
+            __props__.__dict__["database"] = database
+            __props__.__dict__["drop_cascade"] = drop_cascade
+            __props__.__dict__["name"] = name
+            __props__.__dict__["schema"] = schema
+            __props__.__dict__["version"] = version
         super(Extension, __self__).__init__(
             'postgresql:index/extension:Extension',
             resource_name,
@@ -230,13 +320,13 @@ class Extension(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ExtensionState.__new__(_ExtensionState)
 
-        __props__["database"] = database
-        __props__["drop_cascade"] = drop_cascade
-        __props__["name"] = name
-        __props__["schema"] = schema
-        __props__["version"] = version
+        __props__.__dict__["database"] = database
+        __props__.__dict__["drop_cascade"] = drop_cascade
+        __props__.__dict__["name"] = name
+        __props__.__dict__["schema"] = schema
+        __props__.__dict__["version"] = version
         return Extension(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -279,10 +369,4 @@ class Extension(pulumi.CustomResource):
         Sets the version number of the extension.
         """
         return pulumi.get(self, "version")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
