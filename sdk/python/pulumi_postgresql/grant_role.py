@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['GrantRoleArgs', 'GrantRole']
 
@@ -49,6 +49,62 @@ class GrantRoleArgs:
 
     @role.setter
     def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter(name="withAdminOption")
+    def with_admin_option(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Giving ability to grant membership to others or not for `role`. (Default: false)
+        """
+        return pulumi.get(self, "with_admin_option")
+
+    @with_admin_option.setter
+    def with_admin_option(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "with_admin_option", value)
+
+
+@pulumi.input_type
+class _GrantRoleState:
+    def __init__(__self__, *,
+                 grant_role: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 with_admin_option: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering GrantRole resources.
+        :param pulumi.Input[str] grant_role: The name of the role that is added to `role`.
+        :param pulumi.Input[str] role: The name of the role that is granted a new membership.
+        :param pulumi.Input[bool] with_admin_option: Giving ability to grant membership to others or not for `role`. (Default: false)
+        """
+        if grant_role is not None:
+            pulumi.set(__self__, "grant_role", grant_role)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if with_admin_option is not None:
+            pulumi.set(__self__, "with_admin_option", with_admin_option)
+
+    @property
+    @pulumi.getter(name="grantRole")
+    def grant_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the role that is added to `role`.
+        """
+        return pulumi.get(self, "grant_role")
+
+    @grant_role.setter
+    def grant_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "grant_role", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the role that is granted a new membership.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
 
     @property
@@ -165,15 +221,15 @@ class GrantRole(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GrantRoleArgs.__new__(GrantRoleArgs)
 
             if grant_role is None and not opts.urn:
                 raise TypeError("Missing required property 'grant_role'")
-            __props__['grant_role'] = grant_role
+            __props__.__dict__["grant_role"] = grant_role
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['with_admin_option'] = with_admin_option
+            __props__.__dict__["role"] = role
+            __props__.__dict__["with_admin_option"] = with_admin_option
         super(GrantRole, __self__).__init__(
             'postgresql:index/grantRole:GrantRole',
             resource_name,
@@ -200,11 +256,11 @@ class GrantRole(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GrantRoleState.__new__(_GrantRoleState)
 
-        __props__["grant_role"] = grant_role
-        __props__["role"] = role
-        __props__["with_admin_option"] = with_admin_option
+        __props__.__dict__["grant_role"] = grant_role
+        __props__.__dict__["role"] = role
+        __props__.__dict__["with_admin_option"] = with_admin_option
         return GrantRole(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -230,10 +286,4 @@ class GrantRole(pulumi.CustomResource):
         Giving ability to grant membership to others or not for `role`. (Default: false)
         """
         return pulumi.get(self, "with_admin_option")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

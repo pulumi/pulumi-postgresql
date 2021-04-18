@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from ._inputs import *
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -369,39 +369,33 @@ class Provider(pulumi.ProviderResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            __props__['clientcert'] = pulumi.Output.from_input(clientcert).apply(pulumi.runtime.to_json) if clientcert is not None else None
+            __props__.__dict__["clientcert"] = pulumi.Output.from_input(clientcert).apply(pulumi.runtime.to_json) if clientcert is not None else None
             if connect_timeout is None:
                 connect_timeout = (_utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
-            __props__['connect_timeout'] = pulumi.Output.from_input(connect_timeout).apply(pulumi.runtime.to_json) if connect_timeout is not None else None
-            __props__['database'] = database
-            __props__['database_username'] = database_username
-            __props__['expected_version'] = expected_version
-            __props__['host'] = host
-            __props__['max_connections'] = pulumi.Output.from_input(max_connections).apply(pulumi.runtime.to_json) if max_connections is not None else None
-            __props__['password'] = password
-            __props__['port'] = pulumi.Output.from_input(port).apply(pulumi.runtime.to_json) if port is not None else None
-            __props__['scheme'] = scheme
+            __props__.__dict__["connect_timeout"] = pulumi.Output.from_input(connect_timeout).apply(pulumi.runtime.to_json) if connect_timeout is not None else None
+            __props__.__dict__["database"] = database
+            __props__.__dict__["database_username"] = database_username
+            __props__.__dict__["expected_version"] = expected_version
+            __props__.__dict__["host"] = host
+            __props__.__dict__["max_connections"] = pulumi.Output.from_input(max_connections).apply(pulumi.runtime.to_json) if max_connections is not None else None
+            __props__.__dict__["password"] = password
+            __props__.__dict__["port"] = pulumi.Output.from_input(port).apply(pulumi.runtime.to_json) if port is not None else None
+            __props__.__dict__["scheme"] = scheme
             if ssl_mode is not None and not opts.urn:
                 warnings.warn("""Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""", DeprecationWarning)
                 pulumi.log.warn("""ssl_mode is deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""")
-            __props__['ssl_mode'] = ssl_mode
+            __props__.__dict__["ssl_mode"] = ssl_mode
             if sslmode is None:
                 sslmode = _utilities.get_env('PGSSLMODE')
-            __props__['sslmode'] = sslmode
-            __props__['sslrootcert'] = sslrootcert
-            __props__['superuser'] = pulumi.Output.from_input(superuser).apply(pulumi.runtime.to_json) if superuser is not None else None
-            __props__['username'] = username
+            __props__.__dict__["sslmode"] = sslmode
+            __props__.__dict__["sslrootcert"] = sslrootcert
+            __props__.__dict__["superuser"] = pulumi.Output.from_input(superuser).apply(pulumi.runtime.to_json) if superuser is not None else None
+            __props__.__dict__["username"] = username
         super(Provider, __self__).__init__(
             'postgresql',
             resource_name,
             __props__,
             opts)
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

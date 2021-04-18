@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -23,6 +23,117 @@ class SchemaArgs:
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]] = None):
         """
         The set of arguments for constructing a Schema resource.
+        :param pulumi.Input[str] database: The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
+        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that are contained in the schema. (Default: false)
+        :param pulumi.Input[bool] if_not_exists: When true, use the existing schema if it exists. (Default: true)
+        :param pulumi.Input[str] name: The name of the schema. Must be unique in the PostgreSQL
+               database instance where it is configured.
+        :param pulumi.Input[str] owner: The ROLE who owns the schema.
+        :param pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]] policies: Can be specified multiple times for each policy.  Each
+               policy block supports fields documented below.
+        """
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if drop_cascade is not None:
+            pulumi.set(__self__, "drop_cascade", drop_cascade)
+        if if_not_exists is not None:
+            pulumi.set(__self__, "if_not_exists", if_not_exists)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if policies is not None:
+            warnings.warn("""Use postgresql_grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
+            pulumi.log.warn("""policies is deprecated: Use postgresql_grant resource instead (with object_type=\"schema\")""")
+        if policies is not None:
+            pulumi.set(__self__, "policies", policies)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter(name="dropCascade")
+    def drop_cascade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, will also drop all the objects that are contained in the schema. (Default: false)
+        """
+        return pulumi.get(self, "drop_cascade")
+
+    @drop_cascade.setter
+    def drop_cascade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "drop_cascade", value)
+
+    @property
+    @pulumi.getter(name="ifNotExists")
+    def if_not_exists(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, use the existing schema if it exists. (Default: true)
+        """
+        return pulumi.get(self, "if_not_exists")
+
+    @if_not_exists.setter
+    def if_not_exists(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "if_not_exists", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the schema. Must be unique in the PostgreSQL
+        database instance where it is configured.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ROLE who owns the schema.
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]]:
+        """
+        Can be specified multiple times for each policy.  Each
+        policy block supports fields documented below.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]]):
+        pulumi.set(self, "policies", value)
+
+
+@pulumi.input_type
+class _SchemaState:
+    def __init__(__self__, *,
+                 database: Optional[pulumi.Input[str]] = None,
+                 drop_cascade: Optional[pulumi.Input[bool]] = None,
+                 if_not_exists: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering Schema resources.
         :param pulumi.Input[str] database: The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
         :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that are contained in the schema. (Default: false)
         :param pulumi.Input[bool] if_not_exists: When true, use the existing schema if it exists. (Default: true)
@@ -197,17 +308,17 @@ class Schema(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SchemaArgs.__new__(SchemaArgs)
 
-            __props__['database'] = database
-            __props__['drop_cascade'] = drop_cascade
-            __props__['if_not_exists'] = if_not_exists
-            __props__['name'] = name
-            __props__['owner'] = owner
+            __props__.__dict__["database"] = database
+            __props__.__dict__["drop_cascade"] = drop_cascade
+            __props__.__dict__["if_not_exists"] = if_not_exists
+            __props__.__dict__["name"] = name
+            __props__.__dict__["owner"] = owner
             if policies is not None and not opts.urn:
                 warnings.warn("""Use postgresql_grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
                 pulumi.log.warn("""policies is deprecated: Use postgresql_grant resource instead (with object_type=\"schema\")""")
-            __props__['policies'] = policies
+            __props__.__dict__["policies"] = policies
         super(Schema, __self__).__init__(
             'postgresql:index/schema:Schema',
             resource_name,
@@ -242,14 +353,14 @@ class Schema(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SchemaState.__new__(_SchemaState)
 
-        __props__["database"] = database
-        __props__["drop_cascade"] = drop_cascade
-        __props__["if_not_exists"] = if_not_exists
-        __props__["name"] = name
-        __props__["owner"] = owner
-        __props__["policies"] = policies
+        __props__.__dict__["database"] = database
+        __props__.__dict__["drop_cascade"] = drop_cascade
+        __props__.__dict__["if_not_exists"] = if_not_exists
+        __props__.__dict__["name"] = name
+        __props__.__dict__["owner"] = owner
+        __props__.__dict__["policies"] = policies
         return Schema(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -301,10 +412,4 @@ class Schema(pulumi.CustomResource):
         policy block supports fields documented below.
         """
         return pulumi.get(self, "policies")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
