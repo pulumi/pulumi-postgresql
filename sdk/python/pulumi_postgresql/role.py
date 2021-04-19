@@ -808,9 +808,7 @@ class Role(pulumi.CustomResource):
                  statement_timeout: Optional[pulumi.Input[int]] = None,
                  superuser: Optional[pulumi.Input[bool]] = None,
                  valid_until: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Create a Role resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -914,15 +912,7 @@ class Role(pulumi.CustomResource):
                  statement_timeout: Optional[pulumi.Input[int]] = None,
                  superuser: Optional[pulumi.Input[bool]] = None,
                  valid_until: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
