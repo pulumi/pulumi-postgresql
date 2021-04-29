@@ -713,6 +713,8 @@ github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Di
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-provider-postgresql v1.12.1-0.20210330162646-5e21079b520e h1:RwBCyzNKjVY4r5mi1lwulqMFi0zPqryXpm56Qx4HsP0=
 github.com/pulumi/terraform-provider-postgresql v1.12.1-0.20210330162646-5e21079b520e/go.mod h1:AkUW9q5G+E3/IWW2gxKbmN1y9L2AKw1LvPGFG8rtmko=
+github.com/pulumi/terraform-provider-postgresql v1.12.1-0.20210427104043-992355c7085a h1:mHZ9sU8Des4bCjkly8CYSQfcC9m4Y6mfF24g0JuRSOo=
+github.com/pulumi/terraform-provider-postgresql v1.12.1-0.20210427104043-992355c7085a/go.mod h1:AkUW9q5G+E3/IWW2gxKbmN1y9L2AKw1LvPGFG8rtmko=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af h1:gu+uRPtBe88sKxUCEXRoeCvVG90TJmwhiqRpvdhQFng=
