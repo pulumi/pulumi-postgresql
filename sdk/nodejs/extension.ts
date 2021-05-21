@@ -50,8 +50,7 @@ export class Extension extends pulumi.CustomResource {
      */
     public readonly database!: pulumi.Output<string>;
     /**
-     * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-     * objects
+     * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
      */
     public readonly dropCascade!: pulumi.Output<boolean | undefined>;
     /**
@@ -109,8 +108,7 @@ export interface ExtensionState {
      */
     readonly database?: pulumi.Input<string>;
     /**
-     * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-     * objects
+     * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
      */
     readonly dropCascade?: pulumi.Input<boolean>;
     /**
@@ -136,8 +134,7 @@ export interface ExtensionArgs {
      */
     readonly database?: pulumi.Input<string>;
     /**
-     * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-     * objects
+     * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
      */
     readonly dropCascade?: pulumi.Input<boolean>;
     /**

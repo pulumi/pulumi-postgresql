@@ -38,8 +38,7 @@ type Extension struct {
 
 	// Which database to create the extension on. Defaults to provider database.
 	Database pulumi.StringOutput `pulumi:"database"`
-	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-	// objects
+	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
 	DropCascade pulumi.BoolPtrOutput `pulumi:"dropCascade"`
 	// The name of the extension.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -80,8 +79,7 @@ func GetExtension(ctx *pulumi.Context,
 type extensionState struct {
 	// Which database to create the extension on. Defaults to provider database.
 	Database *string `pulumi:"database"`
-	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-	// objects
+	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
 	DropCascade *bool `pulumi:"dropCascade"`
 	// The name of the extension.
 	Name *string `pulumi:"name"`
@@ -94,8 +92,7 @@ type extensionState struct {
 type ExtensionState struct {
 	// Which database to create the extension on. Defaults to provider database.
 	Database pulumi.StringPtrInput
-	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-	// objects
+	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
 	DropCascade pulumi.BoolPtrInput
 	// The name of the extension.
 	Name pulumi.StringPtrInput
@@ -112,8 +109,7 @@ func (ExtensionState) ElementType() reflect.Type {
 type extensionArgs struct {
 	// Which database to create the extension on. Defaults to provider database.
 	Database *string `pulumi:"database"`
-	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-	// objects
+	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
 	DropCascade *bool `pulumi:"dropCascade"`
 	// The name of the extension.
 	Name *string `pulumi:"name"`
@@ -127,8 +123,7 @@ type extensionArgs struct {
 type ExtensionArgs struct {
 	// Which database to create the extension on. Defaults to provider database.
 	Database pulumi.StringPtrInput
-	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-	// objects
+	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
 	DropCascade pulumi.BoolPtrInput
 	// The name of the extension.
 	Name pulumi.StringPtrInput
