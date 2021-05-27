@@ -21,8 +21,7 @@ class ExtensionArgs:
         """
         The set of arguments for constructing a Extension resource.
         :param pulumi.Input[str] database: Which database to create the extension on. Defaults to provider database.
-        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-               objects
+        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         :param pulumi.Input[str] name: The name of the extension.
         :param pulumi.Input[str] schema: Sets the schema of an extension.
         :param pulumi.Input[str] version: Sets the version number of the extension.
@@ -54,8 +53,7 @@ class ExtensionArgs:
     @pulumi.getter(name="dropCascade")
     def drop_cascade(self) -> Optional[pulumi.Input[bool]]:
         """
-        When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-        objects
+        When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         """
         return pulumi.get(self, "drop_cascade")
 
@@ -111,8 +109,7 @@ class _ExtensionState:
         """
         Input properties used for looking up and filtering Extension resources.
         :param pulumi.Input[str] database: Which database to create the extension on. Defaults to provider database.
-        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-               objects
+        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         :param pulumi.Input[str] name: The name of the extension.
         :param pulumi.Input[str] schema: Sets the schema of an extension.
         :param pulumi.Input[str] version: Sets the version number of the extension.
@@ -144,8 +141,7 @@ class _ExtensionState:
     @pulumi.getter(name="dropCascade")
     def drop_cascade(self) -> Optional[pulumi.Input[bool]]:
         """
-        When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-        objects
+        When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         """
         return pulumi.get(self, "drop_cascade")
 
@@ -217,8 +213,7 @@ class Extension(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: Which database to create the extension on. Defaults to provider database.
-        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-               objects
+        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         :param pulumi.Input[str] name: The name of the extension.
         :param pulumi.Input[str] schema: Sets the schema of an extension.
         :param pulumi.Input[str] version: Sets the version number of the extension.
@@ -302,8 +297,7 @@ class Extension(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: Which database to create the extension on. Defaults to provider database.
-        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-               objects
+        :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         :param pulumi.Input[str] name: The name of the extension.
         :param pulumi.Input[str] schema: Sets the schema of an extension.
         :param pulumi.Input[str] version: Sets the version number of the extension.
@@ -331,8 +325,7 @@ class Extension(pulumi.CustomResource):
     @pulumi.getter(name="dropCascade")
     def drop_cascade(self) -> pulumi.Output[Optional[bool]]:
         """
-        When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-        objects
+        When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         """
         return pulumi.get(self, "drop_cascade")
 

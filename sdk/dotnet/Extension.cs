@@ -41,8 +41,7 @@ namespace Pulumi.PostgreSql
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
-        /// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-        /// objects
+        /// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         /// </summary>
         [Output("dropCascade")]
         public Output<bool?> DropCascade { get; private set; } = null!;
@@ -118,8 +117,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-        /// objects
+        /// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         /// </summary>
         [Input("dropCascade")]
         public Input<bool>? DropCascade { get; set; }
@@ -156,8 +154,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those
-        /// objects
+        /// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         /// </summary>
         [Input("dropCascade")]
         public Input<bool>? DropCascade { get; set; }

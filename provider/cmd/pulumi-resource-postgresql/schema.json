@@ -660,7 +660,7 @@
                 },
                 "dropCascade": {
                     "type": "boolean",
-                    "description": "When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those\nobjects\n"
+                    "description": "When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)\n"
                 },
                 "name": {
                     "type": "string",
@@ -688,7 +688,7 @@
                 },
                 "dropCascade": {
                     "type": "boolean",
-                    "description": "When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those\nobjects\n"
+                    "description": "When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)\n"
                 },
                 "name": {
                     "type": "string",
@@ -712,7 +712,7 @@
                     },
                     "dropCascade": {
                         "type": "boolean",
-                        "description": "When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those\nobjects\n"
+                        "description": "When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)\n"
                     },
                     "name": {
                         "type": "string",
