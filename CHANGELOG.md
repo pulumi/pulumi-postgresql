@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
-* Upgrade to v1.13.0 Postgresql Terraform Provider
+_(none)_
 
 ---
+
+## 3.1.0 (2021-05-27)
+* Upgrade to v1.13.0 Postgresql Terraform Provider
 
 ## 3.0.1 (2021-04-30)
 * Upgrade to v1.12.1 Postgresql Terraform Provider
