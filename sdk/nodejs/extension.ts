@@ -46,6 +46,10 @@ export class Extension extends pulumi.CustomResource {
     }
 
     /**
+     * When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+     */
+    public readonly createCascade!: pulumi.Output<boolean | undefined>;
+    /**
      * Which database to create the extension on. Defaults to provider database.
      */
     public readonly database!: pulumi.Output<string>;
@@ -79,6 +83,7 @@ export class Extension extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExtensionState | undefined;
+            inputs["createCascade"] = state ? state.createCascade : undefined;
             inputs["database"] = state ? state.database : undefined;
             inputs["dropCascade"] = state ? state.dropCascade : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -86,6 +91,7 @@ export class Extension extends pulumi.CustomResource {
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as ExtensionArgs | undefined;
+            inputs["createCascade"] = args ? args.createCascade : undefined;
             inputs["database"] = args ? args.database : undefined;
             inputs["dropCascade"] = args ? args.dropCascade : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -103,6 +109,10 @@ export class Extension extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Extension resources.
  */
 export interface ExtensionState {
+    /**
+     * When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+     */
+    readonly createCascade?: pulumi.Input<boolean>;
     /**
      * Which database to create the extension on. Defaults to provider database.
      */
@@ -129,6 +139,10 @@ export interface ExtensionState {
  * The set of arguments for constructing a Extension resource.
  */
 export interface ExtensionArgs {
+    /**
+     * When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+     */
+    readonly createCascade?: pulumi.Input<boolean>;
     /**
      * Which database to create the extension on. Defaults to provider database.
      */

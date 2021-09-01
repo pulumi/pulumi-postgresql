@@ -17,21 +17,25 @@ class GrantArgs:
                  object_type: pulumi.Input[str],
                  privileges: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
+                 objects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  with_grant_option: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Grant resource.
         :param pulumi.Input[str] database: The database to grant privileges on for this role.
-        :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
         :param pulumi.Input[str] role: The name of the role to grant privileges on, Set it to "public" for all roles.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] objects: The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
         :param pulumi.Input[str] schema: The database schema to grant privileges on for this role (Required except if object_type is "database")
-        :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
+        :param pulumi.Input[bool] with_grant_option: Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "object_type", object_type)
         pulumi.set(__self__, "privileges", privileges)
         pulumi.set(__self__, "role", role)
+        if objects is not None:
+            pulumi.set(__self__, "objects", objects)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if with_grant_option is not None:
@@ -53,7 +57,7 @@ class GrantArgs:
     @pulumi.getter(name="objectType")
     def object_type(self) -> pulumi.Input[str]:
         """
-        The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+        The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
         """
         return pulumi.get(self, "object_type")
 
@@ -87,6 +91,18 @@ class GrantArgs:
 
     @property
     @pulumi.getter
+    def objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
+        """
+        return pulumi.get(self, "objects")
+
+    @objects.setter
+    def objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "objects", value)
+
+    @property
+    @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         """
         The database schema to grant privileges on for this role (Required except if object_type is "database")
@@ -101,7 +117,7 @@ class GrantArgs:
     @pulumi.getter(name="withGrantOption")
     def with_grant_option(self) -> Optional[pulumi.Input[bool]]:
         """
-        Permit the grant recipient to grant it to others
+        Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
         """
         return pulumi.get(self, "with_grant_option")
 
@@ -115,6 +131,7 @@ class _GrantState:
     def __init__(__self__, *,
                  database: Optional[pulumi.Input[str]] = None,
                  object_type: Optional[pulumi.Input[str]] = None,
+                 objects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
@@ -122,16 +139,19 @@ class _GrantState:
         """
         Input properties used for looking up and filtering Grant resources.
         :param pulumi.Input[str] database: The database to grant privileges on for this role.
-        :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] objects: The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
         :param pulumi.Input[str] role: The name of the role to grant privileges on, Set it to "public" for all roles.
         :param pulumi.Input[str] schema: The database schema to grant privileges on for this role (Required except if object_type is "database")
-        :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
+        :param pulumi.Input[bool] with_grant_option: Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
         """
         if database is not None:
             pulumi.set(__self__, "database", database)
         if object_type is not None:
             pulumi.set(__self__, "object_type", object_type)
+        if objects is not None:
+            pulumi.set(__self__, "objects", objects)
         if privileges is not None:
             pulumi.set(__self__, "privileges", privileges)
         if role is not None:
@@ -157,13 +177,25 @@ class _GrantState:
     @pulumi.getter(name="objectType")
     def object_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+        The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
         """
         return pulumi.get(self, "object_type")
 
     @object_type.setter
     def object_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "object_type", value)
+
+    @property
+    @pulumi.getter
+    def objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
+        """
+        return pulumi.get(self, "objects")
+
+    @objects.setter
+    def objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "objects", value)
 
     @property
     @pulumi.getter
@@ -205,7 +237,7 @@ class _GrantState:
     @pulumi.getter(name="withGrantOption")
     def with_grant_option(self) -> Optional[pulumi.Input[bool]]:
         """
-        Permit the grant recipient to grant it to others
+        Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
         """
         return pulumi.get(self, "with_grant_option")
 
@@ -221,6 +253,7 @@ class Grant(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  object_type: Optional[pulumi.Input[str]] = None,
+                 objects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
@@ -242,6 +275,10 @@ class Grant(pulumi.CustomResource):
         readonly_tables = postgresql.Grant("readonlyTables",
             database="test_db",
             object_type="table",
+            objects=[
+                "table1",
+                "table2",
+            ],
             privileges=["SELECT"],
             role="test_role",
             schema="public")
@@ -266,11 +303,12 @@ class Grant(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant privileges on for this role.
-        :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] objects: The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
         :param pulumi.Input[str] role: The name of the role to grant privileges on, Set it to "public" for all roles.
         :param pulumi.Input[str] schema: The database schema to grant privileges on for this role (Required except if object_type is "database")
-        :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
+        :param pulumi.Input[bool] with_grant_option: Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
         """
         ...
     @overload
@@ -294,6 +332,10 @@ class Grant(pulumi.CustomResource):
         readonly_tables = postgresql.Grant("readonlyTables",
             database="test_db",
             object_type="table",
+            objects=[
+                "table1",
+                "table2",
+            ],
             privileges=["SELECT"],
             role="test_role",
             schema="public")
@@ -332,6 +374,7 @@ class Grant(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  object_type: Optional[pulumi.Input[str]] = None,
+                 objects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
@@ -354,6 +397,7 @@ class Grant(pulumi.CustomResource):
             if object_type is None and not opts.urn:
                 raise TypeError("Missing required property 'object_type'")
             __props__.__dict__["object_type"] = object_type
+            __props__.__dict__["objects"] = objects
             if privileges is None and not opts.urn:
                 raise TypeError("Missing required property 'privileges'")
             __props__.__dict__["privileges"] = privileges
@@ -374,6 +418,7 @@ class Grant(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             database: Optional[pulumi.Input[str]] = None,
             object_type: Optional[pulumi.Input[str]] = None,
+            objects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             role: Optional[pulumi.Input[str]] = None,
             schema: Optional[pulumi.Input[str]] = None,
@@ -386,11 +431,12 @@ class Grant(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant privileges on for this role.
-        :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] objects: The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
         :param pulumi.Input[str] role: The name of the role to grant privileges on, Set it to "public" for all roles.
         :param pulumi.Input[str] schema: The database schema to grant privileges on for this role (Required except if object_type is "database")
-        :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
+        :param pulumi.Input[bool] with_grant_option: Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -398,6 +444,7 @@ class Grant(pulumi.CustomResource):
 
         __props__.__dict__["database"] = database
         __props__.__dict__["object_type"] = object_type
+        __props__.__dict__["objects"] = objects
         __props__.__dict__["privileges"] = privileges
         __props__.__dict__["role"] = role
         __props__.__dict__["schema"] = schema
@@ -416,9 +463,17 @@ class Grant(pulumi.CustomResource):
     @pulumi.getter(name="objectType")
     def object_type(self) -> pulumi.Output[str]:
         """
-        The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+        The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
         """
         return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter
+    def objects(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
+        """
+        return pulumi.get(self, "objects")
 
     @property
     @pulumi.getter
@@ -448,7 +503,7 @@ class Grant(pulumi.CustomResource):
     @pulumi.getter(name="withGrantOption")
     def with_grant_option(self) -> pulumi.Output[Optional[bool]]:
         """
-        Permit the grant recipient to grant it to others
+        Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
         """
         return pulumi.get(self, "with_grant_option")
 

@@ -63,7 +63,7 @@ namespace Pulumi.PostgreSql
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// The list of privileges to apply as default privileges.
+        /// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
         /// </summary>
         [Output("privileges")]
         public Output<ImmutableArray<string>> Privileges { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _privileges;
 
         /// <summary>
-        /// The list of privileges to apply as default privileges.
+        /// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
         /// </summary>
         public InputList<string> Privileges
         {
@@ -213,7 +213,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _privileges;
 
         /// <summary>
-        /// The list of privileges to apply as default privileges.
+        /// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
         /// </summary>
         public InputList<string> Privileges
         {

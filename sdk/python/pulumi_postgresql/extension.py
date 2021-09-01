@@ -13,6 +13,7 @@ __all__ = ['ExtensionArgs', 'Extension']
 @pulumi.input_type
 class ExtensionArgs:
     def __init__(__self__, *,
+                 create_cascade: Optional[pulumi.Input[bool]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -20,12 +21,15 @@ class ExtensionArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Extension resource.
+        :param pulumi.Input[bool] create_cascade: When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
         :param pulumi.Input[str] database: Which database to create the extension on. Defaults to provider database.
         :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         :param pulumi.Input[str] name: The name of the extension.
         :param pulumi.Input[str] schema: Sets the schema of an extension.
         :param pulumi.Input[str] version: Sets the version number of the extension.
         """
+        if create_cascade is not None:
+            pulumi.set(__self__, "create_cascade", create_cascade)
         if database is not None:
             pulumi.set(__self__, "database", database)
         if drop_cascade is not None:
@@ -36,6 +40,18 @@ class ExtensionArgs:
             pulumi.set(__self__, "schema", schema)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="createCascade")
+    def create_cascade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+        """
+        return pulumi.get(self, "create_cascade")
+
+    @create_cascade.setter
+    def create_cascade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_cascade", value)
 
     @property
     @pulumi.getter
@@ -101,6 +117,7 @@ class ExtensionArgs:
 @pulumi.input_type
 class _ExtensionState:
     def __init__(__self__, *,
+                 create_cascade: Optional[pulumi.Input[bool]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -108,12 +125,15 @@ class _ExtensionState:
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Extension resources.
+        :param pulumi.Input[bool] create_cascade: When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
         :param pulumi.Input[str] database: Which database to create the extension on. Defaults to provider database.
         :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         :param pulumi.Input[str] name: The name of the extension.
         :param pulumi.Input[str] schema: Sets the schema of an extension.
         :param pulumi.Input[str] version: Sets the version number of the extension.
         """
+        if create_cascade is not None:
+            pulumi.set(__self__, "create_cascade", create_cascade)
         if database is not None:
             pulumi.set(__self__, "database", database)
         if drop_cascade is not None:
@@ -124,6 +144,18 @@ class _ExtensionState:
             pulumi.set(__self__, "schema", schema)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="createCascade")
+    def create_cascade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+        """
+        return pulumi.get(self, "create_cascade")
+
+    @create_cascade.setter
+    def create_cascade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_cascade", value)
 
     @property
     @pulumi.getter
@@ -191,6 +223,7 @@ class Extension(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 create_cascade: Optional[pulumi.Input[bool]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -212,6 +245,7 @@ class Extension(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] create_cascade: When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
         :param pulumi.Input[str] database: Which database to create the extension on. Defaults to provider database.
         :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         :param pulumi.Input[str] name: The name of the extension.
@@ -252,6 +286,7 @@ class Extension(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 create_cascade: Optional[pulumi.Input[bool]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -269,6 +304,7 @@ class Extension(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ExtensionArgs.__new__(ExtensionArgs)
 
+            __props__.__dict__["create_cascade"] = create_cascade
             __props__.__dict__["database"] = database
             __props__.__dict__["drop_cascade"] = drop_cascade
             __props__.__dict__["name"] = name
@@ -284,6 +320,7 @@ class Extension(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_cascade: Optional[pulumi.Input[bool]] = None,
             database: Optional[pulumi.Input[str]] = None,
             drop_cascade: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -296,6 +333,7 @@ class Extension(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] create_cascade: When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
         :param pulumi.Input[str] database: Which database to create the extension on. Defaults to provider database.
         :param pulumi.Input[bool] drop_cascade: When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         :param pulumi.Input[str] name: The name of the extension.
@@ -306,12 +344,21 @@ class Extension(pulumi.CustomResource):
 
         __props__ = _ExtensionState.__new__(_ExtensionState)
 
+        __props__.__dict__["create_cascade"] = create_cascade
         __props__.__dict__["database"] = database
         __props__.__dict__["drop_cascade"] = drop_cascade
         __props__.__dict__["name"] = name
         __props__.__dict__["schema"] = schema
         __props__.__dict__["version"] = version
         return Extension(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createCascade")
+    def create_cascade(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+        """
+        return pulumi.get(self, "create_cascade")
 
     @property
     @pulumi.getter

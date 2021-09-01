@@ -66,7 +66,7 @@ export class DefaultPrivileges extends pulumi.CustomResource {
      */
     public readonly owner!: pulumi.Output<string>;
     /**
-     * The list of privileges to apply as default privileges.
+     * The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
      */
     public readonly privileges!: pulumi.Output<string[]>;
     /**
@@ -153,7 +153,7 @@ export interface DefaultPrivilegesState {
      */
     readonly owner?: pulumi.Input<string>;
     /**
-     * The list of privileges to apply as default privileges.
+     * The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
      */
     readonly privileges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -187,7 +187,7 @@ export interface DefaultPrivilegesArgs {
      */
     readonly owner: pulumi.Input<string>;
     /**
-     * The list of privileges to apply as default privileges.
+     * The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
      */
     readonly privileges: pulumi.Input<pulumi.Input<string>[]>;
     /**

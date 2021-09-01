@@ -32,6 +32,10 @@ import (
 // 		_, err := postgresql.NewGrant(ctx, "readonlyTables", &postgresql.GrantArgs{
 // 			Database:   pulumi.String("test_db"),
 // 			ObjectType: pulumi.String("table"),
+// 			Objects: pulumi.StringArray{
+// 				pulumi.String("table1"),
+// 				pulumi.String("table2"),
+// 			},
 // 			Privileges: pulumi.StringArray{
 // 				pulumi.String("SELECT"),
 // 			},
@@ -79,15 +83,17 @@ type Grant struct {
 
 	// The database to grant privileges on for this role.
 	Database pulumi.StringOutput `pulumi:"database"`
-	// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+	// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
+	// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`.
+	Objects pulumi.StringArrayOutput `pulumi:"objects"`
 	// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
 	Privileges pulumi.StringArrayOutput `pulumi:"privileges"`
 	// The name of the role to grant privileges on, Set it to "public" for all roles.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// The database schema to grant privileges on for this role (Required except if objectType is "database")
 	Schema pulumi.StringPtrOutput `pulumi:"schema"`
-	// Permit the grant recipient to grant it to others
+	// Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
 	WithGrantOption pulumi.BoolPtrOutput `pulumi:"withGrantOption"`
 }
 
@@ -134,30 +140,34 @@ func GetGrant(ctx *pulumi.Context,
 type grantState struct {
 	// The database to grant privileges on for this role.
 	Database *string `pulumi:"database"`
-	// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+	// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
 	ObjectType *string `pulumi:"objectType"`
+	// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`.
+	Objects []string `pulumi:"objects"`
 	// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
 	Privileges []string `pulumi:"privileges"`
 	// The name of the role to grant privileges on, Set it to "public" for all roles.
 	Role *string `pulumi:"role"`
 	// The database schema to grant privileges on for this role (Required except if objectType is "database")
 	Schema *string `pulumi:"schema"`
-	// Permit the grant recipient to grant it to others
+	// Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
 	WithGrantOption *bool `pulumi:"withGrantOption"`
 }
 
 type GrantState struct {
 	// The database to grant privileges on for this role.
 	Database pulumi.StringPtrInput
-	// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+	// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
 	ObjectType pulumi.StringPtrInput
+	// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`.
+	Objects pulumi.StringArrayInput
 	// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
 	Privileges pulumi.StringArrayInput
 	// The name of the role to grant privileges on, Set it to "public" for all roles.
 	Role pulumi.StringPtrInput
 	// The database schema to grant privileges on for this role (Required except if objectType is "database")
 	Schema pulumi.StringPtrInput
-	// Permit the grant recipient to grant it to others
+	// Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
 	WithGrantOption pulumi.BoolPtrInput
 }
 
@@ -168,15 +178,17 @@ func (GrantState) ElementType() reflect.Type {
 type grantArgs struct {
 	// The database to grant privileges on for this role.
 	Database string `pulumi:"database"`
-	// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+	// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
 	ObjectType string `pulumi:"objectType"`
+	// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`.
+	Objects []string `pulumi:"objects"`
 	// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
 	Privileges []string `pulumi:"privileges"`
 	// The name of the role to grant privileges on, Set it to "public" for all roles.
 	Role string `pulumi:"role"`
 	// The database schema to grant privileges on for this role (Required except if objectType is "database")
 	Schema *string `pulumi:"schema"`
-	// Permit the grant recipient to grant it to others
+	// Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
 	WithGrantOption *bool `pulumi:"withGrantOption"`
 }
 
@@ -184,15 +196,17 @@ type grantArgs struct {
 type GrantArgs struct {
 	// The database to grant privileges on for this role.
 	Database pulumi.StringInput
-	// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+	// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
 	ObjectType pulumi.StringInput
+	// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`.
+	Objects pulumi.StringArrayInput
 	// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
 	Privileges pulumi.StringArrayInput
 	// The name of the role to grant privileges on, Set it to "public" for all roles.
 	Role pulumi.StringInput
 	// The database schema to grant privileges on for this role (Required except if objectType is "database")
 	Schema pulumi.StringPtrInput
-	// Permit the grant recipient to grant it to others
+	// Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
 	WithGrantOption pulumi.BoolPtrInput
 }
 

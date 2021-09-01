@@ -36,6 +36,8 @@ import (
 type Extension struct {
 	pulumi.CustomResourceState
 
+	// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+	CreateCascade pulumi.BoolPtrOutput `pulumi:"createCascade"`
 	// Which database to create the extension on. Defaults to provider database.
 	Database pulumi.StringOutput `pulumi:"database"`
 	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
@@ -77,6 +79,8 @@ func GetExtension(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Extension resources.
 type extensionState struct {
+	// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+	CreateCascade *bool `pulumi:"createCascade"`
 	// Which database to create the extension on. Defaults to provider database.
 	Database *string `pulumi:"database"`
 	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
@@ -90,6 +94,8 @@ type extensionState struct {
 }
 
 type ExtensionState struct {
+	// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+	CreateCascade pulumi.BoolPtrInput
 	// Which database to create the extension on. Defaults to provider database.
 	Database pulumi.StringPtrInput
 	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
@@ -107,6 +113,8 @@ func (ExtensionState) ElementType() reflect.Type {
 }
 
 type extensionArgs struct {
+	// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+	CreateCascade *bool `pulumi:"createCascade"`
 	// Which database to create the extension on. Defaults to provider database.
 	Database *string `pulumi:"database"`
 	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
@@ -121,6 +129,8 @@ type extensionArgs struct {
 
 // The set of arguments for constructing a Extension resource.
 type ExtensionArgs struct {
+	// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+	CreateCascade pulumi.BoolPtrInput
 	// Which database to create the extension on. Defaults to provider database.
 	Database pulumi.StringPtrInput
 	// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)

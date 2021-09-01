@@ -32,6 +32,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Grant{}
 	case "postgresql:index/grantRole:GrantRole":
 		r = &GrantRole{}
+	case "postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot":
+		r = &PhysicalReplicationSlot{}
+	case "postgresql:index/replicationSlot:ReplicationSlot":
+		r = &ReplicationSlot{}
 	case "postgresql:index/role:Role":
 		r = &Role{}
 	case "postgresql:index/schema:Schema":
@@ -95,6 +99,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"postgresql",
 		"index/grantRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"postgresql",
+		"index/physicalReplicationSlot",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"postgresql",
+		"index/replicationSlot",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

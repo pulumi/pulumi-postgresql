@@ -30,6 +30,11 @@ namespace Pulumi.PostgreSql
     ///         {
     ///             Database = "test_db",
     ///             ObjectType = "table",
+    ///             Objects = 
+    ///             {
+    ///                 "table1",
+    ///                 "table2",
+    ///             },
     ///             Privileges = 
     ///             {
     ///                 "SELECT",
@@ -77,10 +82,16 @@ namespace Pulumi.PostgreSql
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
-        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
         /// </summary>
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
+
+        /// <summary>
+        /// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
+        /// </summary>
+        [Output("objects")]
+        public Output<ImmutableArray<string>> Objects { get; private set; } = null!;
 
         /// <summary>
         /// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
@@ -101,7 +112,7 @@ namespace Pulumi.PostgreSql
         public Output<string?> Schema { get; private set; } = null!;
 
         /// <summary>
-        /// Permit the grant recipient to grant it to others
+        /// Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
         /// </summary>
         [Output("withGrantOption")]
         public Output<bool?> WithGrantOption { get; private set; } = null!;
@@ -159,10 +170,22 @@ namespace Pulumi.PostgreSql
         public Input<string> Database { get; set; } = null!;
 
         /// <summary>
-        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
+
+        [Input("objects")]
+        private InputList<string>? _objects;
+
+        /// <summary>
+        /// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
+        /// </summary>
+        public InputList<string> Objects
+        {
+            get => _objects ?? (_objects = new InputList<string>());
+            set => _objects = value;
+        }
 
         [Input("privileges", required: true)]
         private InputList<string>? _privileges;
@@ -189,7 +212,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Schema { get; set; }
 
         /// <summary>
-        /// Permit the grant recipient to grant it to others
+        /// Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
         /// </summary>
         [Input("withGrantOption")]
         public Input<bool>? WithGrantOption { get; set; }
@@ -208,10 +231,22 @@ namespace Pulumi.PostgreSql
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
+
+        [Input("objects")]
+        private InputList<string>? _objects;
+
+        /// <summary>
+        /// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
+        /// </summary>
+        public InputList<string> Objects
+        {
+            get => _objects ?? (_objects = new InputList<string>());
+            set => _objects = value;
+        }
 
         [Input("privileges")]
         private InputList<string>? _privileges;
@@ -238,7 +273,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Schema { get; set; }
 
         /// <summary>
-        /// Permit the grant recipient to grant it to others
+        /// Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
         /// </summary>
         [Input("withGrantOption")]
         public Input<bool>? WithGrantOption { get; set; }

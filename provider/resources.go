@@ -91,11 +91,13 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"postgresql_database":  {Tok: makeResource(mainMod, "Database")},
-			"postgresql_extension": {Tok: makeResource(mainMod, "Extension")},
-			"postgresql_grant":     {Tok: makeResource(mainMod, "Grant")},
-			"postgresql_role":      {Tok: makeResource(mainMod, "Role")},
-			"postgresql_schema":    {Tok: makeResource(mainMod, "Schema")},
+			"postgresql_database":                  {Tok: makeResource(mainMod, "Database")},
+			"postgresql_extension":                 {Tok: makeResource(mainMod, "Extension")},
+			"postgresql_grant":                     {Tok: makeResource(mainMod, "Grant")},
+			"postgresql_role":                      {Tok: makeResource(mainMod, "Role")},
+			"postgresql_schema":                    {Tok: makeResource(mainMod, "Schema")},
+			"postgresql_physical_replication_slot": {Tok: makeResource(mainMod, "PhysicalReplicationSlot")},
+			"postgresql_replication_slot":          {Tok: makeResource(mainMod, "ReplicationSlot")},
 			"postgresql_grant_role": {
 				Tok: makeResource(mainMod, "GrantRole"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -131,8 +133,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*",
-				"System.Collections.Immutable": "1.6.0",
+				"Pulumi": "3.*",
 			},
 			Namespaces: map[string]string{
 				mainPkg: "PostgreSql",
