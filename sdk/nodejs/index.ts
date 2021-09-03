@@ -11,7 +11,9 @@ export * from "./defaultPrivileges";
 export * from "./extension";
 export * from "./grant";
 export * from "./grantRole";
+export * from "./physicalReplicationSlot";
 export * from "./provider";
+export * from "./replicationSlot";
 export * from "./role";
 export * from "./schema";
 
@@ -31,6 +33,8 @@ import { DefaultPrivileges } from "./defaultPrivileges";
 import { Extension } from "./extension";
 import { Grant } from "./grant";
 import { GrantRole } from "./grantRole";
+import { PhysicalReplicationSlot } from "./physicalReplicationSlot";
+import { ReplicationSlot } from "./replicationSlot";
 import { Role } from "./role";
 import { Schema } from "./schema";
 
@@ -50,6 +54,10 @@ const _module = {
                 return new Grant(name, <any>undefined, { urn })
             case "postgresql:index/grantRole:GrantRole":
                 return new GrantRole(name, <any>undefined, { urn })
+            case "postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot":
+                return new PhysicalReplicationSlot(name, <any>undefined, { urn })
+            case "postgresql:index/replicationSlot:ReplicationSlot":
+                return new ReplicationSlot(name, <any>undefined, { urn })
             case "postgresql:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
             case "postgresql:index/schema:Schema":
@@ -65,6 +73,8 @@ pulumi.runtime.registerResourceModule("postgresql", "index/defaultPrivileges", _
 pulumi.runtime.registerResourceModule("postgresql", "index/extension", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/grant", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/grantRole", _module)
+pulumi.runtime.registerResourceModule("postgresql", "index/physicalReplicationSlot", _module)
+pulumi.runtime.registerResourceModule("postgresql", "index/replicationSlot", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/role", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/schema", _module)
 

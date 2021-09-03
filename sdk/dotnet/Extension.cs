@@ -35,6 +35,12 @@ namespace Pulumi.PostgreSql
     public partial class Extension : Pulumi.CustomResource
     {
         /// <summary>
+        /// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+        /// </summary>
+        [Output("createCascade")]
+        public Output<bool?> CreateCascade { get; private set; } = null!;
+
+        /// <summary>
         /// Which database to create the extension on. Defaults to provider database.
         /// </summary>
         [Output("database")]
@@ -111,6 +117,12 @@ namespace Pulumi.PostgreSql
     public sealed class ExtensionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+        /// </summary>
+        [Input("createCascade")]
+        public Input<bool>? CreateCascade { get; set; }
+
+        /// <summary>
         /// Which database to create the extension on. Defaults to provider database.
         /// </summary>
         [Input("database")]
@@ -147,6 +159,12 @@ namespace Pulumi.PostgreSql
 
     public sealed class ExtensionState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+        /// </summary>
+        [Input("createCascade")]
+        public Input<bool>? CreateCascade { get; set; }
+
         /// <summary>
         /// Which database to create the extension on. Defaults to provider database.
         /// </summary>

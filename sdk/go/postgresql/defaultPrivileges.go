@@ -53,7 +53,7 @@ type DefaultPrivileges struct {
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
 	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
 	Owner pulumi.StringOutput `pulumi:"owner"`
-	// The list of privileges to apply as default privileges.
+	// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
 	Privileges pulumi.StringArrayOutput `pulumi:"privileges"`
 	// The name of the role to which grant default privileges on.
 	Role pulumi.StringOutput `pulumi:"role"`
@@ -119,7 +119,7 @@ type defaultPrivilegesState struct {
 	ObjectType *string `pulumi:"objectType"`
 	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
 	Owner *string `pulumi:"owner"`
-	// The list of privileges to apply as default privileges.
+	// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
 	Privileges []string `pulumi:"privileges"`
 	// The name of the role to which grant default privileges on.
 	Role *string `pulumi:"role"`
@@ -136,7 +136,7 @@ type DefaultPrivilegesState struct {
 	ObjectType pulumi.StringPtrInput
 	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
 	Owner pulumi.StringPtrInput
-	// The list of privileges to apply as default privileges.
+	// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
 	Privileges pulumi.StringArrayInput
 	// The name of the role to which grant default privileges on.
 	Role pulumi.StringPtrInput
@@ -157,7 +157,7 @@ type defaultPrivilegesArgs struct {
 	ObjectType string `pulumi:"objectType"`
 	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
 	Owner string `pulumi:"owner"`
-	// The list of privileges to apply as default privileges.
+	// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
 	Privileges []string `pulumi:"privileges"`
 	// The name of the role to which grant default privileges on.
 	Role string `pulumi:"role"`
@@ -175,7 +175,7 @@ type DefaultPrivilegesArgs struct {
 	ObjectType pulumi.StringInput
 	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
 	Owner pulumi.StringInput
-	// The list of privileges to apply as default privileges.
+	// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
 	Privileges pulumi.StringArrayInput
 	// The name of the role to which grant default privileges on.
 	Role pulumi.StringInput

@@ -9,7 +9,9 @@ from .default_privileges import *
 from .extension import *
 from .grant import *
 from .grant_role import *
+from .physical_replication_slot import *
 from .provider import *
+from .replication_slot import *
 from .role import *
 from .schema import *
 from ._inputs import *
@@ -44,6 +46,10 @@ def _register_module():
                 return Grant(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "postgresql:index/grantRole:GrantRole":
                 return GrantRole(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot":
+                return PhysicalReplicationSlot(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "postgresql:index/replicationSlot:ReplicationSlot":
+                return ReplicationSlot(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "postgresql:index/role:Role":
                 return Role(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "postgresql:index/schema:Schema":
@@ -59,6 +65,8 @@ def _register_module():
     pulumi.runtime.register_resource_module("postgresql", "index/extension", _module_instance)
     pulumi.runtime.register_resource_module("postgresql", "index/grant", _module_instance)
     pulumi.runtime.register_resource_module("postgresql", "index/grantRole", _module_instance)
+    pulumi.runtime.register_resource_module("postgresql", "index/physicalReplicationSlot", _module_instance)
+    pulumi.runtime.register_resource_module("postgresql", "index/replicationSlot", _module_instance)
     pulumi.runtime.register_resource_module("postgresql", "index/role", _module_instance)
     pulumi.runtime.register_resource_module("postgresql", "index/schema", _module_instance)
 

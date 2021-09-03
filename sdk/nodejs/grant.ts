@@ -20,6 +20,10 @@ import * as utilities from "./utilities";
  * const readonlyTables = new postgresql.Grant("readonly_tables", {
  *     database: "test_db",
  *     objectType: "table",
+ *     objects: [
+ *         "table1",
+ *         "table2",
+ *     ],
  *     privileges: ["SELECT"],
  *     role: "test_role",
  *     schema: "public",
@@ -76,9 +80,13 @@ export class Grant extends pulumi.CustomResource {
      */
     public readonly database!: pulumi.Output<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
      */
     public readonly objectType!: pulumi.Output<string>;
+    /**
+     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`.
+     */
+    public readonly objects!: pulumi.Output<string[] | undefined>;
     /**
      * The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
      */
@@ -92,7 +100,7 @@ export class Grant extends pulumi.CustomResource {
      */
     public readonly schema!: pulumi.Output<string | undefined>;
     /**
-     * Permit the grant recipient to grant it to others
+     * Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
      */
     public readonly withGrantOption!: pulumi.Output<boolean | undefined>;
 
@@ -111,6 +119,7 @@ export class Grant extends pulumi.CustomResource {
             const state = argsOrState as GrantState | undefined;
             inputs["database"] = state ? state.database : undefined;
             inputs["objectType"] = state ? state.objectType : undefined;
+            inputs["objects"] = state ? state.objects : undefined;
             inputs["privileges"] = state ? state.privileges : undefined;
             inputs["role"] = state ? state.role : undefined;
             inputs["schema"] = state ? state.schema : undefined;
@@ -131,6 +140,7 @@ export class Grant extends pulumi.CustomResource {
             }
             inputs["database"] = args ? args.database : undefined;
             inputs["objectType"] = args ? args.objectType : undefined;
+            inputs["objects"] = args ? args.objects : undefined;
             inputs["privileges"] = args ? args.privileges : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["schema"] = args ? args.schema : undefined;
@@ -152,9 +162,13 @@ export interface GrantState {
      */
     readonly database?: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
      */
     readonly objectType?: pulumi.Input<string>;
+    /**
+     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`.
+     */
+    readonly objects?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
      */
@@ -168,7 +182,7 @@ export interface GrantState {
      */
     readonly schema?: pulumi.Input<string>;
     /**
-     * Permit the grant recipient to grant it to others
+     * Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
      */
     readonly withGrantOption?: pulumi.Input<boolean>;
 }
@@ -182,9 +196,13 @@ export interface GrantArgs {
      */
     readonly database: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence,function).
+     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
      */
     readonly objectType: pulumi.Input<string>;
+    /**
+     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`.
+     */
+    readonly objects?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
      */
@@ -198,7 +216,7 @@ export interface GrantArgs {
      */
     readonly schema?: pulumi.Input<string>;
     /**
-     * Permit the grant recipient to grant it to others
+     * Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
      */
     readonly withGrantOption?: pulumi.Input<boolean>;
 }

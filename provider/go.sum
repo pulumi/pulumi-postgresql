@@ -717,6 +717,8 @@ github.com/pulumi/terraform-provider-postgresql v1.12.1-0.20210427104043-992355c
 github.com/pulumi/terraform-provider-postgresql v1.12.1-0.20210427104043-992355c7085a/go.mod h1:AkUW9q5G+E3/IWW2gxKbmN1y9L2AKw1LvPGFG8rtmko=
 github.com/pulumi/terraform-provider-postgresql v1.12.1-0.20210521144903-50145d01c91a h1:4gWyO/dRvNybvzYnQpd20OK7fR3YNMj/yedTc6ancDQ=
 github.com/pulumi/terraform-provider-postgresql v1.12.1-0.20210521144903-50145d01c91a/go.mod h1:AkUW9q5G+E3/IWW2gxKbmN1y9L2AKw1LvPGFG8rtmko=
+github.com/pulumi/terraform-provider-postgresql v1.12.1-0.20210901153353-a48f7e688aca h1:TM7WIoXxN75bKIJJZzDFhHou/jWUXMTGOffUKDvUttA=
+github.com/pulumi/terraform-provider-postgresql v1.12.1-0.20210901153353-a48f7e688aca/go.mod h1:AkUW9q5G+E3/IWW2gxKbmN1y9L2AKw1LvPGFG8rtmko=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af h1:gu+uRPtBe88sKxUCEXRoeCvVG90TJmwhiqRpvdhQFng=

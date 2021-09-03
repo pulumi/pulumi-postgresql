@@ -10,4 +10,4 @@ require (
 	github.com/pulumi/pulumi/sdk/v3 v3.0.0
 )
 
-replace github.com/cyrilgdn/terraform-provider-postgresql => github.com/pulumi/terraform-provider-postgresql v1.12.1-0.20210521144903-50145d01c91a
+replace github.com/cyrilgdn/terraform-provider-postgresql => github.com/pulumi/terraform-provider-postgresql v1.12.1-0.20210901153353-a48f7e688aca
