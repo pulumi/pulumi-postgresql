@@ -138,35 +138,35 @@ export interface DatabaseState {
      * database. The default is `true`, allowing connections (except as restricted by
      * other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
      */
-    readonly allowConnections?: pulumi.Input<boolean>;
+    allowConnections?: pulumi.Input<boolean>;
     /**
      * How many concurrent connections can be
      * established to this database. `-1` (the default) means no limit.
      */
-    readonly connectionLimit?: pulumi.Input<number>;
+    connectionLimit?: pulumi.Input<number>;
     /**
      * Character set encoding to use in the new database
      */
-    readonly encoding?: pulumi.Input<string>;
+    encoding?: pulumi.Input<string>;
     /**
      * If `true`, then this database can be cloned by any
      * user with `CREATEDB` privileges; if `false` (the default), then only
      * superusers or the owner of the database can clone it.
      */
-    readonly isTemplate?: pulumi.Input<boolean>;
+    isTemplate?: pulumi.Input<boolean>;
     /**
      * Collation order (LC_COLLATE) to use in the new database
      */
-    readonly lcCollate?: pulumi.Input<string>;
+    lcCollate?: pulumi.Input<string>;
     /**
      * Character classification (LC_CTYPE) to use in the new database
      */
-    readonly lcCtype?: pulumi.Input<string>;
+    lcCtype?: pulumi.Input<string>;
     /**
      * The name of the database. Must be unique on the PostgreSQL
      * server instance where it is configured.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The role name of the user who will own the database, or
      * `DEFAULT` to use the default (namely, the user executing the command). To
@@ -174,18 +174,18 @@ export interface DatabaseState {
      * database, you must be a direct or indirect member of the specified role, or
      * the username in the provider is a superuser.
      */
-    readonly owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string>;
     /**
      * The name of the tablespace that will be
      * associated with the database, or `DEFAULT` to use the template database's
      * tablespace.  This tablespace will be the default tablespace used for objects
      * created in this database.
      */
-    readonly tablespaceName?: pulumi.Input<string>;
+    tablespaceName?: pulumi.Input<string>;
     /**
      * The name of the template from which to create the new database
      */
-    readonly template?: pulumi.Input<string>;
+    template?: pulumi.Input<string>;
 }
 
 /**
@@ -197,35 +197,35 @@ export interface DatabaseArgs {
      * database. The default is `true`, allowing connections (except as restricted by
      * other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
      */
-    readonly allowConnections?: pulumi.Input<boolean>;
+    allowConnections?: pulumi.Input<boolean>;
     /**
      * How many concurrent connections can be
      * established to this database. `-1` (the default) means no limit.
      */
-    readonly connectionLimit?: pulumi.Input<number>;
+    connectionLimit?: pulumi.Input<number>;
     /**
      * Character set encoding to use in the new database
      */
-    readonly encoding?: pulumi.Input<string>;
+    encoding?: pulumi.Input<string>;
     /**
      * If `true`, then this database can be cloned by any
      * user with `CREATEDB` privileges; if `false` (the default), then only
      * superusers or the owner of the database can clone it.
      */
-    readonly isTemplate?: pulumi.Input<boolean>;
+    isTemplate?: pulumi.Input<boolean>;
     /**
      * Collation order (LC_COLLATE) to use in the new database
      */
-    readonly lcCollate?: pulumi.Input<string>;
+    lcCollate?: pulumi.Input<string>;
     /**
      * Character classification (LC_CTYPE) to use in the new database
      */
-    readonly lcCtype?: pulumi.Input<string>;
+    lcCtype?: pulumi.Input<string>;
     /**
      * The name of the database. Must be unique on the PostgreSQL
      * server instance where it is configured.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The role name of the user who will own the database, or
      * `DEFAULT` to use the default (namely, the user executing the command). To
@@ -233,16 +233,16 @@ export interface DatabaseArgs {
      * database, you must be a direct or indirect member of the specified role, or
      * the username in the provider is a superuser.
      */
-    readonly owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string>;
     /**
      * The name of the tablespace that will be
      * associated with the database, or `DEFAULT` to use the template database's
      * tablespace.  This tablespace will be the default tablespace used for objects
      * created in this database.
      */
-    readonly tablespaceName?: pulumi.Input<string>;
+    tablespaceName?: pulumi.Input<string>;
     /**
      * The name of the template from which to create the new database
      */
-    readonly template?: pulumi.Input<string>;
+    template?: pulumi.Input<string>;
 }

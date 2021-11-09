@@ -209,7 +209,7 @@ type ExtensionArrayInput interface {
 type ExtensionArray []ExtensionInput
 
 func (ExtensionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Extension)(nil))
+	return reflect.TypeOf((*[]*Extension)(nil)).Elem()
 }
 
 func (i ExtensionArray) ToExtensionArrayOutput() ExtensionArrayOutput {
@@ -234,7 +234,7 @@ type ExtensionMapInput interface {
 type ExtensionMap map[string]ExtensionInput
 
 func (ExtensionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Extension)(nil))
+	return reflect.TypeOf((*map[string]*Extension)(nil)).Elem()
 }
 
 func (i ExtensionMap) ToExtensionMapOutput() ExtensionMapOutput {
@@ -245,9 +245,7 @@ func (i ExtensionMap) ToExtensionMapOutputWithContext(ctx context.Context) Exten
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionMapOutput)
 }
 
-type ExtensionOutput struct {
-	*pulumi.OutputState
-}
+type ExtensionOutput struct{ *pulumi.OutputState }
 
 func (ExtensionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Extension)(nil))
@@ -266,14 +264,12 @@ func (o ExtensionOutput) ToExtensionPtrOutput() ExtensionPtrOutput {
 }
 
 func (o ExtensionOutput) ToExtensionPtrOutputWithContext(ctx context.Context) ExtensionPtrOutput {
-	return o.ApplyT(func(v Extension) *Extension {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Extension) *Extension {
 		return &v
 	}).(ExtensionPtrOutput)
 }
 
-type ExtensionPtrOutput struct {
-	*pulumi.OutputState
-}
+type ExtensionPtrOutput struct{ *pulumi.OutputState }
 
 func (ExtensionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Extension)(nil))
@@ -285,6 +281,16 @@ func (o ExtensionPtrOutput) ToExtensionPtrOutput() ExtensionPtrOutput {
 
 func (o ExtensionPtrOutput) ToExtensionPtrOutputWithContext(ctx context.Context) ExtensionPtrOutput {
 	return o
+}
+
+func (o ExtensionPtrOutput) Elem() ExtensionOutput {
+	return o.ApplyT(func(v *Extension) Extension {
+		if v != nil {
+			return *v
+		}
+		var ret Extension
+		return ret
+	}).(ExtensionOutput)
 }
 
 type ExtensionArrayOutput struct{ *pulumi.OutputState }
@@ -328,6 +334,10 @@ func (o ExtensionMapOutput) MapIndex(k pulumi.StringInput) ExtensionOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionInput)(nil)).Elem(), &Extension{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionPtrInput)(nil)).Elem(), &Extension{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionArrayInput)(nil)).Elem(), ExtensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionMapInput)(nil)).Elem(), ExtensionMap{})
 	pulumi.RegisterOutputType(ExtensionOutput{})
 	pulumi.RegisterOutputType(ExtensionPtrOutput{})
 	pulumi.RegisterOutputType(ExtensionArrayOutput{})

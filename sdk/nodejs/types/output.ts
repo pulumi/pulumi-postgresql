@@ -4,11 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
-export interface ProviderClientcert {
-    cert?: string;
-    key?: string;
-}
-
 export interface SchemaPolicy {
     /**
      * Should the specified ROLE have CREATE privileges to the specified SCHEMA.
@@ -31,9 +26,11 @@ export interface SchemaPolicy {
      */
     usageWithGrant?: boolean;
 }
+
 export namespace config {
     export interface Clientcert {
         cert: string;
         key: string;
     }
+
 }

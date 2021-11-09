@@ -16,6 +16,27 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	// The name of the database to connect to in order to conenct to (defaults to `postgres`).
+	Database pulumi.StringPtrOutput `pulumi:"database"`
+	// Database username associated to the connected user (for user name maps)
+	DatabaseUsername pulumi.StringPtrOutput `pulumi:"databaseUsername"`
+	// Specify the expected version of PostgreSQL.
+	ExpectedVersion pulumi.StringPtrOutput `pulumi:"expectedVersion"`
+	// Name of PostgreSQL server address to connect to
+	Host pulumi.StringPtrOutput `pulumi:"host"`
+	// Password to be used if the PostgreSQL server demands password authentication
+	Password pulumi.StringPtrOutput `pulumi:"password"`
+	Scheme   pulumi.StringPtrOutput `pulumi:"scheme"`
+	// Deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
+	SslMode pulumi.StringPtrOutput `pulumi:"sslMode"`
+	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
+	// PostgreSQL server
+	Sslmode pulumi.StringPtrOutput `pulumi:"sslmode"`
+	// The SSL server root certificate file path. The file must contain PEM encoded data.
+	Sslrootcert pulumi.StringPtrOutput `pulumi:"sslrootcert"`
+	// PostgreSQL user name to connect as
+	Username pulumi.StringPtrOutput `pulumi:"username"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -160,9 +181,7 @@ func (i *providerPtrType) ToProviderPtrOutputWithContext(ctx context.Context) Pr
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
 }
 
-type ProviderOutput struct {
-	*pulumi.OutputState
-}
+type ProviderOutput struct{ *pulumi.OutputState }
 
 func (ProviderOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Provider)(nil))
@@ -181,14 +200,12 @@ func (o ProviderOutput) ToProviderPtrOutput() ProviderPtrOutput {
 }
 
 func (o ProviderOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
-	return o.ApplyT(func(v Provider) *Provider {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Provider) *Provider {
 		return &v
 	}).(ProviderPtrOutput)
 }
 
-type ProviderPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProviderPtrOutput struct{ *pulumi.OutputState }
 
 func (ProviderPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Provider)(nil))
@@ -202,7 +219,19 @@ func (o ProviderPtrOutput) ToProviderPtrOutputWithContext(ctx context.Context) P
 	return o
 }
 
+func (o ProviderPtrOutput) Elem() ProviderOutput {
+	return o.ApplyT(func(v *Provider) Provider {
+		if v != nil {
+			return *v
+		}
+		var ret Provider
+		return ret
+	}).(ProviderOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderPtrInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})
 	pulumi.RegisterOutputType(ProviderPtrOutput{})
 }

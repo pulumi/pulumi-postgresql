@@ -103,10 +103,11 @@ func (o ProviderClientcertOutput) ToProviderClientcertPtrOutput() ProviderClient
 }
 
 func (o ProviderClientcertOutput) ToProviderClientcertPtrOutputWithContext(ctx context.Context) ProviderClientcertPtrOutput {
-	return o.ApplyT(func(v ProviderClientcert) *ProviderClientcert {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderClientcert) *ProviderClientcert {
 		return &v
 	}).(ProviderClientcertPtrOutput)
 }
+
 func (o ProviderClientcertOutput) Cert() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderClientcert) string { return v.Cert }).(pulumi.StringOutput)
 }
@@ -130,7 +131,13 @@ func (o ProviderClientcertPtrOutput) ToProviderClientcertPtrOutputWithContext(ct
 }
 
 func (o ProviderClientcertPtrOutput) Elem() ProviderClientcertOutput {
-	return o.ApplyT(func(v *ProviderClientcert) ProviderClientcert { return *v }).(ProviderClientcertOutput)
+	return o.ApplyT(func(v *ProviderClientcert) ProviderClientcert {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderClientcert
+		return ret
+	}).(ProviderClientcertOutput)
 }
 
 func (o ProviderClientcertPtrOutput) Cert() pulumi.StringPtrOutput {
@@ -285,6 +292,10 @@ func (o SchemaPolicyArrayOutput) Index(i pulumi.IntInput) SchemaPolicyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderClientcertInput)(nil)).Elem(), ProviderClientcertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderClientcertPtrInput)(nil)).Elem(), ProviderClientcertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPolicyInput)(nil)).Elem(), SchemaPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPolicyArrayInput)(nil)).Elem(), SchemaPolicyArray{})
 	pulumi.RegisterOutputType(ProviderClientcertOutput{})
 	pulumi.RegisterOutputType(ProviderClientcertPtrOutput{})
 	pulumi.RegisterOutputType(SchemaPolicyOutput{})

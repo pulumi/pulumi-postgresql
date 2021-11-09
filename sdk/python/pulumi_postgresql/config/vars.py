@@ -9,94 +9,110 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
-__all__ = [
-    'clientcert',
-    'connect_timeout',
-    'database',
-    'database_username',
-    'expected_version',
-    'host',
-    'max_connections',
-    'password',
-    'port',
-    'scheme',
-    'ssl_mode',
-    'sslmode',
-    'sslrootcert',
-    'superuser',
-    'username',
-]
+import types
 
 __config__ = pulumi.Config('postgresql')
 
-clientcert = __config__.get('clientcert')
-"""
-SSL client certificate if required by the database.
-"""
 
-connect_timeout = __config__.get('connectTimeout') or (_utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
-"""
-Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
-"""
+class _ExportableConfig(types.ModuleType):
+    @property
+    def clientcert(self) -> Optional[str]:
+        """
+        SSL client certificate if required by the database.
+        """
+        return __config__.get('clientcert')
 
-database = __config__.get('database')
-"""
-The name of the database to connect to in order to conenct to (defaults to `postgres`).
-"""
+    @property
+    def connect_timeout(self) -> int:
+        """
+        Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
+        """
+        return __config__.get_int('connectTimeout') or (_utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
 
-database_username = __config__.get('databaseUsername')
-"""
-Database username associated to the connected user (for user name maps)
-"""
+    @property
+    def database(self) -> Optional[str]:
+        """
+        The name of the database to connect to in order to conenct to (defaults to `postgres`).
+        """
+        return __config__.get('database')
 
-expected_version = __config__.get('expectedVersion')
-"""
-Specify the expected version of PostgreSQL.
-"""
+    @property
+    def database_username(self) -> Optional[str]:
+        """
+        Database username associated to the connected user (for user name maps)
+        """
+        return __config__.get('databaseUsername')
 
-host = __config__.get('host')
-"""
-Name of PostgreSQL server address to connect to
-"""
+    @property
+    def expected_version(self) -> Optional[str]:
+        """
+        Specify the expected version of PostgreSQL.
+        """
+        return __config__.get('expectedVersion')
 
-max_connections = __config__.get('maxConnections')
-"""
-Maximum number of connections to establish to the database. Zero means unlimited.
-"""
+    @property
+    def host(self) -> Optional[str]:
+        """
+        Name of PostgreSQL server address to connect to
+        """
+        return __config__.get('host')
 
-password = __config__.get('password')
-"""
-Password to be used if the PostgreSQL server demands password authentication
-"""
+    @property
+    def max_connections(self) -> Optional[int]:
+        """
+        Maximum number of connections to establish to the database. Zero means unlimited.
+        """
+        return __config__.get_int('maxConnections')
 
-port = __config__.get('port')
-"""
-The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
-"""
+    @property
+    def password(self) -> Optional[str]:
+        """
+        Password to be used if the PostgreSQL server demands password authentication
+        """
+        return __config__.get('password')
 
-scheme = __config__.get('scheme')
+    @property
+    def port(self) -> Optional[int]:
+        """
+        The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
+        """
+        return __config__.get_int('port')
 
-ssl_mode = __config__.get('sslMode')
+    @property
+    def scheme(self) -> Optional[str]:
+        return __config__.get('scheme')
 
-sslmode = __config__.get('sslmode') or _utilities.get_env('PGSSLMODE')
-"""
-This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-PostgreSQL server
-"""
+    @property
+    def ssl_mode(self) -> Optional[str]:
+        return __config__.get('sslMode')
 
-sslrootcert = __config__.get('sslrootcert')
-"""
-The SSL server root certificate file path. The file must contain PEM encoded data.
-"""
+    @property
+    def sslmode(self) -> Optional[str]:
+        """
+        This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
+        PostgreSQL server
+        """
+        return __config__.get('sslmode') or _utilities.get_env('PGSSLMODE')
 
-superuser = __config__.get('superuser')
-"""
-Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-Refreshing state password from Postgres)
-"""
+    @property
+    def sslrootcert(self) -> Optional[str]:
+        """
+        The SSL server root certificate file path. The file must contain PEM encoded data.
+        """
+        return __config__.get('sslrootcert')
 
-username = __config__.get('username')
-"""
-PostgreSQL user name to connect as
-"""
+    @property
+    def superuser(self) -> Optional[bool]:
+        """
+        Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
+        Refreshing state password from Postgres)
+        """
+        return __config__.get_bool('superuser')
+
+    @property
+    def username(self) -> Optional[str]:
+        """
+        PostgreSQL user name to connect as
+        """
+        return __config__.get('username')
 

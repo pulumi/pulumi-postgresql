@@ -67,7 +67,7 @@ import (
 // 		_, err := postgresql.NewGrant(ctx, "revokePublic", &postgresql.GrantArgs{
 // 			Database:   pulumi.String("test_db"),
 // 			ObjectType: pulumi.String("schema"),
-// 			Privileges: []interface{}{},
+// 			Privileges: pulumi.StringArray{},
 // 			Role:       pulumi.String("public"),
 // 			Schema:     pulumi.String("public"),
 // 		})
@@ -276,7 +276,7 @@ type GrantArrayInput interface {
 type GrantArray []GrantInput
 
 func (GrantArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Grant)(nil))
+	return reflect.TypeOf((*[]*Grant)(nil)).Elem()
 }
 
 func (i GrantArray) ToGrantArrayOutput() GrantArrayOutput {
@@ -301,7 +301,7 @@ type GrantMapInput interface {
 type GrantMap map[string]GrantInput
 
 func (GrantMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Grant)(nil))
+	return reflect.TypeOf((*map[string]*Grant)(nil)).Elem()
 }
 
 func (i GrantMap) ToGrantMapOutput() GrantMapOutput {
@@ -312,9 +312,7 @@ func (i GrantMap) ToGrantMapOutputWithContext(ctx context.Context) GrantMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GrantMapOutput)
 }
 
-type GrantOutput struct {
-	*pulumi.OutputState
-}
+type GrantOutput struct{ *pulumi.OutputState }
 
 func (GrantOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Grant)(nil))
@@ -333,14 +331,12 @@ func (o GrantOutput) ToGrantPtrOutput() GrantPtrOutput {
 }
 
 func (o GrantOutput) ToGrantPtrOutputWithContext(ctx context.Context) GrantPtrOutput {
-	return o.ApplyT(func(v Grant) *Grant {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Grant) *Grant {
 		return &v
 	}).(GrantPtrOutput)
 }
 
-type GrantPtrOutput struct {
-	*pulumi.OutputState
-}
+type GrantPtrOutput struct{ *pulumi.OutputState }
 
 func (GrantPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Grant)(nil))
@@ -352,6 +348,16 @@ func (o GrantPtrOutput) ToGrantPtrOutput() GrantPtrOutput {
 
 func (o GrantPtrOutput) ToGrantPtrOutputWithContext(ctx context.Context) GrantPtrOutput {
 	return o
+}
+
+func (o GrantPtrOutput) Elem() GrantOutput {
+	return o.ApplyT(func(v *Grant) Grant {
+		if v != nil {
+			return *v
+		}
+		var ret Grant
+		return ret
+	}).(GrantOutput)
 }
 
 type GrantArrayOutput struct{ *pulumi.OutputState }
@@ -395,6 +401,10 @@ func (o GrantMapOutput) MapIndex(k pulumi.StringInput) GrantOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GrantInput)(nil)).Elem(), &Grant{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrantPtrInput)(nil)).Elem(), &Grant{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrantArrayInput)(nil)).Elem(), GrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrantMapInput)(nil)).Elem(), GrantMap{})
 	pulumi.RegisterOutputType(GrantOutput{})
 	pulumi.RegisterOutputType(GrantPtrOutput{})
 	pulumi.RegisterOutputType(GrantArrayOutput{})

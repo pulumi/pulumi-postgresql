@@ -66,5 +66,6 @@ func (o ClientcertOutput) Key() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientcertInput)(nil)).Elem(), ClientcertArgs{})
 	pulumi.RegisterOutputType(ClientcertOutput{})
 }

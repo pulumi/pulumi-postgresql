@@ -127,31 +127,31 @@ export interface DefaultPrivilegState {
     /**
      * The database to grant default privileges for this role
      */
-    readonly database?: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)
      */
-    readonly objectType?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string>;
     /**
      * Target role for which to alter default privileges.
      */
-    readonly owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string>;
     /**
      * The list of privileges to apply as default privileges
      */
-    readonly privileges?: pulumi.Input<pulumi.Input<string>[]>;
+    privileges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the role to which grant default privileges on
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * The database schema to set default privileges for this role
      */
-    readonly schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string>;
     /**
      * Permit the grant recipient to grant it to others
      */
-    readonly withGrantOption?: pulumi.Input<boolean>;
+    withGrantOption?: pulumi.Input<boolean>;
 }
 
 /**
@@ -161,29 +161,29 @@ export interface DefaultPrivilegArgs {
     /**
      * The database to grant default privileges for this role
      */
-    readonly database: pulumi.Input<string>;
+    database: pulumi.Input<string>;
     /**
      * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)
      */
-    readonly objectType: pulumi.Input<string>;
+    objectType: pulumi.Input<string>;
     /**
      * Target role for which to alter default privileges.
      */
-    readonly owner: pulumi.Input<string>;
+    owner: pulumi.Input<string>;
     /**
      * The list of privileges to apply as default privileges
      */
-    readonly privileges: pulumi.Input<pulumi.Input<string>[]>;
+    privileges: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the role to which grant default privileges on
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
     /**
      * The database schema to set default privileges for this role
      */
-    readonly schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string>;
     /**
      * Permit the grant recipient to grant it to others
      */
-    readonly withGrantOption?: pulumi.Input<boolean>;
+    withGrantOption?: pulumi.Input<boolean>;
 }

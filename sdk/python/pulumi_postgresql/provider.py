@@ -389,3 +389,78 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter
+    def database(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the database to connect to in order to conenct to (defaults to `postgres`).
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="databaseUsername")
+    def database_username(self) -> pulumi.Output[Optional[str]]:
+        """
+        Database username associated to the connected user (for user name maps)
+        """
+        return pulumi.get(self, "database_username")
+
+    @property
+    @pulumi.getter(name="expectedVersion")
+    def expected_version(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specify the expected version of PostgreSQL.
+        """
+        return pulumi.get(self, "expected_version")
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Output[Optional[str]]:
+        """
+        Name of PostgreSQL server address to connect to
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Output[Optional[str]]:
+        """
+        Password to be used if the PostgreSQL server demands password authentication
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "scheme")
+
+    @property
+    @pulumi.getter(name="sslMode")
+    def ssl_mode(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "ssl_mode")
+
+    @property
+    @pulumi.getter
+    def sslmode(self) -> pulumi.Output[Optional[str]]:
+        """
+        This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
+        PostgreSQL server
+        """
+        return pulumi.get(self, "sslmode")
+
+    @property
+    @pulumi.getter
+    def sslrootcert(self) -> pulumi.Output[Optional[str]]:
+        """
+        The SSL server root certificate file path. The file must contain PEM encoded data.
+        """
+        return pulumi.get(self, "sslrootcert")
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Output[Optional[str]]:
+        """
+        PostgreSQL user name to connect as
+        """
+        return pulumi.get(self, "username")
+
