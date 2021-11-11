@@ -74,7 +74,7 @@ export interface PhysicalReplicationSlotState {
     /**
      * The name of the replication slot.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -84,5 +84,5 @@ export interface PhysicalReplicationSlotArgs {
     /**
      * The name of the replication slot.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

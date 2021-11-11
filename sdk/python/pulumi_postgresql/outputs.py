@@ -9,28 +9,8 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
-    'ProviderClientcert',
     'SchemaPolicy',
 ]
-
-@pulumi.output_type
-class ProviderClientcert(dict):
-    def __init__(__self__, *,
-                 cert: str,
-                 key: str):
-        pulumi.set(__self__, "cert", cert)
-        pulumi.set(__self__, "key", key)
-
-    @property
-    @pulumi.getter
-    def cert(self) -> str:
-        return pulumi.get(self, "cert")
-
-    @property
-    @pulumi.getter
-    def key(self) -> str:
-        return pulumi.get(self, "key")
-
 
 @pulumi.output_type
 class SchemaPolicy(dict):

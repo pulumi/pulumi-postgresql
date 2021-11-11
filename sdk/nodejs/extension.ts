@@ -112,27 +112,27 @@ export interface ExtensionState {
     /**
      * When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
      */
-    readonly createCascade?: pulumi.Input<boolean>;
+    createCascade?: pulumi.Input<boolean>;
     /**
      * Which database to create the extension on. Defaults to provider database.
      */
-    readonly database?: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
      */
-    readonly dropCascade?: pulumi.Input<boolean>;
+    dropCascade?: pulumi.Input<boolean>;
     /**
      * The name of the extension.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Sets the schema of an extension.
      */
-    readonly schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string>;
     /**
      * Sets the version number of the extension.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -142,25 +142,25 @@ export interface ExtensionArgs {
     /**
      * When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
      */
-    readonly createCascade?: pulumi.Input<boolean>;
+    createCascade?: pulumi.Input<boolean>;
     /**
      * Which database to create the extension on. Defaults to provider database.
      */
-    readonly database?: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
      */
-    readonly dropCascade?: pulumi.Input<boolean>;
+    dropCascade?: pulumi.Input<boolean>;
     /**
      * The name of the extension.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Sets the schema of an extension.
      */
-    readonly schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string>;
     /**
      * Sets the version number of the extension.
      */
-    readonly version?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
 }

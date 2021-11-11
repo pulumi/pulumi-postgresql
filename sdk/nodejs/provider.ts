@@ -26,6 +26,44 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * The name of the database to connect to in order to conenct to (defaults to `postgres`).
+     */
+    public readonly database!: pulumi.Output<string | undefined>;
+    /**
+     * Database username associated to the connected user (for user name maps)
+     */
+    public readonly databaseUsername!: pulumi.Output<string | undefined>;
+    /**
+     * Specify the expected version of PostgreSQL.
+     */
+    public readonly expectedVersion!: pulumi.Output<string | undefined>;
+    /**
+     * Name of PostgreSQL server address to connect to
+     */
+    public readonly host!: pulumi.Output<string | undefined>;
+    /**
+     * Password to be used if the PostgreSQL server demands password authentication
+     */
+    public readonly password!: pulumi.Output<string | undefined>;
+    public readonly scheme!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
+     */
+    public readonly sslMode!: pulumi.Output<string | undefined>;
+    /**
+     * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
+     * PostgreSQL server
+     */
+    public readonly sslmode!: pulumi.Output<string | undefined>;
+    /**
+     * The SSL server root certificate file path. The file must contain PEM encoded data.
+     */
+    public readonly sslrootcert!: pulumi.Output<string | undefined>;
+    /**
+     * PostgreSQL user name to connect as
+     */
+    public readonly username!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -68,60 +106,60 @@ export interface ProviderArgs {
     /**
      * SSL client certificate if required by the database.
      */
-    readonly clientcert?: pulumi.Input<inputs.ProviderClientcert>;
+    clientcert?: pulumi.Input<inputs.ProviderClientcert>;
     /**
      * Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
      */
-    readonly connectTimeout?: pulumi.Input<number>;
+    connectTimeout?: pulumi.Input<number>;
     /**
      * The name of the database to connect to in order to conenct to (defaults to `postgres`).
      */
-    readonly database?: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * Database username associated to the connected user (for user name maps)
      */
-    readonly databaseUsername?: pulumi.Input<string>;
+    databaseUsername?: pulumi.Input<string>;
     /**
      * Specify the expected version of PostgreSQL.
      */
-    readonly expectedVersion?: pulumi.Input<string>;
+    expectedVersion?: pulumi.Input<string>;
     /**
      * Name of PostgreSQL server address to connect to
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * Maximum number of connections to establish to the database. Zero means unlimited.
      */
-    readonly maxConnections?: pulumi.Input<number>;
+    maxConnections?: pulumi.Input<number>;
     /**
      * Password to be used if the PostgreSQL server demands password authentication
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
      */
-    readonly port?: pulumi.Input<number>;
-    readonly scheme?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    scheme?: pulumi.Input<string>;
     /**
      * @deprecated Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
      */
-    readonly sslMode?: pulumi.Input<string>;
+    sslMode?: pulumi.Input<string>;
     /**
      * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
      * PostgreSQL server
      */
-    readonly sslmode?: pulumi.Input<string>;
+    sslmode?: pulumi.Input<string>;
     /**
      * The SSL server root certificate file path. The file must contain PEM encoded data.
      */
-    readonly sslrootcert?: pulumi.Input<string>;
+    sslrootcert?: pulumi.Input<string>;
     /**
      * Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
      * Refreshing state password from Postgres)
      */
-    readonly superuser?: pulumi.Input<boolean>;
+    superuser?: pulumi.Input<boolean>;
     /**
      * PostgreSQL user name to connect as
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }

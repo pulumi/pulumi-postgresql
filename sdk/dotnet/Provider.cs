@@ -19,6 +19,62 @@ namespace Pulumi.PostgreSql
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// The name of the database to connect to in order to conenct to (defaults to `postgres`).
+        /// </summary>
+        [Output("database")]
+        public Output<string?> Database { get; private set; } = null!;
+
+        /// <summary>
+        /// Database username associated to the connected user (for user name maps)
+        /// </summary>
+        [Output("databaseUsername")]
+        public Output<string?> DatabaseUsername { get; private set; } = null!;
+
+        /// <summary>
+        /// Specify the expected version of PostgreSQL.
+        /// </summary>
+        [Output("expectedVersion")]
+        public Output<string?> ExpectedVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of PostgreSQL server address to connect to
+        /// </summary>
+        [Output("host")]
+        public Output<string?> Host { get; private set; } = null!;
+
+        /// <summary>
+        /// Password to be used if the PostgreSQL server demands password authentication
+        /// </summary>
+        [Output("password")]
+        public Output<string?> Password { get; private set; } = null!;
+
+        [Output("scheme")]
+        public Output<string?> Scheme { get; private set; } = null!;
+
+        [Output("sslMode")]
+        public Output<string?> SslMode { get; private set; } = null!;
+
+        /// <summary>
+        /// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
+        /// PostgreSQL server
+        /// </summary>
+        [Output("sslmode")]
+        public Output<string?> Sslmode { get; private set; } = null!;
+
+        /// <summary>
+        /// The SSL server root certificate file path. The file must contain PEM encoded data.
+        /// </summary>
+        [Output("sslrootcert")]
+        public Output<string?> Sslrootcert { get; private set; } = null!;
+
+        /// <summary>
+        /// PostgreSQL user name to connect as
+        /// </summary>
+        [Output("username")]
+        public Output<string?> Username { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///
