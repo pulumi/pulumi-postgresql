@@ -1,6 +1,10 @@
 ## HEAD (Unreleased)
 _(none)_
 
+## Notice (2022-01-06)
+
+*As of this notice, using CHANGELOG.md is DEPRECATED. We will be using [GitHub Releases](https://github.com/pulumi/pulumi-postgresql/releases) for this repository*
+
 ---
 
 ## 3.3.0 (2021-11-11)
