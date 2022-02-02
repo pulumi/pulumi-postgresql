@@ -25,7 +25,7 @@ Object.defineProperty(exports, "clientcert", {
 export declare const connectTimeout: number;
 Object.defineProperty(exports, "connectTimeout", {
     get() {
-        return __config.getObject<number>("connectTimeout") ?? (<any>utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180);
+        return __config.getObject<number>("connectTimeout") ?? (utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180);
     },
     enumerable: true,
 });

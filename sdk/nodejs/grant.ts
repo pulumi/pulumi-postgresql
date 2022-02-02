@@ -113,17 +113,17 @@ export class Grant extends pulumi.CustomResource {
      */
     constructor(name: string, args: GrantArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GrantArgs | GrantState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GrantState | undefined;
-            inputs["database"] = state ? state.database : undefined;
-            inputs["objectType"] = state ? state.objectType : undefined;
-            inputs["objects"] = state ? state.objects : undefined;
-            inputs["privileges"] = state ? state.privileges : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["schema"] = state ? state.schema : undefined;
-            inputs["withGrantOption"] = state ? state.withGrantOption : undefined;
+            resourceInputs["database"] = state ? state.database : undefined;
+            resourceInputs["objectType"] = state ? state.objectType : undefined;
+            resourceInputs["objects"] = state ? state.objects : undefined;
+            resourceInputs["privileges"] = state ? state.privileges : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["schema"] = state ? state.schema : undefined;
+            resourceInputs["withGrantOption"] = state ? state.withGrantOption : undefined;
         } else {
             const args = argsOrState as GrantArgs | undefined;
             if ((!args || args.database === undefined) && !opts.urn) {
@@ -138,18 +138,16 @@ export class Grant extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["database"] = args ? args.database : undefined;
-            inputs["objectType"] = args ? args.objectType : undefined;
-            inputs["objects"] = args ? args.objects : undefined;
-            inputs["privileges"] = args ? args.privileges : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["schema"] = args ? args.schema : undefined;
-            inputs["withGrantOption"] = args ? args.withGrantOption : undefined;
+            resourceInputs["database"] = args ? args.database : undefined;
+            resourceInputs["objectType"] = args ? args.objectType : undefined;
+            resourceInputs["objects"] = args ? args.objects : undefined;
+            resourceInputs["privileges"] = args ? args.privileges : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["withGrantOption"] = args ? args.withGrantOption : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Grant.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Grant.__pulumiType, name, resourceInputs, opts);
     }
 }
 

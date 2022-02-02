@@ -73,29 +73,27 @@ export class Provider extends pulumi.ProviderResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            inputs["clientcert"] = pulumi.output(args ? args.clientcert : undefined).apply(JSON.stringify);
-            inputs["connectTimeout"] = pulumi.output((args ? args.connectTimeout : undefined) ?? (<any>utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180)).apply(JSON.stringify);
-            inputs["database"] = args ? args.database : undefined;
-            inputs["databaseUsername"] = args ? args.databaseUsername : undefined;
-            inputs["expectedVersion"] = args ? args.expectedVersion : undefined;
-            inputs["host"] = args ? args.host : undefined;
-            inputs["maxConnections"] = pulumi.output(args ? args.maxConnections : undefined).apply(JSON.stringify);
-            inputs["password"] = args ? args.password : undefined;
-            inputs["port"] = pulumi.output(args ? args.port : undefined).apply(JSON.stringify);
-            inputs["scheme"] = args ? args.scheme : undefined;
-            inputs["sslMode"] = args ? args.sslMode : undefined;
-            inputs["sslmode"] = (args ? args.sslmode : undefined) ?? utilities.getEnv("PGSSLMODE");
-            inputs["sslrootcert"] = args ? args.sslrootcert : undefined;
-            inputs["superuser"] = pulumi.output(args ? args.superuser : undefined).apply(JSON.stringify);
-            inputs["username"] = args ? args.username : undefined;
+            resourceInputs["clientcert"] = pulumi.output(args ? args.clientcert : undefined).apply(JSON.stringify);
+            resourceInputs["connectTimeout"] = pulumi.output((args ? args.connectTimeout : undefined) ?? (utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180)).apply(JSON.stringify);
+            resourceInputs["database"] = args ? args.database : undefined;
+            resourceInputs["databaseUsername"] = args ? args.databaseUsername : undefined;
+            resourceInputs["expectedVersion"] = args ? args.expectedVersion : undefined;
+            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["maxConnections"] = pulumi.output(args ? args.maxConnections : undefined).apply(JSON.stringify);
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["port"] = pulumi.output(args ? args.port : undefined).apply(JSON.stringify);
+            resourceInputs["scheme"] = args ? args.scheme : undefined;
+            resourceInputs["sslMode"] = args ? args.sslMode : undefined;
+            resourceInputs["sslmode"] = (args ? args.sslmode : undefined) ?? utilities.getEnv("PGSSLMODE");
+            resourceInputs["sslrootcert"] = args ? args.sslrootcert : undefined;
+            resourceInputs["superuser"] = pulumi.output(args ? args.superuser : undefined).apply(JSON.stringify);
+            resourceInputs["username"] = args ? args.username : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Provider.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

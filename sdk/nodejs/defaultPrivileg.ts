@@ -77,17 +77,17 @@ export class DefaultPrivileg extends pulumi.CustomResource {
     /** @deprecated postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges */
     constructor(name: string, argsOrState?: DefaultPrivilegArgs | DefaultPrivilegState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("DefaultPrivileg is deprecated: postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges")
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DefaultPrivilegState | undefined;
-            inputs["database"] = state ? state.database : undefined;
-            inputs["objectType"] = state ? state.objectType : undefined;
-            inputs["owner"] = state ? state.owner : undefined;
-            inputs["privileges"] = state ? state.privileges : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["schema"] = state ? state.schema : undefined;
-            inputs["withGrantOption"] = state ? state.withGrantOption : undefined;
+            resourceInputs["database"] = state ? state.database : undefined;
+            resourceInputs["objectType"] = state ? state.objectType : undefined;
+            resourceInputs["owner"] = state ? state.owner : undefined;
+            resourceInputs["privileges"] = state ? state.privileges : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["schema"] = state ? state.schema : undefined;
+            resourceInputs["withGrantOption"] = state ? state.withGrantOption : undefined;
         } else {
             const args = argsOrState as DefaultPrivilegArgs | undefined;
             if ((!args || args.database === undefined) && !opts.urn) {
@@ -105,18 +105,16 @@ export class DefaultPrivileg extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["database"] = args ? args.database : undefined;
-            inputs["objectType"] = args ? args.objectType : undefined;
-            inputs["owner"] = args ? args.owner : undefined;
-            inputs["privileges"] = args ? args.privileges : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["schema"] = args ? args.schema : undefined;
-            inputs["withGrantOption"] = args ? args.withGrantOption : undefined;
+            resourceInputs["database"] = args ? args.database : undefined;
+            resourceInputs["objectType"] = args ? args.objectType : undefined;
+            resourceInputs["owner"] = args ? args.owner : undefined;
+            resourceInputs["privileges"] = args ? args.privileges : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["withGrantOption"] = args ? args.withGrantOption : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DefaultPrivileg.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DefaultPrivileg.__pulumiType, name, resourceInputs, opts);
     }
 }
 

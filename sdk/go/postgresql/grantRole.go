@@ -141,7 +141,7 @@ type GrantRoleInput interface {
 }
 
 func (*GrantRole) ElementType() reflect.Type {
-	return reflect.TypeOf((*GrantRole)(nil))
+	return reflect.TypeOf((**GrantRole)(nil)).Elem()
 }
 
 func (i *GrantRole) ToGrantRoleOutput() GrantRoleOutput {
@@ -150,35 +150,6 @@ func (i *GrantRole) ToGrantRoleOutput() GrantRoleOutput {
 
 func (i *GrantRole) ToGrantRoleOutputWithContext(ctx context.Context) GrantRoleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GrantRoleOutput)
-}
-
-func (i *GrantRole) ToGrantRolePtrOutput() GrantRolePtrOutput {
-	return i.ToGrantRolePtrOutputWithContext(context.Background())
-}
-
-func (i *GrantRole) ToGrantRolePtrOutputWithContext(ctx context.Context) GrantRolePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GrantRolePtrOutput)
-}
-
-type GrantRolePtrInput interface {
-	pulumi.Input
-
-	ToGrantRolePtrOutput() GrantRolePtrOutput
-	ToGrantRolePtrOutputWithContext(ctx context.Context) GrantRolePtrOutput
-}
-
-type grantRolePtrType GrantRoleArgs
-
-func (*grantRolePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GrantRole)(nil))
-}
-
-func (i *grantRolePtrType) ToGrantRolePtrOutput() GrantRolePtrOutput {
-	return i.ToGrantRolePtrOutputWithContext(context.Background())
-}
-
-func (i *grantRolePtrType) ToGrantRolePtrOutputWithContext(ctx context.Context) GrantRolePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GrantRolePtrOutput)
 }
 
 // GrantRoleArrayInput is an input type that accepts GrantRoleArray and GrantRoleArrayOutput values.
@@ -234,7 +205,7 @@ func (i GrantRoleMap) ToGrantRoleMapOutputWithContext(ctx context.Context) Grant
 type GrantRoleOutput struct{ *pulumi.OutputState }
 
 func (GrantRoleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GrantRole)(nil))
+	return reflect.TypeOf((**GrantRole)(nil)).Elem()
 }
 
 func (o GrantRoleOutput) ToGrantRoleOutput() GrantRoleOutput {
@@ -245,44 +216,10 @@ func (o GrantRoleOutput) ToGrantRoleOutputWithContext(ctx context.Context) Grant
 	return o
 }
 
-func (o GrantRoleOutput) ToGrantRolePtrOutput() GrantRolePtrOutput {
-	return o.ToGrantRolePtrOutputWithContext(context.Background())
-}
-
-func (o GrantRoleOutput) ToGrantRolePtrOutputWithContext(ctx context.Context) GrantRolePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrantRole) *GrantRole {
-		return &v
-	}).(GrantRolePtrOutput)
-}
-
-type GrantRolePtrOutput struct{ *pulumi.OutputState }
-
-func (GrantRolePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GrantRole)(nil))
-}
-
-func (o GrantRolePtrOutput) ToGrantRolePtrOutput() GrantRolePtrOutput {
-	return o
-}
-
-func (o GrantRolePtrOutput) ToGrantRolePtrOutputWithContext(ctx context.Context) GrantRolePtrOutput {
-	return o
-}
-
-func (o GrantRolePtrOutput) Elem() GrantRoleOutput {
-	return o.ApplyT(func(v *GrantRole) GrantRole {
-		if v != nil {
-			return *v
-		}
-		var ret GrantRole
-		return ret
-	}).(GrantRoleOutput)
-}
-
 type GrantRoleArrayOutput struct{ *pulumi.OutputState }
 
 func (GrantRoleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GrantRole)(nil))
+	return reflect.TypeOf((*[]*GrantRole)(nil)).Elem()
 }
 
 func (o GrantRoleArrayOutput) ToGrantRoleArrayOutput() GrantRoleArrayOutput {
@@ -294,15 +231,15 @@ func (o GrantRoleArrayOutput) ToGrantRoleArrayOutputWithContext(ctx context.Cont
 }
 
 func (o GrantRoleArrayOutput) Index(i pulumi.IntInput) GrantRoleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GrantRole {
-		return vs[0].([]GrantRole)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GrantRole {
+		return vs[0].([]*GrantRole)[vs[1].(int)]
 	}).(GrantRoleOutput)
 }
 
 type GrantRoleMapOutput struct{ *pulumi.OutputState }
 
 func (GrantRoleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GrantRole)(nil))
+	return reflect.TypeOf((*map[string]*GrantRole)(nil)).Elem()
 }
 
 func (o GrantRoleMapOutput) ToGrantRoleMapOutput() GrantRoleMapOutput {
@@ -314,18 +251,16 @@ func (o GrantRoleMapOutput) ToGrantRoleMapOutputWithContext(ctx context.Context)
 }
 
 func (o GrantRoleMapOutput) MapIndex(k pulumi.StringInput) GrantRoleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GrantRole {
-		return vs[0].(map[string]GrantRole)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GrantRole {
+		return vs[0].(map[string]*GrantRole)[vs[1].(string)]
 	}).(GrantRoleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GrantRoleInput)(nil)).Elem(), &GrantRole{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GrantRolePtrInput)(nil)).Elem(), &GrantRole{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrantRoleArrayInput)(nil)).Elem(), GrantRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrantRoleMapInput)(nil)).Elem(), GrantRoleMap{})
 	pulumi.RegisterOutputType(GrantRoleOutput{})
-	pulumi.RegisterOutputType(GrantRolePtrOutput{})
 	pulumi.RegisterOutputType(GrantRoleArrayOutput{})
 	pulumi.RegisterOutputType(GrantRoleMapOutput{})
 }

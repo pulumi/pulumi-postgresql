@@ -79,29 +79,27 @@ export class Extension extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ExtensionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ExtensionArgs | ExtensionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExtensionState | undefined;
-            inputs["createCascade"] = state ? state.createCascade : undefined;
-            inputs["database"] = state ? state.database : undefined;
-            inputs["dropCascade"] = state ? state.dropCascade : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["schema"] = state ? state.schema : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["createCascade"] = state ? state.createCascade : undefined;
+            resourceInputs["database"] = state ? state.database : undefined;
+            resourceInputs["dropCascade"] = state ? state.dropCascade : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["schema"] = state ? state.schema : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as ExtensionArgs | undefined;
-            inputs["createCascade"] = args ? args.createCascade : undefined;
-            inputs["database"] = args ? args.database : undefined;
-            inputs["dropCascade"] = args ? args.dropCascade : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["schema"] = args ? args.schema : undefined;
-            inputs["version"] = args ? args.version : undefined;
+            resourceInputs["createCascade"] = args ? args.createCascade : undefined;
+            resourceInputs["database"] = args ? args.database : undefined;
+            resourceInputs["dropCascade"] = args ? args.dropCascade : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Extension.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Extension.__pulumiType, name, resourceInputs, opts);
     }
 }
 

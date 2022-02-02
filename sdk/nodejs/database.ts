@@ -95,37 +95,35 @@ export class Database extends pulumi.CustomResource {
      */
     constructor(name: string, args?: DatabaseArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseArgs | DatabaseState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            inputs["allowConnections"] = state ? state.allowConnections : undefined;
-            inputs["connectionLimit"] = state ? state.connectionLimit : undefined;
-            inputs["encoding"] = state ? state.encoding : undefined;
-            inputs["isTemplate"] = state ? state.isTemplate : undefined;
-            inputs["lcCollate"] = state ? state.lcCollate : undefined;
-            inputs["lcCtype"] = state ? state.lcCtype : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["owner"] = state ? state.owner : undefined;
-            inputs["tablespaceName"] = state ? state.tablespaceName : undefined;
-            inputs["template"] = state ? state.template : undefined;
+            resourceInputs["allowConnections"] = state ? state.allowConnections : undefined;
+            resourceInputs["connectionLimit"] = state ? state.connectionLimit : undefined;
+            resourceInputs["encoding"] = state ? state.encoding : undefined;
+            resourceInputs["isTemplate"] = state ? state.isTemplate : undefined;
+            resourceInputs["lcCollate"] = state ? state.lcCollate : undefined;
+            resourceInputs["lcCtype"] = state ? state.lcCtype : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["owner"] = state ? state.owner : undefined;
+            resourceInputs["tablespaceName"] = state ? state.tablespaceName : undefined;
+            resourceInputs["template"] = state ? state.template : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            inputs["allowConnections"] = args ? args.allowConnections : undefined;
-            inputs["connectionLimit"] = args ? args.connectionLimit : undefined;
-            inputs["encoding"] = args ? args.encoding : undefined;
-            inputs["isTemplate"] = args ? args.isTemplate : undefined;
-            inputs["lcCollate"] = args ? args.lcCollate : undefined;
-            inputs["lcCtype"] = args ? args.lcCtype : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["owner"] = args ? args.owner : undefined;
-            inputs["tablespaceName"] = args ? args.tablespaceName : undefined;
-            inputs["template"] = args ? args.template : undefined;
+            resourceInputs["allowConnections"] = args ? args.allowConnections : undefined;
+            resourceInputs["connectionLimit"] = args ? args.connectionLimit : undefined;
+            resourceInputs["encoding"] = args ? args.encoding : undefined;
+            resourceInputs["isTemplate"] = args ? args.isTemplate : undefined;
+            resourceInputs["lcCollate"] = args ? args.lcCollate : undefined;
+            resourceInputs["lcCtype"] = args ? args.lcCtype : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["owner"] = args ? args.owner : undefined;
+            resourceInputs["tablespaceName"] = args ? args.tablespaceName : undefined;
+            resourceInputs["template"] = args ? args.template : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Database.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Database.__pulumiType, name, resourceInputs, opts);
     }
 }
 
