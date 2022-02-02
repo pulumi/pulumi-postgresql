@@ -156,55 +156,53 @@ export class Role extends pulumi.CustomResource {
      */
     constructor(name: string, args?: RoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoleArgs | RoleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
-            inputs["bypassRowLevelSecurity"] = state ? state.bypassRowLevelSecurity : undefined;
-            inputs["connectionLimit"] = state ? state.connectionLimit : undefined;
-            inputs["createDatabase"] = state ? state.createDatabase : undefined;
-            inputs["createRole"] = state ? state.createRole : undefined;
-            inputs["encrypted"] = state ? state.encrypted : undefined;
-            inputs["encryptedPassword"] = state ? state.encryptedPassword : undefined;
-            inputs["idleInTransactionSessionTimeout"] = state ? state.idleInTransactionSessionTimeout : undefined;
-            inputs["inherit"] = state ? state.inherit : undefined;
-            inputs["login"] = state ? state.login : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["replication"] = state ? state.replication : undefined;
-            inputs["roles"] = state ? state.roles : undefined;
-            inputs["searchPaths"] = state ? state.searchPaths : undefined;
-            inputs["skipDropRole"] = state ? state.skipDropRole : undefined;
-            inputs["skipReassignOwned"] = state ? state.skipReassignOwned : undefined;
-            inputs["statementTimeout"] = state ? state.statementTimeout : undefined;
-            inputs["superuser"] = state ? state.superuser : undefined;
-            inputs["validUntil"] = state ? state.validUntil : undefined;
+            resourceInputs["bypassRowLevelSecurity"] = state ? state.bypassRowLevelSecurity : undefined;
+            resourceInputs["connectionLimit"] = state ? state.connectionLimit : undefined;
+            resourceInputs["createDatabase"] = state ? state.createDatabase : undefined;
+            resourceInputs["createRole"] = state ? state.createRole : undefined;
+            resourceInputs["encrypted"] = state ? state.encrypted : undefined;
+            resourceInputs["encryptedPassword"] = state ? state.encryptedPassword : undefined;
+            resourceInputs["idleInTransactionSessionTimeout"] = state ? state.idleInTransactionSessionTimeout : undefined;
+            resourceInputs["inherit"] = state ? state.inherit : undefined;
+            resourceInputs["login"] = state ? state.login : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["replication"] = state ? state.replication : undefined;
+            resourceInputs["roles"] = state ? state.roles : undefined;
+            resourceInputs["searchPaths"] = state ? state.searchPaths : undefined;
+            resourceInputs["skipDropRole"] = state ? state.skipDropRole : undefined;
+            resourceInputs["skipReassignOwned"] = state ? state.skipReassignOwned : undefined;
+            resourceInputs["statementTimeout"] = state ? state.statementTimeout : undefined;
+            resourceInputs["superuser"] = state ? state.superuser : undefined;
+            resourceInputs["validUntil"] = state ? state.validUntil : undefined;
         } else {
             const args = argsOrState as RoleArgs | undefined;
-            inputs["bypassRowLevelSecurity"] = args ? args.bypassRowLevelSecurity : undefined;
-            inputs["connectionLimit"] = args ? args.connectionLimit : undefined;
-            inputs["createDatabase"] = args ? args.createDatabase : undefined;
-            inputs["createRole"] = args ? args.createRole : undefined;
-            inputs["encrypted"] = args ? args.encrypted : undefined;
-            inputs["encryptedPassword"] = args ? args.encryptedPassword : undefined;
-            inputs["idleInTransactionSessionTimeout"] = args ? args.idleInTransactionSessionTimeout : undefined;
-            inputs["inherit"] = args ? args.inherit : undefined;
-            inputs["login"] = args ? args.login : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["replication"] = args ? args.replication : undefined;
-            inputs["roles"] = args ? args.roles : undefined;
-            inputs["searchPaths"] = args ? args.searchPaths : undefined;
-            inputs["skipDropRole"] = args ? args.skipDropRole : undefined;
-            inputs["skipReassignOwned"] = args ? args.skipReassignOwned : undefined;
-            inputs["statementTimeout"] = args ? args.statementTimeout : undefined;
-            inputs["superuser"] = args ? args.superuser : undefined;
-            inputs["validUntil"] = args ? args.validUntil : undefined;
+            resourceInputs["bypassRowLevelSecurity"] = args ? args.bypassRowLevelSecurity : undefined;
+            resourceInputs["connectionLimit"] = args ? args.connectionLimit : undefined;
+            resourceInputs["createDatabase"] = args ? args.createDatabase : undefined;
+            resourceInputs["createRole"] = args ? args.createRole : undefined;
+            resourceInputs["encrypted"] = args ? args.encrypted : undefined;
+            resourceInputs["encryptedPassword"] = args ? args.encryptedPassword : undefined;
+            resourceInputs["idleInTransactionSessionTimeout"] = args ? args.idleInTransactionSessionTimeout : undefined;
+            resourceInputs["inherit"] = args ? args.inherit : undefined;
+            resourceInputs["login"] = args ? args.login : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["replication"] = args ? args.replication : undefined;
+            resourceInputs["roles"] = args ? args.roles : undefined;
+            resourceInputs["searchPaths"] = args ? args.searchPaths : undefined;
+            resourceInputs["skipDropRole"] = args ? args.skipDropRole : undefined;
+            resourceInputs["skipReassignOwned"] = args ? args.skipReassignOwned : undefined;
+            resourceInputs["statementTimeout"] = args ? args.statementTimeout : undefined;
+            resourceInputs["superuser"] = args ? args.superuser : undefined;
+            resourceInputs["validUntil"] = args ? args.validUntil : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Role.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Role.__pulumiType, name, resourceInputs, opts);
     }
 }
 

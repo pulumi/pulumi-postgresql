@@ -108,7 +108,7 @@ type ReplicationSlotInput interface {
 }
 
 func (*ReplicationSlot) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationSlot)(nil))
+	return reflect.TypeOf((**ReplicationSlot)(nil)).Elem()
 }
 
 func (i *ReplicationSlot) ToReplicationSlotOutput() ReplicationSlotOutput {
@@ -117,35 +117,6 @@ func (i *ReplicationSlot) ToReplicationSlotOutput() ReplicationSlotOutput {
 
 func (i *ReplicationSlot) ToReplicationSlotOutputWithContext(ctx context.Context) ReplicationSlotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSlotOutput)
-}
-
-func (i *ReplicationSlot) ToReplicationSlotPtrOutput() ReplicationSlotPtrOutput {
-	return i.ToReplicationSlotPtrOutputWithContext(context.Background())
-}
-
-func (i *ReplicationSlot) ToReplicationSlotPtrOutputWithContext(ctx context.Context) ReplicationSlotPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSlotPtrOutput)
-}
-
-type ReplicationSlotPtrInput interface {
-	pulumi.Input
-
-	ToReplicationSlotPtrOutput() ReplicationSlotPtrOutput
-	ToReplicationSlotPtrOutputWithContext(ctx context.Context) ReplicationSlotPtrOutput
-}
-
-type replicationSlotPtrType ReplicationSlotArgs
-
-func (*replicationSlotPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReplicationSlot)(nil))
-}
-
-func (i *replicationSlotPtrType) ToReplicationSlotPtrOutput() ReplicationSlotPtrOutput {
-	return i.ToReplicationSlotPtrOutputWithContext(context.Background())
-}
-
-func (i *replicationSlotPtrType) ToReplicationSlotPtrOutputWithContext(ctx context.Context) ReplicationSlotPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSlotPtrOutput)
 }
 
 // ReplicationSlotArrayInput is an input type that accepts ReplicationSlotArray and ReplicationSlotArrayOutput values.
@@ -201,7 +172,7 @@ func (i ReplicationSlotMap) ToReplicationSlotMapOutputWithContext(ctx context.Co
 type ReplicationSlotOutput struct{ *pulumi.OutputState }
 
 func (ReplicationSlotOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationSlot)(nil))
+	return reflect.TypeOf((**ReplicationSlot)(nil)).Elem()
 }
 
 func (o ReplicationSlotOutput) ToReplicationSlotOutput() ReplicationSlotOutput {
@@ -212,44 +183,10 @@ func (o ReplicationSlotOutput) ToReplicationSlotOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ReplicationSlotOutput) ToReplicationSlotPtrOutput() ReplicationSlotPtrOutput {
-	return o.ToReplicationSlotPtrOutputWithContext(context.Background())
-}
-
-func (o ReplicationSlotOutput) ToReplicationSlotPtrOutputWithContext(ctx context.Context) ReplicationSlotPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReplicationSlot) *ReplicationSlot {
-		return &v
-	}).(ReplicationSlotPtrOutput)
-}
-
-type ReplicationSlotPtrOutput struct{ *pulumi.OutputState }
-
-func (ReplicationSlotPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReplicationSlot)(nil))
-}
-
-func (o ReplicationSlotPtrOutput) ToReplicationSlotPtrOutput() ReplicationSlotPtrOutput {
-	return o
-}
-
-func (o ReplicationSlotPtrOutput) ToReplicationSlotPtrOutputWithContext(ctx context.Context) ReplicationSlotPtrOutput {
-	return o
-}
-
-func (o ReplicationSlotPtrOutput) Elem() ReplicationSlotOutput {
-	return o.ApplyT(func(v *ReplicationSlot) ReplicationSlot {
-		if v != nil {
-			return *v
-		}
-		var ret ReplicationSlot
-		return ret
-	}).(ReplicationSlotOutput)
-}
-
 type ReplicationSlotArrayOutput struct{ *pulumi.OutputState }
 
 func (ReplicationSlotArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ReplicationSlot)(nil))
+	return reflect.TypeOf((*[]*ReplicationSlot)(nil)).Elem()
 }
 
 func (o ReplicationSlotArrayOutput) ToReplicationSlotArrayOutput() ReplicationSlotArrayOutput {
@@ -261,15 +198,15 @@ func (o ReplicationSlotArrayOutput) ToReplicationSlotArrayOutputWithContext(ctx 
 }
 
 func (o ReplicationSlotArrayOutput) Index(i pulumi.IntInput) ReplicationSlotOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReplicationSlot {
-		return vs[0].([]ReplicationSlot)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ReplicationSlot {
+		return vs[0].([]*ReplicationSlot)[vs[1].(int)]
 	}).(ReplicationSlotOutput)
 }
 
 type ReplicationSlotMapOutput struct{ *pulumi.OutputState }
 
 func (ReplicationSlotMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ReplicationSlot)(nil))
+	return reflect.TypeOf((*map[string]*ReplicationSlot)(nil)).Elem()
 }
 
 func (o ReplicationSlotMapOutput) ToReplicationSlotMapOutput() ReplicationSlotMapOutput {
@@ -281,18 +218,16 @@ func (o ReplicationSlotMapOutput) ToReplicationSlotMapOutputWithContext(ctx cont
 }
 
 func (o ReplicationSlotMapOutput) MapIndex(k pulumi.StringInput) ReplicationSlotOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ReplicationSlot {
-		return vs[0].(map[string]ReplicationSlot)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ReplicationSlot {
+		return vs[0].(map[string]*ReplicationSlot)[vs[1].(string)]
 	}).(ReplicationSlotOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationSlotInput)(nil)).Elem(), &ReplicationSlot{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationSlotPtrInput)(nil)).Elem(), &ReplicationSlot{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationSlotArrayInput)(nil)).Elem(), ReplicationSlotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationSlotMapInput)(nil)).Elem(), ReplicationSlotMap{})
 	pulumi.RegisterOutputType(ReplicationSlotOutput{})
-	pulumi.RegisterOutputType(ReplicationSlotPtrOutput{})
 	pulumi.RegisterOutputType(ReplicationSlotArrayOutput{})
 	pulumi.RegisterOutputType(ReplicationSlotMapOutput{})
 }

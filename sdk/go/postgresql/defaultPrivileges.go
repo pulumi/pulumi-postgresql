@@ -197,7 +197,7 @@ type DefaultPrivilegesInput interface {
 }
 
 func (*DefaultPrivileges) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultPrivileges)(nil))
+	return reflect.TypeOf((**DefaultPrivileges)(nil)).Elem()
 }
 
 func (i *DefaultPrivileges) ToDefaultPrivilegesOutput() DefaultPrivilegesOutput {
@@ -206,35 +206,6 @@ func (i *DefaultPrivileges) ToDefaultPrivilegesOutput() DefaultPrivilegesOutput 
 
 func (i *DefaultPrivileges) ToDefaultPrivilegesOutputWithContext(ctx context.Context) DefaultPrivilegesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegesOutput)
-}
-
-func (i *DefaultPrivileges) ToDefaultPrivilegesPtrOutput() DefaultPrivilegesPtrOutput {
-	return i.ToDefaultPrivilegesPtrOutputWithContext(context.Background())
-}
-
-func (i *DefaultPrivileges) ToDefaultPrivilegesPtrOutputWithContext(ctx context.Context) DefaultPrivilegesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegesPtrOutput)
-}
-
-type DefaultPrivilegesPtrInput interface {
-	pulumi.Input
-
-	ToDefaultPrivilegesPtrOutput() DefaultPrivilegesPtrOutput
-	ToDefaultPrivilegesPtrOutputWithContext(ctx context.Context) DefaultPrivilegesPtrOutput
-}
-
-type defaultPrivilegesPtrType DefaultPrivilegesArgs
-
-func (*defaultPrivilegesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefaultPrivileges)(nil))
-}
-
-func (i *defaultPrivilegesPtrType) ToDefaultPrivilegesPtrOutput() DefaultPrivilegesPtrOutput {
-	return i.ToDefaultPrivilegesPtrOutputWithContext(context.Background())
-}
-
-func (i *defaultPrivilegesPtrType) ToDefaultPrivilegesPtrOutputWithContext(ctx context.Context) DefaultPrivilegesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegesPtrOutput)
 }
 
 // DefaultPrivilegesArrayInput is an input type that accepts DefaultPrivilegesArray and DefaultPrivilegesArrayOutput values.
@@ -290,7 +261,7 @@ func (i DefaultPrivilegesMap) ToDefaultPrivilegesMapOutputWithContext(ctx contex
 type DefaultPrivilegesOutput struct{ *pulumi.OutputState }
 
 func (DefaultPrivilegesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultPrivileges)(nil))
+	return reflect.TypeOf((**DefaultPrivileges)(nil)).Elem()
 }
 
 func (o DefaultPrivilegesOutput) ToDefaultPrivilegesOutput() DefaultPrivilegesOutput {
@@ -301,44 +272,10 @@ func (o DefaultPrivilegesOutput) ToDefaultPrivilegesOutputWithContext(ctx contex
 	return o
 }
 
-func (o DefaultPrivilegesOutput) ToDefaultPrivilegesPtrOutput() DefaultPrivilegesPtrOutput {
-	return o.ToDefaultPrivilegesPtrOutputWithContext(context.Background())
-}
-
-func (o DefaultPrivilegesOutput) ToDefaultPrivilegesPtrOutputWithContext(ctx context.Context) DefaultPrivilegesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultPrivileges) *DefaultPrivileges {
-		return &v
-	}).(DefaultPrivilegesPtrOutput)
-}
-
-type DefaultPrivilegesPtrOutput struct{ *pulumi.OutputState }
-
-func (DefaultPrivilegesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DefaultPrivileges)(nil))
-}
-
-func (o DefaultPrivilegesPtrOutput) ToDefaultPrivilegesPtrOutput() DefaultPrivilegesPtrOutput {
-	return o
-}
-
-func (o DefaultPrivilegesPtrOutput) ToDefaultPrivilegesPtrOutputWithContext(ctx context.Context) DefaultPrivilegesPtrOutput {
-	return o
-}
-
-func (o DefaultPrivilegesPtrOutput) Elem() DefaultPrivilegesOutput {
-	return o.ApplyT(func(v *DefaultPrivileges) DefaultPrivileges {
-		if v != nil {
-			return *v
-		}
-		var ret DefaultPrivileges
-		return ret
-	}).(DefaultPrivilegesOutput)
-}
-
 type DefaultPrivilegesArrayOutput struct{ *pulumi.OutputState }
 
 func (DefaultPrivilegesArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DefaultPrivileges)(nil))
+	return reflect.TypeOf((*[]*DefaultPrivileges)(nil)).Elem()
 }
 
 func (o DefaultPrivilegesArrayOutput) ToDefaultPrivilegesArrayOutput() DefaultPrivilegesArrayOutput {
@@ -350,15 +287,15 @@ func (o DefaultPrivilegesArrayOutput) ToDefaultPrivilegesArrayOutputWithContext(
 }
 
 func (o DefaultPrivilegesArrayOutput) Index(i pulumi.IntInput) DefaultPrivilegesOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefaultPrivileges {
-		return vs[0].([]DefaultPrivileges)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DefaultPrivileges {
+		return vs[0].([]*DefaultPrivileges)[vs[1].(int)]
 	}).(DefaultPrivilegesOutput)
 }
 
 type DefaultPrivilegesMapOutput struct{ *pulumi.OutputState }
 
 func (DefaultPrivilegesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DefaultPrivileges)(nil))
+	return reflect.TypeOf((*map[string]*DefaultPrivileges)(nil)).Elem()
 }
 
 func (o DefaultPrivilegesMapOutput) ToDefaultPrivilegesMapOutput() DefaultPrivilegesMapOutput {
@@ -370,18 +307,16 @@ func (o DefaultPrivilegesMapOutput) ToDefaultPrivilegesMapOutputWithContext(ctx 
 }
 
 func (o DefaultPrivilegesMapOutput) MapIndex(k pulumi.StringInput) DefaultPrivilegesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DefaultPrivileges {
-		return vs[0].(map[string]DefaultPrivileges)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DefaultPrivileges {
+		return vs[0].(map[string]*DefaultPrivileges)[vs[1].(string)]
 	}).(DefaultPrivilegesOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPrivilegesInput)(nil)).Elem(), &DefaultPrivileges{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPrivilegesPtrInput)(nil)).Elem(), &DefaultPrivileges{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPrivilegesArrayInput)(nil)).Elem(), DefaultPrivilegesArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPrivilegesMapInput)(nil)).Elem(), DefaultPrivilegesMap{})
 	pulumi.RegisterOutputType(DefaultPrivilegesOutput{})
-	pulumi.RegisterOutputType(DefaultPrivilegesPtrOutput{})
 	pulumi.RegisterOutputType(DefaultPrivilegesArrayOutput{})
 	pulumi.RegisterOutputType(DefaultPrivilegesMapOutput{})
 }

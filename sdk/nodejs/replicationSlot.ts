@@ -58,26 +58,24 @@ export class ReplicationSlot extends pulumi.CustomResource {
      */
     constructor(name: string, args: ReplicationSlotArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ReplicationSlotArgs | ReplicationSlotState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReplicationSlotState | undefined;
-            inputs["database"] = state ? state.database : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["plugin"] = state ? state.plugin : undefined;
+            resourceInputs["database"] = state ? state.database : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["plugin"] = state ? state.plugin : undefined;
         } else {
             const args = argsOrState as ReplicationSlotArgs | undefined;
             if ((!args || args.plugin === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'plugin'");
             }
-            inputs["database"] = args ? args.database : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["plugin"] = args ? args.plugin : undefined;
+            resourceInputs["database"] = args ? args.database : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["plugin"] = args ? args.plugin : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ReplicationSlot.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ReplicationSlot.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -76,13 +76,13 @@ export class GrantRole extends pulumi.CustomResource {
      */
     constructor(name: string, args: GrantRoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GrantRoleArgs | GrantRoleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GrantRoleState | undefined;
-            inputs["grantRole"] = state ? state.grantRole : undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["withAdminOption"] = state ? state.withAdminOption : undefined;
+            resourceInputs["grantRole"] = state ? state.grantRole : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["withAdminOption"] = state ? state.withAdminOption : undefined;
         } else {
             const args = argsOrState as GrantRoleArgs | undefined;
             if ((!args || args.grantRole === undefined) && !opts.urn) {
@@ -91,14 +91,12 @@ export class GrantRole extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["grantRole"] = args ? args.grantRole : undefined;
-            inputs["role"] = args ? args.role : undefined;
-            inputs["withAdminOption"] = args ? args.withAdminOption : undefined;
+            resourceInputs["grantRole"] = args ? args.grantRole : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["withAdminOption"] = args ? args.withAdminOption : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GrantRole.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GrantRole.__pulumiType, name, resourceInputs, opts);
     }
 }
 

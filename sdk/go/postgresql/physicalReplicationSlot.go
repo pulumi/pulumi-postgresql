@@ -85,7 +85,7 @@ type PhysicalReplicationSlotInput interface {
 }
 
 func (*PhysicalReplicationSlot) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhysicalReplicationSlot)(nil))
+	return reflect.TypeOf((**PhysicalReplicationSlot)(nil)).Elem()
 }
 
 func (i *PhysicalReplicationSlot) ToPhysicalReplicationSlotOutput() PhysicalReplicationSlotOutput {
@@ -94,35 +94,6 @@ func (i *PhysicalReplicationSlot) ToPhysicalReplicationSlotOutput() PhysicalRepl
 
 func (i *PhysicalReplicationSlot) ToPhysicalReplicationSlotOutputWithContext(ctx context.Context) PhysicalReplicationSlotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PhysicalReplicationSlotOutput)
-}
-
-func (i *PhysicalReplicationSlot) ToPhysicalReplicationSlotPtrOutput() PhysicalReplicationSlotPtrOutput {
-	return i.ToPhysicalReplicationSlotPtrOutputWithContext(context.Background())
-}
-
-func (i *PhysicalReplicationSlot) ToPhysicalReplicationSlotPtrOutputWithContext(ctx context.Context) PhysicalReplicationSlotPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PhysicalReplicationSlotPtrOutput)
-}
-
-type PhysicalReplicationSlotPtrInput interface {
-	pulumi.Input
-
-	ToPhysicalReplicationSlotPtrOutput() PhysicalReplicationSlotPtrOutput
-	ToPhysicalReplicationSlotPtrOutputWithContext(ctx context.Context) PhysicalReplicationSlotPtrOutput
-}
-
-type physicalReplicationSlotPtrType PhysicalReplicationSlotArgs
-
-func (*physicalReplicationSlotPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PhysicalReplicationSlot)(nil))
-}
-
-func (i *physicalReplicationSlotPtrType) ToPhysicalReplicationSlotPtrOutput() PhysicalReplicationSlotPtrOutput {
-	return i.ToPhysicalReplicationSlotPtrOutputWithContext(context.Background())
-}
-
-func (i *physicalReplicationSlotPtrType) ToPhysicalReplicationSlotPtrOutputWithContext(ctx context.Context) PhysicalReplicationSlotPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PhysicalReplicationSlotPtrOutput)
 }
 
 // PhysicalReplicationSlotArrayInput is an input type that accepts PhysicalReplicationSlotArray and PhysicalReplicationSlotArrayOutput values.
@@ -178,7 +149,7 @@ func (i PhysicalReplicationSlotMap) ToPhysicalReplicationSlotMapOutputWithContex
 type PhysicalReplicationSlotOutput struct{ *pulumi.OutputState }
 
 func (PhysicalReplicationSlotOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhysicalReplicationSlot)(nil))
+	return reflect.TypeOf((**PhysicalReplicationSlot)(nil)).Elem()
 }
 
 func (o PhysicalReplicationSlotOutput) ToPhysicalReplicationSlotOutput() PhysicalReplicationSlotOutput {
@@ -189,44 +160,10 @@ func (o PhysicalReplicationSlotOutput) ToPhysicalReplicationSlotOutputWithContex
 	return o
 }
 
-func (o PhysicalReplicationSlotOutput) ToPhysicalReplicationSlotPtrOutput() PhysicalReplicationSlotPtrOutput {
-	return o.ToPhysicalReplicationSlotPtrOutputWithContext(context.Background())
-}
-
-func (o PhysicalReplicationSlotOutput) ToPhysicalReplicationSlotPtrOutputWithContext(ctx context.Context) PhysicalReplicationSlotPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PhysicalReplicationSlot) *PhysicalReplicationSlot {
-		return &v
-	}).(PhysicalReplicationSlotPtrOutput)
-}
-
-type PhysicalReplicationSlotPtrOutput struct{ *pulumi.OutputState }
-
-func (PhysicalReplicationSlotPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PhysicalReplicationSlot)(nil))
-}
-
-func (o PhysicalReplicationSlotPtrOutput) ToPhysicalReplicationSlotPtrOutput() PhysicalReplicationSlotPtrOutput {
-	return o
-}
-
-func (o PhysicalReplicationSlotPtrOutput) ToPhysicalReplicationSlotPtrOutputWithContext(ctx context.Context) PhysicalReplicationSlotPtrOutput {
-	return o
-}
-
-func (o PhysicalReplicationSlotPtrOutput) Elem() PhysicalReplicationSlotOutput {
-	return o.ApplyT(func(v *PhysicalReplicationSlot) PhysicalReplicationSlot {
-		if v != nil {
-			return *v
-		}
-		var ret PhysicalReplicationSlot
-		return ret
-	}).(PhysicalReplicationSlotOutput)
-}
-
 type PhysicalReplicationSlotArrayOutput struct{ *pulumi.OutputState }
 
 func (PhysicalReplicationSlotArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PhysicalReplicationSlot)(nil))
+	return reflect.TypeOf((*[]*PhysicalReplicationSlot)(nil)).Elem()
 }
 
 func (o PhysicalReplicationSlotArrayOutput) ToPhysicalReplicationSlotArrayOutput() PhysicalReplicationSlotArrayOutput {
@@ -238,15 +175,15 @@ func (o PhysicalReplicationSlotArrayOutput) ToPhysicalReplicationSlotArrayOutput
 }
 
 func (o PhysicalReplicationSlotArrayOutput) Index(i pulumi.IntInput) PhysicalReplicationSlotOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PhysicalReplicationSlot {
-		return vs[0].([]PhysicalReplicationSlot)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PhysicalReplicationSlot {
+		return vs[0].([]*PhysicalReplicationSlot)[vs[1].(int)]
 	}).(PhysicalReplicationSlotOutput)
 }
 
 type PhysicalReplicationSlotMapOutput struct{ *pulumi.OutputState }
 
 func (PhysicalReplicationSlotMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]PhysicalReplicationSlot)(nil))
+	return reflect.TypeOf((*map[string]*PhysicalReplicationSlot)(nil)).Elem()
 }
 
 func (o PhysicalReplicationSlotMapOutput) ToPhysicalReplicationSlotMapOutput() PhysicalReplicationSlotMapOutput {
@@ -258,18 +195,16 @@ func (o PhysicalReplicationSlotMapOutput) ToPhysicalReplicationSlotMapOutputWith
 }
 
 func (o PhysicalReplicationSlotMapOutput) MapIndex(k pulumi.StringInput) PhysicalReplicationSlotOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PhysicalReplicationSlot {
-		return vs[0].(map[string]PhysicalReplicationSlot)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *PhysicalReplicationSlot {
+		return vs[0].(map[string]*PhysicalReplicationSlot)[vs[1].(string)]
 	}).(PhysicalReplicationSlotOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PhysicalReplicationSlotInput)(nil)).Elem(), &PhysicalReplicationSlot{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PhysicalReplicationSlotPtrInput)(nil)).Elem(), &PhysicalReplicationSlot{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PhysicalReplicationSlotArrayInput)(nil)).Elem(), PhysicalReplicationSlotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PhysicalReplicationSlotMapInput)(nil)).Elem(), PhysicalReplicationSlotMap{})
 	pulumi.RegisterOutputType(PhysicalReplicationSlotOutput{})
-	pulumi.RegisterOutputType(PhysicalReplicationSlotPtrOutput{})
 	pulumi.RegisterOutputType(PhysicalReplicationSlotArrayOutput{})
 	pulumi.RegisterOutputType(PhysicalReplicationSlotMapOutput{})
 }
