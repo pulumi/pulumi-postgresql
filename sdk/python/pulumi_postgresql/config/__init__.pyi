@@ -9,6 +9,17 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
+awsRdsIamAuth: Optional[bool]
+"""
+Use rds_iam instead of password authentication (see:
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+"""
+
+awsRdsIamProfile: Optional[str]
+"""
+AWS profile to use for IAM auth
+"""
+
 clientcert: Optional[str]
 """
 SSL client certificate if required by the database.

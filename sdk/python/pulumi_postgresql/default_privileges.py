@@ -278,6 +278,22 @@ class DefaultPrivileges(pulumi.CustomResource):
             schema="public")
         ```
 
+        ## Examples
+
+        Revoke default privileges for functions for "public" role:
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        revoke_public = postgresql.DefaultPrivileges("revokePublic",
+            database=postgresql_database["example_db"]["name"],
+            role="public",
+            owner="object_owner",
+            object_type="function",
+            privileges=[])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant default privileges for this role.
@@ -312,6 +328,22 @@ class DefaultPrivileges(pulumi.CustomResource):
             privileges=["SELECT"],
             role="test_role",
             schema="public")
+        ```
+
+        ## Examples
+
+        Revoke default privileges for functions for "public" role:
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        revoke_public = postgresql.DefaultPrivileges("revokePublic",
+            database=postgresql_database["example_db"]["name"],
+            role="public",
+            owner="object_owner",
+            object_type="function",
+            privileges=[])
         ```
 
         :param str resource_name: The name of the resource.

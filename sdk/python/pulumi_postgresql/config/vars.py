@@ -16,6 +16,21 @@ __config__ = pulumi.Config('postgresql')
 
 class _ExportableConfig(types.ModuleType):
     @property
+    def aws_rds_iam_auth(self) -> Optional[bool]:
+        """
+        Use rds_iam instead of password authentication (see:
+        https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+        """
+        return __config__.get_bool('awsRdsIamAuth')
+
+    @property
+    def aws_rds_iam_profile(self) -> Optional[str]:
+        """
+        AWS profile to use for IAM auth
+        """
+        return __config__.get('awsRdsIamProfile')
+
+    @property
     def clientcert(self) -> Optional[str]:
         """
         SSL client certificate if required by the database.

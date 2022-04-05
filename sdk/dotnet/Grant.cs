@@ -82,7 +82,7 @@ namespace Pulumi.PostgreSql
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
-        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
+        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).
         /// </summary>
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.PostgreSql
         public Input<string> Database { get; set; } = null!;
 
         /// <summary>
-        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
+        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
+        /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }

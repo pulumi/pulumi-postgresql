@@ -19,6 +19,12 @@ namespace Pulumi.PostgreSql
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// AWS profile to use for IAM auth
+        /// </summary>
+        [Output("awsRdsIamProfile")]
+        public Output<string?> AwsRdsIamProfile { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the database to connect to in order to conenct to (defaults to `postgres`).
         /// </summary>
         [Output("database")]
@@ -101,6 +107,19 @@ namespace Pulumi.PostgreSql
 
     public sealed class ProviderArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Use rds_iam instead of password authentication (see:
+        /// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+        /// </summary>
+        [Input("awsRdsIamAuth", json: true)]
+        public Input<bool>? AwsRdsIamAuth { get; set; }
+
+        /// <summary>
+        /// AWS profile to use for IAM auth
+        /// </summary>
+        [Input("awsRdsIamProfile")]
+        public Input<string>? AwsRdsIamProfile { get; set; }
+
         /// <summary>
         /// SSL client certificate if required by the database.
         /// </summary>

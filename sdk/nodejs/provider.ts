@@ -27,6 +27,10 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
+     * AWS profile to use for IAM auth
+     */
+    public readonly awsRdsIamProfile!: pulumi.Output<string | undefined>;
+    /**
      * The name of the database to connect to in order to conenct to (defaults to `postgres`).
      */
     public readonly database!: pulumi.Output<string | undefined>;
@@ -76,6 +80,8 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
+            resourceInputs["awsRdsIamAuth"] = pulumi.output(args ? args.awsRdsIamAuth : undefined).apply(JSON.stringify);
+            resourceInputs["awsRdsIamProfile"] = args ? args.awsRdsIamProfile : undefined;
             resourceInputs["clientcert"] = pulumi.output(args ? args.clientcert : undefined).apply(JSON.stringify);
             resourceInputs["connectTimeout"] = pulumi.output((args ? args.connectTimeout : undefined) ?? (utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180)).apply(JSON.stringify);
             resourceInputs["database"] = args ? args.database : undefined;
@@ -101,6 +107,15 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    /**
+     * Use rds_iam instead of password authentication (see:
+     * https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+     */
+    awsRdsIamAuth?: pulumi.Input<boolean>;
+    /**
+     * AWS profile to use for IAM auth
+     */
+    awsRdsIamProfile?: pulumi.Input<string>;
     /**
      * SSL client certificate if required by the database.
      */

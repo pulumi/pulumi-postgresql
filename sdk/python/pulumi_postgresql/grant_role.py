@@ -136,20 +136,6 @@ class GrantRole(pulumi.CustomResource):
 
         > **Note:** This resource needs PostgreSQL version 9 or above.
 
-        > **Note:** `GrantRole` **cannot** be used in conjunction with `Role` or they will fight over what your role grants should be.
-
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        grant_root = postgresql.GrantRole("grantRoot",
-            grant_role="application",
-            role="root",
-            with_admin_option=True)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] grant_role: The name of the role that is added to `role`.
@@ -168,20 +154,6 @@ class GrantRole(pulumi.CustomResource):
         When using ``GrantRole`` resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.
 
         > **Note:** This resource needs PostgreSQL version 9 or above.
-
-        > **Note:** `GrantRole` **cannot** be used in conjunction with `Role` or they will fight over what your role grants should be.
-
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        grant_root = postgresql.GrantRole("grantRoot",
-            grant_role="application",
-            role="root",
-            with_admin_option=True)
-        ```
 
         :param str resource_name: The name of the resource.
         :param GrantRoleArgs args: The arguments to use to populate this resource's properties.

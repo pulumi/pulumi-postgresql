@@ -8,6 +8,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
+// Use rds_iam instead of password authentication (see:
+// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+func GetAwsRdsIamAuth(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "postgresql:awsRdsIamAuth")
+}
+
+// AWS profile to use for IAM auth
+func GetAwsRdsIamProfile(ctx *pulumi.Context) string {
+	return config.Get(ctx, "postgresql:awsRdsIamProfile")
+}
+
 // SSL client certificate if required by the database.
 func GetClientcert(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:clientcert")

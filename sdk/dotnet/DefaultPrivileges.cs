@@ -40,6 +40,31 @@ namespace Pulumi.PostgreSql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Examples
+    /// 
+    /// Revoke default privileges for functions for "public" role:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var revokePublic = new PostgreSql.DefaultPrivileges("revokePublic", new PostgreSql.DefaultPrivilegesArgs
+    ///         {
+    ///             Database = postgresql_database.Example_db.Name,
+    ///             Role = "public",
+    ///             Owner = "object_owner",
+    ///             ObjectType = "function",
+    ///             Privileges = {},
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/defaultPrivileges:DefaultPrivileges")]
     public partial class DefaultPrivileges : Pulumi.CustomResource

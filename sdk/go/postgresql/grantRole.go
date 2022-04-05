@@ -16,33 +16,6 @@ import (
 // When using ``GrantRole`` resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.
 //
 // > **Note:** This resource needs PostgreSQL version 9 or above.
-//
-// > **Note:** `GrantRole` **cannot** be used in conjunction with `Role` or they will fight over what your role grants should be.
-//
-// ## Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := postgresql.NewGrantRole(ctx, "grantRoot", &postgresql.GrantRoleArgs{
-// 			GrantRole:       pulumi.String("application"),
-// 			Role:            pulumi.String("root"),
-// 			WithAdminOption: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type GrantRole struct {
 	pulumi.CustomResourceState
 
