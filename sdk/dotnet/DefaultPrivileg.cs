@@ -9,42 +9,99 @@ using Pulumi.Serialization;
 
 namespace Pulumi.PostgreSql
 {
+    /// <summary>
+    /// The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
+    /// 
+    /// &gt; **Note:** This resource needs Postgresql version 9 or above.
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var readOnlyTables = new PostgreSql.DefaultPrivileges("readOnlyTables", new PostgreSql.DefaultPrivilegesArgs
+    ///         {
+    ///             Database = "test_db",
+    ///             ObjectType = "table",
+    ///             Owner = "db_owner",
+    ///             Privileges = 
+    ///             {
+    ///                 "SELECT",
+    ///             },
+    ///             Role = "test_role",
+    ///             Schema = "public",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Examples
+    /// 
+    /// Revoke default privileges for functions for "public" role:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var revokePublic = new PostgreSql.DefaultPrivileges("revokePublic", new PostgreSql.DefaultPrivilegesArgs
+    ///         {
+    ///             Database = postgresql_database.Example_db.Name,
+    ///             Role = "public",
+    ///             Owner = "object_owner",
+    ///             ObjectType = "function",
+    ///             Privileges = {},
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [Obsolete(@"postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges")]
     [PostgreSqlResourceType("postgresql:index/defaultPrivileg:DefaultPrivileg")]
     public partial class DefaultPrivileg : Pulumi.CustomResource
     {
         /// <summary>
-        /// The database to grant default privileges for this role
+        /// The database to grant default privileges for this role.
         /// </summary>
         [Output("database")]
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
-        /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)
+        /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
         /// </summary>
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
 
         /// <summary>
-        /// Target role for which to alter default privileges.
+        /// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// The list of privileges to apply as default privileges
+        /// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
         /// </summary>
         [Output("privileges")]
         public Output<ImmutableArray<string>> Privileges { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the role to which grant default privileges on
+        /// The name of the role to which grant default privileges on.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
         /// <summary>
-        /// The database schema to set default privileges for this role
+        /// The database schema to set default privileges for this role.
         /// </summary>
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
@@ -102,19 +159,19 @@ namespace Pulumi.PostgreSql
     public sealed class DefaultPrivilegArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The database to grant default privileges for this role
+        /// The database to grant default privileges for this role.
         /// </summary>
         [Input("database", required: true)]
         public Input<string> Database { get; set; } = null!;
 
         /// <summary>
-        /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)
+        /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
 
         /// <summary>
-        /// Target role for which to alter default privileges.
+        /// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
         /// </summary>
         [Input("owner", required: true)]
         public Input<string> Owner { get; set; } = null!;
@@ -123,7 +180,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _privileges;
 
         /// <summary>
-        /// The list of privileges to apply as default privileges
+        /// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
         /// </summary>
         public InputList<string> Privileges
         {
@@ -132,13 +189,13 @@ namespace Pulumi.PostgreSql
         }
 
         /// <summary>
-        /// The name of the role to which grant default privileges on
+        /// The name of the role to which grant default privileges on.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// The database schema to set default privileges for this role
+        /// The database schema to set default privileges for this role.
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
@@ -157,19 +214,19 @@ namespace Pulumi.PostgreSql
     public sealed class DefaultPrivilegState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The database to grant default privileges for this role
+        /// The database to grant default privileges for this role.
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type)
+        /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
 
         /// <summary>
-        /// Target role for which to alter default privileges.
+        /// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -178,7 +235,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _privileges;
 
         /// <summary>
-        /// The list of privileges to apply as default privileges
+        /// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
         /// </summary>
         public InputList<string> Privileges
         {
@@ -187,13 +244,13 @@ namespace Pulumi.PostgreSql
         }
 
         /// <summary>
-        /// The name of the role to which grant default privileges on
+        /// The name of the role to which grant default privileges on.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// The database schema to set default privileges for this role
+        /// The database schema to set default privileges for this role.
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }

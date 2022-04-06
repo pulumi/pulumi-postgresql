@@ -24,6 +24,23 @@ import * as utilities from "./utilities";
  *     schema: "public",
  * });
  * ```
+ *
+ * ## Examples
+ *
+ * Revoke default privileges for functions for "public" role:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * const revokePublic = new postgresql.DefaultPrivileges("revokePublic", {
+ *     database: postgresql_database.example_db.name,
+ *     role: "public",
+ *     owner: "object_owner",
+ *     objectType: "function",
+ *     privileges: [],
+ * });
+ * ```
  */
 export class DefaultPrivileges extends pulumi.CustomResource {
     /**

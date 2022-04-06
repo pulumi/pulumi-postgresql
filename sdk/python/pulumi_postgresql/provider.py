@@ -14,6 +14,8 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
+                 aws_rds_iam_auth: Optional[pulumi.Input[bool]] = None,
+                 aws_rds_iam_profile: Optional[pulumi.Input[str]] = None,
                  clientcert: Optional[pulumi.Input['ProviderClientcertArgs']] = None,
                  connect_timeout: Optional[pulumi.Input[int]] = None,
                  database: Optional[pulumi.Input[str]] = None,
@@ -31,6 +33,9 @@ class ProviderArgs:
                  username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
+        :param pulumi.Input[bool] aws_rds_iam_auth: Use rds_iam instead of password authentication (see:
+               https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+        :param pulumi.Input[str] aws_rds_iam_profile: AWS profile to use for IAM auth
         :param pulumi.Input['ProviderClientcertArgs'] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[int] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         :param pulumi.Input[str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
@@ -47,6 +52,10 @@ class ProviderArgs:
                Refreshing state password from Postgres)
         :param pulumi.Input[str] username: PostgreSQL user name to connect as
         """
+        if aws_rds_iam_auth is not None:
+            pulumi.set(__self__, "aws_rds_iam_auth", aws_rds_iam_auth)
+        if aws_rds_iam_profile is not None:
+            pulumi.set(__self__, "aws_rds_iam_profile", aws_rds_iam_profile)
         if clientcert is not None:
             pulumi.set(__self__, "clientcert", clientcert)
         if connect_timeout is None:
@@ -84,6 +93,31 @@ class ProviderArgs:
             pulumi.set(__self__, "superuser", superuser)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="awsRdsIamAuth")
+    def aws_rds_iam_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use rds_iam instead of password authentication (see:
+        https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+        """
+        return pulumi.get(self, "aws_rds_iam_auth")
+
+    @aws_rds_iam_auth.setter
+    def aws_rds_iam_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "aws_rds_iam_auth", value)
+
+    @property
+    @pulumi.getter(name="awsRdsIamProfile")
+    def aws_rds_iam_profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        AWS profile to use for IAM auth
+        """
+        return pulumi.get(self, "aws_rds_iam_profile")
+
+    @aws_rds_iam_profile.setter
+    def aws_rds_iam_profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_rds_iam_profile", value)
 
     @property
     @pulumi.getter
@@ -267,6 +301,8 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aws_rds_iam_auth: Optional[pulumi.Input[bool]] = None,
+                 aws_rds_iam_profile: Optional[pulumi.Input[str]] = None,
                  clientcert: Optional[pulumi.Input[pulumi.InputType['ProviderClientcertArgs']]] = None,
                  connect_timeout: Optional[pulumi.Input[int]] = None,
                  database: Optional[pulumi.Input[str]] = None,
@@ -291,6 +327,9 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] aws_rds_iam_auth: Use rds_iam instead of password authentication (see:
+               https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+        :param pulumi.Input[str] aws_rds_iam_profile: AWS profile to use for IAM auth
         :param pulumi.Input[pulumi.InputType['ProviderClientcertArgs']] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[int] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         :param pulumi.Input[str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
@@ -334,6 +373,8 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aws_rds_iam_auth: Optional[pulumi.Input[bool]] = None,
+                 aws_rds_iam_profile: Optional[pulumi.Input[str]] = None,
                  clientcert: Optional[pulumi.Input[pulumi.InputType['ProviderClientcertArgs']]] = None,
                  connect_timeout: Optional[pulumi.Input[int]] = None,
                  database: Optional[pulumi.Input[str]] = None,
@@ -361,6 +402,8 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            __props__.__dict__["aws_rds_iam_auth"] = pulumi.Output.from_input(aws_rds_iam_auth).apply(pulumi.runtime.to_json) if aws_rds_iam_auth is not None else None
+            __props__.__dict__["aws_rds_iam_profile"] = aws_rds_iam_profile
             __props__.__dict__["clientcert"] = pulumi.Output.from_input(clientcert).apply(pulumi.runtime.to_json) if clientcert is not None else None
             if connect_timeout is None:
                 connect_timeout = (_utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
@@ -388,6 +431,14 @@ class Provider(pulumi.ProviderResource):
             resource_name,
             __props__,
             opts)
+
+    @property
+    @pulumi.getter(name="awsRdsIamProfile")
+    def aws_rds_iam_profile(self) -> pulumi.Output[Optional[str]]:
+        """
+        AWS profile to use for IAM auth
+        """
+        return pulumi.get(self, "aws_rds_iam_profile")
 
     @property
     @pulumi.getter

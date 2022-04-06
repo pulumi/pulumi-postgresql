@@ -80,7 +80,7 @@ export class Grant extends pulumi.CustomResource {
      */
     public readonly database!: pulumi.Output<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
+     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).
      */
     public readonly objectType!: pulumi.Output<string>;
     /**
@@ -160,7 +160,7 @@ export interface GrantState {
      */
     database?: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
+     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).
      */
     objectType?: pulumi.Input<string>;
     /**
@@ -194,7 +194,7 @@ export interface GrantArgs {
      */
     database: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, foreign_data_wrapper, foreign_server).
+     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).
      */
     objectType: pulumi.Input<string>;
     /**

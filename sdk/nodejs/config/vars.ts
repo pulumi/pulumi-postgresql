@@ -9,6 +9,29 @@ declare var exports: any;
 const __config = new pulumi.Config("postgresql");
 
 /**
+ * Use rds_iam instead of password authentication (see:
+ * https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+ */
+export declare const awsRdsIamAuth: boolean | undefined;
+Object.defineProperty(exports, "awsRdsIamAuth", {
+    get() {
+        return __config.getObject<boolean>("awsRdsIamAuth");
+    },
+    enumerable: true,
+});
+
+/**
+ * AWS profile to use for IAM auth
+ */
+export declare const awsRdsIamProfile: string | undefined;
+Object.defineProperty(exports, "awsRdsIamProfile", {
+    get() {
+        return __config.get("awsRdsIamProfile");
+    },
+    enumerable: true,
+});
+
+/**
  * SSL client certificate if required by the database.
  */
 export declare const clientcert: outputs.config.Clientcert | undefined;

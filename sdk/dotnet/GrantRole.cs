@@ -15,29 +15,6 @@ namespace Pulumi.PostgreSql
     /// When using ``postgresql.GrantRole`` resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.
     /// 
     /// &gt; **Note:** This resource needs PostgreSQL version 9 or above.
-    /// 
-    /// &gt; **Note:** `postgresql.GrantRole` **cannot** be used in conjunction with `postgresql.Role` or they will fight over what your role grants should be.
-    /// 
-    /// ## Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using PostgreSql = Pulumi.PostgreSql;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var grantRoot = new PostgreSql.GrantRole("grantRoot", new PostgreSql.GrantRoleArgs
-    ///         {
-    ///             GrantRole = "application",
-    ///             Role = "root",
-    ///             WithAdminOption = true,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/grantRole:GrantRole")]
     public partial class GrantRole : Pulumi.CustomResource

@@ -12,6 +12,25 @@ namespace Pulumi.PostgreSql
     /// <summary>
     /// The ``postgresql.ReplicationSlot`` resource creates and manages a replication slot on a PostgreSQL
     /// server.
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mySlot = new PostgreSql.ReplicationSlot("mySlot", new PostgreSql.ReplicationSlotArgs
+    ///         {
+    ///             Plugin = "test_decoding",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/replicationSlot:ReplicationSlot")]
     public partial class ReplicationSlot : Pulumi.CustomResource

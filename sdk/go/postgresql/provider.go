@@ -17,6 +17,8 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
+	// AWS profile to use for IAM auth
+	AwsRdsIamProfile pulumi.StringPtrOutput `pulumi:"awsRdsIamProfile"`
 	// The name of the database to connect to in order to conenct to (defaults to `postgres`).
 	Database pulumi.StringPtrOutput `pulumi:"database"`
 	// Database username associated to the connected user (for user name maps)
@@ -61,6 +63,11 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
+	// Use rds_iam instead of password authentication (see:
+	// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+	AwsRdsIamAuth *bool `pulumi:"awsRdsIamAuth"`
+	// AWS profile to use for IAM auth
+	AwsRdsIamProfile *string `pulumi:"awsRdsIamProfile"`
 	// SSL client certificate if required by the database.
 	Clientcert *ProviderClientcert `pulumi:"clientcert"`
 	// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
@@ -96,6 +103,11 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
+	// Use rds_iam instead of password authentication (see:
+	// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+	AwsRdsIamAuth pulumi.BoolPtrInput
+	// AWS profile to use for IAM auth
+	AwsRdsIamProfile pulumi.StringPtrInput
 	// SSL client certificate if required by the database.
 	Clientcert ProviderClientcertPtrInput
 	// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.

@@ -20,11 +20,10 @@ import (
 	"unicode"
 
 	"github.com/cyrilgdn/terraform-provider-postgresql/postgresql"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-postgresql/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
@@ -65,7 +64,7 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	p := shimv1.NewProvider(postgresql.Provider().(*schema.Provider))
+	p := shimv2.NewProvider(postgresql.Provider())
 
 	prov := tfbridge.ProviderInfo{
 		P:           p,
@@ -142,7 +141,11 @@ func Provider() tfbridge.ProviderInfo {
 	}
 
 	prov.RenameResourceWithAlias("postgresql_default_privileges", makeResource(mainMod, "DefaultPrivileg"),
-		makeResource(mainMod, "DefaultPrivileges"), mainMod, mainMod, nil)
+		makeResource(mainMod, "DefaultPrivileges"), mainMod, mainMod, &tfbridge.ResourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "postgresql_default_privileges.html.markdown",
+			},
+		})
 
 	prov.SetAutonaming(255, "-")
 

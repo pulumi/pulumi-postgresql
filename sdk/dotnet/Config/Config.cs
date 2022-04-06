@@ -32,6 +32,27 @@ namespace Pulumi.PostgreSql
 
         private static readonly Pulumi.Config __config = new Pulumi.Config("postgresql");
 
+        private static readonly __Value<bool?> _awsRdsIamAuth = new __Value<bool?>(() => __config.GetBoolean("awsRdsIamAuth"));
+        /// <summary>
+        /// Use rds_iam instead of password authentication (see:
+        /// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+        /// </summary>
+        public static bool? AwsRdsIamAuth
+        {
+            get => _awsRdsIamAuth.Get();
+            set => _awsRdsIamAuth.Set(value);
+        }
+
+        private static readonly __Value<string?> _awsRdsIamProfile = new __Value<string?>(() => __config.Get("awsRdsIamProfile"));
+        /// <summary>
+        /// AWS profile to use for IAM auth
+        /// </summary>
+        public static string? AwsRdsIamProfile
+        {
+            get => _awsRdsIamProfile.Get();
+            set => _awsRdsIamProfile.Set(value);
+        }
+
         private static readonly __Value<Pulumi.PostgreSql.Config.Types.Clientcert?> _clientcert = new __Value<Pulumi.PostgreSql.Config.Types.Clientcert?>(() => __config.GetObject<Pulumi.PostgreSql.Config.Types.Clientcert>("clientcert"));
         /// <summary>
         /// SSL client certificate if required by the database.

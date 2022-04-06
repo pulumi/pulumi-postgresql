@@ -44,6 +44,35 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Examples
+//
+// Revoke default privileges for functions for "public" role:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := postgresql.NewDefaultPrivileges(ctx, "revokePublic", &postgresql.DefaultPrivilegesArgs{
+// 			Database:   pulumi.Any(postgresql_database.Example_db.Name),
+// 			Role:       pulumi.String("public"),
+// 			Owner:      pulumi.String("object_owner"),
+// 			ObjectType: pulumi.String("function"),
+// 			Privileges: pulumi.StringArray{},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DefaultPrivileges struct {
 	pulumi.CustomResourceState
 
