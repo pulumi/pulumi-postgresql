@@ -297,6 +297,41 @@ func (o DefaultPrivilegOutput) ToDefaultPrivilegOutputWithContext(ctx context.Co
 	return o
 }
 
+// The database to grant default privileges for this role.
+func (o DefaultPrivilegOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultPrivileg) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+}
+
+// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+func (o DefaultPrivilegOutput) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultPrivileg) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+func (o DefaultPrivilegOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultPrivileg) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
+}
+
+// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+func (o DefaultPrivilegOutput) Privileges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DefaultPrivileg) pulumi.StringArrayOutput { return v.Privileges }).(pulumi.StringArrayOutput)
+}
+
+// The name of the role to which grant default privileges on.
+func (o DefaultPrivilegOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultPrivileg) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+}
+
+// The database schema to set default privileges for this role.
+func (o DefaultPrivilegOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultPrivileg) pulumi.StringPtrOutput { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+// Permit the grant recipient to grant it to others
+func (o DefaultPrivilegOutput) WithGrantOption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefaultPrivileg) pulumi.BoolPtrOutput { return v.WithGrantOption }).(pulumi.BoolPtrOutput)
+}
+
 type DefaultPrivilegArrayOutput struct{ *pulumi.OutputState }
 
 func (DefaultPrivilegArrayOutput) ElementType() reflect.Type {

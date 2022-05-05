@@ -227,6 +227,40 @@ func (o SchemaOutput) ToSchemaOutputWithContext(ctx context.Context) SchemaOutpu
 	return o
 }
 
+// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
+func (o SchemaOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+}
+
+// When true, will also drop all the objects that are contained in the schema. (Default: false)
+func (o SchemaOutput) DropCascade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Schema) pulumi.BoolPtrOutput { return v.DropCascade }).(pulumi.BoolPtrOutput)
+}
+
+// When true, use the existing schema if it exists. (Default: true)
+func (o SchemaOutput) IfNotExists() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Schema) pulumi.BoolPtrOutput { return v.IfNotExists }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the schema. Must be unique in the PostgreSQL
+// database instance where it is configured.
+func (o SchemaOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ROLE who owns the schema.
+func (o SchemaOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
+}
+
+// Can be specified multiple times for each policy.  Each
+// policy block supports fields documented below.
+//
+// Deprecated: Use postgresql_grant resource instead (with object_type="schema")
+func (o SchemaOutput) Policies() SchemaPolicyArrayOutput {
+	return o.ApplyT(func(v *Schema) SchemaPolicyArrayOutput { return v.Policies }).(SchemaPolicyArrayOutput)
+}
+
 type SchemaArrayOutput struct{ *pulumi.OutputState }
 
 func (SchemaArrayOutput) ElementType() reflect.Type {

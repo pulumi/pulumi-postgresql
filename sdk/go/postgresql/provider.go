@@ -178,6 +178,61 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+// AWS profile to use for IAM auth
+func (o ProviderOutput) AwsRdsIamProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AwsRdsIamProfile }).(pulumi.StringPtrOutput)
+}
+
+// The name of the database to connect to in order to conenct to (defaults to `postgres`).
+func (o ProviderOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// Database username associated to the connected user (for user name maps)
+func (o ProviderOutput) DatabaseUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DatabaseUsername }).(pulumi.StringPtrOutput)
+}
+
+// Specify the expected version of PostgreSQL.
+func (o ProviderOutput) ExpectedVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ExpectedVersion }).(pulumi.StringPtrOutput)
+}
+
+// Name of PostgreSQL server address to connect to
+func (o ProviderOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Password to be used if the PostgreSQL server demands password authentication
+func (o ProviderOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Scheme }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
+func (o ProviderOutput) SslMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SslMode }).(pulumi.StringPtrOutput)
+}
+
+// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
+// PostgreSQL server
+func (o ProviderOutput) Sslmode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Sslmode }).(pulumi.StringPtrOutput)
+}
+
+// The SSL server root certificate file path. The file must contain PEM encoded data.
+func (o ProviderOutput) Sslrootcert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Sslrootcert }).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL user name to connect as
+func (o ProviderOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})
