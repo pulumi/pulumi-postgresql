@@ -206,6 +206,21 @@ func (o ReplicationSlotOutput) ToReplicationSlotOutputWithContext(ctx context.Co
 	return o
 }
 
+// Which database to create the replication slot on. Defaults to provider database.
+func (o ReplicationSlotOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReplicationSlot) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+}
+
+// The name of the replication slot.
+func (o ReplicationSlotOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReplicationSlot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Sets the output plugin.
+func (o ReplicationSlotOutput) Plugin() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReplicationSlot) pulumi.StringOutput { return v.Plugin }).(pulumi.StringOutput)
+}
+
 type ReplicationSlotArrayOutput struct{ *pulumi.OutputState }
 
 func (ReplicationSlotArrayOutput) ElementType() reflect.Type {

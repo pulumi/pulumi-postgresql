@@ -230,6 +230,36 @@ func (o ExtensionOutput) ToExtensionOutputWithContext(ctx context.Context) Exten
 	return o
 }
 
+// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
+func (o ExtensionOutput) CreateCascade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Extension) pulumi.BoolPtrOutput { return v.CreateCascade }).(pulumi.BoolPtrOutput)
+}
+
+// Which database to create the extension on. Defaults to provider database.
+func (o ExtensionOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v *Extension) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+}
+
+// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
+func (o ExtensionOutput) DropCascade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Extension) pulumi.BoolPtrOutput { return v.DropCascade }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the extension.
+func (o ExtensionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Extension) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Sets the schema of an extension.
+func (o ExtensionOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v *Extension) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
+}
+
+// Sets the version number of the extension.
+func (o ExtensionOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *Extension) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
 type ExtensionArrayOutput struct{ *pulumi.OutputState }
 
 func (ExtensionArrayOutput) ElementType() reflect.Type {

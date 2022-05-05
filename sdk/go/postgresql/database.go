@@ -312,6 +312,69 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
+// If `false` then no one can connect to this
+// database. The default is `true`, allowing connections (except as restricted by
+// other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
+func (o DatabaseOutput) AllowConnections() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.AllowConnections }).(pulumi.BoolPtrOutput)
+}
+
+// How many concurrent connections can be
+// established to this database. `-1` (the default) means no limit.
+func (o DatabaseOutput) ConnectionLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.IntPtrOutput { return v.ConnectionLimit }).(pulumi.IntPtrOutput)
+}
+
+// Character set encoding to use in the new database
+func (o DatabaseOutput) Encoding() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Encoding }).(pulumi.StringOutput)
+}
+
+// If `true`, then this database can be cloned by any
+// user with `CREATEDB` privileges; if `false` (the default), then only
+// superusers or the owner of the database can clone it.
+func (o DatabaseOutput) IsTemplate() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Database) pulumi.BoolOutput { return v.IsTemplate }).(pulumi.BoolOutput)
+}
+
+// Collation order (LC_COLLATE) to use in the new database
+func (o DatabaseOutput) LcCollate() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.LcCollate }).(pulumi.StringOutput)
+}
+
+// Character classification (LC_CTYPE) to use in the new database
+func (o DatabaseOutput) LcCtype() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.LcCtype }).(pulumi.StringOutput)
+}
+
+// The name of the database. Must be unique on the PostgreSQL
+// server instance where it is configured.
+func (o DatabaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The role name of the user who will own the database, or
+// `DEFAULT` to use the default (namely, the user executing the command). To
+// create a database owned by another role or to change the owner of an existing
+// database, you must be a direct or indirect member of the specified role, or
+// the username in the provider is a superuser.
+func (o DatabaseOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
+}
+
+// The name of the tablespace that will be
+// associated with the database, or `DEFAULT` to use the template database's
+// tablespace.  This tablespace will be the default tablespace used for objects
+// created in this database.
+func (o DatabaseOutput) TablespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.TablespaceName }).(pulumi.StringOutput)
+}
+
+// The name of the template from which to create the new database
+func (o DatabaseOutput) Template() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Template }).(pulumi.StringOutput)
+}
+
 type DatabaseArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseArrayOutput) ElementType() reflect.Type {

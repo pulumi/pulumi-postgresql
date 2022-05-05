@@ -297,6 +297,41 @@ func (o GrantOutput) ToGrantOutputWithContext(ctx context.Context) GrantOutput {
 	return o
 }
 
+// The database to grant privileges on for this role.
+func (o GrantOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+}
+
+// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).
+func (o GrantOutput) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`.
+func (o GrantOutput) Objects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringArrayOutput { return v.Objects }).(pulumi.StringArrayOutput)
+}
+
+// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
+func (o GrantOutput) Privileges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringArrayOutput { return v.Privileges }).(pulumi.StringArrayOutput)
+}
+
+// The name of the role to grant privileges on, Set it to "public" for all roles.
+func (o GrantOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+}
+
+// The database schema to grant privileges on for this role (Required except if objectType is "database")
+func (o GrantOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringPtrOutput { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+// Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
+func (o GrantOutput) WithGrantOption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Grant) pulumi.BoolPtrOutput { return v.WithGrantOption }).(pulumi.BoolPtrOutput)
+}
+
 type GrantArrayOutput struct{ *pulumi.OutputState }
 
 func (GrantArrayOutput) ElementType() reflect.Type {

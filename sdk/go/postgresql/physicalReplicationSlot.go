@@ -160,6 +160,11 @@ func (o PhysicalReplicationSlotOutput) ToPhysicalReplicationSlotOutputWithContex
 	return o
 }
 
+// The name of the replication slot.
+func (o PhysicalReplicationSlotOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhysicalReplicationSlot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type PhysicalReplicationSlotArrayOutput struct{ *pulumi.OutputState }
 
 func (PhysicalReplicationSlotArrayOutput) ElementType() reflect.Type {

@@ -527,6 +527,139 @@ func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return o
 }
 
+// Defines whether a role bypasses every
+// row-level security (RLS) policy.  Default value is `false`.
+func (o RoleOutput) BypassRowLevelSecurity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.BoolPtrOutput { return v.BypassRowLevelSecurity }).(pulumi.BoolPtrOutput)
+}
+
+// If this role can log in, this specifies how
+// many concurrent connections the role can establish. `-1` (the default) means no
+// limit.
+func (o RoleOutput) ConnectionLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.IntPtrOutput { return v.ConnectionLimit }).(pulumi.IntPtrOutput)
+}
+
+// Defines a role's ability to execute `CREATE
+// DATABASE`.  Default value is `false`.
+func (o RoleOutput) CreateDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.BoolPtrOutput { return v.CreateDatabase }).(pulumi.BoolPtrOutput)
+}
+
+// Defines a role's ability to execute `CREATE ROLE`.
+// A role with this privilege can also alter and drop other roles.  Default value
+// is `false`.
+func (o RoleOutput) CreateRole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.BoolPtrOutput { return v.CreateRole }).(pulumi.BoolPtrOutput)
+}
+
+// Deprecated: Rename PostgreSQL role resource attribute "encrypted" to "encrypted_password"
+func (o RoleOutput) Encrypted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.Encrypted }).(pulumi.StringPtrOutput)
+}
+
+// Defines whether the password is stored
+// encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
+// is always set (to the conservative and safe value), but may interfere with the
+// behavior of
+// [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
+func (o RoleOutput) EncryptedPassword() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.BoolPtrOutput { return v.EncryptedPassword }).(pulumi.BoolPtrOutput)
+}
+
+// Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
+func (o RoleOutput) IdleInTransactionSessionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.IntPtrOutput { return v.IdleInTransactionSessionTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Defines whether a role "inherits" the privileges of
+// roles it is a member of.  Default value is `true`.
+func (o RoleOutput) Inherit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.BoolPtrOutput { return v.Inherit }).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether role is allowed to log in.  Roles without
+// this attribute are useful for managing database privileges, but are not users
+// in the usual sense of the word.  Default value is `false`.
+func (o RoleOutput) Login() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.BoolPtrOutput { return v.Login }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the role. Must be unique on the PostgreSQL
+// server instance where it is configured.
+func (o RoleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Sets the role's password. A password is only of use
+// for roles having the `login` attribute set to true.
+func (o RoleOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Defines whether a role is allowed to initiate
+// streaming replication or put the system in and out of backup mode.  Default
+// value is `false`
+func (o RoleOutput) Replication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.BoolPtrOutput { return v.Replication }).(pulumi.BoolPtrOutput)
+}
+
+// Defines list of roles which will be granted to this new role.
+func (o RoleOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// Alters the search path of this new role. Note that
+// due to limitations in the implementation, values cannot contain the substring
+// `", "`.
+func (o RoleOutput) SearchPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.SearchPaths }).(pulumi.StringArrayOutput)
+}
+
+// When a PostgreSQL ROLE exists in multiple
+// databases and the ROLE is dropped, the
+// [cleanup of ownership of objects](https://www.postgresql.org/docs/current/static/role-removal.html)
+// in each of the respective databases must occur before the ROLE can be dropped
+// from the catalog.  Set this option to true when there are multiple databases
+// in a PostgreSQL cluster using the same PostgreSQL ROLE for object ownership.
+// This is the third and final step taken when removing a ROLE from a database.
+func (o RoleOutput) SkipDropRole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.BoolPtrOutput { return v.SkipDropRole }).(pulumi.BoolPtrOutput)
+}
+
+// When a PostgreSQL ROLE exists in multiple
+// databases and the ROLE is dropped, a
+// [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
+// must be executed on each of the respective databases before the `DROP ROLE`
+// can be executed to dropped the ROLE from the catalog.  This is the first and
+// second steps taken when removing a ROLE from a database (the second step being
+// an implicit
+// [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
+func (o RoleOutput) SkipReassignOwned() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.BoolPtrOutput { return v.SkipReassignOwned }).(pulumi.BoolPtrOutput)
+}
+
+// Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+func (o RoleOutput) StatementTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.IntPtrOutput { return v.StatementTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Defines whether the role is a "superuser", and
+// therefore can override all access restrictions within the database.  Default
+// value is `false`.
+func (o RoleOutput) Superuser() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.BoolPtrOutput { return v.Superuser }).(pulumi.BoolPtrOutput)
+}
+
+// Defines the date and time after which the role's
+// password is no longer valid.  Established connections past this `validTime`
+// will have to be manually terminated.  This value corresponds to a PostgreSQL
+// datetime. If omitted or the magic value `NULL` is used, `validUntil` will be
+// set to `infinity`.  Default is `NULL`, therefore `infinity`.
+func (o RoleOutput) ValidUntil() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.ValidUntil }).(pulumi.StringPtrOutput)
+}
+
 type RoleArrayOutput struct{ *pulumi.OutputState }
 
 func (RoleArrayOutput) ElementType() reflect.Type {

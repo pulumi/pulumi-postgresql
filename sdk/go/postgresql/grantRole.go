@@ -189,6 +189,21 @@ func (o GrantRoleOutput) ToGrantRoleOutputWithContext(ctx context.Context) Grant
 	return o
 }
 
+// The name of the role that is added to `role`.
+func (o GrantRoleOutput) GrantRole() pulumi.StringOutput {
+	return o.ApplyT(func(v *GrantRole) pulumi.StringOutput { return v.GrantRole }).(pulumi.StringOutput)
+}
+
+// The name of the role that is granted a new membership.
+func (o GrantRoleOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *GrantRole) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+}
+
+// Giving ability to grant membership to others or not for `role`. (Default: false)
+func (o GrantRoleOutput) WithAdminOption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GrantRole) pulumi.BoolPtrOutput { return v.WithAdminOption }).(pulumi.BoolPtrOutput)
+}
+
 type GrantRoleArrayOutput struct{ *pulumi.OutputState }
 
 func (GrantRoleArrayOutput) ElementType() reflect.Type {
