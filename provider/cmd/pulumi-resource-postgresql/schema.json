@@ -115,6 +115,50 @@
                 }
             }
         },
+        "postgresql:index/FunctionArg:FunctionArg": {
+            "properties": {
+                "default": {
+                    "type": "string",
+                    "description": "An expression to be used as default value if the parameter is not specified.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the argument.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the argument.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
         "postgresql:index/ProviderClientcert:ProviderClientcert": {
             "properties": {
                 "cert": {
@@ -828,6 +872,108 @@
                 "type": "object"
             }
         },
+        "postgresql:index/function:Function": {
+            "description": "The ``postgresql.Function`` resource creates and manages a function on a PostgreSQL\nserver.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst increment = new postgresql.Function(\"increment\", {\n    args: [{\n        name: \"i\",\n        type: \"integer\",\n    }],\n    body: `    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n`,\n    returns: \"integer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nincrement = postgresql.Function(\"increment\",\n    args=[postgresql.FunctionArgArgs(\n        name=\"i\",\n        type=\"integer\",\n    )],\n    body=\"\"\"    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n\"\"\",\n    returns=\"integer\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var increment = new PostgreSql.Function(\"increment\", new PostgreSql.FunctionArgs\n        {\n            Args = \n            {\n                new PostgreSql.Inputs.FunctionArgArgs\n                {\n                    Name = \"i\",\n                    Type = \"integer\",\n                },\n            },\n            Body = @\"    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n\",\n            Returns = \"integer\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewFunction(ctx, \"increment\", \u0026postgresql.FunctionArgs{\n\t\t\tArgs: FunctionArgArray{\n\t\t\t\t\u0026FunctionArgArgs{\n\t\t\t\t\tName: pulumi.String(\"i\"),\n\t\t\t\t\tType: pulumi.String(\"integer\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBody:    pulumi.String(fmt.Sprintf(\"%v%v%v%v%v%v%v%v%v%v\", \"    AS \", \"$\", \"\\n\", \"    BEGIN\\n\", \"        RETURN i + 1;\\n\", \"    END;\\n\", \"    \", \"$\", \" LANGUAGE plpgsql;\\n\", \"\\n\")),\n\t\t\tReturns: pulumi.String(\"integer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var increment = new Function(\"increment\", FunctionArgs.builder()        \n            .args(FunctionArg.builder()\n                .name(\"i\")\n                .type(\"integer\")\n                .build())\n            .body(\"\"\"\n    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n            \"\"\")\n            .returns(\"integer\")\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  increment:\n    type: postgresql:Function\n    properties:\n      args:\n        - name: i\n          type: integer\n      body: |2+\n            AS $\n            BEGIN\n                RETURN i + 1;\n            END;\n            $ LANGUAGE plpgsql;\n\n      returns: integer\n```\n",
+            "properties": {
+                "args": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/postgresql:index/FunctionArg:FunctionArg"
+                    },
+                    "description": "List of arguments for the function.\n"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "Function body.\nThis should be everything after the return type in the function definition.\n"
+                },
+                "dropCascade": {
+                    "type": "boolean",
+                    "description": "True to automatically drop objects that depend on the function (such as \noperators or triggers), and in turn all objects that depend on those objects. Default is false.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the argument.\n"
+                },
+                "returns": {
+                    "type": "string",
+                    "description": "Type that the function returns.\n"
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "The schema where the function is located.\nIf not specified, the function is created in the current schema.\n"
+                }
+            },
+            "required": [
+                "body",
+                "name",
+                "schema"
+            ],
+            "inputProperties": {
+                "args": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/postgresql:index/FunctionArg:FunctionArg"
+                    },
+                    "description": "List of arguments for the function.\n"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "Function body.\nThis should be everything after the return type in the function definition.\n"
+                },
+                "dropCascade": {
+                    "type": "boolean",
+                    "description": "True to automatically drop objects that depend on the function (such as \noperators or triggers), and in turn all objects that depend on those objects. Default is false.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the argument.\n"
+                },
+                "returns": {
+                    "type": "string",
+                    "description": "Type that the function returns.\n"
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "The schema where the function is located.\nIf not specified, the function is created in the current schema.\n"
+                }
+            },
+            "requiredInputs": [
+                "body"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Function resources.\n",
+                "properties": {
+                    "args": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/postgresql:index/FunctionArg:FunctionArg"
+                        },
+                        "description": "List of arguments for the function.\n"
+                    },
+                    "body": {
+                        "type": "string",
+                        "description": "Function body.\nThis should be everything after the return type in the function definition.\n"
+                    },
+                    "dropCascade": {
+                        "type": "boolean",
+                        "description": "True to automatically drop objects that depend on the function (such as \noperators or triggers), and in turn all objects that depend on those objects. Default is false.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the argument.\n"
+                    },
+                    "returns": {
+                        "type": "string",
+                        "description": "Type that the function returns.\n"
+                    },
+                    "schema": {
+                        "type": "string",
+                        "description": "The schema where the function is located.\nIf not specified, the function is created in the current schema.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "postgresql:index/grant:Grant": {
             "description": "The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.\n\nSee [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readonlyTables = new postgresql.Grant(\"readonly_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    objects: [\n        \"table1\",\n        \"table2\",\n    ],\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nreadonly_tables = postgresql.Grant(\"readonlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    objects=[\n        \"table1\",\n        \"table2\",\n    ],\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var readonlyTables = new PostgreSql.Grant(\"readonlyTables\", new PostgreSql.GrantArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"table\",\n            Objects = \n            {\n                \"table1\",\n                \"table2\",\n            },\n            Privileges = \n            {\n                \"SELECT\",\n            },\n            Role = \"test_role\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"readonlyTables\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tObjects: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"table1\"),\n\t\t\t\tpulumi.String(\"table2\"),\n\t\t\t},\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readonlyTables = new Grant(\"readonlyTables\", GrantArgs.builder()        \n            .database(\"test_db\")\n            .objectType(\"table\")\n            .objects(            \n                \"table1\",\n                \"table2\")\n            .privileges(\"SELECT\")\n            .role(\"test_role\")\n            .schema(\"public\")\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  readonlyTables:\n    type: postgresql:Grant\n    properties:\n      database: test_db\n      objectType: table\n      objects:\n        - table1\n        - table2\n      privileges:\n        - SELECT\n      role: test_role\n      schema: public\n```\n\n## Examples\n\nRevoke default accesses for public schema:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.Grant(\"revoke_public\", {\n    database: \"test_db\",\n    objectType: \"schema\",\n    privileges: [],\n    role: \"public\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.Grant(\"revokePublic\",\n    database=\"test_db\",\n    object_type=\"schema\",\n    privileges=[],\n    role=\"public\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var revokePublic = new PostgreSql.Grant(\"revokePublic\", new PostgreSql.GrantArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"schema\",\n            Privileges = {},\n            Role = \"public\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"revokePublic\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"schema\"),\n\t\t\tPrivileges: pulumi.StringArray{},\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tSchema:     pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var revokePublic = new Grant(\"revokePublic\", GrantArgs.builder()        \n            .database(\"test_db\")\n            .objectType(\"schema\")\n            .privileges()\n            .role(\"public\")\n            .schema(\"public\")\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  revokePublic:\n    type: postgresql:Grant\n    properties:\n      database: test_db\n      objectType: schema\n      privileges: []\n      role: public\n      schema: public\n```\n",
             "properties": {
@@ -1028,7 +1174,7 @@
             }
         },
         "postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot": {
-            "description": "The ``postgresql.PhysicalReplicationSlot`` resource creates and manages a physical replication slot on a PostgreSQL\nserver. This is useful to setup a cross datacenter replication, with Patroni for example, or permit\nany stand-by cluster to replicate physically data.\n\n",
+            "description": "The ``postgresql.PhysicalReplicationSlot`` resource creates and manages a physical replication slot on a PostgreSQL\nserver. This is useful to setup a cross datacenter replication, with Patroni for example, or permit\nany stand-by cluster to replicate physically data.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst mySlot = new postgresql.PhysicalReplicationSlot(\"my_slot\", {});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_slot = postgresql.PhysicalReplicationSlot(\"mySlot\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mySlot = new PostgreSql.PhysicalReplicationSlot(\"mySlot\", new PostgreSql.PhysicalReplicationSlotArgs\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewPhysicalReplicationSlot(ctx, \"mySlot\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mySlot = new PhysicalReplicationSlot(\"mySlot\");\n\n        }\n}\n```\n```yaml\nresources:\n  mySlot:\n    type: postgresql:PhysicalReplicationSlot\n```\n",
             "properties": {
                 "name": {
                     "type": "string",
@@ -1050,6 +1196,141 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the replication slot.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "postgresql:index/publication:Publication": {
+            "description": "The `postgresql.Publication` resource creates and manages a publication on a PostgreSQL\nserver.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst publication = new postgresql.Publication(\"publication\", {\n    tables: [\n        \"public.test\",\n        \"another_schema.test\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\npublication = postgresql.Publication(\"publication\", tables=[\n    \"public.test\",\n    \"another_schema.test\",\n])\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var publication = new PostgreSql.Publication(\"publication\", new PostgreSql.PublicationArgs\n        {\n            Tables = \n            {\n                \"public.test\",\n                \"another_schema.test\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewPublication(ctx, \"publication\", \u0026postgresql.PublicationArgs{\n\t\t\tTables: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"public.test\"),\n\t\t\t\tpulumi.String(\"another_schema.test\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var publication = new Publication(\"publication\", PublicationArgs.builder()        \n            .tables(            \n                \"public.test\",\n                \"another_schema.test\")\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  publication:\n    type: postgresql:Publication\n    properties:\n      tables:\n        - public.test\n        - another_schema.test\n```\n",
+            "properties": {
+                "allTables": {
+                    "type": "boolean",
+                    "description": "Should be ALL TABLES added to the publication. Defaults to 'false'\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Which database to create the publication on. Defaults to provider database.\n"
+                },
+                "dropCascade": {
+                    "type": "boolean",
+                    "description": "Should all subsequent resources of the publication be dropped. Defaults to 'false'\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the publication.\n"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "Who owns the publication. Defaults to provider user.\n"
+                },
+                "publishParams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Which 'publish' options should be turned on. Default to 'insert','update','delete'\n"
+                },
+                "publishViaPartitionRootParam": {
+                    "type": "boolean",
+                    "description": "Should be option 'publish_via_partition_root' be turned on. Default to 'false'\n"
+                },
+                "tables": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Which tables add to the publication. By defaults no tables added. Format of table is `\u003cschema_name\u003e.\u003ctable_name\u003e`. If `\u003cschema_name\u003e` is not specified - default database schema will be used.\n"
+                }
+            },
+            "required": [
+                "allTables",
+                "database",
+                "name",
+                "owner",
+                "publishParams",
+                "tables"
+            ],
+            "inputProperties": {
+                "allTables": {
+                    "type": "boolean",
+                    "description": "Should be ALL TABLES added to the publication. Defaults to 'false'\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Which database to create the publication on. Defaults to provider database.\n"
+                },
+                "dropCascade": {
+                    "type": "boolean",
+                    "description": "Should all subsequent resources of the publication be dropped. Defaults to 'false'\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the publication.\n"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "Who owns the publication. Defaults to provider user.\n"
+                },
+                "publishParams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Which 'publish' options should be turned on. Default to 'insert','update','delete'\n"
+                },
+                "publishViaPartitionRootParam": {
+                    "type": "boolean",
+                    "description": "Should be option 'publish_via_partition_root' be turned on. Default to 'false'\n"
+                },
+                "tables": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Which tables add to the publication. By defaults no tables added. Format of table is `\u003cschema_name\u003e.\u003ctable_name\u003e`. If `\u003cschema_name\u003e` is not specified - default database schema will be used.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Publication resources.\n",
+                "properties": {
+                    "allTables": {
+                        "type": "boolean",
+                        "description": "Should be ALL TABLES added to the publication. Defaults to 'false'\n"
+                    },
+                    "database": {
+                        "type": "string",
+                        "description": "Which database to create the publication on. Defaults to provider database.\n"
+                    },
+                    "dropCascade": {
+                        "type": "boolean",
+                        "description": "Should all subsequent resources of the publication be dropped. Defaults to 'false'\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the publication.\n"
+                    },
+                    "owner": {
+                        "type": "string",
+                        "description": "Who owns the publication. Defaults to provider user.\n"
+                    },
+                    "publishParams": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Which 'publish' options should be turned on. Default to 'insert','update','delete'\n"
+                    },
+                    "publishViaPartitionRootParam": {
+                        "type": "boolean",
+                        "description": "Should be option 'publish_via_partition_root' be turned on. Default to 'false'\n"
+                    },
+                    "tables": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Which tables add to the publication. By defaults no tables added. Format of table is `\u003cschema_name\u003e.\u003ctable_name\u003e`. If `\u003cschema_name\u003e` is not specified - default database schema will be used.\n"
                     }
                 },
                 "type": "object"

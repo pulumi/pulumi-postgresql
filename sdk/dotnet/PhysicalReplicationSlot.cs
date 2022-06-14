@@ -13,6 +13,24 @@ namespace Pulumi.PostgreSql
     /// The ``postgresql.PhysicalReplicationSlot`` resource creates and manages a physical replication slot on a PostgreSQL
     /// server. This is useful to setup a cross datacenter replication, with Patroni for example, or permit
     /// any stand-by cluster to replicate physically data.
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mySlot = new PostgreSql.PhysicalReplicationSlot("mySlot", new PostgreSql.PhysicalReplicationSlotArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot")]
     public partial class PhysicalReplicationSlot : Pulumi.CustomResource

@@ -10,6 +10,130 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type FunctionArg struct {
+	// An expression to be used as default value if the parameter is not specified.
+	Default *string `pulumi:"default"`
+	// Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
+	Mode *string `pulumi:"mode"`
+	// The name of the argument.
+	Name *string `pulumi:"name"`
+	// The type of the argument.
+	Type string `pulumi:"type"`
+}
+
+// FunctionArgInput is an input type that accepts FunctionArgArgs and FunctionArgOutput values.
+// You can construct a concrete instance of `FunctionArgInput` via:
+//
+//          FunctionArgArgs{...}
+type FunctionArgInput interface {
+	pulumi.Input
+
+	ToFunctionArgOutput() FunctionArgOutput
+	ToFunctionArgOutputWithContext(context.Context) FunctionArgOutput
+}
+
+type FunctionArgArgs struct {
+	// An expression to be used as default value if the parameter is not specified.
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The name of the argument.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The type of the argument.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (FunctionArgArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionArg)(nil)).Elem()
+}
+
+func (i FunctionArgArgs) ToFunctionArgOutput() FunctionArgOutput {
+	return i.ToFunctionArgOutputWithContext(context.Background())
+}
+
+func (i FunctionArgArgs) ToFunctionArgOutputWithContext(ctx context.Context) FunctionArgOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionArgOutput)
+}
+
+// FunctionArgArrayInput is an input type that accepts FunctionArgArray and FunctionArgArrayOutput values.
+// You can construct a concrete instance of `FunctionArgArrayInput` via:
+//
+//          FunctionArgArray{ FunctionArgArgs{...} }
+type FunctionArgArrayInput interface {
+	pulumi.Input
+
+	ToFunctionArgArrayOutput() FunctionArgArrayOutput
+	ToFunctionArgArrayOutputWithContext(context.Context) FunctionArgArrayOutput
+}
+
+type FunctionArgArray []FunctionArgInput
+
+func (FunctionArgArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionArg)(nil)).Elem()
+}
+
+func (i FunctionArgArray) ToFunctionArgArrayOutput() FunctionArgArrayOutput {
+	return i.ToFunctionArgArrayOutputWithContext(context.Background())
+}
+
+func (i FunctionArgArray) ToFunctionArgArrayOutputWithContext(ctx context.Context) FunctionArgArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionArgArrayOutput)
+}
+
+type FunctionArgOutput struct{ *pulumi.OutputState }
+
+func (FunctionArgOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionArg)(nil)).Elem()
+}
+
+func (o FunctionArgOutput) ToFunctionArgOutput() FunctionArgOutput {
+	return o
+}
+
+func (o FunctionArgOutput) ToFunctionArgOutputWithContext(ctx context.Context) FunctionArgOutput {
+	return o
+}
+
+// An expression to be used as default value if the parameter is not specified.
+func (o FunctionArgOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionArg) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
+func (o FunctionArgOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionArg) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The name of the argument.
+func (o FunctionArgOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionArg) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The type of the argument.
+func (o FunctionArgOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionArg) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type FunctionArgArrayOutput struct{ *pulumi.OutputState }
+
+func (FunctionArgArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionArg)(nil)).Elem()
+}
+
+func (o FunctionArgArrayOutput) ToFunctionArgArrayOutput() FunctionArgArrayOutput {
+	return o
+}
+
+func (o FunctionArgArrayOutput) ToFunctionArgArrayOutputWithContext(ctx context.Context) FunctionArgArrayOutput {
+	return o
+}
+
+func (o FunctionArgArrayOutput) Index(i pulumi.IntInput) FunctionArgOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionArg {
+		return vs[0].([]FunctionArg)[vs[1].(int)]
+	}).(FunctionArgOutput)
+}
+
 type ProviderClientcert struct {
 	Cert string `pulumi:"cert"`
 	Key  string `pulumi:"key"`
@@ -292,10 +416,14 @@ func (o SchemaPolicyArrayOutput) Index(i pulumi.IntInput) SchemaPolicyOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionArgInput)(nil)).Elem(), FunctionArgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionArgArrayInput)(nil)).Elem(), FunctionArgArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderClientcertInput)(nil)).Elem(), ProviderClientcertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderClientcertPtrInput)(nil)).Elem(), ProviderClientcertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPolicyInput)(nil)).Elem(), SchemaPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPolicyArrayInput)(nil)).Elem(), SchemaPolicyArray{})
+	pulumi.RegisterOutputType(FunctionArgOutput{})
+	pulumi.RegisterOutputType(FunctionArgArrayOutput{})
 	pulumi.RegisterOutputType(ProviderClientcertOutput{})
 	pulumi.RegisterOutputType(ProviderClientcertPtrOutput{})
 	pulumi.RegisterOutputType(SchemaPolicyOutput{})

@@ -9,8 +9,63 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'FunctionArg',
     'SchemaPolicy',
 ]
+
+@pulumi.output_type
+class FunctionArg(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 default: Optional[str] = None,
+                 mode: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str type: The type of the argument.
+        :param str default: An expression to be used as default value if the parameter is not specified.
+        :param str mode: Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
+        :param str name: The name of the argument.
+        """
+        pulumi.set(__self__, "type", type)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the argument.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[str]:
+        """
+        An expression to be used as default value if the parameter is not specified.
+        """
+        return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the argument.
+        """
+        return pulumi.get(self, "name")
+
 
 @pulumi.output_type
 class SchemaPolicy(dict):

@@ -97,6 +97,8 @@ func Provider() tfbridge.ProviderInfo {
 			"postgresql_schema":                    {Tok: makeResource(mainMod, "Schema")},
 			"postgresql_physical_replication_slot": {Tok: makeResource(mainMod, "PhysicalReplicationSlot")},
 			"postgresql_replication_slot":          {Tok: makeResource(mainMod, "ReplicationSlot")},
+			"postgresql_function":                  {Tok: makeResource(mainMod, "Function")},
+			"postgresql_publication":               {Tok: makeResource(mainMod, "Publication")},
 			"postgresql_grant_role": {
 				Tok: makeResource(mainMod, "GrantRole"),
 				Fields: map[string]*tfbridge.SchemaInfo{

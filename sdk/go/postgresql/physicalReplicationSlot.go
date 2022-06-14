@@ -13,6 +13,27 @@ import (
 // The ``PhysicalReplicationSlot`` resource creates and manages a physical replication slot on a PostgreSQL
 // server. This is useful to setup a cross datacenter replication, with Patroni for example, or permit
 // any stand-by cluster to replicate physically data.
+//
+// ## Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := postgresql.NewPhysicalReplicationSlot(ctx, "mySlot", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type PhysicalReplicationSlot struct {
 	pulumi.CustomResourceState
 

@@ -4,6 +4,25 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface FunctionArg {
+    /**
+     * An expression to be used as default value if the parameter is not specified.
+     */
+    default?: string;
+    /**
+     * Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
+     */
+    mode?: string;
+    /**
+     * The name of the argument.
+     */
+    name?: string;
+    /**
+     * The type of the argument.
+     */
+    type: string;
+}
+
 export interface SchemaPolicy {
     /**
      * Should the specified ROLE have CREATE privileges to the specified SCHEMA.

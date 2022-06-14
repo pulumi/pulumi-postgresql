@@ -9,10 +9,12 @@ from .database import *
 from .default_privileg import *
 from .default_privileges import *
 from .extension import *
+from .function import *
 from .grant import *
 from .grant_role import *
 from .physical_replication_slot import *
 from .provider import *
+from .publication import *
 from .replication_slot import *
 from .role import *
 from .schema import *
@@ -63,6 +65,14 @@ _utilities.register(
  },
  {
   "pkg": "postgresql",
+  "mod": "index/function",
+  "fqn": "pulumi_postgresql",
+  "classes": {
+   "postgresql:index/function:Function": "Function"
+  }
+ },
+ {
+  "pkg": "postgresql",
   "mod": "index/grant",
   "fqn": "pulumi_postgresql",
   "classes": {
@@ -83,6 +93,14 @@ _utilities.register(
   "fqn": "pulumi_postgresql",
   "classes": {
    "postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot": "PhysicalReplicationSlot"
+  }
+ },
+ {
+  "pkg": "postgresql",
+  "mod": "index/publication",
+  "fqn": "pulumi_postgresql",
+  "classes": {
+   "postgresql:index/publication:Publication": "Publication"
   }
  },
  {
