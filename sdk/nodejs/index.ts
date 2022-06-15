@@ -9,10 +9,12 @@ export * from "./database";
 export * from "./defaultPrivileg";
 export * from "./defaultPrivileges";
 export * from "./extension";
+export * from "./function";
 export * from "./grant";
 export * from "./grantRole";
 export * from "./physicalReplicationSlot";
 export * from "./provider";
+export * from "./publication";
 export * from "./replicationSlot";
 export * from "./role";
 export * from "./schema";
@@ -31,9 +33,11 @@ import { Database } from "./database";
 import { DefaultPrivileg } from "./defaultPrivileg";
 import { DefaultPrivileges } from "./defaultPrivileges";
 import { Extension } from "./extension";
+import { Function } from "./function";
 import { Grant } from "./grant";
 import { GrantRole } from "./grantRole";
 import { PhysicalReplicationSlot } from "./physicalReplicationSlot";
+import { Publication } from "./publication";
 import { ReplicationSlot } from "./replicationSlot";
 import { Role } from "./role";
 import { Schema } from "./schema";
@@ -50,12 +54,16 @@ const _module = {
                 return new DefaultPrivileges(name, <any>undefined, { urn })
             case "postgresql:index/extension:Extension":
                 return new Extension(name, <any>undefined, { urn })
+            case "postgresql:index/function:Function":
+                return new Function(name, <any>undefined, { urn })
             case "postgresql:index/grant:Grant":
                 return new Grant(name, <any>undefined, { urn })
             case "postgresql:index/grantRole:GrantRole":
                 return new GrantRole(name, <any>undefined, { urn })
             case "postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot":
                 return new PhysicalReplicationSlot(name, <any>undefined, { urn })
+            case "postgresql:index/publication:Publication":
+                return new Publication(name, <any>undefined, { urn })
             case "postgresql:index/replicationSlot:ReplicationSlot":
                 return new ReplicationSlot(name, <any>undefined, { urn })
             case "postgresql:index/role:Role":
@@ -71,9 +79,11 @@ pulumi.runtime.registerResourceModule("postgresql", "index/database", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/defaultPrivileg", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/defaultPrivileges", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/extension", _module)
+pulumi.runtime.registerResourceModule("postgresql", "index/function", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/grant", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/grantRole", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/physicalReplicationSlot", _module)
+pulumi.runtime.registerResourceModule("postgresql", "index/publication", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/replicationSlot", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/role", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/schema", _module)

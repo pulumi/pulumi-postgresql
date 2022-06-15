@@ -4,6 +4,25 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface FunctionArg {
+    /**
+     * An expression to be used as default value if the parameter is not specified.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * The name of the argument.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The type of the argument.
+     */
+    type: pulumi.Input<string>;
+}
+
 export interface ProviderClientcert {
     cert: pulumi.Input<string>;
     key: pulumi.Input<string>;

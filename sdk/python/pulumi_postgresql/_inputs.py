@@ -9,9 +9,80 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'FunctionArgArgs',
     'ProviderClientcertArgs',
     'SchemaPolicyArgs',
 ]
+
+@pulumi.input_type
+class FunctionArgArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 default: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: The type of the argument.
+        :param pulumi.Input[str] default: An expression to be used as default value if the parameter is not specified.
+        :param pulumi.Input[str] mode: Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
+        :param pulumi.Input[str] name: The name of the argument.
+        """
+        pulumi.set(__self__, "type", type)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of the argument.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[str]]:
+        """
+        An expression to be used as default value if the parameter is not specified.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the argument.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
 
 @pulumi.input_type
 class ProviderClientcertArgs:
