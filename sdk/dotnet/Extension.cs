@@ -16,23 +16,19 @@ namespace Pulumi.PostgreSql
     /// ## Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using PostgreSql = Pulumi.PostgreSql;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myExtension = new PostgreSql.Extension("myExtension", new PostgreSql.ExtensionArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var myExtension = new PostgreSql.Extension("myExtension");
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/extension:Extension")]
-    public partial class Extension : Pulumi.CustomResource
+    public partial class Extension : global::Pulumi.CustomResource
     {
         /// <summary>
         /// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
@@ -114,7 +110,7 @@ namespace Pulumi.PostgreSql
         }
     }
 
-    public sealed class ExtensionArgs : Pulumi.ResourceArgs
+    public sealed class ExtensionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
@@ -155,9 +151,10 @@ namespace Pulumi.PostgreSql
         public ExtensionArgs()
         {
         }
+        public static new ExtensionArgs Empty => new ExtensionArgs();
     }
 
-    public sealed class ExtensionState : Pulumi.ResourceArgs
+    public sealed class ExtensionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
@@ -198,5 +195,6 @@ namespace Pulumi.PostgreSql
         public ExtensionState()
         {
         }
+        public static new ExtensionState Empty => new ExtensionState();
     }
 }

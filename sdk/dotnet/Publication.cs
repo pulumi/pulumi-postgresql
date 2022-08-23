@@ -16,28 +16,26 @@ namespace Pulumi.PostgreSql
     /// ## Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using PostgreSql = Pulumi.PostgreSql;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var publication = new PostgreSql.Publication("publication", new()
     ///     {
-    ///         var publication = new PostgreSql.Publication("publication", new PostgreSql.PublicationArgs
+    ///         Tables = new[]
     ///         {
-    ///             Tables = 
-    ///             {
-    ///                 "public.test",
-    ///                 "another_schema.test",
-    ///             },
-    ///         });
-    ///     }
+    ///             "public.test",
+    ///             "another_schema.test",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/publication:Publication")]
-    public partial class Publication : Pulumi.CustomResource
+    public partial class Publication : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Should be ALL TABLES added to the publication. Defaults to 'false'
@@ -131,7 +129,7 @@ namespace Pulumi.PostgreSql
         }
     }
 
-    public sealed class PublicationArgs : Pulumi.ResourceArgs
+    public sealed class PublicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Should be ALL TABLES added to the publication. Defaults to 'false'
@@ -196,9 +194,10 @@ namespace Pulumi.PostgreSql
         public PublicationArgs()
         {
         }
+        public static new PublicationArgs Empty => new PublicationArgs();
     }
 
-    public sealed class PublicationState : Pulumi.ResourceArgs
+    public sealed class PublicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Should be ALL TABLES added to the publication. Defaults to 'false'
@@ -263,5 +262,6 @@ namespace Pulumi.PostgreSql
         public PublicationState()
         {
         }
+        public static new PublicationState Empty => new PublicationState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.PostgreSql
 {
     [PostgreSqlResourceType("postgresql:index/database:Database")]
-    public partial class Database : Pulumi.CustomResource
+    public partial class Database : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If `false` then no one can connect to this
@@ -129,7 +129,7 @@ namespace Pulumi.PostgreSql
         }
     }
 
-    public sealed class DatabaseArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If `false` then no one can connect to this
@@ -207,9 +207,10 @@ namespace Pulumi.PostgreSql
         public DatabaseArgs()
         {
         }
+        public static new DatabaseArgs Empty => new DatabaseArgs();
     }
 
-    public sealed class DatabaseState : Pulumi.ResourceArgs
+    public sealed class DatabaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If `false` then no one can connect to this
@@ -287,5 +288,6 @@ namespace Pulumi.PostgreSql
         public DatabaseState()
         {
         }
+        public static new DatabaseState Empty => new DatabaseState();
     }
 }

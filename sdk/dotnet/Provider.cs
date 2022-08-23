@@ -16,7 +16,7 @@ namespace Pulumi.PostgreSql
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [PostgreSqlResourceType("pulumi:providers:postgresql")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// AWS profile to use for IAM auth
@@ -105,7 +105,7 @@ namespace Pulumi.PostgreSql
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Use rds_iam instead of password authentication (see:
@@ -211,5 +211,6 @@ namespace Pulumi.PostgreSql
             ConnectTimeout = Utilities.GetEnvInt32("PGCONNECT_TIMEOUT") ?? 180;
             Sslmode = Utilities.GetEnv("PGSSLMODE");
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

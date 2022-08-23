@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The ``Extension`` resource creates and manages an extension on a PostgreSQL
+// The “Extension“ resource creates and manages an extension on a PostgreSQL
 // server.
 //
 // ## Usage
@@ -19,19 +19,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := postgresql.NewExtension(ctx, "myExtension", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewExtension(ctx, "myExtension", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Extension struct {
 	pulumi.CustomResourceState
@@ -169,7 +172,7 @@ func (i *Extension) ToExtensionOutputWithContext(ctx context.Context) ExtensionO
 // ExtensionArrayInput is an input type that accepts ExtensionArray and ExtensionArrayOutput values.
 // You can construct a concrete instance of `ExtensionArrayInput` via:
 //
-//          ExtensionArray{ ExtensionArgs{...} }
+//	ExtensionArray{ ExtensionArgs{...} }
 type ExtensionArrayInput interface {
 	pulumi.Input
 
@@ -194,7 +197,7 @@ func (i ExtensionArray) ToExtensionArrayOutputWithContext(ctx context.Context) E
 // ExtensionMapInput is an input type that accepts ExtensionMap and ExtensionMapOutput values.
 // You can construct a concrete instance of `ExtensionMapInput` via:
 //
-//          ExtensionMap{ "key": ExtensionArgs{...} }
+//	ExtensionMap{ "key": ExtensionArgs{...} }
 type ExtensionMapInput interface {
 	pulumi.Input
 

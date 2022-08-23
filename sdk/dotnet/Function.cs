@@ -16,39 +16,37 @@ namespace Pulumi.PostgreSql
     /// ## Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using PostgreSql = Pulumi.PostgreSql;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var increment = new PostgreSql.Function("increment", new()
     ///     {
-    ///         var increment = new PostgreSql.Function("increment", new PostgreSql.FunctionArgs
+    ///         Args = new[]
     ///         {
-    ///             Args = 
+    ///             new PostgreSql.Inputs.FunctionArgArgs
     ///             {
-    ///                 new PostgreSql.Inputs.FunctionArgArgs
-    ///                 {
-    ///                     Name = "i",
-    ///                     Type = "integer",
-    ///                 },
+    ///                 Name = "i",
+    ///                 Type = "integer",
     ///             },
-    ///             Body = @"    AS $
+    ///         },
+    ///         Body = @"    AS $
     ///     BEGIN
     ///         RETURN i + 1;
     ///     END;
     ///     $ LANGUAGE plpgsql;
     /// 
     /// ",
-    ///             Returns = "integer",
-    ///         });
-    ///     }
+    ///         Returns = "integer",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/function:Function")]
-    public partial class Function : Pulumi.CustomResource
+    public partial class Function : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List of arguments for the function.
@@ -62,6 +60,13 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Output("body")]
         public Output<string> Body { get; private set; } = null!;
+
+        /// <summary>
+        /// The database where the function is located.
+        /// If not specified, the function is created in the current database.
+        /// </summary>
+        [Output("database")]
+        public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
         /// True to automatically drop objects that depend on the function (such as 
@@ -133,7 +138,7 @@ namespace Pulumi.PostgreSql
         }
     }
 
-    public sealed class FunctionArgs : Pulumi.ResourceArgs
+    public sealed class FunctionArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<Inputs.FunctionArgArgs>? _args;
@@ -153,6 +158,13 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Input("body", required: true)]
         public Input<string> Body { get; set; } = null!;
+
+        /// <summary>
+        /// The database where the function is located.
+        /// If not specified, the function is created in the current database.
+        /// </summary>
+        [Input("database")]
+        public Input<string>? Database { get; set; }
 
         /// <summary>
         /// True to automatically drop objects that depend on the function (such as 
@@ -183,9 +195,10 @@ namespace Pulumi.PostgreSql
         public FunctionArgs()
         {
         }
+        public static new FunctionArgs Empty => new FunctionArgs();
     }
 
-    public sealed class FunctionState : Pulumi.ResourceArgs
+    public sealed class FunctionState : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<Inputs.FunctionArgGetArgs>? _args;
@@ -205,6 +218,13 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Input("body")]
         public Input<string>? Body { get; set; }
+
+        /// <summary>
+        /// The database where the function is located.
+        /// If not specified, the function is created in the current database.
+        /// </summary>
+        [Input("database")]
+        public Input<string>? Database { get; set; }
 
         /// <summary>
         /// True to automatically drop objects that depend on the function (such as 
@@ -235,5 +255,6 @@ namespace Pulumi.PostgreSql
         public FunctionState()
         {
         }
+        public static new FunctionState Empty => new FunctionState();
     }
 }

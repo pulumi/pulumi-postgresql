@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.PostgreSql.Inputs
 {
 
-    public sealed class ProviderClientcertArgs : Pulumi.ResourceArgs
+    public sealed class ProviderClientcertArgs : global::Pulumi.ResourceArgs
     {
         [Input("cert", required: true)]
         public Input<string> Cert { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.PostgreSql.Inputs
         public ProviderClientcertArgs()
         {
         }
+        public static new ProviderClientcertArgs Empty => new ProviderClientcertArgs();
     }
 }

@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The ``GrantRole`` resource creates and manages membership in a role to one or more other roles in a non-authoritative way.
+// The “GrantRole“ resource creates and manages membership in a role to one or more other roles in a non-authoritative way.
 //
-// When using ``GrantRole`` resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.
+// When using “GrantRole“ resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.
 //
 // > **Note:** This resource needs PostgreSQL version 9 or above.
 type GrantRole struct {
@@ -128,7 +128,7 @@ func (i *GrantRole) ToGrantRoleOutputWithContext(ctx context.Context) GrantRoleO
 // GrantRoleArrayInput is an input type that accepts GrantRoleArray and GrantRoleArrayOutput values.
 // You can construct a concrete instance of `GrantRoleArrayInput` via:
 //
-//          GrantRoleArray{ GrantRoleArgs{...} }
+//	GrantRoleArray{ GrantRoleArgs{...} }
 type GrantRoleArrayInput interface {
 	pulumi.Input
 
@@ -153,7 +153,7 @@ func (i GrantRoleArray) ToGrantRoleArrayOutputWithContext(ctx context.Context) G
 // GrantRoleMapInput is an input type that accepts GrantRoleMap and GrantRoleMapOutput values.
 // You can construct a concrete instance of `GrantRoleMapInput` via:
 //
-//          GrantRoleMap{ "key": GrantRoleArgs{...} }
+//	GrantRoleMap{ "key": GrantRoleArgs{...} }
 type GrantRoleMapInput interface {
 	pulumi.Input
 

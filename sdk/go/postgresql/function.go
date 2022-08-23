@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The ``Function`` resource creates and manages a function on a PostgreSQL
+// The “Function“ resource creates and manages a function on a PostgreSQL
 // server.
 //
 // ## Usage
@@ -20,30 +20,40 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := postgresql.NewFunction(ctx, "increment", &postgresql.FunctionArgs{
-// 			Args: FunctionArgArray{
-// 				&FunctionArgArgs{
-// 					Name: pulumi.String("i"),
-// 					Type: pulumi.String("integer"),
-// 				},
-// 			},
-// 			Body:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v", "    AS ", "$", "\n", "    BEGIN\n", "        RETURN i + 1;\n", "    END;\n", "    ", "$", " LANGUAGE plpgsql;\n", "\n")),
-// 			Returns: pulumi.String("integer"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewFunction(ctx, "increment", &postgresql.FunctionArgs{
+//				Args: FunctionArgArray{
+//					&FunctionArgArgs{
+//						Name: pulumi.String("i"),
+//						Type: pulumi.String("integer"),
+//					},
+//				},
+//				Body: pulumi.String(fmt.Sprintf(`    AS $
+//	    BEGIN
+//	        RETURN i + 1;
+//	    END;
+//	    $ LANGUAGE plpgsql;
+//
+// `)),
+//
+//				Returns: pulumi.String("integer"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Function struct {
 	pulumi.CustomResourceState
@@ -53,6 +63,9 @@ type Function struct {
 	// Function body.
 	// This should be everything after the return type in the function definition.
 	Body pulumi.StringOutput `pulumi:"body"`
+	// The database where the function is located.
+	// If not specified, the function is created in the current database.
+	Database pulumi.StringOutput `pulumi:"database"`
 	// True to automatically drop objects that depend on the function (such as
 	// operators or triggers), and in turn all objects that depend on those objects. Default is false.
 	DropCascade pulumi.BoolPtrOutput `pulumi:"dropCascade"`
@@ -102,6 +115,9 @@ type functionState struct {
 	// Function body.
 	// This should be everything after the return type in the function definition.
 	Body *string `pulumi:"body"`
+	// The database where the function is located.
+	// If not specified, the function is created in the current database.
+	Database *string `pulumi:"database"`
 	// True to automatically drop objects that depend on the function (such as
 	// operators or triggers), and in turn all objects that depend on those objects. Default is false.
 	DropCascade *bool `pulumi:"dropCascade"`
@@ -120,6 +136,9 @@ type FunctionState struct {
 	// Function body.
 	// This should be everything after the return type in the function definition.
 	Body pulumi.StringPtrInput
+	// The database where the function is located.
+	// If not specified, the function is created in the current database.
+	Database pulumi.StringPtrInput
 	// True to automatically drop objects that depend on the function (such as
 	// operators or triggers), and in turn all objects that depend on those objects. Default is false.
 	DropCascade pulumi.BoolPtrInput
@@ -142,6 +161,9 @@ type functionArgs struct {
 	// Function body.
 	// This should be everything after the return type in the function definition.
 	Body string `pulumi:"body"`
+	// The database where the function is located.
+	// If not specified, the function is created in the current database.
+	Database *string `pulumi:"database"`
 	// True to automatically drop objects that depend on the function (such as
 	// operators or triggers), and in turn all objects that depend on those objects. Default is false.
 	DropCascade *bool `pulumi:"dropCascade"`
@@ -161,6 +183,9 @@ type FunctionArgs struct {
 	// Function body.
 	// This should be everything after the return type in the function definition.
 	Body pulumi.StringInput
+	// The database where the function is located.
+	// If not specified, the function is created in the current database.
+	Database pulumi.StringPtrInput
 	// True to automatically drop objects that depend on the function (such as
 	// operators or triggers), and in turn all objects that depend on those objects. Default is false.
 	DropCascade pulumi.BoolPtrInput
@@ -199,7 +224,7 @@ func (i *Function) ToFunctionOutputWithContext(ctx context.Context) FunctionOutp
 // FunctionArrayInput is an input type that accepts FunctionArray and FunctionArrayOutput values.
 // You can construct a concrete instance of `FunctionArrayInput` via:
 //
-//          FunctionArray{ FunctionArgs{...} }
+//	FunctionArray{ FunctionArgs{...} }
 type FunctionArrayInput interface {
 	pulumi.Input
 
@@ -224,7 +249,7 @@ func (i FunctionArray) ToFunctionArrayOutputWithContext(ctx context.Context) Fun
 // FunctionMapInput is an input type that accepts FunctionMap and FunctionMapOutput values.
 // You can construct a concrete instance of `FunctionMapInput` via:
 //
-//          FunctionMap{ "key": FunctionArgs{...} }
+//	FunctionMap{ "key": FunctionArgs{...} }
 type FunctionMapInput interface {
 	pulumi.Input
 
@@ -269,6 +294,12 @@ func (o FunctionOutput) Args() FunctionArgArrayOutput {
 // This should be everything after the return type in the function definition.
 func (o FunctionOutput) Body() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Body }).(pulumi.StringOutput)
+}
+
+// The database where the function is located.
+// If not specified, the function is created in the current database.
+func (o FunctionOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
 }
 
 // True to automatically drop objects that depend on the function (such as

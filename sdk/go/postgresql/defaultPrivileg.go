@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The ``DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
+// The “DefaultPrivileges“ resource creates and manages default privileges given to a user for a database schema.
 //
 // > **Note:** This resource needs Postgresql version 9 or above.
 //
@@ -21,28 +21,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := postgresql.NewDefaultPrivileges(ctx, "readOnlyTables", &postgresql.DefaultPrivilegesArgs{
-// 			Database:   pulumi.String("test_db"),
-// 			ObjectType: pulumi.String("table"),
-// 			Owner:      pulumi.String("db_owner"),
-// 			Privileges: pulumi.StringArray{
-// 				pulumi.String("SELECT"),
-// 			},
-// 			Role:   pulumi.String("test_role"),
-// 			Schema: pulumi.String("public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewDefaultPrivileges(ctx, "readOnlyTables", &postgresql.DefaultPrivilegesArgs{
+//				Database:   pulumi.String("test_db"),
+//				ObjectType: pulumi.String("table"),
+//				Owner:      pulumi.String("db_owner"),
+//				Privileges: pulumi.StringArray{
+//					pulumi.String("SELECT"),
+//				},
+//				Role:   pulumi.String("test_role"),
+//				Schema: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Examples
@@ -53,25 +56,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := postgresql.NewDefaultPrivileges(ctx, "revokePublic", &postgresql.DefaultPrivilegesArgs{
-// 			Database:   pulumi.Any(postgresql_database.Example_db.Name),
-// 			Role:       pulumi.String("public"),
-// 			Owner:      pulumi.String("object_owner"),
-// 			ObjectType: pulumi.String("function"),
-// 			Privileges: pulumi.StringArray{},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewDefaultPrivileges(ctx, "revokePublic", &postgresql.DefaultPrivilegesArgs{
+//				Database:   pulumi.Any(postgresql_database.Example_db.Name),
+//				Role:       pulumi.String("public"),
+//				Owner:      pulumi.String("object_owner"),
+//				ObjectType: pulumi.String("function"),
+//				Privileges: pulumi.StringArray{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Deprecated: postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges
@@ -236,7 +242,7 @@ func (i *DefaultPrivileg) ToDefaultPrivilegOutputWithContext(ctx context.Context
 // DefaultPrivilegArrayInput is an input type that accepts DefaultPrivilegArray and DefaultPrivilegArrayOutput values.
 // You can construct a concrete instance of `DefaultPrivilegArrayInput` via:
 //
-//          DefaultPrivilegArray{ DefaultPrivilegArgs{...} }
+//	DefaultPrivilegArray{ DefaultPrivilegArgs{...} }
 type DefaultPrivilegArrayInput interface {
 	pulumi.Input
 
@@ -261,7 +267,7 @@ func (i DefaultPrivilegArray) ToDefaultPrivilegArrayOutputWithContext(ctx contex
 // DefaultPrivilegMapInput is an input type that accepts DefaultPrivilegMap and DefaultPrivilegMapOutput values.
 // You can construct a concrete instance of `DefaultPrivilegMapInput` via:
 //
-//          DefaultPrivilegMap{ "key": DefaultPrivilegArgs{...} }
+//	DefaultPrivilegMap{ "key": DefaultPrivilegArgs{...} }
 type DefaultPrivilegMapInput interface {
 	pulumi.Input
 

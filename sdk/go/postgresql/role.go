@@ -13,6 +13,8 @@ import (
 type Role struct {
 	pulumi.CustomResourceState
 
+	// Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
+	AssumeRole pulumi.StringPtrOutput `pulumi:"assumeRole"`
 	// Defines whether a role bypasses every
 	// row-level security (RLS) policy.  Default value is `false`.
 	BypassRowLevelSecurity pulumi.BoolPtrOutput `pulumi:"bypassRowLevelSecurity"`
@@ -120,6 +122,8 @@ func GetRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Role resources.
 type roleState struct {
+	// Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
+	AssumeRole *string `pulumi:"assumeRole"`
 	// Defines whether a role bypasses every
 	// row-level security (RLS) policy.  Default value is `false`.
 	BypassRowLevelSecurity *bool `pulumi:"bypassRowLevelSecurity"`
@@ -199,6 +203,8 @@ type roleState struct {
 }
 
 type RoleState struct {
+	// Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
+	AssumeRole pulumi.StringPtrInput
 	// Defines whether a role bypasses every
 	// row-level security (RLS) policy.  Default value is `false`.
 	BypassRowLevelSecurity pulumi.BoolPtrInput
@@ -282,6 +288,8 @@ func (RoleState) ElementType() reflect.Type {
 }
 
 type roleArgs struct {
+	// Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
+	AssumeRole *string `pulumi:"assumeRole"`
 	// Defines whether a role bypasses every
 	// row-level security (RLS) policy.  Default value is `false`.
 	BypassRowLevelSecurity *bool `pulumi:"bypassRowLevelSecurity"`
@@ -362,6 +370,8 @@ type roleArgs struct {
 
 // The set of arguments for constructing a Role resource.
 type RoleArgs struct {
+	// Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
+	AssumeRole pulumi.StringPtrInput
 	// Defines whether a role bypasses every
 	// row-level security (RLS) policy.  Default value is `false`.
 	BypassRowLevelSecurity pulumi.BoolPtrInput
@@ -466,7 +476,7 @@ func (i *Role) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 // RoleArrayInput is an input type that accepts RoleArray and RoleArrayOutput values.
 // You can construct a concrete instance of `RoleArrayInput` via:
 //
-//          RoleArray{ RoleArgs{...} }
+//	RoleArray{ RoleArgs{...} }
 type RoleArrayInput interface {
 	pulumi.Input
 
@@ -491,7 +501,7 @@ func (i RoleArray) ToRoleArrayOutputWithContext(ctx context.Context) RoleArrayOu
 // RoleMapInput is an input type that accepts RoleMap and RoleMapOutput values.
 // You can construct a concrete instance of `RoleMapInput` via:
 //
-//          RoleMap{ "key": RoleArgs{...} }
+//	RoleMap{ "key": RoleArgs{...} }
 type RoleMapInput interface {
 	pulumi.Input
 
@@ -525,6 +535,11 @@ func (o RoleOutput) ToRoleOutput() RoleOutput {
 
 func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return o
+}
+
+// Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
+func (o RoleOutput) AssumeRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.AssumeRole }).(pulumi.StringPtrOutput)
 }
 
 // Defines whether a role bypasses every

@@ -16,24 +16,22 @@ namespace Pulumi.PostgreSql
     /// ## Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using PostgreSql = Pulumi.PostgreSql;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mySlot = new PostgreSql.ReplicationSlot("mySlot", new()
     ///     {
-    ///         var mySlot = new PostgreSql.ReplicationSlot("mySlot", new PostgreSql.ReplicationSlotArgs
-    ///         {
-    ///             Plugin = "test_decoding",
-    ///         });
-    ///     }
+    ///         Plugin = "test_decoding",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/replicationSlot:ReplicationSlot")]
-    public partial class ReplicationSlot : Pulumi.CustomResource
+    public partial class ReplicationSlot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Which database to create the replication slot on. Defaults to provider database.
@@ -97,7 +95,7 @@ namespace Pulumi.PostgreSql
         }
     }
 
-    public sealed class ReplicationSlotArgs : Pulumi.ResourceArgs
+    public sealed class ReplicationSlotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Which database to create the replication slot on. Defaults to provider database.
@@ -120,9 +118,10 @@ namespace Pulumi.PostgreSql
         public ReplicationSlotArgs()
         {
         }
+        public static new ReplicationSlotArgs Empty => new ReplicationSlotArgs();
     }
 
-    public sealed class ReplicationSlotState : Pulumi.ResourceArgs
+    public sealed class ReplicationSlotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Which database to create the replication slot on. Defaults to provider database.
@@ -145,5 +144,6 @@ namespace Pulumi.PostgreSql
         public ReplicationSlotState()
         {
         }
+        public static new ReplicationSlotState Empty => new ReplicationSlotState();
     }
 }

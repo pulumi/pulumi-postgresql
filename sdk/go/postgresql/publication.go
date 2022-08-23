@@ -19,24 +19,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := postgresql.NewPublication(ctx, "publication", &postgresql.PublicationArgs{
-// 			Tables: pulumi.StringArray{
-// 				pulumi.String("public.test"),
-// 				pulumi.String("another_schema.test"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewPublication(ctx, "publication", &postgresql.PublicationArgs{
+//				Tables: pulumi.StringArray{
+//					pulumi.String("public.test"),
+//					pulumi.String("another_schema.test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Publication struct {
 	pulumi.CustomResourceState
@@ -194,7 +197,7 @@ func (i *Publication) ToPublicationOutputWithContext(ctx context.Context) Public
 // PublicationArrayInput is an input type that accepts PublicationArray and PublicationArrayOutput values.
 // You can construct a concrete instance of `PublicationArrayInput` via:
 //
-//          PublicationArray{ PublicationArgs{...} }
+//	PublicationArray{ PublicationArgs{...} }
 type PublicationArrayInput interface {
 	pulumi.Input
 
@@ -219,7 +222,7 @@ func (i PublicationArray) ToPublicationArrayOutputWithContext(ctx context.Contex
 // PublicationMapInput is an input type that accepts PublicationMap and PublicationMapOutput values.
 // You can construct a concrete instance of `PublicationMapInput` via:
 //
-//          PublicationMap{ "key": PublicationArgs{...} }
+//	PublicationMap{ "key": PublicationArgs{...} }
 type PublicationMapInput interface {
 	pulumi.Input
 

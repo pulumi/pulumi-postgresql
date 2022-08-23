@@ -17,7 +17,7 @@ namespace Pulumi.PostgreSql
     /// &gt; **Note:** This resource needs PostgreSQL version 9 or above.
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/grantRole:GrantRole")]
-    public partial class GrantRole : Pulumi.CustomResource
+    public partial class GrantRole : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the role that is added to `role`.
@@ -81,7 +81,7 @@ namespace Pulumi.PostgreSql
         }
     }
 
-    public sealed class GrantRoleArgs : Pulumi.ResourceArgs
+    public sealed class GrantRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the role that is added to `role`.
@@ -104,9 +104,10 @@ namespace Pulumi.PostgreSql
         public GrantRoleArgs()
         {
         }
+        public static new GrantRoleArgs Empty => new GrantRoleArgs();
     }
 
-    public sealed class GrantRoleState : Pulumi.ResourceArgs
+    public sealed class GrantRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the role that is added to `role`.
@@ -129,5 +130,6 @@ namespace Pulumi.PostgreSql
         public GrantRoleState()
         {
         }
+        public static new GrantRoleState Empty => new GrantRoleState();
     }
 }

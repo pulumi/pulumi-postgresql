@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.PostgreSql
 {
     [PostgreSqlResourceType("postgresql:index/schema:Schema")]
-    public partial class Schema : Pulumi.CustomResource
+    public partial class Schema : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
@@ -94,7 +94,7 @@ namespace Pulumi.PostgreSql
         }
     }
 
-    public sealed class SchemaArgs : Pulumi.ResourceArgs
+    public sealed class SchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
@@ -144,9 +144,10 @@ namespace Pulumi.PostgreSql
         public SchemaArgs()
         {
         }
+        public static new SchemaArgs Empty => new SchemaArgs();
     }
 
-    public sealed class SchemaState : Pulumi.ResourceArgs
+    public sealed class SchemaState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
@@ -196,5 +197,6 @@ namespace Pulumi.PostgreSql
         public SchemaState()
         {
         }
+        public static new SchemaState Empty => new SchemaState();
     }
 }

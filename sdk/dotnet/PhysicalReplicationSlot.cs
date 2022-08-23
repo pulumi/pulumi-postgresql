@@ -17,23 +17,19 @@ namespace Pulumi.PostgreSql
     /// ## Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using PostgreSql = Pulumi.PostgreSql;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var mySlot = new PostgreSql.PhysicalReplicationSlot("mySlot", new PostgreSql.PhysicalReplicationSlotArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var mySlot = new PostgreSql.PhysicalReplicationSlot("mySlot");
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot")]
-    public partial class PhysicalReplicationSlot : Pulumi.CustomResource
+    public partial class PhysicalReplicationSlot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the replication slot.
@@ -85,7 +81,7 @@ namespace Pulumi.PostgreSql
         }
     }
 
-    public sealed class PhysicalReplicationSlotArgs : Pulumi.ResourceArgs
+    public sealed class PhysicalReplicationSlotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the replication slot.
@@ -96,9 +92,10 @@ namespace Pulumi.PostgreSql
         public PhysicalReplicationSlotArgs()
         {
         }
+        public static new PhysicalReplicationSlotArgs Empty => new PhysicalReplicationSlotArgs();
     }
 
-    public sealed class PhysicalReplicationSlotState : Pulumi.ResourceArgs
+    public sealed class PhysicalReplicationSlotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the replication slot.
@@ -109,5 +106,6 @@ namespace Pulumi.PostgreSql
         public PhysicalReplicationSlotState()
         {
         }
+        public static new PhysicalReplicationSlotState Empty => new PhysicalReplicationSlotState();
     }
 }
