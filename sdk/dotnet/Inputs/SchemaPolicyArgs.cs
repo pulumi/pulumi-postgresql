@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.PostgreSql.Inputs
 {
 
-    public sealed class SchemaPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SchemaPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Should the specified ROLE have CREATE privileges to the specified SCHEMA.
@@ -45,5 +45,6 @@ namespace Pulumi.PostgreSql.Inputs
         public SchemaPolicyArgs()
         {
         }
+        public static new SchemaPolicyArgs Empty => new SchemaPolicyArgs();
     }
 }

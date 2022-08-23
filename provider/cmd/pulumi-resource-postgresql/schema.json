@@ -12,6 +12,44 @@
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
     },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": {
+                "postgresql": "PostgreSql"
+            },
+            "packageReferences": {
+                "Pulumi": "3.*"
+            }
+        },
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing postgresql cloud resources.",
+            "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/cyrilgdn/terraform-provider-postgresql)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-postgresql` repo](https://github.com/pulumi/pulumi-postgresql/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-postgresql` repo](https://github.com/cyrilgdn/terraform-provider-postgresql/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/cyrilgdn/terraform-provider-postgresql)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-postgresql` repo](https://github.com/pulumi/pulumi-postgresql/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-postgresql` repo](https://github.com/cyrilgdn/terraform-provider-postgresql/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    },
     "config": {
         "variables": {
             "awsRdsIamAuth": {
@@ -133,7 +171,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "name": {
                     "type": "string",
@@ -142,7 +181,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "type": {
                     "type": "string",
@@ -151,7 +191,8 @@
                         "python": {
                             "mapCase": false
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object",
@@ -457,7 +498,8 @@
                 },
                 "encoding": {
                     "type": "string",
-                    "description": "Character set encoding to use in the new database\n"
+                    "description": "Character set encoding to use in the new database\n",
+                    "willReplaceOnChanges": true
                 },
                 "isTemplate": {
                     "type": "boolean",
@@ -465,11 +507,13 @@
                 },
                 "lcCollate": {
                     "type": "string",
-                    "description": "Collation order (LC_COLLATE) to use in the new database\n"
+                    "description": "Collation order (LC_COLLATE) to use in the new database\n",
+                    "willReplaceOnChanges": true
                 },
                 "lcCtype": {
                     "type": "string",
-                    "description": "Character classification (LC_CTYPE) to use in the new database\n"
+                    "description": "Character classification (LC_CTYPE) to use in the new database\n",
+                    "willReplaceOnChanges": true
                 },
                 "name": {
                     "type": "string",
@@ -485,7 +529,8 @@
                 },
                 "template": {
                     "type": "string",
-                    "description": "The name of the template from which to create the new database\n"
+                    "description": "The name of the template from which to create the new database\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "stateInputs": {
@@ -501,7 +546,8 @@
                     },
                     "encoding": {
                         "type": "string",
-                        "description": "Character set encoding to use in the new database\n"
+                        "description": "Character set encoding to use in the new database\n",
+                        "willReplaceOnChanges": true
                     },
                     "isTemplate": {
                         "type": "boolean",
@@ -509,11 +555,13 @@
                     },
                     "lcCollate": {
                         "type": "string",
-                        "description": "Collation order (LC_COLLATE) to use in the new database\n"
+                        "description": "Collation order (LC_COLLATE) to use in the new database\n",
+                        "willReplaceOnChanges": true
                     },
                     "lcCtype": {
                         "type": "string",
-                        "description": "Character classification (LC_CTYPE) to use in the new database\n"
+                        "description": "Character classification (LC_CTYPE) to use in the new database\n",
+                        "willReplaceOnChanges": true
                     },
                     "name": {
                         "type": "string",
@@ -529,14 +577,15 @@
                     },
                     "template": {
                         "type": "string",
-                        "description": "The name of the template from which to create the new database\n"
+                        "description": "The name of the template from which to create the new database\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
             }
         },
         "postgresql:index/defaultPrivileg:DefaultPrivileg": {
-            "description": "The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readOnlyTables = new postgresql.DefaultPrivileges(\"read_only_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    owner: \"db_owner\",\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nread_only_tables = postgresql.DefaultPrivileges(\"readOnlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    owner=\"db_owner\",\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var readOnlyTables = new PostgreSql.DefaultPrivileges(\"readOnlyTables\", new PostgreSql.DefaultPrivilegesArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"table\",\n            Owner = \"db_owner\",\n            Privileges = \n            {\n                \"SELECT\",\n            },\n            Role = \"test_role\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"readOnlyTables\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tOwner:      pulumi.String(\"db_owner\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readOnlyTables = new DefaultPrivileges(\"readOnlyTables\", DefaultPrivilegesArgs.builder()        \n            .database(\"test_db\")\n            .objectType(\"table\")\n            .owner(\"db_owner\")\n            .privileges(\"SELECT\")\n            .role(\"test_role\")\n            .schema(\"public\")\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  readOnlyTables:\n    type: postgresql:DefaultPrivileges\n    properties:\n      database: test_db\n      objectType: table\n      owner: db_owner\n      privileges:\n        - SELECT\n      role: test_role\n      schema: public\n```\n\n## Examples\n\nRevoke default privileges for functions for \"public\" role:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.DefaultPrivileges(\"revokePublic\", {\n    database: postgresql_database.example_db.name,\n    role: \"public\",\n    owner: \"object_owner\",\n    objectType: \"function\",\n    privileges: [],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.DefaultPrivileges(\"revokePublic\",\n    database=postgresql_database[\"example_db\"][\"name\"],\n    role=\"public\",\n    owner=\"object_owner\",\n    object_type=\"function\",\n    privileges=[])\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var revokePublic = new PostgreSql.DefaultPrivileges(\"revokePublic\", new PostgreSql.DefaultPrivilegesArgs\n        {\n            Database = postgresql_database.Example_db.Name,\n            Role = \"public\",\n            Owner = \"object_owner\",\n            ObjectType = \"function\",\n            Privileges = {},\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"revokePublic\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.Any(postgresql_database.Example_db.Name),\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tOwner:      pulumi.String(\"object_owner\"),\n\t\t\tObjectType: pulumi.String(\"function\"),\n\t\t\tPrivileges: pulumi.StringArray{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var revokePublic = new DefaultPrivileges(\"revokePublic\", DefaultPrivilegesArgs.builder()        \n            .database(postgresql_database.getExample_db().getName())\n            .role(\"public\")\n            .owner(\"object_owner\")\n            .objectType(\"function\")\n            .privileges()\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  revokePublic:\n    type: postgresql:DefaultPrivileges\n    properties:\n      database: ${postgresql_database.example_db.name}\n      role: public\n      owner: object_owner\n      objectType: function\n      privileges: []\n```\n",
+            "description": "The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readOnlyTables = new postgresql.DefaultPrivileges(\"read_only_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    owner: \"db_owner\",\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nread_only_tables = postgresql.DefaultPrivileges(\"readOnlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    owner=\"db_owner\",\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var readOnlyTables = new PostgreSql.DefaultPrivileges(\"readOnlyTables\", new()\n    {\n        Database = \"test_db\",\n        ObjectType = \"table\",\n        Owner = \"db_owner\",\n        Privileges = new[]\n        {\n            \"SELECT\",\n        },\n        Role = \"test_role\",\n        Schema = \"public\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"readOnlyTables\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tOwner:      pulumi.String(\"db_owner\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.DefaultPrivileges;\nimport com.pulumi.postgresql.DefaultPrivilegesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readOnlyTables = new DefaultPrivileges(\"readOnlyTables\", DefaultPrivilegesArgs.builder()        \n            .database(\"test_db\")\n            .objectType(\"table\")\n            .owner(\"db_owner\")\n            .privileges(\"SELECT\")\n            .role(\"test_role\")\n            .schema(\"public\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  readOnlyTables:\n    type: postgresql:DefaultPrivileges\n    properties:\n      database: test_db\n      objectType: table\n      owner: db_owner\n      privileges:\n        - SELECT\n      role: test_role\n      schema: public\n```\n\n## Examples\n\nRevoke default privileges for functions for \"public\" role:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.DefaultPrivileges(\"revokePublic\", {\n    database: postgresql_database.example_db.name,\n    role: \"public\",\n    owner: \"object_owner\",\n    objectType: \"function\",\n    privileges: [],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.DefaultPrivileges(\"revokePublic\",\n    database=postgresql_database[\"example_db\"][\"name\"],\n    role=\"public\",\n    owner=\"object_owner\",\n    object_type=\"function\",\n    privileges=[])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var revokePublic = new PostgreSql.DefaultPrivileges(\"revokePublic\", new()\n    {\n        Database = postgresql_database.Example_db.Name,\n        Role = \"public\",\n        Owner = \"object_owner\",\n        ObjectType = \"function\",\n        Privileges = new[] {},\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"revokePublic\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.Any(postgresql_database.Example_db.Name),\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tOwner:      pulumi.String(\"object_owner\"),\n\t\t\tObjectType: pulumi.String(\"function\"),\n\t\t\tPrivileges: pulumi.StringArray{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.DefaultPrivileges;\nimport com.pulumi.postgresql.DefaultPrivilegesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var revokePublic = new DefaultPrivileges(\"revokePublic\", DefaultPrivilegesArgs.builder()        \n            .database(postgresql_database.example_db().name())\n            .role(\"public\")\n            .owner(\"object_owner\")\n            .objectType(\"function\")\n            .privileges()\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  revokePublic:\n    type: postgresql:DefaultPrivileges\n    properties:\n      database: ${postgresql_database.example_db.name}\n      role: public\n      owner: object_owner\n      objectType: function\n      privileges: []\n```\n",
             "properties": {
                 "database": {
                     "type": "string",
@@ -580,15 +629,18 @@
             "inputProperties": {
                 "database": {
                     "type": "string",
-                    "description": "The database to grant default privileges for this role.\n"
+                    "description": "The database to grant default privileges for this role.\n",
+                    "willReplaceOnChanges": true
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n"
+                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n",
+                    "willReplaceOnChanges": true
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).\n"
+                    "description": "Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).\n",
+                    "willReplaceOnChanges": true
                 },
                 "privileges": {
                     "type": "array",
@@ -599,15 +651,18 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "The name of the role to which grant default privileges on.\n"
+                    "description": "The name of the role to which grant default privileges on.\n",
+                    "willReplaceOnChanges": true
                 },
                 "schema": {
                     "type": "string",
-                    "description": "The database schema to set default privileges for this role.\n"
+                    "description": "The database schema to set default privileges for this role.\n",
+                    "willReplaceOnChanges": true
                 },
                 "withGrantOption": {
                     "type": "boolean",
-                    "description": "Permit the grant recipient to grant it to others\n"
+                    "description": "Permit the grant recipient to grant it to others\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -622,15 +677,18 @@
                 "properties": {
                     "database": {
                         "type": "string",
-                        "description": "The database to grant default privileges for this role.\n"
+                        "description": "The database to grant default privileges for this role.\n",
+                        "willReplaceOnChanges": true
                     },
                     "objectType": {
                         "type": "string",
-                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n"
+                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n",
+                        "willReplaceOnChanges": true
                     },
                     "owner": {
                         "type": "string",
-                        "description": "Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).\n"
+                        "description": "Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).\n",
+                        "willReplaceOnChanges": true
                     },
                     "privileges": {
                         "type": "array",
@@ -641,15 +699,18 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "The name of the role to which grant default privileges on.\n"
+                        "description": "The name of the role to which grant default privileges on.\n",
+                        "willReplaceOnChanges": true
                     },
                     "schema": {
                         "type": "string",
-                        "description": "The database schema to set default privileges for this role.\n"
+                        "description": "The database schema to set default privileges for this role.\n",
+                        "willReplaceOnChanges": true
                     },
                     "withGrantOption": {
                         "type": "boolean",
-                        "description": "Permit the grant recipient to grant it to others\n"
+                        "description": "Permit the grant recipient to grant it to others\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -657,7 +718,7 @@
             "deprecationMessage": "postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges"
         },
         "postgresql:index/defaultPrivileges:DefaultPrivileges": {
-            "description": "The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readOnlyTables = new postgresql.DefaultPrivileges(\"read_only_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    owner: \"db_owner\",\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nread_only_tables = postgresql.DefaultPrivileges(\"readOnlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    owner=\"db_owner\",\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var readOnlyTables = new PostgreSql.DefaultPrivileges(\"readOnlyTables\", new PostgreSql.DefaultPrivilegesArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"table\",\n            Owner = \"db_owner\",\n            Privileges = \n            {\n                \"SELECT\",\n            },\n            Role = \"test_role\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"readOnlyTables\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tOwner:      pulumi.String(\"db_owner\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readOnlyTables = new DefaultPrivileges(\"readOnlyTables\", DefaultPrivilegesArgs.builder()        \n            .database(\"test_db\")\n            .objectType(\"table\")\n            .owner(\"db_owner\")\n            .privileges(\"SELECT\")\n            .role(\"test_role\")\n            .schema(\"public\")\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  readOnlyTables:\n    type: postgresql:DefaultPrivileges\n    properties:\n      database: test_db\n      objectType: table\n      owner: db_owner\n      privileges:\n        - SELECT\n      role: test_role\n      schema: public\n```\n\n## Examples\n\nRevoke default privileges for functions for \"public\" role:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.DefaultPrivileges(\"revokePublic\", {\n    database: postgresql_database.example_db.name,\n    role: \"public\",\n    owner: \"object_owner\",\n    objectType: \"function\",\n    privileges: [],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.DefaultPrivileges(\"revokePublic\",\n    database=postgresql_database[\"example_db\"][\"name\"],\n    role=\"public\",\n    owner=\"object_owner\",\n    object_type=\"function\",\n    privileges=[])\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var revokePublic = new PostgreSql.DefaultPrivileges(\"revokePublic\", new PostgreSql.DefaultPrivilegesArgs\n        {\n            Database = postgresql_database.Example_db.Name,\n            Role = \"public\",\n            Owner = \"object_owner\",\n            ObjectType = \"function\",\n            Privileges = {},\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"revokePublic\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.Any(postgresql_database.Example_db.Name),\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tOwner:      pulumi.String(\"object_owner\"),\n\t\t\tObjectType: pulumi.String(\"function\"),\n\t\t\tPrivileges: pulumi.StringArray{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var revokePublic = new DefaultPrivileges(\"revokePublic\", DefaultPrivilegesArgs.builder()        \n            .database(postgresql_database.getExample_db().getName())\n            .role(\"public\")\n            .owner(\"object_owner\")\n            .objectType(\"function\")\n            .privileges()\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  revokePublic:\n    type: postgresql:DefaultPrivileges\n    properties:\n      database: ${postgresql_database.example_db.name}\n      role: public\n      owner: object_owner\n      objectType: function\n      privileges: []\n```\n",
+            "description": "The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readOnlyTables = new postgresql.DefaultPrivileges(\"read_only_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    owner: \"db_owner\",\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nread_only_tables = postgresql.DefaultPrivileges(\"readOnlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    owner=\"db_owner\",\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var readOnlyTables = new PostgreSql.DefaultPrivileges(\"readOnlyTables\", new()\n    {\n        Database = \"test_db\",\n        ObjectType = \"table\",\n        Owner = \"db_owner\",\n        Privileges = new[]\n        {\n            \"SELECT\",\n        },\n        Role = \"test_role\",\n        Schema = \"public\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"readOnlyTables\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tOwner:      pulumi.String(\"db_owner\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.DefaultPrivileges;\nimport com.pulumi.postgresql.DefaultPrivilegesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readOnlyTables = new DefaultPrivileges(\"readOnlyTables\", DefaultPrivilegesArgs.builder()        \n            .database(\"test_db\")\n            .objectType(\"table\")\n            .owner(\"db_owner\")\n            .privileges(\"SELECT\")\n            .role(\"test_role\")\n            .schema(\"public\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  readOnlyTables:\n    type: postgresql:DefaultPrivileges\n    properties:\n      database: test_db\n      objectType: table\n      owner: db_owner\n      privileges:\n        - SELECT\n      role: test_role\n      schema: public\n```\n\n## Examples\n\nRevoke default privileges for functions for \"public\" role:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.DefaultPrivileges(\"revokePublic\", {\n    database: postgresql_database.example_db.name,\n    role: \"public\",\n    owner: \"object_owner\",\n    objectType: \"function\",\n    privileges: [],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.DefaultPrivileges(\"revokePublic\",\n    database=postgresql_database[\"example_db\"][\"name\"],\n    role=\"public\",\n    owner=\"object_owner\",\n    object_type=\"function\",\n    privileges=[])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var revokePublic = new PostgreSql.DefaultPrivileges(\"revokePublic\", new()\n    {\n        Database = postgresql_database.Example_db.Name,\n        Role = \"public\",\n        Owner = \"object_owner\",\n        ObjectType = \"function\",\n        Privileges = new[] {},\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"revokePublic\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.Any(postgresql_database.Example_db.Name),\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tOwner:      pulumi.String(\"object_owner\"),\n\t\t\tObjectType: pulumi.String(\"function\"),\n\t\t\tPrivileges: pulumi.StringArray{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.DefaultPrivileges;\nimport com.pulumi.postgresql.DefaultPrivilegesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var revokePublic = new DefaultPrivileges(\"revokePublic\", DefaultPrivilegesArgs.builder()        \n            .database(postgresql_database.example_db().name())\n            .role(\"public\")\n            .owner(\"object_owner\")\n            .objectType(\"function\")\n            .privileges()\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  revokePublic:\n    type: postgresql:DefaultPrivileges\n    properties:\n      database: ${postgresql_database.example_db.name}\n      role: public\n      owner: object_owner\n      objectType: function\n      privileges: []\n```\n",
             "properties": {
                 "database": {
                     "type": "string",
@@ -701,15 +762,18 @@
             "inputProperties": {
                 "database": {
                     "type": "string",
-                    "description": "The database to grant default privileges for this role.\n"
+                    "description": "The database to grant default privileges for this role.\n",
+                    "willReplaceOnChanges": true
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n"
+                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n",
+                    "willReplaceOnChanges": true
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).\n"
+                    "description": "Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).\n",
+                    "willReplaceOnChanges": true
                 },
                 "privileges": {
                     "type": "array",
@@ -720,15 +784,18 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "The name of the role to which grant default privileges on.\n"
+                    "description": "The name of the role to which grant default privileges on.\n",
+                    "willReplaceOnChanges": true
                 },
                 "schema": {
                     "type": "string",
-                    "description": "The database schema to set default privileges for this role.\n"
+                    "description": "The database schema to set default privileges for this role.\n",
+                    "willReplaceOnChanges": true
                 },
                 "withGrantOption": {
                     "type": "boolean",
-                    "description": "Permit the grant recipient to grant it to others\n"
+                    "description": "Permit the grant recipient to grant it to others\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -743,15 +810,18 @@
                 "properties": {
                     "database": {
                         "type": "string",
-                        "description": "The database to grant default privileges for this role.\n"
+                        "description": "The database to grant default privileges for this role.\n",
+                        "willReplaceOnChanges": true
                     },
                     "objectType": {
                         "type": "string",
-                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n"
+                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n",
+                        "willReplaceOnChanges": true
                     },
                     "owner": {
                         "type": "string",
-                        "description": "Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).\n"
+                        "description": "Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).\n",
+                        "willReplaceOnChanges": true
                     },
                     "privileges": {
                         "type": "array",
@@ -762,15 +832,18 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "The name of the role to which grant default privileges on.\n"
+                        "description": "The name of the role to which grant default privileges on.\n",
+                        "willReplaceOnChanges": true
                     },
                     "schema": {
                         "type": "string",
-                        "description": "The database schema to set default privileges for this role.\n"
+                        "description": "The database schema to set default privileges for this role.\n",
+                        "willReplaceOnChanges": true
                     },
                     "withGrantOption": {
                         "type": "boolean",
-                        "description": "Permit the grant recipient to grant it to others\n"
+                        "description": "Permit the grant recipient to grant it to others\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -782,7 +855,7 @@
             ]
         },
         "postgresql:index/extension:Extension": {
-            "description": "The ``postgresql.Extension`` resource creates and manages an extension on a PostgreSQL\nserver.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst myExtension = new postgresql.Extension(\"my_extension\", {});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_extension = postgresql.Extension(\"myExtension\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myExtension = new PostgreSql.Extension(\"myExtension\", new PostgreSql.ExtensionArgs\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewExtension(ctx, \"myExtension\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myExtension = new Extension(\"myExtension\");\n\n        }\n}\n```\n```yaml\nresources:\n  myExtension:\n    type: postgresql:Extension\n```\n",
+            "description": "The ``postgresql.Extension`` resource creates and manages an extension on a PostgreSQL\nserver.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst myExtension = new postgresql.Extension(\"my_extension\", {});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_extension = postgresql.Extension(\"myExtension\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myExtension = new PostgreSql.Extension(\"myExtension\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewExtension(ctx, \"myExtension\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Extension;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myExtension = new Extension(\"myExtension\");\n\n    }\n}\n```\n```yaml\nresources:\n  myExtension:\n    type: postgresql:Extension\n```\n",
             "properties": {
                 "createCascade": {
                     "type": "boolean",
@@ -822,7 +895,8 @@
                 },
                 "database": {
                     "type": "string",
-                    "description": "Which database to create the extension on. Defaults to provider database.\n"
+                    "description": "Which database to create the extension on. Defaults to provider database.\n",
+                    "willReplaceOnChanges": true
                 },
                 "dropCascade": {
                     "type": "boolean",
@@ -830,7 +904,8 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the extension.\n"
+                    "description": "The name of the extension.\n",
+                    "willReplaceOnChanges": true
                 },
                 "schema": {
                     "type": "string",
@@ -850,7 +925,8 @@
                     },
                     "database": {
                         "type": "string",
-                        "description": "Which database to create the extension on. Defaults to provider database.\n"
+                        "description": "Which database to create the extension on. Defaults to provider database.\n",
+                        "willReplaceOnChanges": true
                     },
                     "dropCascade": {
                         "type": "boolean",
@@ -858,7 +934,8 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the extension.\n"
+                        "description": "The name of the extension.\n",
+                        "willReplaceOnChanges": true
                     },
                     "schema": {
                         "type": "string",
@@ -873,7 +950,7 @@
             }
         },
         "postgresql:index/function:Function": {
-            "description": "The ``postgresql.Function`` resource creates and manages a function on a PostgreSQL\nserver.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst increment = new postgresql.Function(\"increment\", {\n    args: [{\n        name: \"i\",\n        type: \"integer\",\n    }],\n    body: `    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n`,\n    returns: \"integer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nincrement = postgresql.Function(\"increment\",\n    args=[postgresql.FunctionArgArgs(\n        name=\"i\",\n        type=\"integer\",\n    )],\n    body=\"\"\"    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n\"\"\",\n    returns=\"integer\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var increment = new PostgreSql.Function(\"increment\", new PostgreSql.FunctionArgs\n        {\n            Args = \n            {\n                new PostgreSql.Inputs.FunctionArgArgs\n                {\n                    Name = \"i\",\n                    Type = \"integer\",\n                },\n            },\n            Body = @\"    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n\",\n            Returns = \"integer\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewFunction(ctx, \"increment\", \u0026postgresql.FunctionArgs{\n\t\t\tArgs: FunctionArgArray{\n\t\t\t\t\u0026FunctionArgArgs{\n\t\t\t\t\tName: pulumi.String(\"i\"),\n\t\t\t\t\tType: pulumi.String(\"integer\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBody:    pulumi.String(fmt.Sprintf(\"%v%v%v%v%v%v%v%v%v%v\", \"    AS \", \"$\", \"\\n\", \"    BEGIN\\n\", \"        RETURN i + 1;\\n\", \"    END;\\n\", \"    \", \"$\", \" LANGUAGE plpgsql;\\n\", \"\\n\")),\n\t\t\tReturns: pulumi.String(\"integer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var increment = new Function(\"increment\", FunctionArgs.builder()        \n            .args(FunctionArg.builder()\n                .name(\"i\")\n                .type(\"integer\")\n                .build())\n            .body(\"\"\"\n    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n            \"\"\")\n            .returns(\"integer\")\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  increment:\n    type: postgresql:Function\n    properties:\n      args:\n        - name: i\n          type: integer\n      body: |2+\n            AS $\n            BEGIN\n                RETURN i + 1;\n            END;\n            $ LANGUAGE plpgsql;\n\n      returns: integer\n```\n",
+            "description": "The ``postgresql.Function`` resource creates and manages a function on a PostgreSQL\nserver.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst increment = new postgresql.Function(\"increment\", {\n    args: [{\n        name: \"i\",\n        type: \"integer\",\n    }],\n    body: `    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n`,\n    returns: \"integer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nincrement = postgresql.Function(\"increment\",\n    args=[postgresql.FunctionArgArgs(\n        name=\"i\",\n        type=\"integer\",\n    )],\n    body=\"\"\"    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n\"\"\",\n    returns=\"integer\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var increment = new PostgreSql.Function(\"increment\", new()\n    {\n        Args = new[]\n        {\n            new PostgreSql.Inputs.FunctionArgArgs\n            {\n                Name = \"i\",\n                Type = \"integer\",\n            },\n        },\n        Body = @\"    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n\",\n        Returns = \"integer\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewFunction(ctx, \"increment\", \u0026postgresql.FunctionArgs{\n\t\t\tArgs: FunctionArgArray{\n\t\t\t\t\u0026FunctionArgArgs{\n\t\t\t\t\tName: pulumi.String(\"i\"),\n\t\t\t\t\tType: pulumi.String(\"integer\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBody: pulumi.String(fmt.Sprintf(`    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n`)),\n\t\t\tReturns: pulumi.String(\"integer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Function;\nimport com.pulumi.postgresql.FunctionArgs;\nimport com.pulumi.postgresql.inputs.FunctionArgArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var increment = new Function(\"increment\", FunctionArgs.builder()        \n            .args(FunctionArgArgs.builder()\n                .name(\"i\")\n                .type(\"integer\")\n                .build())\n            .body(\"\"\"\n    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n            \"\"\")\n            .returns(\"integer\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  increment:\n    type: postgresql:Function\n    properties:\n      args:\n        - name: i\n          type: integer\n      body: |2+\n            AS $\n            BEGIN\n                RETURN i + 1;\n            END;\n            $ LANGUAGE plpgsql;\n\n      returns: integer\n```\n",
             "properties": {
                 "args": {
                     "type": "array",
@@ -885,6 +962,10 @@
                 "body": {
                     "type": "string",
                     "description": "Function body.\nThis should be everything after the return type in the function definition.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The database where the function is located.\nIf not specified, the function is created in the current database.\n"
                 },
                 "dropCascade": {
                     "type": "boolean",
@@ -905,6 +986,7 @@
             },
             "required": [
                 "body",
+                "database",
                 "name",
                 "schema"
             ],
@@ -914,11 +996,17 @@
                     "items": {
                         "$ref": "#/types/postgresql:index/FunctionArg:FunctionArg"
                     },
-                    "description": "List of arguments for the function.\n"
+                    "description": "List of arguments for the function.\n",
+                    "willReplaceOnChanges": true
                 },
                 "body": {
                     "type": "string",
                     "description": "Function body.\nThis should be everything after the return type in the function definition.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The database where the function is located.\nIf not specified, the function is created in the current database.\n",
+                    "willReplaceOnChanges": true
                 },
                 "dropCascade": {
                     "type": "boolean",
@@ -926,15 +1014,18 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the argument.\n"
+                    "description": "The name of the argument.\n",
+                    "willReplaceOnChanges": true
                 },
                 "returns": {
                     "type": "string",
-                    "description": "Type that the function returns.\n"
+                    "description": "Type that the function returns.\n",
+                    "willReplaceOnChanges": true
                 },
                 "schema": {
                     "type": "string",
-                    "description": "The schema where the function is located.\nIf not specified, the function is created in the current schema.\n"
+                    "description": "The schema where the function is located.\nIf not specified, the function is created in the current schema.\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -948,11 +1039,17 @@
                         "items": {
                             "$ref": "#/types/postgresql:index/FunctionArg:FunctionArg"
                         },
-                        "description": "List of arguments for the function.\n"
+                        "description": "List of arguments for the function.\n",
+                        "willReplaceOnChanges": true
                     },
                     "body": {
                         "type": "string",
                         "description": "Function body.\nThis should be everything after the return type in the function definition.\n"
+                    },
+                    "database": {
+                        "type": "string",
+                        "description": "The database where the function is located.\nIf not specified, the function is created in the current database.\n",
+                        "willReplaceOnChanges": true
                     },
                     "dropCascade": {
                         "type": "boolean",
@@ -960,22 +1057,25 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the argument.\n"
+                        "description": "The name of the argument.\n",
+                        "willReplaceOnChanges": true
                     },
                     "returns": {
                         "type": "string",
-                        "description": "Type that the function returns.\n"
+                        "description": "Type that the function returns.\n",
+                        "willReplaceOnChanges": true
                     },
                     "schema": {
                         "type": "string",
-                        "description": "The schema where the function is located.\nIf not specified, the function is created in the current schema.\n"
+                        "description": "The schema where the function is located.\nIf not specified, the function is created in the current schema.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
             }
         },
         "postgresql:index/grant:Grant": {
-            "description": "The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.\n\nSee [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readonlyTables = new postgresql.Grant(\"readonly_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    objects: [\n        \"table1\",\n        \"table2\",\n    ],\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nreadonly_tables = postgresql.Grant(\"readonlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    objects=[\n        \"table1\",\n        \"table2\",\n    ],\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var readonlyTables = new PostgreSql.Grant(\"readonlyTables\", new PostgreSql.GrantArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"table\",\n            Objects = \n            {\n                \"table1\",\n                \"table2\",\n            },\n            Privileges = \n            {\n                \"SELECT\",\n            },\n            Role = \"test_role\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"readonlyTables\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tObjects: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"table1\"),\n\t\t\t\tpulumi.String(\"table2\"),\n\t\t\t},\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readonlyTables = new Grant(\"readonlyTables\", GrantArgs.builder()        \n            .database(\"test_db\")\n            .objectType(\"table\")\n            .objects(            \n                \"table1\",\n                \"table2\")\n            .privileges(\"SELECT\")\n            .role(\"test_role\")\n            .schema(\"public\")\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  readonlyTables:\n    type: postgresql:Grant\n    properties:\n      database: test_db\n      objectType: table\n      objects:\n        - table1\n        - table2\n      privileges:\n        - SELECT\n      role: test_role\n      schema: public\n```\n\n## Examples\n\nRevoke default accesses for public schema:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.Grant(\"revoke_public\", {\n    database: \"test_db\",\n    objectType: \"schema\",\n    privileges: [],\n    role: \"public\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.Grant(\"revokePublic\",\n    database=\"test_db\",\n    object_type=\"schema\",\n    privileges=[],\n    role=\"public\",\n    schema=\"public\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var revokePublic = new PostgreSql.Grant(\"revokePublic\", new PostgreSql.GrantArgs\n        {\n            Database = \"test_db\",\n            ObjectType = \"schema\",\n            Privileges = {},\n            Role = \"public\",\n            Schema = \"public\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"revokePublic\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"schema\"),\n\t\t\tPrivileges: pulumi.StringArray{},\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tSchema:     pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var revokePublic = new Grant(\"revokePublic\", GrantArgs.builder()        \n            .database(\"test_db\")\n            .objectType(\"schema\")\n            .privileges()\n            .role(\"public\")\n            .schema(\"public\")\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  revokePublic:\n    type: postgresql:Grant\n    properties:\n      database: test_db\n      objectType: schema\n      privileges: []\n      role: public\n      schema: public\n```\n",
+            "description": "The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.\n\nSee [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readonlyTables = new postgresql.Grant(\"readonly_tables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    objects: [\n        \"table1\",\n        \"table2\",\n    ],\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nreadonly_tables = postgresql.Grant(\"readonlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    objects=[\n        \"table1\",\n        \"table2\",\n    ],\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var readonlyTables = new PostgreSql.Grant(\"readonlyTables\", new()\n    {\n        Database = \"test_db\",\n        ObjectType = \"table\",\n        Objects = new[]\n        {\n            \"table1\",\n            \"table2\",\n        },\n        Privileges = new[]\n        {\n            \"SELECT\",\n        },\n        Role = \"test_role\",\n        Schema = \"public\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"readonlyTables\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tObjects: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"table1\"),\n\t\t\t\tpulumi.String(\"table2\"),\n\t\t\t},\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Grant;\nimport com.pulumi.postgresql.GrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readonlyTables = new Grant(\"readonlyTables\", GrantArgs.builder()        \n            .database(\"test_db\")\n            .objectType(\"table\")\n            .objects(            \n                \"table1\",\n                \"table2\")\n            .privileges(\"SELECT\")\n            .role(\"test_role\")\n            .schema(\"public\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  readonlyTables:\n    type: postgresql:Grant\n    properties:\n      database: test_db\n      objectType: table\n      objects:\n        - table1\n        - table2\n      privileges:\n        - SELECT\n      role: test_role\n      schema: public\n```\n\n## Examples\n\nRevoke default accesses for public schema:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.Grant(\"revoke_public\", {\n    database: \"test_db\",\n    objectType: \"schema\",\n    privileges: [],\n    role: \"public\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.Grant(\"revokePublic\",\n    database=\"test_db\",\n    object_type=\"schema\",\n    privileges=[],\n    role=\"public\",\n    schema=\"public\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var revokePublic = new PostgreSql.Grant(\"revokePublic\", new()\n    {\n        Database = \"test_db\",\n        ObjectType = \"schema\",\n        Privileges = new[] {},\n        Role = \"public\",\n        Schema = \"public\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"revokePublic\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"schema\"),\n\t\t\tPrivileges: pulumi.StringArray{},\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tSchema:     pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Grant;\nimport com.pulumi.postgresql.GrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var revokePublic = new Grant(\"revokePublic\", GrantArgs.builder()        \n            .database(\"test_db\")\n            .objectType(\"schema\")\n            .privileges()\n            .role(\"public\")\n            .schema(\"public\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  revokePublic:\n    type: postgresql:Grant\n    properties:\n      database: test_db\n      objectType: schema\n      privileges: []\n      role: public\n      schema: public\n```\n",
             "properties": {
                 "database": {
                     "type": "string",
@@ -1021,18 +1121,21 @@
             "inputProperties": {
                 "database": {
                     "type": "string",
-                    "description": "The database to grant privileges on for this role.\n"
+                    "description": "The database to grant privileges on for this role.\n",
+                    "willReplaceOnChanges": true
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).\n"
+                    "description": "The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).\n",
+                    "willReplaceOnChanges": true
                 },
                 "objects": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.\n"
+                    "description": "The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.\n",
+                    "willReplaceOnChanges": true
                 },
                 "privileges": {
                     "type": "array",
@@ -1043,15 +1146,18 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "The name of the role to grant privileges on, Set it to \"public\" for all roles.\n"
+                    "description": "The name of the role to grant privileges on, Set it to \"public\" for all roles.\n",
+                    "willReplaceOnChanges": true
                 },
                 "schema": {
                     "type": "string",
-                    "description": "The database schema to grant privileges on for this role (Required except if object_type is \"database\")\n"
+                    "description": "The database schema to grant privileges on for this role (Required except if object_type is \"database\")\n",
+                    "willReplaceOnChanges": true
                 },
                 "withGrantOption": {
                     "type": "boolean",
-                    "description": "Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.\n"
+                    "description": "Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -1065,18 +1171,21 @@
                 "properties": {
                     "database": {
                         "type": "string",
-                        "description": "The database to grant privileges on for this role.\n"
+                        "description": "The database to grant privileges on for this role.\n",
+                        "willReplaceOnChanges": true
                     },
                     "objectType": {
                         "type": "string",
-                        "description": "The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).\n"
+                        "description": "The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).\n",
+                        "willReplaceOnChanges": true
                     },
                     "objects": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.\n"
+                        "description": "The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.\n",
+                        "willReplaceOnChanges": true
                     },
                     "privileges": {
                         "type": "array",
@@ -1087,22 +1196,25 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "The name of the role to grant privileges on, Set it to \"public\" for all roles.\n"
+                        "description": "The name of the role to grant privileges on, Set it to \"public\" for all roles.\n",
+                        "willReplaceOnChanges": true
                     },
                     "schema": {
                         "type": "string",
-                        "description": "The database schema to grant privileges on for this role (Required except if object_type is \"database\")\n"
+                        "description": "The database schema to grant privileges on for this role (Required except if object_type is \"database\")\n",
+                        "willReplaceOnChanges": true
                     },
                     "withGrantOption": {
                         "type": "boolean",
-                        "description": "Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.\n"
+                        "description": "Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
             }
         },
         "postgresql:index/grantRole:GrantRole": {
-            "description": "The ``postgresql.GrantRole`` resource creates and manages membership in a role to one or more other roles in a non-authoritative way.\n\nWhen using ``postgresql.GrantRole`` resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.\n\n\u003e **Note:** This resource needs PostgreSQL version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst grantRoot = new postgresql.GrantRole(\"grant_root\", {\n    grantRole: \"application\",\n    role: \"root\",\n    withAdminOption: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\ngrant_root = postgresql.GrantRole(\"grantRoot\",\n    grant_role=\"application\",\n    role=\"root\",\n    with_admin_option=True)\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var grantRoot = new PostgreSql.GrantRole(\"grantRoot\", new PostgreSql.GrantRoleArgs\n        {\n            GrantRole = \"application\",\n            Role = \"root\",\n            WithAdminOption = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrantRole(ctx, \"grantRoot\", \u0026postgresql.GrantRoleArgs{\n\t\t\tGrantRole:       pulumi.String(\"application\"),\n\t\t\tRole:            pulumi.String(\"root\"),\n\t\t\tWithAdminOption: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var grantRoot = new GrantRole(\"grantRoot\", GrantRoleArgs.builder()        \n            .grantRole(\"application\")\n            .role(\"root\")\n            .withAdminOption(true)\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  grantRoot:\n    type: postgresql:GrantRole\n    properties:\n      grantRole: application\n      role: root\n      withAdminOption: true\n```\n\n\u003e **Note:** If you use `postgresql.GrantRole` for a role that you also manage with a `postgresql.Role` resource, you need to ignore the changes of the `roles` attribute in the `postgresql.Role` resource or they will fight over what your role grants should be. e.g.:\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var bob = new Role(\"bob\", RoleArgs.builder()        \n            .role(\"bob\")\n            .build());\n\n        var bobAdmin = new GrantRole(\"bobAdmin\", GrantRoleArgs.builder()        \n            .role(\"bob\")\n            .grantRole(\"admin\")\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  bob:\n    type: postgresql:Role\n    properties:\n      role: bob\n  bobAdmin:\n    type: postgresql:GrantRole\n    properties:\n      role: bob\n      grantRole: admin\n```\n",
+            "description": "The ``postgresql.GrantRole`` resource creates and manages membership in a role to one or more other roles in a non-authoritative way.\n\nWhen using ``postgresql.GrantRole`` resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.\n\n\u003e **Note:** This resource needs PostgreSQL version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst grantRoot = new postgresql.GrantRole(\"grant_root\", {\n    grantRole: \"application\",\n    role: \"root\",\n    withAdminOption: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\ngrant_root = postgresql.GrantRole(\"grantRoot\",\n    grant_role=\"application\",\n    role=\"root\",\n    with_admin_option=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var grantRoot = new PostgreSql.GrantRole(\"grantRoot\", new()\n    {\n        GrantRoleName = \"application\",\n        Role = \"root\",\n        WithAdminOption = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrantRole(ctx, \"grantRoot\", \u0026postgresql.GrantRoleArgs{\n\t\t\tGrantRole:       pulumi.String(\"application\"),\n\t\t\tRole:            pulumi.String(\"root\"),\n\t\t\tWithAdminOption: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.GrantRole;\nimport com.pulumi.postgresql.GrantRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var grantRoot = new GrantRole(\"grantRoot\", GrantRoleArgs.builder()        \n            .grantRole(\"application\")\n            .role(\"root\")\n            .withAdminOption(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  grantRoot:\n    type: postgresql:GrantRole\n    properties:\n      grantRole: application\n      role: root\n      withAdminOption: true\n```\n\n\u003e **Note:** If you use `postgresql.GrantRole` for a role that you also manage with a `postgresql.Role` resource, you need to ignore the changes of the `roles` attribute in the `postgresql.Role` resource or they will fight over what your role grants should be. e.g.:\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Role;\nimport com.pulumi.postgresql.RoleArgs;\nimport com.pulumi.postgresql.GrantRole;\nimport com.pulumi.postgresql.GrantRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var bob = new Role(\"bob\", RoleArgs.builder()        \n            .role(\"bob\")\n            .build());\n\n        var bobAdmin = new GrantRole(\"bobAdmin\", GrantRoleArgs.builder()        \n            .role(\"bob\")\n            .grantRole(\"admin\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bob:\n    type: postgresql:Role\n    properties:\n      role: bob\n  bobAdmin:\n    type: postgresql:GrantRole\n    properties:\n      role: bob\n      grantRole: admin\n```\n",
             "properties": {
                 "grantRole": {
                     "type": "string",
@@ -1134,15 +1246,18 @@
                         "csharp": {
                             "name": "GrantRoleName"
                         }
-                    }
+                    },
+                    "willReplaceOnChanges": true
                 },
                 "role": {
                     "type": "string",
-                    "description": "The name of the role that is granted a new membership.\n"
+                    "description": "The name of the role that is granted a new membership.\n",
+                    "willReplaceOnChanges": true
                 },
                 "withAdminOption": {
                     "type": "boolean",
-                    "description": "Giving ability to grant membership to others or not for `role`. (Default: false)\n"
+                    "description": "Giving ability to grant membership to others or not for `role`. (Default: false)\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -1159,22 +1274,25 @@
                             "csharp": {
                                 "name": "GrantRoleName"
                             }
-                        }
+                        },
+                        "willReplaceOnChanges": true
                     },
                     "role": {
                         "type": "string",
-                        "description": "The name of the role that is granted a new membership.\n"
+                        "description": "The name of the role that is granted a new membership.\n",
+                        "willReplaceOnChanges": true
                     },
                     "withAdminOption": {
                         "type": "boolean",
-                        "description": "Giving ability to grant membership to others or not for `role`. (Default: false)\n"
+                        "description": "Giving ability to grant membership to others or not for `role`. (Default: false)\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
             }
         },
         "postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot": {
-            "description": "The ``postgresql.PhysicalReplicationSlot`` resource creates and manages a physical replication slot on a PostgreSQL\nserver. This is useful to setup a cross datacenter replication, with Patroni for example, or permit\nany stand-by cluster to replicate physically data.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst mySlot = new postgresql.PhysicalReplicationSlot(\"my_slot\", {});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_slot = postgresql.PhysicalReplicationSlot(\"mySlot\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mySlot = new PostgreSql.PhysicalReplicationSlot(\"mySlot\", new PostgreSql.PhysicalReplicationSlotArgs\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewPhysicalReplicationSlot(ctx, \"mySlot\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mySlot = new PhysicalReplicationSlot(\"mySlot\");\n\n        }\n}\n```\n```yaml\nresources:\n  mySlot:\n    type: postgresql:PhysicalReplicationSlot\n```\n",
+            "description": "The ``postgresql.PhysicalReplicationSlot`` resource creates and manages a physical replication slot on a PostgreSQL\nserver. This is useful to setup a cross datacenter replication, with Patroni for example, or permit\nany stand-by cluster to replicate physically data.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst mySlot = new postgresql.PhysicalReplicationSlot(\"my_slot\", {});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_slot = postgresql.PhysicalReplicationSlot(\"mySlot\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mySlot = new PostgreSql.PhysicalReplicationSlot(\"mySlot\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewPhysicalReplicationSlot(ctx, \"mySlot\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.PhysicalReplicationSlot;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mySlot = new PhysicalReplicationSlot(\"mySlot\");\n\n    }\n}\n```\n```yaml\nresources:\n  mySlot:\n    type: postgresql:PhysicalReplicationSlot\n```\n",
             "properties": {
                 "name": {
                     "type": "string",
@@ -1187,7 +1305,8 @@
             "inputProperties": {
                 "name": {
                     "type": "string",
-                    "description": "The name of the replication slot.\n"
+                    "description": "The name of the replication slot.\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "stateInputs": {
@@ -1195,14 +1314,15 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "The name of the replication slot.\n"
+                        "description": "The name of the replication slot.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
             }
         },
         "postgresql:index/publication:Publication": {
-            "description": "The `postgresql.Publication` resource creates and manages a publication on a PostgreSQL\nserver.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst publication = new postgresql.Publication(\"publication\", {\n    tables: [\n        \"public.test\",\n        \"another_schema.test\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\npublication = postgresql.Publication(\"publication\", tables=[\n    \"public.test\",\n    \"another_schema.test\",\n])\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var publication = new PostgreSql.Publication(\"publication\", new PostgreSql.PublicationArgs\n        {\n            Tables = \n            {\n                \"public.test\",\n                \"another_schema.test\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewPublication(ctx, \"publication\", \u0026postgresql.PublicationArgs{\n\t\t\tTables: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"public.test\"),\n\t\t\t\tpulumi.String(\"another_schema.test\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var publication = new Publication(\"publication\", PublicationArgs.builder()        \n            .tables(            \n                \"public.test\",\n                \"another_schema.test\")\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  publication:\n    type: postgresql:Publication\n    properties:\n      tables:\n        - public.test\n        - another_schema.test\n```\n",
+            "description": "The `postgresql.Publication` resource creates and manages a publication on a PostgreSQL\nserver.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst publication = new postgresql.Publication(\"publication\", {\n    tables: [\n        \"public.test\",\n        \"another_schema.test\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\npublication = postgresql.Publication(\"publication\", tables=[\n    \"public.test\",\n    \"another_schema.test\",\n])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var publication = new PostgreSql.Publication(\"publication\", new()\n    {\n        Tables = new[]\n        {\n            \"public.test\",\n            \"another_schema.test\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewPublication(ctx, \"publication\", \u0026postgresql.PublicationArgs{\n\t\t\tTables: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"public.test\"),\n\t\t\t\tpulumi.String(\"another_schema.test\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Publication;\nimport com.pulumi.postgresql.PublicationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var publication = new Publication(\"publication\", PublicationArgs.builder()        \n            .tables(            \n                \"public.test\",\n                \"another_schema.test\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  publication:\n    type: postgresql:Publication\n    properties:\n      tables:\n        - public.test\n        - another_schema.test\n```\n",
             "properties": {
                 "allTables": {
                     "type": "boolean",
@@ -1254,11 +1374,13 @@
             "inputProperties": {
                 "allTables": {
                     "type": "boolean",
-                    "description": "Should be ALL TABLES added to the publication. Defaults to 'false'\n"
+                    "description": "Should be ALL TABLES added to the publication. Defaults to 'false'\n",
+                    "willReplaceOnChanges": true
                 },
                 "database": {
                     "type": "string",
-                    "description": "Which database to create the publication on. Defaults to provider database.\n"
+                    "description": "Which database to create the publication on. Defaults to provider database.\n",
+                    "willReplaceOnChanges": true
                 },
                 "dropCascade": {
                     "type": "boolean",
@@ -1296,11 +1418,13 @@
                 "properties": {
                     "allTables": {
                         "type": "boolean",
-                        "description": "Should be ALL TABLES added to the publication. Defaults to 'false'\n"
+                        "description": "Should be ALL TABLES added to the publication. Defaults to 'false'\n",
+                        "willReplaceOnChanges": true
                     },
                     "database": {
                         "type": "string",
-                        "description": "Which database to create the publication on. Defaults to provider database.\n"
+                        "description": "Which database to create the publication on. Defaults to provider database.\n",
+                        "willReplaceOnChanges": true
                     },
                     "dropCascade": {
                         "type": "boolean",
@@ -1337,7 +1461,7 @@
             }
         },
         "postgresql:index/replicationSlot:ReplicationSlot": {
-            "description": "The ``postgresql.ReplicationSlot`` resource creates and manages a replication slot on a PostgreSQL\nserver.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst mySlot = new postgresql.ReplicationSlot(\"my_slot\", {\n    plugin: \"test_decoding\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_slot = postgresql.ReplicationSlot(\"mySlot\", plugin=\"test_decoding\")\n```\n```csharp\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mySlot = new PostgreSql.ReplicationSlot(\"mySlot\", new PostgreSql.ReplicationSlotArgs\n        {\n            Plugin = \"test_decoding\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewReplicationSlot(ctx, \"mySlot\", \u0026postgresql.ReplicationSlotArgs{\n\t\t\tPlugin: pulumi.String(\"test_decoding\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mySlot = new ReplicationSlot(\"mySlot\", ReplicationSlotArgs.builder()        \n            .plugin(\"test_decoding\")\n            .build());\n\n        }\n}\n```\n```yaml\nresources:\n  mySlot:\n    type: postgresql:ReplicationSlot\n    properties:\n      plugin: test_decoding\n```\n",
+            "description": "The ``postgresql.ReplicationSlot`` resource creates and manages a replication slot on a PostgreSQL\nserver.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst mySlot = new postgresql.ReplicationSlot(\"my_slot\", {\n    plugin: \"test_decoding\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_slot = postgresql.ReplicationSlot(\"mySlot\", plugin=\"test_decoding\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mySlot = new PostgreSql.ReplicationSlot(\"mySlot\", new()\n    {\n        Plugin = \"test_decoding\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewReplicationSlot(ctx, \"mySlot\", \u0026postgresql.ReplicationSlotArgs{\n\t\t\tPlugin: pulumi.String(\"test_decoding\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.ReplicationSlot;\nimport com.pulumi.postgresql.ReplicationSlotArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mySlot = new ReplicationSlot(\"mySlot\", ReplicationSlotArgs.builder()        \n            .plugin(\"test_decoding\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mySlot:\n    type: postgresql:ReplicationSlot\n    properties:\n      plugin: test_decoding\n```\n",
             "properties": {
                 "database": {
                     "type": "string",
@@ -1360,15 +1484,18 @@
             "inputProperties": {
                 "database": {
                     "type": "string",
-                    "description": "Which database to create the replication slot on. Defaults to provider database.\n"
+                    "description": "Which database to create the replication slot on. Defaults to provider database.\n",
+                    "willReplaceOnChanges": true
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the replication slot.\n"
+                    "description": "The name of the replication slot.\n",
+                    "willReplaceOnChanges": true
                 },
                 "plugin": {
                     "type": "string",
-                    "description": "Sets the output plugin.\n"
+                    "description": "Sets the output plugin.\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -1379,15 +1506,18 @@
                 "properties": {
                     "database": {
                         "type": "string",
-                        "description": "Which database to create the replication slot on. Defaults to provider database.\n"
+                        "description": "Which database to create the replication slot on. Defaults to provider database.\n",
+                        "willReplaceOnChanges": true
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the replication slot.\n"
+                        "description": "The name of the replication slot.\n",
+                        "willReplaceOnChanges": true
                     },
                     "plugin": {
                         "type": "string",
-                        "description": "Sets the output plugin.\n"
+                        "description": "Sets the output plugin.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -1395,6 +1525,10 @@
         },
         "postgresql:index/role:Role": {
             "properties": {
+                "assumeRole": {
+                    "type": "string",
+                    "description": "Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).\n"
+                },
                 "bypassRowLevelSecurity": {
                     "type": "boolean",
                     "description": "Defines whether a role bypasses every\nrow-level security (RLS) policy.  Default value is `false`.\n"
@@ -1482,6 +1616,10 @@
                 "name"
             ],
             "inputProperties": {
+                "assumeRole": {
+                    "type": "string",
+                    "description": "Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).\n"
+                },
                 "bypassRowLevelSecurity": {
                     "type": "boolean",
                     "description": "Defines whether a role bypasses every\nrow-level security (RLS) policy.  Default value is `false`.\n"
@@ -1568,6 +1706,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Role resources.\n",
                 "properties": {
+                    "assumeRole": {
+                        "type": "string",
+                        "description": "Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).\n"
+                    },
                     "bypassRowLevelSecurity": {
                         "type": "boolean",
                         "description": "Defines whether a role bypasses every\nrow-level security (RLS) policy.  Default value is `false`.\n"
@@ -1694,7 +1836,8 @@
             "inputProperties": {
                 "database": {
                     "type": "string",
-                    "description": "The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)\n"
+                    "description": "The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)\n",
+                    "willReplaceOnChanges": true
                 },
                 "dropCascade": {
                     "type": "boolean",
@@ -1726,7 +1869,8 @@
                 "properties": {
                     "database": {
                         "type": "string",
-                        "description": "The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)\n"
+                        "description": "The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)\n",
+                        "willReplaceOnChanges": true
                     },
                     "dropCascade": {
                         "type": "boolean",
@@ -1754,44 +1898,6 @@
                     }
                 },
                 "type": "object"
-            }
-        }
-    },
-    "language": {
-        "csharp": {
-            "compatibility": "tfbridge20",
-            "namespaces": {
-                "postgresql": "PostgreSql"
-            },
-            "packageReferences": {
-                "Pulumi": "3.*"
-            }
-        },
-        "go": {
-            "generateExtraInputTypes": true,
-            "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-        },
-        "nodejs": {
-            "compatibility": "tfbridge20",
-            "dependencies": {
-                "@pulumi/pulumi": "^3.0.0"
-            },
-            "devDependencies": {
-                "@types/mime": "^2.0.0",
-                "@types/node": "^10.0.0"
-            },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing postgresql cloud resources.",
-            "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/cyrilgdn/terraform-provider-postgresql)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-postgresql` repo](https://github.com/pulumi/pulumi-postgresql/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`cyrilgdn/terraform-provider-postgresql` repo](https://github.com/cyrilgdn/terraform-provider-postgresql/issues).",
-            "typescriptVersion": ""
-        },
-        "python": {
-            "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/cyrilgdn/terraform-provider-postgresql)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-postgresql` repo](https://github.com/pulumi/pulumi-postgresql/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`cyrilgdn/terraform-provider-postgresql` repo](https://github.com/cyrilgdn/terraform-provider-postgresql/issues).",
-            "requires": {
-                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }
         }
     }

@@ -33,6 +33,10 @@ export class Role extends pulumi.CustomResource {
     }
 
     /**
+     * Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
+     */
+    public readonly assumeRole!: pulumi.Output<string | undefined>;
+    /**
      * Defines whether a role bypasses every
      * row-level security (RLS) policy.  Default value is `false`.
      */
@@ -160,6 +164,7 @@ export class Role extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
+            resourceInputs["assumeRole"] = state ? state.assumeRole : undefined;
             resourceInputs["bypassRowLevelSecurity"] = state ? state.bypassRowLevelSecurity : undefined;
             resourceInputs["connectionLimit"] = state ? state.connectionLimit : undefined;
             resourceInputs["createDatabase"] = state ? state.createDatabase : undefined;
@@ -181,6 +186,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["validUntil"] = state ? state.validUntil : undefined;
         } else {
             const args = argsOrState as RoleArgs | undefined;
+            resourceInputs["assumeRole"] = args ? args.assumeRole : undefined;
             resourceInputs["bypassRowLevelSecurity"] = args ? args.bypassRowLevelSecurity : undefined;
             resourceInputs["connectionLimit"] = args ? args.connectionLimit : undefined;
             resourceInputs["createDatabase"] = args ? args.createDatabase : undefined;
@@ -210,6 +216,10 @@ export class Role extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Role resources.
  */
 export interface RoleState {
+    /**
+     * Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
+     */
+    assumeRole?: pulumi.Input<string>;
     /**
      * Defines whether a role bypasses every
      * row-level security (RLS) policy.  Default value is `false`.
@@ -330,6 +340,10 @@ export interface RoleState {
  * The set of arguments for constructing a Role resource.
  */
 export interface RoleArgs {
+    /**
+     * Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
+     */
+    assumeRole?: pulumi.Input<string>;
     /**
      * Defines whether a role bypasses every
      * row-level security (RLS) policy.  Default value is `false`.

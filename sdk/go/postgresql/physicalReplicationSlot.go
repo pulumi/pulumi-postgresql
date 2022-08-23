@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The ``PhysicalReplicationSlot`` resource creates and manages a physical replication slot on a PostgreSQL
+// The “PhysicalReplicationSlot“ resource creates and manages a physical replication slot on a PostgreSQL
 // server. This is useful to setup a cross datacenter replication, with Patroni for example, or permit
 // any stand-by cluster to replicate physically data.
 //
@@ -20,19 +20,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := postgresql.NewPhysicalReplicationSlot(ctx, "mySlot", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewPhysicalReplicationSlot(ctx, "mySlot", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type PhysicalReplicationSlot struct {
 	pulumi.CustomResourceState
@@ -120,7 +123,7 @@ func (i *PhysicalReplicationSlot) ToPhysicalReplicationSlotOutputWithContext(ctx
 // PhysicalReplicationSlotArrayInput is an input type that accepts PhysicalReplicationSlotArray and PhysicalReplicationSlotArrayOutput values.
 // You can construct a concrete instance of `PhysicalReplicationSlotArrayInput` via:
 //
-//          PhysicalReplicationSlotArray{ PhysicalReplicationSlotArgs{...} }
+//	PhysicalReplicationSlotArray{ PhysicalReplicationSlotArgs{...} }
 type PhysicalReplicationSlotArrayInput interface {
 	pulumi.Input
 
@@ -145,7 +148,7 @@ func (i PhysicalReplicationSlotArray) ToPhysicalReplicationSlotArrayOutputWithCo
 // PhysicalReplicationSlotMapInput is an input type that accepts PhysicalReplicationSlotMap and PhysicalReplicationSlotMapOutput values.
 // You can construct a concrete instance of `PhysicalReplicationSlotMapInput` via:
 //
-//          PhysicalReplicationSlotMap{ "key": PhysicalReplicationSlotArgs{...} }
+//	PhysicalReplicationSlotMap{ "key": PhysicalReplicationSlotArgs{...} }
 type PhysicalReplicationSlotMapInput interface {
 	pulumi.Input
 

@@ -24,7 +24,7 @@ type FunctionArg struct {
 // FunctionArgInput is an input type that accepts FunctionArgArgs and FunctionArgOutput values.
 // You can construct a concrete instance of `FunctionArgInput` via:
 //
-//          FunctionArgArgs{...}
+//	FunctionArgArgs{...}
 type FunctionArgInput interface {
 	pulumi.Input
 
@@ -58,7 +58,7 @@ func (i FunctionArgArgs) ToFunctionArgOutputWithContext(ctx context.Context) Fun
 // FunctionArgArrayInput is an input type that accepts FunctionArgArray and FunctionArgArrayOutput values.
 // You can construct a concrete instance of `FunctionArgArrayInput` via:
 //
-//          FunctionArgArray{ FunctionArgArgs{...} }
+//	FunctionArgArray{ FunctionArgArgs{...} }
 type FunctionArgArrayInput interface {
 	pulumi.Input
 
@@ -142,7 +142,7 @@ type ProviderClientcert struct {
 // ProviderClientcertInput is an input type that accepts ProviderClientcertArgs and ProviderClientcertOutput values.
 // You can construct a concrete instance of `ProviderClientcertInput` via:
 //
-//          ProviderClientcertArgs{...}
+//	ProviderClientcertArgs{...}
 type ProviderClientcertInput interface {
 	pulumi.Input
 
@@ -178,11 +178,11 @@ func (i ProviderClientcertArgs) ToProviderClientcertPtrOutputWithContext(ctx con
 // ProviderClientcertPtrInput is an input type that accepts ProviderClientcertArgs, ProviderClientcertPtr and ProviderClientcertPtrOutput values.
 // You can construct a concrete instance of `ProviderClientcertPtrInput` via:
 //
-//          ProviderClientcertArgs{...}
+//	        ProviderClientcertArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ProviderClientcertPtrInput interface {
 	pulumi.Input
 
@@ -298,7 +298,7 @@ type SchemaPolicy struct {
 // SchemaPolicyInput is an input type that accepts SchemaPolicyArgs and SchemaPolicyOutput values.
 // You can construct a concrete instance of `SchemaPolicyInput` via:
 //
-//          SchemaPolicyArgs{...}
+//	SchemaPolicyArgs{...}
 type SchemaPolicyInput interface {
 	pulumi.Input
 
@@ -334,7 +334,7 @@ func (i SchemaPolicyArgs) ToSchemaPolicyOutputWithContext(ctx context.Context) S
 // SchemaPolicyArrayInput is an input type that accepts SchemaPolicyArray and SchemaPolicyArrayOutput values.
 // You can construct a concrete instance of `SchemaPolicyArrayInput` via:
 //
-//          SchemaPolicyArray{ SchemaPolicyArgs{...} }
+//	SchemaPolicyArray{ SchemaPolicyArgs{...} }
 type SchemaPolicyArrayInput interface {
 	pulumi.Input
 

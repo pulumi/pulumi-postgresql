@@ -17,28 +17,26 @@ namespace Pulumi.PostgreSql
     /// ## Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using PostgreSql = Pulumi.PostgreSql;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var readOnlyTables = new PostgreSql.DefaultPrivileges("readOnlyTables", new()
     ///     {
-    ///         var readOnlyTables = new PostgreSql.DefaultPrivileges("readOnlyTables", new PostgreSql.DefaultPrivilegesArgs
+    ///         Database = "test_db",
+    ///         ObjectType = "table",
+    ///         Owner = "db_owner",
+    ///         Privileges = new[]
     ///         {
-    ///             Database = "test_db",
-    ///             ObjectType = "table",
-    ///             Owner = "db_owner",
-    ///             Privileges = 
-    ///             {
-    ///                 "SELECT",
-    ///             },
-    ///             Role = "test_role",
-    ///             Schema = "public",
-    ///         });
-    ///     }
+    ///             "SELECT",
+    ///         },
+    ///         Role = "test_role",
+    ///         Schema = "public",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Examples
@@ -46,29 +44,27 @@ namespace Pulumi.PostgreSql
     /// Revoke default privileges for functions for "public" role:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using PostgreSql = Pulumi.PostgreSql;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var revokePublic = new PostgreSql.DefaultPrivileges("revokePublic", new()
     ///     {
-    ///         var revokePublic = new PostgreSql.DefaultPrivileges("revokePublic", new PostgreSql.DefaultPrivilegesArgs
-    ///         {
-    ///             Database = postgresql_database.Example_db.Name,
-    ///             Role = "public",
-    ///             Owner = "object_owner",
-    ///             ObjectType = "function",
-    ///             Privileges = {},
-    ///         });
-    ///     }
+    ///         Database = postgresql_database.Example_db.Name,
+    ///         Role = "public",
+    ///         Owner = "object_owner",
+    ///         ObjectType = "function",
+    ///         Privileges = new[] {},
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [Obsolete(@"postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges")]
     [PostgreSqlResourceType("postgresql:index/defaultPrivileg:DefaultPrivileg")]
-    public partial class DefaultPrivileg : Pulumi.CustomResource
+    public partial class DefaultPrivileg : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The database to grant default privileges for this role.
@@ -156,7 +152,7 @@ namespace Pulumi.PostgreSql
         }
     }
 
-    public sealed class DefaultPrivilegArgs : Pulumi.ResourceArgs
+    public sealed class DefaultPrivilegArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The database to grant default privileges for this role.
@@ -209,9 +205,10 @@ namespace Pulumi.PostgreSql
         public DefaultPrivilegArgs()
         {
         }
+        public static new DefaultPrivilegArgs Empty => new DefaultPrivilegArgs();
     }
 
-    public sealed class DefaultPrivilegState : Pulumi.ResourceArgs
+    public sealed class DefaultPrivilegState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The database to grant default privileges for this role.
@@ -264,5 +261,6 @@ namespace Pulumi.PostgreSql
         public DefaultPrivilegState()
         {
         }
+        public static new DefaultPrivilegState Empty => new DefaultPrivilegState();
     }
 }

@@ -10,8 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.PostgreSql
 {
     [PostgreSqlResourceType("postgresql:index/role:Role")]
-    public partial class Role : Pulumi.CustomResource
+    public partial class Role : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
+        /// </summary>
+        [Output("assumeRole")]
+        public Output<string?> AssumeRole { get; private set; } = null!;
+
         /// <summary>
         /// Defines whether a role bypasses every
         /// row-level security (RLS) policy.  Default value is `false`.
@@ -205,8 +211,14 @@ namespace Pulumi.PostgreSql
         }
     }
 
-    public sealed class RoleArgs : Pulumi.ResourceArgs
+    public sealed class RoleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
+        /// </summary>
+        [Input("assumeRole")]
+        public Input<string>? AssumeRole { get; set; }
+
         /// <summary>
         /// Defines whether a role bypasses every
         /// row-level security (RLS) policy.  Default value is `false`.
@@ -371,10 +383,17 @@ namespace Pulumi.PostgreSql
         public RoleArgs()
         {
         }
+        public static new RoleArgs Empty => new RoleArgs();
     }
 
-    public sealed class RoleState : Pulumi.ResourceArgs
+    public sealed class RoleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
+        /// </summary>
+        [Input("assumeRole")]
+        public Input<string>? AssumeRole { get; set; }
+
         /// <summary>
         /// Defines whether a role bypasses every
         /// row-level security (RLS) policy.  Default value is `false`.
@@ -539,5 +558,6 @@ namespace Pulumi.PostgreSql
         public RoleState()
         {
         }
+        public static new RoleState Empty => new RoleState();
     }
 }

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The ``ReplicationSlot`` resource creates and manages a replication slot on a PostgreSQL
+// The “ReplicationSlot“ resource creates and manages a replication slot on a PostgreSQL
 // server.
 //
 // ## Usage
@@ -20,21 +20,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := postgresql.NewReplicationSlot(ctx, "mySlot", &postgresql.ReplicationSlotArgs{
-// 			Plugin: pulumi.String("test_decoding"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewReplicationSlot(ctx, "mySlot", &postgresql.ReplicationSlotArgs{
+//				Plugin: pulumi.String("test_decoding"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type ReplicationSlot struct {
 	pulumi.CustomResourceState
@@ -145,7 +148,7 @@ func (i *ReplicationSlot) ToReplicationSlotOutputWithContext(ctx context.Context
 // ReplicationSlotArrayInput is an input type that accepts ReplicationSlotArray and ReplicationSlotArrayOutput values.
 // You can construct a concrete instance of `ReplicationSlotArrayInput` via:
 //
-//          ReplicationSlotArray{ ReplicationSlotArgs{...} }
+//	ReplicationSlotArray{ ReplicationSlotArgs{...} }
 type ReplicationSlotArrayInput interface {
 	pulumi.Input
 
@@ -170,7 +173,7 @@ func (i ReplicationSlotArray) ToReplicationSlotArrayOutputWithContext(ctx contex
 // ReplicationSlotMapInput is an input type that accepts ReplicationSlotMap and ReplicationSlotMapOutput values.
 // You can construct a concrete instance of `ReplicationSlotMapInput` via:
 //
-//          ReplicationSlotMap{ "key": ReplicationSlotArgs{...} }
+//	ReplicationSlotMap{ "key": ReplicationSlotArgs{...} }
 type ReplicationSlotMapInput interface {
 	pulumi.Input
 

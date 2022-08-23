@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.PostgreSql.Inputs
 {
 
-    public sealed class FunctionArgArgs : Pulumi.ResourceArgs
+    public sealed class FunctionArgArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An expression to be used as default value if the parameter is not specified.
@@ -39,5 +39,6 @@ namespace Pulumi.PostgreSql.Inputs
         public FunctionArgArgs()
         {
         }
+        public static new FunctionArgArgs Empty => new FunctionArgArgs();
     }
 }

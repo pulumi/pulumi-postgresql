@@ -68,6 +68,11 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly body!: pulumi.Output<string>;
     /**
+     * The database where the function is located.
+     * If not specified, the function is created in the current database.
+     */
+    public readonly database!: pulumi.Output<string>;
+    /**
      * True to automatically drop objects that depend on the function (such as 
      * operators or triggers), and in turn all objects that depend on those objects. Default is false.
      */
@@ -101,6 +106,7 @@ export class Function extends pulumi.CustomResource {
             const state = argsOrState as FunctionState | undefined;
             resourceInputs["args"] = state ? state.args : undefined;
             resourceInputs["body"] = state ? state.body : undefined;
+            resourceInputs["database"] = state ? state.database : undefined;
             resourceInputs["dropCascade"] = state ? state.dropCascade : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["returns"] = state ? state.returns : undefined;
@@ -112,6 +118,7 @@ export class Function extends pulumi.CustomResource {
             }
             resourceInputs["args"] = args ? args.args : undefined;
             resourceInputs["body"] = args ? args.body : undefined;
+            resourceInputs["database"] = args ? args.database : undefined;
             resourceInputs["dropCascade"] = args ? args.dropCascade : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["returns"] = args ? args.returns : undefined;
@@ -135,6 +142,11 @@ export interface FunctionState {
      * This should be everything after the return type in the function definition.
      */
     body?: pulumi.Input<string>;
+    /**
+     * The database where the function is located.
+     * If not specified, the function is created in the current database.
+     */
+    database?: pulumi.Input<string>;
     /**
      * True to automatically drop objects that depend on the function (such as 
      * operators or triggers), and in turn all objects that depend on those objects. Default is false.
@@ -168,6 +180,11 @@ export interface FunctionArgs {
      * This should be everything after the return type in the function definition.
      */
     body: pulumi.Input<string>;
+    /**
+     * The database where the function is located.
+     * If not specified, the function is created in the current database.
+     */
+    database?: pulumi.Input<string>;
     /**
      * True to automatically drop objects that depend on the function (such as 
      * operators or triggers), and in turn all objects that depend on those objects. Default is false.

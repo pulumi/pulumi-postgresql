@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The ``Grant`` resource creates and manages privileges given to a user for a database schema.
+// The “Grant“ resource creates and manages privileges given to a user for a database schema.
 //
 // See [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)
 //
@@ -23,31 +23,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := postgresql.NewGrant(ctx, "readonlyTables", &postgresql.GrantArgs{
-// 			Database:   pulumi.String("test_db"),
-// 			ObjectType: pulumi.String("table"),
-// 			Objects: pulumi.StringArray{
-// 				pulumi.String("table1"),
-// 				pulumi.String("table2"),
-// 			},
-// 			Privileges: pulumi.StringArray{
-// 				pulumi.String("SELECT"),
-// 			},
-// 			Role:   pulumi.String("test_role"),
-// 			Schema: pulumi.String("public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewGrant(ctx, "readonlyTables", &postgresql.GrantArgs{
+//				Database:   pulumi.String("test_db"),
+//				ObjectType: pulumi.String("table"),
+//				Objects: pulumi.StringArray{
+//					pulumi.String("table1"),
+//					pulumi.String("table2"),
+//				},
+//				Privileges: pulumi.StringArray{
+//					pulumi.String("SELECT"),
+//				},
+//				Role:   pulumi.String("test_role"),
+//				Schema: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Examples
@@ -58,25 +61,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := postgresql.NewGrant(ctx, "revokePublic", &postgresql.GrantArgs{
-// 			Database:   pulumi.String("test_db"),
-// 			ObjectType: pulumi.String("schema"),
-// 			Privileges: pulumi.StringArray{},
-// 			Role:       pulumi.String("public"),
-// 			Schema:     pulumi.String("public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewGrant(ctx, "revokePublic", &postgresql.GrantArgs{
+//				Database:   pulumi.String("test_db"),
+//				ObjectType: pulumi.String("schema"),
+//				Privileges: pulumi.StringArray{},
+//				Role:       pulumi.String("public"),
+//				Schema:     pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Grant struct {
 	pulumi.CustomResourceState
@@ -236,7 +242,7 @@ func (i *Grant) ToGrantOutputWithContext(ctx context.Context) GrantOutput {
 // GrantArrayInput is an input type that accepts GrantArray and GrantArrayOutput values.
 // You can construct a concrete instance of `GrantArrayInput` via:
 //
-//          GrantArray{ GrantArgs{...} }
+//	GrantArray{ GrantArgs{...} }
 type GrantArrayInput interface {
 	pulumi.Input
 
@@ -261,7 +267,7 @@ func (i GrantArray) ToGrantArrayOutputWithContext(ctx context.Context) GrantArra
 // GrantMapInput is an input type that accepts GrantMap and GrantMapOutput values.
 // You can construct a concrete instance of `GrantMapInput` via:
 //
-//          GrantMap{ "key": GrantArgs{...} }
+//	GrantMap{ "key": GrantArgs{...} }
 type GrantMapInput interface {
 	pulumi.Input
 

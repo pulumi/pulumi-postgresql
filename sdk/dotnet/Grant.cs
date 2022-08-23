@@ -19,32 +19,30 @@ namespace Pulumi.PostgreSql
     /// ## Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using PostgreSql = Pulumi.PostgreSql;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var readonlyTables = new PostgreSql.Grant("readonlyTables", new()
     ///     {
-    ///         var readonlyTables = new PostgreSql.Grant("readonlyTables", new PostgreSql.GrantArgs
+    ///         Database = "test_db",
+    ///         ObjectType = "table",
+    ///         Objects = new[]
     ///         {
-    ///             Database = "test_db",
-    ///             ObjectType = "table",
-    ///             Objects = 
-    ///             {
-    ///                 "table1",
-    ///                 "table2",
-    ///             },
-    ///             Privileges = 
-    ///             {
-    ///                 "SELECT",
-    ///             },
-    ///             Role = "test_role",
-    ///             Schema = "public",
-    ///         });
-    ///     }
+    ///             "table1",
+    ///             "table2",
+    ///         },
+    ///         Privileges = new[]
+    ///         {
+    ///             "SELECT",
+    ///         },
+    ///         Role = "test_role",
+    ///         Schema = "public",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Examples
@@ -52,28 +50,26 @@ namespace Pulumi.PostgreSql
     /// Revoke default accesses for public schema:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using PostgreSql = Pulumi.PostgreSql;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var revokePublic = new PostgreSql.Grant("revokePublic", new()
     ///     {
-    ///         var revokePublic = new PostgreSql.Grant("revokePublic", new PostgreSql.GrantArgs
-    ///         {
-    ///             Database = "test_db",
-    ///             ObjectType = "schema",
-    ///             Privileges = {},
-    ///             Role = "public",
-    ///             Schema = "public",
-    ///         });
-    ///     }
+    ///         Database = "test_db",
+    ///         ObjectType = "schema",
+    ///         Privileges = new[] {},
+    ///         Role = "public",
+    ///         Schema = "public",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/grant:Grant")]
-    public partial class Grant : Pulumi.CustomResource
+    public partial class Grant : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The database to grant privileges on for this role.
@@ -161,7 +157,7 @@ namespace Pulumi.PostgreSql
         }
     }
 
-    public sealed class GrantArgs : Pulumi.ResourceArgs
+    public sealed class GrantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The database to grant privileges on for this role.
@@ -220,9 +216,10 @@ namespace Pulumi.PostgreSql
         public GrantArgs()
         {
         }
+        public static new GrantArgs Empty => new GrantArgs();
     }
 
-    public sealed class GrantState : Pulumi.ResourceArgs
+    public sealed class GrantState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The database to grant privileges on for this role.
@@ -281,5 +278,6 @@ namespace Pulumi.PostgreSql
         public GrantState()
         {
         }
+        public static new GrantState Empty => new GrantState();
     }
 }
