@@ -16,42 +16,29 @@ public final class SchemaPolicy {
      * @return Should the specified ROLE have CREATE privileges to the specified SCHEMA.
      * 
      */
-    private final @Nullable Boolean create;
+    private @Nullable Boolean create;
     /**
      * @return Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
      * 
      */
-    private final @Nullable Boolean createWithGrant;
+    private @Nullable Boolean createWithGrant;
     /**
      * @return The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
      * 
      */
-    private final @Nullable String role;
+    private @Nullable String role;
     /**
      * @return Should the specified ROLE have USAGE privileges to the specified SCHEMA.
      * 
      */
-    private final @Nullable Boolean usage;
+    private @Nullable Boolean usage;
     /**
      * @return Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
      * 
      */
-    private final @Nullable Boolean usageWithGrant;
+    private @Nullable Boolean usageWithGrant;
 
-    @CustomType.Constructor
-    private SchemaPolicy(
-        @CustomType.Parameter("create") @Nullable Boolean create,
-        @CustomType.Parameter("createWithGrant") @Nullable Boolean createWithGrant,
-        @CustomType.Parameter("role") @Nullable String role,
-        @CustomType.Parameter("usage") @Nullable Boolean usage,
-        @CustomType.Parameter("usageWithGrant") @Nullable Boolean usageWithGrant) {
-        this.create = create;
-        this.createWithGrant = createWithGrant;
-        this.role = role;
-        this.usage = usage;
-        this.usageWithGrant = usageWithGrant;
-    }
-
+    private SchemaPolicy() {}
     /**
      * @return Should the specified ROLE have CREATE privileges to the specified SCHEMA.
      * 
@@ -95,18 +82,14 @@ public final class SchemaPolicy {
     public static Builder builder(SchemaPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean create;
         private @Nullable Boolean createWithGrant;
         private @Nullable String role;
         private @Nullable Boolean usage;
         private @Nullable Boolean usageWithGrant;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SchemaPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.create = defaults.create;
@@ -116,27 +99,39 @@ public final class SchemaPolicy {
     	      this.usageWithGrant = defaults.usageWithGrant;
         }
 
+        @CustomType.Setter
         public Builder create(@Nullable Boolean create) {
             this.create = create;
             return this;
         }
+        @CustomType.Setter
         public Builder createWithGrant(@Nullable Boolean createWithGrant) {
             this.createWithGrant = createWithGrant;
             return this;
         }
+        @CustomType.Setter
         public Builder role(@Nullable String role) {
             this.role = role;
             return this;
         }
+        @CustomType.Setter
         public Builder usage(@Nullable Boolean usage) {
             this.usage = usage;
             return this;
         }
+        @CustomType.Setter
         public Builder usageWithGrant(@Nullable Boolean usageWithGrant) {
             this.usageWithGrant = usageWithGrant;
             return this;
-        }        public SchemaPolicy build() {
-            return new SchemaPolicy(create, createWithGrant, role, usage, usageWithGrant);
+        }
+        public SchemaPolicy build() {
+            final var o = new SchemaPolicy();
+            o.create = create;
+            o.createWithGrant = createWithGrant;
+            o.role = role;
+            o.usage = usage;
+            o.usageWithGrant = usageWithGrant;
+            return o;
         }
     }
 }
