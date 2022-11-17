@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class Clientcert {
-    private final String cert;
-    private final String key;
+    private String cert;
+    private String key;
 
-    @CustomType.Constructor
-    private Clientcert(
-        @CustomType.Parameter("cert") String cert,
-        @CustomType.Parameter("key") String key) {
-        this.cert = cert;
-        this.key = key;
-    }
-
+    private Clientcert() {}
     public String cert() {
         return this.cert;
     }
@@ -34,30 +27,32 @@ public final class Clientcert {
     public static Builder builder(Clientcert defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cert;
         private String key;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(Clientcert defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cert = defaults.cert;
     	      this.key = defaults.key;
         }
 
+        @CustomType.Setter
         public Builder cert(String cert) {
             this.cert = Objects.requireNonNull(cert);
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
-        }        public Clientcert build() {
-            return new Clientcert(cert, key);
+        }
+        public Clientcert build() {
+            final var o = new Clientcert();
+            o.cert = cert;
+            o.key = key;
+            return o;
         }
     }
 }
