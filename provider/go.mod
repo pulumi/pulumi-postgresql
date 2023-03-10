@@ -4,8 +4,8 @@ go 1.19
 
 require (
 	github.com/cyrilgdn/terraform-provider-postgresql v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.28.0
-	github.com/pulumi/pulumi/sdk/v3 v3.38.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.42.1
+	github.com/pulumi/pulumi/sdk/v3 v3.57.0
 )
 
 require (
@@ -160,7 +160,7 @@ require (
 	github.com/posener/complete v1.2.1 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.5.3 // indirect
 	github.com/pulumi/pulumi-yaml v0.5.4 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.38.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.57.0 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/rjeczalik/notify v0.9.2 // indirect
@@ -225,6 +225,6 @@ require (
 )
 
 replace (
-	github.com/cyrilgdn/terraform-provider-postgresql => github.com/pulumi/terraform-provider-postgresql v1.12.1-0.20220823180737-87ee25e1c9ef
+	github.com/cyrilgdn/terraform-provider-postgresql => ../upstream
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220725190814-23001ad6ec03
 )

@@ -1,0 +1,82 @@
+diff --git b/.idea/.gitignore a/.idea/.gitignore
+new file mode 100644
+index 0000000..13566b8
+--- /dev/null
++++ a/.idea/.gitignore
+@@ -0,0 +1,8 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Editor-based HTTP Client requests
++/httpRequests/
++# Datasource local storage ignored files
++/dataSources/
++/dataSources.local.xml
+diff --git b/.idea/modules.xml a/.idea/modules.xml
+new file mode 100644
+index 0000000..c671309
+--- /dev/null
++++ a/.idea/modules.xml
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/terraform-provider-postgresql.iml" filepath="$PROJECT_DIR$/.idea/terraform-provider-postgresql.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+diff --git b/.idea/terraform-provider-postgresql.iml a/.idea/terraform-provider-postgresql.iml
+new file mode 100644
+index 0000000..5e764c4
+--- /dev/null
++++ a/.idea/terraform-provider-postgresql.iml
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="WEB_MODULE" version="4">
++  <component name="Go" enabled="true" />
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+diff --git b/.idea/vcs.xml a/.idea/vcs.xml
+new file mode 100644
+index 0000000..94a25f7
+--- /dev/null
++++ a/.idea/vcs.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git b/go.mod a/go.mod
+index ee3e530..a12d9af 100644
+--- b/go.mod
++++ a/go.mod
+@@ -1,4 +1,4 @@
+-module github.com/terraform-providers/terraform-provider-postgresql
++module github.com/cyrilgdn/terraform-provider-postgresql
+ 
+ go 1.17
+ 
+diff --git b/main.go a/main.go
+index 7125ff2..d9f1406 100644
+--- b/main.go
++++ a/main.go
+@@ -1,8 +1,8 @@
+ package main
+ 
+ import (
++	"github.com/cyrilgdn/terraform-provider-postgresql/postgresql"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
+-	"github.com/terraform-providers/terraform-provider-postgresql/postgresql"
+ )
+ 
+ func main() {
