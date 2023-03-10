@@ -5,19 +5,71 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./database";
-export * from "./defaultPrivileg";
-export * from "./defaultPrivileges";
-export * from "./extension";
-export * from "./function";
-export * from "./grant";
-export * from "./grantRole";
-export * from "./physicalReplicationSlot";
-export * from "./provider";
-export * from "./publication";
-export * from "./replicationSlot";
-export * from "./role";
-export * from "./schema";
+export { DatabaseArgs, DatabaseState } from "./database";
+export type Database = import("./database").Database;
+export const Database: typeof import("./database").Database = null as any;
+utilities.lazyLoad(exports, ["Database"], () => require("./database"));
+
+export { DefaultPrivilegArgs, DefaultPrivilegState } from "./defaultPrivileg";
+export type DefaultPrivileg = import("./defaultPrivileg").DefaultPrivileg;
+export const DefaultPrivileg: typeof import("./defaultPrivileg").DefaultPrivileg = null as any;
+utilities.lazyLoad(exports, ["DefaultPrivileg"], () => require("./defaultPrivileg"));
+
+export { DefaultPrivilegesArgs, DefaultPrivilegesState } from "./defaultPrivileges";
+export type DefaultPrivileges = import("./defaultPrivileges").DefaultPrivileges;
+export const DefaultPrivileges: typeof import("./defaultPrivileges").DefaultPrivileges = null as any;
+utilities.lazyLoad(exports, ["DefaultPrivileges"], () => require("./defaultPrivileges"));
+
+export { ExtensionArgs, ExtensionState } from "./extension";
+export type Extension = import("./extension").Extension;
+export const Extension: typeof import("./extension").Extension = null as any;
+utilities.lazyLoad(exports, ["Extension"], () => require("./extension"));
+
+export { FunctionArgs, FunctionState } from "./function";
+export type Function = import("./function").Function;
+export const Function: typeof import("./function").Function = null as any;
+utilities.lazyLoad(exports, ["Function"], () => require("./function"));
+
+export { GrantArgs, GrantState } from "./grant";
+export type Grant = import("./grant").Grant;
+export const Grant: typeof import("./grant").Grant = null as any;
+utilities.lazyLoad(exports, ["Grant"], () => require("./grant"));
+
+export { GrantRoleArgs, GrantRoleState } from "./grantRole";
+export type GrantRole = import("./grantRole").GrantRole;
+export const GrantRole: typeof import("./grantRole").GrantRole = null as any;
+utilities.lazyLoad(exports, ["GrantRole"], () => require("./grantRole"));
+
+export { PhysicalReplicationSlotArgs, PhysicalReplicationSlotState } from "./physicalReplicationSlot";
+export type PhysicalReplicationSlot = import("./physicalReplicationSlot").PhysicalReplicationSlot;
+export const PhysicalReplicationSlot: typeof import("./physicalReplicationSlot").PhysicalReplicationSlot = null as any;
+utilities.lazyLoad(exports, ["PhysicalReplicationSlot"], () => require("./physicalReplicationSlot"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { PublicationArgs, PublicationState } from "./publication";
+export type Publication = import("./publication").Publication;
+export const Publication: typeof import("./publication").Publication = null as any;
+utilities.lazyLoad(exports, ["Publication"], () => require("./publication"));
+
+export { ReplicationSlotArgs, ReplicationSlotState } from "./replicationSlot";
+export type ReplicationSlot = import("./replicationSlot").ReplicationSlot;
+export const ReplicationSlot: typeof import("./replicationSlot").ReplicationSlot = null as any;
+utilities.lazyLoad(exports, ["ReplicationSlot"], () => require("./replicationSlot"));
+
+export { RoleArgs, RoleState } from "./role";
+export type Role = import("./role").Role;
+export const Role: typeof import("./role").Role = null as any;
+utilities.lazyLoad(exports, ["Role"], () => require("./role"));
+
+export { SchemaArgs, SchemaState } from "./schema";
+export type Schema = import("./schema").Schema;
+export const Schema: typeof import("./schema").Schema = null as any;
+utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -27,20 +79,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { Database } from "./database";
-import { DefaultPrivileg } from "./defaultPrivileg";
-import { DefaultPrivileges } from "./defaultPrivileges";
-import { Extension } from "./extension";
-import { Function } from "./function";
-import { Grant } from "./grant";
-import { GrantRole } from "./grantRole";
-import { PhysicalReplicationSlot } from "./physicalReplicationSlot";
-import { Publication } from "./publication";
-import { ReplicationSlot } from "./replicationSlot";
-import { Role } from "./role";
-import { Schema } from "./schema";
 
 const _module = {
     version: utilities.getVersion(),
@@ -87,9 +125,6 @@ pulumi.runtime.registerResourceModule("postgresql", "index/publication", _module
 pulumi.runtime.registerResourceModule("postgresql", "index/replicationSlot", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/role", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/schema", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("postgresql", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

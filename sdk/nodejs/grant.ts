@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const readonlyTables = new postgresql.Grant("readonly_tables", {
+ * const readonlyTables = new postgresql.Grant("readonlyTables", {
  *     database: "test_db",
  *     objectType: "table",
  *     objects: [
@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const revokePublic = new postgresql.Grant("revoke_public", {
+ * const revokePublic = new postgresql.Grant("revokePublic", {
  *     database: "test_db",
  *     objectType: "schema",
  *     privileges: [],

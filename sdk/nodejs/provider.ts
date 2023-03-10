@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -89,7 +90,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["expectedVersion"] = args ? args.expectedVersion : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["maxConnections"] = pulumi.output(args ? args.maxConnections : undefined).apply(JSON.stringify);
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["port"] = pulumi.output(args ? args.port : undefined).apply(JSON.stringify);
             resourceInputs["scheme"] = args ? args.scheme : undefined;
             resourceInputs["sslMode"] = args ? args.sslMode : undefined;
@@ -99,6 +100,8 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -411,7 +411,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["expected_version"] = expected_version
             __props__.__dict__["host"] = host
             __props__.__dict__["max_connections"] = pulumi.Output.from_input(max_connections).apply(pulumi.runtime.to_json) if max_connections is not None else None
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["port"] = pulumi.Output.from_input(port).apply(pulumi.runtime.to_json) if port is not None else None
             __props__.__dict__["scheme"] = scheme
             if ssl_mode is not None and not opts.urn:
@@ -424,6 +424,8 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["sslrootcert"] = sslrootcert
             __props__.__dict__["superuser"] = pulumi.Output.from_input(superuser).apply(pulumi.runtime.to_json) if superuser is not None else None
             __props__.__dict__["username"] = username
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'postgresql',
             resource_name,

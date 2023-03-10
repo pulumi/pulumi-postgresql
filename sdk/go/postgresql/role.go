@@ -100,6 +100,13 @@ func NewRole(ctx *pulumi.Context,
 		args = &RoleArgs{}
 	}
 
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource Role
 	err := ctx.RegisterResource("postgresql:index/role:Role", name, args, &resource, opts...)
 	if err != nil {
