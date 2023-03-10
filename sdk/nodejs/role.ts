@@ -197,7 +197,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["inherit"] = args ? args.inherit : undefined;
             resourceInputs["login"] = args ? args.login : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["replication"] = args ? args.replication : undefined;
             resourceInputs["roles"] = args ? args.roles : undefined;
             resourceInputs["searchPaths"] = args ? args.searchPaths : undefined;
@@ -208,6 +208,8 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["validUntil"] = args ? args.validUntil : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Role.__pulumiType, name, resourceInputs, opts);
     }
 }

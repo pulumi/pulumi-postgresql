@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +21,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -31,20 +29,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := postgresql.NewFunction(ctx, "increment", &postgresql.FunctionArgs{
-//				Args: FunctionArgArray{
-//					&FunctionArgArgs{
+//				Args: postgresql.FunctionArgArray{
+//					&postgresql.FunctionArgArgs{
 //						Name: pulumi.String("i"),
 //						Type: pulumi.String("integer"),
 //					},
 //				},
-//				Body: pulumi.String(fmt.Sprintf(`    AS $
-//	    BEGIN
-//	        RETURN i + 1;
-//	    END;
-//	    $ LANGUAGE plpgsql;
-//
-// `)),
-//
+//				Body:    pulumi.String("    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n"),
 //				Returns: pulumi.String("integer"),
 //			})
 //			if err != nil {

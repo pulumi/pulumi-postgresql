@@ -48,12 +48,19 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
-	if isZero(args.ConnectTimeout) {
+	if args.ConnectTimeout == nil {
 		args.ConnectTimeout = pulumi.IntPtr(getEnvOrDefault(180, parseEnvInt, "PGCONNECT_TIMEOUT").(int))
 	}
-	if isZero(args.Sslmode) {
+	if args.Sslmode == nil {
 		args.Sslmode = pulumi.StringPtr(getEnvOrDefault("", nil, "PGSSLMODE").(string))
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:postgresql", name, args, &resource, opts...)
 	if err != nil {

@@ -971,7 +971,7 @@ class Role(pulumi.CustomResource):
             __props__.__dict__["inherit"] = inherit
             __props__.__dict__["login"] = login
             __props__.__dict__["name"] = name
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["replication"] = replication
             __props__.__dict__["roles"] = roles
             __props__.__dict__["search_paths"] = search_paths
@@ -980,6 +980,8 @@ class Role(pulumi.CustomResource):
             __props__.__dict__["statement_timeout"] = statement_timeout
             __props__.__dict__["superuser"] = superuser
             __props__.__dict__["valid_until"] = valid_until
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Role, __self__).__init__(
             'postgresql:index/role:Role',
             resource_name,

@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const readOnlyTables = new postgresql.DefaultPrivileges("read_only_tables", {
+ * const readOnlyTables = new postgresql.DefaultPrivileges("readOnlyTables", {
  *     database: "test_db",
  *     objectType: "table",
  *     owner: "db_owner",

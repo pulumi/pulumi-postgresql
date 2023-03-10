@@ -30,7 +30,7 @@ namespace Pulumi.PostgreSql
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("postgresql");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("postgresql");
 
         private static readonly __Value<bool?> _awsRdsIamAuth = new __Value<bool?>(() => __config.GetBoolean("awsRdsIamAuth"));
         /// <summary>

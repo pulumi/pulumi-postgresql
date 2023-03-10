@@ -14,9 +14,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const mySlot = new postgresql.ReplicationSlot("my_slot", {
- *     plugin: "test_decoding",
- * });
+ * const mySlot = new postgresql.ReplicationSlot("mySlot", {plugin: "test_decoding"});
  * ```
  */
 export class ReplicationSlot extends pulumi.CustomResource {
