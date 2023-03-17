@@ -60,6 +60,10 @@
                 "type": "string",
                 "description": "AWS profile to use for IAM auth\n"
             },
+            "awsRdsIamRegion": {
+                "type": "string",
+                "description": "AWS region to use for IAM auth\n"
+            },
             "clientcert": {
                 "$ref": "#/types/postgresql:config/clientcert:clientcert",
                 "description": "SSL client certificate if required by the database.\n"
@@ -293,6 +297,10 @@
                 "type": "string",
                 "description": "AWS profile to use for IAM auth\n"
             },
+            "awsRdsIamRegion": {
+                "type": "string",
+                "description": "AWS region to use for IAM auth\n"
+            },
             "clientcert": {
                 "$ref": "#/types/postgresql:index/ProviderClientcert:ProviderClientcert",
                 "description": "SSL client certificate if required by the database.\n"
@@ -362,6 +370,10 @@
             "awsRdsIamProfile": {
                 "type": "string",
                 "description": "AWS profile to use for IAM auth\n"
+            },
+            "awsRdsIamRegion": {
+                "type": "string",
+                "description": "AWS region to use for IAM auth\n"
             },
             "clientcert": {
                 "$ref": "#/types/postgresql:index/ProviderClientcert:ProviderClientcert",
@@ -596,7 +608,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n"
+                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).\n"
                 },
                 "owner": {
                     "type": "string",
@@ -637,7 +649,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n",
+                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).\n",
                     "willReplaceOnChanges": true
                 },
                 "owner": {
@@ -685,7 +697,7 @@
                     },
                     "objectType": {
                         "type": "string",
-                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n",
+                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).\n",
                         "willReplaceOnChanges": true
                     },
                     "owner": {
@@ -729,7 +741,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n"
+                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).\n"
                 },
                 "owner": {
                     "type": "string",
@@ -770,7 +782,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n",
+                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).\n",
                     "willReplaceOnChanges": true
                 },
                 "owner": {
@@ -818,7 +830,7 @@
                     },
                     "objectType": {
                         "type": "string",
-                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).\n",
+                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).\n",
                         "willReplaceOnChanges": true
                     },
                     "owner": {
@@ -1901,6 +1913,314 @@
                         },
                         "description": "Can be specified multiple times for each policy.  Each\npolicy block supports fields documented below.\n",
                         "deprecationMessage": "Use postgresql_grant resource instead (with object_type=\"schema\")"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "postgresql:index/server:Server": {
+            "description": "The ``postgresql.Server`` resource creates and manages a foreign server on a PostgreSQL server.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst extPostgresFdw = new postgresql.Extension(\"extPostgresFdw\", {});\nconst myserverPostgres = new postgresql.Server(\"myserverPostgres\", {\n    serverName: \"myserver_postgres\",\n    fdwName: \"postgres_fdw\",\n    options: {\n        host: \"foo\",\n        dbname: \"foodb\",\n        port: \"5432\",\n    },\n}, {\n    dependsOn: [extPostgresFdw],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\next_postgres_fdw = postgresql.Extension(\"extPostgresFdw\")\nmyserver_postgres = postgresql.Server(\"myserverPostgres\",\n    server_name=\"myserver_postgres\",\n    fdw_name=\"postgres_fdw\",\n    options={\n        \"host\": \"foo\",\n        \"dbname\": \"foodb\",\n        \"port\": \"5432\",\n    },\n    opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var extPostgresFdw = new PostgreSql.Extension(\"extPostgresFdw\");\n\n    var myserverPostgres = new PostgreSql.Server(\"myserverPostgres\", new()\n    {\n        ServerName = \"myserver_postgres\",\n        FdwName = \"postgres_fdw\",\n        Options = \n        {\n            { \"host\", \"foo\" },\n            { \"dbname\", \"foodb\" },\n            { \"port\", \"5432\" },\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn = new[]\n        {\n            extPostgresFdw,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\textPostgresFdw, err := postgresql.NewExtension(ctx, \"extPostgresFdw\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = postgresql.NewServer(ctx, \"myserverPostgres\", \u0026postgresql.ServerArgs{\n\t\t\tServerName: pulumi.String(\"myserver_postgres\"),\n\t\t\tFdwName:    pulumi.String(\"postgres_fdw\"),\n\t\t\tOptions: pulumi.StringMap{\n\t\t\t\t\"host\":   pulumi.String(\"foo\"),\n\t\t\t\t\"dbname\": pulumi.String(\"foodb\"),\n\t\t\t\t\"port\":   pulumi.String(\"5432\"),\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\textPostgresFdw,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Extension;\nimport com.pulumi.postgresql.Server;\nimport com.pulumi.postgresql.ServerArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var extPostgresFdw = new Extension(\"extPostgresFdw\");\n\n        var myserverPostgres = new Server(\"myserverPostgres\", ServerArgs.builder()        \n            .serverName(\"myserver_postgres\")\n            .fdwName(\"postgres_fdw\")\n            .options(Map.ofEntries(\n                Map.entry(\"host\", \"foo\"),\n                Map.entry(\"dbname\", \"foodb\"),\n                Map.entry(\"port\", \"5432\")\n            ))\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(extPostgresFdw)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  extPostgresFdw:\n    type: postgresql:Extension\n  myserverPostgres:\n    type: postgresql:Server\n    properties:\n      serverName: myserver_postgres\n      fdwName: postgres_fdw\n      options:\n        host: foo\n        dbname: foodb\n        port: '5432'\n    options:\n      dependson:\n        - ${extPostgresFdw}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst extFileFdw = new postgresql.Extension(\"extFileFdw\", {});\nconst myserverFile = new postgresql.Server(\"myserverFile\", {\n    serverName: \"myserver_file\",\n    fdwName: \"file_fdw\",\n}, {\n    dependsOn: [extFileFdw],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\next_file_fdw = postgresql.Extension(\"extFileFdw\")\nmyserver_file = postgresql.Server(\"myserverFile\",\n    server_name=\"myserver_file\",\n    fdw_name=\"file_fdw\",\n    opts=pulumi.ResourceOptions(depends_on=[ext_file_fdw]))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var extFileFdw = new PostgreSql.Extension(\"extFileFdw\");\n\n    var myserverFile = new PostgreSql.Server(\"myserverFile\", new()\n    {\n        ServerName = \"myserver_file\",\n        FdwName = \"file_fdw\",\n    }, new CustomResourceOptions\n    {\n        DependsOn = new[]\n        {\n            extFileFdw,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\textFileFdw, err := postgresql.NewExtension(ctx, \"extFileFdw\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = postgresql.NewServer(ctx, \"myserverFile\", \u0026postgresql.ServerArgs{\n\t\t\tServerName: pulumi.String(\"myserver_file\"),\n\t\t\tFdwName:    pulumi.String(\"file_fdw\"),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\textFileFdw,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Extension;\nimport com.pulumi.postgresql.Server;\nimport com.pulumi.postgresql.ServerArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var extFileFdw = new Extension(\"extFileFdw\");\n\n        var myserverFile = new Server(\"myserverFile\", ServerArgs.builder()        \n            .serverName(\"myserver_file\")\n            .fdwName(\"file_fdw\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(extFileFdw)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  extFileFdw:\n    type: postgresql:Extension\n  myserverFile:\n    type: postgresql:Server\n    properties:\n      serverName: myserver_file\n      fdwName: file_fdw\n    options:\n      dependson:\n        - ${extFileFdw}\n```\n",
+            "properties": {
+                "dropCascade": {
+                    "type": "boolean",
+                    "description": "When true, will drop objects that depend on the server (such as user mappings), and in turn all objects that depend on those objects . (Default: false)\n"
+                },
+                "fdwName": {
+                    "type": "string",
+                    "description": "The name of the foreign-data wrapper that manages the server.\nChanging this value\nwill force the creation of a new resource as this value can only be set\nwhen the foreign server is created.\n"
+                },
+                "options": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "This clause specifies the options for the server. The options typically define the connection details of the server, but the actual names and values are dependent on the server's foreign-data wrapper.\n"
+                },
+                "serverName": {
+                    "type": "string",
+                    "description": "The name of the foreign server to be created.\n"
+                },
+                "serverOwner": {
+                    "type": "string",
+                    "description": "By default, the user who defines the server becomes its owner. Set this value to configure the new owner of the foreign server.\n"
+                },
+                "serverType": {
+                    "type": "string",
+                    "description": "Optional server type, potentially useful to foreign-data wrappers.\nChanging this value\nwill force the creation of a new resource as this value can only be set\nwhen the foreign server is created.\n"
+                },
+                "serverVersion": {
+                    "type": "string",
+                    "description": "Optional server version, potentially useful to foreign-data wrappers.\n"
+                }
+            },
+            "required": [
+                "fdwName",
+                "serverName",
+                "serverOwner"
+            ],
+            "inputProperties": {
+                "dropCascade": {
+                    "type": "boolean",
+                    "description": "When true, will drop objects that depend on the server (such as user mappings), and in turn all objects that depend on those objects . (Default: false)\n"
+                },
+                "fdwName": {
+                    "type": "string",
+                    "description": "The name of the foreign-data wrapper that manages the server.\nChanging this value\nwill force the creation of a new resource as this value can only be set\nwhen the foreign server is created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "options": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "This clause specifies the options for the server. The options typically define the connection details of the server, but the actual names and values are dependent on the server's foreign-data wrapper.\n"
+                },
+                "serverName": {
+                    "type": "string",
+                    "description": "The name of the foreign server to be created.\n"
+                },
+                "serverOwner": {
+                    "type": "string",
+                    "description": "By default, the user who defines the server becomes its owner. Set this value to configure the new owner of the foreign server.\n"
+                },
+                "serverType": {
+                    "type": "string",
+                    "description": "Optional server type, potentially useful to foreign-data wrappers.\nChanging this value\nwill force the creation of a new resource as this value can only be set\nwhen the foreign server is created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "serverVersion": {
+                    "type": "string",
+                    "description": "Optional server version, potentially useful to foreign-data wrappers.\n"
+                }
+            },
+            "requiredInputs": [
+                "fdwName",
+                "serverName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Server resources.\n",
+                "properties": {
+                    "dropCascade": {
+                        "type": "boolean",
+                        "description": "When true, will drop objects that depend on the server (such as user mappings), and in turn all objects that depend on those objects . (Default: false)\n"
+                    },
+                    "fdwName": {
+                        "type": "string",
+                        "description": "The name of the foreign-data wrapper that manages the server.\nChanging this value\nwill force the creation of a new resource as this value can only be set\nwhen the foreign server is created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "options": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "This clause specifies the options for the server. The options typically define the connection details of the server, but the actual names and values are dependent on the server's foreign-data wrapper.\n"
+                    },
+                    "serverName": {
+                        "type": "string",
+                        "description": "The name of the foreign server to be created.\n"
+                    },
+                    "serverOwner": {
+                        "type": "string",
+                        "description": "By default, the user who defines the server becomes its owner. Set this value to configure the new owner of the foreign server.\n"
+                    },
+                    "serverType": {
+                        "type": "string",
+                        "description": "Optional server type, potentially useful to foreign-data wrappers.\nChanging this value\nwill force the creation of a new resource as this value can only be set\nwhen the foreign server is created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "serverVersion": {
+                        "type": "string",
+                        "description": "Optional server version, potentially useful to foreign-data wrappers.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "postgresql:index/subscription:Subscription": {
+            "description": "The `postgresql.Subscription` resource creates and manages a publication on a PostgreSQL\nserver.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst subscription = new postgresql.Subscription(\"subscription\", {\n    conninfo: \"host=localhost port=5432 dbname=mydb user=postgres password=postgres\",\n    publications: [\"publication\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nsubscription = postgresql.Subscription(\"subscription\",\n    conninfo=\"host=localhost port=5432 dbname=mydb user=postgres password=postgres\",\n    publications=[\"publication\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var subscription = new PostgreSql.Subscription(\"subscription\", new()\n    {\n        Conninfo = \"host=localhost port=5432 dbname=mydb user=postgres password=postgres\",\n        Publications = new[]\n        {\n            \"publication\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewSubscription(ctx, \"subscription\", \u0026postgresql.SubscriptionArgs{\n\t\t\tConninfo: pulumi.String(\"host=localhost port=5432 dbname=mydb user=postgres password=postgres\"),\n\t\t\tPublications: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"publication\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Subscription;\nimport com.pulumi.postgresql.SubscriptionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var subscription = new Subscription(\"subscription\", SubscriptionArgs.builder()        \n            .conninfo(\"host=localhost port=5432 dbname=mydb user=postgres password=postgres\")\n            .publications(\"publication\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  subscription:\n    type: postgresql:Subscription\n    properties:\n      conninfo: host=localhost port=5432 dbname=mydb user=postgres password=postgres\n      publications:\n        - publication\n```\n\n## Postgres documentation\n\n- https://www.postgresql.org/docs/current/sql-createsubscription.html\n",
+            "properties": {
+                "conninfo": {
+                    "type": "string",
+                    "description": "The connection string to the publisher. It should follow the [keyword/value format](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)\n",
+                    "secret": true
+                },
+                "createSlot": {
+                    "type": "boolean",
+                    "description": "Specifies whether the command should create the replication slot on the publisher. Default behavior is true\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Which database to create the subscription on. Defaults to provider database.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the publication.\n"
+                },
+                "publications": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of the publications on the publisher to subscribe to\n"
+                },
+                "slotName": {
+                    "type": "string",
+                    "description": "Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name\n"
+                }
+            },
+            "required": [
+                "conninfo",
+                "database",
+                "name",
+                "publications"
+            ],
+            "inputProperties": {
+                "conninfo": {
+                    "type": "string",
+                    "description": "The connection string to the publisher. It should follow the [keyword/value format](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)\n",
+                    "secret": true,
+                    "willReplaceOnChanges": true
+                },
+                "createSlot": {
+                    "type": "boolean",
+                    "description": "Specifies whether the command should create the replication slot on the publisher. Default behavior is true\n",
+                    "willReplaceOnChanges": true
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Which database to create the subscription on. Defaults to provider database.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the publication.\n",
+                    "willReplaceOnChanges": true
+                },
+                "publications": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Names of the publications on the publisher to subscribe to\n",
+                    "willReplaceOnChanges": true
+                },
+                "slotName": {
+                    "type": "string",
+                    "description": "Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "conninfo",
+                "publications"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Subscription resources.\n",
+                "properties": {
+                    "conninfo": {
+                        "type": "string",
+                        "description": "The connection string to the publisher. It should follow the [keyword/value format](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)\n",
+                        "secret": true,
+                        "willReplaceOnChanges": true
+                    },
+                    "createSlot": {
+                        "type": "boolean",
+                        "description": "Specifies whether the command should create the replication slot on the publisher. Default behavior is true\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "database": {
+                        "type": "string",
+                        "description": "Which database to create the subscription on. Defaults to provider database.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the publication.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "publications": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Names of the publications on the publisher to subscribe to\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "slotName": {
+                        "type": "string",
+                        "description": "Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "postgresql:index/userMapping:UserMapping": {
+            "description": "The ``postgresql.UserMapping`` resource creates and manages a user mapping on a PostgreSQL server.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst extPostgresFdw = new postgresql.Extension(\"extPostgresFdw\", {});\nconst myserverPostgres = new postgresql.Server(\"myserverPostgres\", {\n    serverName: \"myserver_postgres\",\n    fdwName: \"postgres_fdw\",\n    options: {\n        host: \"foo\",\n        dbname: \"foodb\",\n        port: \"5432\",\n    },\n}, {\n    dependsOn: [extPostgresFdw],\n});\nconst remoteRole = new postgresql.Role(\"remoteRole\", {});\nconst remoteUserMapping = new postgresql.UserMapping(\"remoteUserMapping\", {\n    serverName: myserverPostgres.serverName,\n    userName: remoteRole.name,\n    options: {\n        user: \"admin\",\n        password: \"pass\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\next_postgres_fdw = postgresql.Extension(\"extPostgresFdw\")\nmyserver_postgres = postgresql.Server(\"myserverPostgres\",\n    server_name=\"myserver_postgres\",\n    fdw_name=\"postgres_fdw\",\n    options={\n        \"host\": \"foo\",\n        \"dbname\": \"foodb\",\n        \"port\": \"5432\",\n    },\n    opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))\nremote_role = postgresql.Role(\"remoteRole\")\nremote_user_mapping = postgresql.UserMapping(\"remoteUserMapping\",\n    server_name=myserver_postgres.server_name,\n    user_name=remote_role.name,\n    options={\n        \"user\": \"admin\",\n        \"password\": \"pass\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var extPostgresFdw = new PostgreSql.Extension(\"extPostgresFdw\");\n\n    var myserverPostgres = new PostgreSql.Server(\"myserverPostgres\", new()\n    {\n        ServerName = \"myserver_postgres\",\n        FdwName = \"postgres_fdw\",\n        Options = \n        {\n            { \"host\", \"foo\" },\n            { \"dbname\", \"foodb\" },\n            { \"port\", \"5432\" },\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn = new[]\n        {\n            extPostgresFdw,\n        },\n    });\n\n    var remoteRole = new PostgreSql.Role(\"remoteRole\");\n\n    var remoteUserMapping = new PostgreSql.UserMapping(\"remoteUserMapping\", new()\n    {\n        ServerName = myserverPostgres.ServerName,\n        UserName = remoteRole.Name,\n        Options = \n        {\n            { \"user\", \"admin\" },\n            { \"password\", \"pass\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\textPostgresFdw, err := postgresql.NewExtension(ctx, \"extPostgresFdw\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyserverPostgres, err := postgresql.NewServer(ctx, \"myserverPostgres\", \u0026postgresql.ServerArgs{\n\t\t\tServerName: pulumi.String(\"myserver_postgres\"),\n\t\t\tFdwName:    pulumi.String(\"postgres_fdw\"),\n\t\t\tOptions: pulumi.StringMap{\n\t\t\t\t\"host\":   pulumi.String(\"foo\"),\n\t\t\t\t\"dbname\": pulumi.String(\"foodb\"),\n\t\t\t\t\"port\":   pulumi.String(\"5432\"),\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\textPostgresFdw,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tremoteRole, err := postgresql.NewRole(ctx, \"remoteRole\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = postgresql.NewUserMapping(ctx, \"remoteUserMapping\", \u0026postgresql.UserMappingArgs{\n\t\t\tServerName: myserverPostgres.ServerName,\n\t\t\tUserName:   remoteRole.Name,\n\t\t\tOptions: pulumi.StringMap{\n\t\t\t\t\"user\":     pulumi.String(\"admin\"),\n\t\t\t\t\"password\": pulumi.String(\"pass\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Extension;\nimport com.pulumi.postgresql.Server;\nimport com.pulumi.postgresql.ServerArgs;\nimport com.pulumi.postgresql.Role;\nimport com.pulumi.postgresql.UserMapping;\nimport com.pulumi.postgresql.UserMappingArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var extPostgresFdw = new Extension(\"extPostgresFdw\");\n\n        var myserverPostgres = new Server(\"myserverPostgres\", ServerArgs.builder()        \n            .serverName(\"myserver_postgres\")\n            .fdwName(\"postgres_fdw\")\n            .options(Map.ofEntries(\n                Map.entry(\"host\", \"foo\"),\n                Map.entry(\"dbname\", \"foodb\"),\n                Map.entry(\"port\", \"5432\")\n            ))\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(extPostgresFdw)\n                .build());\n\n        var remoteRole = new Role(\"remoteRole\");\n\n        var remoteUserMapping = new UserMapping(\"remoteUserMapping\", UserMappingArgs.builder()        \n            .serverName(myserverPostgres.serverName())\n            .userName(remoteRole.name())\n            .options(Map.ofEntries(\n                Map.entry(\"user\", \"admin\"),\n                Map.entry(\"password\", \"pass\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  extPostgresFdw:\n    type: postgresql:Extension\n  myserverPostgres:\n    type: postgresql:Server\n    properties:\n      serverName: myserver_postgres\n      fdwName: postgres_fdw\n      options:\n        host: foo\n        dbname: foodb\n        port: '5432'\n    options:\n      dependson:\n        - ${extPostgresFdw}\n  remoteRole:\n    type: postgresql:Role\n  remoteUserMapping:\n    type: postgresql:UserMapping\n    properties:\n      serverName: ${myserverPostgres.serverName}\n      userName: ${remoteRole.name}\n      options:\n        user: admin\n        password: pass\n```\n",
+            "properties": {
+                "options": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.\n"
+                },
+                "serverName": {
+                    "type": "string",
+                    "description": "The name of an existing server for which the user mapping is to be created.\nChanging this value\nwill force the creation of a new resource as this value can only be set\nwhen the user mapping is created.\n"
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "The name of an existing user that is mapped to foreign server. CURRENT_ROLE, CURRENT_USER, and USER match the name of the current user. When PUBLIC is specified, a so-called public mapping is created that is used when no user-specific mapping is applicable.\nChanging this value\nwill force the creation of a new resource as this value can only be set\nwhen the user mapping is created.\n"
+                }
+            },
+            "required": [
+                "serverName",
+                "userName"
+            ],
+            "inputProperties": {
+                "options": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.\n"
+                },
+                "serverName": {
+                    "type": "string",
+                    "description": "The name of an existing server for which the user mapping is to be created.\nChanging this value\nwill force the creation of a new resource as this value can only be set\nwhen the user mapping is created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "The name of an existing user that is mapped to foreign server. CURRENT_ROLE, CURRENT_USER, and USER match the name of the current user. When PUBLIC is specified, a so-called public mapping is created that is used when no user-specific mapping is applicable.\nChanging this value\nwill force the creation of a new resource as this value can only be set\nwhen the user mapping is created.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "serverName",
+                "userName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserMapping resources.\n",
+                "properties": {
+                    "options": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.\n"
+                    },
+                    "serverName": {
+                        "type": "string",
+                        "description": "The name of an existing server for which the user mapping is to be created.\nChanging this value\nwill force the creation of a new resource as this value can only be set\nwhen the user mapping is created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "userName": {
+                        "type": "string",
+                        "description": "The name of an existing user that is mapped to foreign server. CURRENT_ROLE, CURRENT_USER, and USER match the name of the current user. When PUBLIC is specified, a so-called public mapping is created that is used when no user-specific mapping is applicable.\nChanging this value\nwill force the creation of a new resource as this value can only be set\nwhen the user mapping is created.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
