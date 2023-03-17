@@ -22,10 +22,10 @@ import (
 	"github.com/cyrilgdn/terraform-provider-postgresql/postgresql"
 	"github.com/pulumi/pulumi-postgresql/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the token components used below.
@@ -52,14 +52,6 @@ func makeType(mod string, typ string) tokens.Type {
 func makeResource(mod string, res string) tokens.Type {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
 	return makeType(mod+"/"+fn, res)
-}
-
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
 }
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
@@ -89,17 +81,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"postgresql_database":                  {Tok: makeResource(mainMod, "Database")},
-			"postgresql_extension":                 {Tok: makeResource(mainMod, "Extension")},
-			"postgresql_grant":                     {Tok: makeResource(mainMod, "Grant")},
-			"postgresql_role":                      {Tok: makeResource(mainMod, "Role")},
-			"postgresql_schema":                    {Tok: makeResource(mainMod, "Schema")},
-			"postgresql_physical_replication_slot": {Tok: makeResource(mainMod, "PhysicalReplicationSlot")},
-			"postgresql_replication_slot":          {Tok: makeResource(mainMod, "ReplicationSlot")},
-			"postgresql_function":                  {Tok: makeResource(mainMod, "Function")},
-			"postgresql_publication":               {Tok: makeResource(mainMod, "Publication")},
 			"postgresql_grant_role": {
 				Tok: makeResource(mainMod, "GrantRole"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -109,7 +91,6 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
@@ -149,6 +130,9 @@ func Provider() tfbridge.ProviderInfo {
 				Source: "postgresql_default_privileges.html.markdown",
 			},
 		})
+
+	err := x.ComputeDefaults(&prov, x.TokensSingleModule("postgresql_", mainMod, x.MakeStandardToken(mainPkg)))
+	contract.AssertNoErrorf(err, "Failed to map tokens")
 
 	prov.SetAutonaming(255, "-")
 

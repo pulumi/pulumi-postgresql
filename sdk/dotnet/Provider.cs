@@ -25,6 +25,12 @@ namespace Pulumi.PostgreSql
         public Output<string?> AwsRdsIamProfile { get; private set; } = null!;
 
         /// <summary>
+        /// AWS region to use for IAM auth
+        /// </summary>
+        [Output("awsRdsIamRegion")]
+        public Output<string?> AwsRdsIamRegion { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the database to connect to in order to conenct to (defaults to `postgres`).
         /// </summary>
         [Output("database")]
@@ -123,6 +129,12 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Input("awsRdsIamProfile")]
         public Input<string>? AwsRdsIamProfile { get; set; }
+
+        /// <summary>
+        /// AWS region to use for IAM auth
+        /// </summary>
+        [Input("awsRdsIamRegion")]
+        public Input<string>? AwsRdsIamRegion { get; set; }
 
         /// <summary>
         /// SSL client certificate if required by the database.

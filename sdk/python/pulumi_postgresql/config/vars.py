@@ -32,6 +32,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('awsRdsIamProfile')
 
     @property
+    def aws_rds_iam_region(self) -> Optional[str]:
+        """
+        AWS region to use for IAM auth
+        """
+        return __config__.get('awsRdsIamRegion')
+
+    @property
     def clientcert(self) -> Optional[str]:
         """
         SSL client certificate if required by the database.

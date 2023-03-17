@@ -70,6 +70,21 @@ export type Schema = import("./schema").Schema;
 export const Schema: typeof import("./schema").Schema = null as any;
 utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
 
+export { ServerArgs, ServerState } from "./server";
+export type Server = import("./server").Server;
+export const Server: typeof import("./server").Server = null as any;
+utilities.lazyLoad(exports, ["Server"], () => require("./server"));
+
+export { SubscriptionArgs, SubscriptionState } from "./subscription";
+export type Subscription = import("./subscription").Subscription;
+export const Subscription: typeof import("./subscription").Subscription = null as any;
+utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
+
+export { UserMappingArgs, UserMappingState } from "./userMapping";
+export type UserMapping = import("./userMapping").UserMapping;
+export const UserMapping: typeof import("./userMapping").UserMapping = null as any;
+utilities.lazyLoad(exports, ["UserMapping"], () => require("./userMapping"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -108,6 +123,12 @@ const _module = {
                 return new Role(name, <any>undefined, { urn })
             case "postgresql:index/schema:Schema":
                 return new Schema(name, <any>undefined, { urn })
+            case "postgresql:index/server:Server":
+                return new Server(name, <any>undefined, { urn })
+            case "postgresql:index/subscription:Subscription":
+                return new Subscription(name, <any>undefined, { urn })
+            case "postgresql:index/userMapping:UserMapping":
+                return new UserMapping(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -125,6 +146,9 @@ pulumi.runtime.registerResourceModule("postgresql", "index/publication", _module
 pulumi.runtime.registerResourceModule("postgresql", "index/replicationSlot", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/role", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/schema", _module)
+pulumi.runtime.registerResourceModule("postgresql", "index/server", _module)
+pulumi.runtime.registerResourceModule("postgresql", "index/subscription", _module)
+pulumi.runtime.registerResourceModule("postgresql", "index/userMapping", _module)
 pulumi.runtime.registerResourcePackage("postgresql", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

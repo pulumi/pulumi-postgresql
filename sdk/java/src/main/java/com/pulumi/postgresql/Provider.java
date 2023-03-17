@@ -38,6 +38,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.awsRdsIamProfile);
     }
     /**
+     * AWS region to use for IAM auth
+     * 
+     */
+    @Export(name="awsRdsIamRegion", type=String.class, parameters={})
+    private Output</* @Nullable */ String> awsRdsIamRegion;
+
+    /**
+     * @return AWS region to use for IAM auth
+     * 
+     */
+    public Output<Optional<String>> awsRdsIamRegion() {
+        return Codegen.optional(this.awsRdsIamRegion);
+    }
+    /**
      * The name of the database to connect to in order to conenct to (defaults to `postgres`).
      * 
      */

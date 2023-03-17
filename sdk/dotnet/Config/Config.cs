@@ -53,6 +53,16 @@ namespace Pulumi.PostgreSql
             set => _awsRdsIamProfile.Set(value);
         }
 
+        private static readonly __Value<string?> _awsRdsIamRegion = new __Value<string?>(() => __config.Get("awsRdsIamRegion"));
+        /// <summary>
+        /// AWS region to use for IAM auth
+        /// </summary>
+        public static string? AwsRdsIamRegion
+        {
+            get => _awsRdsIamRegion.Get();
+            set => _awsRdsIamRegion.Set(value);
+        }
+
         private static readonly __Value<Pulumi.PostgreSql.Config.Types.Clientcert?> _clientcert = new __Value<Pulumi.PostgreSql.Config.Types.Clientcert?>(() => __config.GetObject<Pulumi.PostgreSql.Config.Types.Clientcert>("clientcert"));
         /// <summary>
         /// SSL client certificate if required by the database.

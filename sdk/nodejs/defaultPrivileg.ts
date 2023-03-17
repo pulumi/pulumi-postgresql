@@ -78,7 +78,7 @@ export class DefaultPrivileg extends pulumi.CustomResource {
      */
     public readonly database!: pulumi.Output<string>;
     /**
-     * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+     * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
      */
     public readonly objectType!: pulumi.Output<string>;
     /**
@@ -164,7 +164,7 @@ export interface DefaultPrivilegState {
      */
     database?: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+     * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
      */
     objectType?: pulumi.Input<string>;
     /**
@@ -198,7 +198,7 @@ export interface DefaultPrivilegArgs {
      */
     database: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+     * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
      */
     objectType: pulumi.Input<string>;
     /**

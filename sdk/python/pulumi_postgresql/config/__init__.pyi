@@ -21,6 +21,11 @@ awsRdsIamProfile: Optional[str]
 AWS profile to use for IAM auth
 """
 
+awsRdsIamRegion: Optional[str]
+"""
+AWS region to use for IAM auth
+"""
+
 clientcert: Optional[str]
 """
 SSL client certificate if required by the database.

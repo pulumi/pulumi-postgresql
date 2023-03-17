@@ -111,14 +111,14 @@ public class DefaultPrivileges extends com.pulumi.resources.CustomResource {
         return this.database;
     }
     /**
-     * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+     * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
      * 
      */
     @Export(name="objectType", type=String.class, parameters={})
     private Output<String> objectType;
 
     /**
-     * @return The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+     * @return The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
      * 
      */
     public Output<String> objectType() {

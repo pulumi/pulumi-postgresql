@@ -44,6 +44,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Role{}
 	case "postgresql:index/schema:Schema":
 		r = &Schema{}
+	case "postgresql:index/server:Server":
+		r = &Server{}
+	case "postgresql:index/subscription:Subscription":
+		r = &Subscription{}
+	case "postgresql:index/userMapping:UserMapping":
+		r = &UserMapping{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -130,6 +136,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"postgresql",
 		"index/schema",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"postgresql",
+		"index/server",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"postgresql",
+		"index/subscription",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"postgresql",
+		"index/userMapping",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

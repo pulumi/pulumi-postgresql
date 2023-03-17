@@ -73,7 +73,7 @@ namespace Pulumi.PostgreSql
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
-        /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+        /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
         /// </summary>
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.PostgreSql
         public Input<string> Database { get; set; } = null!;
 
         /// <summary>
-        /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+        /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
@@ -217,7 +217,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+        /// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }

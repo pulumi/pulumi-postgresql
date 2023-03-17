@@ -24,7 +24,7 @@ class DefaultPrivilegesArgs:
         """
         The set of arguments for constructing a DefaultPrivileges resource.
         :param pulumi.Input[str] database: The database to grant default privileges for this role.
-        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
         :param pulumi.Input[str] owner: Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on.
@@ -57,7 +57,7 @@ class DefaultPrivilegesArgs:
     @pulumi.getter(name="objectType")
     def object_type(self) -> pulumi.Input[str]:
         """
-        The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+        The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
         """
         return pulumi.get(self, "object_type")
 
@@ -139,7 +139,7 @@ class _DefaultPrivilegesState:
         """
         Input properties used for looking up and filtering DefaultPrivileges resources.
         :param pulumi.Input[str] database: The database to grant default privileges for this role.
-        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
         :param pulumi.Input[str] owner: Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on.
@@ -177,7 +177,7 @@ class _DefaultPrivilegesState:
     @pulumi.getter(name="objectType")
     def object_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+        The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
         """
         return pulumi.get(self, "object_type")
 
@@ -298,7 +298,7 @@ class DefaultPrivileges(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant default privileges for this role.
-        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
         :param pulumi.Input[str] owner: Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on.
@@ -422,7 +422,7 @@ class DefaultPrivileges(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant default privileges for this role.
-        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+        :param pulumi.Input[str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
         :param pulumi.Input[str] owner: Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
         :param pulumi.Input[str] role: The name of the role to which grant default privileges on.
@@ -454,7 +454,7 @@ class DefaultPrivileges(pulumi.CustomResource):
     @pulumi.getter(name="objectType")
     def object_type(self) -> pulumi.Output[str]:
         """
-        The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type).
+        The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
         """
         return pulumi.get(self, "object_type")
 
