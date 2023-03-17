@@ -19,6 +19,11 @@ func GetAwsRdsIamProfile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:awsRdsIamProfile")
 }
 
+// AWS region to use for IAM auth
+func GetAwsRdsIamRegion(ctx *pulumi.Context) string {
+	return config.Get(ctx, "postgresql:awsRdsIamRegion")
+}
+
 // SSL client certificate if required by the database.
 func GetClientcert(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:clientcert")

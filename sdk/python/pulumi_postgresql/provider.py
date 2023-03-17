@@ -17,6 +17,7 @@ class ProviderArgs:
     def __init__(__self__, *,
                  aws_rds_iam_auth: Optional[pulumi.Input[bool]] = None,
                  aws_rds_iam_profile: Optional[pulumi.Input[str]] = None,
+                 aws_rds_iam_region: Optional[pulumi.Input[str]] = None,
                  clientcert: Optional[pulumi.Input['ProviderClientcertArgs']] = None,
                  connect_timeout: Optional[pulumi.Input[int]] = None,
                  database: Optional[pulumi.Input[str]] = None,
@@ -37,6 +38,7 @@ class ProviderArgs:
         :param pulumi.Input[bool] aws_rds_iam_auth: Use rds_iam instead of password authentication (see:
                https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
         :param pulumi.Input[str] aws_rds_iam_profile: AWS profile to use for IAM auth
+        :param pulumi.Input[str] aws_rds_iam_region: AWS region to use for IAM auth
         :param pulumi.Input['ProviderClientcertArgs'] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[int] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         :param pulumi.Input[str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
@@ -57,6 +59,8 @@ class ProviderArgs:
             pulumi.set(__self__, "aws_rds_iam_auth", aws_rds_iam_auth)
         if aws_rds_iam_profile is not None:
             pulumi.set(__self__, "aws_rds_iam_profile", aws_rds_iam_profile)
+        if aws_rds_iam_region is not None:
+            pulumi.set(__self__, "aws_rds_iam_region", aws_rds_iam_region)
         if clientcert is not None:
             pulumi.set(__self__, "clientcert", clientcert)
         if connect_timeout is None:
@@ -119,6 +123,18 @@ class ProviderArgs:
     @aws_rds_iam_profile.setter
     def aws_rds_iam_profile(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "aws_rds_iam_profile", value)
+
+    @property
+    @pulumi.getter(name="awsRdsIamRegion")
+    def aws_rds_iam_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        AWS region to use for IAM auth
+        """
+        return pulumi.get(self, "aws_rds_iam_region")
+
+    @aws_rds_iam_region.setter
+    def aws_rds_iam_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_rds_iam_region", value)
 
     @property
     @pulumi.getter
@@ -304,6 +320,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aws_rds_iam_auth: Optional[pulumi.Input[bool]] = None,
                  aws_rds_iam_profile: Optional[pulumi.Input[str]] = None,
+                 aws_rds_iam_region: Optional[pulumi.Input[str]] = None,
                  clientcert: Optional[pulumi.Input[pulumi.InputType['ProviderClientcertArgs']]] = None,
                  connect_timeout: Optional[pulumi.Input[int]] = None,
                  database: Optional[pulumi.Input[str]] = None,
@@ -331,6 +348,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[bool] aws_rds_iam_auth: Use rds_iam instead of password authentication (see:
                https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
         :param pulumi.Input[str] aws_rds_iam_profile: AWS profile to use for IAM auth
+        :param pulumi.Input[str] aws_rds_iam_region: AWS region to use for IAM auth
         :param pulumi.Input[pulumi.InputType['ProviderClientcertArgs']] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[int] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         :param pulumi.Input[str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
@@ -376,6 +394,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aws_rds_iam_auth: Optional[pulumi.Input[bool]] = None,
                  aws_rds_iam_profile: Optional[pulumi.Input[str]] = None,
+                 aws_rds_iam_region: Optional[pulumi.Input[str]] = None,
                  clientcert: Optional[pulumi.Input[pulumi.InputType['ProviderClientcertArgs']]] = None,
                  connect_timeout: Optional[pulumi.Input[int]] = None,
                  database: Optional[pulumi.Input[str]] = None,
@@ -402,6 +421,7 @@ class Provider(pulumi.ProviderResource):
 
             __props__.__dict__["aws_rds_iam_auth"] = pulumi.Output.from_input(aws_rds_iam_auth).apply(pulumi.runtime.to_json) if aws_rds_iam_auth is not None else None
             __props__.__dict__["aws_rds_iam_profile"] = aws_rds_iam_profile
+            __props__.__dict__["aws_rds_iam_region"] = aws_rds_iam_region
             __props__.__dict__["clientcert"] = pulumi.Output.from_input(clientcert).apply(pulumi.runtime.to_json) if clientcert is not None else None
             if connect_timeout is None:
                 connect_timeout = (_utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
@@ -439,6 +459,14 @@ class Provider(pulumi.ProviderResource):
         AWS profile to use for IAM auth
         """
         return pulumi.get(self, "aws_rds_iam_profile")
+
+    @property
+    @pulumi.getter(name="awsRdsIamRegion")
+    def aws_rds_iam_region(self) -> pulumi.Output[Optional[str]]:
+        """
+        AWS region to use for IAM auth
+        """
+        return pulumi.get(self, "aws_rds_iam_region")
 
     @property
     @pulumi.getter

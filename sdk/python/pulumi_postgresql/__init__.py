@@ -18,6 +18,9 @@ from .publication import *
 from .replication_slot import *
 from .role import *
 from .schema import *
+from .server import *
+from .subscription import *
+from .user_mapping import *
 from ._inputs import *
 from . import outputs
 
@@ -125,6 +128,30 @@ _utilities.register(
   "fqn": "pulumi_postgresql",
   "classes": {
    "postgresql:index/schema:Schema": "Schema"
+  }
+ },
+ {
+  "pkg": "postgresql",
+  "mod": "index/server",
+  "fqn": "pulumi_postgresql",
+  "classes": {
+   "postgresql:index/server:Server": "Server"
+  }
+ },
+ {
+  "pkg": "postgresql",
+  "mod": "index/subscription",
+  "fqn": "pulumi_postgresql",
+  "classes": {
+   "postgresql:index/subscription:Subscription": "Subscription"
+  }
+ },
+ {
+  "pkg": "postgresql",
+  "mod": "index/userMapping",
+  "fqn": "pulumi_postgresql",
+  "classes": {
+   "postgresql:index/userMapping:UserMapping": "UserMapping"
   }
  }
 ]

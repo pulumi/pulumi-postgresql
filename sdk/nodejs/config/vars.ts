@@ -33,6 +33,17 @@ Object.defineProperty(exports, "awsRdsIamProfile", {
 });
 
 /**
+ * AWS region to use for IAM auth
+ */
+export declare const awsRdsIamRegion: string | undefined;
+Object.defineProperty(exports, "awsRdsIamRegion", {
+    get() {
+        return __config.get("awsRdsIamRegion");
+    },
+    enumerable: true,
+});
+
+/**
  * SSL client certificate if required by the database.
  */
 export declare const clientcert: outputs.config.Clientcert | undefined;

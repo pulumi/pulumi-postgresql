@@ -29,6 +29,13 @@ public final class Config {
         return Codegen.stringProp("awsRdsIamProfile").config(config).get();
     }
 /**
+ * AWS region to use for IAM auth
+ * 
+ */
+    public Optional<String> awsRdsIamRegion() {
+        return Codegen.stringProp("awsRdsIamRegion").config(config).get();
+    }
+/**
  * SSL client certificate if required by the database.
  * 
  */

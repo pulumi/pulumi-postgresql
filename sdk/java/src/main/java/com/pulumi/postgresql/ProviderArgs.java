@@ -52,6 +52,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * AWS region to use for IAM auth
+     * 
+     */
+    @Import(name="awsRdsIamRegion")
+    private @Nullable Output<String> awsRdsIamRegion;
+
+    /**
+     * @return AWS region to use for IAM auth
+     * 
+     */
+    public Optional<Output<String>> awsRdsIamRegion() {
+        return Optional.ofNullable(this.awsRdsIamRegion);
+    }
+
+    /**
      * SSL client certificate if required by the database.
      * 
      */
@@ -281,6 +296,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderArgs(ProviderArgs $) {
         this.awsRdsIamAuth = $.awsRdsIamAuth;
         this.awsRdsIamProfile = $.awsRdsIamProfile;
+        this.awsRdsIamRegion = $.awsRdsIamRegion;
         this.clientcert = $.clientcert;
         this.connectTimeout = $.connectTimeout;
         this.database = $.database;
@@ -358,6 +374,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder awsRdsIamProfile(String awsRdsIamProfile) {
             return awsRdsIamProfile(Output.of(awsRdsIamProfile));
+        }
+
+        /**
+         * @param awsRdsIamRegion AWS region to use for IAM auth
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsRdsIamRegion(@Nullable Output<String> awsRdsIamRegion) {
+            $.awsRdsIamRegion = awsRdsIamRegion;
+            return this;
+        }
+
+        /**
+         * @param awsRdsIamRegion AWS region to use for IAM auth
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsRdsIamRegion(String awsRdsIamRegion) {
+            return awsRdsIamRegion(Output.of(awsRdsIamRegion));
         }
 
         /**

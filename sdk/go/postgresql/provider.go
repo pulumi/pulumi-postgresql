@@ -19,6 +19,8 @@ type Provider struct {
 
 	// AWS profile to use for IAM auth
 	AwsRdsIamProfile pulumi.StringPtrOutput `pulumi:"awsRdsIamProfile"`
+	// AWS region to use for IAM auth
+	AwsRdsIamRegion pulumi.StringPtrOutput `pulumi:"awsRdsIamRegion"`
 	// The name of the database to connect to in order to conenct to (defaults to `postgres`).
 	Database pulumi.StringPtrOutput `pulumi:"database"`
 	// Database username associated to the connected user (for user name maps)
@@ -75,6 +77,8 @@ type providerArgs struct {
 	AwsRdsIamAuth *bool `pulumi:"awsRdsIamAuth"`
 	// AWS profile to use for IAM auth
 	AwsRdsIamProfile *string `pulumi:"awsRdsIamProfile"`
+	// AWS region to use for IAM auth
+	AwsRdsIamRegion *string `pulumi:"awsRdsIamRegion"`
 	// SSL client certificate if required by the database.
 	Clientcert *ProviderClientcert `pulumi:"clientcert"`
 	// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
@@ -115,6 +119,8 @@ type ProviderArgs struct {
 	AwsRdsIamAuth pulumi.BoolPtrInput
 	// AWS profile to use for IAM auth
 	AwsRdsIamProfile pulumi.StringPtrInput
+	// AWS region to use for IAM auth
+	AwsRdsIamRegion pulumi.StringPtrInput
 	// SSL client certificate if required by the database.
 	Clientcert ProviderClientcertPtrInput
 	// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
@@ -188,6 +194,11 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 // AWS profile to use for IAM auth
 func (o ProviderOutput) AwsRdsIamProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AwsRdsIamProfile }).(pulumi.StringPtrOutput)
+}
+
+// AWS region to use for IAM auth
+func (o ProviderOutput) AwsRdsIamRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AwsRdsIamRegion }).(pulumi.StringPtrOutput)
 }
 
 // The name of the database to connect to in order to conenct to (defaults to `postgres`).

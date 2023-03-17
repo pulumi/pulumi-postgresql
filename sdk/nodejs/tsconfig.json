@@ -29,9 +29,12 @@
         "replicationSlot.ts",
         "role.ts",
         "schema.ts",
+        "server.ts",
+        "subscription.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
+        "userMapping.ts",
         "utilities.ts"
     ]
 }
