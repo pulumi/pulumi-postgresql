@@ -21,13 +21,12 @@ import * as utilities from "./utilities";
  *         name: "i",
  *         type: "integer",
  *     }],
- *     body: `    AS $
- *     BEGIN
+ *     body: `    BEGIN
  *         RETURN i + 1;
  *     END;
- *     $ LANGUAGE plpgsql;
  *
  * `,
+ *     language: "plpgsql",
  *     returns: "integer",
  * });
  * ```
@@ -66,7 +65,7 @@ export class Function extends pulumi.CustomResource {
     public readonly args!: pulumi.Output<outputs.FunctionArg[] | undefined>;
     /**
      * Function body.
-     * This should be everything after the return type in the function definition.
+     * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      */
     public readonly body!: pulumi.Output<string>;
     /**
@@ -80,13 +79,17 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly dropCascade!: pulumi.Output<boolean | undefined>;
     /**
+     * The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+     */
+    public readonly language!: pulumi.Output<string | undefined>;
+    /**
      * The name of the argument.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Type that the function returns.
+     * Type that the function returns. It can be computed from the OUT arguments. Default is void.
      */
-    public readonly returns!: pulumi.Output<string | undefined>;
+    public readonly returns!: pulumi.Output<string>;
     /**
      * The schema where the function is located.
      * If not specified, the function is created in the current schema.
@@ -110,6 +113,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["body"] = state ? state.body : undefined;
             resourceInputs["database"] = state ? state.database : undefined;
             resourceInputs["dropCascade"] = state ? state.dropCascade : undefined;
+            resourceInputs["language"] = state ? state.language : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["returns"] = state ? state.returns : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
@@ -122,6 +126,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["body"] = args ? args.body : undefined;
             resourceInputs["database"] = args ? args.database : undefined;
             resourceInputs["dropCascade"] = args ? args.dropCascade : undefined;
+            resourceInputs["language"] = args ? args.language : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["returns"] = args ? args.returns : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
@@ -141,7 +146,7 @@ export interface FunctionState {
     args?: pulumi.Input<pulumi.Input<inputs.FunctionArg>[]>;
     /**
      * Function body.
-     * This should be everything after the return type in the function definition.
+     * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      */
     body?: pulumi.Input<string>;
     /**
@@ -155,11 +160,15 @@ export interface FunctionState {
      */
     dropCascade?: pulumi.Input<boolean>;
     /**
+     * The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+     */
+    language?: pulumi.Input<string>;
+    /**
      * The name of the argument.
      */
     name?: pulumi.Input<string>;
     /**
-     * Type that the function returns.
+     * Type that the function returns. It can be computed from the OUT arguments. Default is void.
      */
     returns?: pulumi.Input<string>;
     /**
@@ -179,7 +188,7 @@ export interface FunctionArgs {
     args?: pulumi.Input<pulumi.Input<inputs.FunctionArg>[]>;
     /**
      * Function body.
-     * This should be everything after the return type in the function definition.
+     * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      */
     body: pulumi.Input<string>;
     /**
@@ -193,11 +202,15 @@ export interface FunctionArgs {
      */
     dropCascade?: pulumi.Input<boolean>;
     /**
+     * The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+     */
+    language?: pulumi.Input<string>;
+    /**
      * The name of the argument.
      */
     name?: pulumi.Input<string>;
     /**
-     * Type that the function returns.
+     * Type that the function returns. It can be computed from the OUT arguments. Default is void.
      */
     returns?: pulumi.Input<string>;
     /**

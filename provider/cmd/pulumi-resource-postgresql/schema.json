@@ -284,6 +284,90 @@
                 }
             },
             "type": "object"
+        },
+        "postgresql:index/getSequencesSequence:getSequencesSequence": {
+            "properties": {
+                "dataType": {
+                    "type": "string",
+                    "description": "The sequence's data type as defined in ``information_schema.sequences``.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "objectName": {
+                    "type": "string",
+                    "description": "The sequence name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "schemaName": {
+                    "type": "string",
+                    "description": "The parent schema.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "dataType",
+                "objectName",
+                "schemaName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "postgresql:index/getTablesTable:getTablesTable": {
+            "properties": {
+                "objectName": {
+                    "type": "string",
+                    "description": "The table name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "schemaName": {
+                    "type": "string",
+                    "description": "The parent schema.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tableType": {
+                    "type": "string",
+                    "description": "The table type as defined in ``information_schema.tables``.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "objectName",
+                "schemaName",
+                "tableType"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         }
     },
     "provider": {
@@ -965,7 +1049,7 @@
             }
         },
         "postgresql:index/function:Function": {
-            "description": "The ``postgresql.Function`` resource creates and manages a function on a PostgreSQL\nserver.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst increment = new postgresql.Function(\"increment\", {\n    args: [{\n        name: \"i\",\n        type: \"integer\",\n    }],\n    body: `    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n`,\n    returns: \"integer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nincrement = postgresql.Function(\"increment\",\n    args=[postgresql.FunctionArgArgs(\n        name=\"i\",\n        type=\"integer\",\n    )],\n    body=\"\"\"    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n\"\"\",\n    returns=\"integer\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var increment = new PostgreSql.Function(\"increment\", new()\n    {\n        Args = new[]\n        {\n            new PostgreSql.Inputs.FunctionArgArgs\n            {\n                Name = \"i\",\n                Type = \"integer\",\n            },\n        },\n        Body = @\"    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n\",\n        Returns = \"integer\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewFunction(ctx, \"increment\", \u0026postgresql.FunctionArgs{\n\t\t\tArgs: postgresql.FunctionArgArray{\n\t\t\t\t\u0026postgresql.FunctionArgArgs{\n\t\t\t\t\tName: pulumi.String(\"i\"),\n\t\t\t\t\tType: pulumi.String(\"integer\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBody:    pulumi.String(\"    AS $\\n    BEGIN\\n        RETURN i + 1;\\n    END;\\n    $ LANGUAGE plpgsql;\\n\\n\"),\n\t\t\tReturns: pulumi.String(\"integer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Function;\nimport com.pulumi.postgresql.FunctionArgs;\nimport com.pulumi.postgresql.inputs.FunctionArgArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var increment = new Function(\"increment\", FunctionArgs.builder()        \n            .args(FunctionArgArgs.builder()\n                .name(\"i\")\n                .type(\"integer\")\n                .build())\n            .body(\"\"\"\n    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n            \"\"\")\n            .returns(\"integer\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  increment:\n    type: postgresql:Function\n    properties:\n      args:\n        - name: i\n          type: integer\n      body: |2+\n            AS $\n            BEGIN\n                RETURN i + 1;\n            END;\n            $ LANGUAGE plpgsql;\n\n      returns: integer\n```\n",
+            "description": "The ``postgresql.Function`` resource creates and manages a function on a PostgreSQL\nserver.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst increment = new postgresql.Function(\"increment\", {\n    args: [{\n        name: \"i\",\n        type: \"integer\",\n    }],\n    body: `    BEGIN\n        RETURN i + 1;\n    END;\n\n`,\n    language: \"plpgsql\",\n    returns: \"integer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nincrement = postgresql.Function(\"increment\",\n    args=[postgresql.FunctionArgArgs(\n        name=\"i\",\n        type=\"integer\",\n    )],\n    body=\"\"\"    BEGIN\n        RETURN i + 1;\n    END;\n\n\"\"\",\n    language=\"plpgsql\",\n    returns=\"integer\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var increment = new PostgreSql.Function(\"increment\", new()\n    {\n        Args = new[]\n        {\n            new PostgreSql.Inputs.FunctionArgArgs\n            {\n                Name = \"i\",\n                Type = \"integer\",\n            },\n        },\n        Body = @\"    BEGIN\n        RETURN i + 1;\n    END;\n\n\",\n        Language = \"plpgsql\",\n        Returns = \"integer\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewFunction(ctx, \"increment\", \u0026postgresql.FunctionArgs{\n\t\t\tArgs: postgresql.FunctionArgArray{\n\t\t\t\t\u0026postgresql.FunctionArgArgs{\n\t\t\t\t\tName: pulumi.String(\"i\"),\n\t\t\t\t\tType: pulumi.String(\"integer\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBody:     pulumi.String(\"    BEGIN\\n        RETURN i + 1;\\n    END;\\n\\n\"),\n\t\t\tLanguage: pulumi.String(\"plpgsql\"),\n\t\t\tReturns:  pulumi.String(\"integer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Function;\nimport com.pulumi.postgresql.FunctionArgs;\nimport com.pulumi.postgresql.inputs.FunctionArgArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var increment = new Function(\"increment\", FunctionArgs.builder()        \n            .args(FunctionArgArgs.builder()\n                .name(\"i\")\n                .type(\"integer\")\n                .build())\n            .body(\"\"\"\n    BEGIN\n        RETURN i + 1;\n    END;\n\n            \"\"\")\n            .language(\"plpgsql\")\n            .returns(\"integer\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  increment:\n    type: postgresql:Function\n    properties:\n      args:\n        - name: i\n          type: integer\n      body: |2+\n            BEGIN\n                RETURN i + 1;\n            END;\n\n      language: plpgsql\n      returns: integer\n```\n",
             "properties": {
                 "args": {
                     "type": "array",
@@ -976,7 +1060,7 @@
                 },
                 "body": {
                     "type": "string",
-                    "description": "Function body.\nThis should be everything after the return type in the function definition.\n"
+                    "description": "Function body.\nThis should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.\n"
                 },
                 "database": {
                     "type": "string",
@@ -986,13 +1070,17 @@
                     "type": "boolean",
                     "description": "True to automatically drop objects that depend on the function (such as \noperators or triggers), and in turn all objects that depend on those objects. Default is false.\n"
                 },
+                "language": {
+                    "type": "string",
+                    "description": "The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the argument.\n"
                 },
                 "returns": {
                     "type": "string",
-                    "description": "Type that the function returns.\n"
+                    "description": "Type that the function returns. It can be computed from the OUT arguments. Default is void.\n"
                 },
                 "schema": {
                     "type": "string",
@@ -1003,6 +1091,7 @@
                 "body",
                 "database",
                 "name",
+                "returns",
                 "schema"
             ],
             "inputProperties": {
@@ -1016,7 +1105,7 @@
                 },
                 "body": {
                     "type": "string",
-                    "description": "Function body.\nThis should be everything after the return type in the function definition.\n"
+                    "description": "Function body.\nThis should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.\n"
                 },
                 "database": {
                     "type": "string",
@@ -1027,6 +1116,11 @@
                     "type": "boolean",
                     "description": "True to automatically drop objects that depend on the function (such as \noperators or triggers), and in turn all objects that depend on those objects. Default is false.\n"
                 },
+                "language": {
+                    "type": "string",
+                    "description": "The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.\n",
+                    "willReplaceOnChanges": true
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the argument.\n",
@@ -1034,7 +1128,7 @@
                 },
                 "returns": {
                     "type": "string",
-                    "description": "Type that the function returns.\n",
+                    "description": "Type that the function returns. It can be computed from the OUT arguments. Default is void.\n",
                     "willReplaceOnChanges": true
                 },
                 "schema": {
@@ -1059,7 +1153,7 @@
                     },
                     "body": {
                         "type": "string",
-                        "description": "Function body.\nThis should be everything after the return type in the function definition.\n"
+                        "description": "Function body.\nThis should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.\n"
                     },
                     "database": {
                         "type": "string",
@@ -1070,6 +1164,11 @@
                         "type": "boolean",
                         "description": "True to automatically drop objects that depend on the function (such as \noperators or triggers), and in turn all objects that depend on those objects. Default is false.\n"
                     },
+                    "language": {
+                        "type": "string",
+                        "description": "The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.\n",
+                        "willReplaceOnChanges": true
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the argument.\n",
@@ -1077,7 +1176,7 @@
                     },
                     "returns": {
                         "type": "string",
-                        "description": "Type that the function returns.\n",
+                        "description": "Type that the function returns. It can be computed from the OUT arguments. Default is void.\n",
                         "willReplaceOnChanges": true
                     },
                     "schema": {
@@ -1090,22 +1189,29 @@
             }
         },
         "postgresql:index/grant:Grant": {
-            "description": "The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.\n\nSee [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readonlyTables = new postgresql.Grant(\"readonlyTables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    objects: [\n        \"table1\",\n        \"table2\",\n    ],\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nreadonly_tables = postgresql.Grant(\"readonlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    objects=[\n        \"table1\",\n        \"table2\",\n    ],\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var readonlyTables = new PostgreSql.Grant(\"readonlyTables\", new()\n    {\n        Database = \"test_db\",\n        ObjectType = \"table\",\n        Objects = new[]\n        {\n            \"table1\",\n            \"table2\",\n        },\n        Privileges = new[]\n        {\n            \"SELECT\",\n        },\n        Role = \"test_role\",\n        Schema = \"public\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"readonlyTables\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tObjects: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"table1\"),\n\t\t\t\tpulumi.String(\"table2\"),\n\t\t\t},\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Grant;\nimport com.pulumi.postgresql.GrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readonlyTables = new Grant(\"readonlyTables\", GrantArgs.builder()        \n            .database(\"test_db\")\n            .objectType(\"table\")\n            .objects(            \n                \"table1\",\n                \"table2\")\n            .privileges(\"SELECT\")\n            .role(\"test_role\")\n            .schema(\"public\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  readonlyTables:\n    type: postgresql:Grant\n    properties:\n      database: test_db\n      objectType: table\n      objects:\n        - table1\n        - table2\n      privileges:\n        - SELECT\n      role: test_role\n      schema: public\n```\n\n## Examples\n\nRevoke default accesses for public schema:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.Grant(\"revokePublic\", {\n    database: \"test_db\",\n    objectType: \"schema\",\n    privileges: [],\n    role: \"public\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.Grant(\"revokePublic\",\n    database=\"test_db\",\n    object_type=\"schema\",\n    privileges=[],\n    role=\"public\",\n    schema=\"public\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var revokePublic = new PostgreSql.Grant(\"revokePublic\", new()\n    {\n        Database = \"test_db\",\n        ObjectType = \"schema\",\n        Privileges = new[] {},\n        Role = \"public\",\n        Schema = \"public\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"revokePublic\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"schema\"),\n\t\t\tPrivileges: pulumi.StringArray{},\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tSchema:     pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Grant;\nimport com.pulumi.postgresql.GrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var revokePublic = new Grant(\"revokePublic\", GrantArgs.builder()        \n            .database(\"test_db\")\n            .objectType(\"schema\")\n            .privileges()\n            .role(\"public\")\n            .schema(\"public\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  revokePublic:\n    type: postgresql:Grant\n    properties:\n      database: test_db\n      objectType: schema\n      privileges: []\n      role: public\n      schema: public\n```\n",
+            "description": "The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.\n\nSee [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\u003e **Note:** Using column \u0026 table grants on the _same_ table with the _same_ privileges can lead to unexpected behaviours.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\n// Grant SELECT privileges on 2 tables\nconst readonlyTables = new postgresql.Grant(\"readonlyTables\", {\n    database: \"test_db\",\n    objectType: \"table\",\n    objects: [\n        \"table1\",\n        \"table2\",\n    ],\n    privileges: [\"SELECT\"],\n    role: \"test_role\",\n    schema: \"public\",\n});\n// Grant SELECT \u0026 INSERT privileges on 2 columns in 1 table\nconst readInsertColumn = new postgresql.Grant(\"readInsertColumn\", {\n    columns: [\n        \"col1\",\n        \"col2\",\n    ],\n    database: \"test_db\",\n    objectType: \"column\",\n    objects: [\"table1\"],\n    privileges: [\n        \"UPDATE\",\n        \"INSERT\",\n    ],\n    role: \"test_role\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\n# Grant SELECT privileges on 2 tables\nreadonly_tables = postgresql.Grant(\"readonlyTables\",\n    database=\"test_db\",\n    object_type=\"table\",\n    objects=[\n        \"table1\",\n        \"table2\",\n    ],\n    privileges=[\"SELECT\"],\n    role=\"test_role\",\n    schema=\"public\")\n# Grant SELECT \u0026 INSERT privileges on 2 columns in 1 table\nread_insert_column = postgresql.Grant(\"readInsertColumn\",\n    columns=[\n        \"col1\",\n        \"col2\",\n    ],\n    database=\"test_db\",\n    object_type=\"column\",\n    objects=[\"table1\"],\n    privileges=[\n        \"UPDATE\",\n        \"INSERT\",\n    ],\n    role=\"test_role\",\n    schema=\"public\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Grant SELECT privileges on 2 tables\n    var readonlyTables = new PostgreSql.Grant(\"readonlyTables\", new()\n    {\n        Database = \"test_db\",\n        ObjectType = \"table\",\n        Objects = new[]\n        {\n            \"table1\",\n            \"table2\",\n        },\n        Privileges = new[]\n        {\n            \"SELECT\",\n        },\n        Role = \"test_role\",\n        Schema = \"public\",\n    });\n\n    // Grant SELECT \u0026 INSERT privileges on 2 columns in 1 table\n    var readInsertColumn = new PostgreSql.Grant(\"readInsertColumn\", new()\n    {\n        Columns = new[]\n        {\n            \"col1\",\n            \"col2\",\n        },\n        Database = \"test_db\",\n        ObjectType = \"column\",\n        Objects = new[]\n        {\n            \"table1\",\n        },\n        Privileges = new[]\n        {\n            \"UPDATE\",\n            \"INSERT\",\n        },\n        Role = \"test_role\",\n        Schema = \"public\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"readonlyTables\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tObjects: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"table1\"),\n\t\t\t\tpulumi.String(\"table2\"),\n\t\t\t},\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = postgresql.NewGrant(ctx, \"readInsertColumn\", \u0026postgresql.GrantArgs{\n\t\t\tColumns: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"col1\"),\n\t\t\t\tpulumi.String(\"col2\"),\n\t\t\t},\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"column\"),\n\t\t\tObjects: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"table1\"),\n\t\t\t},\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"UPDATE\"),\n\t\t\t\tpulumi.String(\"INSERT\"),\n\t\t\t},\n\t\t\tRole:   pulumi.String(\"test_role\"),\n\t\t\tSchema: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Grant;\nimport com.pulumi.postgresql.GrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readonlyTables = new Grant(\"readonlyTables\", GrantArgs.builder()        \n            .database(\"test_db\")\n            .objectType(\"table\")\n            .objects(            \n                \"table1\",\n                \"table2\")\n            .privileges(\"SELECT\")\n            .role(\"test_role\")\n            .schema(\"public\")\n            .build());\n\n        var readInsertColumn = new Grant(\"readInsertColumn\", GrantArgs.builder()        \n            .columns(            \n                \"col1\",\n                \"col2\")\n            .database(\"test_db\")\n            .objectType(\"column\")\n            .objects(\"table1\")\n            .privileges(            \n                \"UPDATE\",\n                \"INSERT\")\n            .role(\"test_role\")\n            .schema(\"public\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Grant SELECT privileges on 2 tables\n  readonlyTables:\n    type: postgresql:Grant\n    properties:\n      database: test_db\n      objectType: table\n      objects:\n        - table1\n        - table2\n      privileges:\n        - SELECT\n      role: test_role\n      schema: public\n  # Grant SELECT \u0026 INSERT privileges on 2 columns in 1 table\n  readInsertColumn:\n    type: postgresql:Grant\n    properties:\n      columns:\n        - col1\n        - col2\n      database: test_db\n      objectType: column\n      objects:\n        - table1\n      privileges:\n        - UPDATE\n        - INSERT\n      role: test_role\n      schema: public\n```\n\n## Examples\n\nRevoke default accesses for public schema:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.Grant(\"revokePublic\", {\n    database: \"test_db\",\n    objectType: \"schema\",\n    privileges: [],\n    role: \"public\",\n    schema: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.Grant(\"revokePublic\",\n    database=\"test_db\",\n    object_type=\"schema\",\n    privileges=[],\n    role=\"public\",\n    schema=\"public\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var revokePublic = new PostgreSql.Grant(\"revokePublic\", new()\n    {\n        Database = \"test_db\",\n        ObjectType = \"schema\",\n        Privileges = new[] {},\n        Role = \"public\",\n        Schema = \"public\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewGrant(ctx, \"revokePublic\", \u0026postgresql.GrantArgs{\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tObjectType: pulumi.String(\"schema\"),\n\t\t\tPrivileges: pulumi.StringArray{},\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tSchema:     pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Grant;\nimport com.pulumi.postgresql.GrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var revokePublic = new Grant(\"revokePublic\", GrantArgs.builder()        \n            .database(\"test_db\")\n            .objectType(\"schema\")\n            .privileges()\n            .role(\"public\")\n            .schema(\"public\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  revokePublic:\n    type: postgresql:Grant\n    properties:\n      database: test_db\n      objectType: schema\n      privileges: []\n      role: public\n      schema: public\n```\n",
             "properties": {
+                "columns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.\n"
+                },
                 "database": {
                     "type": "string",
                     "description": "The database to grant privileges on for this role.\n"
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).\n"
+                    "description": "The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).\n"
                 },
                 "objects": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.\n"
+                    "description": "The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.\n"
                 },
                 "privileges": {
                     "type": "array",
@@ -1134,6 +1240,14 @@
                 "role"
             ],
             "inputProperties": {
+                "columns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.\n",
+                    "willReplaceOnChanges": true
+                },
                 "database": {
                     "type": "string",
                     "description": "The database to grant privileges on for this role.\n",
@@ -1141,7 +1255,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).\n",
+                    "description": "The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).\n",
                     "willReplaceOnChanges": true
                 },
                 "objects": {
@@ -1149,7 +1263,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.\n",
+                    "description": "The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.\n",
                     "willReplaceOnChanges": true
                 },
                 "privileges": {
@@ -1157,7 +1271,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.\n"
+                    "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.\n",
+                    "willReplaceOnChanges": true
                 },
                 "role": {
                     "type": "string",
@@ -1184,6 +1299,14 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Grant resources.\n",
                 "properties": {
+                    "columns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.\n",
+                        "willReplaceOnChanges": true
+                    },
                     "database": {
                         "type": "string",
                         "description": "The database to grant privileges on for this role.\n",
@@ -1191,7 +1314,7 @@
                     },
                     "objectType": {
                         "type": "string",
-                        "description": "The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).\n",
+                        "description": "The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).\n",
                         "willReplaceOnChanges": true
                     },
                     "objects": {
@@ -1199,7 +1322,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.\n",
+                        "description": "The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.\n",
                         "willReplaceOnChanges": true
                     },
                     "privileges": {
@@ -1207,7 +1330,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.\n"
+                        "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.\n",
+                        "willReplaceOnChanges": true
                     },
                     "role": {
                         "type": "string",
@@ -2224,6 +2348,318 @@
                     }
                 },
                 "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "postgresql:index/getSchemas:getSchemas": {
+            "description": "The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst mySchemas = postgresql.getSchemas({\n    database: \"my_database\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_schemas = postgresql.get_schemas(database=\"my_database\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mySchemas = PostgreSql.GetSchemas.Invoke(new()\n    {\n        Database = \"my_database\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.GetSchemas(ctx, \u0026postgresql.GetSchemasArgs{\n\t\t\tDatabase: \"my_database\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.PostgresqlFunctions;\nimport com.pulumi.postgresql.inputs.GetSchemasArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var mySchemas = PostgresqlFunctions.getSchemas(GetSchemasArgs.builder()\n            .database(\"my_database\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  mySchemas:\n    fn::invoke:\n      Function: postgresql:getSchemas\n      Arguments:\n        database: my_database\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSchemas.\n",
+                "properties": {
+                    "database": {
+                        "type": "string",
+                        "description": "The PostgreSQL database which will be queried for schema names.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "includeSystemSchemas": {
+                        "type": "boolean",
+                        "description": "Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to ``false``.\n"
+                    },
+                    "likeAllPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ALL`` operators.\n"
+                    },
+                    "likeAnyPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.\n"
+                    },
+                    "notLikeAllPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.\n"
+                    },
+                    "regexPattern": {
+                        "type": "string",
+                        "description": "Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "database"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSchemas.\n",
+                "properties": {
+                    "database": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "includeSystemSchemas": {
+                        "type": "boolean"
+                    },
+                    "likeAllPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "likeAnyPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "notLikeAllPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "regexPattern": {
+                        "type": "string"
+                    },
+                    "schemas": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of full names of found schemas.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "database",
+                    "schemas",
+                    "id"
+                ]
+            }
+        },
+        "postgresql:index/getSequences:getSequences": {
+            "description": "The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst mySequences = postgresql.getSequences({\n    database: \"my_database\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_sequences = postgresql.get_sequences(database=\"my_database\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mySequences = PostgreSql.GetSequences.Invoke(new()\n    {\n        Database = \"my_database\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.GetSequences(ctx, \u0026postgresql.GetSequencesArgs{\n\t\t\tDatabase: \"my_database\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.PostgresqlFunctions;\nimport com.pulumi.postgresql.inputs.GetSequencesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var mySequences = PostgresqlFunctions.getSequences(GetSequencesArgs.builder()\n            .database(\"my_database\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  mySequences:\n    fn::invoke:\n      Function: postgresql:getSequences\n      Arguments:\n        database: my_database\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSequences.\n",
+                "properties": {
+                    "database": {
+                        "type": "string",
+                        "description": "The PostgreSQL database which will be queried for sequence names.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "likeAllPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ALL`` operators.\n"
+                    },
+                    "likeAnyPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ANY`` operators.\n"
+                    },
+                    "notLikeAllPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.\n"
+                    },
+                    "regexPattern": {
+                        "type": "string",
+                        "description": "Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.\n"
+                    },
+                    "schemas": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of PostgreSQL schema(s) which will be queried for sequence names. Queries all schemas in the database by default.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "database"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSequences.\n",
+                "properties": {
+                    "database": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "likeAllPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "likeAnyPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "notLikeAllPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "regexPattern": {
+                        "type": "string"
+                    },
+                    "schemas": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "sequences": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/postgresql:index/getSequencesSequence:getSequencesSequence"
+                        },
+                        "description": "A list of PostgreSQL sequences retrieved by this data source. Each sequence consists of the fields documented below.\n___\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "database",
+                    "sequences",
+                    "id"
+                ]
+            }
+        },
+        "postgresql:index/getTables:getTables": {
+            "description": "The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst myTables = postgresql.getTables({\n    database: \"my_database\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_tables = postgresql.get_tables(database=\"my_database\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myTables = PostgreSql.GetTables.Invoke(new()\n    {\n        Database = \"my_database\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.GetTables(ctx, \u0026postgresql.GetTablesArgs{\n\t\t\tDatabase: \"my_database\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.PostgresqlFunctions;\nimport com.pulumi.postgresql.inputs.GetTablesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myTables = PostgresqlFunctions.getTables(GetTablesArgs.builder()\n            .database(\"my_database\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myTables:\n    fn::invoke:\n      Function: postgresql:getTables\n      Arguments:\n        database: my_database\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTables.\n",
+                "properties": {
+                    "database": {
+                        "type": "string",
+                        "description": "The PostgreSQL database which will be queried for table names.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "likeAllPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.\n"
+                    },
+                    "likeAnyPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.\n"
+                    },
+                    "notLikeAllPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.\n"
+                    },
+                    "regexPattern": {
+                        "type": "string",
+                        "description": "Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.\n"
+                    },
+                    "schemas": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of PostgreSQL schema(s) which will be queried for table names. Queries all schemas in the database by default.\n"
+                    },
+                    "tableTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of PostgreSQL table types which will be queried for table names. Includes all table types by default (including views and temp tables). Use 'BASE TABLE' for normal tables only.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "database"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTables.\n",
+                "properties": {
+                    "database": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "likeAllPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "likeAnyPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "notLikeAllPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "regexPattern": {
+                        "type": "string"
+                    },
+                    "schemas": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "tableTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "tables": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/postgresql:index/getTablesTable:getTablesTable"
+                        },
+                        "description": "A list of PostgreSQL tables retrieved by this data source. Each table consists of the fields documented below.\n___\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "database",
+                    "tables",
+                    "id"
+                ]
             }
         }
     }

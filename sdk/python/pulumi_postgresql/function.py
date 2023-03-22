@@ -20,20 +20,22 @@ class FunctionArgs:
                  args: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
+                 language: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  returns: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Function resource.
         :param pulumi.Input[str] body: Function body.
-               This should be everything after the return type in the function definition.
+               This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]] args: List of arguments for the function.
         :param pulumi.Input[str] database: The database where the function is located.
                If not specified, the function is created in the current database.
         :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as 
                operators or triggers), and in turn all objects that depend on those objects. Default is false.
+        :param pulumi.Input[str] language: The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
         :param pulumi.Input[str] name: The name of the argument.
-        :param pulumi.Input[str] returns: Type that the function returns.
+        :param pulumi.Input[str] returns: Type that the function returns. It can be computed from the OUT arguments. Default is void.
         :param pulumi.Input[str] schema: The schema where the function is located.
                If not specified, the function is created in the current schema.
         """
@@ -44,6 +46,8 @@ class FunctionArgs:
             pulumi.set(__self__, "database", database)
         if drop_cascade is not None:
             pulumi.set(__self__, "drop_cascade", drop_cascade)
+        if language is not None:
+            pulumi.set(__self__, "language", language)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if returns is not None:
@@ -56,7 +60,7 @@ class FunctionArgs:
     def body(self) -> pulumi.Input[str]:
         """
         Function body.
-        This should be everything after the return type in the function definition.
+        This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         """
         return pulumi.get(self, "body")
 
@@ -104,6 +108,18 @@ class FunctionArgs:
 
     @property
     @pulumi.getter
+    def language(self) -> Optional[pulumi.Input[str]]:
+        """
+        The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+        """
+        return pulumi.get(self, "language")
+
+    @language.setter
+    def language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "language", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the argument.
@@ -118,7 +134,7 @@ class FunctionArgs:
     @pulumi.getter
     def returns(self) -> Optional[pulumi.Input[str]]:
         """
-        Type that the function returns.
+        Type that the function returns. It can be computed from the OUT arguments. Default is void.
         """
         return pulumi.get(self, "returns")
 
@@ -147,6 +163,7 @@ class _FunctionState:
                  body: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
+                 language: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  returns: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None):
@@ -154,13 +171,14 @@ class _FunctionState:
         Input properties used for looking up and filtering Function resources.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]] args: List of arguments for the function.
         :param pulumi.Input[str] body: Function body.
-               This should be everything after the return type in the function definition.
+               This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         :param pulumi.Input[str] database: The database where the function is located.
                If not specified, the function is created in the current database.
         :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as 
                operators or triggers), and in turn all objects that depend on those objects. Default is false.
+        :param pulumi.Input[str] language: The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
         :param pulumi.Input[str] name: The name of the argument.
-        :param pulumi.Input[str] returns: Type that the function returns.
+        :param pulumi.Input[str] returns: Type that the function returns. It can be computed from the OUT arguments. Default is void.
         :param pulumi.Input[str] schema: The schema where the function is located.
                If not specified, the function is created in the current schema.
         """
@@ -172,6 +190,8 @@ class _FunctionState:
             pulumi.set(__self__, "database", database)
         if drop_cascade is not None:
             pulumi.set(__self__, "drop_cascade", drop_cascade)
+        if language is not None:
+            pulumi.set(__self__, "language", language)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if returns is not None:
@@ -196,7 +216,7 @@ class _FunctionState:
     def body(self) -> Optional[pulumi.Input[str]]:
         """
         Function body.
-        This should be everything after the return type in the function definition.
+        This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         """
         return pulumi.get(self, "body")
 
@@ -232,6 +252,18 @@ class _FunctionState:
 
     @property
     @pulumi.getter
+    def language(self) -> Optional[pulumi.Input[str]]:
+        """
+        The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+        """
+        return pulumi.get(self, "language")
+
+    @language.setter
+    def language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "language", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the argument.
@@ -246,7 +278,7 @@ class _FunctionState:
     @pulumi.getter
     def returns(self) -> Optional[pulumi.Input[str]]:
         """
-        Type that the function returns.
+        Type that the function returns. It can be computed from the OUT arguments. Default is void.
         """
         return pulumi.get(self, "returns")
 
@@ -277,6 +309,7 @@ class Function(pulumi.CustomResource):
                  body: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
+                 language: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  returns: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
@@ -296,13 +329,12 @@ class Function(pulumi.CustomResource):
                 name="i",
                 type="integer",
             )],
-            body=\"\"\"    AS $
-            BEGIN
+            body=\"\"\"    BEGIN
                 RETURN i + 1;
             END;
-            $ LANGUAGE plpgsql;
 
         \"\"\",
+            language="plpgsql",
             returns="integer")
         ```
 
@@ -310,13 +342,14 @@ class Function(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionArgArgs']]]] args: List of arguments for the function.
         :param pulumi.Input[str] body: Function body.
-               This should be everything after the return type in the function definition.
+               This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         :param pulumi.Input[str] database: The database where the function is located.
                If not specified, the function is created in the current database.
         :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as 
                operators or triggers), and in turn all objects that depend on those objects. Default is false.
+        :param pulumi.Input[str] language: The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
         :param pulumi.Input[str] name: The name of the argument.
-        :param pulumi.Input[str] returns: Type that the function returns.
+        :param pulumi.Input[str] returns: Type that the function returns. It can be computed from the OUT arguments. Default is void.
         :param pulumi.Input[str] schema: The schema where the function is located.
                If not specified, the function is created in the current schema.
         """
@@ -341,13 +374,12 @@ class Function(pulumi.CustomResource):
                 name="i",
                 type="integer",
             )],
-            body=\"\"\"    AS $
-            BEGIN
+            body=\"\"\"    BEGIN
                 RETURN i + 1;
             END;
-            $ LANGUAGE plpgsql;
 
         \"\"\",
+            language="plpgsql",
             returns="integer")
         ```
 
@@ -370,6 +402,7 @@ class Function(pulumi.CustomResource):
                  body: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
+                 language: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  returns: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
@@ -388,6 +421,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["body"] = body
             __props__.__dict__["database"] = database
             __props__.__dict__["drop_cascade"] = drop_cascade
+            __props__.__dict__["language"] = language
             __props__.__dict__["name"] = name
             __props__.__dict__["returns"] = returns
             __props__.__dict__["schema"] = schema
@@ -405,6 +439,7 @@ class Function(pulumi.CustomResource):
             body: Optional[pulumi.Input[str]] = None,
             database: Optional[pulumi.Input[str]] = None,
             drop_cascade: Optional[pulumi.Input[bool]] = None,
+            language: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             returns: Optional[pulumi.Input[str]] = None,
             schema: Optional[pulumi.Input[str]] = None) -> 'Function':
@@ -417,13 +452,14 @@ class Function(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionArgArgs']]]] args: List of arguments for the function.
         :param pulumi.Input[str] body: Function body.
-               This should be everything after the return type in the function definition.
+               This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         :param pulumi.Input[str] database: The database where the function is located.
                If not specified, the function is created in the current database.
         :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as 
                operators or triggers), and in turn all objects that depend on those objects. Default is false.
+        :param pulumi.Input[str] language: The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
         :param pulumi.Input[str] name: The name of the argument.
-        :param pulumi.Input[str] returns: Type that the function returns.
+        :param pulumi.Input[str] returns: Type that the function returns. It can be computed from the OUT arguments. Default is void.
         :param pulumi.Input[str] schema: The schema where the function is located.
                If not specified, the function is created in the current schema.
         """
@@ -435,6 +471,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["body"] = body
         __props__.__dict__["database"] = database
         __props__.__dict__["drop_cascade"] = drop_cascade
+        __props__.__dict__["language"] = language
         __props__.__dict__["name"] = name
         __props__.__dict__["returns"] = returns
         __props__.__dict__["schema"] = schema
@@ -453,7 +490,7 @@ class Function(pulumi.CustomResource):
     def body(self) -> pulumi.Output[str]:
         """
         Function body.
-        This should be everything after the return type in the function definition.
+        This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         """
         return pulumi.get(self, "body")
 
@@ -477,6 +514,14 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def language(self) -> pulumi.Output[Optional[str]]:
+        """
+        The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+        """
+        return pulumi.get(self, "language")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The name of the argument.
@@ -485,9 +530,9 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def returns(self) -> pulumi.Output[Optional[str]]:
+    def returns(self) -> pulumi.Output[str]:
         """
-        Type that the function returns.
+        Type that the function returns. It can be computed from the OUT arguments. Default is void.
         """
         return pulumi.get(self, "returns")
 

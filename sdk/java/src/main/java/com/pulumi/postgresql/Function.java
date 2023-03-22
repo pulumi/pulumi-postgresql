@@ -50,13 +50,12 @@ import javax.annotation.Nullable;
  *                 .type(&#34;integer&#34;)
  *                 .build())
  *             .body(&#34;&#34;&#34;
- *     AS $
  *     BEGIN
  *         RETURN i + 1;
  *     END;
- *     $ LANGUAGE plpgsql;
  * 
  *             &#34;&#34;&#34;)
+ *             .language(&#34;plpgsql&#34;)
  *             .returns(&#34;integer&#34;)
  *             .build());
  * 
@@ -83,7 +82,7 @@ public class Function extends com.pulumi.resources.CustomResource {
     }
     /**
      * Function body.
-     * This should be everything after the return type in the function definition.
+     * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      * 
      */
     @Export(name="body", type=String.class, parameters={})
@@ -91,7 +90,7 @@ public class Function extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Function body.
-     * This should be everything after the return type in the function definition.
+     * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      * 
      */
     public Output<String> body() {
@@ -130,6 +129,20 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dropCascade);
     }
     /**
+     * The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+     * 
+     */
+    @Export(name="language", type=String.class, parameters={})
+    private Output</* @Nullable */ String> language;
+
+    /**
+     * @return The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+     * 
+     */
+    public Output<Optional<String>> language() {
+        return Codegen.optional(this.language);
+    }
+    /**
      * The name of the argument.
      * 
      */
@@ -144,18 +157,18 @@ public class Function extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Type that the function returns.
+     * Type that the function returns. It can be computed from the OUT arguments. Default is void.
      * 
      */
     @Export(name="returns", type=String.class, parameters={})
-    private Output</* @Nullable */ String> returns;
+    private Output<String> returns;
 
     /**
-     * @return Type that the function returns.
+     * @return Type that the function returns. It can be computed from the OUT arguments. Default is void.
      * 
      */
-    public Output<Optional<String>> returns() {
-        return Codegen.optional(this.returns);
+    public Output<String> returns() {
+        return this.returns;
     }
     /**
      * The schema where the function is located.
