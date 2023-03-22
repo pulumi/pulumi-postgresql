@@ -35,8 +35,9 @@ import (
 //						Type: pulumi.String("integer"),
 //					},
 //				},
-//				Body:    pulumi.String("    AS $\n    BEGIN\n        RETURN i + 1;\n    END;\n    $ LANGUAGE plpgsql;\n\n"),
-//				Returns: pulumi.String("integer"),
+//				Body:     pulumi.String("    BEGIN\n        RETURN i + 1;\n    END;\n\n"),
+//				Language: pulumi.String("plpgsql"),
+//				Returns:  pulumi.String("integer"),
 //			})
 //			if err != nil {
 //				return err
@@ -52,7 +53,7 @@ type Function struct {
 	// List of arguments for the function.
 	Args FunctionArgArrayOutput `pulumi:"args"`
 	// Function body.
-	// This should be everything after the return type in the function definition.
+	// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
 	Body pulumi.StringOutput `pulumi:"body"`
 	// The database where the function is located.
 	// If not specified, the function is created in the current database.
@@ -60,10 +61,12 @@ type Function struct {
 	// True to automatically drop objects that depend on the function (such as
 	// operators or triggers), and in turn all objects that depend on those objects. Default is false.
 	DropCascade pulumi.BoolPtrOutput `pulumi:"dropCascade"`
+	// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+	Language pulumi.StringPtrOutput `pulumi:"language"`
 	// The name of the argument.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Type that the function returns.
-	Returns pulumi.StringPtrOutput `pulumi:"returns"`
+	// Type that the function returns. It can be computed from the OUT arguments. Default is void.
+	Returns pulumi.StringOutput `pulumi:"returns"`
 	// The schema where the function is located.
 	// If not specified, the function is created in the current schema.
 	Schema pulumi.StringOutput `pulumi:"schema"`
@@ -104,7 +107,7 @@ type functionState struct {
 	// List of arguments for the function.
 	Args []FunctionArg `pulumi:"args"`
 	// Function body.
-	// This should be everything after the return type in the function definition.
+	// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
 	Body *string `pulumi:"body"`
 	// The database where the function is located.
 	// If not specified, the function is created in the current database.
@@ -112,9 +115,11 @@ type functionState struct {
 	// True to automatically drop objects that depend on the function (such as
 	// operators or triggers), and in turn all objects that depend on those objects. Default is false.
 	DropCascade *bool `pulumi:"dropCascade"`
+	// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+	Language *string `pulumi:"language"`
 	// The name of the argument.
 	Name *string `pulumi:"name"`
-	// Type that the function returns.
+	// Type that the function returns. It can be computed from the OUT arguments. Default is void.
 	Returns *string `pulumi:"returns"`
 	// The schema where the function is located.
 	// If not specified, the function is created in the current schema.
@@ -125,7 +130,7 @@ type FunctionState struct {
 	// List of arguments for the function.
 	Args FunctionArgArrayInput
 	// Function body.
-	// This should be everything after the return type in the function definition.
+	// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
 	Body pulumi.StringPtrInput
 	// The database where the function is located.
 	// If not specified, the function is created in the current database.
@@ -133,9 +138,11 @@ type FunctionState struct {
 	// True to automatically drop objects that depend on the function (such as
 	// operators or triggers), and in turn all objects that depend on those objects. Default is false.
 	DropCascade pulumi.BoolPtrInput
+	// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+	Language pulumi.StringPtrInput
 	// The name of the argument.
 	Name pulumi.StringPtrInput
-	// Type that the function returns.
+	// Type that the function returns. It can be computed from the OUT arguments. Default is void.
 	Returns pulumi.StringPtrInput
 	// The schema where the function is located.
 	// If not specified, the function is created in the current schema.
@@ -150,7 +157,7 @@ type functionArgs struct {
 	// List of arguments for the function.
 	Args []FunctionArg `pulumi:"args"`
 	// Function body.
-	// This should be everything after the return type in the function definition.
+	// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
 	Body string `pulumi:"body"`
 	// The database where the function is located.
 	// If not specified, the function is created in the current database.
@@ -158,9 +165,11 @@ type functionArgs struct {
 	// True to automatically drop objects that depend on the function (such as
 	// operators or triggers), and in turn all objects that depend on those objects. Default is false.
 	DropCascade *bool `pulumi:"dropCascade"`
+	// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+	Language *string `pulumi:"language"`
 	// The name of the argument.
 	Name *string `pulumi:"name"`
-	// Type that the function returns.
+	// Type that the function returns. It can be computed from the OUT arguments. Default is void.
 	Returns *string `pulumi:"returns"`
 	// The schema where the function is located.
 	// If not specified, the function is created in the current schema.
@@ -172,7 +181,7 @@ type FunctionArgs struct {
 	// List of arguments for the function.
 	Args FunctionArgArrayInput
 	// Function body.
-	// This should be everything after the return type in the function definition.
+	// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
 	Body pulumi.StringInput
 	// The database where the function is located.
 	// If not specified, the function is created in the current database.
@@ -180,9 +189,11 @@ type FunctionArgs struct {
 	// True to automatically drop objects that depend on the function (such as
 	// operators or triggers), and in turn all objects that depend on those objects. Default is false.
 	DropCascade pulumi.BoolPtrInput
+	// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+	Language pulumi.StringPtrInput
 	// The name of the argument.
 	Name pulumi.StringPtrInput
-	// Type that the function returns.
+	// Type that the function returns. It can be computed from the OUT arguments. Default is void.
 	Returns pulumi.StringPtrInput
 	// The schema where the function is located.
 	// If not specified, the function is created in the current schema.
@@ -282,7 +293,7 @@ func (o FunctionOutput) Args() FunctionArgArrayOutput {
 }
 
 // Function body.
-// This should be everything after the return type in the function definition.
+// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
 func (o FunctionOutput) Body() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Body }).(pulumi.StringOutput)
 }
@@ -299,14 +310,19 @@ func (o FunctionOutput) DropCascade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.BoolPtrOutput { return v.DropCascade }).(pulumi.BoolPtrOutput)
 }
 
+// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+func (o FunctionOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Language }).(pulumi.StringPtrOutput)
+}
+
 // The name of the argument.
 func (o FunctionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Type that the function returns.
-func (o FunctionOutput) Returns() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Returns }).(pulumi.StringPtrOutput)
+// Type that the function returns. It can be computed from the OUT arguments. Default is void.
+func (o FunctionOutput) Returns() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Returns }).(pulumi.StringOutput)
 }
 
 // The schema where the function is located.

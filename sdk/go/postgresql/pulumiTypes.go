@@ -415,6 +415,236 @@ func (o SchemaPolicyArrayOutput) Index(i pulumi.IntInput) SchemaPolicyOutput {
 	}).(SchemaPolicyOutput)
 }
 
+type GetSequencesSequence struct {
+	// The sequence's data type as defined in ``information_schema.sequences``.
+	DataType string `pulumi:"dataType"`
+	// The sequence name.
+	ObjectName string `pulumi:"objectName"`
+	// The parent schema.
+	SchemaName string `pulumi:"schemaName"`
+}
+
+// GetSequencesSequenceInput is an input type that accepts GetSequencesSequenceArgs and GetSequencesSequenceOutput values.
+// You can construct a concrete instance of `GetSequencesSequenceInput` via:
+//
+//	GetSequencesSequenceArgs{...}
+type GetSequencesSequenceInput interface {
+	pulumi.Input
+
+	ToGetSequencesSequenceOutput() GetSequencesSequenceOutput
+	ToGetSequencesSequenceOutputWithContext(context.Context) GetSequencesSequenceOutput
+}
+
+type GetSequencesSequenceArgs struct {
+	// The sequence's data type as defined in ``information_schema.sequences``.
+	DataType pulumi.StringInput `pulumi:"dataType"`
+	// The sequence name.
+	ObjectName pulumi.StringInput `pulumi:"objectName"`
+	// The parent schema.
+	SchemaName pulumi.StringInput `pulumi:"schemaName"`
+}
+
+func (GetSequencesSequenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSequencesSequence)(nil)).Elem()
+}
+
+func (i GetSequencesSequenceArgs) ToGetSequencesSequenceOutput() GetSequencesSequenceOutput {
+	return i.ToGetSequencesSequenceOutputWithContext(context.Background())
+}
+
+func (i GetSequencesSequenceArgs) ToGetSequencesSequenceOutputWithContext(ctx context.Context) GetSequencesSequenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSequencesSequenceOutput)
+}
+
+// GetSequencesSequenceArrayInput is an input type that accepts GetSequencesSequenceArray and GetSequencesSequenceArrayOutput values.
+// You can construct a concrete instance of `GetSequencesSequenceArrayInput` via:
+//
+//	GetSequencesSequenceArray{ GetSequencesSequenceArgs{...} }
+type GetSequencesSequenceArrayInput interface {
+	pulumi.Input
+
+	ToGetSequencesSequenceArrayOutput() GetSequencesSequenceArrayOutput
+	ToGetSequencesSequenceArrayOutputWithContext(context.Context) GetSequencesSequenceArrayOutput
+}
+
+type GetSequencesSequenceArray []GetSequencesSequenceInput
+
+func (GetSequencesSequenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSequencesSequence)(nil)).Elem()
+}
+
+func (i GetSequencesSequenceArray) ToGetSequencesSequenceArrayOutput() GetSequencesSequenceArrayOutput {
+	return i.ToGetSequencesSequenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetSequencesSequenceArray) ToGetSequencesSequenceArrayOutputWithContext(ctx context.Context) GetSequencesSequenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSequencesSequenceArrayOutput)
+}
+
+type GetSequencesSequenceOutput struct{ *pulumi.OutputState }
+
+func (GetSequencesSequenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSequencesSequence)(nil)).Elem()
+}
+
+func (o GetSequencesSequenceOutput) ToGetSequencesSequenceOutput() GetSequencesSequenceOutput {
+	return o
+}
+
+func (o GetSequencesSequenceOutput) ToGetSequencesSequenceOutputWithContext(ctx context.Context) GetSequencesSequenceOutput {
+	return o
+}
+
+// The sequence's data type as defined in “information_schema.sequences“.
+func (o GetSequencesSequenceOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSequencesSequence) string { return v.DataType }).(pulumi.StringOutput)
+}
+
+// The sequence name.
+func (o GetSequencesSequenceOutput) ObjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSequencesSequence) string { return v.ObjectName }).(pulumi.StringOutput)
+}
+
+// The parent schema.
+func (o GetSequencesSequenceOutput) SchemaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSequencesSequence) string { return v.SchemaName }).(pulumi.StringOutput)
+}
+
+type GetSequencesSequenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSequencesSequenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSequencesSequence)(nil)).Elem()
+}
+
+func (o GetSequencesSequenceArrayOutput) ToGetSequencesSequenceArrayOutput() GetSequencesSequenceArrayOutput {
+	return o
+}
+
+func (o GetSequencesSequenceArrayOutput) ToGetSequencesSequenceArrayOutputWithContext(ctx context.Context) GetSequencesSequenceArrayOutput {
+	return o
+}
+
+func (o GetSequencesSequenceArrayOutput) Index(i pulumi.IntInput) GetSequencesSequenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSequencesSequence {
+		return vs[0].([]GetSequencesSequence)[vs[1].(int)]
+	}).(GetSequencesSequenceOutput)
+}
+
+type GetTablesTable struct {
+	// The table name.
+	ObjectName string `pulumi:"objectName"`
+	// The parent schema.
+	SchemaName string `pulumi:"schemaName"`
+	// The table type as defined in ``information_schema.tables``.
+	TableType string `pulumi:"tableType"`
+}
+
+// GetTablesTableInput is an input type that accepts GetTablesTableArgs and GetTablesTableOutput values.
+// You can construct a concrete instance of `GetTablesTableInput` via:
+//
+//	GetTablesTableArgs{...}
+type GetTablesTableInput interface {
+	pulumi.Input
+
+	ToGetTablesTableOutput() GetTablesTableOutput
+	ToGetTablesTableOutputWithContext(context.Context) GetTablesTableOutput
+}
+
+type GetTablesTableArgs struct {
+	// The table name.
+	ObjectName pulumi.StringInput `pulumi:"objectName"`
+	// The parent schema.
+	SchemaName pulumi.StringInput `pulumi:"schemaName"`
+	// The table type as defined in ``information_schema.tables``.
+	TableType pulumi.StringInput `pulumi:"tableType"`
+}
+
+func (GetTablesTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesTable)(nil)).Elem()
+}
+
+func (i GetTablesTableArgs) ToGetTablesTableOutput() GetTablesTableOutput {
+	return i.ToGetTablesTableOutputWithContext(context.Background())
+}
+
+func (i GetTablesTableArgs) ToGetTablesTableOutputWithContext(ctx context.Context) GetTablesTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableOutput)
+}
+
+// GetTablesTableArrayInput is an input type that accepts GetTablesTableArray and GetTablesTableArrayOutput values.
+// You can construct a concrete instance of `GetTablesTableArrayInput` via:
+//
+//	GetTablesTableArray{ GetTablesTableArgs{...} }
+type GetTablesTableArrayInput interface {
+	pulumi.Input
+
+	ToGetTablesTableArrayOutput() GetTablesTableArrayOutput
+	ToGetTablesTableArrayOutputWithContext(context.Context) GetTablesTableArrayOutput
+}
+
+type GetTablesTableArray []GetTablesTableInput
+
+func (GetTablesTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTablesTable)(nil)).Elem()
+}
+
+func (i GetTablesTableArray) ToGetTablesTableArrayOutput() GetTablesTableArrayOutput {
+	return i.ToGetTablesTableArrayOutputWithContext(context.Background())
+}
+
+func (i GetTablesTableArray) ToGetTablesTableArrayOutputWithContext(ctx context.Context) GetTablesTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableArrayOutput)
+}
+
+type GetTablesTableOutput struct{ *pulumi.OutputState }
+
+func (GetTablesTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesTable)(nil)).Elem()
+}
+
+func (o GetTablesTableOutput) ToGetTablesTableOutput() GetTablesTableOutput {
+	return o
+}
+
+func (o GetTablesTableOutput) ToGetTablesTableOutputWithContext(ctx context.Context) GetTablesTableOutput {
+	return o
+}
+
+// The table name.
+func (o GetTablesTableOutput) ObjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTable) string { return v.ObjectName }).(pulumi.StringOutput)
+}
+
+// The parent schema.
+func (o GetTablesTableOutput) SchemaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTable) string { return v.SchemaName }).(pulumi.StringOutput)
+}
+
+// The table type as defined in “information_schema.tables“.
+func (o GetTablesTableOutput) TableType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTable) string { return v.TableType }).(pulumi.StringOutput)
+}
+
+type GetTablesTableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTablesTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTablesTable)(nil)).Elem()
+}
+
+func (o GetTablesTableArrayOutput) ToGetTablesTableArrayOutput() GetTablesTableArrayOutput {
+	return o
+}
+
+func (o GetTablesTableArrayOutput) ToGetTablesTableArrayOutputWithContext(ctx context.Context) GetTablesTableArrayOutput {
+	return o
+}
+
+func (o GetTablesTableArrayOutput) Index(i pulumi.IntInput) GetTablesTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTablesTable {
+		return vs[0].([]GetTablesTable)[vs[1].(int)]
+	}).(GetTablesTableOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionArgInput)(nil)).Elem(), FunctionArgArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionArgArrayInput)(nil)).Elem(), FunctionArgArray{})
@@ -422,10 +652,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderClientcertPtrInput)(nil)).Elem(), ProviderClientcertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPolicyInput)(nil)).Elem(), SchemaPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPolicyArrayInput)(nil)).Elem(), SchemaPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSequencesSequenceInput)(nil)).Elem(), GetSequencesSequenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSequencesSequenceArrayInput)(nil)).Elem(), GetSequencesSequenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableInput)(nil)).Elem(), GetTablesTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableArrayInput)(nil)).Elem(), GetTablesTableArray{})
 	pulumi.RegisterOutputType(FunctionArgOutput{})
 	pulumi.RegisterOutputType(FunctionArgArrayOutput{})
 	pulumi.RegisterOutputType(ProviderClientcertOutput{})
 	pulumi.RegisterOutputType(ProviderClientcertPtrOutput{})
 	pulumi.RegisterOutputType(SchemaPolicyOutput{})
 	pulumi.RegisterOutputType(SchemaPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetSequencesSequenceOutput{})
+	pulumi.RegisterOutputType(GetSequencesSequenceArrayOutput{})
+	pulumi.RegisterOutputType(GetTablesTableOutput{})
+	pulumi.RegisterOutputType(GetTablesTableArrayOutput{})
 }

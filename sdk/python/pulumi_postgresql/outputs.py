@@ -12,6 +12,8 @@ from . import _utilities
 __all__ = [
     'FunctionArg',
     'SchemaPolicy',
+    'GetSequencesSequenceResult',
+    'GetTablesTableResult',
 ]
 
 @pulumi.output_type
@@ -152,5 +154,85 @@ class SchemaPolicy(dict):
         Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
         """
         return pulumi.get(self, "usage_with_grant")
+
+
+@pulumi.output_type
+class GetSequencesSequenceResult(dict):
+    def __init__(__self__, *,
+                 data_type: str,
+                 object_name: str,
+                 schema_name: str):
+        """
+        :param str data_type: The sequence's data type as defined in ``information_schema.sequences``.
+        :param str object_name: The sequence name.
+        :param str schema_name: The parent schema.
+        """
+        pulumi.set(__self__, "data_type", data_type)
+        pulumi.set(__self__, "object_name", object_name)
+        pulumi.set(__self__, "schema_name", schema_name)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> str:
+        """
+        The sequence's data type as defined in ``information_schema.sequences``.
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter(name="objectName")
+    def object_name(self) -> str:
+        """
+        The sequence name.
+        """
+        return pulumi.get(self, "object_name")
+
+    @property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> str:
+        """
+        The parent schema.
+        """
+        return pulumi.get(self, "schema_name")
+
+
+@pulumi.output_type
+class GetTablesTableResult(dict):
+    def __init__(__self__, *,
+                 object_name: str,
+                 schema_name: str,
+                 table_type: str):
+        """
+        :param str object_name: The table name.
+        :param str schema_name: The parent schema.
+        :param str table_type: The table type as defined in ``information_schema.tables``.
+        """
+        pulumi.set(__self__, "object_name", object_name)
+        pulumi.set(__self__, "schema_name", schema_name)
+        pulumi.set(__self__, "table_type", table_type)
+
+    @property
+    @pulumi.getter(name="objectName")
+    def object_name(self) -> str:
+        """
+        The table name.
+        """
+        return pulumi.get(self, "object_name")
+
+    @property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> str:
+        """
+        The parent schema.
+        """
+        return pulumi.get(self, "schema_name")
+
+    @property
+    @pulumi.getter(name="tableType")
+    def table_type(self) -> str:
+        """
+        The table type as defined in ``information_schema.tables``.
+        """
+        return pulumi.get(self, "table_type")
 
 

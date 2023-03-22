@@ -10,6 +10,9 @@ from .default_privileg import *
 from .default_privileges import *
 from .extension import *
 from .function import *
+from .get_schemas import *
+from .get_sequences import *
+from .get_tables import *
 from .grant import *
 from .grant_role import *
 from .physical_replication_slot import *

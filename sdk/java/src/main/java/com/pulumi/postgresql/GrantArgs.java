@@ -18,6 +18,21 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
     public static final GrantArgs Empty = new GrantArgs();
 
     /**
+     * The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+     * 
+     */
+    @Import(name="columns")
+    private @Nullable Output<List<String>> columns;
+
+    /**
+     * @return The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+     * 
+     */
+    public Optional<Output<List<String>>> columns() {
+        return Optional.ofNullable(this.columns);
+    }
+
+    /**
      * The database to grant privileges on for this role.
      * 
      */
@@ -33,14 +48,14 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).
+     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).
      * 
      */
     @Import(name="objectType", required=true)
     private Output<String> objectType;
 
     /**
-     * @return The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).
+     * @return The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).
      * 
      */
     public Output<String> objectType() {
@@ -48,14 +63,14 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
+     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
      * 
      */
     @Import(name="objects")
     private @Nullable Output<List<String>> objects;
 
     /**
-     * @return The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
+     * @return The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
      * 
      */
     public Optional<Output<List<String>>> objects() {
@@ -125,6 +140,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
     private GrantArgs() {}
 
     private GrantArgs(GrantArgs $) {
+        this.columns = $.columns;
         this.database = $.database;
         this.objectType = $.objectType;
         this.objects = $.objects;
@@ -153,6 +169,37 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param columns The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder columns(@Nullable Output<List<String>> columns) {
+            $.columns = columns;
+            return this;
+        }
+
+        /**
+         * @param columns The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder columns(List<String> columns) {
+            return columns(Output.of(columns));
+        }
+
+        /**
+         * @param columns The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder columns(String... columns) {
+            return columns(List.of(columns));
+        }
+
+        /**
          * @param database The database to grant privileges on for this role.
          * 
          * @return builder
@@ -174,7 +221,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objectType The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).
+         * @param objectType The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).
          * 
          * @return builder
          * 
@@ -185,7 +232,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objectType The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).
+         * @param objectType The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).
          * 
          * @return builder
          * 
@@ -195,7 +242,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objects The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
+         * @param objects The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
          * 
          * @return builder
          * 
@@ -206,7 +253,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objects The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
+         * @param objects The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
          * 
          * @return builder
          * 
@@ -216,7 +263,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objects The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`.
+         * @param objects The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
          * 
          * @return builder
          * 

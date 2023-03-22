@@ -24,6 +24,36 @@ export interface FunctionArg {
     type: string;
 }
 
+export interface GetSequencesSequence {
+    /**
+     * The sequence's data type as defined in ``information_schema.sequences``.
+     */
+    dataType: string;
+    /**
+     * The sequence name.
+     */
+    objectName: string;
+    /**
+     * The parent schema.
+     */
+    schemaName: string;
+}
+
+export interface GetTablesTable {
+    /**
+     * The table name.
+     */
+    objectName: string;
+    /**
+     * The parent schema.
+     */
+    schemaName: string;
+    /**
+     * The table type as defined in ``information_schema.tables``.
+     */
+    tableType: string;
+}
+
 export interface SchemaPolicy {
     /**
      * Should the specified ROLE have CREATE privileges to the specified SCHEMA.

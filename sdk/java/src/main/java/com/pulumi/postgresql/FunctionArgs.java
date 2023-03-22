@@ -35,7 +35,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Function body.
-     * This should be everything after the return type in the function definition.
+     * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      * 
      */
     @Import(name="body", required=true)
@@ -43,7 +43,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Function body.
-     * This should be everything after the return type in the function definition.
+     * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      * 
      */
     public Output<String> body() {
@@ -85,6 +85,21 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+     * 
+     */
+    @Import(name="language")
+    private @Nullable Output<String> language;
+
+    /**
+     * @return The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+     * 
+     */
+    public Optional<Output<String>> language() {
+        return Optional.ofNullable(this.language);
+    }
+
+    /**
      * The name of the argument.
      * 
      */
@@ -100,14 +115,14 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type that the function returns.
+     * Type that the function returns. It can be computed from the OUT arguments. Default is void.
      * 
      */
     @Import(name="returns")
     private @Nullable Output<String> returns;
 
     /**
-     * @return Type that the function returns.
+     * @return Type that the function returns. It can be computed from the OUT arguments. Default is void.
      * 
      */
     public Optional<Output<String>> returns() {
@@ -138,6 +153,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         this.body = $.body;
         this.database = $.database;
         this.dropCascade = $.dropCascade;
+        this.language = $.language;
         this.name = $.name;
         this.returns = $.returns;
         this.schema = $.schema;
@@ -194,7 +210,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param body Function body.
-         * This should be everything after the return type in the function definition.
+         * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
          * 
          * @return builder
          * 
@@ -206,7 +222,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param body Function body.
-         * This should be everything after the return type in the function definition.
+         * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
          * 
          * @return builder
          * 
@@ -262,6 +278,27 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param language The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder language(@Nullable Output<String> language) {
+            $.language = language;
+            return this;
+        }
+
+        /**
+         * @param language The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder language(String language) {
+            return language(Output.of(language));
+        }
+
+        /**
          * @param name The name of the argument.
          * 
          * @return builder
@@ -283,7 +320,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param returns Type that the function returns.
+         * @param returns Type that the function returns. It can be computed from the OUT arguments. Default is void.
          * 
          * @return builder
          * 
@@ -294,7 +331,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param returns Type that the function returns.
+         * @param returns Type that the function returns. It can be computed from the OUT arguments. Default is void.
          * 
          * @return builder
          * 

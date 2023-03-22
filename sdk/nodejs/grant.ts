@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  * See [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)
  *
  * > **Note:** This resource needs Postgresql version 9 or above.
+ * **Note:** Using column & table grants on the _same_ table with the _same_ privileges can lead to unexpected behaviours.
  *
  * ## Usage
  *
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
+ * // Grant SELECT privileges on 2 tables
  * const readonlyTables = new postgresql.Grant("readonlyTables", {
  *     database: "test_db",
  *     objectType: "table",
@@ -25,6 +27,22 @@ import * as utilities from "./utilities";
  *         "table2",
  *     ],
  *     privileges: ["SELECT"],
+ *     role: "test_role",
+ *     schema: "public",
+ * });
+ * // Grant SELECT & INSERT privileges on 2 columns in 1 table
+ * const readInsertColumn = new postgresql.Grant("readInsertColumn", {
+ *     columns: [
+ *         "col1",
+ *         "col2",
+ *     ],
+ *     database: "test_db",
+ *     objectType: "column",
+ *     objects: ["table1"],
+ *     privileges: [
+ *         "UPDATE",
+ *         "INSERT",
+ *     ],
  *     role: "test_role",
  *     schema: "public",
  * });
@@ -76,15 +94,19 @@ export class Grant extends pulumi.CustomResource {
     }
 
     /**
+     * The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
+     */
+    public readonly columns!: pulumi.Output<string[] | undefined>;
+    /**
      * The database to grant privileges on for this role.
      */
     public readonly database!: pulumi.Output<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).
+     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).
      */
     public readonly objectType!: pulumi.Output<string>;
     /**
-     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`.
+     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`. When `objectType` is `column`, only one value is allowed.
      */
     public readonly objects!: pulumi.Output<string[] | undefined>;
     /**
@@ -117,6 +139,7 @@ export class Grant extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GrantState | undefined;
+            resourceInputs["columns"] = state ? state.columns : undefined;
             resourceInputs["database"] = state ? state.database : undefined;
             resourceInputs["objectType"] = state ? state.objectType : undefined;
             resourceInputs["objects"] = state ? state.objects : undefined;
@@ -138,6 +161,7 @@ export class Grant extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
+            resourceInputs["columns"] = args ? args.columns : undefined;
             resourceInputs["database"] = args ? args.database : undefined;
             resourceInputs["objectType"] = args ? args.objectType : undefined;
             resourceInputs["objects"] = args ? args.objects : undefined;
@@ -156,15 +180,19 @@ export class Grant extends pulumi.CustomResource {
  */
 export interface GrantState {
     /**
+     * The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
+     */
+    columns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The database to grant privileges on for this role.
      */
     database?: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).
+     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).
      */
     objectType?: pulumi.Input<string>;
     /**
-     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`.
+     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`. When `objectType` is `column`, only one value is allowed.
      */
     objects?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -190,15 +218,19 @@ export interface GrantState {
  */
 export interface GrantArgs {
     /**
+     * The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
+     */
+    columns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The database to grant privileges on for this role.
      */
     database: pulumi.Input<string>;
     /**
-     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server).
+     * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).
      */
     objectType: pulumi.Input<string>;
     /**
-     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`.
+     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`. When `objectType` is `column`, only one value is allowed.
      */
     objects?: pulumi.Input<pulumi.Input<string>[]>;
     /**

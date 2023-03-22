@@ -32,13 +32,12 @@ namespace Pulumi.PostgreSql
     ///                 Type = "integer",
     ///             },
     ///         },
-    ///         Body = @"    AS $
-    ///     BEGIN
+    ///         Body = @"    BEGIN
     ///         RETURN i + 1;
     ///     END;
-    ///     $ LANGUAGE plpgsql;
     /// 
     /// ",
+    ///         Language = "plpgsql",
     ///         Returns = "integer",
     ///     });
     /// 
@@ -56,7 +55,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Function body.
-        /// This should be everything after the return type in the function definition.
+        /// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         /// </summary>
         [Output("body")]
         public Output<string> Body { get; private set; } = null!;
@@ -76,16 +75,22 @@ namespace Pulumi.PostgreSql
         public Output<bool?> DropCascade { get; private set; } = null!;
 
         /// <summary>
+        /// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+        /// </summary>
+        [Output("language")]
+        public Output<string?> Language { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the argument.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Type that the function returns.
+        /// Type that the function returns. It can be computed from the OUT arguments. Default is void.
         /// </summary>
         [Output("returns")]
-        public Output<string?> Returns { get; private set; } = null!;
+        public Output<string> Returns { get; private set; } = null!;
 
         /// <summary>
         /// The schema where the function is located.
@@ -154,7 +159,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Function body.
-        /// This should be everything after the return type in the function definition.
+        /// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         /// </summary>
         [Input("body", required: true)]
         public Input<string> Body { get; set; } = null!;
@@ -174,13 +179,19 @@ namespace Pulumi.PostgreSql
         public Input<bool>? DropCascade { get; set; }
 
         /// <summary>
+        /// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+        /// </summary>
+        [Input("language")]
+        public Input<string>? Language { get; set; }
+
+        /// <summary>
         /// The name of the argument.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Type that the function returns.
+        /// Type that the function returns. It can be computed from the OUT arguments. Default is void.
         /// </summary>
         [Input("returns")]
         public Input<string>? Returns { get; set; }
@@ -214,7 +225,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Function body.
-        /// This should be everything after the return type in the function definition.
+        /// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         /// </summary>
         [Input("body")]
         public Input<string>? Body { get; set; }
@@ -234,13 +245,19 @@ namespace Pulumi.PostgreSql
         public Input<bool>? DropCascade { get; set; }
 
         /// <summary>
+        /// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
+        /// </summary>
+        [Input("language")]
+        public Input<string>? Language { get; set; }
+
+        /// <summary>
         /// The name of the argument.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Type that the function returns.
+        /// Type that the function returns. It can be computed from the OUT arguments. Default is void.
         /// </summary>
         [Input("returns")]
         public Input<string>? Returns { get; set; }

@@ -30,6 +30,21 @@ export type Function = import("./function").Function;
 export const Function: typeof import("./function").Function = null as any;
 utilities.lazyLoad(exports, ["Function"], () => require("./function"));
 
+export { GetSchemasArgs, GetSchemasResult, GetSchemasOutputArgs } from "./getSchemas";
+export const getSchemas: typeof import("./getSchemas").getSchemas = null as any;
+export const getSchemasOutput: typeof import("./getSchemas").getSchemasOutput = null as any;
+utilities.lazyLoad(exports, ["getSchemas","getSchemasOutput"], () => require("./getSchemas"));
+
+export { GetSequencesArgs, GetSequencesResult, GetSequencesOutputArgs } from "./getSequences";
+export const getSequences: typeof import("./getSequences").getSequences = null as any;
+export const getSequencesOutput: typeof import("./getSequences").getSequencesOutput = null as any;
+utilities.lazyLoad(exports, ["getSequences","getSequencesOutput"], () => require("./getSequences"));
+
+export { GetTablesArgs, GetTablesResult, GetTablesOutputArgs } from "./getTables";
+export const getTables: typeof import("./getTables").getTables = null as any;
+export const getTablesOutput: typeof import("./getTables").getTablesOutput = null as any;
+utilities.lazyLoad(exports, ["getTables","getTablesOutput"], () => require("./getTables"));
+
 export { GrantArgs, GrantState } from "./grant";
 export type Grant = import("./grant").Grant;
 export const Grant: typeof import("./grant").Grant = null as any;
