@@ -3,4 +3,5 @@
 ---
 upstream-provider-name: terraform-provider-postgresql
 pulumi-infer-version: true
+remove-plugins: true
 
