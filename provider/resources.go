@@ -90,6 +90,10 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"postgresql_grant": {
+				Tok:                 makeResource(mainMod, "Grant"),
+				DeleteBeforeReplace: true,
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
