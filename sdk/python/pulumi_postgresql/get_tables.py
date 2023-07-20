@@ -130,7 +130,7 @@ def get_tables(database: Optional[str] = None,
                table_types: Optional[Sequence[str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTablesResult:
     """
-    The `_get_tables_` data source retrieves a list of table names from a specified PostgreSQL database.
+    The ``get_tables`` data source retrieves a list of table names from a specified PostgreSQL database.
 
     ## Usage
 
@@ -147,6 +147,8 @@ def get_tables(database: Optional[str] = None,
     :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
     :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
     :param str regex_pattern: Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+           
+           Note that all optional arguments can be used in conjunction.
     :param Sequence[str] schemas: List of PostgreSQL schema(s) which will be queried for table names. Queries all schemas in the database by default.
     :param Sequence[str] table_types: List of PostgreSQL table types which will be queried for table names. Includes all table types by default (including views and temp tables). Use 'BASE TABLE' for normal tables only.
     """
@@ -162,15 +164,15 @@ def get_tables(database: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('postgresql:index/getTables:getTables', __args__, opts=opts, typ=GetTablesResult).value
 
     return AwaitableGetTablesResult(
-        database=__ret__.database,
-        id=__ret__.id,
-        like_all_patterns=__ret__.like_all_patterns,
-        like_any_patterns=__ret__.like_any_patterns,
-        not_like_all_patterns=__ret__.not_like_all_patterns,
-        regex_pattern=__ret__.regex_pattern,
-        schemas=__ret__.schemas,
-        table_types=__ret__.table_types,
-        tables=__ret__.tables)
+        database=pulumi.get(__ret__, 'database'),
+        id=pulumi.get(__ret__, 'id'),
+        like_all_patterns=pulumi.get(__ret__, 'like_all_patterns'),
+        like_any_patterns=pulumi.get(__ret__, 'like_any_patterns'),
+        not_like_all_patterns=pulumi.get(__ret__, 'not_like_all_patterns'),
+        regex_pattern=pulumi.get(__ret__, 'regex_pattern'),
+        schemas=pulumi.get(__ret__, 'schemas'),
+        table_types=pulumi.get(__ret__, 'table_types'),
+        tables=pulumi.get(__ret__, 'tables'))
 
 
 @_utilities.lift_output_func(get_tables)
@@ -183,7 +185,7 @@ def get_tables_output(database: Optional[pulumi.Input[str]] = None,
                       table_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTablesResult]:
     """
-    The `_get_tables_` data source retrieves a list of table names from a specified PostgreSQL database.
+    The ``get_tables`` data source retrieves a list of table names from a specified PostgreSQL database.
 
     ## Usage
 
@@ -200,6 +202,8 @@ def get_tables_output(database: Optional[pulumi.Input[str]] = None,
     :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
     :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
     :param str regex_pattern: Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+           
+           Note that all optional arguments can be used in conjunction.
     :param Sequence[str] schemas: List of PostgreSQL schema(s) which will be queried for table names. Queries all schemas in the database by default.
     :param Sequence[str] table_types: List of PostgreSQL table types which will be queried for table names. Includes all table types by default (including views and temp tables). Use 'BASE TABLE' for normal tables only.
     """

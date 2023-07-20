@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // Use rds_iam instead of password authentication (see:
 // https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
@@ -35,7 +38,11 @@ func GetConnectTimeout(ctx *pulumi.Context) int {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(180, parseEnvInt, "PGCONNECT_TIMEOUT").(int)
+	var value int
+	if d := internal.GetEnvOrDefault(180, internal.ParseEnvInt, "PGCONNECT_TIMEOUT"); d != nil {
+		value = d.(int)
+	}
+	return value
 }
 
 // The name of the database to connect to in order to conenct to (defaults to `postgres`).
@@ -88,7 +95,11 @@ func GetSslmode(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "PGSSLMODE").(string)
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "PGSSLMODE"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The SSL server root certificate file path. The file must contain PEM encoded data.

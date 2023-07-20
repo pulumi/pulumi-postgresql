@@ -17,6 +17,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using PostgreSql = Pulumi.PostgreSql;
     /// 

@@ -120,7 +120,7 @@ def get_sequences(database: Optional[str] = None,
                   schemas: Optional[Sequence[str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSequencesResult:
     """
-    The `_get_sequences_` data source retrieves a list of sequence names from a specified PostgreSQL database.
+    The ``get_sequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
 
     ## Usage
 
@@ -137,6 +137,8 @@ def get_sequences(database: Optional[str] = None,
     :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ANY`` operators.
     :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
     :param str regex_pattern: Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+           
+           Note that all optional arguments can be used in conjunction.
     :param Sequence[str] schemas: List of PostgreSQL schema(s) which will be queried for sequence names. Queries all schemas in the database by default.
     """
     __args__ = dict()
@@ -150,14 +152,14 @@ def get_sequences(database: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('postgresql:index/getSequences:getSequences', __args__, opts=opts, typ=GetSequencesResult).value
 
     return AwaitableGetSequencesResult(
-        database=__ret__.database,
-        id=__ret__.id,
-        like_all_patterns=__ret__.like_all_patterns,
-        like_any_patterns=__ret__.like_any_patterns,
-        not_like_all_patterns=__ret__.not_like_all_patterns,
-        regex_pattern=__ret__.regex_pattern,
-        schemas=__ret__.schemas,
-        sequences=__ret__.sequences)
+        database=pulumi.get(__ret__, 'database'),
+        id=pulumi.get(__ret__, 'id'),
+        like_all_patterns=pulumi.get(__ret__, 'like_all_patterns'),
+        like_any_patterns=pulumi.get(__ret__, 'like_any_patterns'),
+        not_like_all_patterns=pulumi.get(__ret__, 'not_like_all_patterns'),
+        regex_pattern=pulumi.get(__ret__, 'regex_pattern'),
+        schemas=pulumi.get(__ret__, 'schemas'),
+        sequences=pulumi.get(__ret__, 'sequences'))
 
 
 @_utilities.lift_output_func(get_sequences)
@@ -169,7 +171,7 @@ def get_sequences_output(database: Optional[pulumi.Input[str]] = None,
                          schemas: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSequencesResult]:
     """
-    The `_get_sequences_` data source retrieves a list of sequence names from a specified PostgreSQL database.
+    The ``get_sequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
 
     ## Usage
 
@@ -186,6 +188,8 @@ def get_sequences_output(database: Optional[pulumi.Input[str]] = None,
     :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ANY`` operators.
     :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
     :param str regex_pattern: Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+           
+           Note that all optional arguments can be used in conjunction.
     :param Sequence[str] schemas: List of PostgreSQL schema(s) which will be queried for sequence names. Queries all schemas in the database by default.
     """
     ...

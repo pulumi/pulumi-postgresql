@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type FunctionArg struct {
 	// An expression to be used as default value if the parameter is not specified.
@@ -292,6 +295,8 @@ type SchemaPolicy struct {
 	// Should the specified ROLE have USAGE privileges to the specified SCHEMA.
 	Usage *bool `pulumi:"usage"`
 	// Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
+	//
+	// > **NOTE on `policy`:** The permissions of a role specified in multiple policy blocks is cumulative.  For example, if the same role is specified in two different `policy` each with different permissions (e.g. `create` and `usageWithGrant`, respectively), then the specified role with have both `create` and `usageWithGrant` privileges.
 	UsageWithGrant *bool `pulumi:"usageWithGrant"`
 }
 
@@ -316,6 +321,8 @@ type SchemaPolicyArgs struct {
 	// Should the specified ROLE have USAGE privileges to the specified SCHEMA.
 	Usage pulumi.BoolPtrInput `pulumi:"usage"`
 	// Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
+	//
+	// > **NOTE on `policy`:** The permissions of a role specified in multiple policy blocks is cumulative.  For example, if the same role is specified in two different `policy` each with different permissions (e.g. `create` and `usageWithGrant`, respectively), then the specified role with have both `create` and `usageWithGrant` privileges.
 	UsageWithGrant pulumi.BoolPtrInput `pulumi:"usageWithGrant"`
 }
 
@@ -391,6 +398,8 @@ func (o SchemaPolicyOutput) Usage() pulumi.BoolPtrOutput {
 }
 
 // Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
+//
+// > **NOTE on `policy`:** The permissions of a role specified in multiple policy blocks is cumulative.  For example, if the same role is specified in two different `policy` each with different permissions (e.g. `create` and `usageWithGrant`, respectively), then the specified role with have both `create` and `usageWithGrant` privileges.
 func (o SchemaPolicyOutput) UsageWithGrant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SchemaPolicy) *bool { return v.UsageWithGrant }).(pulumi.BoolPtrOutput)
 }

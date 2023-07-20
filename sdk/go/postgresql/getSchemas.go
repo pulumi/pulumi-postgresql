@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func GetSchemas(ctx *pulumi.Context, args *GetSchemasArgs, opts ...pulumi.InvokeOption) (*GetSchemasResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSchemasResult
 	err := ctx.Invoke("postgresql:index/getSchemas:getSchemas", args, &rv, opts...)
 	if err != nil {
@@ -59,6 +61,8 @@ type GetSchemasArgs struct {
 	// List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
 	NotLikeAllPatterns []string `pulumi:"notLikeAllPatterns"`
 	// Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+	//
+	// Note that all optional arguments can be used in conjunction.
 	RegexPattern *string `pulumi:"regexPattern"`
 }
 
@@ -102,6 +106,8 @@ type GetSchemasOutputArgs struct {
 	// List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
 	NotLikeAllPatterns pulumi.StringArrayInput `pulumi:"notLikeAllPatterns"`
 	// Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+	//
+	// Note that all optional arguments can be used in conjunction.
 	RegexPattern pulumi.StringPtrInput `pulumi:"regexPattern"`
 }
 

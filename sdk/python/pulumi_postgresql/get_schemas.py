@@ -118,7 +118,7 @@ def get_schemas(database: Optional[str] = None,
                 regex_pattern: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSchemasResult:
     """
-    The `_get_schemas_` data source retrieves a list of schema names from a specified PostgreSQL database.
+    The ``get_schemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
 
     ## Usage
 
@@ -136,6 +136,8 @@ def get_schemas(database: Optional[str] = None,
     :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
     :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
     :param str regex_pattern: Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+           
+           Note that all optional arguments can be used in conjunction.
     """
     __args__ = dict()
     __args__['database'] = database
@@ -148,14 +150,14 @@ def get_schemas(database: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('postgresql:index/getSchemas:getSchemas', __args__, opts=opts, typ=GetSchemasResult).value
 
     return AwaitableGetSchemasResult(
-        database=__ret__.database,
-        id=__ret__.id,
-        include_system_schemas=__ret__.include_system_schemas,
-        like_all_patterns=__ret__.like_all_patterns,
-        like_any_patterns=__ret__.like_any_patterns,
-        not_like_all_patterns=__ret__.not_like_all_patterns,
-        regex_pattern=__ret__.regex_pattern,
-        schemas=__ret__.schemas)
+        database=pulumi.get(__ret__, 'database'),
+        id=pulumi.get(__ret__, 'id'),
+        include_system_schemas=pulumi.get(__ret__, 'include_system_schemas'),
+        like_all_patterns=pulumi.get(__ret__, 'like_all_patterns'),
+        like_any_patterns=pulumi.get(__ret__, 'like_any_patterns'),
+        not_like_all_patterns=pulumi.get(__ret__, 'not_like_all_patterns'),
+        regex_pattern=pulumi.get(__ret__, 'regex_pattern'),
+        schemas=pulumi.get(__ret__, 'schemas'))
 
 
 @_utilities.lift_output_func(get_schemas)
@@ -167,7 +169,7 @@ def get_schemas_output(database: Optional[pulumi.Input[str]] = None,
                        regex_pattern: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSchemasResult]:
     """
-    The `_get_schemas_` data source retrieves a list of schema names from a specified PostgreSQL database.
+    The ``get_schemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
 
     ## Usage
 
@@ -185,5 +187,7 @@ def get_schemas_output(database: Optional[pulumi.Input[str]] = None,
     :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
     :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
     :param str regex_pattern: Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+           
+           Note that all optional arguments can be used in conjunction.
     """
     ...

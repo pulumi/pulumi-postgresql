@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,6 +52,7 @@ func NewPhysicalReplicationSlot(ctx *pulumi.Context,
 		args = &PhysicalReplicationSlotArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PhysicalReplicationSlot
 	err := ctx.RegisterResource("postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot", name, args, &resource, opts...)
 	if err != nil {

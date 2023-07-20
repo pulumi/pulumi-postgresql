@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func GetTables(ctx *pulumi.Context, args *GetTablesArgs, opts ...pulumi.InvokeOption) (*GetTablesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTablesResult
 	err := ctx.Invoke("postgresql:index/getTables:getTables", args, &rv, opts...)
 	if err != nil {
@@ -57,6 +59,8 @@ type GetTablesArgs struct {
 	// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
 	NotLikeAllPatterns []string `pulumi:"notLikeAllPatterns"`
 	// Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+	//
+	// Note that all optional arguments can be used in conjunction.
 	RegexPattern *string `pulumi:"regexPattern"`
 	// List of PostgreSQL schema(s) which will be queried for table names. Queries all schemas in the database by default.
 	Schemas []string `pulumi:"schemas"`
@@ -104,6 +108,8 @@ type GetTablesOutputArgs struct {
 	// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
 	NotLikeAllPatterns pulumi.StringArrayInput `pulumi:"notLikeAllPatterns"`
 	// Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+	//
+	// Note that all optional arguments can be used in conjunction.
 	RegexPattern pulumi.StringPtrInput `pulumi:"regexPattern"`
 	// List of PostgreSQL schema(s) which will be queried for table names. Queries all schemas in the database by default.
 	Schemas pulumi.StringArrayInput `pulumi:"schemas"`

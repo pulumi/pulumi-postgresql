@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,6 +61,7 @@ func NewReplicationSlot(ctx *pulumi.Context,
 	if args.Plugin == nil {
 		return nil, errors.New("invalid value for required argument 'Plugin'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ReplicationSlot
 	err := ctx.RegisterResource("postgresql:index/replicationSlot:ReplicationSlot", name, args, &resource, opts...)
 	if err != nil {
