@@ -207,6 +207,9 @@ class RoleArgs:
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"""", DeprecationWarning)
+        pulumi.log.warn("""encrypted is deprecated: Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"""")
+
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
@@ -610,6 +613,9 @@ class _RoleState:
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"""", DeprecationWarning)
+        pulumi.log.warn("""encrypted is deprecated: Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"""")
+
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
@@ -1152,6 +1158,9 @@ class Role(pulumi.CustomResource):
     @property
     @pulumi.getter
     def encrypted(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"""", DeprecationWarning)
+        pulumi.log.warn("""encrypted is deprecated: Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"""")
+
         return pulumi.get(self, "encrypted")
 
     @property

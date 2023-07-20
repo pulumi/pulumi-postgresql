@@ -94,12 +94,16 @@ public final class GetSchemasPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
      * 
+     * Note that all optional arguments can be used in conjunction.
+     * 
      */
     @Import(name="regexPattern")
     private @Nullable String regexPattern;
 
     /**
      * @return Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     * 
+     * Note that all optional arguments can be used in conjunction.
      * 
      */
     public Optional<String> regexPattern() {
@@ -222,6 +226,8 @@ public final class GetSchemasPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param regexPattern Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+         * 
+         * Note that all optional arguments can be used in conjunction.
          * 
          * @return builder
          * 

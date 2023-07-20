@@ -19,6 +19,7 @@ namespace Pulumi.PostgreSql
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using PostgreSql = Pulumi.PostgreSql;
         /// 
@@ -43,6 +44,7 @@ namespace Pulumi.PostgreSql
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using PostgreSql = Pulumi.PostgreSql;
         /// 
@@ -107,6 +109,8 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+        /// 
+        /// Note that all optional arguments can be used in conjunction.
         /// </summary>
         [Input("regexPattern")]
         public string? RegexPattern { get; set; }
@@ -175,6 +179,8 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+        /// 
+        /// Note that all optional arguments can be used in conjunction.
         /// </summary>
         [Input("regexPattern")]
         public Input<string>? RegexPattern { get; set; }

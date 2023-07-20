@@ -79,12 +79,16 @@ public final class GetSequencesArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
      * 
+     * Note that all optional arguments can be used in conjunction.
+     * 
      */
     @Import(name="regexPattern")
     private @Nullable Output<String> regexPattern;
 
     /**
      * @return Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     * 
+     * Note that all optional arguments can be used in conjunction.
      * 
      */
     public Optional<Output<String>> regexPattern() {
@@ -252,6 +256,8 @@ public final class GetSequencesArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param regexPattern Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
          * 
+         * Note that all optional arguments can be used in conjunction.
+         * 
          * @return builder
          * 
          */
@@ -262,6 +268,8 @@ public final class GetSequencesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param regexPattern Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+         * 
+         * Note that all optional arguments can be used in conjunction.
          * 
          * @return builder
          * 

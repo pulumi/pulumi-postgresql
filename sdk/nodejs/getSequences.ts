@@ -55,6 +55,8 @@ export interface GetSequencesArgs {
     notLikeAllPatterns?: string[];
     /**
      * Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     *
+     * Note that all optional arguments can be used in conjunction.
      */
     regexPattern?: string;
     /**
@@ -123,6 +125,8 @@ export interface GetSequencesOutputArgs {
     notLikeAllPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     *
+     * Note that all optional arguments can be used in conjunction.
      */
     regexPattern?: pulumi.Input<string>;
     /**

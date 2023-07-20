@@ -57,6 +57,8 @@ export interface GetSchemasArgs {
     notLikeAllPatterns?: string[];
     /**
      * Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     *
+     * Note that all optional arguments can be used in conjunction.
      */
     regexPattern?: string;
 }
@@ -124,6 +126,8 @@ export interface GetSchemasOutputArgs {
     notLikeAllPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     *
+     * Note that all optional arguments can be used in conjunction.
      */
     regexPattern?: pulumi.Input<string>;
 }

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,6 +61,7 @@ func NewExtension(ctx *pulumi.Context,
 		args = &ExtensionArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Extension
 	err := ctx.RegisterResource("postgresql:index/extension:Extension", name, args, &resource, opts...)
 	if err != nil {

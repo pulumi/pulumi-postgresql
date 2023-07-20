@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,6 +70,7 @@ func NewPublication(ctx *pulumi.Context,
 		args = &PublicationArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Publication
 	err := ctx.RegisterResource("postgresql:index/publication:Publication", name, args, &resource, opts...)
 	if err != nil {

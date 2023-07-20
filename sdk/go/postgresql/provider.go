@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,10 +52,14 @@ func NewProvider(ctx *pulumi.Context,
 	}
 
 	if args.ConnectTimeout == nil {
-		args.ConnectTimeout = pulumi.IntPtr(getEnvOrDefault(180, parseEnvInt, "PGCONNECT_TIMEOUT").(int))
+		if d := internal.GetEnvOrDefault(180, internal.ParseEnvInt, "PGCONNECT_TIMEOUT"); d != nil {
+			args.ConnectTimeout = pulumi.IntPtr(d.(int))
+		}
 	}
 	if args.Sslmode == nil {
-		args.Sslmode = pulumi.StringPtr(getEnvOrDefault("", nil, "PGSSLMODE").(string))
+		if d := internal.GetEnvOrDefault(nil, nil, "PGSSLMODE"); d != nil {
+			args.Sslmode = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
@@ -63,6 +68,7 @@ func NewProvider(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:postgresql", name, args, &resource, opts...)
 	if err != nil {
