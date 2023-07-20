@@ -134,7 +134,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		})
 
-	prov.ComputeTokens(tfbridgetokens.SingleModule("postgresql_", mainMod,
+	prov.MustComputeTokens(tfbridgetokens.SingleModule("postgresql_", mainMod,
 		tfbridgetokens.MakeStandard(mainPkg)))
 
 	prov.SetAutonaming(255, "-")
