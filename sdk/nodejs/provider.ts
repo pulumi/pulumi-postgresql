@@ -36,7 +36,7 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly awsRdsIamRegion!: pulumi.Output<string | undefined>;
     /**
-     * The name of the database to connect to in order to conenct to (defaults to `postgres`).
+     * The name of the database to connect to (defaults to `postgres`).
      */
     public readonly database!: pulumi.Output<string | undefined>;
     /**
