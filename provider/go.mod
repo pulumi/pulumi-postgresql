@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-postgresql/provider/v3
 
-go 1.20
+go 1.21
 
 require (
 	github.com/cyrilgdn/terraform-provider-postgresql v0.0.0
