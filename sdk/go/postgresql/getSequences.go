@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The “getSequences“ data source retrieves a list of sequence names from a specified PostgreSQL database.
@@ -129,6 +130,12 @@ func (o GetSequencesResultOutput) ToGetSequencesResultOutput() GetSequencesResul
 
 func (o GetSequencesResultOutput) ToGetSequencesResultOutputWithContext(ctx context.Context) GetSequencesResultOutput {
 	return o
+}
+
+func (o GetSequencesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSequencesResult] {
+	return pulumix.Output[GetSequencesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSequencesResultOutput) Database() pulumi.StringOutput {
