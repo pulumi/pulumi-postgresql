@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The “DefaultPrivileges“ resource creates and manages default privileges given to a user for a database schema.
@@ -241,6 +242,12 @@ func (i *DefaultPrivileg) ToDefaultPrivilegOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegOutput)
 }
 
+func (i *DefaultPrivileg) ToOutput(ctx context.Context) pulumix.Output[*DefaultPrivileg] {
+	return pulumix.Output[*DefaultPrivileg]{
+		OutputState: i.ToDefaultPrivilegOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DefaultPrivilegArrayInput is an input type that accepts DefaultPrivilegArray and DefaultPrivilegArrayOutput values.
 // You can construct a concrete instance of `DefaultPrivilegArrayInput` via:
 //
@@ -264,6 +271,12 @@ func (i DefaultPrivilegArray) ToDefaultPrivilegArrayOutput() DefaultPrivilegArra
 
 func (i DefaultPrivilegArray) ToDefaultPrivilegArrayOutputWithContext(ctx context.Context) DefaultPrivilegArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegArrayOutput)
+}
+
+func (i DefaultPrivilegArray) ToOutput(ctx context.Context) pulumix.Output[[]*DefaultPrivileg] {
+	return pulumix.Output[[]*DefaultPrivileg]{
+		OutputState: i.ToDefaultPrivilegArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DefaultPrivilegMapInput is an input type that accepts DefaultPrivilegMap and DefaultPrivilegMapOutput values.
@@ -291,6 +304,12 @@ func (i DefaultPrivilegMap) ToDefaultPrivilegMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultPrivilegMapOutput)
 }
 
+func (i DefaultPrivilegMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DefaultPrivileg] {
+	return pulumix.Output[map[string]*DefaultPrivileg]{
+		OutputState: i.ToDefaultPrivilegMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DefaultPrivilegOutput struct{ *pulumi.OutputState }
 
 func (DefaultPrivilegOutput) ElementType() reflect.Type {
@@ -303,6 +322,12 @@ func (o DefaultPrivilegOutput) ToDefaultPrivilegOutput() DefaultPrivilegOutput {
 
 func (o DefaultPrivilegOutput) ToDefaultPrivilegOutputWithContext(ctx context.Context) DefaultPrivilegOutput {
 	return o
+}
+
+func (o DefaultPrivilegOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultPrivileg] {
+	return pulumix.Output[*DefaultPrivileg]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The database to grant default privileges for this role.
@@ -354,6 +379,12 @@ func (o DefaultPrivilegArrayOutput) ToDefaultPrivilegArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o DefaultPrivilegArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DefaultPrivileg] {
+	return pulumix.Output[[]*DefaultPrivileg]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DefaultPrivilegArrayOutput) Index(i pulumi.IntInput) DefaultPrivilegOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DefaultPrivileg {
 		return vs[0].([]*DefaultPrivileg)[vs[1].(int)]
@@ -372,6 +403,12 @@ func (o DefaultPrivilegMapOutput) ToDefaultPrivilegMapOutput() DefaultPrivilegMa
 
 func (o DefaultPrivilegMapOutput) ToDefaultPrivilegMapOutputWithContext(ctx context.Context) DefaultPrivilegMapOutput {
 	return o
+}
+
+func (o DefaultPrivilegMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DefaultPrivileg] {
+	return pulumix.Output[map[string]*DefaultPrivileg]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DefaultPrivilegMapOutput) MapIndex(k pulumi.StringInput) DefaultPrivilegOutput {

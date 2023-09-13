@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The “GrantRole“ resource creates and manages membership in a role to one or more other roles in a non-authoritative way.
@@ -127,6 +128,12 @@ func (i *GrantRole) ToGrantRoleOutputWithContext(ctx context.Context) GrantRoleO
 	return pulumi.ToOutputWithContext(ctx, i).(GrantRoleOutput)
 }
 
+func (i *GrantRole) ToOutput(ctx context.Context) pulumix.Output[*GrantRole] {
+	return pulumix.Output[*GrantRole]{
+		OutputState: i.ToGrantRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GrantRoleArrayInput is an input type that accepts GrantRoleArray and GrantRoleArrayOutput values.
 // You can construct a concrete instance of `GrantRoleArrayInput` via:
 //
@@ -150,6 +157,12 @@ func (i GrantRoleArray) ToGrantRoleArrayOutput() GrantRoleArrayOutput {
 
 func (i GrantRoleArray) ToGrantRoleArrayOutputWithContext(ctx context.Context) GrantRoleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GrantRoleArrayOutput)
+}
+
+func (i GrantRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]*GrantRole] {
+	return pulumix.Output[[]*GrantRole]{
+		OutputState: i.ToGrantRoleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GrantRoleMapInput is an input type that accepts GrantRoleMap and GrantRoleMapOutput values.
@@ -177,6 +190,12 @@ func (i GrantRoleMap) ToGrantRoleMapOutputWithContext(ctx context.Context) Grant
 	return pulumi.ToOutputWithContext(ctx, i).(GrantRoleMapOutput)
 }
 
+func (i GrantRoleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GrantRole] {
+	return pulumix.Output[map[string]*GrantRole]{
+		OutputState: i.ToGrantRoleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GrantRoleOutput struct{ *pulumi.OutputState }
 
 func (GrantRoleOutput) ElementType() reflect.Type {
@@ -189,6 +208,12 @@ func (o GrantRoleOutput) ToGrantRoleOutput() GrantRoleOutput {
 
 func (o GrantRoleOutput) ToGrantRoleOutputWithContext(ctx context.Context) GrantRoleOutput {
 	return o
+}
+
+func (o GrantRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*GrantRole] {
+	return pulumix.Output[*GrantRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the role that is added to `role`.
@@ -220,6 +245,12 @@ func (o GrantRoleArrayOutput) ToGrantRoleArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o GrantRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GrantRole] {
+	return pulumix.Output[[]*GrantRole]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GrantRoleArrayOutput) Index(i pulumi.IntInput) GrantRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GrantRole {
 		return vs[0].([]*GrantRole)[vs[1].(int)]
@@ -238,6 +269,12 @@ func (o GrantRoleMapOutput) ToGrantRoleMapOutput() GrantRoleMapOutput {
 
 func (o GrantRoleMapOutput) ToGrantRoleMapOutputWithContext(ctx context.Context) GrantRoleMapOutput {
 	return o
+}
+
+func (o GrantRoleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GrantRole] {
+	return pulumix.Output[map[string]*GrantRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrantRoleMapOutput) MapIndex(k pulumi.StringInput) GrantRoleOutput {
