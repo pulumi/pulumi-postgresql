@@ -18,6 +18,8 @@ class ProviderArgs:
                  aws_rds_iam_auth: Optional[pulumi.Input[bool]] = None,
                  aws_rds_iam_profile: Optional[pulumi.Input[str]] = None,
                  aws_rds_iam_region: Optional[pulumi.Input[str]] = None,
+                 azure_identity_auth: Optional[pulumi.Input[bool]] = None,
+                 azure_tenant_id: Optional[pulumi.Input[str]] = None,
                  clientcert: Optional[pulumi.Input['ProviderClientcertArgs']] = None,
                  connect_timeout: Optional[pulumi.Input[int]] = None,
                  database: Optional[pulumi.Input[str]] = None,
@@ -39,6 +41,10 @@ class ProviderArgs:
                https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
         :param pulumi.Input[str] aws_rds_iam_profile: AWS profile to use for IAM auth
         :param pulumi.Input[str] aws_rds_iam_region: AWS region to use for IAM auth
+        :param pulumi.Input[bool] azure_identity_auth: Use MS Azure identity OAuth token (see:
+               https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+        :param pulumi.Input[str] azure_tenant_id: MS Azure tenant ID (see:
+               https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
         :param pulumi.Input['ProviderClientcertArgs'] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[int] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         :param pulumi.Input[str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
@@ -61,6 +67,10 @@ class ProviderArgs:
             pulumi.set(__self__, "aws_rds_iam_profile", aws_rds_iam_profile)
         if aws_rds_iam_region is not None:
             pulumi.set(__self__, "aws_rds_iam_region", aws_rds_iam_region)
+        if azure_identity_auth is not None:
+            pulumi.set(__self__, "azure_identity_auth", azure_identity_auth)
+        if azure_tenant_id is not None:
+            pulumi.set(__self__, "azure_tenant_id", azure_tenant_id)
         if clientcert is not None:
             pulumi.set(__self__, "clientcert", clientcert)
         if connect_timeout is None:
@@ -135,6 +145,32 @@ class ProviderArgs:
     @aws_rds_iam_region.setter
     def aws_rds_iam_region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "aws_rds_iam_region", value)
+
+    @property
+    @pulumi.getter(name="azureIdentityAuth")
+    def azure_identity_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use MS Azure identity OAuth token (see:
+        https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+        """
+        return pulumi.get(self, "azure_identity_auth")
+
+    @azure_identity_auth.setter
+    def azure_identity_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "azure_identity_auth", value)
+
+    @property
+    @pulumi.getter(name="azureTenantId")
+    def azure_tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        MS Azure tenant ID (see:
+        https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+        """
+        return pulumi.get(self, "azure_tenant_id")
+
+    @azure_tenant_id.setter
+    def azure_tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "azure_tenant_id", value)
 
     @property
     @pulumi.getter
@@ -324,6 +360,8 @@ class Provider(pulumi.ProviderResource):
                  aws_rds_iam_auth: Optional[pulumi.Input[bool]] = None,
                  aws_rds_iam_profile: Optional[pulumi.Input[str]] = None,
                  aws_rds_iam_region: Optional[pulumi.Input[str]] = None,
+                 azure_identity_auth: Optional[pulumi.Input[bool]] = None,
+                 azure_tenant_id: Optional[pulumi.Input[str]] = None,
                  clientcert: Optional[pulumi.Input[pulumi.InputType['ProviderClientcertArgs']]] = None,
                  connect_timeout: Optional[pulumi.Input[int]] = None,
                  database: Optional[pulumi.Input[str]] = None,
@@ -352,6 +390,10 @@ class Provider(pulumi.ProviderResource):
                https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
         :param pulumi.Input[str] aws_rds_iam_profile: AWS profile to use for IAM auth
         :param pulumi.Input[str] aws_rds_iam_region: AWS region to use for IAM auth
+        :param pulumi.Input[bool] azure_identity_auth: Use MS Azure identity OAuth token (see:
+               https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+        :param pulumi.Input[str] azure_tenant_id: MS Azure tenant ID (see:
+               https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
         :param pulumi.Input[pulumi.InputType['ProviderClientcertArgs']] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[int] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         :param pulumi.Input[str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
@@ -398,6 +440,8 @@ class Provider(pulumi.ProviderResource):
                  aws_rds_iam_auth: Optional[pulumi.Input[bool]] = None,
                  aws_rds_iam_profile: Optional[pulumi.Input[str]] = None,
                  aws_rds_iam_region: Optional[pulumi.Input[str]] = None,
+                 azure_identity_auth: Optional[pulumi.Input[bool]] = None,
+                 azure_tenant_id: Optional[pulumi.Input[str]] = None,
                  clientcert: Optional[pulumi.Input[pulumi.InputType['ProviderClientcertArgs']]] = None,
                  connect_timeout: Optional[pulumi.Input[int]] = None,
                  database: Optional[pulumi.Input[str]] = None,
@@ -425,6 +469,8 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["aws_rds_iam_auth"] = pulumi.Output.from_input(aws_rds_iam_auth).apply(pulumi.runtime.to_json) if aws_rds_iam_auth is not None else None
             __props__.__dict__["aws_rds_iam_profile"] = aws_rds_iam_profile
             __props__.__dict__["aws_rds_iam_region"] = aws_rds_iam_region
+            __props__.__dict__["azure_identity_auth"] = pulumi.Output.from_input(azure_identity_auth).apply(pulumi.runtime.to_json) if azure_identity_auth is not None else None
+            __props__.__dict__["azure_tenant_id"] = azure_tenant_id
             __props__.__dict__["clientcert"] = pulumi.Output.from_input(clientcert).apply(pulumi.runtime.to_json) if clientcert is not None else None
             if connect_timeout is None:
                 connect_timeout = (_utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
@@ -470,6 +516,15 @@ class Provider(pulumi.ProviderResource):
         AWS region to use for IAM auth
         """
         return pulumi.get(self, "aws_rds_iam_region")
+
+    @property
+    @pulumi.getter(name="azureTenantId")
+    def azure_tenant_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        MS Azure tenant ID (see:
+        https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+        """
+        return pulumi.get(self, "azure_tenant_id")
 
     @property
     @pulumi.getter

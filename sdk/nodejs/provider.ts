@@ -36,6 +36,11 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly awsRdsIamRegion!: pulumi.Output<string | undefined>;
     /**
+     * MS Azure tenant ID (see:
+     * https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+     */
+    public readonly azureTenantId!: pulumi.Output<string | undefined>;
+    /**
      * The name of the database to connect to in order to conenct to (defaults to `postgres`).
      */
     public readonly database!: pulumi.Output<string | undefined>;
@@ -88,6 +93,8 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["awsRdsIamAuth"] = pulumi.output(args ? args.awsRdsIamAuth : undefined).apply(JSON.stringify);
             resourceInputs["awsRdsIamProfile"] = args ? args.awsRdsIamProfile : undefined;
             resourceInputs["awsRdsIamRegion"] = args ? args.awsRdsIamRegion : undefined;
+            resourceInputs["azureIdentityAuth"] = pulumi.output(args ? args.azureIdentityAuth : undefined).apply(JSON.stringify);
+            resourceInputs["azureTenantId"] = args ? args.azureTenantId : undefined;
             resourceInputs["clientcert"] = pulumi.output(args ? args.clientcert : undefined).apply(JSON.stringify);
             resourceInputs["connectTimeout"] = pulumi.output((args ? args.connectTimeout : undefined) ?? (utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180)).apply(JSON.stringify);
             resourceInputs["database"] = args ? args.database : undefined;
@@ -128,6 +135,16 @@ export interface ProviderArgs {
      * AWS region to use for IAM auth
      */
     awsRdsIamRegion?: pulumi.Input<string>;
+    /**
+     * Use MS Azure identity OAuth token (see:
+     * https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+     */
+    azureIdentityAuth?: pulumi.Input<boolean>;
+    /**
+     * MS Azure tenant ID (see:
+     * https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+     */
+    azureTenantId?: pulumi.Input<string>;
     /**
      * SSL client certificate if required by the database.
      */

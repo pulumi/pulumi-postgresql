@@ -244,6 +244,14 @@ class Extension(pulumi.CustomResource):
         my_extension = postgresql.Extension("myExtension")
         ```
 
+        ## Import
+
+        PostgreSQL Extensions can be imported using the database name and the extension's resource name, e.g.
+
+        ```sh
+         $ pulumi import postgresql:index/extension:Extension uuid_ossp example-database.uuid-ossp`
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] create_cascade: When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
@@ -270,6 +278,14 @@ class Extension(pulumi.CustomResource):
         import pulumi_postgresql as postgresql
 
         my_extension = postgresql.Extension("myExtension")
+        ```
+
+        ## Import
+
+        PostgreSQL Extensions can be imported using the database name and the extension's resource name, e.g.
+
+        ```sh
+         $ pulumi import postgresql:index/extension:Extension uuid_ossp example-database.uuid-ossp`
         ```
 
         :param str resource_name: The name of the resource.

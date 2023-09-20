@@ -81,7 +81,7 @@ namespace Pulumi.PostgreSql
         public Output<bool?> PublishViaPartitionRootParam { get; private set; } = null!;
 
         /// <summary>
-        /// Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.
+        /// Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
         /// </summary>
         [Output("tables")]
         public Output<ImmutableArray<string>> Tables { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _tables;
 
         /// <summary>
-        /// Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.
+        /// Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
         /// </summary>
         public InputList<string> Tables
         {
@@ -252,7 +252,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _tables;
 
         /// <summary>
-        /// Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.
+        /// Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
         /// </summary>
         public InputList<string> Tables
         {

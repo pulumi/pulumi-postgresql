@@ -60,7 +60,7 @@ type Publication struct {
 	PublishParams pulumi.StringArrayOutput `pulumi:"publishParams"`
 	// Should be option 'publish_via_partition_root' be turned on. Default to 'false'
 	PublishViaPartitionRootParam pulumi.BoolPtrOutput `pulumi:"publishViaPartitionRootParam"`
-	// Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+	// Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
 	Tables pulumi.StringArrayOutput `pulumi:"tables"`
 }
 
@@ -108,7 +108,7 @@ type publicationState struct {
 	PublishParams []string `pulumi:"publishParams"`
 	// Should be option 'publish_via_partition_root' be turned on. Default to 'false'
 	PublishViaPartitionRootParam *bool `pulumi:"publishViaPartitionRootParam"`
-	// Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+	// Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
 	Tables []string `pulumi:"tables"`
 }
 
@@ -127,7 +127,7 @@ type PublicationState struct {
 	PublishParams pulumi.StringArrayInput
 	// Should be option 'publish_via_partition_root' be turned on. Default to 'false'
 	PublishViaPartitionRootParam pulumi.BoolPtrInput
-	// Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+	// Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
 	Tables pulumi.StringArrayInput
 }
 
@@ -150,7 +150,7 @@ type publicationArgs struct {
 	PublishParams []string `pulumi:"publishParams"`
 	// Should be option 'publish_via_partition_root' be turned on. Default to 'false'
 	PublishViaPartitionRootParam *bool `pulumi:"publishViaPartitionRootParam"`
-	// Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+	// Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
 	Tables []string `pulumi:"tables"`
 }
 
@@ -170,7 +170,7 @@ type PublicationArgs struct {
 	PublishParams pulumi.StringArrayInput
 	// Should be option 'publish_via_partition_root' be turned on. Default to 'false'
 	PublishViaPartitionRootParam pulumi.BoolPtrInput
-	// Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+	// Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
 	Tables pulumi.StringArrayInput
 }
 
@@ -320,7 +320,7 @@ func (o PublicationOutput) PublishViaPartitionRootParam() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Publication) pulumi.BoolPtrOutput { return v.PublishViaPartitionRootParam }).(pulumi.BoolPtrOutput)
 }
 
-// Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+// Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
 func (o PublicationOutput) Tables() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Publication) pulumi.StringArrayOutput { return v.Tables }).(pulumi.StringArrayOutput)
 }

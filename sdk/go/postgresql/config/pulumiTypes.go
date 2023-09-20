@@ -15,8 +15,9 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type Clientcert struct {
-	Cert string `pulumi:"cert"`
-	Key  string `pulumi:"key"`
+	Cert      string `pulumi:"cert"`
+	Key       string `pulumi:"key"`
+	Sslinline *bool  `pulumi:"sslinline"`
 }
 
 // ClientcertInput is an input type that accepts ClientcertArgs and ClientcertOutput values.
@@ -31,8 +32,9 @@ type ClientcertInput interface {
 }
 
 type ClientcertArgs struct {
-	Cert pulumi.StringInput `pulumi:"cert"`
-	Key  pulumi.StringInput `pulumi:"key"`
+	Cert      pulumi.StringInput  `pulumi:"cert"`
+	Key       pulumi.StringInput  `pulumi:"key"`
+	Sslinline pulumi.BoolPtrInput `pulumi:"sslinline"`
 }
 
 func (ClientcertArgs) ElementType() reflect.Type {
@@ -79,6 +81,10 @@ func (o ClientcertOutput) Cert() pulumi.StringOutput {
 
 func (o ClientcertOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v Clientcert) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o ClientcertOutput) Sslinline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Clientcert) *bool { return v.Sslinline }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

@@ -89,9 +89,12 @@ class FunctionArgArgs:
 class ProviderClientcertArgs:
     def __init__(__self__, *,
                  cert: pulumi.Input[str],
-                 key: pulumi.Input[str]):
+                 key: pulumi.Input[str],
+                 sslinline: Optional[pulumi.Input[bool]] = None):
         pulumi.set(__self__, "cert", cert)
         pulumi.set(__self__, "key", key)
+        if sslinline is not None:
+            pulumi.set(__self__, "sslinline", sslinline)
 
     @property
     @pulumi.getter
@@ -110,6 +113,15 @@ class ProviderClientcertArgs:
     @key.setter
     def key(self, value: pulumi.Input[str]):
         pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def sslinline(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "sslinline")
+
+    @sslinline.setter
+    def sslinline(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sslinline", value)
 
 
 @pulumi.input_type

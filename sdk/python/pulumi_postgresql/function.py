@@ -22,22 +22,30 @@ class FunctionArgs:
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
                  language: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 parallel: Optional[pulumi.Input[str]] = None,
                  returns: Optional[pulumi.Input[str]] = None,
-                 schema: Optional[pulumi.Input[str]] = None):
+                 schema: Optional[pulumi.Input[str]] = None,
+                 security_definer: Optional[pulumi.Input[bool]] = None,
+                 strict: Optional[pulumi.Input[bool]] = None,
+                 volatility: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Function resource.
         :param pulumi.Input[str] body: Function body.
-               This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+               This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]] args: List of arguments for the function.
         :param pulumi.Input[str] database: The database where the function is located.
                If not specified, the function is created in the current database.
-        :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as 
+        :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as
                operators or triggers), and in turn all objects that depend on those objects. Default is false.
         :param pulumi.Input[str] language: The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
         :param pulumi.Input[str] name: The name of the argument.
+        :param pulumi.Input[str] parallel: Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
         :param pulumi.Input[str] returns: Type that the function returns. It can be computed from the OUT arguments. Default is void.
         :param pulumi.Input[str] schema: The schema where the function is located.
                If not specified, the function is created in the current schema.
+        :param pulumi.Input[bool] security_definer: If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+        :param pulumi.Input[bool] strict: If the function should always return NULL when any of the inputs is NULL. Default is false.
+        :param pulumi.Input[str] volatility: Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
         """
         pulumi.set(__self__, "body", body)
         if args is not None:
@@ -50,17 +58,25 @@ class FunctionArgs:
             pulumi.set(__self__, "language", language)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if parallel is not None:
+            pulumi.set(__self__, "parallel", parallel)
         if returns is not None:
             pulumi.set(__self__, "returns", returns)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if security_definer is not None:
+            pulumi.set(__self__, "security_definer", security_definer)
+        if strict is not None:
+            pulumi.set(__self__, "strict", strict)
+        if volatility is not None:
+            pulumi.set(__self__, "volatility", volatility)
 
     @property
     @pulumi.getter
     def body(self) -> pulumi.Input[str]:
         """
         Function body.
-        This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+        This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         """
         return pulumi.get(self, "body")
 
@@ -97,7 +113,7 @@ class FunctionArgs:
     @pulumi.getter(name="dropCascade")
     def drop_cascade(self) -> Optional[pulumi.Input[bool]]:
         """
-        True to automatically drop objects that depend on the function (such as 
+        True to automatically drop objects that depend on the function (such as
         operators or triggers), and in turn all objects that depend on those objects. Default is false.
         """
         return pulumi.get(self, "drop_cascade")
@@ -132,6 +148,18 @@ class FunctionArgs:
 
     @property
     @pulumi.getter
+    def parallel(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+        """
+        return pulumi.get(self, "parallel")
+
+    @parallel.setter
+    def parallel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parallel", value)
+
+    @property
+    @pulumi.getter
     def returns(self) -> Optional[pulumi.Input[str]]:
         """
         Type that the function returns. It can be computed from the OUT arguments. Default is void.
@@ -155,6 +183,42 @@ class FunctionArgs:
     def schema(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schema", value)
 
+    @property
+    @pulumi.getter(name="securityDefiner")
+    def security_definer(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+        """
+        return pulumi.get(self, "security_definer")
+
+    @security_definer.setter
+    def security_definer(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "security_definer", value)
+
+    @property
+    @pulumi.getter
+    def strict(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the function should always return NULL when any of the inputs is NULL. Default is false.
+        """
+        return pulumi.get(self, "strict")
+
+    @strict.setter
+    def strict(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict", value)
+
+    @property
+    @pulumi.getter
+    def volatility(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+        """
+        return pulumi.get(self, "volatility")
+
+    @volatility.setter
+    def volatility(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volatility", value)
+
 
 @pulumi.input_type
 class _FunctionState:
@@ -165,22 +229,30 @@ class _FunctionState:
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
                  language: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 parallel: Optional[pulumi.Input[str]] = None,
                  returns: Optional[pulumi.Input[str]] = None,
-                 schema: Optional[pulumi.Input[str]] = None):
+                 schema: Optional[pulumi.Input[str]] = None,
+                 security_definer: Optional[pulumi.Input[bool]] = None,
+                 strict: Optional[pulumi.Input[bool]] = None,
+                 volatility: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Function resources.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]] args: List of arguments for the function.
         :param pulumi.Input[str] body: Function body.
-               This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+               This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         :param pulumi.Input[str] database: The database where the function is located.
                If not specified, the function is created in the current database.
-        :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as 
+        :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as
                operators or triggers), and in turn all objects that depend on those objects. Default is false.
         :param pulumi.Input[str] language: The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
         :param pulumi.Input[str] name: The name of the argument.
+        :param pulumi.Input[str] parallel: Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
         :param pulumi.Input[str] returns: Type that the function returns. It can be computed from the OUT arguments. Default is void.
         :param pulumi.Input[str] schema: The schema where the function is located.
                If not specified, the function is created in the current schema.
+        :param pulumi.Input[bool] security_definer: If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+        :param pulumi.Input[bool] strict: If the function should always return NULL when any of the inputs is NULL. Default is false.
+        :param pulumi.Input[str] volatility: Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
         """
         if args is not None:
             pulumi.set(__self__, "args", args)
@@ -194,10 +266,18 @@ class _FunctionState:
             pulumi.set(__self__, "language", language)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if parallel is not None:
+            pulumi.set(__self__, "parallel", parallel)
         if returns is not None:
             pulumi.set(__self__, "returns", returns)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if security_definer is not None:
+            pulumi.set(__self__, "security_definer", security_definer)
+        if strict is not None:
+            pulumi.set(__self__, "strict", strict)
+        if volatility is not None:
+            pulumi.set(__self__, "volatility", volatility)
 
     @property
     @pulumi.getter
@@ -216,7 +296,7 @@ class _FunctionState:
     def body(self) -> Optional[pulumi.Input[str]]:
         """
         Function body.
-        This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+        This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         """
         return pulumi.get(self, "body")
 
@@ -241,7 +321,7 @@ class _FunctionState:
     @pulumi.getter(name="dropCascade")
     def drop_cascade(self) -> Optional[pulumi.Input[bool]]:
         """
-        True to automatically drop objects that depend on the function (such as 
+        True to automatically drop objects that depend on the function (such as
         operators or triggers), and in turn all objects that depend on those objects. Default is false.
         """
         return pulumi.get(self, "drop_cascade")
@@ -276,6 +356,18 @@ class _FunctionState:
 
     @property
     @pulumi.getter
+    def parallel(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+        """
+        return pulumi.get(self, "parallel")
+
+    @parallel.setter
+    def parallel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parallel", value)
+
+    @property
+    @pulumi.getter
     def returns(self) -> Optional[pulumi.Input[str]]:
         """
         Type that the function returns. It can be computed from the OUT arguments. Default is void.
@@ -299,6 +391,42 @@ class _FunctionState:
     def schema(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schema", value)
 
+    @property
+    @pulumi.getter(name="securityDefiner")
+    def security_definer(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+        """
+        return pulumi.get(self, "security_definer")
+
+    @security_definer.setter
+    def security_definer(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "security_definer", value)
+
+    @property
+    @pulumi.getter
+    def strict(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the function should always return NULL when any of the inputs is NULL. Default is false.
+        """
+        return pulumi.get(self, "strict")
+
+    @strict.setter
+    def strict(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict", value)
+
+    @property
+    @pulumi.getter
+    def volatility(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+        """
+        return pulumi.get(self, "volatility")
+
+    @volatility.setter
+    def volatility(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volatility", value)
+
 
 class Function(pulumi.CustomResource):
     @overload
@@ -311,8 +439,12 @@ class Function(pulumi.CustomResource):
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
                  language: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 parallel: Optional[pulumi.Input[str]] = None,
                  returns: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
+                 security_definer: Optional[pulumi.Input[bool]] = None,
+                 strict: Optional[pulumi.Input[bool]] = None,
+                 volatility: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The ``Function`` resource creates and manages a function on a PostgreSQL
@@ -338,20 +470,33 @@ class Function(pulumi.CustomResource):
             returns="integer")
         ```
 
+        ## Import
+
+        It is possible to import a `postgresql_function` resource with the following command:
+
+        ```sh
+         $ pulumi import postgresql:index/function:Function function_foo "my_database.my_schema.my_function_name(arguments)"
+        ```
+         Where `my_database` is the name of the database containing the schema, `my_schema` is the name of the schema in the PostgreSQL database, `my_function_name` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and `postgresql_schema.function_foo` is the name of the resource whose state will be populated as a result of the command.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionArgArgs']]]] args: List of arguments for the function.
         :param pulumi.Input[str] body: Function body.
-               This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+               This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         :param pulumi.Input[str] database: The database where the function is located.
                If not specified, the function is created in the current database.
-        :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as 
+        :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as
                operators or triggers), and in turn all objects that depend on those objects. Default is false.
         :param pulumi.Input[str] language: The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
         :param pulumi.Input[str] name: The name of the argument.
+        :param pulumi.Input[str] parallel: Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
         :param pulumi.Input[str] returns: Type that the function returns. It can be computed from the OUT arguments. Default is void.
         :param pulumi.Input[str] schema: The schema where the function is located.
                If not specified, the function is created in the current schema.
+        :param pulumi.Input[bool] security_definer: If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+        :param pulumi.Input[bool] strict: If the function should always return NULL when any of the inputs is NULL. Default is false.
+        :param pulumi.Input[str] volatility: Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
         """
         ...
     @overload
@@ -383,6 +528,15 @@ class Function(pulumi.CustomResource):
             returns="integer")
         ```
 
+        ## Import
+
+        It is possible to import a `postgresql_function` resource with the following command:
+
+        ```sh
+         $ pulumi import postgresql:index/function:Function function_foo "my_database.my_schema.my_function_name(arguments)"
+        ```
+         Where `my_database` is the name of the database containing the schema, `my_schema` is the name of the schema in the PostgreSQL database, `my_function_name` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and `postgresql_schema.function_foo` is the name of the resource whose state will be populated as a result of the command.
+
         :param str resource_name: The name of the resource.
         :param FunctionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -404,8 +558,12 @@ class Function(pulumi.CustomResource):
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
                  language: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 parallel: Optional[pulumi.Input[str]] = None,
                  returns: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
+                 security_definer: Optional[pulumi.Input[bool]] = None,
+                 strict: Optional[pulumi.Input[bool]] = None,
+                 volatility: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -423,8 +581,12 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["drop_cascade"] = drop_cascade
             __props__.__dict__["language"] = language
             __props__.__dict__["name"] = name
+            __props__.__dict__["parallel"] = parallel
             __props__.__dict__["returns"] = returns
             __props__.__dict__["schema"] = schema
+            __props__.__dict__["security_definer"] = security_definer
+            __props__.__dict__["strict"] = strict
+            __props__.__dict__["volatility"] = volatility
         super(Function, __self__).__init__(
             'postgresql:index/function:Function',
             resource_name,
@@ -441,8 +603,12 @@ class Function(pulumi.CustomResource):
             drop_cascade: Optional[pulumi.Input[bool]] = None,
             language: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            parallel: Optional[pulumi.Input[str]] = None,
             returns: Optional[pulumi.Input[str]] = None,
-            schema: Optional[pulumi.Input[str]] = None) -> 'Function':
+            schema: Optional[pulumi.Input[str]] = None,
+            security_definer: Optional[pulumi.Input[bool]] = None,
+            strict: Optional[pulumi.Input[bool]] = None,
+            volatility: Optional[pulumi.Input[str]] = None) -> 'Function':
         """
         Get an existing Function resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -452,16 +618,20 @@ class Function(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionArgArgs']]]] args: List of arguments for the function.
         :param pulumi.Input[str] body: Function body.
-               This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+               This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         :param pulumi.Input[str] database: The database where the function is located.
                If not specified, the function is created in the current database.
-        :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as 
+        :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as
                operators or triggers), and in turn all objects that depend on those objects. Default is false.
         :param pulumi.Input[str] language: The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
         :param pulumi.Input[str] name: The name of the argument.
+        :param pulumi.Input[str] parallel: Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
         :param pulumi.Input[str] returns: Type that the function returns. It can be computed from the OUT arguments. Default is void.
         :param pulumi.Input[str] schema: The schema where the function is located.
                If not specified, the function is created in the current schema.
+        :param pulumi.Input[bool] security_definer: If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+        :param pulumi.Input[bool] strict: If the function should always return NULL when any of the inputs is NULL. Default is false.
+        :param pulumi.Input[str] volatility: Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -473,8 +643,12 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["drop_cascade"] = drop_cascade
         __props__.__dict__["language"] = language
         __props__.__dict__["name"] = name
+        __props__.__dict__["parallel"] = parallel
         __props__.__dict__["returns"] = returns
         __props__.__dict__["schema"] = schema
+        __props__.__dict__["security_definer"] = security_definer
+        __props__.__dict__["strict"] = strict
+        __props__.__dict__["volatility"] = volatility
         return Function(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -490,7 +664,7 @@ class Function(pulumi.CustomResource):
     def body(self) -> pulumi.Output[str]:
         """
         Function body.
-        This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+        This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         """
         return pulumi.get(self, "body")
 
@@ -507,7 +681,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="dropCascade")
     def drop_cascade(self) -> pulumi.Output[Optional[bool]]:
         """
-        True to automatically drop objects that depend on the function (such as 
+        True to automatically drop objects that depend on the function (such as
         operators or triggers), and in turn all objects that depend on those objects. Default is false.
         """
         return pulumi.get(self, "drop_cascade")
@@ -530,6 +704,14 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def parallel(self) -> pulumi.Output[Optional[str]]:
+        """
+        Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+        """
+        return pulumi.get(self, "parallel")
+
+    @property
+    @pulumi.getter
     def returns(self) -> pulumi.Output[str]:
         """
         Type that the function returns. It can be computed from the OUT arguments. Default is void.
@@ -544,4 +726,28 @@ class Function(pulumi.CustomResource):
         If not specified, the function is created in the current schema.
         """
         return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="securityDefiner")
+    def security_definer(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+        """
+        return pulumi.get(self, "security_definer")
+
+    @property
+    @pulumi.getter
+    def strict(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If the function should always return NULL when any of the inputs is NULL. Default is false.
+        """
+        return pulumi.get(self, "strict")
+
+    @property
+    @pulumi.getter
+    def volatility(self) -> pulumi.Output[Optional[str]]:
+        """
+        Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+        """
+        return pulumi.get(self, "volatility")
 

@@ -63,6 +63,15 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * It is possible to import a `postgresql_function` resource with the following command:
+ * 
+ * ```sh
+ *  $ pulumi import postgresql:index/function:Function function_foo &#34;my_database.my_schema.my_function_name(arguments)&#34;
+ * ```
+ *  Where `my_database` is the name of the database containing the schema, `my_schema` is the name of the schema in the PostgreSQL database, `my_function_name` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and `postgresql_schema.function_foo` is the name of the resource whose state will be populated as a result of the command.
+ * 
  */
 @ResourceType(type="postgresql:index/function:Function")
 public class Function extends com.pulumi.resources.CustomResource {
@@ -82,7 +91,7 @@ public class Function extends com.pulumi.resources.CustomResource {
     }
     /**
      * Function body.
-     * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+     * This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      * 
      */
     @Export(name="body", type=String.class, parameters={})
@@ -90,7 +99,7 @@ public class Function extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Function body.
-     * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+     * This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      * 
      */
     public Output<String> body() {
@@ -157,6 +166,20 @@ public class Function extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+     * 
+     */
+    @Export(name="parallel", type=String.class, parameters={})
+    private Output</* @Nullable */ String> parallel;
+
+    /**
+     * @return Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+     * 
+     */
+    public Output<Optional<String>> parallel() {
+        return Codegen.optional(this.parallel);
+    }
+    /**
      * Type that the function returns. It can be computed from the OUT arguments. Default is void.
      * 
      */
@@ -185,6 +208,48 @@ public class Function extends com.pulumi.resources.CustomResource {
      */
     public Output<String> schema() {
         return this.schema;
+    }
+    /**
+     * If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+     * 
+     */
+    @Export(name="securityDefiner", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> securityDefiner;
+
+    /**
+     * @return If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+     * 
+     */
+    public Output<Optional<Boolean>> securityDefiner() {
+        return Codegen.optional(this.securityDefiner);
+    }
+    /**
+     * If the function should always return NULL when any of the inputs is NULL. Default is false.
+     * 
+     */
+    @Export(name="strict", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> strict;
+
+    /**
+     * @return If the function should always return NULL when any of the inputs is NULL. Default is false.
+     * 
+     */
+    public Output<Optional<Boolean>> strict() {
+        return Codegen.optional(this.strict);
+    }
+    /**
+     * Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+     * 
+     */
+    @Export(name="volatility", type=String.class, parameters={})
+    private Output</* @Nullable */ String> volatility;
+
+    /**
+     * @return Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+     * 
+     */
+    public Output<Optional<String>> volatility() {
+        return Codegen.optional(this.volatility);
     }
 
     /**

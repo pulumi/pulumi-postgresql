@@ -39,6 +39,22 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('awsRdsIamRegion')
 
     @property
+    def azure_identity_auth(self) -> Optional[bool]:
+        """
+        Use MS Azure identity OAuth token (see:
+        https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+        """
+        return __config__.get_bool('azureIdentityAuth')
+
+    @property
+    def azure_tenant_id(self) -> Optional[str]:
+        """
+        MS Azure tenant ID (see:
+        https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+        """
+        return __config__.get('azureTenantId')
+
+    @property
     def clientcert(self) -> Optional[str]:
         """
         SSL client certificate if required by the database.

@@ -30,6 +30,15 @@ import * as utilities from "./utilities";
  *     returns: "integer",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * It is possible to import a `postgresql_function` resource with the following command:
+ *
+ * ```sh
+ *  $ pulumi import postgresql:index/function:Function function_foo "my_database.my_schema.my_function_name(arguments)"
+ * ```
+ *  Where `my_database` is the name of the database containing the schema, `my_schema` is the name of the schema in the PostgreSQL database, `my_function_name` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and `postgresql_schema.function_foo` is the name of the resource whose state will be populated as a result of the command.
  */
 export class Function extends pulumi.CustomResource {
     /**
@@ -65,7 +74,7 @@ export class Function extends pulumi.CustomResource {
     public readonly args!: pulumi.Output<outputs.FunctionArg[] | undefined>;
     /**
      * Function body.
-     * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+     * This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      */
     public readonly body!: pulumi.Output<string>;
     /**
@@ -74,7 +83,7 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly database!: pulumi.Output<string>;
     /**
-     * True to automatically drop objects that depend on the function (such as 
+     * True to automatically drop objects that depend on the function (such as
      * operators or triggers), and in turn all objects that depend on those objects. Default is false.
      */
     public readonly dropCascade!: pulumi.Output<boolean | undefined>;
@@ -87,6 +96,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+     */
+    public readonly parallel!: pulumi.Output<string | undefined>;
+    /**
      * Type that the function returns. It can be computed from the OUT arguments. Default is void.
      */
     public readonly returns!: pulumi.Output<string>;
@@ -95,6 +108,18 @@ export class Function extends pulumi.CustomResource {
      * If not specified, the function is created in the current schema.
      */
     public readonly schema!: pulumi.Output<string>;
+    /**
+     * If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+     */
+    public readonly securityDefiner!: pulumi.Output<boolean | undefined>;
+    /**
+     * If the function should always return NULL when any of the inputs is NULL. Default is false.
+     */
+    public readonly strict!: pulumi.Output<boolean | undefined>;
+    /**
+     * Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+     */
+    public readonly volatility!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Function resource with the given unique name, arguments, and options.
@@ -115,8 +140,12 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["dropCascade"] = state ? state.dropCascade : undefined;
             resourceInputs["language"] = state ? state.language : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parallel"] = state ? state.parallel : undefined;
             resourceInputs["returns"] = state ? state.returns : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
+            resourceInputs["securityDefiner"] = state ? state.securityDefiner : undefined;
+            resourceInputs["strict"] = state ? state.strict : undefined;
+            resourceInputs["volatility"] = state ? state.volatility : undefined;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
             if ((!args || args.body === undefined) && !opts.urn) {
@@ -128,8 +157,12 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["dropCascade"] = args ? args.dropCascade : undefined;
             resourceInputs["language"] = args ? args.language : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parallel"] = args ? args.parallel : undefined;
             resourceInputs["returns"] = args ? args.returns : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["securityDefiner"] = args ? args.securityDefiner : undefined;
+            resourceInputs["strict"] = args ? args.strict : undefined;
+            resourceInputs["volatility"] = args ? args.volatility : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Function.__pulumiType, name, resourceInputs, opts);
@@ -146,7 +179,7 @@ export interface FunctionState {
     args?: pulumi.Input<pulumi.Input<inputs.FunctionArg>[]>;
     /**
      * Function body.
-     * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+     * This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      */
     body?: pulumi.Input<string>;
     /**
@@ -155,7 +188,7 @@ export interface FunctionState {
      */
     database?: pulumi.Input<string>;
     /**
-     * True to automatically drop objects that depend on the function (such as 
+     * True to automatically drop objects that depend on the function (such as
      * operators or triggers), and in turn all objects that depend on those objects. Default is false.
      */
     dropCascade?: pulumi.Input<boolean>;
@@ -168,6 +201,10 @@ export interface FunctionState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+     */
+    parallel?: pulumi.Input<string>;
+    /**
      * Type that the function returns. It can be computed from the OUT arguments. Default is void.
      */
     returns?: pulumi.Input<string>;
@@ -176,6 +213,18 @@ export interface FunctionState {
      * If not specified, the function is created in the current schema.
      */
     schema?: pulumi.Input<string>;
+    /**
+     * If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+     */
+    securityDefiner?: pulumi.Input<boolean>;
+    /**
+     * If the function should always return NULL when any of the inputs is NULL. Default is false.
+     */
+    strict?: pulumi.Input<boolean>;
+    /**
+     * Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+     */
+    volatility?: pulumi.Input<string>;
 }
 
 /**
@@ -188,7 +237,7 @@ export interface FunctionArgs {
     args?: pulumi.Input<pulumi.Input<inputs.FunctionArg>[]>;
     /**
      * Function body.
-     * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+     * This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      */
     body: pulumi.Input<string>;
     /**
@@ -197,7 +246,7 @@ export interface FunctionArgs {
      */
     database?: pulumi.Input<string>;
     /**
-     * True to automatically drop objects that depend on the function (such as 
+     * True to automatically drop objects that depend on the function (such as
      * operators or triggers), and in turn all objects that depend on those objects. Default is false.
      */
     dropCascade?: pulumi.Input<boolean>;
@@ -210,6 +259,10 @@ export interface FunctionArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+     */
+    parallel?: pulumi.Input<string>;
+    /**
      * Type that the function returns. It can be computed from the OUT arguments. Default is void.
      */
     returns?: pulumi.Input<string>;
@@ -218,4 +271,16 @@ export interface FunctionArgs {
      * If not specified, the function is created in the current schema.
      */
     schema?: pulumi.Input<string>;
+    /**
+     * If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+     */
+    securityDefiner?: pulumi.Input<boolean>;
+    /**
+     * If the function should always return NULL when any of the inputs is NULL. Default is false.
+     */
+    strict?: pulumi.Input<boolean>;
+    /**
+     * Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+     */
+    volatility?: pulumi.Input<string>;
 }

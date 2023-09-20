@@ -163,8 +163,9 @@ func (o FunctionArgArrayOutput) Index(i pulumi.IntInput) FunctionArgOutput {
 }
 
 type ProviderClientcert struct {
-	Cert string `pulumi:"cert"`
-	Key  string `pulumi:"key"`
+	Cert      string `pulumi:"cert"`
+	Key       string `pulumi:"key"`
+	Sslinline *bool  `pulumi:"sslinline"`
 }
 
 // ProviderClientcertInput is an input type that accepts ProviderClientcertArgs and ProviderClientcertOutput values.
@@ -179,8 +180,9 @@ type ProviderClientcertInput interface {
 }
 
 type ProviderClientcertArgs struct {
-	Cert pulumi.StringInput `pulumi:"cert"`
-	Key  pulumi.StringInput `pulumi:"key"`
+	Cert      pulumi.StringInput  `pulumi:"cert"`
+	Key       pulumi.StringInput  `pulumi:"key"`
+	Sslinline pulumi.BoolPtrInput `pulumi:"sslinline"`
 }
 
 func (ProviderClientcertArgs) ElementType() reflect.Type {
@@ -286,6 +288,10 @@ func (o ProviderClientcertOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderClientcert) string { return v.Key }).(pulumi.StringOutput)
 }
 
+func (o ProviderClientcertOutput) Sslinline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProviderClientcert) *bool { return v.Sslinline }).(pulumi.BoolPtrOutput)
+}
+
 type ProviderClientcertPtrOutput struct{ *pulumi.OutputState }
 
 func (ProviderClientcertPtrOutput) ElementType() reflect.Type {
@@ -332,6 +338,15 @@ func (o ProviderClientcertPtrOutput) Key() pulumi.StringPtrOutput {
 		}
 		return &v.Key
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderClientcertPtrOutput) Sslinline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProviderClientcert) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Sslinline
+	}).(pulumi.BoolPtrOutput)
 }
 
 type SchemaPolicy struct {

@@ -27,6 +27,18 @@ func GetAwsRdsIamRegion(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:awsRdsIamRegion")
 }
 
+// Use MS Azure identity OAuth token (see:
+// https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+func GetAzureIdentityAuth(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "postgresql:azureIdentityAuth")
+}
+
+// MS Azure tenant ID (see:
+// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+func GetAzureTenantId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "postgresql:azureTenantId")
+}
+
 // SSL client certificate if required by the database.
 func GetClientcert(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:clientcert")

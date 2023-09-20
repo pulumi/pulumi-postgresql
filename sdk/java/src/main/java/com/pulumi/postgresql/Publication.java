@@ -154,14 +154,14 @@ public class Publication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.publishViaPartitionRootParam);
     }
     /**
-     * Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.
+     * Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
      * 
      */
     @Export(name="tables", type=List.class, parameters={String.class})
     private Output<List<String>> tables;
 
     /**
-     * @return Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.
+     * @return Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
      * 
      */
     public Output<List<String>> tables() {

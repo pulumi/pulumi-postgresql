@@ -123,14 +123,14 @@ public final class PublicationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.
+     * Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
      * 
      */
     @Import(name="tables")
     private @Nullable Output<List<String>> tables;
 
     /**
-     * @return Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.
+     * @return Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
      * 
      */
     public Optional<Output<List<String>>> tables() {
@@ -326,7 +326,7 @@ public final class PublicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tables Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.
+         * @param tables Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class PublicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tables Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.
+         * @param tables Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class PublicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tables Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.
+         * @param tables Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
          * 
          * @return builder
          * 

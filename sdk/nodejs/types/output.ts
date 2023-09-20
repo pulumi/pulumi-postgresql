@@ -83,6 +83,7 @@ export namespace config {
     export interface Clientcert {
         cert: string;
         key: string;
+        sslinline?: boolean;
     }
 
 }
