@@ -18,6 +18,9 @@ namespace Pulumi.PostgreSql.Inputs
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        [Input("sslinline")]
+        public Input<bool>? Sslinline { get; set; }
+
         public ProviderClientcertArgs()
         {
         }

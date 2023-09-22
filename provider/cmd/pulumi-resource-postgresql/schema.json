@@ -63,6 +63,14 @@
                 "type": "string",
                 "description": "AWS region to use for IAM auth\n"
             },
+            "azureIdentityAuth": {
+                "type": "boolean",
+                "description": "Use MS Azure identity OAuth token (see:\nhttps://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)\n"
+            },
+            "azureTenantId": {
+                "type": "string",
+                "description": "MS Azure tenant ID (see:\nhttps://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)\n"
+            },
             "clientcert": {
                 "$ref": "#/types/postgresql:config/clientcert:clientcert",
                 "description": "SSL client certificate if required by the database.\n"
@@ -144,6 +152,9 @@
                 },
                 "key": {
                     "type": "string"
+                },
+                "sslinline": {
+                    "type": "boolean"
                 }
             },
             "type": "object",
@@ -191,6 +202,9 @@
                 },
                 "key": {
                     "type": "string"
+                },
+                "sslinline": {
+                    "type": "boolean"
                 }
             },
             "type": "object",
@@ -299,6 +313,14 @@
                 "type": "string",
                 "description": "AWS region to use for IAM auth\n"
             },
+            "azureIdentityAuth": {
+                "type": "boolean",
+                "description": "Use MS Azure identity OAuth token (see:\nhttps://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)\n"
+            },
+            "azureTenantId": {
+                "type": "string",
+                "description": "MS Azure tenant ID (see:\nhttps://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)\n"
+            },
             "clientcert": {
                 "$ref": "#/types/postgresql:index/ProviderClientcert:ProviderClientcert",
                 "description": "SSL client certificate if required by the database.\n"
@@ -372,6 +394,14 @@
             "awsRdsIamRegion": {
                 "type": "string",
                 "description": "AWS region to use for IAM auth\n"
+            },
+            "azureIdentityAuth": {
+                "type": "boolean",
+                "description": "Use MS Azure identity OAuth token (see:\nhttps://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)\n"
+            },
+            "azureTenantId": {
+                "type": "string",
+                "description": "MS Azure tenant ID (see:\nhttps://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)\n"
             },
             "clientcert": {
                 "$ref": "#/types/postgresql:index/ProviderClientcert:ProviderClientcert",
@@ -868,7 +898,7 @@
             ]
         },
         "postgresql:index/extension:Extension": {
-            "description": "The ``postgresql.Extension`` resource creates and manages an extension on a PostgreSQL\nserver.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst myExtension = new postgresql.Extension(\"myExtension\", {});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_extension = postgresql.Extension(\"myExtension\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myExtension = new PostgreSql.Extension(\"myExtension\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewExtension(ctx, \"myExtension\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Extension;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myExtension = new Extension(\"myExtension\");\n\n    }\n}\n```\n```yaml\nresources:\n  myExtension:\n    type: postgresql:Extension\n```\n",
+            "description": "The ``postgresql.Extension`` resource creates and manages an extension on a PostgreSQL\nserver.\n\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst myExtension = new postgresql.Extension(\"myExtension\", {});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_extension = postgresql.Extension(\"myExtension\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myExtension = new PostgreSql.Extension(\"myExtension\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewExtension(ctx, \"myExtension\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Extension;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myExtension = new Extension(\"myExtension\");\n\n    }\n}\n```\n```yaml\nresources:\n  myExtension:\n    type: postgresql:Extension\n```\n\n\n## Import\n\nPostgreSQL Extensions can be imported using the database name and the extension's resource name, e.g.\n\n```sh\n $ pulumi import postgresql:index/extension:Extension uuid_ossp example-database.uuid-ossp`\n```\n\n ",
             "properties": {
                 "createCascade": {
                     "type": "boolean",
@@ -963,7 +993,7 @@
             }
         },
         "postgresql:index/function:Function": {
-            "description": "The ``postgresql.Function`` resource creates and manages a function on a PostgreSQL\nserver.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst increment = new postgresql.Function(\"increment\", {\n    args: [{\n        name: \"i\",\n        type: \"integer\",\n    }],\n    body: `    BEGIN\n        RETURN i + 1;\n    END;\n\n`,\n    language: \"plpgsql\",\n    returns: \"integer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nincrement = postgresql.Function(\"increment\",\n    args=[postgresql.FunctionArgArgs(\n        name=\"i\",\n        type=\"integer\",\n    )],\n    body=\"\"\"    BEGIN\n        RETURN i + 1;\n    END;\n\n\"\"\",\n    language=\"plpgsql\",\n    returns=\"integer\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var increment = new PostgreSql.Function(\"increment\", new()\n    {\n        Args = new[]\n        {\n            new PostgreSql.Inputs.FunctionArgArgs\n            {\n                Name = \"i\",\n                Type = \"integer\",\n            },\n        },\n        Body = @\"    BEGIN\n        RETURN i + 1;\n    END;\n\n\",\n        Language = \"plpgsql\",\n        Returns = \"integer\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewFunction(ctx, \"increment\", \u0026postgresql.FunctionArgs{\n\t\t\tArgs: postgresql.FunctionArgArray{\n\t\t\t\t\u0026postgresql.FunctionArgArgs{\n\t\t\t\t\tName: pulumi.String(\"i\"),\n\t\t\t\t\tType: pulumi.String(\"integer\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBody:     pulumi.String(\"    BEGIN\\n        RETURN i + 1;\\n    END;\\n\\n\"),\n\t\t\tLanguage: pulumi.String(\"plpgsql\"),\n\t\t\tReturns:  pulumi.String(\"integer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Function;\nimport com.pulumi.postgresql.FunctionArgs;\nimport com.pulumi.postgresql.inputs.FunctionArgArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var increment = new Function(\"increment\", FunctionArgs.builder()        \n            .args(FunctionArgArgs.builder()\n                .name(\"i\")\n                .type(\"integer\")\n                .build())\n            .body(\"\"\"\n    BEGIN\n        RETURN i + 1;\n    END;\n\n            \"\"\")\n            .language(\"plpgsql\")\n            .returns(\"integer\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  increment:\n    type: postgresql:Function\n    properties:\n      args:\n        - name: i\n          type: integer\n      body: |2+\n            BEGIN\n                RETURN i + 1;\n            END;\n\n      language: plpgsql\n      returns: integer\n```\n",
+            "description": "The ``postgresql.Function`` resource creates and manages a function on a PostgreSQL\nserver.\n\n## Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst increment = new postgresql.Function(\"increment\", {\n    args: [{\n        name: \"i\",\n        type: \"integer\",\n    }],\n    body: `    BEGIN\n        RETURN i + 1;\n    END;\n\n`,\n    language: \"plpgsql\",\n    returns: \"integer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nincrement = postgresql.Function(\"increment\",\n    args=[postgresql.FunctionArgArgs(\n        name=\"i\",\n        type=\"integer\",\n    )],\n    body=\"\"\"    BEGIN\n        RETURN i + 1;\n    END;\n\n\"\"\",\n    language=\"plpgsql\",\n    returns=\"integer\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var increment = new PostgreSql.Function(\"increment\", new()\n    {\n        Args = new[]\n        {\n            new PostgreSql.Inputs.FunctionArgArgs\n            {\n                Name = \"i\",\n                Type = \"integer\",\n            },\n        },\n        Body = @\"    BEGIN\n        RETURN i + 1;\n    END;\n\n\",\n        Language = \"plpgsql\",\n        Returns = \"integer\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewFunction(ctx, \"increment\", \u0026postgresql.FunctionArgs{\n\t\t\tArgs: postgresql.FunctionArgArray{\n\t\t\t\t\u0026postgresql.FunctionArgArgs{\n\t\t\t\t\tName: pulumi.String(\"i\"),\n\t\t\t\t\tType: pulumi.String(\"integer\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBody:     pulumi.String(\"    BEGIN\\n        RETURN i + 1;\\n    END;\\n\\n\"),\n\t\t\tLanguage: pulumi.String(\"plpgsql\"),\n\t\t\tReturns:  pulumi.String(\"integer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Function;\nimport com.pulumi.postgresql.FunctionArgs;\nimport com.pulumi.postgresql.inputs.FunctionArgArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var increment = new Function(\"increment\", FunctionArgs.builder()        \n            .args(FunctionArgArgs.builder()\n                .name(\"i\")\n                .type(\"integer\")\n                .build())\n            .body(\"\"\"\n    BEGIN\n        RETURN i + 1;\n    END;\n\n            \"\"\")\n            .language(\"plpgsql\")\n            .returns(\"integer\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  increment:\n    type: postgresql:Function\n    properties:\n      args:\n        - name: i\n          type: integer\n      body: |2+\n            BEGIN\n                RETURN i + 1;\n            END;\n\n      language: plpgsql\n      returns: integer\n```\n\n\n## Import\n\nIt is possible to import a `postgresql_function` resource with the following command:\n\n```sh\n $ pulumi import postgresql:index/function:Function function_foo \"my_database.my_schema.my_function_name(arguments)\"\n```\n Where `my_database` is the name of the database containing the schema, `my_schema` is the name of the schema in the PostgreSQL database, `my_function_name` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and `postgresql_schema.function_foo` is the name of the resource whose state will be populated as a result of the command.\n\n",
             "properties": {
                 "args": {
                     "type": "array",
@@ -974,7 +1004,7 @@
                 },
                 "body": {
                     "type": "string",
-                    "description": "Function body.\nThis should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.\n"
+                    "description": "Function body.\nThis should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.\n"
                 },
                 "database": {
                     "type": "string",
@@ -982,7 +1012,7 @@
                 },
                 "dropCascade": {
                     "type": "boolean",
-                    "description": "True to automatically drop objects that depend on the function (such as \noperators or triggers), and in turn all objects that depend on those objects. Default is false.\n"
+                    "description": "True to automatically drop objects that depend on the function (such as\noperators or triggers), and in turn all objects that depend on those objects. Default is false.\n"
                 },
                 "language": {
                     "type": "string",
@@ -992,6 +1022,10 @@
                     "type": "string",
                     "description": "The name of the argument.\n"
                 },
+                "parallel": {
+                    "type": "string",
+                    "description": "Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.\n"
+                },
                 "returns": {
                     "type": "string",
                     "description": "Type that the function returns. It can be computed from the OUT arguments. Default is void.\n"
@@ -999,6 +1033,18 @@
                 "schema": {
                     "type": "string",
                     "description": "The schema where the function is located.\nIf not specified, the function is created in the current schema.\n"
+                },
+                "securityDefiner": {
+                    "type": "boolean",
+                    "description": "If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.\n"
+                },
+                "strict": {
+                    "type": "boolean",
+                    "description": "If the function should always return NULL when any of the inputs is NULL. Default is false.\n"
+                },
+                "volatility": {
+                    "type": "string",
+                    "description": "Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.\n"
                 }
             },
             "required": [
@@ -1019,7 +1065,7 @@
                 },
                 "body": {
                     "type": "string",
-                    "description": "Function body.\nThis should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.\n"
+                    "description": "Function body.\nThis should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.\n"
                 },
                 "database": {
                     "type": "string",
@@ -1028,7 +1074,7 @@
                 },
                 "dropCascade": {
                     "type": "boolean",
-                    "description": "True to automatically drop objects that depend on the function (such as \noperators or triggers), and in turn all objects that depend on those objects. Default is false.\n"
+                    "description": "True to automatically drop objects that depend on the function (such as\noperators or triggers), and in turn all objects that depend on those objects. Default is false.\n"
                 },
                 "language": {
                     "type": "string",
@@ -1040,6 +1086,10 @@
                     "description": "The name of the argument.\n",
                     "willReplaceOnChanges": true
                 },
+                "parallel": {
+                    "type": "string",
+                    "description": "Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.\n"
+                },
                 "returns": {
                     "type": "string",
                     "description": "Type that the function returns. It can be computed from the OUT arguments. Default is void.\n",
@@ -1049,6 +1099,18 @@
                     "type": "string",
                     "description": "The schema where the function is located.\nIf not specified, the function is created in the current schema.\n",
                     "willReplaceOnChanges": true
+                },
+                "securityDefiner": {
+                    "type": "boolean",
+                    "description": "If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.\n"
+                },
+                "strict": {
+                    "type": "boolean",
+                    "description": "If the function should always return NULL when any of the inputs is NULL. Default is false.\n"
+                },
+                "volatility": {
+                    "type": "string",
+                    "description": "Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.\n"
                 }
             },
             "requiredInputs": [
@@ -1067,7 +1129,7 @@
                     },
                     "body": {
                         "type": "string",
-                        "description": "Function body.\nThis should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.\n"
+                        "description": "Function body.\nThis should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.\n"
                     },
                     "database": {
                         "type": "string",
@@ -1076,7 +1138,7 @@
                     },
                     "dropCascade": {
                         "type": "boolean",
-                        "description": "True to automatically drop objects that depend on the function (such as \noperators or triggers), and in turn all objects that depend on those objects. Default is false.\n"
+                        "description": "True to automatically drop objects that depend on the function (such as\noperators or triggers), and in turn all objects that depend on those objects. Default is false.\n"
                     },
                     "language": {
                         "type": "string",
@@ -1088,6 +1150,10 @@
                         "description": "The name of the argument.\n",
                         "willReplaceOnChanges": true
                     },
+                    "parallel": {
+                        "type": "string",
+                        "description": "Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.\n"
+                    },
                     "returns": {
                         "type": "string",
                         "description": "Type that the function returns. It can be computed from the OUT arguments. Default is void.\n",
@@ -1097,6 +1163,18 @@
                         "type": "string",
                         "description": "The schema where the function is located.\nIf not specified, the function is created in the current schema.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "securityDefiner": {
+                        "type": "boolean",
+                        "description": "If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.\n"
+                    },
+                    "strict": {
+                        "type": "boolean",
+                        "description": "If the function should always return NULL when any of the inputs is NULL. Default is false.\n"
+                    },
+                    "volatility": {
+                        "type": "string",
+                        "description": "Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.\n"
                     }
                 },
                 "type": "object"
@@ -1413,7 +1491,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Which tables add to the publication. By defaults no tables added. Format of table is `\u003cschema_name\u003e.\u003ctable_name\u003e`. If `\u003cschema_name\u003e` is not specified - default database schema will be used.\n"
+                    "description": "Which tables add to the publication. By defaults no tables added. Format of table is `\u003cschema_name\u003e.\u003ctable_name\u003e`. If `\u003cschema_name\u003e` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.\n"
                 }
             },
             "required": [
@@ -1463,7 +1541,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Which tables add to the publication. By defaults no tables added. Format of table is `\u003cschema_name\u003e.\u003ctable_name\u003e`. If `\u003cschema_name\u003e` is not specified - default database schema will be used.\n"
+                    "description": "Which tables add to the publication. By defaults no tables added. Format of table is `\u003cschema_name\u003e.\u003ctable_name\u003e`. If `\u003cschema_name\u003e` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.\n"
                 }
             },
             "stateInputs": {
@@ -1507,7 +1585,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Which tables add to the publication. By defaults no tables added. Format of table is `\u003cschema_name\u003e.\u003ctable_name\u003e`. If `\u003cschema_name\u003e` is not specified - default database schema will be used.\n"
+                        "description": "Which tables add to the publication. By defaults no tables added. Format of table is `\u003cschema_name\u003e.\u003ctable_name\u003e`. If `\u003cschema_name\u003e` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.\n"
                     }
                 },
                 "type": "object"

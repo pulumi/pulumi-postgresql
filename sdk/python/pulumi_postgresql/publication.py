@@ -31,7 +31,7 @@ class PublicationArgs:
         :param pulumi.Input[str] owner: Who owns the publication. Defaults to provider user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] publish_params: Which 'publish' options should be turned on. Default to 'insert','update','delete'
         :param pulumi.Input[bool] publish_via_partition_root_param: Should be option 'publish_via_partition_root' be turned on. Default to 'false'
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tables: Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tables: Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
         """
         if all_tables is not None:
             pulumi.set(__self__, "all_tables", all_tables)
@@ -138,7 +138,7 @@ class PublicationArgs:
     @pulumi.getter
     def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+        Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
         """
         return pulumi.get(self, "tables")
 
@@ -167,7 +167,7 @@ class _PublicationState:
         :param pulumi.Input[str] owner: Who owns the publication. Defaults to provider user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] publish_params: Which 'publish' options should be turned on. Default to 'insert','update','delete'
         :param pulumi.Input[bool] publish_via_partition_root_param: Should be option 'publish_via_partition_root' be turned on. Default to 'false'
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tables: Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tables: Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
         """
         if all_tables is not None:
             pulumi.set(__self__, "all_tables", all_tables)
@@ -274,7 +274,7 @@ class _PublicationState:
     @pulumi.getter
     def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+        Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
         """
         return pulumi.get(self, "tables")
 
@@ -322,7 +322,7 @@ class Publication(pulumi.CustomResource):
         :param pulumi.Input[str] owner: Who owns the publication. Defaults to provider user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] publish_params: Which 'publish' options should be turned on. Default to 'insert','update','delete'
         :param pulumi.Input[bool] publish_via_partition_root_param: Should be option 'publish_via_partition_root' be turned on. Default to 'false'
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tables: Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tables: Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
         """
         ...
     @overload
@@ -418,7 +418,7 @@ class Publication(pulumi.CustomResource):
         :param pulumi.Input[str] owner: Who owns the publication. Defaults to provider user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] publish_params: Which 'publish' options should be turned on. Default to 'insert','update','delete'
         :param pulumi.Input[bool] publish_via_partition_root_param: Should be option 'publish_via_partition_root' be turned on. Default to 'false'
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tables: Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tables: Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -494,7 +494,7 @@ class Publication(pulumi.CustomResource):
     @pulumi.getter
     def tables(self) -> pulumi.Output[Sequence[str]]:
         """
-        Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+        Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
         """
         return pulumi.get(self, "tables")
 

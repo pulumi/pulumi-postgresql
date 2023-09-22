@@ -35,7 +35,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Function body.
-     * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+     * This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      * 
      */
     @Import(name="body", required=true)
@@ -43,7 +43,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Function body.
-     * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+     * This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      * 
      */
     public Output<String> body() {
@@ -115,6 +115,21 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+     * 
+     */
+    @Import(name="parallel")
+    private @Nullable Output<String> parallel;
+
+    /**
+     * @return Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+     * 
+     */
+    public Optional<Output<String>> parallel() {
+        return Optional.ofNullable(this.parallel);
+    }
+
+    /**
      * Type that the function returns. It can be computed from the OUT arguments. Default is void.
      * 
      */
@@ -146,6 +161,51 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.schema);
     }
 
+    /**
+     * If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+     * 
+     */
+    @Import(name="securityDefiner")
+    private @Nullable Output<Boolean> securityDefiner;
+
+    /**
+     * @return If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+     * 
+     */
+    public Optional<Output<Boolean>> securityDefiner() {
+        return Optional.ofNullable(this.securityDefiner);
+    }
+
+    /**
+     * If the function should always return NULL when any of the inputs is NULL. Default is false.
+     * 
+     */
+    @Import(name="strict")
+    private @Nullable Output<Boolean> strict;
+
+    /**
+     * @return If the function should always return NULL when any of the inputs is NULL. Default is false.
+     * 
+     */
+    public Optional<Output<Boolean>> strict() {
+        return Optional.ofNullable(this.strict);
+    }
+
+    /**
+     * Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+     * 
+     */
+    @Import(name="volatility")
+    private @Nullable Output<String> volatility;
+
+    /**
+     * @return Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+     * 
+     */
+    public Optional<Output<String>> volatility() {
+        return Optional.ofNullable(this.volatility);
+    }
+
     private FunctionArgs() {}
 
     private FunctionArgs(FunctionArgs $) {
@@ -155,8 +215,12 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         this.dropCascade = $.dropCascade;
         this.language = $.language;
         this.name = $.name;
+        this.parallel = $.parallel;
         this.returns = $.returns;
         this.schema = $.schema;
+        this.securityDefiner = $.securityDefiner;
+        this.strict = $.strict;
+        this.volatility = $.volatility;
     }
 
     public static Builder builder() {
@@ -210,7 +274,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param body Function body.
-         * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+         * This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
          * 
          * @return builder
          * 
@@ -222,7 +286,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param body Function body.
-         * This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+         * This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
          * 
          * @return builder
          * 
@@ -320,6 +384,27 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param parallel Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parallel(@Nullable Output<String> parallel) {
+            $.parallel = parallel;
+            return this;
+        }
+
+        /**
+         * @param parallel Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parallel(String parallel) {
+            return parallel(Output.of(parallel));
+        }
+
+        /**
          * @param returns Type that the function returns. It can be computed from the OUT arguments. Default is void.
          * 
          * @return builder
@@ -361,6 +446,69 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder schema(String schema) {
             return schema(Output.of(schema));
+        }
+
+        /**
+         * @param securityDefiner If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityDefiner(@Nullable Output<Boolean> securityDefiner) {
+            $.securityDefiner = securityDefiner;
+            return this;
+        }
+
+        /**
+         * @param securityDefiner If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityDefiner(Boolean securityDefiner) {
+            return securityDefiner(Output.of(securityDefiner));
+        }
+
+        /**
+         * @param strict If the function should always return NULL when any of the inputs is NULL. Default is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strict(@Nullable Output<Boolean> strict) {
+            $.strict = strict;
+            return this;
+        }
+
+        /**
+         * @param strict If the function should always return NULL when any of the inputs is NULL. Default is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strict(Boolean strict) {
+            return strict(Output.of(strict));
+        }
+
+        /**
+         * @param volatility Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volatility(@Nullable Output<String> volatility) {
+            $.volatility = volatility;
+            return this;
+        }
+
+        /**
+         * @param volatility Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volatility(String volatility) {
+            return volatility(Output.of(volatility));
         }
 
         public FunctionArgs build() {

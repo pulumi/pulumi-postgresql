@@ -36,6 +36,22 @@ public final class Config {
         return Codegen.stringProp("awsRdsIamRegion").config(config).get();
     }
 /**
+ * Use MS Azure identity OAuth token (see:
+ * https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+ * 
+ */
+    public Optional<Boolean> azureIdentityAuth() {
+        return Codegen.booleanProp("azureIdentityAuth").config(config).get();
+    }
+/**
+ * MS Azure tenant ID (see:
+ * https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+ * 
+ */
+    public Optional<String> azureTenantId() {
+        return Codegen.stringProp("azureTenantId").config(config).get();
+    }
+/**
  * SSL client certificate if required by the database.
  * 
  */

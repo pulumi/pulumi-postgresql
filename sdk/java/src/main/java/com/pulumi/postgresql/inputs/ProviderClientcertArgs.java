@@ -5,8 +5,11 @@ package com.pulumi.postgresql.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ProviderClientcertArgs extends com.pulumi.resources.ResourceArgs {
@@ -27,11 +30,19 @@ public final class ProviderClientcertArgs extends com.pulumi.resources.ResourceA
         return this.key;
     }
 
+    @Import(name="sslinline")
+    private @Nullable Output<Boolean> sslinline;
+
+    public Optional<Output<Boolean>> sslinline() {
+        return Optional.ofNullable(this.sslinline);
+    }
+
     private ProviderClientcertArgs() {}
 
     private ProviderClientcertArgs(ProviderClientcertArgs $) {
         this.cert = $.cert;
         this.key = $.key;
+        this.sslinline = $.sslinline;
     }
 
     public static Builder builder() {
@@ -68,6 +79,15 @@ public final class ProviderClientcertArgs extends com.pulumi.resources.ResourceA
 
         public Builder key(String key) {
             return key(Output.of(key));
+        }
+
+        public Builder sslinline(@Nullable Output<Boolean> sslinline) {
+            $.sslinline = sslinline;
+            return this;
+        }
+
+        public Builder sslinline(Boolean sslinline) {
+            return sslinline(Output.of(sslinline));
         }
 
         public ProviderClientcertArgs build() {

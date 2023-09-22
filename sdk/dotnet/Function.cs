@@ -44,6 +44,15 @@ namespace Pulumi.PostgreSql
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// It is possible to import a `postgresql_function` resource with the following command:
+    /// 
+    /// ```sh
+    ///  $ pulumi import postgresql:index/function:Function function_foo "my_database.my_schema.my_function_name(arguments)"
+    /// ```
+    ///  Where `my_database` is the name of the database containing the schema, `my_schema` is the name of the schema in the PostgreSQL database, `my_function_name` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and `postgresql_schema.function_foo` is the name of the resource whose state will be populated as a result of the command.
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/function:Function")]
     public partial class Function : global::Pulumi.CustomResource
@@ -56,7 +65,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Function body.
-        /// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+        /// This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         /// </summary>
         [Output("body")]
         public Output<string> Body { get; private set; } = null!;
@@ -69,7 +78,7 @@ namespace Pulumi.PostgreSql
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
-        /// True to automatically drop objects that depend on the function (such as 
+        /// True to automatically drop objects that depend on the function (such as
         /// operators or triggers), and in turn all objects that depend on those objects. Default is false.
         /// </summary>
         [Output("dropCascade")]
@@ -88,6 +97,12 @@ namespace Pulumi.PostgreSql
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+        /// </summary>
+        [Output("parallel")]
+        public Output<string?> Parallel { get; private set; } = null!;
+
+        /// <summary>
         /// Type that the function returns. It can be computed from the OUT arguments. Default is void.
         /// </summary>
         [Output("returns")]
@@ -99,6 +114,24 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Output("schema")]
         public Output<string> Schema { get; private set; } = null!;
+
+        /// <summary>
+        /// If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+        /// </summary>
+        [Output("securityDefiner")]
+        public Output<bool?> SecurityDefiner { get; private set; } = null!;
+
+        /// <summary>
+        /// If the function should always return NULL when any of the inputs is NULL. Default is false.
+        /// </summary>
+        [Output("strict")]
+        public Output<bool?> Strict { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+        /// </summary>
+        [Output("volatility")]
+        public Output<string?> Volatility { get; private set; } = null!;
 
 
         /// <summary>
@@ -160,7 +193,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Function body.
-        /// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+        /// This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         /// </summary>
         [Input("body", required: true)]
         public Input<string> Body { get; set; } = null!;
@@ -173,7 +206,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// True to automatically drop objects that depend on the function (such as 
+        /// True to automatically drop objects that depend on the function (such as
         /// operators or triggers), and in turn all objects that depend on those objects. Default is false.
         /// </summary>
         [Input("dropCascade")]
@@ -192,6 +225,12 @@ namespace Pulumi.PostgreSql
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+        /// </summary>
+        [Input("parallel")]
+        public Input<string>? Parallel { get; set; }
+
+        /// <summary>
         /// Type that the function returns. It can be computed from the OUT arguments. Default is void.
         /// </summary>
         [Input("returns")]
@@ -203,6 +242,24 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
+
+        /// <summary>
+        /// If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+        /// </summary>
+        [Input("securityDefiner")]
+        public Input<bool>? SecurityDefiner { get; set; }
+
+        /// <summary>
+        /// If the function should always return NULL when any of the inputs is NULL. Default is false.
+        /// </summary>
+        [Input("strict")]
+        public Input<bool>? Strict { get; set; }
+
+        /// <summary>
+        /// Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+        /// </summary>
+        [Input("volatility")]
+        public Input<string>? Volatility { get; set; }
 
         public FunctionArgs()
         {
@@ -226,7 +283,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Function body.
-        /// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+        /// This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         /// </summary>
         [Input("body")]
         public Input<string>? Body { get; set; }
@@ -239,7 +296,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// True to automatically drop objects that depend on the function (such as 
+        /// True to automatically drop objects that depend on the function (such as
         /// operators or triggers), and in turn all objects that depend on those objects. Default is false.
         /// </summary>
         [Input("dropCascade")]
@@ -258,6 +315,12 @@ namespace Pulumi.PostgreSql
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+        /// </summary>
+        [Input("parallel")]
+        public Input<string>? Parallel { get; set; }
+
+        /// <summary>
         /// Type that the function returns. It can be computed from the OUT arguments. Default is void.
         /// </summary>
         [Input("returns")]
@@ -269,6 +332,24 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
+
+        /// <summary>
+        /// If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+        /// </summary>
+        [Input("securityDefiner")]
+        public Input<bool>? SecurityDefiner { get; set; }
+
+        /// <summary>
+        /// If the function should always return NULL when any of the inputs is NULL. Default is false.
+        /// </summary>
+        [Input("strict")]
+        public Input<bool>? Strict { get; set; }
+
+        /// <summary>
+        /// Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+        /// </summary>
+        [Input("volatility")]
+        public Input<string>? Volatility { get; set; }
 
         public FunctionState()
         {

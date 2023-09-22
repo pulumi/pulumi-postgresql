@@ -27,6 +27,7 @@ export interface FunctionArg {
 export interface ProviderClientcert {
     cert: pulumi.Input<string>;
     key: pulumi.Input<string>;
+    sslinline?: pulumi.Input<boolean>;
 }
 
 export interface SchemaPolicy {

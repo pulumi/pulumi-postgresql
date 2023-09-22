@@ -17,9 +17,12 @@ __all__ = [
 class Clientcert(dict):
     def __init__(__self__, *,
                  cert: str,
-                 key: str):
+                 key: str,
+                 sslinline: Optional[bool] = None):
         pulumi.set(__self__, "cert", cert)
         pulumi.set(__self__, "key", key)
+        if sslinline is not None:
+            pulumi.set(__self__, "sslinline", sslinline)
 
     @property
     @pulumi.getter
@@ -30,5 +33,10 @@ class Clientcert(dict):
     @pulumi.getter
     def key(self) -> str:
         return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def sslinline(self) -> Optional[bool]:
+        return pulumi.get(self, "sslinline")
 
 

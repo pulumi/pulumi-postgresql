@@ -44,6 +44,30 @@ Object.defineProperty(exports, "awsRdsIamRegion", {
 });
 
 /**
+ * Use MS Azure identity OAuth token (see:
+ * https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+ */
+export declare const azureIdentityAuth: boolean | undefined;
+Object.defineProperty(exports, "azureIdentityAuth", {
+    get() {
+        return __config.getObject<boolean>("azureIdentityAuth");
+    },
+    enumerable: true,
+});
+
+/**
+ * MS Azure tenant ID (see:
+ * https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+ */
+export declare const azureTenantId: string | undefined;
+Object.defineProperty(exports, "azureTenantId", {
+    get() {
+        return __config.get("azureTenantId");
+    },
+    enumerable: true,
+});
+
+/**
  * SSL client certificate if required by the database.
  */
 export declare const clientcert: outputs.config.Clientcert | undefined;

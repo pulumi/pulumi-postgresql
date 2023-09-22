@@ -77,7 +77,7 @@ export class Publication extends pulumi.CustomResource {
      */
     public readonly publishViaPartitionRootParam!: pulumi.Output<boolean | undefined>;
     /**
-     * Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+     * Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
      */
     public readonly tables!: pulumi.Output<string[]>;
 
@@ -151,7 +151,7 @@ export interface PublicationState {
      */
     publishViaPartitionRootParam?: pulumi.Input<boolean>;
     /**
-     * Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+     * Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
      */
     tables?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -189,7 +189,7 @@ export interface PublicationArgs {
      */
     publishViaPartitionRootParam?: pulumi.Input<boolean>;
     /**
-     * Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.
+     * Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
      */
     tables?: pulumi.Input<pulumi.Input<string>[]>;
 }

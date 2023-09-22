@@ -27,6 +27,14 @@ namespace Pulumi.PostgreSql
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// PostgreSQL Extensions can be imported using the database name and the extension's resource name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import postgresql:index/extension:Extension uuid_ossp example-database.uuid-ossp`
+    /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/extension:Extension")]
     public partial class Extension : global::Pulumi.CustomResource

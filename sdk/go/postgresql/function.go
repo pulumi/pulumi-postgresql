@@ -49,13 +49,25 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// It is possible to import a `postgresql_function` resource with the following command:
+//
+// ```sh
+//
+//	$ pulumi import postgresql:index/function:Function function_foo "my_database.my_schema.my_function_name(arguments)"
+//
+// ```
+//
+//	Where `my_database` is the name of the database containing the schema, `my_schema` is the name of the schema in the PostgreSQL database, `my_function_name` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and `postgresql_schema.function_foo` is the name of the resource whose state will be populated as a result of the command.
 type Function struct {
 	pulumi.CustomResourceState
 
 	// List of arguments for the function.
 	Args FunctionArgArrayOutput `pulumi:"args"`
 	// Function body.
-	// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+	// This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
 	Body pulumi.StringOutput `pulumi:"body"`
 	// The database where the function is located.
 	// If not specified, the function is created in the current database.
@@ -67,11 +79,19 @@ type Function struct {
 	Language pulumi.StringPtrOutput `pulumi:"language"`
 	// The name of the argument.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+	Parallel pulumi.StringPtrOutput `pulumi:"parallel"`
 	// Type that the function returns. It can be computed from the OUT arguments. Default is void.
 	Returns pulumi.StringOutput `pulumi:"returns"`
 	// The schema where the function is located.
 	// If not specified, the function is created in the current schema.
 	Schema pulumi.StringOutput `pulumi:"schema"`
+	// If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+	SecurityDefiner pulumi.BoolPtrOutput `pulumi:"securityDefiner"`
+	// If the function should always return NULL when any of the inputs is NULL. Default is false.
+	Strict pulumi.BoolPtrOutput `pulumi:"strict"`
+	// Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+	Volatility pulumi.StringPtrOutput `pulumi:"volatility"`
 }
 
 // NewFunction registers a new resource with the given unique name, arguments, and options.
@@ -110,7 +130,7 @@ type functionState struct {
 	// List of arguments for the function.
 	Args []FunctionArg `pulumi:"args"`
 	// Function body.
-	// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+	// This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
 	Body *string `pulumi:"body"`
 	// The database where the function is located.
 	// If not specified, the function is created in the current database.
@@ -122,18 +142,26 @@ type functionState struct {
 	Language *string `pulumi:"language"`
 	// The name of the argument.
 	Name *string `pulumi:"name"`
+	// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+	Parallel *string `pulumi:"parallel"`
 	// Type that the function returns. It can be computed from the OUT arguments. Default is void.
 	Returns *string `pulumi:"returns"`
 	// The schema where the function is located.
 	// If not specified, the function is created in the current schema.
 	Schema *string `pulumi:"schema"`
+	// If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+	SecurityDefiner *bool `pulumi:"securityDefiner"`
+	// If the function should always return NULL when any of the inputs is NULL. Default is false.
+	Strict *bool `pulumi:"strict"`
+	// Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+	Volatility *string `pulumi:"volatility"`
 }
 
 type FunctionState struct {
 	// List of arguments for the function.
 	Args FunctionArgArrayInput
 	// Function body.
-	// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+	// This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
 	Body pulumi.StringPtrInput
 	// The database where the function is located.
 	// If not specified, the function is created in the current database.
@@ -145,11 +173,19 @@ type FunctionState struct {
 	Language pulumi.StringPtrInput
 	// The name of the argument.
 	Name pulumi.StringPtrInput
+	// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+	Parallel pulumi.StringPtrInput
 	// Type that the function returns. It can be computed from the OUT arguments. Default is void.
 	Returns pulumi.StringPtrInput
 	// The schema where the function is located.
 	// If not specified, the function is created in the current schema.
 	Schema pulumi.StringPtrInput
+	// If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+	SecurityDefiner pulumi.BoolPtrInput
+	// If the function should always return NULL when any of the inputs is NULL. Default is false.
+	Strict pulumi.BoolPtrInput
+	// Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+	Volatility pulumi.StringPtrInput
 }
 
 func (FunctionState) ElementType() reflect.Type {
@@ -160,7 +196,7 @@ type functionArgs struct {
 	// List of arguments for the function.
 	Args []FunctionArg `pulumi:"args"`
 	// Function body.
-	// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+	// This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
 	Body string `pulumi:"body"`
 	// The database where the function is located.
 	// If not specified, the function is created in the current database.
@@ -172,11 +208,19 @@ type functionArgs struct {
 	Language *string `pulumi:"language"`
 	// The name of the argument.
 	Name *string `pulumi:"name"`
+	// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+	Parallel *string `pulumi:"parallel"`
 	// Type that the function returns. It can be computed from the OUT arguments. Default is void.
 	Returns *string `pulumi:"returns"`
 	// The schema where the function is located.
 	// If not specified, the function is created in the current schema.
 	Schema *string `pulumi:"schema"`
+	// If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+	SecurityDefiner *bool `pulumi:"securityDefiner"`
+	// If the function should always return NULL when any of the inputs is NULL. Default is false.
+	Strict *bool `pulumi:"strict"`
+	// Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+	Volatility *string `pulumi:"volatility"`
 }
 
 // The set of arguments for constructing a Function resource.
@@ -184,7 +228,7 @@ type FunctionArgs struct {
 	// List of arguments for the function.
 	Args FunctionArgArrayInput
 	// Function body.
-	// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+	// This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
 	Body pulumi.StringInput
 	// The database where the function is located.
 	// If not specified, the function is created in the current database.
@@ -196,11 +240,19 @@ type FunctionArgs struct {
 	Language pulumi.StringPtrInput
 	// The name of the argument.
 	Name pulumi.StringPtrInput
+	// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+	Parallel pulumi.StringPtrInput
 	// Type that the function returns. It can be computed from the OUT arguments. Default is void.
 	Returns pulumi.StringPtrInput
 	// The schema where the function is located.
 	// If not specified, the function is created in the current schema.
 	Schema pulumi.StringPtrInput
+	// If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+	SecurityDefiner pulumi.BoolPtrInput
+	// If the function should always return NULL when any of the inputs is NULL. Default is false.
+	Strict pulumi.BoolPtrInput
+	// Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+	Volatility pulumi.StringPtrInput
 }
 
 func (FunctionArgs) ElementType() reflect.Type {
@@ -320,7 +372,7 @@ func (o FunctionOutput) Args() FunctionArgArrayOutput {
 }
 
 // Function body.
-// This should be the body content withing the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
+// This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
 func (o FunctionOutput) Body() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Body }).(pulumi.StringOutput)
 }
@@ -347,6 +399,11 @@ func (o FunctionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
+func (o FunctionOutput) Parallel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Parallel }).(pulumi.StringPtrOutput)
+}
+
 // Type that the function returns. It can be computed from the OUT arguments. Default is void.
 func (o FunctionOutput) Returns() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Returns }).(pulumi.StringOutput)
@@ -356,6 +413,21 @@ func (o FunctionOutput) Returns() pulumi.StringOutput {
 // If not specified, the function is created in the current schema.
 func (o FunctionOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
+}
+
+// If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
+func (o FunctionOutput) SecurityDefiner() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.BoolPtrOutput { return v.SecurityDefiner }).(pulumi.BoolPtrOutput)
+}
+
+// If the function should always return NULL when any of the inputs is NULL. Default is false.
+func (o FunctionOutput) Strict() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.BoolPtrOutput { return v.Strict }).(pulumi.BoolPtrOutput)
+}
+
+// Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
+func (o FunctionOutput) Volatility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Volatility }).(pulumi.StringPtrOutput)
 }
 
 type FunctionArrayOutput struct{ *pulumi.OutputState }

@@ -23,6 +23,9 @@ type Provider struct {
 	AwsRdsIamProfile pulumi.StringPtrOutput `pulumi:"awsRdsIamProfile"`
 	// AWS region to use for IAM auth
 	AwsRdsIamRegion pulumi.StringPtrOutput `pulumi:"awsRdsIamRegion"`
+	// MS Azure tenant ID (see:
+	// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+	AzureTenantId pulumi.StringPtrOutput `pulumi:"azureTenantId"`
 	// The name of the database to connect to in order to conenct to (defaults to `postgres`).
 	Database pulumi.StringPtrOutput `pulumi:"database"`
 	// Database username associated to the connected user (for user name maps)
@@ -86,6 +89,12 @@ type providerArgs struct {
 	AwsRdsIamProfile *string `pulumi:"awsRdsIamProfile"`
 	// AWS region to use for IAM auth
 	AwsRdsIamRegion *string `pulumi:"awsRdsIamRegion"`
+	// Use MS Azure identity OAuth token (see:
+	// https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+	AzureIdentityAuth *bool `pulumi:"azureIdentityAuth"`
+	// MS Azure tenant ID (see:
+	// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+	AzureTenantId *string `pulumi:"azureTenantId"`
 	// SSL client certificate if required by the database.
 	Clientcert *ProviderClientcert `pulumi:"clientcert"`
 	// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
@@ -128,6 +137,12 @@ type ProviderArgs struct {
 	AwsRdsIamProfile pulumi.StringPtrInput
 	// AWS region to use for IAM auth
 	AwsRdsIamRegion pulumi.StringPtrInput
+	// Use MS Azure identity OAuth token (see:
+	// https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+	AzureIdentityAuth pulumi.BoolPtrInput
+	// MS Azure tenant ID (see:
+	// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+	AzureTenantId pulumi.StringPtrInput
 	// SSL client certificate if required by the database.
 	Clientcert ProviderClientcertPtrInput
 	// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
@@ -218,6 +233,12 @@ func (o ProviderOutput) AwsRdsIamProfile() pulumi.StringPtrOutput {
 // AWS region to use for IAM auth
 func (o ProviderOutput) AwsRdsIamRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AwsRdsIamRegion }).(pulumi.StringPtrOutput)
+}
+
+// MS Azure tenant ID (see:
+// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+func (o ProviderOutput) AzureTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AzureTenantId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the database to connect to in order to conenct to (defaults to `postgres`).

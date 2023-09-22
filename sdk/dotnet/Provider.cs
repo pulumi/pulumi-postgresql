@@ -31,6 +31,13 @@ namespace Pulumi.PostgreSql
         public Output<string?> AwsRdsIamRegion { get; private set; } = null!;
 
         /// <summary>
+        /// MS Azure tenant ID (see:
+        /// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+        /// </summary>
+        [Output("azureTenantId")]
+        public Output<string?> AzureTenantId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the database to connect to in order to conenct to (defaults to `postgres`).
         /// </summary>
         [Output("database")]
@@ -135,6 +142,20 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Input("awsRdsIamRegion")]
         public Input<string>? AwsRdsIamRegion { get; set; }
+
+        /// <summary>
+        /// Use MS Azure identity OAuth token (see:
+        /// https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+        /// </summary>
+        [Input("azureIdentityAuth", json: true)]
+        public Input<bool>? AzureIdentityAuth { get; set; }
+
+        /// <summary>
+        /// MS Azure tenant ID (see:
+        /// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+        /// </summary>
+        [Input("azureTenantId")]
+        public Input<string>? AzureTenantId { get; set; }
 
         /// <summary>
         /// SSL client certificate if required by the database.

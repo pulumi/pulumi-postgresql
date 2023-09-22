@@ -26,6 +26,18 @@ awsRdsIamRegion: Optional[str]
 AWS region to use for IAM auth
 """
 
+azureIdentityAuth: Optional[bool]
+"""
+Use MS Azure identity OAuth token (see:
+https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+"""
+
+azureTenantId: Optional[str]
+"""
+MS Azure tenant ID (see:
+https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+"""
+
 clientcert: Optional[str]
 """
 SSL client certificate if required by the database.

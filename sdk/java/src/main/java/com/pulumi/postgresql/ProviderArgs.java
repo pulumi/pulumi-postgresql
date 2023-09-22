@@ -67,6 +67,40 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Use MS Azure identity OAuth token (see:
+     * https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+     * 
+     */
+    @Import(name="azureIdentityAuth", json=true)
+    private @Nullable Output<Boolean> azureIdentityAuth;
+
+    /**
+     * @return Use MS Azure identity OAuth token (see:
+     * https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+     * 
+     */
+    public Optional<Output<Boolean>> azureIdentityAuth() {
+        return Optional.ofNullable(this.azureIdentityAuth);
+    }
+
+    /**
+     * MS Azure tenant ID (see:
+     * https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+     * 
+     */
+    @Import(name="azureTenantId")
+    private @Nullable Output<String> azureTenantId;
+
+    /**
+     * @return MS Azure tenant ID (see:
+     * https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+     * 
+     */
+    public Optional<Output<String>> azureTenantId() {
+        return Optional.ofNullable(this.azureTenantId);
+    }
+
+    /**
      * SSL client certificate if required by the database.
      * 
      */
@@ -297,6 +331,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.awsRdsIamAuth = $.awsRdsIamAuth;
         this.awsRdsIamProfile = $.awsRdsIamProfile;
         this.awsRdsIamRegion = $.awsRdsIamRegion;
+        this.azureIdentityAuth = $.azureIdentityAuth;
+        this.azureTenantId = $.azureTenantId;
         this.clientcert = $.clientcert;
         this.connectTimeout = $.connectTimeout;
         this.database = $.database;
@@ -395,6 +431,52 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder awsRdsIamRegion(String awsRdsIamRegion) {
             return awsRdsIamRegion(Output.of(awsRdsIamRegion));
+        }
+
+        /**
+         * @param azureIdentityAuth Use MS Azure identity OAuth token (see:
+         * https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureIdentityAuth(@Nullable Output<Boolean> azureIdentityAuth) {
+            $.azureIdentityAuth = azureIdentityAuth;
+            return this;
+        }
+
+        /**
+         * @param azureIdentityAuth Use MS Azure identity OAuth token (see:
+         * https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureIdentityAuth(Boolean azureIdentityAuth) {
+            return azureIdentityAuth(Output.of(azureIdentityAuth));
+        }
+
+        /**
+         * @param azureTenantId MS Azure tenant ID (see:
+         * https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureTenantId(@Nullable Output<String> azureTenantId) {
+            $.azureTenantId = azureTenantId;
+            return this;
+        }
+
+        /**
+         * @param azureTenantId MS Azure tenant ID (see:
+         * https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureTenantId(String azureTenantId) {
+            return azureTenantId(Output.of(azureTenantId));
         }
 
         /**

@@ -63,6 +63,28 @@ namespace Pulumi.PostgreSql
             set => _awsRdsIamRegion.Set(value);
         }
 
+        private static readonly __Value<bool?> _azureIdentityAuth = new __Value<bool?>(() => __config.GetBoolean("azureIdentityAuth"));
+        /// <summary>
+        /// Use MS Azure identity OAuth token (see:
+        /// https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+        /// </summary>
+        public static bool? AzureIdentityAuth
+        {
+            get => _azureIdentityAuth.Get();
+            set => _azureIdentityAuth.Set(value);
+        }
+
+        private static readonly __Value<string?> _azureTenantId = new __Value<string?>(() => __config.Get("azureTenantId"));
+        /// <summary>
+        /// MS Azure tenant ID (see:
+        /// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+        /// </summary>
+        public static string? AzureTenantId
+        {
+            get => _azureTenantId.Get();
+            set => _azureTenantId.Set(value);
+        }
+
         private static readonly __Value<Pulumi.PostgreSql.Config.Types.Clientcert?> _clientcert = new __Value<Pulumi.PostgreSql.Config.Types.Clientcert?>(() => __config.GetObject<Pulumi.PostgreSql.Config.Types.Clientcert>("clientcert"));
         /// <summary>
         /// SSL client certificate if required by the database.
@@ -216,6 +238,7 @@ namespace Pulumi.PostgreSql
              {
                 public string Cert { get; set; }
                 public string Key { get; set; }
+                public bool? Sslinline { get; set; }
             }
         }
     }

@@ -16,6 +16,14 @@ import * as utilities from "./utilities";
  *
  * const myExtension = new postgresql.Extension("myExtension", {});
  * ```
+ *
+ * ## Import
+ *
+ * PostgreSQL Extensions can be imported using the database name and the extension's resource name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import postgresql:index/extension:Extension uuid_ossp example-database.uuid-ossp`
+ * ```
  */
 export class Extension extends pulumi.CustomResource {
     /**
