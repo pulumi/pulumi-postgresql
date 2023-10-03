@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GrantRoleArgs', 'GrantRole']
@@ -23,10 +23,23 @@ class GrantRoleArgs:
         :param pulumi.Input[str] role: The name of the role that is granted a new membership.
         :param pulumi.Input[bool] with_admin_option: Giving ability to grant membership to others or not for `role`. (Default: false)
         """
-        pulumi.set(__self__, "grant_role", grant_role)
-        pulumi.set(__self__, "role", role)
+        GrantRoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            grant_role=grant_role,
+            role=role,
+            with_admin_option=with_admin_option,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             grant_role: pulumi.Input[str],
+             role: pulumi.Input[str],
+             with_admin_option: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("grant_role", grant_role)
+        _setter("role", role)
         if with_admin_option is not None:
-            pulumi.set(__self__, "with_admin_option", with_admin_option)
+            _setter("with_admin_option", with_admin_option)
 
     @property
     @pulumi.getter(name="grantRole")
@@ -77,12 +90,25 @@ class _GrantRoleState:
         :param pulumi.Input[str] role: The name of the role that is granted a new membership.
         :param pulumi.Input[bool] with_admin_option: Giving ability to grant membership to others or not for `role`. (Default: false)
         """
+        _GrantRoleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            grant_role=grant_role,
+            role=role,
+            with_admin_option=with_admin_option,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             grant_role: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             with_admin_option: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if grant_role is not None:
-            pulumi.set(__self__, "grant_role", grant_role)
+            _setter("grant_role", grant_role)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if with_admin_option is not None:
-            pulumi.set(__self__, "with_admin_option", with_admin_option)
+            _setter("with_admin_option", with_admin_option)
 
     @property
     @pulumi.getter(name="grantRole")
@@ -166,6 +192,10 @@ class GrantRole(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GrantRoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

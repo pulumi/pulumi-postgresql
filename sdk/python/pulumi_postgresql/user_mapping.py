@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserMappingArgs', 'UserMapping']
@@ -29,10 +29,23 @@ class UserMappingArgs:
                when the user mapping is created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.
         """
-        pulumi.set(__self__, "server_name", server_name)
-        pulumi.set(__self__, "user_name", user_name)
+        UserMappingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_name=server_name,
+            user_name=user_name,
+            options=options,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_name: pulumi.Input[str],
+             user_name: pulumi.Input[str],
+             options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("server_name", server_name)
+        _setter("user_name", user_name)
         if options is not None:
-            pulumi.set(__self__, "options", options)
+            _setter("options", options)
 
     @property
     @pulumi.getter(name="serverName")
@@ -95,12 +108,25 @@ class _UserMappingState:
                will force the creation of a new resource as this value can only be set
                when the user mapping is created.
         """
+        _UserMappingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            options=options,
+            server_name=server_name,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             server_name: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if options is not None:
-            pulumi.set(__self__, "options", options)
+            _setter("options", options)
         if server_name is not None:
-            pulumi.set(__self__, "server_name", server_name)
+            _setter("server_name", server_name)
         if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
+            _setter("user_name", user_name)
 
     @property
     @pulumi.getter
@@ -240,6 +266,10 @@ class UserMapping(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserMappingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

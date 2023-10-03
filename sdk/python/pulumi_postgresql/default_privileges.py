@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DefaultPrivilegesArgs', 'DefaultPrivileges']
@@ -31,15 +31,36 @@ class DefaultPrivilegesArgs:
         :param pulumi.Input[str] schema: The database schema to set default privileges for this role.
         :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
         """
-        pulumi.set(__self__, "database", database)
-        pulumi.set(__self__, "object_type", object_type)
-        pulumi.set(__self__, "owner", owner)
-        pulumi.set(__self__, "privileges", privileges)
-        pulumi.set(__self__, "role", role)
+        DefaultPrivilegesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database=database,
+            object_type=object_type,
+            owner=owner,
+            privileges=privileges,
+            role=role,
+            schema=schema,
+            with_grant_option=with_grant_option,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database: pulumi.Input[str],
+             object_type: pulumi.Input[str],
+             owner: pulumi.Input[str],
+             privileges: pulumi.Input[Sequence[pulumi.Input[str]]],
+             role: pulumi.Input[str],
+             schema: Optional[pulumi.Input[str]] = None,
+             with_grant_option: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("database", database)
+        _setter("object_type", object_type)
+        _setter("owner", owner)
+        _setter("privileges", privileges)
+        _setter("role", role)
         if schema is not None:
-            pulumi.set(__self__, "schema", schema)
+            _setter("schema", schema)
         if with_grant_option is not None:
-            pulumi.set(__self__, "with_grant_option", with_grant_option)
+            _setter("with_grant_option", with_grant_option)
 
     @property
     @pulumi.getter
@@ -146,20 +167,41 @@ class _DefaultPrivilegesState:
         :param pulumi.Input[str] schema: The database schema to set default privileges for this role.
         :param pulumi.Input[bool] with_grant_option: Permit the grant recipient to grant it to others
         """
+        _DefaultPrivilegesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database=database,
+            object_type=object_type,
+            owner=owner,
+            privileges=privileges,
+            role=role,
+            schema=schema,
+            with_grant_option=with_grant_option,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database: Optional[pulumi.Input[str]] = None,
+             object_type: Optional[pulumi.Input[str]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             schema: Optional[pulumi.Input[str]] = None,
+             with_grant_option: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if database is not None:
-            pulumi.set(__self__, "database", database)
+            _setter("database", database)
         if object_type is not None:
-            pulumi.set(__self__, "object_type", object_type)
+            _setter("object_type", object_type)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
         if privileges is not None:
-            pulumi.set(__self__, "privileges", privileges)
+            _setter("privileges", privileges)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if schema is not None:
-            pulumi.set(__self__, "schema", schema)
+            _setter("schema", schema)
         if with_grant_option is not None:
-            pulumi.set(__self__, "with_grant_option", with_grant_option)
+            _setter("with_grant_option", with_grant_option)
 
     @property
     @pulumi.getter
@@ -357,6 +399,10 @@ class DefaultPrivileges(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DefaultPrivilegesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
