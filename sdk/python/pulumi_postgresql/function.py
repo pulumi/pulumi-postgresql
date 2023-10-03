@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,29 +47,60 @@ class FunctionArgs:
         :param pulumi.Input[bool] strict: If the function should always return NULL when any of the inputs is NULL. Default is false.
         :param pulumi.Input[str] volatility: Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
         """
-        pulumi.set(__self__, "body", body)
+        FunctionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            body=body,
+            args=args,
+            database=database,
+            drop_cascade=drop_cascade,
+            language=language,
+            name=name,
+            parallel=parallel,
+            returns=returns,
+            schema=schema,
+            security_definer=security_definer,
+            strict=strict,
+            volatility=volatility,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             body: pulumi.Input[str],
+             args: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             drop_cascade: Optional[pulumi.Input[bool]] = None,
+             language: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parallel: Optional[pulumi.Input[str]] = None,
+             returns: Optional[pulumi.Input[str]] = None,
+             schema: Optional[pulumi.Input[str]] = None,
+             security_definer: Optional[pulumi.Input[bool]] = None,
+             strict: Optional[pulumi.Input[bool]] = None,
+             volatility: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("body", body)
         if args is not None:
-            pulumi.set(__self__, "args", args)
+            _setter("args", args)
         if database is not None:
-            pulumi.set(__self__, "database", database)
+            _setter("database", database)
         if drop_cascade is not None:
-            pulumi.set(__self__, "drop_cascade", drop_cascade)
+            _setter("drop_cascade", drop_cascade)
         if language is not None:
-            pulumi.set(__self__, "language", language)
+            _setter("language", language)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parallel is not None:
-            pulumi.set(__self__, "parallel", parallel)
+            _setter("parallel", parallel)
         if returns is not None:
-            pulumi.set(__self__, "returns", returns)
+            _setter("returns", returns)
         if schema is not None:
-            pulumi.set(__self__, "schema", schema)
+            _setter("schema", schema)
         if security_definer is not None:
-            pulumi.set(__self__, "security_definer", security_definer)
+            _setter("security_definer", security_definer)
         if strict is not None:
-            pulumi.set(__self__, "strict", strict)
+            _setter("strict", strict)
         if volatility is not None:
-            pulumi.set(__self__, "volatility", volatility)
+            _setter("volatility", volatility)
 
     @property
     @pulumi.getter
@@ -254,30 +285,61 @@ class _FunctionState:
         :param pulumi.Input[bool] strict: If the function should always return NULL when any of the inputs is NULL. Default is false.
         :param pulumi.Input[str] volatility: Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
         """
+        _FunctionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            args=args,
+            body=body,
+            database=database,
+            drop_cascade=drop_cascade,
+            language=language,
+            name=name,
+            parallel=parallel,
+            returns=returns,
+            schema=schema,
+            security_definer=security_definer,
+            strict=strict,
+            volatility=volatility,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             args: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]]] = None,
+             body: Optional[pulumi.Input[str]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             drop_cascade: Optional[pulumi.Input[bool]] = None,
+             language: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parallel: Optional[pulumi.Input[str]] = None,
+             returns: Optional[pulumi.Input[str]] = None,
+             schema: Optional[pulumi.Input[str]] = None,
+             security_definer: Optional[pulumi.Input[bool]] = None,
+             strict: Optional[pulumi.Input[bool]] = None,
+             volatility: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if args is not None:
-            pulumi.set(__self__, "args", args)
+            _setter("args", args)
         if body is not None:
-            pulumi.set(__self__, "body", body)
+            _setter("body", body)
         if database is not None:
-            pulumi.set(__self__, "database", database)
+            _setter("database", database)
         if drop_cascade is not None:
-            pulumi.set(__self__, "drop_cascade", drop_cascade)
+            _setter("drop_cascade", drop_cascade)
         if language is not None:
-            pulumi.set(__self__, "language", language)
+            _setter("language", language)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parallel is not None:
-            pulumi.set(__self__, "parallel", parallel)
+            _setter("parallel", parallel)
         if returns is not None:
-            pulumi.set(__self__, "returns", returns)
+            _setter("returns", returns)
         if schema is not None:
-            pulumi.set(__self__, "schema", schema)
+            _setter("schema", schema)
         if security_definer is not None:
-            pulumi.set(__self__, "security_definer", security_definer)
+            _setter("security_definer", security_definer)
         if strict is not None:
-            pulumi.set(__self__, "strict", strict)
+            _setter("strict", strict)
         if volatility is not None:
-            pulumi.set(__self__, "volatility", volatility)
+            _setter("volatility", volatility)
 
     @property
     @pulumi.getter
@@ -547,6 +609,10 @@ class Function(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FunctionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

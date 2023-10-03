@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ServerArgs', 'Server']
@@ -37,18 +37,39 @@ class ServerArgs:
                when the foreign server is created.
         :param pulumi.Input[str] server_version: Optional server version, potentially useful to foreign-data wrappers.
         """
-        pulumi.set(__self__, "fdw_name", fdw_name)
-        pulumi.set(__self__, "server_name", server_name)
+        ServerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fdw_name=fdw_name,
+            server_name=server_name,
+            drop_cascade=drop_cascade,
+            options=options,
+            server_owner=server_owner,
+            server_type=server_type,
+            server_version=server_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fdw_name: pulumi.Input[str],
+             server_name: pulumi.Input[str],
+             drop_cascade: Optional[pulumi.Input[bool]] = None,
+             options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             server_owner: Optional[pulumi.Input[str]] = None,
+             server_type: Optional[pulumi.Input[str]] = None,
+             server_version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("fdw_name", fdw_name)
+        _setter("server_name", server_name)
         if drop_cascade is not None:
-            pulumi.set(__self__, "drop_cascade", drop_cascade)
+            _setter("drop_cascade", drop_cascade)
         if options is not None:
-            pulumi.set(__self__, "options", options)
+            _setter("options", options)
         if server_owner is not None:
-            pulumi.set(__self__, "server_owner", server_owner)
+            _setter("server_owner", server_owner)
         if server_type is not None:
-            pulumi.set(__self__, "server_type", server_type)
+            _setter("server_type", server_type)
         if server_version is not None:
-            pulumi.set(__self__, "server_version", server_version)
+            _setter("server_version", server_version)
 
     @property
     @pulumi.getter(name="fdwName")
@@ -167,20 +188,41 @@ class _ServerState:
                when the foreign server is created.
         :param pulumi.Input[str] server_version: Optional server version, potentially useful to foreign-data wrappers.
         """
+        _ServerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            drop_cascade=drop_cascade,
+            fdw_name=fdw_name,
+            options=options,
+            server_name=server_name,
+            server_owner=server_owner,
+            server_type=server_type,
+            server_version=server_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             drop_cascade: Optional[pulumi.Input[bool]] = None,
+             fdw_name: Optional[pulumi.Input[str]] = None,
+             options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             server_name: Optional[pulumi.Input[str]] = None,
+             server_owner: Optional[pulumi.Input[str]] = None,
+             server_type: Optional[pulumi.Input[str]] = None,
+             server_version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if drop_cascade is not None:
-            pulumi.set(__self__, "drop_cascade", drop_cascade)
+            _setter("drop_cascade", drop_cascade)
         if fdw_name is not None:
-            pulumi.set(__self__, "fdw_name", fdw_name)
+            _setter("fdw_name", fdw_name)
         if options is not None:
-            pulumi.set(__self__, "options", options)
+            _setter("options", options)
         if server_name is not None:
-            pulumi.set(__self__, "server_name", server_name)
+            _setter("server_name", server_name)
         if server_owner is not None:
-            pulumi.set(__self__, "server_owner", server_owner)
+            _setter("server_owner", server_owner)
         if server_type is not None:
-            pulumi.set(__self__, "server_type", server_type)
+            _setter("server_type", server_type)
         if server_version is not None:
-            pulumi.set(__self__, "server_version", server_version)
+            _setter("server_version", server_version)
 
     @property
     @pulumi.getter(name="dropCascade")
@@ -382,6 +424,10 @@ class Server(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

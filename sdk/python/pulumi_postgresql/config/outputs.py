@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -19,10 +19,23 @@ class Clientcert(dict):
                  cert: str,
                  key: str,
                  sslinline: Optional[bool] = None):
-        pulumi.set(__self__, "cert", cert)
-        pulumi.set(__self__, "key", key)
+        Clientcert._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert=cert,
+            key=key,
+            sslinline=sslinline,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert: str,
+             key: str,
+             sslinline: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cert", cert)
+        _setter("key", key)
         if sslinline is not None:
-            pulumi.set(__self__, "sslinline", sslinline)
+            _setter("sslinline", sslinline)
 
     @property
     @pulumi.getter

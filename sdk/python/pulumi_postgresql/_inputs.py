@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -28,13 +28,28 @@ class FunctionArgArgs:
         :param pulumi.Input[str] mode: Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
         :param pulumi.Input[str] name: The name of the argument.
         """
-        pulumi.set(__self__, "type", type)
+        FunctionArgArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            default=default,
+            mode=mode,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: pulumi.Input[str],
+             default: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if default is not None:
-            pulumi.set(__self__, "default", default)
+            _setter("default", default)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -91,10 +106,23 @@ class ProviderClientcertArgs:
                  cert: pulumi.Input[str],
                  key: pulumi.Input[str],
                  sslinline: Optional[pulumi.Input[bool]] = None):
-        pulumi.set(__self__, "cert", cert)
-        pulumi.set(__self__, "key", key)
+        ProviderClientcertArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert=cert,
+            key=key,
+            sslinline=sslinline,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert: pulumi.Input[str],
+             key: pulumi.Input[str],
+             sslinline: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cert", cert)
+        _setter("key", key)
         if sslinline is not None:
-            pulumi.set(__self__, "sslinline", sslinline)
+            _setter("sslinline", sslinline)
 
     @property
     @pulumi.getter
@@ -141,16 +169,33 @@ class SchemaPolicyArgs:
                
                > **NOTE on `policy`:** The permissions of a role specified in multiple policy blocks is cumulative.  For example, if the same role is specified in two different `policy` each with different permissions (e.g. `create` and `usage_with_grant`, respectively), then the specified role with have both `create` and `usage_with_grant` privileges.
         """
+        SchemaPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create=create,
+            create_with_grant=create_with_grant,
+            role=role,
+            usage=usage,
+            usage_with_grant=usage_with_grant,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create: Optional[pulumi.Input[bool]] = None,
+             create_with_grant: Optional[pulumi.Input[bool]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             usage: Optional[pulumi.Input[bool]] = None,
+             usage_with_grant: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create is not None:
-            pulumi.set(__self__, "create", create)
+            _setter("create", create)
         if create_with_grant is not None:
-            pulumi.set(__self__, "create_with_grant", create_with_grant)
+            _setter("create_with_grant", create_with_grant)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if usage is not None:
-            pulumi.set(__self__, "usage", usage)
+            _setter("usage", usage)
         if usage_with_grant is not None:
-            pulumi.set(__self__, "usage_with_grant", usage_with_grant)
+            _setter("usage_with_grant", usage_with_grant)
 
     @property
     @pulumi.getter
