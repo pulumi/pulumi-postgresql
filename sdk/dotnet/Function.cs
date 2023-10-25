@@ -13,38 +13,6 @@ namespace Pulumi.PostgreSql
     /// The ``postgresql.Function`` resource creates and manages a function on a PostgreSQL
     /// server.
     /// 
-    /// ## Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using PostgreSql = Pulumi.PostgreSql;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var increment = new PostgreSql.Function("increment", new()
-    ///     {
-    ///         Args = new[]
-    ///         {
-    ///             new PostgreSql.Inputs.FunctionArgArgs
-    ///             {
-    ///                 Name = "i",
-    ///                 Type = "integer",
-    ///             },
-    ///         },
-    ///         Body = @"    BEGIN
-    ///         RETURN i + 1;
-    ///     END;
-    /// 
-    /// ",
-    ///         Language = "plpgsql",
-    ///         Returns = "integer",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// It is possible to import a `postgresql_function` resource with the following command:

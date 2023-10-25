@@ -8,15 +8,6 @@ import * as utilities from "./utilities";
  * The ``postgresql.PhysicalReplicationSlot`` resource creates and manages a physical replication slot on a PostgreSQL
  * server. This is useful to setup a cross datacenter replication, with Patroni for example, or permit
  * any stand-by cluster to replicate physically data.
- *
- * ## Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as postgresql from "@pulumi/postgresql";
- *
- * const mySlot = new postgresql.PhysicalReplicationSlot("mySlot", {});
- * ```
  */
 export class PhysicalReplicationSlot extends pulumi.CustomResource {
     /**

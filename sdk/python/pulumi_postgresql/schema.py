@@ -51,7 +51,13 @@ class SchemaArgs:
              name: Optional[pulumi.Input[str]] = None,
              owner: Optional[pulumi.Input[str]] = None,
              policies: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if drop_cascade is None and 'dropCascade' in kwargs:
+            drop_cascade = kwargs['dropCascade']
+        if if_not_exists is None and 'ifNotExists' in kwargs:
+            if_not_exists = kwargs['ifNotExists']
+
         if database is not None:
             _setter("database", database)
         if drop_cascade is not None:
@@ -184,7 +190,13 @@ class _SchemaState:
              name: Optional[pulumi.Input[str]] = None,
              owner: Optional[pulumi.Input[str]] = None,
              policies: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if drop_cascade is None and 'dropCascade' in kwargs:
+            drop_cascade = kwargs['dropCascade']
+        if if_not_exists is None and 'ifNotExists' in kwargs:
+            if_not_exists = kwargs['ifNotExists']
+
         if database is not None:
             _setter("database", database)
         if drop_cascade is not None:

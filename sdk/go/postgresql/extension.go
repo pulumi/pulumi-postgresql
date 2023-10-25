@@ -15,30 +15,6 @@ import (
 // The “Extension“ resource creates and manages an extension on a PostgreSQL
 // server.
 //
-// ## Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.NewExtension(ctx, "myExtension", nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // PostgreSQL Extensions can be imported using the database name and the extension's resource name, e.g.

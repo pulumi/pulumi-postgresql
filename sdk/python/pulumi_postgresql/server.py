@@ -50,14 +50,32 @@ class ServerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fdw_name: pulumi.Input[str],
-             server_name: pulumi.Input[str],
+             fdw_name: Optional[pulumi.Input[str]] = None,
+             server_name: Optional[pulumi.Input[str]] = None,
              drop_cascade: Optional[pulumi.Input[bool]] = None,
              options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              server_owner: Optional[pulumi.Input[str]] = None,
              server_type: Optional[pulumi.Input[str]] = None,
              server_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fdw_name is None and 'fdwName' in kwargs:
+            fdw_name = kwargs['fdwName']
+        if fdw_name is None:
+            raise TypeError("Missing 'fdw_name' argument")
+        if server_name is None and 'serverName' in kwargs:
+            server_name = kwargs['serverName']
+        if server_name is None:
+            raise TypeError("Missing 'server_name' argument")
+        if drop_cascade is None and 'dropCascade' in kwargs:
+            drop_cascade = kwargs['dropCascade']
+        if server_owner is None and 'serverOwner' in kwargs:
+            server_owner = kwargs['serverOwner']
+        if server_type is None and 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+        if server_version is None and 'serverVersion' in kwargs:
+            server_version = kwargs['serverVersion']
+
         _setter("fdw_name", fdw_name)
         _setter("server_name", server_name)
         if drop_cascade is not None:
@@ -208,7 +226,21 @@ class _ServerState:
              server_owner: Optional[pulumi.Input[str]] = None,
              server_type: Optional[pulumi.Input[str]] = None,
              server_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if drop_cascade is None and 'dropCascade' in kwargs:
+            drop_cascade = kwargs['dropCascade']
+        if fdw_name is None and 'fdwName' in kwargs:
+            fdw_name = kwargs['fdwName']
+        if server_name is None and 'serverName' in kwargs:
+            server_name = kwargs['serverName']
+        if server_owner is None and 'serverOwner' in kwargs:
+            server_owner = kwargs['serverOwner']
+        if server_type is None and 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+        if server_version is None and 'serverVersion' in kwargs:
+            server_version = kwargs['serverVersion']
+
         if drop_cascade is not None:
             _setter("drop_cascade", drop_cascade)
         if fdw_name is not None:
@@ -331,35 +363,6 @@ class Server(pulumi.CustomResource):
         """
         The ``Server`` resource creates and manages a foreign server on a PostgreSQL server.
 
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        ext_postgres_fdw = postgresql.Extension("extPostgresFdw")
-        myserver_postgres = postgresql.Server("myserverPostgres",
-            server_name="myserver_postgres",
-            fdw_name="postgres_fdw",
-            options={
-                "host": "foo",
-                "dbname": "foodb",
-                "port": "5432",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        ext_file_fdw = postgresql.Extension("extFileFdw")
-        myserver_file = postgresql.Server("myserverFile",
-            server_name="myserver_file",
-            fdw_name="file_fdw",
-            opts=pulumi.ResourceOptions(depends_on=[ext_file_fdw]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] drop_cascade: When true, will drop objects that depend on the server (such as user mappings), and in turn all objects that depend on those objects . (Default: false)
@@ -384,35 +387,6 @@ class Server(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The ``Server`` resource creates and manages a foreign server on a PostgreSQL server.
-
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        ext_postgres_fdw = postgresql.Extension("extPostgresFdw")
-        myserver_postgres = postgresql.Server("myserverPostgres",
-            server_name="myserver_postgres",
-            fdw_name="postgres_fdw",
-            options={
-                "host": "foo",
-                "dbname": "foodb",
-                "port": "5432",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        ext_file_fdw = postgresql.Extension("extFileFdw")
-        myserver_file = postgresql.Server("myserverFile",
-            server_name="myserver_file",
-            fdw_name="file_fdw",
-            opts=pulumi.ResourceOptions(depends_on=[ext_file_fdw]))
-        ```
 
         :param str resource_name: The name of the resource.
         :param ServerArgs args: The arguments to use to populate this resource's properties.

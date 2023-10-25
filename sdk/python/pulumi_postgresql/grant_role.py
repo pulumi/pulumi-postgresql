@@ -32,10 +32,20 @@ class GrantRoleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             grant_role: pulumi.Input[str],
-             role: pulumi.Input[str],
+             grant_role: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              with_admin_option: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if grant_role is None and 'grantRole' in kwargs:
+            grant_role = kwargs['grantRole']
+        if grant_role is None:
+            raise TypeError("Missing 'grant_role' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if with_admin_option is None and 'withAdminOption' in kwargs:
+            with_admin_option = kwargs['withAdminOption']
+
         _setter("grant_role", grant_role)
         _setter("role", role)
         if with_admin_option is not None:
@@ -102,7 +112,13 @@ class _GrantRoleState:
              grant_role: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              with_admin_option: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if grant_role is None and 'grantRole' in kwargs:
+            grant_role = kwargs['grantRole']
+        if with_admin_option is None and 'withAdminOption' in kwargs:
+            with_admin_option = kwargs['withAdminOption']
+
         if grant_role is not None:
             _setter("grant_role", grant_role)
         if role is not None:

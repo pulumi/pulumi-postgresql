@@ -28,10 +28,16 @@ class Clientcert(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert: str,
-             key: str,
+             cert: Optional[str] = None,
+             key: Optional[str] = None,
              sslinline: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("cert", cert)
         _setter("key", key)
         if sslinline is not None:

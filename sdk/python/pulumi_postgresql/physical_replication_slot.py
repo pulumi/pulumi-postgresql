@@ -27,7 +27,9 @@ class PhysicalReplicationSlotArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -60,7 +62,9 @@ class _PhysicalReplicationSlotState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -89,15 +93,6 @@ class PhysicalReplicationSlot(pulumi.CustomResource):
         server. This is useful to setup a cross datacenter replication, with Patroni for example, or permit
         any stand-by cluster to replicate physically data.
 
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        my_slot = postgresql.PhysicalReplicationSlot("mySlot")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the replication slot.
@@ -112,15 +107,6 @@ class PhysicalReplicationSlot(pulumi.CustomResource):
         The ``PhysicalReplicationSlot`` resource creates and manages a physical replication slot on a PostgreSQL
         server. This is useful to setup a cross datacenter replication, with Patroni for example, or permit
         any stand-by cluster to replicate physically data.
-
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        my_slot = postgresql.PhysicalReplicationSlot("mySlot")
-        ```
 
         :param str resource_name: The name of the resource.
         :param PhysicalReplicationSlotArgs args: The arguments to use to populate this resource's properties.

@@ -6,35 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The ``postgresql.UserMapping`` resource creates and manages a user mapping on a PostgreSQL server.
- *
- * ## Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as postgresql from "@pulumi/postgresql";
- *
- * const extPostgresFdw = new postgresql.Extension("extPostgresFdw", {});
- * const myserverPostgres = new postgresql.Server("myserverPostgres", {
- *     serverName: "myserver_postgres",
- *     fdwName: "postgres_fdw",
- *     options: {
- *         host: "foo",
- *         dbname: "foodb",
- *         port: "5432",
- *     },
- * }, {
- *     dependsOn: [extPostgresFdw],
- * });
- * const remoteRole = new postgresql.Role("remoteRole", {});
- * const remoteUserMapping = new postgresql.UserMapping("remoteUserMapping", {
- *     serverName: myserverPostgres.serverName,
- *     userName: remoteRole.name,
- *     options: {
- *         user: "admin",
- *         password: "pass",
- *     },
- * });
- * ```
  */
 export class UserMapping extends pulumi.CustomResource {
     /**

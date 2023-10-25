@@ -6,17 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
- *
- * ## Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as postgresql from "@pulumi/postgresql";
- *
- * const mySchemas = postgresql.getSchemas({
- *     database: "my_database",
- * });
- * ```
  */
 export function getSchemas(args: GetSchemasArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemasResult> {
 
@@ -84,17 +73,6 @@ export interface GetSchemasResult {
 }
 /**
  * The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
- *
- * ## Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as postgresql from "@pulumi/postgresql";
- *
- * const mySchemas = postgresql.getSchemas({
- *     database: "my_database",
- * });
- * ```
  */
 export function getSchemasOutput(args: GetSchemasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchemasResult> {
     return pulumi.output(args).apply((a: any) => getSchemas(a, opts))

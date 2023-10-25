@@ -76,7 +76,21 @@ class DatabaseArgs:
              owner: Optional[pulumi.Input[str]] = None,
              tablespace_name: Optional[pulumi.Input[str]] = None,
              template: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_connections is None and 'allowConnections' in kwargs:
+            allow_connections = kwargs['allowConnections']
+        if connection_limit is None and 'connectionLimit' in kwargs:
+            connection_limit = kwargs['connectionLimit']
+        if is_template is None and 'isTemplate' in kwargs:
+            is_template = kwargs['isTemplate']
+        if lc_collate is None and 'lcCollate' in kwargs:
+            lc_collate = kwargs['lcCollate']
+        if lc_ctype is None and 'lcCtype' in kwargs:
+            lc_ctype = kwargs['lcCtype']
+        if tablespace_name is None and 'tablespaceName' in kwargs:
+            tablespace_name = kwargs['tablespaceName']
+
         if allow_connections is not None:
             _setter("allow_connections", allow_connections)
         if connection_limit is not None:
@@ -297,7 +311,21 @@ class _DatabaseState:
              owner: Optional[pulumi.Input[str]] = None,
              tablespace_name: Optional[pulumi.Input[str]] = None,
              template: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_connections is None and 'allowConnections' in kwargs:
+            allow_connections = kwargs['allowConnections']
+        if connection_limit is None and 'connectionLimit' in kwargs:
+            connection_limit = kwargs['connectionLimit']
+        if is_template is None and 'isTemplate' in kwargs:
+            is_template = kwargs['isTemplate']
+        if lc_collate is None and 'lcCollate' in kwargs:
+            lc_collate = kwargs['lcCollate']
+        if lc_ctype is None and 'lcCtype' in kwargs:
+            lc_ctype = kwargs['lcCtype']
+        if tablespace_name is None and 'tablespaceName' in kwargs:
+            tablespace_name = kwargs['tablespaceName']
+
         if allow_connections is not None:
             _setter("allow_connections", allow_connections)
         if connection_limit is not None:

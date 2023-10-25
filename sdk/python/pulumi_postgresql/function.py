@@ -65,7 +65,7 @@ class FunctionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             body: pulumi.Input[str],
+             body: Optional[pulumi.Input[str]] = None,
              args: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]]] = None,
              database: Optional[pulumi.Input[str]] = None,
              drop_cascade: Optional[pulumi.Input[bool]] = None,
@@ -77,7 +77,15 @@ class FunctionArgs:
              security_definer: Optional[pulumi.Input[bool]] = None,
              strict: Optional[pulumi.Input[bool]] = None,
              volatility: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if body is None:
+            raise TypeError("Missing 'body' argument")
+        if drop_cascade is None and 'dropCascade' in kwargs:
+            drop_cascade = kwargs['dropCascade']
+        if security_definer is None and 'securityDefiner' in kwargs:
+            security_definer = kwargs['securityDefiner']
+
         _setter("body", body)
         if args is not None:
             _setter("args", args)
@@ -315,7 +323,13 @@ class _FunctionState:
              security_definer: Optional[pulumi.Input[bool]] = None,
              strict: Optional[pulumi.Input[bool]] = None,
              volatility: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if drop_cascade is None and 'dropCascade' in kwargs:
+            drop_cascade = kwargs['dropCascade']
+        if security_definer is None and 'securityDefiner' in kwargs:
+            security_definer = kwargs['securityDefiner']
+
         if args is not None:
             _setter("args", args)
         if body is not None:
@@ -512,26 +526,6 @@ class Function(pulumi.CustomResource):
         The ``Function`` resource creates and manages a function on a PostgreSQL
         server.
 
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        increment = postgresql.Function("increment",
-            args=[postgresql.FunctionArgArgs(
-                name="i",
-                type="integer",
-            )],
-            body=\"\"\"    BEGIN
-                RETURN i + 1;
-            END;
-
-        \"\"\",
-            language="plpgsql",
-            returns="integer")
-        ```
-
         ## Import
 
         It is possible to import a `postgresql_function` resource with the following command:
@@ -569,26 +563,6 @@ class Function(pulumi.CustomResource):
         """
         The ``Function`` resource creates and manages a function on a PostgreSQL
         server.
-
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        increment = postgresql.Function("increment",
-            args=[postgresql.FunctionArgArgs(
-                name="i",
-                type="integer",
-            )],
-            body=\"\"\"    BEGIN
-                RETURN i + 1;
-            END;
-
-        \"\"\",
-            language="plpgsql",
-            returns="integer")
-        ```
 
         ## Import
 

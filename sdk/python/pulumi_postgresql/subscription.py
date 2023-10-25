@@ -41,13 +41,23 @@ class SubscriptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             conninfo: pulumi.Input[str],
-             publications: pulumi.Input[Sequence[pulumi.Input[str]]],
+             conninfo: Optional[pulumi.Input[str]] = None,
+             publications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              create_slot: Optional[pulumi.Input[bool]] = None,
              database: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              slot_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if conninfo is None:
+            raise TypeError("Missing 'conninfo' argument")
+        if publications is None:
+            raise TypeError("Missing 'publications' argument")
+        if create_slot is None and 'createSlot' in kwargs:
+            create_slot = kwargs['createSlot']
+        if slot_name is None and 'slotName' in kwargs:
+            slot_name = kwargs['slotName']
+
         _setter("conninfo", conninfo)
         _setter("publications", publications)
         if create_slot is not None:
@@ -168,7 +178,13 @@ class _SubscriptionState:
              name: Optional[pulumi.Input[str]] = None,
              publications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              slot_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_slot is None and 'createSlot' in kwargs:
+            create_slot = kwargs['createSlot']
+        if slot_name is None and 'slotName' in kwargs:
+            slot_name = kwargs['slotName']
+
         if conninfo is not None:
             _setter("conninfo", conninfo)
         if create_slot is not None:
@@ -271,17 +287,6 @@ class Subscription(pulumi.CustomResource):
         The `Subscription` resource creates and manages a publication on a PostgreSQL
         server.
 
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        subscription = postgresql.Subscription("subscription",
-            conninfo="host=localhost port=5432 dbname=mydb user=postgres password=postgres",
-            publications=["publication"])
-        ```
-
         ## Postgres documentation
 
         - https://www.postgresql.org/docs/current/sql-createsubscription.html
@@ -304,17 +309,6 @@ class Subscription(pulumi.CustomResource):
         """
         The `Subscription` resource creates and manages a publication on a PostgreSQL
         server.
-
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        subscription = postgresql.Subscription("subscription",
-            conninfo="host=localhost port=5432 dbname=mydb user=postgres password=postgres",
-            publications=["publication"])
-        ```
 
         ## Postgres documentation
 
