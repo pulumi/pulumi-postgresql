@@ -15,32 +15,6 @@ import (
 
 // The “ReplicationSlot“ resource creates and manages a replication slot on a PostgreSQL
 // server.
-//
-// ## Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.NewReplicationSlot(ctx, "mySlot", &postgresql.ReplicationSlotArgs{
-//				Plugin: pulumi.String("test_decoding"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ReplicationSlot struct {
 	pulumi.CustomResourceState
 

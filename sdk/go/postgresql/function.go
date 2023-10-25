@@ -16,40 +16,6 @@ import (
 // The “Function“ resource creates and manages a function on a PostgreSQL
 // server.
 //
-// ## Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.NewFunction(ctx, "increment", &postgresql.FunctionArgs{
-//				Args: postgresql.FunctionArgArray{
-//					&postgresql.FunctionArgArgs{
-//						Name: pulumi.String("i"),
-//						Type: pulumi.String("integer"),
-//					},
-//				},
-//				Body:     pulumi.String("    BEGIN\n        RETURN i + 1;\n    END;\n\n"),
-//				Language: pulumi.String("plpgsql"),
-//				Returns:  pulumi.String("integer"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // It is possible to import a `postgresql_function` resource with the following command:

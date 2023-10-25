@@ -107,7 +107,29 @@ class ProviderArgs:
              sslrootcert: Optional[pulumi.Input[str]] = None,
              superuser: Optional[pulumi.Input[bool]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aws_rds_iam_auth is None and 'awsRdsIamAuth' in kwargs:
+            aws_rds_iam_auth = kwargs['awsRdsIamAuth']
+        if aws_rds_iam_profile is None and 'awsRdsIamProfile' in kwargs:
+            aws_rds_iam_profile = kwargs['awsRdsIamProfile']
+        if aws_rds_iam_region is None and 'awsRdsIamRegion' in kwargs:
+            aws_rds_iam_region = kwargs['awsRdsIamRegion']
+        if azure_identity_auth is None and 'azureIdentityAuth' in kwargs:
+            azure_identity_auth = kwargs['azureIdentityAuth']
+        if azure_tenant_id is None and 'azureTenantId' in kwargs:
+            azure_tenant_id = kwargs['azureTenantId']
+        if connect_timeout is None and 'connectTimeout' in kwargs:
+            connect_timeout = kwargs['connectTimeout']
+        if database_username is None and 'databaseUsername' in kwargs:
+            database_username = kwargs['databaseUsername']
+        if expected_version is None and 'expectedVersion' in kwargs:
+            expected_version = kwargs['expectedVersion']
+        if max_connections is None and 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if ssl_mode is None and 'sslMode' in kwargs:
+            ssl_mode = kwargs['sslMode']
+
         if aws_rds_iam_auth is not None:
             _setter("aws_rds_iam_auth", aws_rds_iam_auth)
         if aws_rds_iam_profile is not None:
@@ -522,11 +544,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["aws_rds_iam_region"] = aws_rds_iam_region
             __props__.__dict__["azure_identity_auth"] = pulumi.Output.from_input(azure_identity_auth).apply(pulumi.runtime.to_json) if azure_identity_auth is not None else None
             __props__.__dict__["azure_tenant_id"] = azure_tenant_id
-            if clientcert is not None and not isinstance(clientcert, ProviderClientcertArgs):
-                clientcert = clientcert or {}
-                def _setter(key, value):
-                    clientcert[key] = value
-                ProviderClientcertArgs._configure(_setter, **clientcert)
+            clientcert = _utilities.configure(clientcert, ProviderClientcertArgs, True)
             __props__.__dict__["clientcert"] = pulumi.Output.from_input(clientcert).apply(pulumi.runtime.to_json) if clientcert is not None else None
             if connect_timeout is None:
                 connect_timeout = (_utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)

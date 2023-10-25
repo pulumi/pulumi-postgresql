@@ -38,11 +38,15 @@ class FunctionArgArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              default: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
         if default is not None:
             _setter("default", default)
@@ -115,10 +119,16 @@ class ProviderClientcertArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cert: pulumi.Input[str],
-             key: pulumi.Input[str],
+             cert: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
              sslinline: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cert is None:
+            raise TypeError("Missing 'cert' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("cert", cert)
         _setter("key", key)
         if sslinline is not None:
@@ -185,7 +195,13 @@ class SchemaPolicyArgs:
              role: Optional[pulumi.Input[str]] = None,
              usage: Optional[pulumi.Input[bool]] = None,
              usage_with_grant: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_with_grant is None and 'createWithGrant' in kwargs:
+            create_with_grant = kwargs['createWithGrant']
+        if usage_with_grant is None and 'usageWithGrant' in kwargs:
+            usage_with_grant = kwargs['usageWithGrant']
+
         if create is not None:
             _setter("create", create)
         if create_with_grant is not None:

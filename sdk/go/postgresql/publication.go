@@ -14,35 +14,6 @@ import (
 
 // The `Publication` resource creates and manages a publication on a PostgreSQL
 // server.
-//
-// ## Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.NewPublication(ctx, "publication", &postgresql.PublicationArgs{
-//				Tables: pulumi.StringArray{
-//					pulumi.String("public.test"),
-//					pulumi.String("another_schema.test"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Publication struct {
 	pulumi.CustomResourceState
 

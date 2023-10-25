@@ -8,17 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
- *
- * ## Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as postgresql from "@pulumi/postgresql";
- *
- * const myTables = postgresql.getTables({
- *     database: "my_database",
- * });
- * ```
  */
 export function getTables(args: GetTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetTablesResult> {
 
@@ -93,17 +82,6 @@ export interface GetTablesResult {
 }
 /**
  * The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
- *
- * ## Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as postgresql from "@pulumi/postgresql";
- *
- * const myTables = postgresql.getTables({
- *     database: "my_database",
- * });
- * ```
  */
 export function getTablesOutput(args: GetTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTablesResult> {
     return pulumi.output(args).apply((a: any) => getTables(a, opts))

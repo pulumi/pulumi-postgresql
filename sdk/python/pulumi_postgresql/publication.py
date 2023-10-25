@@ -55,7 +55,17 @@ class PublicationArgs:
              publish_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              publish_via_partition_root_param: Optional[pulumi.Input[bool]] = None,
              tables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if all_tables is None and 'allTables' in kwargs:
+            all_tables = kwargs['allTables']
+        if drop_cascade is None and 'dropCascade' in kwargs:
+            drop_cascade = kwargs['dropCascade']
+        if publish_params is None and 'publishParams' in kwargs:
+            publish_params = kwargs['publishParams']
+        if publish_via_partition_root_param is None and 'publishViaPartitionRootParam' in kwargs:
+            publish_via_partition_root_param = kwargs['publishViaPartitionRootParam']
+
         if all_tables is not None:
             _setter("all_tables", all_tables)
         if database is not None:
@@ -214,7 +224,17 @@ class _PublicationState:
              publish_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              publish_via_partition_root_param: Optional[pulumi.Input[bool]] = None,
              tables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if all_tables is None and 'allTables' in kwargs:
+            all_tables = kwargs['allTables']
+        if drop_cascade is None and 'dropCascade' in kwargs:
+            drop_cascade = kwargs['dropCascade']
+        if publish_params is None and 'publishParams' in kwargs:
+            publish_params = kwargs['publishParams']
+        if publish_via_partition_root_param is None and 'publishViaPartitionRootParam' in kwargs:
+            publish_via_partition_root_param = kwargs['publishViaPartitionRootParam']
+
         if all_tables is not None:
             _setter("all_tables", all_tables)
         if database is not None:
@@ -347,18 +367,6 @@ class Publication(pulumi.CustomResource):
         The `Publication` resource creates and manages a publication on a PostgreSQL
         server.
 
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        publication = postgresql.Publication("publication", tables=[
-            "public.test",
-            "another_schema.test",
-        ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] all_tables: Should be ALL TABLES added to the publication. Defaults to 'false'
@@ -379,18 +387,6 @@ class Publication(pulumi.CustomResource):
         """
         The `Publication` resource creates and manages a publication on a PostgreSQL
         server.
-
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        publication = postgresql.Publication("publication", tables=[
-            "public.test",
-            "another_schema.test",
-        ])
-        ```
 
         :param str resource_name: The name of the resource.
         :param PublicationArgs args: The arguments to use to populate this resource's properties.

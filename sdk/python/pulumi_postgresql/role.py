@@ -140,7 +140,33 @@ class RoleArgs:
              statement_timeout: Optional[pulumi.Input[int]] = None,
              superuser: Optional[pulumi.Input[bool]] = None,
              valid_until: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if assume_role is None and 'assumeRole' in kwargs:
+            assume_role = kwargs['assumeRole']
+        if bypass_row_level_security is None and 'bypassRowLevelSecurity' in kwargs:
+            bypass_row_level_security = kwargs['bypassRowLevelSecurity']
+        if connection_limit is None and 'connectionLimit' in kwargs:
+            connection_limit = kwargs['connectionLimit']
+        if create_database is None and 'createDatabase' in kwargs:
+            create_database = kwargs['createDatabase']
+        if create_role is None and 'createRole' in kwargs:
+            create_role = kwargs['createRole']
+        if encrypted_password is None and 'encryptedPassword' in kwargs:
+            encrypted_password = kwargs['encryptedPassword']
+        if idle_in_transaction_session_timeout is None and 'idleInTransactionSessionTimeout' in kwargs:
+            idle_in_transaction_session_timeout = kwargs['idleInTransactionSessionTimeout']
+        if search_paths is None and 'searchPaths' in kwargs:
+            search_paths = kwargs['searchPaths']
+        if skip_drop_role is None and 'skipDropRole' in kwargs:
+            skip_drop_role = kwargs['skipDropRole']
+        if skip_reassign_owned is None and 'skipReassignOwned' in kwargs:
+            skip_reassign_owned = kwargs['skipReassignOwned']
+        if statement_timeout is None and 'statementTimeout' in kwargs:
+            statement_timeout = kwargs['statementTimeout']
+        if valid_until is None and 'validUntil' in kwargs:
+            valid_until = kwargs['validUntil']
+
         if assume_role is not None:
             _setter("assume_role", assume_role)
         if bypass_row_level_security is not None:
@@ -593,7 +619,33 @@ class _RoleState:
              statement_timeout: Optional[pulumi.Input[int]] = None,
              superuser: Optional[pulumi.Input[bool]] = None,
              valid_until: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if assume_role is None and 'assumeRole' in kwargs:
+            assume_role = kwargs['assumeRole']
+        if bypass_row_level_security is None and 'bypassRowLevelSecurity' in kwargs:
+            bypass_row_level_security = kwargs['bypassRowLevelSecurity']
+        if connection_limit is None and 'connectionLimit' in kwargs:
+            connection_limit = kwargs['connectionLimit']
+        if create_database is None and 'createDatabase' in kwargs:
+            create_database = kwargs['createDatabase']
+        if create_role is None and 'createRole' in kwargs:
+            create_role = kwargs['createRole']
+        if encrypted_password is None and 'encryptedPassword' in kwargs:
+            encrypted_password = kwargs['encryptedPassword']
+        if idle_in_transaction_session_timeout is None and 'idleInTransactionSessionTimeout' in kwargs:
+            idle_in_transaction_session_timeout = kwargs['idleInTransactionSessionTimeout']
+        if search_paths is None and 'searchPaths' in kwargs:
+            search_paths = kwargs['searchPaths']
+        if skip_drop_role is None and 'skipDropRole' in kwargs:
+            skip_drop_role = kwargs['skipDropRole']
+        if skip_reassign_owned is None and 'skipReassignOwned' in kwargs:
+            skip_reassign_owned = kwargs['skipReassignOwned']
+        if statement_timeout is None and 'statementTimeout' in kwargs:
+            statement_timeout = kwargs['statementTimeout']
+        if valid_until is None and 'validUntil' in kwargs:
+            valid_until = kwargs['validUntil']
+
         if assume_role is not None:
             _setter("assume_role", assume_role)
         if bypass_row_level_security is not None:

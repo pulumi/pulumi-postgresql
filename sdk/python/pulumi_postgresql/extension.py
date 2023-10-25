@@ -47,7 +47,13 @@ class ExtensionArgs:
              name: Optional[pulumi.Input[str]] = None,
              schema: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_cascade is None and 'createCascade' in kwargs:
+            create_cascade = kwargs['createCascade']
+        if drop_cascade is None and 'dropCascade' in kwargs:
+            drop_cascade = kwargs['dropCascade']
+
         if create_cascade is not None:
             _setter("create_cascade", create_cascade)
         if database is not None:
@@ -170,7 +176,13 @@ class _ExtensionState:
              name: Optional[pulumi.Input[str]] = None,
              schema: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_cascade is None and 'createCascade' in kwargs:
+            create_cascade = kwargs['createCascade']
+        if drop_cascade is None and 'dropCascade' in kwargs:
+            drop_cascade = kwargs['dropCascade']
+
         if create_cascade is not None:
             _setter("create_cascade", create_cascade)
         if database is not None:
@@ -273,15 +285,6 @@ class Extension(pulumi.CustomResource):
         The ``Extension`` resource creates and manages an extension on a PostgreSQL
         server.
 
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        my_extension = postgresql.Extension("myExtension")
-        ```
-
         ## Import
 
         PostgreSQL Extensions can be imported using the database name and the extension's resource name, e.g.
@@ -308,15 +311,6 @@ class Extension(pulumi.CustomResource):
         """
         The ``Extension`` resource creates and manages an extension on a PostgreSQL
         server.
-
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        my_extension = postgresql.Extension("myExtension")
-        ```
 
         ## Import
 

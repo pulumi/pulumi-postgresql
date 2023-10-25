@@ -13,32 +13,6 @@ import (
 )
 
 // The “getSequences“ data source retrieves a list of sequence names from a specified PostgreSQL database.
-//
-// ## Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.GetSequences(ctx, &postgresql.GetSequencesArgs{
-//				Database: "my_database",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetSequences(ctx *pulumi.Context, args *GetSequencesArgs, opts ...pulumi.InvokeOption) (*GetSequencesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSequencesResult

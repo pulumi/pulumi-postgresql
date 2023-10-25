@@ -39,11 +39,15 @@ class FunctionArg(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              default: Optional[str] = None,
              mode: Optional[str] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
         if default is not None:
             _setter("default", default)
@@ -137,7 +141,13 @@ class SchemaPolicy(dict):
              role: Optional[str] = None,
              usage: Optional[bool] = None,
              usage_with_grant: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if create_with_grant is None and 'createWithGrant' in kwargs:
+            create_with_grant = kwargs['createWithGrant']
+        if usage_with_grant is None and 'usageWithGrant' in kwargs:
+            usage_with_grant = kwargs['usageWithGrant']
+
         if create is not None:
             _setter("create", create)
         if create_with_grant is not None:
@@ -212,10 +222,24 @@ class GetSequencesSequenceResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_type: str,
-             object_name: str,
-             schema_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             data_type: Optional[str] = None,
+             object_name: Optional[str] = None,
+             schema_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_type is None and 'dataType' in kwargs:
+            data_type = kwargs['dataType']
+        if data_type is None:
+            raise TypeError("Missing 'data_type' argument")
+        if object_name is None and 'objectName' in kwargs:
+            object_name = kwargs['objectName']
+        if object_name is None:
+            raise TypeError("Missing 'object_name' argument")
+        if schema_name is None and 'schemaName' in kwargs:
+            schema_name = kwargs['schemaName']
+        if schema_name is None:
+            raise TypeError("Missing 'schema_name' argument")
+
         _setter("data_type", data_type)
         _setter("object_name", object_name)
         _setter("schema_name", schema_name)
@@ -265,10 +289,24 @@ class GetTablesTableResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             object_name: str,
-             schema_name: str,
-             table_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             object_name: Optional[str] = None,
+             schema_name: Optional[str] = None,
+             table_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if object_name is None and 'objectName' in kwargs:
+            object_name = kwargs['objectName']
+        if object_name is None:
+            raise TypeError("Missing 'object_name' argument")
+        if schema_name is None and 'schemaName' in kwargs:
+            schema_name = kwargs['schemaName']
+        if schema_name is None:
+            raise TypeError("Missing 'schema_name' argument")
+        if table_type is None and 'tableType' in kwargs:
+            table_type = kwargs['tableType']
+        if table_type is None:
+            raise TypeError("Missing 'table_type' argument")
+
         _setter("object_name", object_name)
         _setter("schema_name", schema_name)
         _setter("table_type", table_type)

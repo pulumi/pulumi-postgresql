@@ -47,15 +47,29 @@ class GrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database: pulumi.Input[str],
-             object_type: pulumi.Input[str],
-             privileges: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             database: Optional[pulumi.Input[str]] = None,
+             object_type: Optional[pulumi.Input[str]] = None,
+             privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              objects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              schema: Optional[pulumi.Input[str]] = None,
              with_grant_option: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if object_type is None and 'objectType' in kwargs:
+            object_type = kwargs['objectType']
+        if object_type is None:
+            raise TypeError("Missing 'object_type' argument")
+        if privileges is None:
+            raise TypeError("Missing 'privileges' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if with_grant_option is None and 'withGrantOption' in kwargs:
+            with_grant_option = kwargs['withGrantOption']
+
         _setter("database", database)
         _setter("object_type", object_type)
         _setter("privileges", privileges)
@@ -210,7 +224,13 @@ class _GrantState:
              role: Optional[pulumi.Input[str]] = None,
              schema: Optional[pulumi.Input[str]] = None,
              with_grant_option: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if object_type is None and 'objectType' in kwargs:
+            object_type = kwargs['objectType']
+        if with_grant_option is None and 'withGrantOption' in kwargs:
+            with_grant_option = kwargs['withGrantOption']
+
         if columns is not None:
             _setter("columns", columns)
         if database is not None:
@@ -347,56 +367,6 @@ class Grant(pulumi.CustomResource):
         > **Note:** This resource needs Postgresql version 9 or above.
         **Note:** Using column & table grants on the _same_ table with the _same_ privileges can lead to unexpected behaviours.
 
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        # Grant SELECT privileges on 2 tables
-        readonly_tables = postgresql.Grant("readonlyTables",
-            database="test_db",
-            object_type="table",
-            objects=[
-                "table1",
-                "table2",
-            ],
-            privileges=["SELECT"],
-            role="test_role",
-            schema="public")
-        # Grant SELECT & INSERT privileges on 2 columns in 1 table
-        read_insert_column = postgresql.Grant("readInsertColumn",
-            columns=[
-                "col1",
-                "col2",
-            ],
-            database="test_db",
-            object_type="column",
-            objects=["table1"],
-            privileges=[
-                "UPDATE",
-                "INSERT",
-            ],
-            role="test_role",
-            schema="public")
-        ```
-
-        ## Examples
-
-        Revoke default accesses for public schema:
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        revoke_public = postgresql.Grant("revokePublic",
-            database="test_db",
-            object_type="schema",
-            privileges=[],
-            role="public",
-            schema="public")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] columns: The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
@@ -421,56 +391,6 @@ class Grant(pulumi.CustomResource):
 
         > **Note:** This resource needs Postgresql version 9 or above.
         **Note:** Using column & table grants on the _same_ table with the _same_ privileges can lead to unexpected behaviours.
-
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        # Grant SELECT privileges on 2 tables
-        readonly_tables = postgresql.Grant("readonlyTables",
-            database="test_db",
-            object_type="table",
-            objects=[
-                "table1",
-                "table2",
-            ],
-            privileges=["SELECT"],
-            role="test_role",
-            schema="public")
-        # Grant SELECT & INSERT privileges on 2 columns in 1 table
-        read_insert_column = postgresql.Grant("readInsertColumn",
-            columns=[
-                "col1",
-                "col2",
-            ],
-            database="test_db",
-            object_type="column",
-            objects=["table1"],
-            privileges=[
-                "UPDATE",
-                "INSERT",
-            ],
-            role="test_role",
-            schema="public")
-        ```
-
-        ## Examples
-
-        Revoke default accesses for public schema:
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        revoke_public = postgresql.Grant("revokePublic",
-            database="test_db",
-            object_type="schema",
-            privileges=[],
-            role="public",
-            schema="public")
-        ```
 
         :param str resource_name: The name of the resource.
         :param GrantArgs args: The arguments to use to populate this resource's properties.

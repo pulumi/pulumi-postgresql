@@ -38,10 +38,20 @@ class UserMappingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             server_name: pulumi.Input[str],
-             user_name: pulumi.Input[str],
+             server_name: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
              options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if server_name is None and 'serverName' in kwargs:
+            server_name = kwargs['serverName']
+        if server_name is None:
+            raise TypeError("Missing 'server_name' argument")
+        if user_name is None and 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
+
         _setter("server_name", server_name)
         _setter("user_name", user_name)
         if options is not None:
@@ -120,7 +130,13 @@ class _UserMappingState:
              options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              server_name: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if server_name is None and 'serverName' in kwargs:
+            server_name = kwargs['serverName']
+        if user_name is None and 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if options is not None:
             _setter("options", options)
         if server_name is not None:
@@ -183,32 +199,6 @@ class UserMapping(pulumi.CustomResource):
         """
         The ``UserMapping`` resource creates and manages a user mapping on a PostgreSQL server.
 
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        ext_postgres_fdw = postgresql.Extension("extPostgresFdw")
-        myserver_postgres = postgresql.Server("myserverPostgres",
-            server_name="myserver_postgres",
-            fdw_name="postgres_fdw",
-            options={
-                "host": "foo",
-                "dbname": "foodb",
-                "port": "5432",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
-        remote_role = postgresql.Role("remoteRole")
-        remote_user_mapping = postgresql.UserMapping("remoteUserMapping",
-            server_name=myserver_postgres.server_name,
-            user_name=remote_role.name,
-            options={
-                "user": "admin",
-                "password": "pass",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.
@@ -229,32 +219,6 @@ class UserMapping(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The ``UserMapping`` resource creates and manages a user mapping on a PostgreSQL server.
-
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        ext_postgres_fdw = postgresql.Extension("extPostgresFdw")
-        myserver_postgres = postgresql.Server("myserverPostgres",
-            server_name="myserver_postgres",
-            fdw_name="postgres_fdw",
-            options={
-                "host": "foo",
-                "dbname": "foodb",
-                "port": "5432",
-            },
-            opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
-        remote_role = postgresql.Role("remoteRole")
-        remote_user_mapping = postgresql.UserMapping("remoteUserMapping",
-            server_name=myserver_postgres.server_name,
-            user_name=remote_role.name,
-            options={
-                "user": "admin",
-                "password": "pass",
-            })
-        ```
 
         :param str resource_name: The name of the resource.
         :param UserMappingArgs args: The arguments to use to populate this resource's properties.

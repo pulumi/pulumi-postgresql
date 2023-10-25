@@ -12,28 +12,6 @@ namespace Pulumi.PostgreSql
     /// <summary>
     /// The `postgresql.Publication` resource creates and manages a publication on a PostgreSQL
     /// server.
-    /// 
-    /// ## Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using PostgreSql = Pulumi.PostgreSql;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var publication = new PostgreSql.Publication("publication", new()
-    ///     {
-    ///         Tables = new[]
-    ///         {
-    ///             "public.test",
-    ///             "another_schema.test",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/publication:Publication")]
     public partial class Publication : global::Pulumi.CustomResource

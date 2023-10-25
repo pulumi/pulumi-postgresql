@@ -13,50 +13,12 @@ namespace Pulumi.PostgreSql
     {
         /// <summary>
         /// The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
-        /// 
-        /// 
-        /// ## Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using PostgreSql = Pulumi.PostgreSql;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myTables = PostgreSql.GetTables.Invoke(new()
-        ///     {
-        ///         Database = "my_database",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetTablesResult> InvokeAsync(GetTablesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("postgresql:index/getTables:getTables", args ?? new GetTablesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
-        /// 
-        /// 
-        /// ## Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using PostgreSql = Pulumi.PostgreSql;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var myTables = PostgreSql.GetTables.Invoke(new()
-        ///     {
-        ///         Database = "my_database",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetTablesResult> Invoke(GetTablesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTablesResult>("postgresql:index/getTables:getTables", args ?? new GetTablesInvokeArgs(), options.WithDefaults());

@@ -44,14 +44,30 @@ class DefaultPrivilegArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database: pulumi.Input[str],
-             object_type: pulumi.Input[str],
-             owner: pulumi.Input[str],
-             privileges: pulumi.Input[Sequence[pulumi.Input[str]]],
-             role: pulumi.Input[str],
+             database: Optional[pulumi.Input[str]] = None,
+             object_type: Optional[pulumi.Input[str]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
              schema: Optional[pulumi.Input[str]] = None,
              with_grant_option: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if object_type is None and 'objectType' in kwargs:
+            object_type = kwargs['objectType']
+        if object_type is None:
+            raise TypeError("Missing 'object_type' argument")
+        if owner is None:
+            raise TypeError("Missing 'owner' argument")
+        if privileges is None:
+            raise TypeError("Missing 'privileges' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if with_grant_option is None and 'withGrantOption' in kwargs:
+            with_grant_option = kwargs['withGrantOption']
+
         _setter("database", database)
         _setter("object_type", object_type)
         _setter("owner", owner)
@@ -187,7 +203,13 @@ class _DefaultPrivilegState:
              role: Optional[pulumi.Input[str]] = None,
              schema: Optional[pulumi.Input[str]] = None,
              with_grant_option: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if object_type is None and 'objectType' in kwargs:
+            object_type = kwargs['objectType']
+        if with_grant_option is None and 'withGrantOption' in kwargs:
+            with_grant_option = kwargs['withGrantOption']
+
         if database is not None:
             _setter("database", database)
         if object_type is not None:
@@ -311,37 +333,6 @@ class DefaultPrivileg(pulumi.CustomResource):
 
         > **Note:** This resource needs Postgresql version 9 or above.
 
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        read_only_tables = postgresql.DefaultPrivileges("readOnlyTables",
-            database="test_db",
-            object_type="table",
-            owner="db_owner",
-            privileges=["SELECT"],
-            role="test_role",
-            schema="public")
-        ```
-
-        ## Examples
-
-        Revoke default privileges for functions for "public" role:
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        revoke_public = postgresql.DefaultPrivileges("revokePublic",
-            database=postgresql_database["example_db"]["name"],
-            role="public",
-            owner="object_owner",
-            object_type="function",
-            privileges=[])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant default privileges for this role.
@@ -362,37 +353,6 @@ class DefaultPrivileg(pulumi.CustomResource):
         The ``DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
 
         > **Note:** This resource needs Postgresql version 9 or above.
-
-        ## Usage
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        read_only_tables = postgresql.DefaultPrivileges("readOnlyTables",
-            database="test_db",
-            object_type="table",
-            owner="db_owner",
-            privileges=["SELECT"],
-            role="test_role",
-            schema="public")
-        ```
-
-        ## Examples
-
-        Revoke default privileges for functions for "public" role:
-
-        ```python
-        import pulumi
-        import pulumi_postgresql as postgresql
-
-        revoke_public = postgresql.DefaultPrivileges("revokePublic",
-            database=postgresql_database["example_db"]["name"],
-            role="public",
-            owner="object_owner",
-            object_type="function",
-            privileges=[])
-        ```
 
         :param str resource_name: The name of the resource.
         :param DefaultPrivilegArgs args: The arguments to use to populate this resource's properties.

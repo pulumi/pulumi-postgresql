@@ -7,18 +7,6 @@ import * as utilities from "./utilities";
 /**
  * The `postgresql.Publication` resource creates and manages a publication on a PostgreSQL
  * server.
- *
- * ## Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as postgresql from "@pulumi/postgresql";
- *
- * const publication = new postgresql.Publication("publication", {tables: [
- *     "public.test",
- *     "another_schema.test",
- * ]});
- * ```
  */
 export class Publication extends pulumi.CustomResource {
     /**

@@ -6,39 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The ``postgresql.Server`` resource creates and manages a foreign server on a PostgreSQL server.
- *
- * ## Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as postgresql from "@pulumi/postgresql";
- *
- * const extPostgresFdw = new postgresql.Extension("extPostgresFdw", {});
- * const myserverPostgres = new postgresql.Server("myserverPostgres", {
- *     serverName: "myserver_postgres",
- *     fdwName: "postgres_fdw",
- *     options: {
- *         host: "foo",
- *         dbname: "foodb",
- *         port: "5432",
- *     },
- * }, {
- *     dependsOn: [extPostgresFdw],
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as postgresql from "@pulumi/postgresql";
- *
- * const extFileFdw = new postgresql.Extension("extFileFdw", {});
- * const myserverFile = new postgresql.Server("myserverFile", {
- *     serverName: "myserver_file",
- *     fdwName: "file_fdw",
- * }, {
- *     dependsOn: [extFileFdw],
- * });
- * ```
  */
 export class Server extends pulumi.CustomResource {
     /**

@@ -122,15 +122,6 @@ def get_sequences(database: Optional[str] = None,
     """
     The ``get_sequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
 
-    ## Usage
-
-    ```python
-    import pulumi
-    import pulumi_postgresql as postgresql
-
-    my_sequences = postgresql.get_sequences(database="my_database")
-    ```
-
 
     :param str database: The PostgreSQL database which will be queried for sequence names.
     :param Sequence[str] like_all_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ALL`` operators.
@@ -172,15 +163,6 @@ def get_sequences_output(database: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSequencesResult]:
     """
     The ``get_sequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
-
-    ## Usage
-
-    ```python
-    import pulumi
-    import pulumi_postgresql as postgresql
-
-    my_sequences = postgresql.get_sequences(database="my_database")
-    ```
 
 
     :param str database: The PostgreSQL database which will be queried for sequence names.
