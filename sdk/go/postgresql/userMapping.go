@@ -14,6 +14,59 @@ import (
 )
 
 // The “UserMapping“ resource creates and manages a user mapping on a PostgreSQL server.
+//
+// ## Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			extPostgresFdw, err := postgresql.NewExtension(ctx, "extPostgresFdw", nil)
+//			if err != nil {
+//				return err
+//			}
+//			myserverPostgres, err := postgresql.NewServer(ctx, "myserverPostgres", &postgresql.ServerArgs{
+//				ServerName: pulumi.String("myserver_postgres"),
+//				FdwName:    pulumi.String("postgres_fdw"),
+//				Options: pulumi.StringMap{
+//					"host":   pulumi.String("foo"),
+//					"dbname": pulumi.String("foodb"),
+//					"port":   pulumi.String("5432"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				extPostgresFdw,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			remoteRole, err := postgresql.NewRole(ctx, "remoteRole", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = postgresql.NewUserMapping(ctx, "remoteUserMapping", &postgresql.UserMappingArgs{
+//				ServerName: myserverPostgres.ServerName,
+//				UserName:   remoteRole.Name,
+//				Options: pulumi.StringMap{
+//					"user":     pulumi.String("admin"),
+//					"password": pulumi.String("pass"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type UserMapping struct {
 	pulumi.CustomResourceState
 

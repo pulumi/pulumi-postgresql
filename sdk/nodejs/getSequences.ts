@@ -8,6 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
+ *
+ * ## Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * const mySequences = postgresql.getSequences({
+ *     database: "my_database",
+ * });
+ * ```
  */
 export function getSequences(args: GetSequencesArgs, opts?: pulumi.InvokeOptions): Promise<GetSequencesResult> {
 
@@ -76,6 +87,17 @@ export interface GetSequencesResult {
 }
 /**
  * The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
+ *
+ * ## Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * const mySequences = postgresql.getSequences({
+ *     database: "my_database",
+ * });
+ * ```
  */
 export function getSequencesOutput(args: GetSequencesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSequencesResult> {
     return pulumi.output(args).apply((a: any) => getSequences(a, opts))

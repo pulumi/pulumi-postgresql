@@ -8,6 +8,15 @@ import * as utilities from "./utilities";
  * The ``postgresql.Extension`` resource creates and manages an extension on a PostgreSQL
  * server.
  *
+ * ## Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * const myExtension = new postgresql.Extension("myExtension", {});
+ * ```
+ *
  * ## Import
  *
  * PostgreSQL Extensions can be imported using the database name and the extension's resource name, e.g.

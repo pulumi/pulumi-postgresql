@@ -16,6 +16,84 @@ namespace Pulumi.PostgreSql
     /// 
     /// &gt; **Note:** This resource needs Postgresql version 9 or above.
     /// **Note:** Using column &amp; table grants on the _same_ table with the _same_ privileges can lead to unexpected behaviours.
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Grant SELECT privileges on 2 tables
+    ///     var readonlyTables = new PostgreSql.Grant("readonlyTables", new()
+    ///     {
+    ///         Database = "test_db",
+    ///         ObjectType = "table",
+    ///         Objects = new[]
+    ///         {
+    ///             "table1",
+    ///             "table2",
+    ///         },
+    ///         Privileges = new[]
+    ///         {
+    ///             "SELECT",
+    ///         },
+    ///         Role = "test_role",
+    ///         Schema = "public",
+    ///     });
+    /// 
+    ///     // Grant SELECT &amp; INSERT privileges on 2 columns in 1 table
+    ///     var readInsertColumn = new PostgreSql.Grant("readInsertColumn", new()
+    ///     {
+    ///         Columns = new[]
+    ///         {
+    ///             "col1",
+    ///             "col2",
+    ///         },
+    ///         Database = "test_db",
+    ///         ObjectType = "column",
+    ///         Objects = new[]
+    ///         {
+    ///             "table1",
+    ///         },
+    ///         Privileges = new[]
+    ///         {
+    ///             "UPDATE",
+    ///             "INSERT",
+    ///         },
+    ///         Role = "test_role",
+    ///         Schema = "public",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Examples
+    /// 
+    /// Revoke default accesses for public schema:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var revokePublic = new PostgreSql.Grant("revokePublic", new()
+    ///     {
+    ///         Database = "test_db",
+    ///         ObjectType = "schema",
+    ///         Privileges = new[] {},
+    ///         Role = "public",
+    ///         Schema = "public",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/grant:Grant")]
     public partial class Grant : global::Pulumi.CustomResource

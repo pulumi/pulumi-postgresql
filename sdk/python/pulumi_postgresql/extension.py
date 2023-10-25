@@ -285,6 +285,15 @@ class Extension(pulumi.CustomResource):
         The ``Extension`` resource creates and manages an extension on a PostgreSQL
         server.
 
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        my_extension = postgresql.Extension("myExtension")
+        ```
+
         ## Import
 
         PostgreSQL Extensions can be imported using the database name and the extension's resource name, e.g.
@@ -311,6 +320,15 @@ class Extension(pulumi.CustomResource):
         """
         The ``Extension`` resource creates and manages an extension on a PostgreSQL
         server.
+
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        my_extension = postgresql.Extension("myExtension")
+        ```
 
         ## Import
 

@@ -16,6 +16,35 @@ import (
 // The `Subscription` resource creates and manages a publication on a PostgreSQL
 // server.
 //
+// ## Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewSubscription(ctx, "subscription", &postgresql.SubscriptionArgs{
+//				Conninfo: pulumi.String("host=localhost port=5432 dbname=mydb user=postgres password=postgres"),
+//				Publications: pulumi.StringArray{
+//					pulumi.String("publication"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Postgres documentation
 //
 // - https://www.postgresql.org/docs/current/sql-createsubscription.html

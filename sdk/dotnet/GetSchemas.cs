@@ -13,12 +13,50 @@ namespace Pulumi.PostgreSql
     {
         /// <summary>
         /// The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
+        /// 
+        /// 
+        /// ## Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using PostgreSql = Pulumi.PostgreSql;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mySchemas = PostgreSql.GetSchemas.Invoke(new()
+        ///     {
+        ///         Database = "my_database",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetSchemasResult> InvokeAsync(GetSchemasArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSchemasResult>("postgresql:index/getSchemas:getSchemas", args ?? new GetSchemasArgs(), options.WithDefaults());
 
         /// <summary>
         /// The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
+        /// 
+        /// 
+        /// ## Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using PostgreSql = Pulumi.PostgreSql;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mySchemas = PostgreSql.GetSchemas.Invoke(new()
+        ///     {
+        ///         Database = "my_database",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSchemasResult> Invoke(GetSchemasInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSchemasResult>("postgresql:index/getSchemas:getSchemas", args ?? new GetSchemasInvokeArgs(), options.WithDefaults());

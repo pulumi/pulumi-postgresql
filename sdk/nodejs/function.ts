@@ -10,6 +10,27 @@ import * as utilities from "./utilities";
  * The ``postgresql.Function`` resource creates and manages a function on a PostgreSQL
  * server.
  *
+ * ## Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * const increment = new postgresql.Function("increment", {
+ *     args: [{
+ *         name: "i",
+ *         type: "integer",
+ *     }],
+ *     body: `    BEGIN
+ *         RETURN i + 1;
+ *     END;
+ *
+ * `,
+ *     language: "plpgsql",
+ *     returns: "integer",
+ * });
+ * ```
+ *
  * ## Import
  *
  * It is possible to import a `postgresql_function` resource with the following command:
