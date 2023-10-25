@@ -14,6 +14,75 @@ import (
 )
 
 // The “Server“ resource creates and manages a foreign server on a PostgreSQL server.
+//
+// ## Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			extPostgresFdw, err := postgresql.NewExtension(ctx, "extPostgresFdw", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = postgresql.NewServer(ctx, "myserverPostgres", &postgresql.ServerArgs{
+//				ServerName: pulumi.String("myserver_postgres"),
+//				FdwName:    pulumi.String("postgres_fdw"),
+//				Options: pulumi.StringMap{
+//					"host":   pulumi.String("foo"),
+//					"dbname": pulumi.String("foodb"),
+//					"port":   pulumi.String("5432"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				extPostgresFdw,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			extFileFdw, err := postgresql.NewExtension(ctx, "extFileFdw", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = postgresql.NewServer(ctx, "myserverFile", &postgresql.ServerArgs{
+//				ServerName: pulumi.String("myserver_file"),
+//				FdwName:    pulumi.String("file_fdw"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				extFileFdw,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Server struct {
 	pulumi.CustomResourceState
 

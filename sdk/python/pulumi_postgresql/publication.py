@@ -367,6 +367,18 @@ class Publication(pulumi.CustomResource):
         The `Publication` resource creates and manages a publication on a PostgreSQL
         server.
 
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        publication = postgresql.Publication("publication", tables=[
+            "public.test",
+            "another_schema.test",
+        ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] all_tables: Should be ALL TABLES added to the publication. Defaults to 'false'
@@ -387,6 +399,18 @@ class Publication(pulumi.CustomResource):
         """
         The `Publication` resource creates and manages a publication on a PostgreSQL
         server.
+
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        publication = postgresql.Publication("publication", tables=[
+            "public.test",
+            "another_schema.test",
+        ])
+        ```
 
         :param str resource_name: The name of the resource.
         :param PublicationArgs args: The arguments to use to populate this resource's properties.

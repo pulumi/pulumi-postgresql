@@ -9,6 +9,39 @@ import * as utilities from "./utilities";
  *
  * > **Note:** This resource needs Postgresql version 9 or above.
  *
+ * ## Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * const readOnlyTables = new postgresql.DefaultPrivileges("readOnlyTables", {
+ *     database: "test_db",
+ *     objectType: "table",
+ *     owner: "db_owner",
+ *     privileges: ["SELECT"],
+ *     role: "test_role",
+ *     schema: "public",
+ * });
+ * ```
+ *
+ * ## Examples
+ *
+ * Revoke default privileges for functions for "public" role:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * const revokePublic = new postgresql.DefaultPrivileges("revokePublic", {
+ *     database: postgresql_database.example_db.name,
+ *     role: "public",
+ *     owner: "object_owner",
+ *     objectType: "function",
+ *     privileges: [],
+ * });
+ * ```
+ *
  * @deprecated postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges
  */
 export class DefaultPrivileg extends pulumi.CustomResource {

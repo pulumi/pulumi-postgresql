@@ -167,6 +167,15 @@ class ReplicationSlot(pulumi.CustomResource):
         The ``ReplicationSlot`` resource creates and manages a replication slot on a PostgreSQL
         server.
 
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        my_slot = postgresql.ReplicationSlot("mySlot", plugin="test_decoding")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: Which database to create the replication slot on. Defaults to provider database.
@@ -182,6 +191,15 @@ class ReplicationSlot(pulumi.CustomResource):
         """
         The ``ReplicationSlot`` resource creates and manages a replication slot on a PostgreSQL
         server.
+
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        my_slot = postgresql.ReplicationSlot("mySlot", plugin="test_decoding")
+        ```
 
         :param str resource_name: The name of the resource.
         :param ReplicationSlotArgs args: The arguments to use to populate this resource's properties.

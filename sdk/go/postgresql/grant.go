@@ -19,6 +19,94 @@ import (
 //
 // > **Note:** This resource needs Postgresql version 9 or above.
 // **Note:** Using column & table grants on the _same_ table with the _same_ privileges can lead to unexpected behaviours.
+//
+// ## Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewGrant(ctx, "readonlyTables", &postgresql.GrantArgs{
+//				Database:   pulumi.String("test_db"),
+//				ObjectType: pulumi.String("table"),
+//				Objects: pulumi.StringArray{
+//					pulumi.String("table1"),
+//					pulumi.String("table2"),
+//				},
+//				Privileges: pulumi.StringArray{
+//					pulumi.String("SELECT"),
+//				},
+//				Role:   pulumi.String("test_role"),
+//				Schema: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = postgresql.NewGrant(ctx, "readInsertColumn", &postgresql.GrantArgs{
+//				Columns: pulumi.StringArray{
+//					pulumi.String("col1"),
+//					pulumi.String("col2"),
+//				},
+//				Database:   pulumi.String("test_db"),
+//				ObjectType: pulumi.String("column"),
+//				Objects: pulumi.StringArray{
+//					pulumi.String("table1"),
+//				},
+//				Privileges: pulumi.StringArray{
+//					pulumi.String("UPDATE"),
+//					pulumi.String("INSERT"),
+//				},
+//				Role:   pulumi.String("test_role"),
+//				Schema: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Examples
+//
+// Revoke default accesses for public schema:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewGrant(ctx, "revokePublic", &postgresql.GrantArgs{
+//				Database:   pulumi.String("test_db"),
+//				ObjectType: pulumi.String("schema"),
+//				Privileges: pulumi.StringArray{},
+//				Role:       pulumi.String("public"),
+//				Schema:     pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Grant struct {
 	pulumi.CustomResourceState
 

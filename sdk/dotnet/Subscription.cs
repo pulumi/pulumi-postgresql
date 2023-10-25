@@ -13,6 +13,28 @@ namespace Pulumi.PostgreSql
     /// The `postgresql.Subscription` resource creates and manages a publication on a PostgreSQL
     /// server.
     /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var subscription = new PostgreSql.Subscription("subscription", new()
+    ///     {
+    ///         Conninfo = "host=localhost port=5432 dbname=mydb user=postgres password=postgres",
+    ///         Publications = new[]
+    ///         {
+    ///             "publication",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Postgres documentation
     /// 
     /// - https://www.postgresql.org/docs/current/sql-createsubscription.html

@@ -120,6 +120,15 @@ def get_schemas(database: Optional[str] = None,
     """
     The ``get_schemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
 
+    ## Usage
+
+    ```python
+    import pulumi
+    import pulumi_postgresql as postgresql
+
+    my_schemas = postgresql.get_schemas(database="my_database")
+    ```
+
 
     :param str database: The PostgreSQL database which will be queried for schema names.
     :param bool include_system_schemas: Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to ``false``.
@@ -161,6 +170,15 @@ def get_schemas_output(database: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSchemasResult]:
     """
     The ``get_schemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
+
+    ## Usage
+
+    ```python
+    import pulumi
+    import pulumi_postgresql as postgresql
+
+    my_schemas = postgresql.get_schemas(database="my_database")
+    ```
 
 
     :param str database: The PostgreSQL database which will be queried for schema names.

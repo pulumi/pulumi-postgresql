@@ -526,6 +526,26 @@ class Function(pulumi.CustomResource):
         The ``Function`` resource creates and manages a function on a PostgreSQL
         server.
 
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        increment = postgresql.Function("increment",
+            args=[postgresql.FunctionArgArgs(
+                name="i",
+                type="integer",
+            )],
+            body=\"\"\"    BEGIN
+                RETURN i + 1;
+            END;
+
+        \"\"\",
+            language="plpgsql",
+            returns="integer")
+        ```
+
         ## Import
 
         It is possible to import a `postgresql_function` resource with the following command:
@@ -563,6 +583,26 @@ class Function(pulumi.CustomResource):
         """
         The ``Function`` resource creates and manages a function on a PostgreSQL
         server.
+
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        increment = postgresql.Function("increment",
+            args=[postgresql.FunctionArgArgs(
+                name="i",
+                type="integer",
+            )],
+            body=\"\"\"    BEGIN
+                RETURN i + 1;
+            END;
+
+        \"\"\",
+            language="plpgsql",
+            returns="integer")
+        ```
 
         ## Import
 

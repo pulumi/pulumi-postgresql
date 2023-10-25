@@ -363,6 +363,35 @@ class Server(pulumi.CustomResource):
         """
         The ``Server`` resource creates and manages a foreign server on a PostgreSQL server.
 
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        ext_postgres_fdw = postgresql.Extension("extPostgresFdw")
+        myserver_postgres = postgresql.Server("myserverPostgres",
+            server_name="myserver_postgres",
+            fdw_name="postgres_fdw",
+            options={
+                "host": "foo",
+                "dbname": "foodb",
+                "port": "5432",
+            },
+            opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        ext_file_fdw = postgresql.Extension("extFileFdw")
+        myserver_file = postgresql.Server("myserverFile",
+            server_name="myserver_file",
+            fdw_name="file_fdw",
+            opts=pulumi.ResourceOptions(depends_on=[ext_file_fdw]))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] drop_cascade: When true, will drop objects that depend on the server (such as user mappings), and in turn all objects that depend on those objects . (Default: false)
@@ -387,6 +416,35 @@ class Server(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The ``Server`` resource creates and manages a foreign server on a PostgreSQL server.
+
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        ext_postgres_fdw = postgresql.Extension("extPostgresFdw")
+        myserver_postgres = postgresql.Server("myserverPostgres",
+            server_name="myserver_postgres",
+            fdw_name="postgres_fdw",
+            options={
+                "host": "foo",
+                "dbname": "foodb",
+                "port": "5432",
+            },
+            opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        ext_file_fdw = postgresql.Extension("extFileFdw")
+        myserver_file = postgresql.Server("myserverFile",
+            server_name="myserver_file",
+            fdw_name="file_fdw",
+            opts=pulumi.ResourceOptions(depends_on=[ext_file_fdw]))
+        ```
 
         :param str resource_name: The name of the resource.
         :param ServerArgs args: The arguments to use to populate this resource's properties.

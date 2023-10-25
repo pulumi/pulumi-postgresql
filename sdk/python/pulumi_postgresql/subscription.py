@@ -287,6 +287,17 @@ class Subscription(pulumi.CustomResource):
         The `Subscription` resource creates and manages a publication on a PostgreSQL
         server.
 
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        subscription = postgresql.Subscription("subscription",
+            conninfo="host=localhost port=5432 dbname=mydb user=postgres password=postgres",
+            publications=["publication"])
+        ```
+
         ## Postgres documentation
 
         - https://www.postgresql.org/docs/current/sql-createsubscription.html
@@ -309,6 +320,17 @@ class Subscription(pulumi.CustomResource):
         """
         The `Subscription` resource creates and manages a publication on a PostgreSQL
         server.
+
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        subscription = postgresql.Subscription("subscription",
+            conninfo="host=localhost port=5432 dbname=mydb user=postgres password=postgres",
+            publications=["publication"])
+        ```
 
         ## Postgres documentation
 

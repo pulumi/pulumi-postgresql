@@ -13,6 +13,21 @@ namespace Pulumi.PostgreSql
     /// The ``postgresql.Extension`` resource creates and manages an extension on a PostgreSQL
     /// server.
     /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myExtension = new PostgreSql.Extension("myExtension");
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// PostgreSQL Extensions can be imported using the database name and the extension's resource name, e.g.

@@ -13,6 +13,56 @@ namespace Pulumi.PostgreSql
     /// The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
     /// 
     /// &gt; **Note:** This resource needs Postgresql version 9 or above.
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var readOnlyTables = new PostgreSql.DefaultPrivileges("readOnlyTables", new()
+    ///     {
+    ///         Database = "test_db",
+    ///         ObjectType = "table",
+    ///         Owner = "db_owner",
+    ///         Privileges = new[]
+    ///         {
+    ///             "SELECT",
+    ///         },
+    ///         Role = "test_role",
+    ///         Schema = "public",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Examples
+    /// 
+    /// Revoke default privileges for functions for "public" role:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var revokePublic = new PostgreSql.DefaultPrivileges("revokePublic", new()
+    ///     {
+    ///         Database = postgresql_database.Example_db.Name,
+    ///         Role = "public",
+    ///         Owner = "object_owner",
+    ///         ObjectType = "function",
+    ///         Privileges = new[] {},
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [Obsolete(@"postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges")]
     [PostgreSqlResourceType("postgresql:index/defaultPrivileg:DefaultPrivileg")]

@@ -11,6 +11,52 @@ namespace Pulumi.PostgreSql
 {
     /// <summary>
     /// The ``postgresql.UserMapping`` resource creates and manages a user mapping on a PostgreSQL server.
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var extPostgresFdw = new PostgreSql.Extension("extPostgresFdw");
+    /// 
+    ///     var myserverPostgres = new PostgreSql.Server("myserverPostgres", new()
+    ///     {
+    ///         ServerName = "myserver_postgres",
+    ///         FdwName = "postgres_fdw",
+    ///         Options = 
+    ///         {
+    ///             { "host", "foo" },
+    ///             { "dbname", "foodb" },
+    ///             { "port", "5432" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             extPostgresFdw,
+    ///         },
+    ///     });
+    /// 
+    ///     var remoteRole = new PostgreSql.Role("remoteRole");
+    /// 
+    ///     var remoteUserMapping = new PostgreSql.UserMapping("remoteUserMapping", new()
+    ///     {
+    ///         ServerName = myserverPostgres.ServerName,
+    ///         UserName = remoteRole.Name,
+    ///         Options = 
+    ///         {
+    ///             { "user", "admin" },
+    ///             { "password", "pass" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/userMapping:UserMapping")]
     public partial class UserMapping : global::Pulumi.CustomResource

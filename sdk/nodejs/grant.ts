@@ -11,6 +11,59 @@ import * as utilities from "./utilities";
  *
  * > **Note:** This resource needs Postgresql version 9 or above.
  * **Note:** Using column & table grants on the _same_ table with the _same_ privileges can lead to unexpected behaviours.
+ *
+ * ## Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * // Grant SELECT privileges on 2 tables
+ * const readonlyTables = new postgresql.Grant("readonlyTables", {
+ *     database: "test_db",
+ *     objectType: "table",
+ *     objects: [
+ *         "table1",
+ *         "table2",
+ *     ],
+ *     privileges: ["SELECT"],
+ *     role: "test_role",
+ *     schema: "public",
+ * });
+ * // Grant SELECT & INSERT privileges on 2 columns in 1 table
+ * const readInsertColumn = new postgresql.Grant("readInsertColumn", {
+ *     columns: [
+ *         "col1",
+ *         "col2",
+ *     ],
+ *     database: "test_db",
+ *     objectType: "column",
+ *     objects: ["table1"],
+ *     privileges: [
+ *         "UPDATE",
+ *         "INSERT",
+ *     ],
+ *     role: "test_role",
+ *     schema: "public",
+ * });
+ * ```
+ *
+ * ## Examples
+ *
+ * Revoke default accesses for public schema:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * const revokePublic = new postgresql.Grant("revokePublic", {
+ *     database: "test_db",
+ *     objectType: "schema",
+ *     privileges: [],
+ *     role: "public",
+ *     schema: "public",
+ * });
+ * ```
  */
 export class Grant extends pulumi.CustomResource {
     /**

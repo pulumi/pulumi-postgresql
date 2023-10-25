@@ -13,12 +13,50 @@ namespace Pulumi.PostgreSql
     {
         /// <summary>
         /// The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
+        /// 
+        /// 
+        /// ## Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using PostgreSql = Pulumi.PostgreSql;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mySequences = PostgreSql.GetSequences.Invoke(new()
+        ///     {
+        ///         Database = "my_database",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetSequencesResult> InvokeAsync(GetSequencesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSequencesResult>("postgresql:index/getSequences:getSequences", args ?? new GetSequencesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
+        /// 
+        /// 
+        /// ## Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using PostgreSql = Pulumi.PostgreSql;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mySequences = PostgreSql.GetSequences.Invoke(new()
+        ///     {
+        ///         Database = "my_database",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSequencesResult> Invoke(GetSequencesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSequencesResult>("postgresql:index/getSequences:getSequences", args ?? new GetSequencesInvokeArgs(), options.WithDefaults());

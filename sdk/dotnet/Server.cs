@@ -11,6 +11,64 @@ namespace Pulumi.PostgreSql
 {
     /// <summary>
     /// The ``postgresql.Server`` resource creates and manages a foreign server on a PostgreSQL server.
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var extPostgresFdw = new PostgreSql.Extension("extPostgresFdw");
+    /// 
+    ///     var myserverPostgres = new PostgreSql.Server("myserverPostgres", new()
+    ///     {
+    ///         ServerName = "myserver_postgres",
+    ///         FdwName = "postgres_fdw",
+    ///         Options = 
+    ///         {
+    ///             { "host", "foo" },
+    ///             { "dbname", "foodb" },
+    ///             { "port", "5432" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             extPostgresFdw,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var extFileFdw = new PostgreSql.Extension("extFileFdw");
+    /// 
+    ///     var myserverFile = new PostgreSql.Server("myserverFile", new()
+    ///     {
+    ///         ServerName = "myserver_file",
+    ///         FdwName = "file_fdw",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             extFileFdw,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/server:Server")]
     public partial class Server : global::Pulumi.CustomResource
