@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -28,32 +28,13 @@ class FunctionArgArgs:
         :param pulumi.Input[str] mode: Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
         :param pulumi.Input[str] name: The name of the argument.
         """
-        FunctionArgArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            default=default,
-            mode=mode,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[pulumi.Input[str]] = None,
-             default: Optional[pulumi.Input[str]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if default is not None:
-            _setter("default", default)
+            pulumi.set(__self__, "default", default)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -110,29 +91,10 @@ class ProviderClientcertArgs:
                  cert: pulumi.Input[str],
                  key: pulumi.Input[str],
                  sslinline: Optional[pulumi.Input[bool]] = None):
-        ProviderClientcertArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert=cert,
-            key=key,
-            sslinline=sslinline,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert: Optional[pulumi.Input[str]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             sslinline: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert is None:
-            raise TypeError("Missing 'cert' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-
-        _setter("cert", cert)
-        _setter("key", key)
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "key", key)
         if sslinline is not None:
-            _setter("sslinline", sslinline)
+            pulumi.set(__self__, "sslinline", sslinline)
 
     @property
     @pulumi.getter
@@ -179,39 +141,16 @@ class SchemaPolicyArgs:
                
                > **NOTE on `policy`:** The permissions of a role specified in multiple policy blocks is cumulative.  For example, if the same role is specified in two different `policy` each with different permissions (e.g. `create` and `usage_with_grant`, respectively), then the specified role with have both `create` and `usage_with_grant` privileges.
         """
-        SchemaPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create=create,
-            create_with_grant=create_with_grant,
-            role=role,
-            usage=usage,
-            usage_with_grant=usage_with_grant,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create: Optional[pulumi.Input[bool]] = None,
-             create_with_grant: Optional[pulumi.Input[bool]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             usage: Optional[pulumi.Input[bool]] = None,
-             usage_with_grant: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_with_grant is None and 'createWithGrant' in kwargs:
-            create_with_grant = kwargs['createWithGrant']
-        if usage_with_grant is None and 'usageWithGrant' in kwargs:
-            usage_with_grant = kwargs['usageWithGrant']
-
         if create is not None:
-            _setter("create", create)
+            pulumi.set(__self__, "create", create)
         if create_with_grant is not None:
-            _setter("create_with_grant", create_with_grant)
+            pulumi.set(__self__, "create_with_grant", create_with_grant)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if usage is not None:
-            _setter("usage", usage)
+            pulumi.set(__self__, "usage", usage)
         if usage_with_grant is not None:
-            _setter("usage_with_grant", usage_with_grant)
+            pulumi.set(__self__, "usage_with_grant", usage_with_grant)
 
     @property
     @pulumi.getter

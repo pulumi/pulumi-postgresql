@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,46 +33,21 @@ class SchemaArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]] policies: Can be specified multiple times for each policy.  Each
                policy block supports fields documented below.
         """
-        SchemaArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            database=database,
-            drop_cascade=drop_cascade,
-            if_not_exists=if_not_exists,
-            name=name,
-            owner=owner,
-            policies=policies,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             database: Optional[pulumi.Input[str]] = None,
-             drop_cascade: Optional[pulumi.Input[bool]] = None,
-             if_not_exists: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             owner: Optional[pulumi.Input[str]] = None,
-             policies: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if drop_cascade is None and 'dropCascade' in kwargs:
-            drop_cascade = kwargs['dropCascade']
-        if if_not_exists is None and 'ifNotExists' in kwargs:
-            if_not_exists = kwargs['ifNotExists']
-
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if drop_cascade is not None:
-            _setter("drop_cascade", drop_cascade)
+            pulumi.set(__self__, "drop_cascade", drop_cascade)
         if if_not_exists is not None:
-            _setter("if_not_exists", if_not_exists)
+            pulumi.set(__self__, "if_not_exists", if_not_exists)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if owner is not None:
-            _setter("owner", owner)
+            pulumi.set(__self__, "owner", owner)
         if policies is not None:
             warnings.warn("""Use postgresql_grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
             pulumi.log.warn("""policies is deprecated: Use postgresql_grant resource instead (with object_type=\"schema\")""")
         if policies is not None:
-            _setter("policies", policies)
+            pulumi.set(__self__, "policies", policies)
 
     @property
     @pulumi.getter
@@ -172,46 +147,21 @@ class _SchemaState:
         :param pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]] policies: Can be specified multiple times for each policy.  Each
                policy block supports fields documented below.
         """
-        _SchemaState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            database=database,
-            drop_cascade=drop_cascade,
-            if_not_exists=if_not_exists,
-            name=name,
-            owner=owner,
-            policies=policies,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             database: Optional[pulumi.Input[str]] = None,
-             drop_cascade: Optional[pulumi.Input[bool]] = None,
-             if_not_exists: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             owner: Optional[pulumi.Input[str]] = None,
-             policies: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if drop_cascade is None and 'dropCascade' in kwargs:
-            drop_cascade = kwargs['dropCascade']
-        if if_not_exists is None and 'ifNotExists' in kwargs:
-            if_not_exists = kwargs['ifNotExists']
-
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if drop_cascade is not None:
-            _setter("drop_cascade", drop_cascade)
+            pulumi.set(__self__, "drop_cascade", drop_cascade)
         if if_not_exists is not None:
-            _setter("if_not_exists", if_not_exists)
+            pulumi.set(__self__, "if_not_exists", if_not_exists)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if owner is not None:
-            _setter("owner", owner)
+            pulumi.set(__self__, "owner", owner)
         if policies is not None:
             warnings.warn("""Use postgresql_grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
             pulumi.log.warn("""policies is deprecated: Use postgresql_grant resource instead (with object_type=\"schema\")""")
         if policies is not None:
-            _setter("policies", policies)
+            pulumi.set(__self__, "policies", policies)
 
     @property
     @pulumi.getter
@@ -334,10 +284,6 @@ class Schema(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SchemaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

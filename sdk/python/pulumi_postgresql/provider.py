@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from ._inputs import *
 
@@ -61,122 +61,53 @@ class ProviderArgs:
                Refreshing state password from Postgres)
         :param pulumi.Input[str] username: PostgreSQL user name to connect as
         """
-        ProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            aws_rds_iam_auth=aws_rds_iam_auth,
-            aws_rds_iam_profile=aws_rds_iam_profile,
-            aws_rds_iam_region=aws_rds_iam_region,
-            azure_identity_auth=azure_identity_auth,
-            azure_tenant_id=azure_tenant_id,
-            clientcert=clientcert,
-            connect_timeout=connect_timeout,
-            database=database,
-            database_username=database_username,
-            expected_version=expected_version,
-            host=host,
-            max_connections=max_connections,
-            password=password,
-            port=port,
-            scheme=scheme,
-            ssl_mode=ssl_mode,
-            sslmode=sslmode,
-            sslrootcert=sslrootcert,
-            superuser=superuser,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             aws_rds_iam_auth: Optional[pulumi.Input[bool]] = None,
-             aws_rds_iam_profile: Optional[pulumi.Input[str]] = None,
-             aws_rds_iam_region: Optional[pulumi.Input[str]] = None,
-             azure_identity_auth: Optional[pulumi.Input[bool]] = None,
-             azure_tenant_id: Optional[pulumi.Input[str]] = None,
-             clientcert: Optional[pulumi.Input['ProviderClientcertArgs']] = None,
-             connect_timeout: Optional[pulumi.Input[int]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             database_username: Optional[pulumi.Input[str]] = None,
-             expected_version: Optional[pulumi.Input[str]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             max_connections: Optional[pulumi.Input[int]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             scheme: Optional[pulumi.Input[str]] = None,
-             ssl_mode: Optional[pulumi.Input[str]] = None,
-             sslmode: Optional[pulumi.Input[str]] = None,
-             sslrootcert: Optional[pulumi.Input[str]] = None,
-             superuser: Optional[pulumi.Input[bool]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if aws_rds_iam_auth is None and 'awsRdsIamAuth' in kwargs:
-            aws_rds_iam_auth = kwargs['awsRdsIamAuth']
-        if aws_rds_iam_profile is None and 'awsRdsIamProfile' in kwargs:
-            aws_rds_iam_profile = kwargs['awsRdsIamProfile']
-        if aws_rds_iam_region is None and 'awsRdsIamRegion' in kwargs:
-            aws_rds_iam_region = kwargs['awsRdsIamRegion']
-        if azure_identity_auth is None and 'azureIdentityAuth' in kwargs:
-            azure_identity_auth = kwargs['azureIdentityAuth']
-        if azure_tenant_id is None and 'azureTenantId' in kwargs:
-            azure_tenant_id = kwargs['azureTenantId']
-        if connect_timeout is None and 'connectTimeout' in kwargs:
-            connect_timeout = kwargs['connectTimeout']
-        if database_username is None and 'databaseUsername' in kwargs:
-            database_username = kwargs['databaseUsername']
-        if expected_version is None and 'expectedVersion' in kwargs:
-            expected_version = kwargs['expectedVersion']
-        if max_connections is None and 'maxConnections' in kwargs:
-            max_connections = kwargs['maxConnections']
-        if ssl_mode is None and 'sslMode' in kwargs:
-            ssl_mode = kwargs['sslMode']
-
         if aws_rds_iam_auth is not None:
-            _setter("aws_rds_iam_auth", aws_rds_iam_auth)
+            pulumi.set(__self__, "aws_rds_iam_auth", aws_rds_iam_auth)
         if aws_rds_iam_profile is not None:
-            _setter("aws_rds_iam_profile", aws_rds_iam_profile)
+            pulumi.set(__self__, "aws_rds_iam_profile", aws_rds_iam_profile)
         if aws_rds_iam_region is not None:
-            _setter("aws_rds_iam_region", aws_rds_iam_region)
+            pulumi.set(__self__, "aws_rds_iam_region", aws_rds_iam_region)
         if azure_identity_auth is not None:
-            _setter("azure_identity_auth", azure_identity_auth)
+            pulumi.set(__self__, "azure_identity_auth", azure_identity_auth)
         if azure_tenant_id is not None:
-            _setter("azure_tenant_id", azure_tenant_id)
+            pulumi.set(__self__, "azure_tenant_id", azure_tenant_id)
         if clientcert is not None:
-            _setter("clientcert", clientcert)
+            pulumi.set(__self__, "clientcert", clientcert)
         if connect_timeout is None:
             connect_timeout = (_utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
         if connect_timeout is not None:
-            _setter("connect_timeout", connect_timeout)
+            pulumi.set(__self__, "connect_timeout", connect_timeout)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if database_username is not None:
-            _setter("database_username", database_username)
+            pulumi.set(__self__, "database_username", database_username)
         if expected_version is not None:
-            _setter("expected_version", expected_version)
+            pulumi.set(__self__, "expected_version", expected_version)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if max_connections is not None:
-            _setter("max_connections", max_connections)
+            pulumi.set(__self__, "max_connections", max_connections)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if scheme is not None:
-            _setter("scheme", scheme)
+            pulumi.set(__self__, "scheme", scheme)
         if ssl_mode is not None:
             warnings.warn("""Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""", DeprecationWarning)
             pulumi.log.warn("""ssl_mode is deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""")
         if ssl_mode is not None:
-            _setter("ssl_mode", ssl_mode)
+            pulumi.set(__self__, "ssl_mode", ssl_mode)
         if sslmode is None:
             sslmode = _utilities.get_env('PGSSLMODE')
         if sslmode is not None:
-            _setter("sslmode", sslmode)
+            pulumi.set(__self__, "sslmode", sslmode)
         if sslrootcert is not None:
-            _setter("sslrootcert", sslrootcert)
+            pulumi.set(__self__, "sslrootcert", sslrootcert)
         if superuser is not None:
-            _setter("superuser", superuser)
+            pulumi.set(__self__, "superuser", superuser)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="awsRdsIamAuth")
@@ -501,10 +432,6 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -544,7 +471,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["aws_rds_iam_region"] = aws_rds_iam_region
             __props__.__dict__["azure_identity_auth"] = pulumi.Output.from_input(azure_identity_auth).apply(pulumi.runtime.to_json) if azure_identity_auth is not None else None
             __props__.__dict__["azure_tenant_id"] = azure_tenant_id
-            clientcert = _utilities.configure(clientcert, ProviderClientcertArgs, True)
             __props__.__dict__["clientcert"] = pulumi.Output.from_input(clientcert).apply(pulumi.runtime.to_json) if clientcert is not None else None
             if connect_timeout is None:
                 connect_timeout = (_utilities.get_env_int('PGCONNECT_TIMEOUT') or 180)
