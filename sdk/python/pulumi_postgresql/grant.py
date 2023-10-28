@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GrantArgs', 'Grant']
@@ -33,55 +33,18 @@ class GrantArgs:
         :param pulumi.Input[str] schema: The database schema to grant privileges on for this role (Required except if object_type is "database")
         :param pulumi.Input[bool] with_grant_option: Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
         """
-        GrantArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            database=database,
-            object_type=object_type,
-            privileges=privileges,
-            role=role,
-            columns=columns,
-            objects=objects,
-            schema=schema,
-            with_grant_option=with_grant_option,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             database: Optional[pulumi.Input[str]] = None,
-             object_type: Optional[pulumi.Input[str]] = None,
-             privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             objects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             schema: Optional[pulumi.Input[str]] = None,
-             with_grant_option: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if database is None:
-            raise TypeError("Missing 'database' argument")
-        if object_type is None and 'objectType' in kwargs:
-            object_type = kwargs['objectType']
-        if object_type is None:
-            raise TypeError("Missing 'object_type' argument")
-        if privileges is None:
-            raise TypeError("Missing 'privileges' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-        if with_grant_option is None and 'withGrantOption' in kwargs:
-            with_grant_option = kwargs['withGrantOption']
-
-        _setter("database", database)
-        _setter("object_type", object_type)
-        _setter("privileges", privileges)
-        _setter("role", role)
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "privileges", privileges)
+        pulumi.set(__self__, "role", role)
         if columns is not None:
-            _setter("columns", columns)
+            pulumi.set(__self__, "columns", columns)
         if objects is not None:
-            _setter("objects", objects)
+            pulumi.set(__self__, "objects", objects)
         if schema is not None:
-            _setter("schema", schema)
+            pulumi.set(__self__, "schema", schema)
         if with_grant_option is not None:
-            _setter("with_grant_option", with_grant_option)
+            pulumi.set(__self__, "with_grant_option", with_grant_option)
 
     @property
     @pulumi.getter
@@ -202,51 +165,22 @@ class _GrantState:
         :param pulumi.Input[str] schema: The database schema to grant privileges on for this role (Required except if object_type is "database")
         :param pulumi.Input[bool] with_grant_option: Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
         """
-        _GrantState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            columns=columns,
-            database=database,
-            object_type=object_type,
-            objects=objects,
-            privileges=privileges,
-            role=role,
-            schema=schema,
-            with_grant_option=with_grant_option,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             object_type: Optional[pulumi.Input[str]] = None,
-             objects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             schema: Optional[pulumi.Input[str]] = None,
-             with_grant_option: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if object_type is None and 'objectType' in kwargs:
-            object_type = kwargs['objectType']
-        if with_grant_option is None and 'withGrantOption' in kwargs:
-            with_grant_option = kwargs['withGrantOption']
-
         if columns is not None:
-            _setter("columns", columns)
+            pulumi.set(__self__, "columns", columns)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if object_type is not None:
-            _setter("object_type", object_type)
+            pulumi.set(__self__, "object_type", object_type)
         if objects is not None:
-            _setter("objects", objects)
+            pulumi.set(__self__, "objects", objects)
         if privileges is not None:
-            _setter("privileges", privileges)
+            pulumi.set(__self__, "privileges", privileges)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if schema is not None:
-            _setter("schema", schema)
+            pulumi.set(__self__, "schema", schema)
         if with_grant_option is not None:
-            _setter("with_grant_option", with_grant_option)
+            pulumi.set(__self__, "with_grant_option", with_grant_option)
 
     @property
     @pulumi.getter
@@ -502,10 +436,6 @@ class Grant(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GrantArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

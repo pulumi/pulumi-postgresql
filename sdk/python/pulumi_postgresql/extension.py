@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ExtensionArgs', 'Extension']
@@ -29,43 +29,18 @@ class ExtensionArgs:
         :param pulumi.Input[str] schema: Sets the schema of an extension.
         :param pulumi.Input[str] version: Sets the version number of the extension.
         """
-        ExtensionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_cascade=create_cascade,
-            database=database,
-            drop_cascade=drop_cascade,
-            name=name,
-            schema=schema,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_cascade: Optional[pulumi.Input[bool]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             drop_cascade: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             schema: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_cascade is None and 'createCascade' in kwargs:
-            create_cascade = kwargs['createCascade']
-        if drop_cascade is None and 'dropCascade' in kwargs:
-            drop_cascade = kwargs['dropCascade']
-
         if create_cascade is not None:
-            _setter("create_cascade", create_cascade)
+            pulumi.set(__self__, "create_cascade", create_cascade)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if drop_cascade is not None:
-            _setter("drop_cascade", drop_cascade)
+            pulumi.set(__self__, "drop_cascade", drop_cascade)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if schema is not None:
-            _setter("schema", schema)
+            pulumi.set(__self__, "schema", schema)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="createCascade")
@@ -158,43 +133,18 @@ class _ExtensionState:
         :param pulumi.Input[str] schema: Sets the schema of an extension.
         :param pulumi.Input[str] version: Sets the version number of the extension.
         """
-        _ExtensionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_cascade=create_cascade,
-            database=database,
-            drop_cascade=drop_cascade,
-            name=name,
-            schema=schema,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_cascade: Optional[pulumi.Input[bool]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             drop_cascade: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             schema: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_cascade is None and 'createCascade' in kwargs:
-            create_cascade = kwargs['createCascade']
-        if drop_cascade is None and 'dropCascade' in kwargs:
-            drop_cascade = kwargs['dropCascade']
-
         if create_cascade is not None:
-            _setter("create_cascade", create_cascade)
+            pulumi.set(__self__, "create_cascade", create_cascade)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if drop_cascade is not None:
-            _setter("drop_cascade", drop_cascade)
+            pulumi.set(__self__, "drop_cascade", drop_cascade)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if schema is not None:
-            _setter("schema", schema)
+            pulumi.set(__self__, "schema", schema)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="createCascade")
@@ -348,10 +298,6 @@ class Extension(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ExtensionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

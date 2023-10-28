@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DatabaseArgs', 'Database']
@@ -50,67 +50,26 @@ class DatabaseArgs:
                created in this database.
         :param pulumi.Input[str] template: The name of the template from which to create the new database
         """
-        DatabaseArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_connections=allow_connections,
-            connection_limit=connection_limit,
-            encoding=encoding,
-            is_template=is_template,
-            lc_collate=lc_collate,
-            lc_ctype=lc_ctype,
-            name=name,
-            owner=owner,
-            tablespace_name=tablespace_name,
-            template=template,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_connections: Optional[pulumi.Input[bool]] = None,
-             connection_limit: Optional[pulumi.Input[int]] = None,
-             encoding: Optional[pulumi.Input[str]] = None,
-             is_template: Optional[pulumi.Input[bool]] = None,
-             lc_collate: Optional[pulumi.Input[str]] = None,
-             lc_ctype: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             owner: Optional[pulumi.Input[str]] = None,
-             tablespace_name: Optional[pulumi.Input[str]] = None,
-             template: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_connections is None and 'allowConnections' in kwargs:
-            allow_connections = kwargs['allowConnections']
-        if connection_limit is None and 'connectionLimit' in kwargs:
-            connection_limit = kwargs['connectionLimit']
-        if is_template is None and 'isTemplate' in kwargs:
-            is_template = kwargs['isTemplate']
-        if lc_collate is None and 'lcCollate' in kwargs:
-            lc_collate = kwargs['lcCollate']
-        if lc_ctype is None and 'lcCtype' in kwargs:
-            lc_ctype = kwargs['lcCtype']
-        if tablespace_name is None and 'tablespaceName' in kwargs:
-            tablespace_name = kwargs['tablespaceName']
-
         if allow_connections is not None:
-            _setter("allow_connections", allow_connections)
+            pulumi.set(__self__, "allow_connections", allow_connections)
         if connection_limit is not None:
-            _setter("connection_limit", connection_limit)
+            pulumi.set(__self__, "connection_limit", connection_limit)
         if encoding is not None:
-            _setter("encoding", encoding)
+            pulumi.set(__self__, "encoding", encoding)
         if is_template is not None:
-            _setter("is_template", is_template)
+            pulumi.set(__self__, "is_template", is_template)
         if lc_collate is not None:
-            _setter("lc_collate", lc_collate)
+            pulumi.set(__self__, "lc_collate", lc_collate)
         if lc_ctype is not None:
-            _setter("lc_ctype", lc_ctype)
+            pulumi.set(__self__, "lc_ctype", lc_ctype)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if owner is not None:
-            _setter("owner", owner)
+            pulumi.set(__self__, "owner", owner)
         if tablespace_name is not None:
-            _setter("tablespace_name", tablespace_name)
+            pulumi.set(__self__, "tablespace_name", tablespace_name)
         if template is not None:
-            _setter("template", template)
+            pulumi.set(__self__, "template", template)
 
     @property
     @pulumi.getter(name="allowConnections")
@@ -285,67 +244,26 @@ class _DatabaseState:
                created in this database.
         :param pulumi.Input[str] template: The name of the template from which to create the new database
         """
-        _DatabaseState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_connections=allow_connections,
-            connection_limit=connection_limit,
-            encoding=encoding,
-            is_template=is_template,
-            lc_collate=lc_collate,
-            lc_ctype=lc_ctype,
-            name=name,
-            owner=owner,
-            tablespace_name=tablespace_name,
-            template=template,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_connections: Optional[pulumi.Input[bool]] = None,
-             connection_limit: Optional[pulumi.Input[int]] = None,
-             encoding: Optional[pulumi.Input[str]] = None,
-             is_template: Optional[pulumi.Input[bool]] = None,
-             lc_collate: Optional[pulumi.Input[str]] = None,
-             lc_ctype: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             owner: Optional[pulumi.Input[str]] = None,
-             tablespace_name: Optional[pulumi.Input[str]] = None,
-             template: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_connections is None and 'allowConnections' in kwargs:
-            allow_connections = kwargs['allowConnections']
-        if connection_limit is None and 'connectionLimit' in kwargs:
-            connection_limit = kwargs['connectionLimit']
-        if is_template is None and 'isTemplate' in kwargs:
-            is_template = kwargs['isTemplate']
-        if lc_collate is None and 'lcCollate' in kwargs:
-            lc_collate = kwargs['lcCollate']
-        if lc_ctype is None and 'lcCtype' in kwargs:
-            lc_ctype = kwargs['lcCtype']
-        if tablespace_name is None and 'tablespaceName' in kwargs:
-            tablespace_name = kwargs['tablespaceName']
-
         if allow_connections is not None:
-            _setter("allow_connections", allow_connections)
+            pulumi.set(__self__, "allow_connections", allow_connections)
         if connection_limit is not None:
-            _setter("connection_limit", connection_limit)
+            pulumi.set(__self__, "connection_limit", connection_limit)
         if encoding is not None:
-            _setter("encoding", encoding)
+            pulumi.set(__self__, "encoding", encoding)
         if is_template is not None:
-            _setter("is_template", is_template)
+            pulumi.set(__self__, "is_template", is_template)
         if lc_collate is not None:
-            _setter("lc_collate", lc_collate)
+            pulumi.set(__self__, "lc_collate", lc_collate)
         if lc_ctype is not None:
-            _setter("lc_ctype", lc_ctype)
+            pulumi.set(__self__, "lc_ctype", lc_ctype)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if owner is not None:
-            _setter("owner", owner)
+            pulumi.set(__self__, "owner", owner)
         if tablespace_name is not None:
-            _setter("tablespace_name", tablespace_name)
+            pulumi.set(__self__, "tablespace_name", tablespace_name)
         if template is not None:
-            _setter("template", template)
+            pulumi.set(__self__, "template", template)
 
     @property
     @pulumi.getter(name="allowConnections")
@@ -543,10 +461,6 @@ class Database(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DatabaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
