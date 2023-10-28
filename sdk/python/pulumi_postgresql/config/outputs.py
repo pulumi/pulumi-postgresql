@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -19,29 +19,10 @@ class Clientcert(dict):
                  cert: str,
                  key: str,
                  sslinline: Optional[bool] = None):
-        Clientcert._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cert=cert,
-            key=key,
-            sslinline=sslinline,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cert: Optional[str] = None,
-             key: Optional[str] = None,
-             sslinline: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cert is None:
-            raise TypeError("Missing 'cert' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-
-        _setter("cert", cert)
-        _setter("key", key)
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "key", key)
         if sslinline is not None:
-            _setter("sslinline", sslinline)
+            pulumi.set(__self__, "sslinline", sslinline)
 
     @property
     @pulumi.getter

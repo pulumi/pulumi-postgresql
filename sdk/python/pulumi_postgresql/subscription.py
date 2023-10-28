@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SubscriptionArgs', 'Subscription']
@@ -29,45 +29,16 @@ class SubscriptionArgs:
         :param pulumi.Input[str] name: The name of the publication.
         :param pulumi.Input[str] slot_name: Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name
         """
-        SubscriptionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            conninfo=conninfo,
-            publications=publications,
-            create_slot=create_slot,
-            database=database,
-            name=name,
-            slot_name=slot_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             conninfo: Optional[pulumi.Input[str]] = None,
-             publications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             create_slot: Optional[pulumi.Input[bool]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             slot_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if conninfo is None:
-            raise TypeError("Missing 'conninfo' argument")
-        if publications is None:
-            raise TypeError("Missing 'publications' argument")
-        if create_slot is None and 'createSlot' in kwargs:
-            create_slot = kwargs['createSlot']
-        if slot_name is None and 'slotName' in kwargs:
-            slot_name = kwargs['slotName']
-
-        _setter("conninfo", conninfo)
-        _setter("publications", publications)
+        pulumi.set(__self__, "conninfo", conninfo)
+        pulumi.set(__self__, "publications", publications)
         if create_slot is not None:
-            _setter("create_slot", create_slot)
+            pulumi.set(__self__, "create_slot", create_slot)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if slot_name is not None:
-            _setter("slot_name", slot_name)
+            pulumi.set(__self__, "slot_name", slot_name)
 
     @property
     @pulumi.getter
@@ -160,43 +131,18 @@ class _SubscriptionState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] publications: Names of the publications on the publisher to subscribe to
         :param pulumi.Input[str] slot_name: Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name
         """
-        _SubscriptionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            conninfo=conninfo,
-            create_slot=create_slot,
-            database=database,
-            name=name,
-            publications=publications,
-            slot_name=slot_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             conninfo: Optional[pulumi.Input[str]] = None,
-             create_slot: Optional[pulumi.Input[bool]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             publications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             slot_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_slot is None and 'createSlot' in kwargs:
-            create_slot = kwargs['createSlot']
-        if slot_name is None and 'slotName' in kwargs:
-            slot_name = kwargs['slotName']
-
         if conninfo is not None:
-            _setter("conninfo", conninfo)
+            pulumi.set(__self__, "conninfo", conninfo)
         if create_slot is not None:
-            _setter("create_slot", create_slot)
+            pulumi.set(__self__, "create_slot", create_slot)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if publications is not None:
-            _setter("publications", publications)
+            pulumi.set(__self__, "publications", publications)
         if slot_name is not None:
-            _setter("slot_name", slot_name)
+            pulumi.set(__self__, "slot_name", slot_name)
 
     @property
     @pulumi.getter
@@ -346,10 +292,6 @@ class Subscription(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SubscriptionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

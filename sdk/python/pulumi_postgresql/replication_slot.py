@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ReplicationSlotArgs', 'ReplicationSlot']
@@ -23,28 +23,11 @@ class ReplicationSlotArgs:
         :param pulumi.Input[str] database: Which database to create the replication slot on. Defaults to provider database.
         :param pulumi.Input[str] name: The name of the replication slot.
         """
-        ReplicationSlotArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            plugin=plugin,
-            database=database,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             plugin: Optional[pulumi.Input[str]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if plugin is None:
-            raise TypeError("Missing 'plugin' argument")
-
-        _setter("plugin", plugin)
+        pulumi.set(__self__, "plugin", plugin)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -95,27 +78,12 @@ class _ReplicationSlotState:
         :param pulumi.Input[str] name: The name of the replication slot.
         :param pulumi.Input[str] plugin: Sets the output plugin.
         """
-        _ReplicationSlotState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            database=database,
-            name=name,
-            plugin=plugin,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             database: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             plugin: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if plugin is not None:
-            _setter("plugin", plugin)
+            pulumi.set(__self__, "plugin", plugin)
 
     @property
     @pulumi.getter
@@ -211,10 +179,6 @@ class ReplicationSlot(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ReplicationSlotArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
