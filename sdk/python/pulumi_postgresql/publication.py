@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PublicationArgs', 'Publication']
@@ -33,22 +33,55 @@ class PublicationArgs:
         :param pulumi.Input[bool] publish_via_partition_root_param: Should be option 'publish_via_partition_root' be turned on. Default to 'false'
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tables: Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
         """
+        PublicationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all_tables=all_tables,
+            database=database,
+            drop_cascade=drop_cascade,
+            name=name,
+            owner=owner,
+            publish_params=publish_params,
+            publish_via_partition_root_param=publish_via_partition_root_param,
+            tables=tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all_tables: Optional[pulumi.Input[bool]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             drop_cascade: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             publish_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             publish_via_partition_root_param: Optional[pulumi.Input[bool]] = None,
+             tables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_tables is None and 'allTables' in kwargs:
+            all_tables = kwargs['allTables']
+        if drop_cascade is None and 'dropCascade' in kwargs:
+            drop_cascade = kwargs['dropCascade']
+        if publish_params is None and 'publishParams' in kwargs:
+            publish_params = kwargs['publishParams']
+        if publish_via_partition_root_param is None and 'publishViaPartitionRootParam' in kwargs:
+            publish_via_partition_root_param = kwargs['publishViaPartitionRootParam']
+
         if all_tables is not None:
-            pulumi.set(__self__, "all_tables", all_tables)
+            _setter("all_tables", all_tables)
         if database is not None:
-            pulumi.set(__self__, "database", database)
+            _setter("database", database)
         if drop_cascade is not None:
-            pulumi.set(__self__, "drop_cascade", drop_cascade)
+            _setter("drop_cascade", drop_cascade)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
         if publish_params is not None:
-            pulumi.set(__self__, "publish_params", publish_params)
+            _setter("publish_params", publish_params)
         if publish_via_partition_root_param is not None:
-            pulumi.set(__self__, "publish_via_partition_root_param", publish_via_partition_root_param)
+            _setter("publish_via_partition_root_param", publish_via_partition_root_param)
         if tables is not None:
-            pulumi.set(__self__, "tables", tables)
+            _setter("tables", tables)
 
     @property
     @pulumi.getter(name="allTables")
@@ -169,22 +202,55 @@ class _PublicationState:
         :param pulumi.Input[bool] publish_via_partition_root_param: Should be option 'publish_via_partition_root' be turned on. Default to 'false'
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tables: Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
         """
+        _PublicationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all_tables=all_tables,
+            database=database,
+            drop_cascade=drop_cascade,
+            name=name,
+            owner=owner,
+            publish_params=publish_params,
+            publish_via_partition_root_param=publish_via_partition_root_param,
+            tables=tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all_tables: Optional[pulumi.Input[bool]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             drop_cascade: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             publish_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             publish_via_partition_root_param: Optional[pulumi.Input[bool]] = None,
+             tables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_tables is None and 'allTables' in kwargs:
+            all_tables = kwargs['allTables']
+        if drop_cascade is None and 'dropCascade' in kwargs:
+            drop_cascade = kwargs['dropCascade']
+        if publish_params is None and 'publishParams' in kwargs:
+            publish_params = kwargs['publishParams']
+        if publish_via_partition_root_param is None and 'publishViaPartitionRootParam' in kwargs:
+            publish_via_partition_root_param = kwargs['publishViaPartitionRootParam']
+
         if all_tables is not None:
-            pulumi.set(__self__, "all_tables", all_tables)
+            _setter("all_tables", all_tables)
         if database is not None:
-            pulumi.set(__self__, "database", database)
+            _setter("database", database)
         if drop_cascade is not None:
-            pulumi.set(__self__, "drop_cascade", drop_cascade)
+            _setter("drop_cascade", drop_cascade)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
         if publish_params is not None:
-            pulumi.set(__self__, "publish_params", publish_params)
+            _setter("publish_params", publish_params)
         if publish_via_partition_root_param is not None:
-            pulumi.set(__self__, "publish_via_partition_root_param", publish_via_partition_root_param)
+            _setter("publish_via_partition_root_param", publish_via_partition_root_param)
         if tables is not None:
-            pulumi.set(__self__, "tables", tables)
+            _setter("tables", tables)
 
     @property
     @pulumi.getter(name="allTables")
@@ -356,6 +422,10 @@ class Publication(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PublicationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -29,13 +29,32 @@ class FunctionArg(dict):
         :param str mode: Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
         :param str name: The name of the argument.
         """
-        pulumi.set(__self__, "type", type)
+        FunctionArg._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            default=default,
+            mode=mode,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: Optional[str] = None,
+             default: Optional[str] = None,
+             mode: Optional[str] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
+        _setter("type", type)
         if default is not None:
-            pulumi.set(__self__, "default", default)
+            _setter("default", default)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -106,16 +125,39 @@ class SchemaPolicy(dict):
                
                > **NOTE on `policy`:** The permissions of a role specified in multiple policy blocks is cumulative.  For example, if the same role is specified in two different `policy` each with different permissions (e.g. `create` and `usage_with_grant`, respectively), then the specified role with have both `create` and `usage_with_grant` privileges.
         """
+        SchemaPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create=create,
+            create_with_grant=create_with_grant,
+            role=role,
+            usage=usage,
+            usage_with_grant=usage_with_grant,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create: Optional[bool] = None,
+             create_with_grant: Optional[bool] = None,
+             role: Optional[str] = None,
+             usage: Optional[bool] = None,
+             usage_with_grant: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if create_with_grant is None and 'createWithGrant' in kwargs:
+            create_with_grant = kwargs['createWithGrant']
+        if usage_with_grant is None and 'usageWithGrant' in kwargs:
+            usage_with_grant = kwargs['usageWithGrant']
+
         if create is not None:
-            pulumi.set(__self__, "create", create)
+            _setter("create", create)
         if create_with_grant is not None:
-            pulumi.set(__self__, "create_with_grant", create_with_grant)
+            _setter("create_with_grant", create_with_grant)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if usage is not None:
-            pulumi.set(__self__, "usage", usage)
+            _setter("usage", usage)
         if usage_with_grant is not None:
-            pulumi.set(__self__, "usage_with_grant", usage_with_grant)
+            _setter("usage_with_grant", usage_with_grant)
 
     @property
     @pulumi.getter
@@ -171,9 +213,36 @@ class GetSequencesSequenceResult(dict):
         :param str object_name: The sequence name.
         :param str schema_name: The parent schema.
         """
-        pulumi.set(__self__, "data_type", data_type)
-        pulumi.set(__self__, "object_name", object_name)
-        pulumi.set(__self__, "schema_name", schema_name)
+        GetSequencesSequenceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_type=data_type,
+            object_name=object_name,
+            schema_name=schema_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_type: Optional[str] = None,
+             object_name: Optional[str] = None,
+             schema_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_type is None and 'dataType' in kwargs:
+            data_type = kwargs['dataType']
+        if data_type is None:
+            raise TypeError("Missing 'data_type' argument")
+        if object_name is None and 'objectName' in kwargs:
+            object_name = kwargs['objectName']
+        if object_name is None:
+            raise TypeError("Missing 'object_name' argument")
+        if schema_name is None and 'schemaName' in kwargs:
+            schema_name = kwargs['schemaName']
+        if schema_name is None:
+            raise TypeError("Missing 'schema_name' argument")
+
+        _setter("data_type", data_type)
+        _setter("object_name", object_name)
+        _setter("schema_name", schema_name)
 
     @property
     @pulumi.getter(name="dataType")
@@ -211,9 +280,36 @@ class GetTablesTableResult(dict):
         :param str schema_name: The parent schema.
         :param str table_type: The table type as defined in ``information_schema.tables``.
         """
-        pulumi.set(__self__, "object_name", object_name)
-        pulumi.set(__self__, "schema_name", schema_name)
-        pulumi.set(__self__, "table_type", table_type)
+        GetTablesTableResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            object_name=object_name,
+            schema_name=schema_name,
+            table_type=table_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             object_name: Optional[str] = None,
+             schema_name: Optional[str] = None,
+             table_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if object_name is None and 'objectName' in kwargs:
+            object_name = kwargs['objectName']
+        if object_name is None:
+            raise TypeError("Missing 'object_name' argument")
+        if schema_name is None and 'schemaName' in kwargs:
+            schema_name = kwargs['schemaName']
+        if schema_name is None:
+            raise TypeError("Missing 'schema_name' argument")
+        if table_type is None and 'tableType' in kwargs:
+            table_type = kwargs['tableType']
+        if table_type is None:
+            raise TypeError("Missing 'table_type' argument")
+
+        _setter("object_name", object_name)
+        _setter("schema_name", schema_name)
+        _setter("table_type", table_type)
 
     @property
     @pulumi.getter(name="objectName")

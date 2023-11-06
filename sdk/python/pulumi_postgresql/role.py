@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RoleArgs', 'Role']
@@ -94,49 +94,122 @@ class RoleArgs:
                datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
                set to `infinity`.  Default is `NULL`, therefore `infinity`.
         """
+        RoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assume_role=assume_role,
+            bypass_row_level_security=bypass_row_level_security,
+            connection_limit=connection_limit,
+            create_database=create_database,
+            create_role=create_role,
+            encrypted=encrypted,
+            encrypted_password=encrypted_password,
+            idle_in_transaction_session_timeout=idle_in_transaction_session_timeout,
+            inherit=inherit,
+            login=login,
+            name=name,
+            password=password,
+            replication=replication,
+            roles=roles,
+            search_paths=search_paths,
+            skip_drop_role=skip_drop_role,
+            skip_reassign_owned=skip_reassign_owned,
+            statement_timeout=statement_timeout,
+            superuser=superuser,
+            valid_until=valid_until,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assume_role: Optional[pulumi.Input[str]] = None,
+             bypass_row_level_security: Optional[pulumi.Input[bool]] = None,
+             connection_limit: Optional[pulumi.Input[int]] = None,
+             create_database: Optional[pulumi.Input[bool]] = None,
+             create_role: Optional[pulumi.Input[bool]] = None,
+             encrypted: Optional[pulumi.Input[str]] = None,
+             encrypted_password: Optional[pulumi.Input[bool]] = None,
+             idle_in_transaction_session_timeout: Optional[pulumi.Input[int]] = None,
+             inherit: Optional[pulumi.Input[bool]] = None,
+             login: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             replication: Optional[pulumi.Input[bool]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             search_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             skip_drop_role: Optional[pulumi.Input[bool]] = None,
+             skip_reassign_owned: Optional[pulumi.Input[bool]] = None,
+             statement_timeout: Optional[pulumi.Input[int]] = None,
+             superuser: Optional[pulumi.Input[bool]] = None,
+             valid_until: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if assume_role is None and 'assumeRole' in kwargs:
+            assume_role = kwargs['assumeRole']
+        if bypass_row_level_security is None and 'bypassRowLevelSecurity' in kwargs:
+            bypass_row_level_security = kwargs['bypassRowLevelSecurity']
+        if connection_limit is None and 'connectionLimit' in kwargs:
+            connection_limit = kwargs['connectionLimit']
+        if create_database is None and 'createDatabase' in kwargs:
+            create_database = kwargs['createDatabase']
+        if create_role is None and 'createRole' in kwargs:
+            create_role = kwargs['createRole']
+        if encrypted_password is None and 'encryptedPassword' in kwargs:
+            encrypted_password = kwargs['encryptedPassword']
+        if idle_in_transaction_session_timeout is None and 'idleInTransactionSessionTimeout' in kwargs:
+            idle_in_transaction_session_timeout = kwargs['idleInTransactionSessionTimeout']
+        if search_paths is None and 'searchPaths' in kwargs:
+            search_paths = kwargs['searchPaths']
+        if skip_drop_role is None and 'skipDropRole' in kwargs:
+            skip_drop_role = kwargs['skipDropRole']
+        if skip_reassign_owned is None and 'skipReassignOwned' in kwargs:
+            skip_reassign_owned = kwargs['skipReassignOwned']
+        if statement_timeout is None and 'statementTimeout' in kwargs:
+            statement_timeout = kwargs['statementTimeout']
+        if valid_until is None and 'validUntil' in kwargs:
+            valid_until = kwargs['validUntil']
+
         if assume_role is not None:
-            pulumi.set(__self__, "assume_role", assume_role)
+            _setter("assume_role", assume_role)
         if bypass_row_level_security is not None:
-            pulumi.set(__self__, "bypass_row_level_security", bypass_row_level_security)
+            _setter("bypass_row_level_security", bypass_row_level_security)
         if connection_limit is not None:
-            pulumi.set(__self__, "connection_limit", connection_limit)
+            _setter("connection_limit", connection_limit)
         if create_database is not None:
-            pulumi.set(__self__, "create_database", create_database)
+            _setter("create_database", create_database)
         if create_role is not None:
-            pulumi.set(__self__, "create_role", create_role)
+            _setter("create_role", create_role)
         if encrypted is not None:
             warnings.warn("""Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"""", DeprecationWarning)
             pulumi.log.warn("""encrypted is deprecated: Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"""")
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if encrypted_password is not None:
-            pulumi.set(__self__, "encrypted_password", encrypted_password)
+            _setter("encrypted_password", encrypted_password)
         if idle_in_transaction_session_timeout is not None:
-            pulumi.set(__self__, "idle_in_transaction_session_timeout", idle_in_transaction_session_timeout)
+            _setter("idle_in_transaction_session_timeout", idle_in_transaction_session_timeout)
         if inherit is not None:
-            pulumi.set(__self__, "inherit", inherit)
+            _setter("inherit", inherit)
         if login is not None:
-            pulumi.set(__self__, "login", login)
+            _setter("login", login)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if replication is not None:
-            pulumi.set(__self__, "replication", replication)
+            _setter("replication", replication)
         if roles is not None:
-            pulumi.set(__self__, "roles", roles)
+            _setter("roles", roles)
         if search_paths is not None:
-            pulumi.set(__self__, "search_paths", search_paths)
+            _setter("search_paths", search_paths)
         if skip_drop_role is not None:
-            pulumi.set(__self__, "skip_drop_role", skip_drop_role)
+            _setter("skip_drop_role", skip_drop_role)
         if skip_reassign_owned is not None:
-            pulumi.set(__self__, "skip_reassign_owned", skip_reassign_owned)
+            _setter("skip_reassign_owned", skip_reassign_owned)
         if statement_timeout is not None:
-            pulumi.set(__self__, "statement_timeout", statement_timeout)
+            _setter("statement_timeout", statement_timeout)
         if superuser is not None:
-            pulumi.set(__self__, "superuser", superuser)
+            _setter("superuser", superuser)
         if valid_until is not None:
-            pulumi.set(__self__, "valid_until", valid_until)
+            _setter("valid_until", valid_until)
 
     @property
     @pulumi.getter(name="assumeRole")
@@ -500,49 +573,122 @@ class _RoleState:
                datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
                set to `infinity`.  Default is `NULL`, therefore `infinity`.
         """
+        _RoleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assume_role=assume_role,
+            bypass_row_level_security=bypass_row_level_security,
+            connection_limit=connection_limit,
+            create_database=create_database,
+            create_role=create_role,
+            encrypted=encrypted,
+            encrypted_password=encrypted_password,
+            idle_in_transaction_session_timeout=idle_in_transaction_session_timeout,
+            inherit=inherit,
+            login=login,
+            name=name,
+            password=password,
+            replication=replication,
+            roles=roles,
+            search_paths=search_paths,
+            skip_drop_role=skip_drop_role,
+            skip_reassign_owned=skip_reassign_owned,
+            statement_timeout=statement_timeout,
+            superuser=superuser,
+            valid_until=valid_until,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assume_role: Optional[pulumi.Input[str]] = None,
+             bypass_row_level_security: Optional[pulumi.Input[bool]] = None,
+             connection_limit: Optional[pulumi.Input[int]] = None,
+             create_database: Optional[pulumi.Input[bool]] = None,
+             create_role: Optional[pulumi.Input[bool]] = None,
+             encrypted: Optional[pulumi.Input[str]] = None,
+             encrypted_password: Optional[pulumi.Input[bool]] = None,
+             idle_in_transaction_session_timeout: Optional[pulumi.Input[int]] = None,
+             inherit: Optional[pulumi.Input[bool]] = None,
+             login: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             replication: Optional[pulumi.Input[bool]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             search_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             skip_drop_role: Optional[pulumi.Input[bool]] = None,
+             skip_reassign_owned: Optional[pulumi.Input[bool]] = None,
+             statement_timeout: Optional[pulumi.Input[int]] = None,
+             superuser: Optional[pulumi.Input[bool]] = None,
+             valid_until: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if assume_role is None and 'assumeRole' in kwargs:
+            assume_role = kwargs['assumeRole']
+        if bypass_row_level_security is None and 'bypassRowLevelSecurity' in kwargs:
+            bypass_row_level_security = kwargs['bypassRowLevelSecurity']
+        if connection_limit is None and 'connectionLimit' in kwargs:
+            connection_limit = kwargs['connectionLimit']
+        if create_database is None and 'createDatabase' in kwargs:
+            create_database = kwargs['createDatabase']
+        if create_role is None and 'createRole' in kwargs:
+            create_role = kwargs['createRole']
+        if encrypted_password is None and 'encryptedPassword' in kwargs:
+            encrypted_password = kwargs['encryptedPassword']
+        if idle_in_transaction_session_timeout is None and 'idleInTransactionSessionTimeout' in kwargs:
+            idle_in_transaction_session_timeout = kwargs['idleInTransactionSessionTimeout']
+        if search_paths is None and 'searchPaths' in kwargs:
+            search_paths = kwargs['searchPaths']
+        if skip_drop_role is None and 'skipDropRole' in kwargs:
+            skip_drop_role = kwargs['skipDropRole']
+        if skip_reassign_owned is None and 'skipReassignOwned' in kwargs:
+            skip_reassign_owned = kwargs['skipReassignOwned']
+        if statement_timeout is None and 'statementTimeout' in kwargs:
+            statement_timeout = kwargs['statementTimeout']
+        if valid_until is None and 'validUntil' in kwargs:
+            valid_until = kwargs['validUntil']
+
         if assume_role is not None:
-            pulumi.set(__self__, "assume_role", assume_role)
+            _setter("assume_role", assume_role)
         if bypass_row_level_security is not None:
-            pulumi.set(__self__, "bypass_row_level_security", bypass_row_level_security)
+            _setter("bypass_row_level_security", bypass_row_level_security)
         if connection_limit is not None:
-            pulumi.set(__self__, "connection_limit", connection_limit)
+            _setter("connection_limit", connection_limit)
         if create_database is not None:
-            pulumi.set(__self__, "create_database", create_database)
+            _setter("create_database", create_database)
         if create_role is not None:
-            pulumi.set(__self__, "create_role", create_role)
+            _setter("create_role", create_role)
         if encrypted is not None:
             warnings.warn("""Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"""", DeprecationWarning)
             pulumi.log.warn("""encrypted is deprecated: Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"""")
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if encrypted_password is not None:
-            pulumi.set(__self__, "encrypted_password", encrypted_password)
+            _setter("encrypted_password", encrypted_password)
         if idle_in_transaction_session_timeout is not None:
-            pulumi.set(__self__, "idle_in_transaction_session_timeout", idle_in_transaction_session_timeout)
+            _setter("idle_in_transaction_session_timeout", idle_in_transaction_session_timeout)
         if inherit is not None:
-            pulumi.set(__self__, "inherit", inherit)
+            _setter("inherit", inherit)
         if login is not None:
-            pulumi.set(__self__, "login", login)
+            _setter("login", login)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if replication is not None:
-            pulumi.set(__self__, "replication", replication)
+            _setter("replication", replication)
         if roles is not None:
-            pulumi.set(__self__, "roles", roles)
+            _setter("roles", roles)
         if search_paths is not None:
-            pulumi.set(__self__, "search_paths", search_paths)
+            _setter("search_paths", search_paths)
         if skip_drop_role is not None:
-            pulumi.set(__self__, "skip_drop_role", skip_drop_role)
+            _setter("skip_drop_role", skip_drop_role)
         if skip_reassign_owned is not None:
-            pulumi.set(__self__, "skip_reassign_owned", skip_reassign_owned)
+            _setter("skip_reassign_owned", skip_reassign_owned)
         if statement_timeout is not None:
-            pulumi.set(__self__, "statement_timeout", statement_timeout)
+            _setter("statement_timeout", statement_timeout)
         if superuser is not None:
-            pulumi.set(__self__, "superuser", superuser)
+            _setter("superuser", superuser)
         if valid_until is not None:
-            pulumi.set(__self__, "valid_until", valid_until)
+            _setter("valid_until", valid_until)
 
     @property
     @pulumi.getter(name="assumeRole")
@@ -929,6 +1075,10 @@ class Role(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
