@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The “Grant“ resource creates and manages privileges given to a user for a database schema.
@@ -273,12 +272,6 @@ func (i *Grant) ToGrantOutputWithContext(ctx context.Context) GrantOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GrantOutput)
 }
 
-func (i *Grant) ToOutput(ctx context.Context) pulumix.Output[*Grant] {
-	return pulumix.Output[*Grant]{
-		OutputState: i.ToGrantOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GrantArrayInput is an input type that accepts GrantArray and GrantArrayOutput values.
 // You can construct a concrete instance of `GrantArrayInput` via:
 //
@@ -302,12 +295,6 @@ func (i GrantArray) ToGrantArrayOutput() GrantArrayOutput {
 
 func (i GrantArray) ToGrantArrayOutputWithContext(ctx context.Context) GrantArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GrantArrayOutput)
-}
-
-func (i GrantArray) ToOutput(ctx context.Context) pulumix.Output[[]*Grant] {
-	return pulumix.Output[[]*Grant]{
-		OutputState: i.ToGrantArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GrantMapInput is an input type that accepts GrantMap and GrantMapOutput values.
@@ -335,12 +322,6 @@ func (i GrantMap) ToGrantMapOutputWithContext(ctx context.Context) GrantMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GrantMapOutput)
 }
 
-func (i GrantMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Grant] {
-	return pulumix.Output[map[string]*Grant]{
-		OutputState: i.ToGrantMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GrantOutput struct{ *pulumi.OutputState }
 
 func (GrantOutput) ElementType() reflect.Type {
@@ -353,12 +334,6 @@ func (o GrantOutput) ToGrantOutput() GrantOutput {
 
 func (o GrantOutput) ToGrantOutputWithContext(ctx context.Context) GrantOutput {
 	return o
-}
-
-func (o GrantOutput) ToOutput(ctx context.Context) pulumix.Output[*Grant] {
-	return pulumix.Output[*Grant]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
@@ -415,12 +390,6 @@ func (o GrantArrayOutput) ToGrantArrayOutputWithContext(ctx context.Context) Gra
 	return o
 }
 
-func (o GrantArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Grant] {
-	return pulumix.Output[[]*Grant]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GrantArrayOutput) Index(i pulumi.IntInput) GrantOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Grant {
 		return vs[0].([]*Grant)[vs[1].(int)]
@@ -439,12 +408,6 @@ func (o GrantMapOutput) ToGrantMapOutput() GrantMapOutput {
 
 func (o GrantMapOutput) ToGrantMapOutputWithContext(ctx context.Context) GrantMapOutput {
 	return o
-}
-
-func (o GrantMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Grant] {
-	return pulumix.Output[map[string]*Grant]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrantMapOutput) MapIndex(k pulumi.StringInput) GrantOutput {
