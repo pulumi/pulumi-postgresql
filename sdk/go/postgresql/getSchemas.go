@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The “getSchemas“ data source retrieves a list of schema names from a specified PostgreSQL database.
@@ -129,12 +128,6 @@ func (o GetSchemasResultOutput) ToGetSchemasResultOutput() GetSchemasResultOutpu
 
 func (o GetSchemasResultOutput) ToGetSchemasResultOutputWithContext(ctx context.Context) GetSchemasResultOutput {
 	return o
-}
-
-func (o GetSchemasResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSchemasResult] {
-	return pulumix.Output[GetSchemasResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSchemasResultOutput) Database() pulumi.StringOutput {

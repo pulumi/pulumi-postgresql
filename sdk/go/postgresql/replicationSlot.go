@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The “ReplicationSlot“ resource creates and manages a replication slot on a PostgreSQL
@@ -148,12 +147,6 @@ func (i *ReplicationSlot) ToReplicationSlotOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSlotOutput)
 }
 
-func (i *ReplicationSlot) ToOutput(ctx context.Context) pulumix.Output[*ReplicationSlot] {
-	return pulumix.Output[*ReplicationSlot]{
-		OutputState: i.ToReplicationSlotOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReplicationSlotArrayInput is an input type that accepts ReplicationSlotArray and ReplicationSlotArrayOutput values.
 // You can construct a concrete instance of `ReplicationSlotArrayInput` via:
 //
@@ -177,12 +170,6 @@ func (i ReplicationSlotArray) ToReplicationSlotArrayOutput() ReplicationSlotArra
 
 func (i ReplicationSlotArray) ToReplicationSlotArrayOutputWithContext(ctx context.Context) ReplicationSlotArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSlotArrayOutput)
-}
-
-func (i ReplicationSlotArray) ToOutput(ctx context.Context) pulumix.Output[[]*ReplicationSlot] {
-	return pulumix.Output[[]*ReplicationSlot]{
-		OutputState: i.ToReplicationSlotArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ReplicationSlotMapInput is an input type that accepts ReplicationSlotMap and ReplicationSlotMapOutput values.
@@ -210,12 +197,6 @@ func (i ReplicationSlotMap) ToReplicationSlotMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSlotMapOutput)
 }
 
-func (i ReplicationSlotMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReplicationSlot] {
-	return pulumix.Output[map[string]*ReplicationSlot]{
-		OutputState: i.ToReplicationSlotMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReplicationSlotOutput struct{ *pulumi.OutputState }
 
 func (ReplicationSlotOutput) ElementType() reflect.Type {
@@ -228,12 +209,6 @@ func (o ReplicationSlotOutput) ToReplicationSlotOutput() ReplicationSlotOutput {
 
 func (o ReplicationSlotOutput) ToReplicationSlotOutputWithContext(ctx context.Context) ReplicationSlotOutput {
 	return o
-}
-
-func (o ReplicationSlotOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationSlot] {
-	return pulumix.Output[*ReplicationSlot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Which database to create the replication slot on. Defaults to provider database.
@@ -265,12 +240,6 @@ func (o ReplicationSlotArrayOutput) ToReplicationSlotArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ReplicationSlotArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ReplicationSlot] {
-	return pulumix.Output[[]*ReplicationSlot]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReplicationSlotArrayOutput) Index(i pulumi.IntInput) ReplicationSlotOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ReplicationSlot {
 		return vs[0].([]*ReplicationSlot)[vs[1].(int)]
@@ -289,12 +258,6 @@ func (o ReplicationSlotMapOutput) ToReplicationSlotMapOutput() ReplicationSlotMa
 
 func (o ReplicationSlotMapOutput) ToReplicationSlotMapOutputWithContext(ctx context.Context) ReplicationSlotMapOutput {
 	return o
-}
-
-func (o ReplicationSlotMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReplicationSlot] {
-	return pulumix.Output[map[string]*ReplicationSlot]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReplicationSlotMapOutput) MapIndex(k pulumi.StringInput) ReplicationSlotOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The “PhysicalReplicationSlot“ resource creates and manages a physical replication slot on a PostgreSQL
@@ -123,12 +122,6 @@ func (i *PhysicalReplicationSlot) ToPhysicalReplicationSlotOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(PhysicalReplicationSlotOutput)
 }
 
-func (i *PhysicalReplicationSlot) ToOutput(ctx context.Context) pulumix.Output[*PhysicalReplicationSlot] {
-	return pulumix.Output[*PhysicalReplicationSlot]{
-		OutputState: i.ToPhysicalReplicationSlotOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PhysicalReplicationSlotArrayInput is an input type that accepts PhysicalReplicationSlotArray and PhysicalReplicationSlotArrayOutput values.
 // You can construct a concrete instance of `PhysicalReplicationSlotArrayInput` via:
 //
@@ -152,12 +145,6 @@ func (i PhysicalReplicationSlotArray) ToPhysicalReplicationSlotArrayOutput() Phy
 
 func (i PhysicalReplicationSlotArray) ToPhysicalReplicationSlotArrayOutputWithContext(ctx context.Context) PhysicalReplicationSlotArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PhysicalReplicationSlotArrayOutput)
-}
-
-func (i PhysicalReplicationSlotArray) ToOutput(ctx context.Context) pulumix.Output[[]*PhysicalReplicationSlot] {
-	return pulumix.Output[[]*PhysicalReplicationSlot]{
-		OutputState: i.ToPhysicalReplicationSlotArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PhysicalReplicationSlotMapInput is an input type that accepts PhysicalReplicationSlotMap and PhysicalReplicationSlotMapOutput values.
@@ -185,12 +172,6 @@ func (i PhysicalReplicationSlotMap) ToPhysicalReplicationSlotMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(PhysicalReplicationSlotMapOutput)
 }
 
-func (i PhysicalReplicationSlotMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PhysicalReplicationSlot] {
-	return pulumix.Output[map[string]*PhysicalReplicationSlot]{
-		OutputState: i.ToPhysicalReplicationSlotMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PhysicalReplicationSlotOutput struct{ *pulumi.OutputState }
 
 func (PhysicalReplicationSlotOutput) ElementType() reflect.Type {
@@ -203,12 +184,6 @@ func (o PhysicalReplicationSlotOutput) ToPhysicalReplicationSlotOutput() Physica
 
 func (o PhysicalReplicationSlotOutput) ToPhysicalReplicationSlotOutputWithContext(ctx context.Context) PhysicalReplicationSlotOutput {
 	return o
-}
-
-func (o PhysicalReplicationSlotOutput) ToOutput(ctx context.Context) pulumix.Output[*PhysicalReplicationSlot] {
-	return pulumix.Output[*PhysicalReplicationSlot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the replication slot.
@@ -230,12 +205,6 @@ func (o PhysicalReplicationSlotArrayOutput) ToPhysicalReplicationSlotArrayOutput
 	return o
 }
 
-func (o PhysicalReplicationSlotArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PhysicalReplicationSlot] {
-	return pulumix.Output[[]*PhysicalReplicationSlot]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PhysicalReplicationSlotArrayOutput) Index(i pulumi.IntInput) PhysicalReplicationSlotOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PhysicalReplicationSlot {
 		return vs[0].([]*PhysicalReplicationSlot)[vs[1].(int)]
@@ -254,12 +223,6 @@ func (o PhysicalReplicationSlotMapOutput) ToPhysicalReplicationSlotMapOutput() P
 
 func (o PhysicalReplicationSlotMapOutput) ToPhysicalReplicationSlotMapOutputWithContext(ctx context.Context) PhysicalReplicationSlotMapOutput {
 	return o
-}
-
-func (o PhysicalReplicationSlotMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PhysicalReplicationSlot] {
-	return pulumix.Output[map[string]*PhysicalReplicationSlot]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PhysicalReplicationSlotMapOutput) MapIndex(k pulumi.StringInput) PhysicalReplicationSlotOutput {
