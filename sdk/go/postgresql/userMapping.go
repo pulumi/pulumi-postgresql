@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The “UserMapping“ resource creates and manages a user mapping on a PostgreSQL server.
@@ -207,12 +206,6 @@ func (i *UserMapping) ToUserMappingOutputWithContext(ctx context.Context) UserMa
 	return pulumi.ToOutputWithContext(ctx, i).(UserMappingOutput)
 }
 
-func (i *UserMapping) ToOutput(ctx context.Context) pulumix.Output[*UserMapping] {
-	return pulumix.Output[*UserMapping]{
-		OutputState: i.ToUserMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserMappingArrayInput is an input type that accepts UserMappingArray and UserMappingArrayOutput values.
 // You can construct a concrete instance of `UserMappingArrayInput` via:
 //
@@ -236,12 +229,6 @@ func (i UserMappingArray) ToUserMappingArrayOutput() UserMappingArrayOutput {
 
 func (i UserMappingArray) ToUserMappingArrayOutputWithContext(ctx context.Context) UserMappingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserMappingArrayOutput)
-}
-
-func (i UserMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]*UserMapping] {
-	return pulumix.Output[[]*UserMapping]{
-		OutputState: i.ToUserMappingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // UserMappingMapInput is an input type that accepts UserMappingMap and UserMappingMapOutput values.
@@ -269,12 +256,6 @@ func (i UserMappingMap) ToUserMappingMapOutputWithContext(ctx context.Context) U
 	return pulumi.ToOutputWithContext(ctx, i).(UserMappingMapOutput)
 }
 
-func (i UserMappingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserMapping] {
-	return pulumix.Output[map[string]*UserMapping]{
-		OutputState: i.ToUserMappingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserMappingOutput struct{ *pulumi.OutputState }
 
 func (UserMappingOutput) ElementType() reflect.Type {
@@ -287,12 +268,6 @@ func (o UserMappingOutput) ToUserMappingOutput() UserMappingOutput {
 
 func (o UserMappingOutput) ToUserMappingOutputWithContext(ctx context.Context) UserMappingOutput {
 	return o
-}
-
-func (o UserMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*UserMapping] {
-	return pulumix.Output[*UserMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.
@@ -330,12 +305,6 @@ func (o UserMappingArrayOutput) ToUserMappingArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o UserMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UserMapping] {
-	return pulumix.Output[[]*UserMapping]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UserMappingArrayOutput) Index(i pulumi.IntInput) UserMappingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UserMapping {
 		return vs[0].([]*UserMapping)[vs[1].(int)]
@@ -354,12 +323,6 @@ func (o UserMappingMapOutput) ToUserMappingMapOutput() UserMappingMapOutput {
 
 func (o UserMappingMapOutput) ToUserMappingMapOutputWithContext(ctx context.Context) UserMappingMapOutput {
 	return o
-}
-
-func (o UserMappingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserMapping] {
-	return pulumix.Output[map[string]*UserMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserMappingMapOutput) MapIndex(k pulumi.StringInput) UserMappingOutput {

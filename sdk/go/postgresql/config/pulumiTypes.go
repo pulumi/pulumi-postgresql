@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i ClientcertArgs) ToClientcertOutputWithContext(ctx context.Context) Clien
 	return pulumi.ToOutputWithContext(ctx, i).(ClientcertOutput)
 }
 
-func (i ClientcertArgs) ToOutput(ctx context.Context) pulumix.Output[Clientcert] {
-	return pulumix.Output[Clientcert]{
-		OutputState: i.ToClientcertOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClientcertOutput struct{ *pulumi.OutputState }
 
 func (ClientcertOutput) ElementType() reflect.Type {
@@ -67,12 +60,6 @@ func (o ClientcertOutput) ToClientcertOutput() ClientcertOutput {
 
 func (o ClientcertOutput) ToClientcertOutputWithContext(ctx context.Context) ClientcertOutput {
 	return o
-}
-
-func (o ClientcertOutput) ToOutput(ctx context.Context) pulumix.Output[Clientcert] {
-	return pulumix.Output[Clientcert]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientcertOutput) Cert() pulumi.StringOutput {
