@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `Publication` resource creates and manages a publication on a PostgreSQL
@@ -197,12 +196,6 @@ func (i *Publication) ToPublicationOutputWithContext(ctx context.Context) Public
 	return pulumi.ToOutputWithContext(ctx, i).(PublicationOutput)
 }
 
-func (i *Publication) ToOutput(ctx context.Context) pulumix.Output[*Publication] {
-	return pulumix.Output[*Publication]{
-		OutputState: i.ToPublicationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PublicationArrayInput is an input type that accepts PublicationArray and PublicationArrayOutput values.
 // You can construct a concrete instance of `PublicationArrayInput` via:
 //
@@ -226,12 +219,6 @@ func (i PublicationArray) ToPublicationArrayOutput() PublicationArrayOutput {
 
 func (i PublicationArray) ToPublicationArrayOutputWithContext(ctx context.Context) PublicationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PublicationArrayOutput)
-}
-
-func (i PublicationArray) ToOutput(ctx context.Context) pulumix.Output[[]*Publication] {
-	return pulumix.Output[[]*Publication]{
-		OutputState: i.ToPublicationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PublicationMapInput is an input type that accepts PublicationMap and PublicationMapOutput values.
@@ -259,12 +246,6 @@ func (i PublicationMap) ToPublicationMapOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PublicationMapOutput)
 }
 
-func (i PublicationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Publication] {
-	return pulumix.Output[map[string]*Publication]{
-		OutputState: i.ToPublicationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PublicationOutput struct{ *pulumi.OutputState }
 
 func (PublicationOutput) ElementType() reflect.Type {
@@ -277,12 +258,6 @@ func (o PublicationOutput) ToPublicationOutput() PublicationOutput {
 
 func (o PublicationOutput) ToPublicationOutputWithContext(ctx context.Context) PublicationOutput {
 	return o
-}
-
-func (o PublicationOutput) ToOutput(ctx context.Context) pulumix.Output[*Publication] {
-	return pulumix.Output[*Publication]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Should be ALL TABLES added to the publication. Defaults to 'false'
@@ -339,12 +314,6 @@ func (o PublicationArrayOutput) ToPublicationArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o PublicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Publication] {
-	return pulumix.Output[[]*Publication]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PublicationArrayOutput) Index(i pulumi.IntInput) PublicationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Publication {
 		return vs[0].([]*Publication)[vs[1].(int)]
@@ -363,12 +332,6 @@ func (o PublicationMapOutput) ToPublicationMapOutput() PublicationMapOutput {
 
 func (o PublicationMapOutput) ToPublicationMapOutputWithContext(ctx context.Context) PublicationMapOutput {
 	return o
-}
-
-func (o PublicationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Publication] {
-	return pulumix.Output[map[string]*Publication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PublicationMapOutput) MapIndex(k pulumi.StringInput) PublicationOutput {
