@@ -92,7 +92,7 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly language!: pulumi.Output<string | undefined>;
     /**
-     * The name of the argument.
+     * The name of the function.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -197,7 +197,7 @@ export interface FunctionState {
      */
     language?: pulumi.Input<string>;
     /**
-     * The name of the argument.
+     * The name of the function.
      */
     name?: pulumi.Input<string>;
     /**
@@ -255,7 +255,7 @@ export interface FunctionArgs {
      */
     language?: pulumi.Input<string>;
     /**
-     * The name of the argument.
+     * The name of the function.
      */
     name?: pulumi.Input<string>;
     /**
