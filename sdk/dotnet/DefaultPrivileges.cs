@@ -134,7 +134,7 @@ namespace Pulumi.PostgreSql
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new global::Pulumi.Alias { Type = "postgresql:index/defaultPrivileg:DefaultPrivileg"},
+                    new global::Pulumi.Alias { Type = "postgresql:index/defaultPrivileg:DefaultPrivileg" },
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
