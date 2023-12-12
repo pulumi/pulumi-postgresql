@@ -147,16 +147,16 @@ public final class GetSchemasResult {
             return schemas(List.of(schemas));
         }
         public GetSchemasResult build() {
-            final var o = new GetSchemasResult();
-            o.database = database;
-            o.id = id;
-            o.includeSystemSchemas = includeSystemSchemas;
-            o.likeAllPatterns = likeAllPatterns;
-            o.likeAnyPatterns = likeAnyPatterns;
-            o.notLikeAllPatterns = notLikeAllPatterns;
-            o.regexPattern = regexPattern;
-            o.schemas = schemas;
-            return o;
+            final var _resultValue = new GetSchemasResult();
+            _resultValue.database = database;
+            _resultValue.id = id;
+            _resultValue.includeSystemSchemas = includeSystemSchemas;
+            _resultValue.likeAllPatterns = likeAllPatterns;
+            _resultValue.likeAnyPatterns = likeAnyPatterns;
+            _resultValue.notLikeAllPatterns = notLikeAllPatterns;
+            _resultValue.regexPattern = regexPattern;
+            _resultValue.schemas = schemas;
+            return _resultValue;
         }
     }
 }

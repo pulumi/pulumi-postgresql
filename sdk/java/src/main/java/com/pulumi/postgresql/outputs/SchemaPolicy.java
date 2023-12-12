@@ -129,13 +129,13 @@ public final class SchemaPolicy {
             return this;
         }
         public SchemaPolicy build() {
-            final var o = new SchemaPolicy();
-            o.create = create;
-            o.createWithGrant = createWithGrant;
-            o.role = role;
-            o.usage = usage;
-            o.usageWithGrant = usageWithGrant;
-            return o;
+            final var _resultValue = new SchemaPolicy();
+            _resultValue.create = create;
+            _resultValue.createWithGrant = createWithGrant;
+            _resultValue.role = role;
+            _resultValue.usage = usage;
+            _resultValue.usageWithGrant = usageWithGrant;
+            return _resultValue;
         }
     }
 }

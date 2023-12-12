@@ -103,7 +103,7 @@ public class DefaultPrivileg extends com.pulumi.resources.CustomResource {
      * The database to grant default privileges for this role.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output<String> database;
 
     /**
@@ -117,7 +117,7 @@ public class DefaultPrivileg extends com.pulumi.resources.CustomResource {
      * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
      * 
      */
-    @Export(name="objectType", type=String.class, parameters={})
+    @Export(name="objectType", refs={String.class}, tree="[0]")
     private Output<String> objectType;
 
     /**
@@ -131,7 +131,7 @@ public class DefaultPrivileg extends com.pulumi.resources.CustomResource {
      * Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
@@ -145,7 +145,7 @@ public class DefaultPrivileg extends com.pulumi.resources.CustomResource {
      * The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
      * 
      */
-    @Export(name="privileges", type=List.class, parameters={String.class})
+    @Export(name="privileges", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> privileges;
 
     /**
@@ -159,7 +159,7 @@ public class DefaultPrivileg extends com.pulumi.resources.CustomResource {
      * The name of the role to which grant default privileges on.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -173,7 +173,7 @@ public class DefaultPrivileg extends com.pulumi.resources.CustomResource {
      * The database schema to set default privileges for this role.
      * 
      */
-    @Export(name="schema", type=String.class, parameters={})
+    @Export(name="schema", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schema;
 
     /**
@@ -187,7 +187,7 @@ public class DefaultPrivileg extends com.pulumi.resources.CustomResource {
      * Permit the grant recipient to grant it to others
      * 
      */
-    @Export(name="withGrantOption", type=Boolean.class, parameters={})
+    @Export(name="withGrantOption", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> withGrantOption;
 
     /**

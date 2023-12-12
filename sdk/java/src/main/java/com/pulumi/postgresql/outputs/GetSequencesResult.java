@@ -152,16 +152,16 @@ public final class GetSequencesResult {
             return sequences(List.of(sequences));
         }
         public GetSequencesResult build() {
-            final var o = new GetSequencesResult();
-            o.database = database;
-            o.id = id;
-            o.likeAllPatterns = likeAllPatterns;
-            o.likeAnyPatterns = likeAnyPatterns;
-            o.notLikeAllPatterns = notLikeAllPatterns;
-            o.regexPattern = regexPattern;
-            o.schemas = schemas;
-            o.sequences = sequences;
-            return o;
+            final var _resultValue = new GetSequencesResult();
+            _resultValue.database = database;
+            _resultValue.id = id;
+            _resultValue.likeAllPatterns = likeAllPatterns;
+            _resultValue.likeAnyPatterns = likeAnyPatterns;
+            _resultValue.notLikeAllPatterns = notLikeAllPatterns;
+            _resultValue.regexPattern = regexPattern;
+            _resultValue.schemas = schemas;
+            _resultValue.sequences = sequences;
+            return _resultValue;
         }
     }
 }

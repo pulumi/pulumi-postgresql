@@ -103,7 +103,7 @@ public class Server extends com.pulumi.resources.CustomResource {
      * When true, will drop objects that depend on the server (such as user mappings), and in turn all objects that depend on those objects . (Default: false)
      * 
      */
-    @Export(name="dropCascade", type=Boolean.class, parameters={})
+    @Export(name="dropCascade", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dropCascade;
 
     /**
@@ -120,7 +120,7 @@ public class Server extends com.pulumi.resources.CustomResource {
      * when the foreign server is created.
      * 
      */
-    @Export(name="fdwName", type=String.class, parameters={})
+    @Export(name="fdwName", refs={String.class}, tree="[0]")
     private Output<String> fdwName;
 
     /**
@@ -137,7 +137,7 @@ public class Server extends com.pulumi.resources.CustomResource {
      * This clause specifies the options for the server. The options typically define the connection details of the server, but the actual names and values are dependent on the server&#39;s foreign-data wrapper.
      * 
      */
-    @Export(name="options", type=Map.class, parameters={String.class, String.class})
+    @Export(name="options", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> options;
 
     /**
@@ -151,7 +151,7 @@ public class Server extends com.pulumi.resources.CustomResource {
      * The name of the foreign server to be created.
      * 
      */
-    @Export(name="serverName", type=String.class, parameters={})
+    @Export(name="serverName", refs={String.class}, tree="[0]")
     private Output<String> serverName;
 
     /**
@@ -165,7 +165,7 @@ public class Server extends com.pulumi.resources.CustomResource {
      * By default, the user who defines the server becomes its owner. Set this value to configure the new owner of the foreign server.
      * 
      */
-    @Export(name="serverOwner", type=String.class, parameters={})
+    @Export(name="serverOwner", refs={String.class}, tree="[0]")
     private Output<String> serverOwner;
 
     /**
@@ -182,7 +182,7 @@ public class Server extends com.pulumi.resources.CustomResource {
      * when the foreign server is created.
      * 
      */
-    @Export(name="serverType", type=String.class, parameters={})
+    @Export(name="serverType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverType;
 
     /**
@@ -199,7 +199,7 @@ public class Server extends com.pulumi.resources.CustomResource {
      * Optional server version, potentially useful to foreign-data wrappers.
      * 
      */
-    @Export(name="serverVersion", type=String.class, parameters={})
+    @Export(name="serverVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverVersion;
 
     /**

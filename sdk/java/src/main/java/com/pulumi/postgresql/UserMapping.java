@@ -81,7 +81,7 @@ public class UserMapping extends com.pulumi.resources.CustomResource {
      * This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server&#39;s foreign-data wrapper.
      * 
      */
-    @Export(name="options", type=Map.class, parameters={String.class, String.class})
+    @Export(name="options", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> options;
 
     /**
@@ -98,7 +98,7 @@ public class UserMapping extends com.pulumi.resources.CustomResource {
      * when the user mapping is created.
      * 
      */
-    @Export(name="serverName", type=String.class, parameters={})
+    @Export(name="serverName", refs={String.class}, tree="[0]")
     private Output<String> serverName;
 
     /**
@@ -118,7 +118,7 @@ public class UserMapping extends com.pulumi.resources.CustomResource {
      * when the user mapping is created.
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**

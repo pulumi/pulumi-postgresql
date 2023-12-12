@@ -79,7 +79,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * List of arguments for the function.
      * 
      */
-    @Export(name="args", type=List.class, parameters={FunctionArg.class})
+    @Export(name="args", refs={List.class,FunctionArg.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FunctionArg>> args;
 
     /**
@@ -94,7 +94,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      * 
      */
-    @Export(name="body", type=String.class, parameters={})
+    @Export(name="body", refs={String.class}, tree="[0]")
     private Output<String> body;
 
     /**
@@ -110,7 +110,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * If not specified, the function is created in the current database.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output<String> database;
 
     /**
@@ -126,7 +126,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * operators or triggers), and in turn all objects that depend on those objects. Default is false.
      * 
      */
-    @Export(name="dropCascade", type=Boolean.class, parameters={})
+    @Export(name="dropCascade", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dropCascade;
 
     /**
@@ -141,7 +141,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
      * 
      */
-    @Export(name="language", type=String.class, parameters={})
+    @Export(name="language", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> language;
 
     /**
@@ -155,7 +155,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The name of the argument.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -169,7 +169,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
      * 
      */
-    @Export(name="parallel", type=String.class, parameters={})
+    @Export(name="parallel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parallel;
 
     /**
@@ -183,7 +183,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Type that the function returns. It can be computed from the OUT arguments. Default is void.
      * 
      */
-    @Export(name="returns", type=String.class, parameters={})
+    @Export(name="returns", refs={String.class}, tree="[0]")
     private Output<String> returns;
 
     /**
@@ -198,7 +198,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * If not specified, the function is created in the current schema.
      * 
      */
-    @Export(name="schema", type=String.class, parameters={})
+    @Export(name="schema", refs={String.class}, tree="[0]")
     private Output<String> schema;
 
     /**
@@ -213,7 +213,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
      * 
      */
-    @Export(name="securityDefiner", type=Boolean.class, parameters={})
+    @Export(name="securityDefiner", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> securityDefiner;
 
     /**
@@ -227,7 +227,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * If the function should always return NULL when any of the inputs is NULL. Default is false.
      * 
      */
-    @Export(name="strict", type=Boolean.class, parameters={})
+    @Export(name="strict", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> strict;
 
     /**
@@ -241,7 +241,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
      * 
      */
-    @Export(name="volatility", type=String.class, parameters={})
+    @Export(name="volatility", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> volatility;
 
     /**

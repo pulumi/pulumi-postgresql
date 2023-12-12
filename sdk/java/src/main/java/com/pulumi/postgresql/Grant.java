@@ -118,7 +118,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
      * 
      */
-    @Export(name="columns", type=List.class, parameters={String.class})
+    @Export(name="columns", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> columns;
 
     /**
@@ -132,7 +132,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * The database to grant privileges on for this role.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output<String> database;
 
     /**
@@ -146,7 +146,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).
      * 
      */
-    @Export(name="objectType", type=String.class, parameters={})
+    @Export(name="objectType", refs={String.class}, tree="[0]")
     private Output<String> objectType;
 
     /**
@@ -160,7 +160,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
      * 
      */
-    @Export(name="objects", type=List.class, parameters={String.class})
+    @Export(name="objects", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> objects;
 
     /**
@@ -174,7 +174,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
      * 
      */
-    @Export(name="privileges", type=List.class, parameters={String.class})
+    @Export(name="privileges", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> privileges;
 
     /**
@@ -188,7 +188,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * The name of the role to grant privileges on, Set it to &#34;public&#34; for all roles.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -202,7 +202,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * The database schema to grant privileges on for this role (Required except if object_type is &#34;database&#34;)
      * 
      */
-    @Export(name="schema", type=String.class, parameters={})
+    @Export(name="schema", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schema;
 
     /**
@@ -216,7 +216,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
      * 
      */
-    @Export(name="withGrantOption", type=Boolean.class, parameters={})
+    @Export(name="withGrantOption", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> withGrantOption;
 
     /**

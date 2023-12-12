@@ -54,7 +54,7 @@ public class ReplicationSlot extends com.pulumi.resources.CustomResource {
      * Which database to create the replication slot on. Defaults to provider database.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output<String> database;
 
     /**
@@ -68,7 +68,7 @@ public class ReplicationSlot extends com.pulumi.resources.CustomResource {
      * The name of the replication slot.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -82,7 +82,7 @@ public class ReplicationSlot extends com.pulumi.resources.CustomResource {
      * Sets the output plugin.
      * 
      */
-    @Export(name="plugin", type=String.class, parameters={})
+    @Export(name="plugin", refs={String.class}, tree="[0]")
     private Output<String> plugin;
 
     /**

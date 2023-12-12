@@ -98,7 +98,7 @@ public class GrantRole extends com.pulumi.resources.CustomResource {
      * The name of the role that is added to `role`.
      * 
      */
-    @Export(name="grantRole", type=String.class, parameters={})
+    @Export(name="grantRole", refs={String.class}, tree="[0]")
     private Output<String> grantRole;
 
     /**
@@ -112,7 +112,7 @@ public class GrantRole extends com.pulumi.resources.CustomResource {
      * The name of the role that is granted a new membership.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -126,7 +126,7 @@ public class GrantRole extends com.pulumi.resources.CustomResource {
      * Giving ability to grant membership to others or not for `role`. (Default: false)
      * 
      */
-    @Export(name="withAdminOption", type=Boolean.class, parameters={})
+    @Export(name="withAdminOption", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> withAdminOption;
 
     /**

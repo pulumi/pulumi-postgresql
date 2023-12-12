@@ -105,12 +105,12 @@ public final class FunctionArg {
             return this;
         }
         public FunctionArg build() {
-            final var o = new FunctionArg();
-            o.default_ = default_;
-            o.mode = mode;
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new FunctionArg();
+            _resultValue.default_ = default_;
+            _resultValue.mode = mode;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

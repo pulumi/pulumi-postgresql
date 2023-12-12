@@ -61,7 +61,7 @@ public class Extension extends com.pulumi.resources.CustomResource {
      * When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
      * 
      */
-    @Export(name="createCascade", type=Boolean.class, parameters={})
+    @Export(name="createCascade", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> createCascade;
 
     /**
@@ -75,7 +75,7 @@ public class Extension extends com.pulumi.resources.CustomResource {
      * Which database to create the extension on. Defaults to provider database.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output<String> database;
 
     /**
@@ -89,7 +89,7 @@ public class Extension extends com.pulumi.resources.CustomResource {
      * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
      * 
      */
-    @Export(name="dropCascade", type=Boolean.class, parameters={})
+    @Export(name="dropCascade", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dropCascade;
 
     /**
@@ -103,7 +103,7 @@ public class Extension extends com.pulumi.resources.CustomResource {
      * The name of the extension.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -117,7 +117,7 @@ public class Extension extends com.pulumi.resources.CustomResource {
      * Sets the schema of an extension.
      * 
      */
-    @Export(name="schema", type=String.class, parameters={})
+    @Export(name="schema", refs={String.class}, tree="[0]")
     private Output<String> schema;
 
     /**
@@ -131,7 +131,7 @@ public class Extension extends com.pulumi.resources.CustomResource {
      * Sets the version number of the extension.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
