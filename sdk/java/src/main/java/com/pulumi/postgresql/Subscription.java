@@ -62,7 +62,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * The connection string to the publisher. It should follow the [keyword/value format](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
      * 
      */
-    @Export(name="conninfo", type=String.class, parameters={})
+    @Export(name="conninfo", refs={String.class}, tree="[0]")
     private Output<String> conninfo;
 
     /**
@@ -76,7 +76,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Specifies whether the command should create the replication slot on the publisher. Default behavior is true
      * 
      */
-    @Export(name="createSlot", type=Boolean.class, parameters={})
+    @Export(name="createSlot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> createSlot;
 
     /**
@@ -90,7 +90,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Which database to create the subscription on. Defaults to provider database.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output<String> database;
 
     /**
@@ -104,7 +104,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * The name of the publication.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -118,7 +118,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Names of the publications on the publisher to subscribe to
      * 
      */
-    @Export(name="publications", type=List.class, parameters={String.class})
+    @Export(name="publications", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> publications;
 
     /**
@@ -132,7 +132,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name
      * 
      */
-    @Export(name="slotName", type=String.class, parameters={})
+    @Export(name="slotName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> slotName;
 
     /**

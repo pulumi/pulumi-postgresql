@@ -63,11 +63,11 @@ public final class Clientcert {
             return this;
         }
         public Clientcert build() {
-            final var o = new Clientcert();
-            o.cert = cert;
-            o.key = key;
-            o.sslinline = sslinline;
-            return o;
+            final var _resultValue = new Clientcert();
+            _resultValue.cert = cert;
+            _resultValue.key = key;
+            _resultValue.sslinline = sslinline;
+            return _resultValue;
         }
     }
 }

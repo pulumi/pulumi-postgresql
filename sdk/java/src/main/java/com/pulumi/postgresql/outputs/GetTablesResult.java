@@ -166,17 +166,17 @@ public final class GetTablesResult {
             return tables(List.of(tables));
         }
         public GetTablesResult build() {
-            final var o = new GetTablesResult();
-            o.database = database;
-            o.id = id;
-            o.likeAllPatterns = likeAllPatterns;
-            o.likeAnyPatterns = likeAnyPatterns;
-            o.notLikeAllPatterns = notLikeAllPatterns;
-            o.regexPattern = regexPattern;
-            o.schemas = schemas;
-            o.tableTypes = tableTypes;
-            o.tables = tables;
-            return o;
+            final var _resultValue = new GetTablesResult();
+            _resultValue.database = database;
+            _resultValue.id = id;
+            _resultValue.likeAllPatterns = likeAllPatterns;
+            _resultValue.likeAnyPatterns = likeAnyPatterns;
+            _resultValue.notLikeAllPatterns = notLikeAllPatterns;
+            _resultValue.regexPattern = regexPattern;
+            _resultValue.schemas = schemas;
+            _resultValue.tableTypes = tableTypes;
+            _resultValue.tables = tables;
+            return _resultValue;
         }
     }
 }

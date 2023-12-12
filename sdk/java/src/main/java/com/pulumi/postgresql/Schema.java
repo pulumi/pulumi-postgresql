@@ -23,7 +23,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output<String> database;
 
     /**
@@ -37,7 +37,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * When true, will also drop all the objects that are contained in the schema. (Default: false)
      * 
      */
-    @Export(name="dropCascade", type=Boolean.class, parameters={})
+    @Export(name="dropCascade", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dropCascade;
 
     /**
@@ -51,7 +51,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * When true, use the existing schema if it exists. (Default: true)
      * 
      */
-    @Export(name="ifNotExists", type=Boolean.class, parameters={})
+    @Export(name="ifNotExists", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ifNotExists;
 
     /**
@@ -66,7 +66,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * database instance where it is configured.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -81,7 +81,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * The ROLE who owns the schema.
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
@@ -100,7 +100,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use postgresql_grant resource instead (with object_type=""schema"") */
-    @Export(name="policies", type=List.class, parameters={SchemaPolicy.class})
+    @Export(name="policies", refs={List.class,SchemaPolicy.class}, tree="[0,1]")
     private Output<List<SchemaPolicy>> policies;
 
     /**

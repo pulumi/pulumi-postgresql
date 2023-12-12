@@ -27,7 +27,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * AWS profile to use for IAM auth
      * 
      */
-    @Export(name="awsRdsIamProfile", type=String.class, parameters={})
+    @Export(name="awsRdsIamProfile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> awsRdsIamProfile;
 
     /**
@@ -41,7 +41,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * AWS region to use for IAM auth
      * 
      */
-    @Export(name="awsRdsIamRegion", type=String.class, parameters={})
+    @Export(name="awsRdsIamRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> awsRdsIamRegion;
 
     /**
@@ -56,7 +56,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
      * 
      */
-    @Export(name="azureTenantId", type=String.class, parameters={})
+    @Export(name="azureTenantId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> azureTenantId;
 
     /**
@@ -71,7 +71,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The name of the database to connect to in order to conenct to (defaults to `postgres`).
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> database;
 
     /**
@@ -85,7 +85,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Database username associated to the connected user (for user name maps)
      * 
      */
-    @Export(name="databaseUsername", type=String.class, parameters={})
+    @Export(name="databaseUsername", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> databaseUsername;
 
     /**
@@ -99,7 +99,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Specify the expected version of PostgreSQL.
      * 
      */
-    @Export(name="expectedVersion", type=String.class, parameters={})
+    @Export(name="expectedVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expectedVersion;
 
     /**
@@ -113,7 +113,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Name of PostgreSQL server address to connect to
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> host;
 
     /**
@@ -127,7 +127,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Password to be used if the PostgreSQL server demands password authentication
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -137,7 +137,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
-    @Export(name="scheme", type=String.class, parameters={})
+    @Export(name="scheme", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scheme;
 
     public Output<Optional<String>> scheme() {
@@ -149,7 +149,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Deprecated /* Rename PostgreSQL provider `ssl_mode` attribute to `sslmode` */
-    @Export(name="sslMode", type=String.class, parameters={})
+    @Export(name="sslMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslMode;
 
     public Output<Optional<String>> sslMode() {
@@ -160,7 +160,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * PostgreSQL server
      * 
      */
-    @Export(name="sslmode", type=String.class, parameters={})
+    @Export(name="sslmode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslmode;
 
     /**
@@ -175,7 +175,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The SSL server root certificate file path. The file must contain PEM encoded data.
      * 
      */
-    @Export(name="sslrootcert", type=String.class, parameters={})
+    @Export(name="sslrootcert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslrootcert;
 
     /**
@@ -189,7 +189,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * PostgreSQL user name to connect as
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**

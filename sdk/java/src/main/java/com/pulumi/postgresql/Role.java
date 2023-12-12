@@ -23,7 +23,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
      * 
      */
-    @Export(name="assumeRole", type=String.class, parameters={})
+    @Export(name="assumeRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> assumeRole;
 
     /**
@@ -38,7 +38,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * row-level security (RLS) policy.  Default value is `false`.
      * 
      */
-    @Export(name="bypassRowLevelSecurity", type=Boolean.class, parameters={})
+    @Export(name="bypassRowLevelSecurity", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> bypassRowLevelSecurity;
 
     /**
@@ -55,7 +55,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * limit.
      * 
      */
-    @Export(name="connectionLimit", type=Integer.class, parameters={})
+    @Export(name="connectionLimit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> connectionLimit;
 
     /**
@@ -72,7 +72,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * DATABASE`.  Default value is `false`.
      * 
      */
-    @Export(name="createDatabase", type=Boolean.class, parameters={})
+    @Export(name="createDatabase", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> createDatabase;
 
     /**
@@ -89,7 +89,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * is `false`.
      * 
      */
-    @Export(name="createRole", type=Boolean.class, parameters={})
+    @Export(name="createRole", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> createRole;
 
     /**
@@ -107,7 +107,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Rename PostgreSQL role resource attribute ""encrypted"" to ""encrypted_password"" */
-    @Export(name="encrypted", type=String.class, parameters={})
+    @Export(name="encrypted", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encrypted;
 
     public Output<Optional<String>> encrypted() {
@@ -121,7 +121,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * [PostgreSQL&#39;s `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
      * 
      */
-    @Export(name="encryptedPassword", type=Boolean.class, parameters={})
+    @Export(name="encryptedPassword", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> encryptedPassword;
 
     /**
@@ -139,7 +139,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
      * 
      */
-    @Export(name="idleInTransactionSessionTimeout", type=Integer.class, parameters={})
+    @Export(name="idleInTransactionSessionTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> idleInTransactionSessionTimeout;
 
     /**
@@ -154,7 +154,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * roles it is a member of.  Default value is `true`.
      * 
      */
-    @Export(name="inherit", type=Boolean.class, parameters={})
+    @Export(name="inherit", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> inherit;
 
     /**
@@ -171,7 +171,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * in the usual sense of the word.  Default value is `false`.
      * 
      */
-    @Export(name="login", type=Boolean.class, parameters={})
+    @Export(name="login", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> login;
 
     /**
@@ -188,7 +188,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * server instance where it is configured.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -204,7 +204,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * for roles having the `login` attribute set to true.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -221,7 +221,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * value is `false`
      * 
      */
-    @Export(name="replication", type=Boolean.class, parameters={})
+    @Export(name="replication", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> replication;
 
     /**
@@ -237,7 +237,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * Defines list of roles which will be granted to this new role.
      * 
      */
-    @Export(name="roles", type=List.class, parameters={String.class})
+    @Export(name="roles", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> roles;
 
     /**
@@ -253,7 +253,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * `&#34;, &#34;`.
      * 
      */
-    @Export(name="searchPaths", type=List.class, parameters={String.class})
+    @Export(name="searchPaths", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> searchPaths;
 
     /**
@@ -275,7 +275,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * This is the third and final step taken when removing a ROLE from a database.
      * 
      */
-    @Export(name="skipDropRole", type=Boolean.class, parameters={})
+    @Export(name="skipDropRole", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipDropRole;
 
     /**
@@ -302,7 +302,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
      * 
      */
-    @Export(name="skipReassignOwned", type=Boolean.class, parameters={})
+    @Export(name="skipReassignOwned", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipReassignOwned;
 
     /**
@@ -323,7 +323,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
      * 
      */
-    @Export(name="statementTimeout", type=Integer.class, parameters={})
+    @Export(name="statementTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> statementTimeout;
 
     /**
@@ -339,7 +339,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * value is `false`.
      * 
      */
-    @Export(name="superuser", type=Boolean.class, parameters={})
+    @Export(name="superuser", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> superuser;
 
     /**
@@ -359,7 +359,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * set to `infinity`.  Default is `NULL`, therefore `infinity`.
      * 
      */
-    @Export(name="validUntil", type=String.class, parameters={})
+    @Export(name="validUntil", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> validUntil;
 
     /**

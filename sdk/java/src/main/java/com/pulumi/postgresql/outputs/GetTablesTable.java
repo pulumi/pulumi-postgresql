@@ -84,11 +84,11 @@ public final class GetTablesTable {
             return this;
         }
         public GetTablesTable build() {
-            final var o = new GetTablesTable();
-            o.objectName = objectName;
-            o.schemaName = schemaName;
-            o.tableType = tableType;
-            return o;
+            final var _resultValue = new GetTablesTable();
+            _resultValue.objectName = objectName;
+            _resultValue.schemaName = schemaName;
+            _resultValue.tableType = tableType;
+            return _resultValue;
         }
     }
 }

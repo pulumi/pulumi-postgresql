@@ -84,11 +84,11 @@ public final class GetSequencesSequence {
             return this;
         }
         public GetSequencesSequence build() {
-            final var o = new GetSequencesSequence();
-            o.dataType = dataType;
-            o.objectName = objectName;
-            o.schemaName = schemaName;
-            return o;
+            final var _resultValue = new GetSequencesSequence();
+            _resultValue.dataType = dataType;
+            _resultValue.objectName = objectName;
+            _resultValue.schemaName = schemaName;
+            return _resultValue;
         }
     }
 }

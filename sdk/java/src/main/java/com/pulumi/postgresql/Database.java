@@ -24,7 +24,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
      * 
      */
-    @Export(name="allowConnections", type=Boolean.class, parameters={})
+    @Export(name="allowConnections", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowConnections;
 
     /**
@@ -41,7 +41,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * established to this database. `-1` (the default) means no limit.
      * 
      */
-    @Export(name="connectionLimit", type=Integer.class, parameters={})
+    @Export(name="connectionLimit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> connectionLimit;
 
     /**
@@ -56,7 +56,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Character set encoding to use in the new database
      * 
      */
-    @Export(name="encoding", type=String.class, parameters={})
+    @Export(name="encoding", refs={String.class}, tree="[0]")
     private Output<String> encoding;
 
     /**
@@ -72,7 +72,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * superusers or the owner of the database can clone it.
      * 
      */
-    @Export(name="isTemplate", type=Boolean.class, parameters={})
+    @Export(name="isTemplate", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isTemplate;
 
     /**
@@ -88,7 +88,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Collation order (LC_COLLATE) to use in the new database
      * 
      */
-    @Export(name="lcCollate", type=String.class, parameters={})
+    @Export(name="lcCollate", refs={String.class}, tree="[0]")
     private Output<String> lcCollate;
 
     /**
@@ -102,7 +102,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Character classification (LC_CTYPE) to use in the new database
      * 
      */
-    @Export(name="lcCtype", type=String.class, parameters={})
+    @Export(name="lcCtype", refs={String.class}, tree="[0]")
     private Output<String> lcCtype;
 
     /**
@@ -117,7 +117,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * server instance where it is configured.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -136,7 +136,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * the username in the provider is a superuser.
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
@@ -157,7 +157,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * created in this database.
      * 
      */
-    @Export(name="tablespaceName", type=String.class, parameters={})
+    @Export(name="tablespaceName", refs={String.class}, tree="[0]")
     private Output<String> tablespaceName;
 
     /**
@@ -174,7 +174,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * The name of the template from which to create the new database
      * 
      */
-    @Export(name="template", type=String.class, parameters={})
+    @Export(name="template", refs={String.class}, tree="[0]")
     private Output<String> template;
 
     /**

@@ -59,7 +59,7 @@ public class Publication extends com.pulumi.resources.CustomResource {
      * Should be ALL TABLES added to the publication. Defaults to &#39;false&#39;
      * 
      */
-    @Export(name="allTables", type=Boolean.class, parameters={})
+    @Export(name="allTables", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allTables;
 
     /**
@@ -73,7 +73,7 @@ public class Publication extends com.pulumi.resources.CustomResource {
      * Which database to create the publication on. Defaults to provider database.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output<String> database;
 
     /**
@@ -87,7 +87,7 @@ public class Publication extends com.pulumi.resources.CustomResource {
      * Should all subsequent resources of the publication be dropped. Defaults to &#39;false&#39;
      * 
      */
-    @Export(name="dropCascade", type=Boolean.class, parameters={})
+    @Export(name="dropCascade", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dropCascade;
 
     /**
@@ -101,7 +101,7 @@ public class Publication extends com.pulumi.resources.CustomResource {
      * The name of the publication.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -115,7 +115,7 @@ public class Publication extends com.pulumi.resources.CustomResource {
      * Who owns the publication. Defaults to provider user.
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
@@ -129,7 +129,7 @@ public class Publication extends com.pulumi.resources.CustomResource {
      * Which &#39;publish&#39; options should be turned on. Default to &#39;insert&#39;,&#39;update&#39;,&#39;delete&#39;
      * 
      */
-    @Export(name="publishParams", type=List.class, parameters={String.class})
+    @Export(name="publishParams", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> publishParams;
 
     /**
@@ -143,7 +143,7 @@ public class Publication extends com.pulumi.resources.CustomResource {
      * Should be option &#39;publish_via_partition_root&#39; be turned on. Default to &#39;false&#39;
      * 
      */
-    @Export(name="publishViaPartitionRootParam", type=Boolean.class, parameters={})
+    @Export(name="publishViaPartitionRootParam", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> publishViaPartitionRootParam;
 
     /**
@@ -157,7 +157,7 @@ public class Publication extends com.pulumi.resources.CustomResource {
      * Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
      * 
      */
-    @Export(name="tables", type=List.class, parameters={String.class})
+    @Export(name="tables", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tables;
 
     /**
