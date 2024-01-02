@@ -4,6 +4,7 @@
 package com.pulumi.postgresql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetTablesTable {
 
         @CustomType.Setter
         public Builder objectName(String objectName) {
-            this.objectName = Objects.requireNonNull(objectName);
+            if (objectName == null) {
+              throw new MissingRequiredPropertyException("GetTablesTable", "objectName");
+            }
+            this.objectName = objectName;
             return this;
         }
         @CustomType.Setter
         public Builder schemaName(String schemaName) {
-            this.schemaName = Objects.requireNonNull(schemaName);
+            if (schemaName == null) {
+              throw new MissingRequiredPropertyException("GetTablesTable", "schemaName");
+            }
+            this.schemaName = schemaName;
             return this;
         }
         @CustomType.Setter
         public Builder tableType(String tableType) {
-            this.tableType = Objects.requireNonNull(tableType);
+            if (tableType == null) {
+              throw new MissingRequiredPropertyException("GetTablesTable", "tableType");
+            }
+            this.tableType = tableType;
             return this;
         }
         public GetTablesTable build() {

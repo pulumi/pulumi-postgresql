@@ -4,6 +4,7 @@
 package com.pulumi.postgresql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -96,21 +97,29 @@ public final class GetSchemasResult {
 
         @CustomType.Setter
         public Builder database(String database) {
-            this.database = Objects.requireNonNull(database);
+            if (database == null) {
+              throw new MissingRequiredPropertyException("GetSchemasResult", "database");
+            }
+            this.database = database;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSchemasResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder includeSystemSchemas(@Nullable Boolean includeSystemSchemas) {
+
             this.includeSystemSchemas = includeSystemSchemas;
             return this;
         }
         @CustomType.Setter
         public Builder likeAllPatterns(@Nullable List<String> likeAllPatterns) {
+
             this.likeAllPatterns = likeAllPatterns;
             return this;
         }
@@ -119,6 +128,7 @@ public final class GetSchemasResult {
         }
         @CustomType.Setter
         public Builder likeAnyPatterns(@Nullable List<String> likeAnyPatterns) {
+
             this.likeAnyPatterns = likeAnyPatterns;
             return this;
         }
@@ -127,6 +137,7 @@ public final class GetSchemasResult {
         }
         @CustomType.Setter
         public Builder notLikeAllPatterns(@Nullable List<String> notLikeAllPatterns) {
+
             this.notLikeAllPatterns = notLikeAllPatterns;
             return this;
         }
@@ -135,12 +146,16 @@ public final class GetSchemasResult {
         }
         @CustomType.Setter
         public Builder regexPattern(@Nullable String regexPattern) {
+
             this.regexPattern = regexPattern;
             return this;
         }
         @CustomType.Setter
         public Builder schemas(List<String> schemas) {
-            this.schemas = Objects.requireNonNull(schemas);
+            if (schemas == null) {
+              throw new MissingRequiredPropertyException("GetSchemasResult", "schemas");
+            }
+            this.schemas = schemas;
             return this;
         }
         public Builder schemas(String... schemas) {

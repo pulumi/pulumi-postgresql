@@ -5,6 +5,7 @@ package com.pulumi.postgresql;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -324,8 +325,12 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ServerArgs build() {
-            $.fdwName = Objects.requireNonNull($.fdwName, "expected parameter 'fdwName' to be non-null");
-            $.serverName = Objects.requireNonNull($.serverName, "expected parameter 'serverName' to be non-null");
+            if ($.fdwName == null) {
+                throw new MissingRequiredPropertyException("ServerArgs", "fdwName");
+            }
+            if ($.serverName == null) {
+                throw new MissingRequiredPropertyException("ServerArgs", "serverName");
+            }
             return $;
         }
     }

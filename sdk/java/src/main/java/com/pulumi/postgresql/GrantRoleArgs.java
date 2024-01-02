@@ -5,6 +5,7 @@ package com.pulumi.postgresql;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class GrantRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GrantRoleArgs build() {
-            $.grantRole = Objects.requireNonNull($.grantRole, "expected parameter 'grantRole' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.grantRole == null) {
+                throw new MissingRequiredPropertyException("GrantRoleArgs", "grantRole");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("GrantRoleArgs", "role");
+            }
             return $;
         }
     }
