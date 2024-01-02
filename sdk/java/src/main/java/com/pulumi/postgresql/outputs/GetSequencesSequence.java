@@ -4,6 +4,7 @@
 package com.pulumi.postgresql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetSequencesSequence {
 
         @CustomType.Setter
         public Builder dataType(String dataType) {
-            this.dataType = Objects.requireNonNull(dataType);
+            if (dataType == null) {
+              throw new MissingRequiredPropertyException("GetSequencesSequence", "dataType");
+            }
+            this.dataType = dataType;
             return this;
         }
         @CustomType.Setter
         public Builder objectName(String objectName) {
-            this.objectName = Objects.requireNonNull(objectName);
+            if (objectName == null) {
+              throw new MissingRequiredPropertyException("GetSequencesSequence", "objectName");
+            }
+            this.objectName = objectName;
             return this;
         }
         @CustomType.Setter
         public Builder schemaName(String schemaName) {
-            this.schemaName = Objects.requireNonNull(schemaName);
+            if (schemaName == null) {
+              throw new MissingRequiredPropertyException("GetSequencesSequence", "schemaName");
+            }
+            this.schemaName = schemaName;
             return this;
         }
         public GetSequencesSequence build() {

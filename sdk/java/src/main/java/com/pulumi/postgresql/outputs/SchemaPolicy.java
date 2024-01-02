@@ -105,26 +105,31 @@ public final class SchemaPolicy {
 
         @CustomType.Setter
         public Builder create(@Nullable Boolean create) {
+
             this.create = create;
             return this;
         }
         @CustomType.Setter
         public Builder createWithGrant(@Nullable Boolean createWithGrant) {
+
             this.createWithGrant = createWithGrant;
             return this;
         }
         @CustomType.Setter
         public Builder role(@Nullable String role) {
+
             this.role = role;
             return this;
         }
         @CustomType.Setter
         public Builder usage(@Nullable Boolean usage) {
+
             this.usage = usage;
             return this;
         }
         @CustomType.Setter
         public Builder usageWithGrant(@Nullable Boolean usageWithGrant) {
+
             this.usageWithGrant = usageWithGrant;
             return this;
         }

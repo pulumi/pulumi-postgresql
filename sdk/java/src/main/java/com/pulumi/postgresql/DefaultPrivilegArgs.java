@@ -5,6 +5,7 @@ package com.pulumi.postgresql;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -310,11 +311,21 @@ public final class DefaultPrivilegArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public DefaultPrivilegArgs build() {
-            $.database = Objects.requireNonNull($.database, "expected parameter 'database' to be non-null");
-            $.objectType = Objects.requireNonNull($.objectType, "expected parameter 'objectType' to be non-null");
-            $.owner = Objects.requireNonNull($.owner, "expected parameter 'owner' to be non-null");
-            $.privileges = Objects.requireNonNull($.privileges, "expected parameter 'privileges' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.database == null) {
+                throw new MissingRequiredPropertyException("DefaultPrivilegArgs", "database");
+            }
+            if ($.objectType == null) {
+                throw new MissingRequiredPropertyException("DefaultPrivilegArgs", "objectType");
+            }
+            if ($.owner == null) {
+                throw new MissingRequiredPropertyException("DefaultPrivilegArgs", "owner");
+            }
+            if ($.privileges == null) {
+                throw new MissingRequiredPropertyException("DefaultPrivilegArgs", "privileges");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("DefaultPrivilegArgs", "role");
+            }
             return $;
         }
     }
