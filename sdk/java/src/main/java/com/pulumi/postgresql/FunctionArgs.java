@@ -5,6 +5,7 @@ package com.pulumi.postgresql;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.postgresql.inputs.FunctionArgArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -512,7 +513,9 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FunctionArgs build() {
-            $.body = Objects.requireNonNull($.body, "expected parameter 'body' to be non-null");
+            if ($.body == null) {
+                throw new MissingRequiredPropertyException("FunctionArgs", "body");
+            }
             return $;
         }
     }

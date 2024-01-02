@@ -4,6 +4,7 @@
 package com.pulumi.postgresql.config.inputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -49,16 +50,23 @@ public final class Clientcert {
 
         @CustomType.Setter
         public Builder cert(String cert) {
-            this.cert = Objects.requireNonNull(cert);
+            if (cert == null) {
+              throw new MissingRequiredPropertyException("Clientcert", "cert");
+            }
+            this.cert = cert;
             return this;
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("Clientcert", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder sslinline(@Nullable Boolean sslinline) {
+
             this.sslinline = sslinline;
             return this;
         }

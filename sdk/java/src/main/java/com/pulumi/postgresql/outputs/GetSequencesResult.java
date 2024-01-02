@@ -4,6 +4,7 @@
 package com.pulumi.postgresql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.postgresql.outputs.GetSequencesSequence;
 import java.lang.String;
 import java.util.List;
@@ -98,16 +99,23 @@ public final class GetSequencesResult {
 
         @CustomType.Setter
         public Builder database(String database) {
-            this.database = Objects.requireNonNull(database);
+            if (database == null) {
+              throw new MissingRequiredPropertyException("GetSequencesResult", "database");
+            }
+            this.database = database;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSequencesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder likeAllPatterns(@Nullable List<String> likeAllPatterns) {
+
             this.likeAllPatterns = likeAllPatterns;
             return this;
         }
@@ -116,6 +124,7 @@ public final class GetSequencesResult {
         }
         @CustomType.Setter
         public Builder likeAnyPatterns(@Nullable List<String> likeAnyPatterns) {
+
             this.likeAnyPatterns = likeAnyPatterns;
             return this;
         }
@@ -124,6 +133,7 @@ public final class GetSequencesResult {
         }
         @CustomType.Setter
         public Builder notLikeAllPatterns(@Nullable List<String> notLikeAllPatterns) {
+
             this.notLikeAllPatterns = notLikeAllPatterns;
             return this;
         }
@@ -132,11 +142,13 @@ public final class GetSequencesResult {
         }
         @CustomType.Setter
         public Builder regexPattern(@Nullable String regexPattern) {
+
             this.regexPattern = regexPattern;
             return this;
         }
         @CustomType.Setter
         public Builder schemas(@Nullable List<String> schemas) {
+
             this.schemas = schemas;
             return this;
         }
@@ -145,7 +157,10 @@ public final class GetSequencesResult {
         }
         @CustomType.Setter
         public Builder sequences(List<GetSequencesSequence> sequences) {
-            this.sequences = Objects.requireNonNull(sequences);
+            if (sequences == null) {
+              throw new MissingRequiredPropertyException("GetSequencesResult", "sequences");
+            }
+            this.sequences = sequences;
             return this;
         }
         public Builder sequences(GetSequencesSequence... sequences) {

@@ -5,6 +5,7 @@ package com.pulumi.postgresql;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class ReplicationSlotArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ReplicationSlotArgs build() {
-            $.plugin = Objects.requireNonNull($.plugin, "expected parameter 'plugin' to be non-null");
+            if ($.plugin == null) {
+                throw new MissingRequiredPropertyException("ReplicationSlotArgs", "plugin");
+            }
             return $;
         }
     }
