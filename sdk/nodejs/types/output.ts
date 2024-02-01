@@ -81,8 +81,17 @@ export interface SchemaPolicy {
 
 export namespace config {
     export interface Clientcert {
+        /**
+         * The SSL client certificate file path. The file must contain PEM encoded data.
+         */
         cert: string;
+        /**
+         * The SSL client certificate private key file path. The file must contain PEM encoded data.
+         */
         key: string;
+        /**
+         * Must be set to true if you are inlining the cert/key instead of using a file path.
+         */
         sslinline?: boolean;
     }
 

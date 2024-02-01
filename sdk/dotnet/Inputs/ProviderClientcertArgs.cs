@@ -12,12 +12,21 @@ namespace Pulumi.PostgreSql.Inputs
 
     public sealed class ProviderClientcertArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The SSL client certificate file path. The file must contain PEM encoded data.
+        /// </summary>
         [Input("cert", required: true)]
         public Input<string> Cert { get; set; } = null!;
 
+        /// <summary>
+        /// The SSL client certificate private key file path. The file must contain PEM encoded data.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// Must be set to true if you are inlining the cert/key instead of using a file path.
+        /// </summary>
         [Input("sslinline")]
         public Input<bool>? Sslinline { get; set; }
 

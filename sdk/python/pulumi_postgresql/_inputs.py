@@ -91,6 +91,11 @@ class ProviderClientcertArgs:
                  cert: pulumi.Input[str],
                  key: pulumi.Input[str],
                  sslinline: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] cert: The SSL client certificate file path. The file must contain PEM encoded data.
+        :param pulumi.Input[str] key: The SSL client certificate private key file path. The file must contain PEM encoded data.
+        :param pulumi.Input[bool] sslinline: Must be set to true if you are inlining the cert/key instead of using a file path.
+        """
         pulumi.set(__self__, "cert", cert)
         pulumi.set(__self__, "key", key)
         if sslinline is not None:
@@ -99,6 +104,9 @@ class ProviderClientcertArgs:
     @property
     @pulumi.getter
     def cert(self) -> pulumi.Input[str]:
+        """
+        The SSL client certificate file path. The file must contain PEM encoded data.
+        """
         return pulumi.get(self, "cert")
 
     @cert.setter
@@ -108,6 +116,9 @@ class ProviderClientcertArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The SSL client certificate private key file path. The file must contain PEM encoded data.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -117,6 +128,9 @@ class ProviderClientcertArgs:
     @property
     @pulumi.getter
     def sslinline(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Must be set to true if you are inlining the cert/key instead of using a file path.
+        """
         return pulumi.get(self, "sslinline")
 
     @sslinline.setter

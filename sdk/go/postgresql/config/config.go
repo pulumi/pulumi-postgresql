@@ -11,7 +11,7 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// Use rds_iam instead of password authentication (see:
+// Use rdsIam instead of password authentication (see:
 // https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
 func GetAwsRdsIamAuth(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "postgresql:awsRdsIamAuth")
@@ -32,9 +32,6 @@ func GetAwsRdsIamRegion(ctx *pulumi.Context) string {
 func GetAzureIdentityAuth(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "postgresql:azureIdentityAuth")
 }
-
-// MS Azure tenant ID (see:
-// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
 func GetAzureTenantId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:azureTenantId")
 }
