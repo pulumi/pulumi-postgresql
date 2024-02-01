@@ -75,10 +75,6 @@ namespace Pulumi.PostgreSql
         }
 
         private static readonly __Value<string?> _azureTenantId = new __Value<string?>(() => __config.Get("azureTenantId"));
-        /// <summary>
-        /// MS Azure tenant ID (see:
-        /// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
-        /// </summary>
         public static string? AzureTenantId
         {
             get => _azureTenantId.Get();
@@ -236,8 +232,17 @@ namespace Pulumi.PostgreSql
 
              public class Clientcert
              {
+            /// <summary>
+            /// The SSL client certificate file path. The file must contain PEM encoded data.
+            /// </summary>
                 public string Cert { get; set; }
+            /// <summary>
+            /// The SSL client certificate private key file path. The file must contain PEM encoded data.
+            /// </summary>
                 public string Key { get; set; }
+            /// <summary>
+            /// Must be set to true if you are inlining the cert/key instead of using a file path.
+            /// </summary>
                 public bool? Sslinline { get; set; }
             }
         }

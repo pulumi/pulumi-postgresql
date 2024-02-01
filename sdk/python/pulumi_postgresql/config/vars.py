@@ -48,10 +48,6 @@ class _ExportableConfig(types.ModuleType):
 
     @property
     def azure_tenant_id(self) -> Optional[str]:
-        """
-        MS Azure tenant ID (see:
-        https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
-        """
         return __config__.get('azureTenantId')
 
     @property

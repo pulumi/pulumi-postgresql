@@ -138,9 +138,12 @@ func (o FunctionArgArrayOutput) Index(i pulumi.IntInput) FunctionArgOutput {
 }
 
 type ProviderClientcert struct {
-	Cert      string `pulumi:"cert"`
-	Key       string `pulumi:"key"`
-	Sslinline *bool  `pulumi:"sslinline"`
+	// The SSL client certificate file path. The file must contain PEM encoded data.
+	Cert string `pulumi:"cert"`
+	// The SSL client certificate private key file path. The file must contain PEM encoded data.
+	Key string `pulumi:"key"`
+	// Must be set to true if you are inlining the cert/key instead of using a file path.
+	Sslinline *bool `pulumi:"sslinline"`
 }
 
 // ProviderClientcertInput is an input type that accepts ProviderClientcertArgs and ProviderClientcertOutput values.
@@ -155,8 +158,11 @@ type ProviderClientcertInput interface {
 }
 
 type ProviderClientcertArgs struct {
-	Cert      pulumi.StringInput  `pulumi:"cert"`
-	Key       pulumi.StringInput  `pulumi:"key"`
+	// The SSL client certificate file path. The file must contain PEM encoded data.
+	Cert pulumi.StringInput `pulumi:"cert"`
+	// The SSL client certificate private key file path. The file must contain PEM encoded data.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Must be set to true if you are inlining the cert/key instead of using a file path.
 	Sslinline pulumi.BoolPtrInput `pulumi:"sslinline"`
 }
 
@@ -237,14 +243,17 @@ func (o ProviderClientcertOutput) ToProviderClientcertPtrOutputWithContext(ctx c
 	}).(ProviderClientcertPtrOutput)
 }
 
+// The SSL client certificate file path. The file must contain PEM encoded data.
 func (o ProviderClientcertOutput) Cert() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderClientcert) string { return v.Cert }).(pulumi.StringOutput)
 }
 
+// The SSL client certificate private key file path. The file must contain PEM encoded data.
 func (o ProviderClientcertOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderClientcert) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Must be set to true if you are inlining the cert/key instead of using a file path.
 func (o ProviderClientcertOutput) Sslinline() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProviderClientcert) *bool { return v.Sslinline }).(pulumi.BoolPtrOutput)
 }
@@ -273,6 +282,7 @@ func (o ProviderClientcertPtrOutput) Elem() ProviderClientcertOutput {
 	}).(ProviderClientcertOutput)
 }
 
+// The SSL client certificate file path. The file must contain PEM encoded data.
 func (o ProviderClientcertPtrOutput) Cert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderClientcert) *string {
 		if v == nil {
@@ -282,6 +292,7 @@ func (o ProviderClientcertPtrOutput) Cert() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The SSL client certificate private key file path. The file must contain PEM encoded data.
 func (o ProviderClientcertPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderClientcert) *string {
 		if v == nil {
@@ -291,6 +302,7 @@ func (o ProviderClientcertPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Must be set to true if you are inlining the cert/key instead of using a file path.
 func (o ProviderClientcertPtrOutput) Sslinline() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProviderClientcert) *bool {
 		if v == nil {

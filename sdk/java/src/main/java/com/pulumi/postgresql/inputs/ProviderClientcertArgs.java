@@ -17,23 +17,47 @@ public final class ProviderClientcertArgs extends com.pulumi.resources.ResourceA
 
     public static final ProviderClientcertArgs Empty = new ProviderClientcertArgs();
 
+    /**
+     * The SSL client certificate file path. The file must contain PEM encoded data.
+     * 
+     */
     @Import(name="cert", required=true)
     private Output<String> cert;
 
+    /**
+     * @return The SSL client certificate file path. The file must contain PEM encoded data.
+     * 
+     */
     public Output<String> cert() {
         return this.cert;
     }
 
+    /**
+     * The SSL client certificate private key file path. The file must contain PEM encoded data.
+     * 
+     */
     @Import(name="key", required=true)
     private Output<String> key;
 
+    /**
+     * @return The SSL client certificate private key file path. The file must contain PEM encoded data.
+     * 
+     */
     public Output<String> key() {
         return this.key;
     }
 
+    /**
+     * Must be set to true if you are inlining the cert/key instead of using a file path.
+     * 
+     */
     @Import(name="sslinline")
     private @Nullable Output<Boolean> sslinline;
 
+    /**
+     * @return Must be set to true if you are inlining the cert/key instead of using a file path.
+     * 
+     */
     public Optional<Output<Boolean>> sslinline() {
         return Optional.ofNullable(this.sslinline);
     }
@@ -64,29 +88,65 @@ public final class ProviderClientcertArgs extends com.pulumi.resources.ResourceA
             $ = new ProviderClientcertArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cert The SSL client certificate file path. The file must contain PEM encoded data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cert(Output<String> cert) {
             $.cert = cert;
             return this;
         }
 
+        /**
+         * @param cert The SSL client certificate file path. The file must contain PEM encoded data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cert(String cert) {
             return cert(Output.of(cert));
         }
 
+        /**
+         * @param key The SSL client certificate private key file path. The file must contain PEM encoded data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key The SSL client certificate private key file path. The file must contain PEM encoded data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param sslinline Must be set to true if you are inlining the cert/key instead of using a file path.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sslinline(@Nullable Output<Boolean> sslinline) {
             $.sslinline = sslinline;
             return this;
         }
 
+        /**
+         * @param sslinline Must be set to true if you are inlining the cert/key instead of using a file path.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sslinline(Boolean sslinline) {
             return sslinline(Output.of(sslinline));
         }
