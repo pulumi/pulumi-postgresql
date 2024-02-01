@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class Clientcert {
+    /**
+     * @return The SSL client certificate file path. The file must contain PEM encoded data.
+     * 
+     */
     private String cert;
+    /**
+     * @return The SSL client certificate private key file path. The file must contain PEM encoded data.
+     * 
+     */
     private String key;
+    /**
+     * @return Must be set to true if you are inlining the cert/key instead of using a file path.
+     * 
+     */
     private @Nullable Boolean sslinline;
 
     private Clientcert() {}
+    /**
+     * @return The SSL client certificate file path. The file must contain PEM encoded data.
+     * 
+     */
     public String cert() {
         return this.cert;
     }
+    /**
+     * @return The SSL client certificate private key file path. The file must contain PEM encoded data.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Must be set to true if you are inlining the cert/key instead of using a file path.
+     * 
+     */
     public Optional<Boolean> sslinline() {
         return Optional.ofNullable(this.sslinline);
     }

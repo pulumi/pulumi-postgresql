@@ -10,7 +10,7 @@ declare var exports: any;
 const __config = new pulumi.Config("postgresql");
 
 /**
- * Use rds_iam instead of password authentication (see:
+ * Use rdsIam instead of password authentication (see:
  * https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
  */
 export declare const awsRdsIamAuth: boolean | undefined;
@@ -55,10 +55,6 @@ Object.defineProperty(exports, "azureIdentityAuth", {
     enumerable: true,
 });
 
-/**
- * MS Azure tenant ID (see:
- * https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
- */
 export declare const azureTenantId: string | undefined;
 Object.defineProperty(exports, "azureTenantId", {
     get() {

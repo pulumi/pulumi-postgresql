@@ -25,8 +25,17 @@ export interface FunctionArg {
 }
 
 export interface ProviderClientcert {
+    /**
+     * The SSL client certificate file path. The file must contain PEM encoded data.
+     */
     cert: pulumi.Input<string>;
+    /**
+     * The SSL client certificate private key file path. The file must contain PEM encoded data.
+     */
     key: pulumi.Input<string>;
+    /**
+     * Must be set to true if you are inlining the cert/key instead of using a file path.
+     */
     sslinline?: pulumi.Input<boolean>;
 }
 
