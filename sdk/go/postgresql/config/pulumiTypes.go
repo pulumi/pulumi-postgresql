@@ -14,9 +14,12 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type Clientcert struct {
-	Cert      string `pulumi:"cert"`
-	Key       string `pulumi:"key"`
-	Sslinline *bool  `pulumi:"sslinline"`
+	// The SSL client certificate file path. The file must contain PEM encoded data.
+	Cert string `pulumi:"cert"`
+	// The SSL client certificate private key file path. The file must contain PEM encoded data.
+	Key string `pulumi:"key"`
+	// Must be set to true if you are inlining the cert/key instead of using a file path.
+	Sslinline *bool `pulumi:"sslinline"`
 }
 
 // ClientcertInput is an input type that accepts ClientcertArgs and ClientcertOutput values.
@@ -31,8 +34,11 @@ type ClientcertInput interface {
 }
 
 type ClientcertArgs struct {
-	Cert      pulumi.StringInput  `pulumi:"cert"`
-	Key       pulumi.StringInput  `pulumi:"key"`
+	// The SSL client certificate file path. The file must contain PEM encoded data.
+	Cert pulumi.StringInput `pulumi:"cert"`
+	// The SSL client certificate private key file path. The file must contain PEM encoded data.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Must be set to true if you are inlining the cert/key instead of using a file path.
 	Sslinline pulumi.BoolPtrInput `pulumi:"sslinline"`
 }
 
@@ -62,14 +68,17 @@ func (o ClientcertOutput) ToClientcertOutputWithContext(ctx context.Context) Cli
 	return o
 }
 
+// The SSL client certificate file path. The file must contain PEM encoded data.
 func (o ClientcertOutput) Cert() pulumi.StringOutput {
 	return o.ApplyT(func(v Clientcert) string { return v.Cert }).(pulumi.StringOutput)
 }
 
+// The SSL client certificate private key file path. The file must contain PEM encoded data.
 func (o ClientcertOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v Clientcert) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Must be set to true if you are inlining the cert/key instead of using a file path.
 func (o ClientcertOutput) Sslinline() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Clientcert) *bool { return v.Sslinline }).(pulumi.BoolPtrOutput)
 }

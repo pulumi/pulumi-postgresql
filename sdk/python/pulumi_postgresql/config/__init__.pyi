@@ -33,10 +33,6 @@ https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-config
 """
 
 azureTenantId: Optional[str]
-"""
-MS Azure tenant ID (see:
-https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
-"""
 
 clientcert: Optional[str]
 """

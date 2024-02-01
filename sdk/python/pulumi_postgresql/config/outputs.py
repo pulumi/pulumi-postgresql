@@ -19,6 +19,11 @@ class Clientcert(dict):
                  cert: str,
                  key: str,
                  sslinline: Optional[bool] = None):
+        """
+        :param str cert: The SSL client certificate file path. The file must contain PEM encoded data.
+        :param str key: The SSL client certificate private key file path. The file must contain PEM encoded data.
+        :param bool sslinline: Must be set to true if you are inlining the cert/key instead of using a file path.
+        """
         pulumi.set(__self__, "cert", cert)
         pulumi.set(__self__, "key", key)
         if sslinline is not None:
@@ -27,16 +32,25 @@ class Clientcert(dict):
     @property
     @pulumi.getter
     def cert(self) -> str:
+        """
+        The SSL client certificate file path. The file must contain PEM encoded data.
+        """
         return pulumi.get(self, "cert")
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The SSL client certificate private key file path. The file must contain PEM encoded data.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def sslinline(self) -> Optional[bool]:
+        """
+        Must be set to true if you are inlining the cert/key instead of using a file path.
+        """
         return pulumi.get(self, "sslinline")
 
 
