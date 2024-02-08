@@ -249,7 +249,7 @@ class Extension(pulumi.CustomResource):
         PostgreSQL Extensions can be imported using the database name and the extension's resource name, e.g.
 
         ```sh
-         $ pulumi import postgresql:index/extension:Extension uuid_ossp example-database.uuid-ossp`
+        $ pulumi import postgresql:index/extension:Extension uuid_ossp example-database.uuid-ossp`
         ```
 
         :param str resource_name: The name of the resource.
@@ -285,7 +285,7 @@ class Extension(pulumi.CustomResource):
         PostgreSQL Extensions can be imported using the database name and the extension's resource name, e.g.
 
         ```sh
-         $ pulumi import postgresql:index/extension:Extension uuid_ossp example-database.uuid-ossp`
+        $ pulumi import postgresql:index/extension:Extension uuid_ossp example-database.uuid-ossp`
         ```
 
         :param str resource_name: The name of the resource.

@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * PostgreSQL Extensions can be imported using the database name and the extension&#39;s resource name, e.g.
  * 
  * ```sh
- *  $ pulumi import postgresql:index/extension:Extension uuid_ossp example-database.uuid-ossp`
+ * $ pulumi import postgresql:index/extension:Extension uuid_ossp example-database.uuid-ossp`
  * ```
  * 
  */
