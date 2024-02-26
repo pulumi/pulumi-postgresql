@@ -33,6 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Grant SELECT privileges on 2 tables
 //			_, err := postgresql.NewGrant(ctx, "readonlyTables", &postgresql.GrantArgs{
 //				Database:   pulumi.String("test_db"),
 //				ObjectType: pulumi.String("table"),
@@ -49,6 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Grant SELECT & INSERT privileges on 2 columns in 1 table
 //			_, err = postgresql.NewGrant(ctx, "readInsertColumn", &postgresql.GrantArgs{
 //				Columns: pulumi.StringArray{
 //					pulumi.String("col1"),
