@@ -62,7 +62,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.postgresql.Role;
- * import com.pulumi.postgresql.RoleArgs;
  * import com.pulumi.postgresql.GrantRole;
  * import com.pulumi.postgresql.GrantRoleArgs;
  * import java.util.List;
@@ -78,9 +77,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bob = new Role(&#34;bob&#34;, RoleArgs.builder()        
- *             .role(&#34;bob&#34;)
- *             .build());
+ *         var bob = new Role(&#34;bob&#34;);
  * 
  *         var bobAdmin = new GrantRole(&#34;bobAdmin&#34;, GrantRoleArgs.builder()        
  *             .role(&#34;bob&#34;)

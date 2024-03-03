@@ -15,6 +15,46 @@ namespace Pulumi.PostgreSql
     /// When using ``postgresql.GrantRole`` resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.
     /// 
     /// &gt; **Note:** This resource needs PostgreSQL version 9 or above.
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var grantRoot = new PostgreSql.GrantRole("grantRoot", new()
+    ///     {
+    ///         GrantRoleName = "application",
+    ///         Role = "root",
+    ///         WithAdminOption = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; **Note:** If you use `postgresql.GrantRole` for a role that you also manage with a `postgresql.Role` resource, you need to ignore the changes of the `roles` attribute in the `postgresql.Role` resource or they will fight over what your role grants should be. e.g.:
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bob = new PostgreSql.Role("bob");
+    /// 
+    ///     var bobAdmin = new PostgreSql.GrantRole("bobAdmin", new()
+    ///     {
+    ///         Role = "bob",
+    ///         GrantRoleName = "admin",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/grantRole:GrantRole")]
     public partial class GrantRole : global::Pulumi.CustomResource
