@@ -122,12 +122,14 @@ def get_schemas(database: Optional[str] = None,
 
     ## Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_postgresql as postgresql
 
     my_schemas = postgresql.get_schemas(database="my_database")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str database: The PostgreSQL database which will be queried for schema names.
@@ -173,12 +175,14 @@ def get_schemas_output(database: Optional[pulumi.Input[str]] = None,
 
     ## Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_postgresql as postgresql
 
     my_schemas = postgresql.get_schemas(database="my_database")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str database: The PostgreSQL database which will be queried for schema names.

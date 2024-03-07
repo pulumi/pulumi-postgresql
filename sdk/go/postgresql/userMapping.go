@@ -16,6 +16,7 @@ import (
 //
 // ## Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,6 +67,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type UserMapping struct {
 	pulumi.CustomResourceState
 

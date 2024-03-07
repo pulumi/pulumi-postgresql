@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * &gt; **Note:** This resource needs Postgresql version 9 or above.
  * 
  * ## Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -55,10 +57,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Examples
  * 
  * Revoke default privileges for functions for &#34;public&#34; role:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -91,6 +96,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * @deprecated
  * postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges

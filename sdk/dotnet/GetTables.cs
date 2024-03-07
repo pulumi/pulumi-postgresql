@@ -17,6 +17,7 @@ namespace Pulumi.PostgreSql
         /// 
         /// ## Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,6 +33,7 @@ namespace Pulumi.PostgreSql
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTablesResult> InvokeAsync(GetTablesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("postgresql:index/getTables:getTables", args ?? new GetTablesArgs(), options.WithDefaults());
@@ -42,6 +44,7 @@ namespace Pulumi.PostgreSql
         /// 
         /// ## Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -57,6 +60,7 @@ namespace Pulumi.PostgreSql
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTablesResult> Invoke(GetTablesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTablesResult>("postgresql:index/getTables:getTables", args ?? new GetTablesInvokeArgs(), options.WithDefaults());

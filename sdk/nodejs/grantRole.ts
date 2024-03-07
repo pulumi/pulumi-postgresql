@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
@@ -23,8 +24,10 @@ import * as utilities from "./utilities";
  *     withAdminOption: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * > **Note:** If you use `postgresql.GrantRole` for a role that you also manage with a `postgresql.Role` resource, you need to ignore the changes of the `roles` attribute in the `postgresql.Role` resource or they will fight over what your role grants should be. e.g.:
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
@@ -35,6 +38,7 @@ import * as utilities from "./utilities";
  *     grantRole: "admin",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class GrantRole extends pulumi.CustomResource {
     /**
