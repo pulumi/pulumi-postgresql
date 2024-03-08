@@ -237,12 +237,14 @@ class Extension(pulumi.CustomResource):
 
         ## Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
         my_extension = postgresql.Extension("myExtension")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -273,12 +275,14 @@ class Extension(pulumi.CustomResource):
 
         ## Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
         my_extension = postgresql.Extension("myExtension")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     database: "my_database",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSequences(args: GetSequencesArgs, opts?: pulumi.InvokeOptions): Promise<GetSequencesResult> {
 
@@ -90,6 +92,7 @@ export interface GetSequencesResult {
  *
  * ## Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
@@ -98,6 +101,7 @@ export interface GetSequencesResult {
  *     database: "my_database",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSequencesOutput(args: GetSequencesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSequencesResult> {
     return pulumi.output(args).apply((a: any) => getSequences(a, opts))

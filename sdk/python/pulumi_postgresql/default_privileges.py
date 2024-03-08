@@ -266,6 +266,7 @@ class DefaultPrivileges(pulumi.CustomResource):
 
         ## Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -278,11 +279,13 @@ class DefaultPrivileges(pulumi.CustomResource):
             role="test_role",
             schema="public")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Examples
 
         Revoke default privileges for functions for "public" role:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -294,6 +297,7 @@ class DefaultPrivileges(pulumi.CustomResource):
             object_type="function",
             privileges=[])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -318,6 +322,7 @@ class DefaultPrivileges(pulumi.CustomResource):
 
         ## Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -330,11 +335,13 @@ class DefaultPrivileges(pulumi.CustomResource):
             role="test_role",
             schema="public")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Examples
 
         Revoke default privileges for functions for "public" role:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -346,6 +353,7 @@ class DefaultPrivileges(pulumi.CustomResource):
             object_type="function",
             privileges=[])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param DefaultPrivilegesArgs args: The arguments to use to populate this resource's properties.

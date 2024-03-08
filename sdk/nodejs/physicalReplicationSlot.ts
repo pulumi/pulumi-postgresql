@@ -11,12 +11,14 @@ import * as utilities from "./utilities";
  *
  * ## Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
  * const mySlot = new postgresql.PhysicalReplicationSlot("mySlot", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class PhysicalReplicationSlot extends pulumi.CustomResource {
     /**

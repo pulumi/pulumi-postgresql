@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * any stand-by cluster to replicate physically data.
  * 
  * ## Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -44,6 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot")

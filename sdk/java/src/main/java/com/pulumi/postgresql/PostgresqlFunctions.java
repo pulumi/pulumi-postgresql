@@ -24,6 +24,8 @@ public final class PostgresqlFunctions {
      * The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
      * 
      * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -52,6 +54,7 @@ public final class PostgresqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSchemasResult> getSchemas(GetSchemasArgs args) {
@@ -61,6 +64,8 @@ public final class PostgresqlFunctions {
      * The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
      * 
      * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -89,6 +94,7 @@ public final class PostgresqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSchemasResult> getSchemasPlain(GetSchemasPlainArgs args) {
@@ -98,6 +104,8 @@ public final class PostgresqlFunctions {
      * The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
      * 
      * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -126,6 +134,7 @@ public final class PostgresqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSchemasResult> getSchemas(GetSchemasArgs args, InvokeOptions options) {
@@ -135,6 +144,8 @@ public final class PostgresqlFunctions {
      * The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
      * 
      * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -163,6 +174,7 @@ public final class PostgresqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSchemasResult> getSchemasPlain(GetSchemasPlainArgs args, InvokeOptions options) {
@@ -172,6 +184,8 @@ public final class PostgresqlFunctions {
      * The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
      * 
      * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -200,6 +214,7 @@ public final class PostgresqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSequencesResult> getSequences(GetSequencesArgs args) {
@@ -209,6 +224,8 @@ public final class PostgresqlFunctions {
      * The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
      * 
      * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -237,6 +254,7 @@ public final class PostgresqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSequencesResult> getSequencesPlain(GetSequencesPlainArgs args) {
@@ -246,6 +264,8 @@ public final class PostgresqlFunctions {
      * The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
      * 
      * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -274,6 +294,7 @@ public final class PostgresqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSequencesResult> getSequences(GetSequencesArgs args, InvokeOptions options) {
@@ -283,6 +304,8 @@ public final class PostgresqlFunctions {
      * The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
      * 
      * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -311,6 +334,7 @@ public final class PostgresqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSequencesResult> getSequencesPlain(GetSequencesPlainArgs args, InvokeOptions options) {
@@ -320,6 +344,8 @@ public final class PostgresqlFunctions {
      * The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
      * 
      * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -348,6 +374,7 @@ public final class PostgresqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTablesResult> getTables(GetTablesArgs args) {
@@ -357,6 +384,8 @@ public final class PostgresqlFunctions {
      * The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
      * 
      * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -385,6 +414,7 @@ public final class PostgresqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTablesResult> getTablesPlain(GetTablesPlainArgs args) {
@@ -394,6 +424,8 @@ public final class PostgresqlFunctions {
      * The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
      * 
      * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -422,6 +454,7 @@ public final class PostgresqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTablesResult> getTables(GetTablesArgs args, InvokeOptions options) {
@@ -431,6 +464,8 @@ public final class PostgresqlFunctions {
      * The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
      * 
      * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -459,6 +494,7 @@ public final class PostgresqlFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTablesResult> getTablesPlain(GetTablesPlainArgs args, InvokeOptions options) {

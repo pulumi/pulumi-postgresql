@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * The ``postgresql.UserMapping`` resource creates and manages a user mapping on a PostgreSQL server.
  * 
  * ## Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -73,6 +75,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="postgresql:index/userMapping:UserMapping")

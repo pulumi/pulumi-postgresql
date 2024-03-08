@@ -15,6 +15,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// ## Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,6 +35,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/publication:Publication")]
     public partial class Publication : global::Pulumi.CustomResource

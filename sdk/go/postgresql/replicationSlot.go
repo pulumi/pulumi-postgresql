@@ -17,6 +17,7 @@ import (
 //
 // ## Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type ReplicationSlot struct {
 	pulumi.CustomResourceState
 

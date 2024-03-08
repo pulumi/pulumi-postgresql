@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
@@ -30,15 +31,20 @@ import * as utilities from "./utilities";
  *     returns: "integer",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * It is possible to import a `postgresql_function` resource with the following command:
+ * It is possible to import a `postgresql_function` resource with the following
+ * command:
  *
  * ```sh
- *  $ pulumi import postgresql:index/function:Function function_foo "my_database.my_schema.my_function_name(arguments)"
+ * $ pulumi import postgresql:index/function:Function function_foo "my_database.my_schema.my_function_name(arguments)"
  * ```
- *  Where `my_database` is the name of the database containing the schema, `my_schema` is the name of the schema in the PostgreSQL database, `my_function_name` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and `postgresql_schema.function_foo` is the name of the resource whose state will be populated as a result of the command.
+ * Where `my_database` is the name of the database containing the schema,
+ * `my_schema` is the name of the schema in the PostgreSQL database, `my_function_name` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and
+ * `postgresql_schema.function_foo` is the name of the resource whose state will be
+ * populated as a result of the command.
  */
 export class Function extends pulumi.CustomResource {
     /**
