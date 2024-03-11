@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
@@ -24,11 +25,13 @@ import * as utilities from "./utilities";
  *     schema: "public",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Examples
  *
  * Revoke default privileges for functions for "public" role:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
@@ -41,6 +44,7 @@ import * as utilities from "./utilities";
  *     privileges: [],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class DefaultPrivileges extends pulumi.CustomResource {
     /**

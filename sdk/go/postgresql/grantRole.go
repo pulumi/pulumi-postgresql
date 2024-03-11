@@ -20,6 +20,7 @@ import (
 //
 // ## Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,8 +46,10 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // > **Note:** If you use `GrantRole` for a role that you also manage with a `Role` resource, you need to ignore the changes of the `roles` attribute in the `Role` resource or they will fight over what your role grants should be. e.g.:
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,6 +78,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type GrantRole struct {
 	pulumi.CustomResourceState
 

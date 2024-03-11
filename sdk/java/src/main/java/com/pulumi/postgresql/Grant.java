@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * **Note:** Using column &amp; table grants on the _same_ table with the _same_ privileges can lead to unexpected behaviours.
  * 
  * ## Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -74,10 +76,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Examples
  * 
  * Revoke default accesses for public schema:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -110,6 +115,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="postgresql:index/grant:Grant")

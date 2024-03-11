@@ -16,6 +16,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// ## Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,11 +40,13 @@ namespace Pulumi.PostgreSql
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Examples
     /// 
     /// Revoke default privileges for functions for "public" role:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -63,6 +66,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/defaultPrivileges:DefaultPrivileges")]
     public partial class DefaultPrivileges : global::Pulumi.CustomResource

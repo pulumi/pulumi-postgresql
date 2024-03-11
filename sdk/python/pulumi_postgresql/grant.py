@@ -303,6 +303,7 @@ class Grant(pulumi.CustomResource):
 
         ## Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -334,11 +335,13 @@ class Grant(pulumi.CustomResource):
             role="test_role",
             schema="public")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Examples
 
         Revoke default accesses for public schema:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -350,6 +353,7 @@ class Grant(pulumi.CustomResource):
             role="public",
             schema="public")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -378,6 +382,7 @@ class Grant(pulumi.CustomResource):
 
         ## Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -409,11 +414,13 @@ class Grant(pulumi.CustomResource):
             role="test_role",
             schema="public")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Examples
 
         Revoke default accesses for public schema:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -425,6 +432,7 @@ class Grant(pulumi.CustomResource):
             role="public",
             schema="public")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param GrantArgs args: The arguments to use to populate this resource's properties.
