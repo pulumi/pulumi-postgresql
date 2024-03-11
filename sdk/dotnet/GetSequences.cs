@@ -17,6 +17,7 @@ namespace Pulumi.PostgreSql
         /// 
         /// ## Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,6 +33,7 @@ namespace Pulumi.PostgreSql
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSequencesResult> InvokeAsync(GetSequencesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSequencesResult>("postgresql:index/getSequences:getSequences", args ?? new GetSequencesArgs(), options.WithDefaults());
@@ -42,6 +44,7 @@ namespace Pulumi.PostgreSql
         /// 
         /// ## Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -57,6 +60,7 @@ namespace Pulumi.PostgreSql
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSequencesResult> Invoke(GetSequencesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSequencesResult>("postgresql:index/getSequences:getSequences", args ?? new GetSequencesInvokeArgs(), options.WithDefaults());

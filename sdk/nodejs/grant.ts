@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
@@ -47,11 +48,13 @@ import * as utilities from "./utilities";
  *     schema: "public",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Examples
  *
  * Revoke default accesses for public schema:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
@@ -64,6 +67,7 @@ import * as utilities from "./utilities";
  *     schema: "public",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class Grant extends pulumi.CustomResource {
     /**
