@@ -92,7 +92,7 @@ func GetScheme(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:scheme")
 }
 
-// Deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
+// Deprecated: Rename PostgreSQL provider `sslMode` attribute to `sslmode`
 func GetSslMode(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:sslMode")
 }
