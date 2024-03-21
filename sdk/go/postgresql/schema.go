@@ -28,7 +28,7 @@ type Schema struct {
 	// Can be specified multiple times for each policy.  Each
 	// policy block supports fields documented below.
 	//
-	// Deprecated: Use postgresql_grant resource instead (with object_type="schema")
+	// Deprecated: Use Grant resource instead (with object_type="schema")
 	Policies SchemaPolicyArrayOutput `pulumi:"policies"`
 }
 
@@ -76,7 +76,7 @@ type schemaState struct {
 	// Can be specified multiple times for each policy.  Each
 	// policy block supports fields documented below.
 	//
-	// Deprecated: Use postgresql_grant resource instead (with object_type="schema")
+	// Deprecated: Use Grant resource instead (with object_type="schema")
 	Policies []SchemaPolicy `pulumi:"policies"`
 }
 
@@ -95,7 +95,7 @@ type SchemaState struct {
 	// Can be specified multiple times for each policy.  Each
 	// policy block supports fields documented below.
 	//
-	// Deprecated: Use postgresql_grant resource instead (with object_type="schema")
+	// Deprecated: Use Grant resource instead (with object_type="schema")
 	Policies SchemaPolicyArrayInput
 }
 
@@ -118,7 +118,7 @@ type schemaArgs struct {
 	// Can be specified multiple times for each policy.  Each
 	// policy block supports fields documented below.
 	//
-	// Deprecated: Use postgresql_grant resource instead (with object_type="schema")
+	// Deprecated: Use Grant resource instead (with object_type="schema")
 	Policies []SchemaPolicy `pulumi:"policies"`
 }
 
@@ -138,7 +138,7 @@ type SchemaArgs struct {
 	// Can be specified multiple times for each policy.  Each
 	// policy block supports fields documented below.
 	//
-	// Deprecated: Use postgresql_grant resource instead (with object_type="schema")
+	// Deprecated: Use Grant resource instead (with object_type="schema")
 	Policies SchemaPolicyArrayInput
 }
 
@@ -258,7 +258,7 @@ func (o SchemaOutput) Owner() pulumi.StringOutput {
 // Can be specified multiple times for each policy.  Each
 // policy block supports fields documented below.
 //
-// Deprecated: Use postgresql_grant resource instead (with object_type="schema")
+// Deprecated: Use Grant resource instead (with object_type="schema")
 func (o SchemaOutput) Policies() SchemaPolicyArrayOutput {
 	return o.ApplyT(func(v *Schema) SchemaPolicyArrayOutput { return v.Policies }).(SchemaPolicyArrayOutput)
 }

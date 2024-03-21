@@ -59,7 +59,7 @@ export class Role extends pulumi.CustomResource {
      */
     public readonly createRole!: pulumi.Output<boolean | undefined>;
     /**
-     * @deprecated Rename PostgreSQL role resource attribute "encrypted" to "encrypted_password"
+     * @deprecated Rename PostgreSQL role resource attribute "encrypted" to "encryptedPassword"
      */
     public readonly encrypted!: pulumi.Output<string | undefined>;
     /**
@@ -245,7 +245,7 @@ export interface RoleState {
      */
     createRole?: pulumi.Input<boolean>;
     /**
-     * @deprecated Rename PostgreSQL role resource attribute "encrypted" to "encrypted_password"
+     * @deprecated Rename PostgreSQL role resource attribute "encrypted" to "encryptedPassword"
      */
     encrypted?: pulumi.Input<string>;
     /**
@@ -369,7 +369,7 @@ export interface RoleArgs {
      */
     createRole?: pulumi.Input<boolean>;
     /**
-     * @deprecated Rename PostgreSQL role resource attribute "encrypted" to "encrypted_password"
+     * @deprecated Rename PostgreSQL role resource attribute "encrypted" to "encryptedPassword"
      */
     encrypted?: pulumi.Input<string>;
     /**
