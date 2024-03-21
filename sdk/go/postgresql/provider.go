@@ -36,7 +36,7 @@ type Provider struct {
 	// Password to be used if the PostgreSQL server demands password authentication
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	Scheme   pulumi.StringPtrOutput `pulumi:"scheme"`
-	// Deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
+	// Deprecated: Rename PostgreSQL provider `sslMode` attribute to `sslmode`
 	SslMode pulumi.StringPtrOutput `pulumi:"sslMode"`
 	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
 	// PostgreSQL server
@@ -113,7 +113,7 @@ type providerArgs struct {
 	// The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
 	Port   *int    `pulumi:"port"`
 	Scheme *string `pulumi:"scheme"`
-	// Deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
+	// Deprecated: Rename PostgreSQL provider `sslMode` attribute to `sslmode`
 	SslMode *string `pulumi:"sslMode"`
 	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
 	// PostgreSQL server
@@ -161,7 +161,7 @@ type ProviderArgs struct {
 	// The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
 	Port   pulumi.IntPtrInput
 	Scheme pulumi.StringPtrInput
-	// Deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
+	// Deprecated: Rename PostgreSQL provider `sslMode` attribute to `sslmode`
 	SslMode pulumi.StringPtrInput
 	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
 	// PostgreSQL server
@@ -257,7 +257,7 @@ func (o ProviderOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Scheme }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
+// Deprecated: Rename PostgreSQL provider `sslMode` attribute to `sslmode`
 func (o ProviderOutput) SslMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SslMode }).(pulumi.StringPtrOutput)
 }

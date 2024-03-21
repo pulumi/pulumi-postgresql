@@ -44,8 +44,8 @@ class SchemaArgs:
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
         if policies is not None:
-            warnings.warn("""Use postgresql_grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
-            pulumi.log.warn("""policies is deprecated: Use postgresql_grant resource instead (with object_type=\"schema\")""")
+            warnings.warn("""Use Grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
+            pulumi.log.warn("""policies is deprecated: Use Grant resource instead (with object_type=\"schema\")""")
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
 
@@ -117,8 +117,8 @@ class SchemaArgs:
         Can be specified multiple times for each policy.  Each
         policy block supports fields documented below.
         """
-        warnings.warn("""Use postgresql_grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
-        pulumi.log.warn("""policies is deprecated: Use postgresql_grant resource instead (with object_type=\"schema\")""")
+        warnings.warn("""Use Grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
+        pulumi.log.warn("""policies is deprecated: Use Grant resource instead (with object_type=\"schema\")""")
 
         return pulumi.get(self, "policies")
 
@@ -158,8 +158,8 @@ class _SchemaState:
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
         if policies is not None:
-            warnings.warn("""Use postgresql_grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
-            pulumi.log.warn("""policies is deprecated: Use postgresql_grant resource instead (with object_type=\"schema\")""")
+            warnings.warn("""Use Grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
+            pulumi.log.warn("""policies is deprecated: Use Grant resource instead (with object_type=\"schema\")""")
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
 
@@ -231,8 +231,8 @@ class _SchemaState:
         Can be specified multiple times for each policy.  Each
         policy block supports fields documented below.
         """
-        warnings.warn("""Use postgresql_grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
-        pulumi.log.warn("""policies is deprecated: Use postgresql_grant resource instead (with object_type=\"schema\")""")
+        warnings.warn("""Use Grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
+        pulumi.log.warn("""policies is deprecated: Use Grant resource instead (with object_type=\"schema\")""")
 
         return pulumi.get(self, "policies")
 
@@ -402,8 +402,8 @@ class Schema(pulumi.CustomResource):
         Can be specified multiple times for each policy.  Each
         policy block supports fields documented below.
         """
-        warnings.warn("""Use postgresql_grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
-        pulumi.log.warn("""policies is deprecated: Use postgresql_grant resource instead (with object_type=\"schema\")""")
+        warnings.warn("""Use Grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
+        pulumi.log.warn("""policies is deprecated: Use Grant resource instead (with object_type=\"schema\")""")
 
         return pulumi.get(self, "policies")
 

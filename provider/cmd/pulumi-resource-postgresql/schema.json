@@ -1965,7 +1965,7 @@
                         "$ref": "#/types/postgresql:index/SchemaPolicy:SchemaPolicy"
                     },
                     "description": "Can be specified multiple times for each policy.  Each\npolicy block supports fields documented below.\n",
-                    "deprecationMessage": "Use postgresql_grant resource instead (with object_type=\"schema\")"
+                    "deprecationMessage": "Use postgresql.Grant resource instead (with object_type=\"schema\")"
                 }
             },
             "required": [
@@ -2002,7 +2002,7 @@
                         "$ref": "#/types/postgresql:index/SchemaPolicy:SchemaPolicy"
                     },
                     "description": "Can be specified multiple times for each policy.  Each\npolicy block supports fields documented below.\n",
-                    "deprecationMessage": "Use postgresql_grant resource instead (with object_type=\"schema\")"
+                    "deprecationMessage": "Use postgresql.Grant resource instead (with object_type=\"schema\")"
                 }
             },
             "stateInputs": {
@@ -2035,7 +2035,7 @@
                             "$ref": "#/types/postgresql:index/SchemaPolicy:SchemaPolicy"
                         },
                         "description": "Can be specified multiple times for each policy.  Each\npolicy block supports fields documented below.\n",
-                        "deprecationMessage": "Use postgresql_grant resource instead (with object_type=\"schema\")"
+                        "deprecationMessage": "Use postgresql.Grant resource instead (with object_type=\"schema\")"
                     }
                 },
                 "type": "object"
