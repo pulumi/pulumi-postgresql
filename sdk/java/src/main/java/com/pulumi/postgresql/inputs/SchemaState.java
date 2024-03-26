@@ -100,10 +100,10 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
      * policy block supports fields documented below.
      * 
      * @deprecated
-     * Use postgresql.Grant resource instead (with object_type=&#34;schema&#34;)
+     * Use postgresql_grant resource instead (with object_type=&#34;schema&#34;)
      * 
      */
-    @Deprecated /* Use postgresql.Grant resource instead (with object_type=""schema"") */
+    @Deprecated /* Use postgresql_grant resource instead (with object_type=""schema"") */
     @Import(name="policies")
     private @Nullable Output<List<SchemaPolicyArgs>> policies;
 
@@ -112,10 +112,10 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
      * policy block supports fields documented below.
      * 
      * @deprecated
-     * Use postgresql.Grant resource instead (with object_type=&#34;schema&#34;)
+     * Use postgresql_grant resource instead (with object_type=&#34;schema&#34;)
      * 
      */
-    @Deprecated /* Use postgresql.Grant resource instead (with object_type=""schema"") */
+    @Deprecated /* Use postgresql_grant resource instead (with object_type=""schema"") */
     public Optional<Output<List<SchemaPolicyArgs>>> policies() {
         return Optional.ofNullable(this.policies);
     }
@@ -263,10 +263,10 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use postgresql.Grant resource instead (with object_type=&#34;schema&#34;)
+         * Use postgresql_grant resource instead (with object_type=&#34;schema&#34;)
          * 
          */
-        @Deprecated /* Use postgresql.Grant resource instead (with object_type=""schema"") */
+        @Deprecated /* Use postgresql_grant resource instead (with object_type=""schema"") */
         public Builder policies(@Nullable Output<List<SchemaPolicyArgs>> policies) {
             $.policies = policies;
             return this;
@@ -279,10 +279,10 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use postgresql.Grant resource instead (with object_type=&#34;schema&#34;)
+         * Use postgresql_grant resource instead (with object_type=&#34;schema&#34;)
          * 
          */
-        @Deprecated /* Use postgresql.Grant resource instead (with object_type=""schema"") */
+        @Deprecated /* Use postgresql_grant resource instead (with object_type=""schema"") */
         public Builder policies(List<SchemaPolicyArgs> policies) {
             return policies(Output.of(policies));
         }
@@ -294,10 +294,10 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use postgresql.Grant resource instead (with object_type=&#34;schema&#34;)
+         * Use postgresql_grant resource instead (with object_type=&#34;schema&#34;)
          * 
          */
-        @Deprecated /* Use postgresql.Grant resource instead (with object_type=""schema"") */
+        @Deprecated /* Use postgresql_grant resource instead (with object_type=""schema"") */
         public Builder policies(SchemaPolicyArgs... policies) {
             return policies(List.of(policies));
         }

@@ -62,7 +62,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly password!: pulumi.Output<string | undefined>;
     public readonly scheme!: pulumi.Output<string | undefined>;
     /**
-     * @deprecated Rename PostgreSQL provider `sslMode` attribute to `sslmode`
+     * @deprecated Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
      */
     public readonly sslMode!: pulumi.Output<string | undefined>;
     /**
@@ -183,7 +183,7 @@ export interface ProviderArgs {
     port?: pulumi.Input<number>;
     scheme?: pulumi.Input<string>;
     /**
-     * @deprecated Rename PostgreSQL provider `sslMode` attribute to `sslmode`
+     * @deprecated Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
      */
     sslMode?: pulumi.Input<string>;
     /**
