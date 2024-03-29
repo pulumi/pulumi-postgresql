@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Grant SELECT privileges on 2 tables
  *         var readonlyTables = new Grant(&#34;readonlyTables&#34;, GrantArgs.builder()        
  *             .database(&#34;test_db&#34;)
  *             .objectType(&#34;table&#34;)
@@ -59,6 +60,7 @@ import javax.annotation.Nullable;
  *             .schema(&#34;public&#34;)
  *             .build());
  * 
+ *         // Grant SELECT &amp; INSERT privileges on 2 columns in 1 table
  *         var readInsertColumn = new Grant(&#34;readInsertColumn&#34;, GrantArgs.builder()        
  *             .columns(            
  *                 &#34;col1&#34;,

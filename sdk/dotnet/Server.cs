@@ -37,9 +37,9 @@ namespace Pulumi.PostgreSql
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             extPostgresFdw,
+    ///             extPostgresFdw, 
     ///         },
     ///     });
     /// 
@@ -64,9 +64,9 @@ namespace Pulumi.PostgreSql
     ///         FdwName = "file_fdw",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             extFileFdw,
+    ///             extFileFdw, 
     ///         },
     ///     });
     /// 
