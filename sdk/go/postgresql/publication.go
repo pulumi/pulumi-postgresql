@@ -44,6 +44,10 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
+//
+// ## Import Example
+//
+// Publication can be imported using this format:
 type Publication struct {
 	pulumi.CustomResourceState
 

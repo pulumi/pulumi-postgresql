@@ -36,6 +36,10 @@ namespace Pulumi.PostgreSql
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## Import Example
+    /// 
+    /// Publication can be imported using this format:
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/publication:Publication")]
     public partial class Publication : global::Pulumi.CustomResource

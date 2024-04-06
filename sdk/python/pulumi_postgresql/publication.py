@@ -315,6 +315,10 @@ class Publication(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ## Import Example
+
+        Publication can be imported using this format:
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] all_tables: Should be ALL TABLES added to the publication. Defaults to 'false'
@@ -349,6 +353,10 @@ class Publication(pulumi.CustomResource):
         ])
         ```
         <!--End PulumiCodeChooser -->
+
+        ## Import Example
+
+        Publication can be imported using this format:
 
         :param str resource_name: The name of the resource.
         :param PublicationArgs args: The arguments to use to populate this resource's properties.

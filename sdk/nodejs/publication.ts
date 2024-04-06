@@ -21,6 +21,10 @@ import * as utilities from "./utilities";
  * ]});
  * ```
  * <!--End PulumiCodeChooser -->
+ *
+ * ## Import Example
+ *
+ * Publication can be imported using this format:
  */
 export class Publication extends pulumi.CustomResource {
     /**

@@ -55,6 +55,10 @@ import javax.annotation.Nullable;
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import Example
+ * 
+ * Publication can be imported using this format:
+ * 
  */
 @ResourceType(type="postgresql:index/publication:Publication")
 public class Publication extends com.pulumi.resources.CustomResource {
