@@ -142,7 +142,9 @@ class ReplicationSlot(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        my_slot = postgresql.ReplicationSlot("mySlot", plugin="test_decoding")
+        my_slot = postgresql.ReplicationSlot("my_slot",
+            name="my_slot",
+            plugin="test_decoding")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -169,7 +171,9 @@ class ReplicationSlot(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        my_slot = postgresql.ReplicationSlot("mySlot", plugin="test_decoding")
+        my_slot = postgresql.ReplicationSlot("my_slot",
+            name="my_slot",
+            plugin="test_decoding")
         ```
         <!--End PulumiCodeChooser -->
 

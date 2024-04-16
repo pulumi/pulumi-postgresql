@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const mySlot = new postgresql.PhysicalReplicationSlot("mySlot", {});
+ * const mySlot = new postgresql.PhysicalReplicationSlot("my_slot", {name: "my_slot"});
  * ```
  * <!--End PulumiCodeChooser -->
  */

@@ -18,17 +18,17 @@ import * as utilities from "./utilities";
  * import * as postgresql from "@pulumi/postgresql";
  *
  * const increment = new postgresql.Function("increment", {
+ *     name: "increment",
  *     args: [{
  *         name: "i",
  *         type: "integer",
  *     }],
- *     body: `    BEGIN
- *         RETURN i + 1;
- *     END;
- *
- * `,
- *     language: "plpgsql",
  *     returns: "integer",
+ *     language: "plpgsql",
+ *     body: `BEGIN
+ *     RETURN i + 1;
+ * END;
+ * `,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

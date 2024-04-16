@@ -24,7 +24,10 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myExtension = new PostgreSql.Extension("myExtension");
+    ///     var myExtension = new PostgreSql.Extension("my_extension", new()
+    ///     {
+    ///         Name = "pg_trgm",
+    ///     });
     /// 
     /// });
     /// ```

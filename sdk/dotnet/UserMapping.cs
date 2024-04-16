@@ -23,9 +23,12 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var extPostgresFdw = new PostgreSql.Extension("extPostgresFdw");
+    ///     var extPostgresFdw = new PostgreSql.Extension("ext_postgres_fdw", new()
+    ///     {
+    ///         Name = "postgres_fdw",
+    ///     });
     /// 
-    ///     var myserverPostgres = new PostgreSql.Server("myserverPostgres", new()
+    ///     var myserverPostgres = new PostgreSql.Server("myserver_postgres", new()
     ///     {
     ///         ServerName = "myserver_postgres",
     ///         FdwName = "postgres_fdw",
@@ -43,12 +46,15 @@ namespace Pulumi.PostgreSql
     ///         },
     ///     });
     /// 
-    ///     var remoteRole = new PostgreSql.Role("remoteRole");
+    ///     var remote = new PostgreSql.Role("remote", new()
+    ///     {
+    ///         Name = "remote",
+    ///     });
     /// 
-    ///     var remoteUserMapping = new PostgreSql.UserMapping("remoteUserMapping", new()
+    ///     var remoteUserMapping = new PostgreSql.UserMapping("remote", new()
     ///     {
     ///         ServerName = myserverPostgres.ServerName,
-    ///         UserName = remoteRole.Name,
+    ///         UserName = remote.Name,
     ///         Options = 
     ///         {
     ///             { "user", "admin" },

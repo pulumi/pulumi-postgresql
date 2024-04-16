@@ -458,17 +458,17 @@ class Function(pulumi.CustomResource):
         import pulumi_postgresql as postgresql
 
         increment = postgresql.Function("increment",
+            name="increment",
             args=[postgresql.FunctionArgArgs(
                 name="i",
                 type="integer",
             )],
-            body=\"\"\"    BEGIN
-                RETURN i + 1;
-            END;
-
-        \"\"\",
+            returns="integer",
             language="plpgsql",
-            returns="integer")
+            body=\"\"\"BEGIN
+            RETURN i + 1;
+        END;
+        \"\"\")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -522,17 +522,17 @@ class Function(pulumi.CustomResource):
         import pulumi_postgresql as postgresql
 
         increment = postgresql.Function("increment",
+            name="increment",
             args=[postgresql.FunctionArgArgs(
                 name="i",
                 type="integer",
             )],
-            body=\"\"\"    BEGIN
-                RETURN i + 1;
-            END;
-
-        \"\"\",
+            returns="integer",
             language="plpgsql",
-            returns="integer")
+            body=\"\"\"BEGIN
+            RETURN i + 1;
+        END;
+        \"\"\")
         ```
         <!--End PulumiCodeChooser -->
 

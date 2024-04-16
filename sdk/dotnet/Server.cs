@@ -23,9 +23,12 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var extPostgresFdw = new PostgreSql.Extension("extPostgresFdw");
+    ///     var extPostgresFdw = new PostgreSql.Extension("ext_postgres_fdw", new()
+    ///     {
+    ///         Name = "postgres_fdw",
+    ///     });
     /// 
-    ///     var myserverPostgres = new PostgreSql.Server("myserverPostgres", new()
+    ///     var myserverPostgres = new PostgreSql.Server("myserver_postgres", new()
     ///     {
     ///         ServerName = "myserver_postgres",
     ///         FdwName = "postgres_fdw",
@@ -56,9 +59,12 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var extFileFdw = new PostgreSql.Extension("extFileFdw");
+    ///     var extFileFdw = new PostgreSql.Extension("ext_file_fdw", new()
+    ///     {
+    ///         Name = "file_fdw",
+    ///     });
     /// 
-    ///     var myserverFile = new PostgreSql.Server("myserverFile", new()
+    ///     var myserverFile = new PostgreSql.Server("myserver_file", new()
     ///     {
     ///         ServerName = "myserver_file",
     ///         FdwName = "file_fdw",

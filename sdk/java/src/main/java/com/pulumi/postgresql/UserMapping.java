@@ -28,9 +28,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.postgresql.Extension;
+ * import com.pulumi.postgresql.ExtensionArgs;
  * import com.pulumi.postgresql.Server;
  * import com.pulumi.postgresql.ServerArgs;
  * import com.pulumi.postgresql.Role;
+ * import com.pulumi.postgresql.RoleArgs;
  * import com.pulumi.postgresql.UserMapping;
  * import com.pulumi.postgresql.UserMappingArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -47,7 +49,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var extPostgresFdw = new Extension(&#34;extPostgresFdw&#34;);
+ *         var extPostgresFdw = new Extension(&#34;extPostgresFdw&#34;, ExtensionArgs.builder()        
+ *             .name(&#34;postgres_fdw&#34;)
+ *             .build());
  * 
  *         var myserverPostgres = new Server(&#34;myserverPostgres&#34;, ServerArgs.builder()        
  *             .serverName(&#34;myserver_postgres&#34;)
@@ -61,11 +65,13 @@ import javax.annotation.Nullable;
  *                 .dependsOn(extPostgresFdw)
  *                 .build());
  * 
- *         var remoteRole = new Role(&#34;remoteRole&#34;);
+ *         var remote = new Role(&#34;remote&#34;, RoleArgs.builder()        
+ *             .name(&#34;remote&#34;)
+ *             .build());
  * 
  *         var remoteUserMapping = new UserMapping(&#34;remoteUserMapping&#34;, UserMappingArgs.builder()        
  *             .serverName(myserverPostgres.serverName())
- *             .userName(remoteRole.name())
+ *             .userName(remote.name())
  *             .options(Map.ofEntries(
  *                 Map.entry(&#34;user&#34;, &#34;admin&#34;),
  *                 Map.entry(&#34;password&#34;, &#34;pass&#34;)

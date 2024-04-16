@@ -144,9 +144,9 @@ class GrantRole(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        grant_root = postgresql.GrantRole("grantRoot",
-            grant_role="application",
+        grant_root = postgresql.GrantRole("grant_root",
             role="root",
+            grant_role="application",
             with_admin_option=True)
         ```
         <!--End PulumiCodeChooser -->
@@ -157,8 +157,8 @@ class GrantRole(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        bob = postgresql.Role("bob")
-        bob_admin = postgresql.GrantRole("bobAdmin",
+        bob = postgresql.Role("bob", name="bob")
+        bob_admin = postgresql.GrantRole("bob_admin",
             role="bob",
             grant_role="admin")
         ```
@@ -190,9 +190,9 @@ class GrantRole(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        grant_root = postgresql.GrantRole("grantRoot",
-            grant_role="application",
+        grant_root = postgresql.GrantRole("grant_root",
             role="root",
+            grant_role="application",
             with_admin_option=True)
         ```
         <!--End PulumiCodeChooser -->
@@ -203,8 +203,8 @@ class GrantRole(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        bob = postgresql.Role("bob")
-        bob_admin = postgresql.GrantRole("bobAdmin",
+        bob = postgresql.Role("bob", name="bob")
+        bob_admin = postgresql.GrantRole("bob_admin",
             role="bob",
             grant_role="admin")
         ```

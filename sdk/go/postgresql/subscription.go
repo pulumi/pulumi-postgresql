@@ -31,6 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := postgresql.NewSubscription(ctx, "subscription", &postgresql.SubscriptionArgs{
+//				Name:     pulumi.String("subscription"),
 //				Conninfo: pulumi.String("host=localhost port=5432 dbname=mydb user=postgres password=postgres"),
 //				Publications: pulumi.StringArray{
 //					pulumi.String("publication"),

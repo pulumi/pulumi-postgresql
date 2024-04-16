@@ -33,9 +33,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.NewGrantRole(ctx, "grantRoot", &postgresql.GrantRoleArgs{
-//				GrantRole:       pulumi.String("application"),
+//			_, err := postgresql.NewGrantRole(ctx, "grant_root", &postgresql.GrantRoleArgs{
 //				Role:            pulumi.String("root"),
+//				GrantRole:       pulumi.String("application"),
 //				WithAdminOption: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -62,11 +62,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.NewRole(ctx, "bob", nil)
+//			_, err := postgresql.NewRole(ctx, "bob", &postgresql.RoleArgs{
+//				Name: pulumi.String("bob"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = postgresql.NewGrantRole(ctx, "bobAdmin", &postgresql.GrantRoleArgs{
+//			_, err = postgresql.NewGrantRole(ctx, "bob_admin", &postgresql.GrantRoleArgs{
 //				Role:      pulumi.String("bob"),
 //				GrantRole: pulumi.String("admin"),
 //			})

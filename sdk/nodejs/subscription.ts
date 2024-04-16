@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * import * as postgresql from "@pulumi/postgresql";
  *
  * const subscription = new postgresql.Subscription("subscription", {
+ *     name: "subscription",
  *     conninfo: "host=localhost port=5432 dbname=mydb user=postgres password=postgres",
  *     publications: ["publication"],
  * });

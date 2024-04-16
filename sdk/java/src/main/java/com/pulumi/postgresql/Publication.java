@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var publication = new Publication(&#34;publication&#34;, PublicationArgs.builder()        
+ *             .name(&#34;publication&#34;)
  *             .tables(            
  *                 &#34;public.test&#34;,
  *                 &#34;another_schema.test&#34;)

@@ -26,6 +26,7 @@ namespace Pulumi.PostgreSql
     /// {
     ///     var increment = new PostgreSql.Function("increment", new()
     ///     {
+    ///         Name = "increment",
     ///         Args = new[]
     ///         {
     ///             new PostgreSql.Inputs.FunctionArgArgs
@@ -34,13 +35,12 @@ namespace Pulumi.PostgreSql
     ///                 Type = "integer",
     ///             },
     ///         },
-    ///         Body = @"    BEGIN
-    ///         RETURN i + 1;
-    ///     END;
-    /// 
-    /// ",
-    ///         Language = "plpgsql",
     ///         Returns = "integer",
+    ///         Language = "plpgsql",
+    ///         Body = @"BEGIN
+    ///     RETURN i + 1;
+    /// END;
+    /// ",
     ///     });
     /// 
     /// });

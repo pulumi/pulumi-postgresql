@@ -241,6 +241,7 @@ class Subscription(pulumi.CustomResource):
         import pulumi_postgresql as postgresql
 
         subscription = postgresql.Subscription("subscription",
+            name="subscription",
             conninfo="host=localhost port=5432 dbname=mydb user=postgres password=postgres",
             publications=["publication"])
         ```
@@ -277,6 +278,7 @@ class Subscription(pulumi.CustomResource):
         import pulumi_postgresql as postgresql
 
         subscription = postgresql.Subscription("subscription",
+            name="subscription",
             conninfo="host=localhost port=5432 dbname=mydb user=postgres password=postgres",
             publications=["publication"])
         ```

@@ -31,15 +31,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := postgresql.NewFunction(ctx, "increment", &postgresql.FunctionArgs{
+//				Name: pulumi.String("increment"),
 //				Args: postgresql.FunctionArgArray{
 //					&postgresql.FunctionArgArgs{
 //						Name: pulumi.String("i"),
 //						Type: pulumi.String("integer"),
 //					},
 //				},
-//				Body:     pulumi.String("    BEGIN\n        RETURN i + 1;\n    END;\n\n"),
-//				Language: pulumi.String("plpgsql"),
 //				Returns:  pulumi.String("integer"),
+//				Language: pulumi.String("plpgsql"),
+//				Body:     pulumi.String("BEGIN\n    RETURN i + 1;\nEND;\n"),
 //			})
 //			if err != nil {
 //				return err

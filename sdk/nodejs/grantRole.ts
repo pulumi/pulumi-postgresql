@@ -18,9 +18,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const grantRoot = new postgresql.GrantRole("grantRoot", {
- *     grantRole: "application",
+ * const grantRoot = new postgresql.GrantRole("grant_root", {
  *     role: "root",
+ *     grantRole: "application",
  *     withAdminOption: true,
  * });
  * ```
@@ -32,8 +32,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const bob = new postgresql.Role("bob", {});
- * const bobAdmin = new postgresql.GrantRole("bobAdmin", {
+ * const bob = new postgresql.Role("bob", {name: "bob"});
+ * const bobAdmin = new postgresql.GrantRole("bob_admin", {
  *     role: "bob",
  *     grantRole: "admin",
  * });

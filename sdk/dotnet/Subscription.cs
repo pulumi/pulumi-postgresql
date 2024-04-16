@@ -26,6 +26,7 @@ namespace Pulumi.PostgreSql
     /// {
     ///     var subscription = new PostgreSql.Subscription("subscription", new()
     ///     {
+    ///         Name = "subscription",
     ///         Conninfo = "host=localhost port=5432 dbname=mydb user=postgres password=postgres",
     ///         Publications = new[]
     ///         {

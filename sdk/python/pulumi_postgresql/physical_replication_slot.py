@@ -78,7 +78,7 @@ class PhysicalReplicationSlot(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        my_slot = postgresql.PhysicalReplicationSlot("mySlot")
+        my_slot = postgresql.PhysicalReplicationSlot("my_slot", name="my_slot")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -104,7 +104,7 @@ class PhysicalReplicationSlot(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        my_slot = postgresql.PhysicalReplicationSlot("mySlot")
+        my_slot = postgresql.PhysicalReplicationSlot("my_slot", name="my_slot")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -24,8 +24,9 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mySlot = new PostgreSql.ReplicationSlot("mySlot", new()
+    ///     var mySlot = new PostgreSql.ReplicationSlot("my_slot", new()
     ///     {
+    ///         Name = "my_slot",
     ///         Plugin = "test_decoding",
     ///     });
     /// 
