@@ -296,8 +296,8 @@ class Server(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        ext_postgres_fdw = postgresql.Extension("extPostgresFdw")
-        myserver_postgres = postgresql.Server("myserverPostgres",
+        ext_postgres_fdw = postgresql.Extension("ext_postgres_fdw", name="postgres_fdw")
+        myserver_postgres = postgresql.Server("myserver_postgres",
             server_name="myserver_postgres",
             fdw_name="postgres_fdw",
             options={
@@ -314,8 +314,8 @@ class Server(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        ext_file_fdw = postgresql.Extension("extFileFdw")
-        myserver_file = postgresql.Server("myserverFile",
+        ext_file_fdw = postgresql.Extension("ext_file_fdw", name="file_fdw")
+        myserver_file = postgresql.Server("myserver_file",
             server_name="myserver_file",
             fdw_name="file_fdw",
             opts=pulumi.ResourceOptions(depends_on=[ext_file_fdw]))
@@ -354,8 +354,8 @@ class Server(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        ext_postgres_fdw = postgresql.Extension("extPostgresFdw")
-        myserver_postgres = postgresql.Server("myserverPostgres",
+        ext_postgres_fdw = postgresql.Extension("ext_postgres_fdw", name="postgres_fdw")
+        myserver_postgres = postgresql.Server("myserver_postgres",
             server_name="myserver_postgres",
             fdw_name="postgres_fdw",
             options={
@@ -372,8 +372,8 @@ class Server(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        ext_file_fdw = postgresql.Extension("extFileFdw")
-        myserver_file = postgresql.Server("myserverFile",
+        ext_file_fdw = postgresql.Extension("ext_file_fdw", name="file_fdw")
+        myserver_file = postgresql.Server("myserver_file",
             server_name="myserver_file",
             fdw_name="file_fdw",
             opts=pulumi.ResourceOptions(depends_on=[ext_file_fdw]))

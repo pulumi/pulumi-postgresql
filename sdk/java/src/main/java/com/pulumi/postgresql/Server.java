@@ -29,6 +29,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.postgresql.Extension;
+ * import com.pulumi.postgresql.ExtensionArgs;
  * import com.pulumi.postgresql.Server;
  * import com.pulumi.postgresql.ServerArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -45,7 +46,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var extPostgresFdw = new Extension(&#34;extPostgresFdw&#34;);
+ *         var extPostgresFdw = new Extension(&#34;extPostgresFdw&#34;, ExtensionArgs.builder()        
+ *             .name(&#34;postgres_fdw&#34;)
+ *             .build());
  * 
  *         var myserverPostgres = new Server(&#34;myserverPostgres&#34;, ServerArgs.builder()        
  *             .serverName(&#34;myserver_postgres&#34;)
@@ -72,6 +75,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.postgresql.Extension;
+ * import com.pulumi.postgresql.ExtensionArgs;
  * import com.pulumi.postgresql.Server;
  * import com.pulumi.postgresql.ServerArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -88,7 +92,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var extFileFdw = new Extension(&#34;extFileFdw&#34;);
+ *         var extFileFdw = new Extension(&#34;extFileFdw&#34;, ExtensionArgs.builder()        
+ *             .name(&#34;file_fdw&#34;)
+ *             .build());
  * 
  *         var myserverFile = new Server(&#34;myserverFile&#34;, ServerArgs.builder()        
  *             .serverName(&#34;myserver_file&#34;)

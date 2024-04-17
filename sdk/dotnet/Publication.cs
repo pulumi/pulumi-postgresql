@@ -26,6 +26,7 @@ namespace Pulumi.PostgreSql
     /// {
     ///     var publication = new PostgreSql.Publication("publication", new()
     ///     {
+    ///         Name = "publication",
     ///         Tables = new[]
     ///         {
     ///             "public.test",

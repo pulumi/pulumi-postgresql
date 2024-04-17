@@ -30,7 +30,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.NewPhysicalReplicationSlot(ctx, "mySlot", nil)
+//			_, err := postgresql.NewPhysicalReplicationSlot(ctx, "my_slot", &postgresql.PhysicalReplicationSlotArgs{
+//				Name: pulumi.String("my_slot"),
+//			})
 //			if err != nil {
 //				return err
 //			}

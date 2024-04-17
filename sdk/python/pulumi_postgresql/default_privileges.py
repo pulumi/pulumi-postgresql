@@ -271,13 +271,13 @@ class DefaultPrivileges(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        read_only_tables = postgresql.DefaultPrivileges("readOnlyTables",
-            database="test_db",
-            object_type="table",
-            owner="db_owner",
-            privileges=["SELECT"],
+        read_only_tables = postgresql.DefaultPrivileges("read_only_tables",
             role="test_role",
-            schema="public")
+            database="test_db",
+            schema="public",
+            owner="db_owner",
+            object_type="table",
+            privileges=["SELECT"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -290,8 +290,8 @@ class DefaultPrivileges(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        revoke_public = postgresql.DefaultPrivileges("revokePublic",
-            database=postgresql_database["example_db"]["name"],
+        revoke_public = postgresql.DefaultPrivileges("revoke_public",
+            database=example_db["name"],
             role="public",
             owner="object_owner",
             object_type="function",
@@ -327,13 +327,13 @@ class DefaultPrivileges(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        read_only_tables = postgresql.DefaultPrivileges("readOnlyTables",
-            database="test_db",
-            object_type="table",
-            owner="db_owner",
-            privileges=["SELECT"],
+        read_only_tables = postgresql.DefaultPrivileges("read_only_tables",
             role="test_role",
-            schema="public")
+            database="test_db",
+            schema="public",
+            owner="db_owner",
+            object_type="table",
+            privileges=["SELECT"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -346,8 +346,8 @@ class DefaultPrivileges(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        revoke_public = postgresql.DefaultPrivileges("revokePublic",
-            database=postgresql_database["example_db"]["name"],
+        revoke_public = postgresql.DefaultPrivileges("revoke_public",
+            database=example_db["name"],
             role="public",
             owner="object_owner",
             object_type="function",

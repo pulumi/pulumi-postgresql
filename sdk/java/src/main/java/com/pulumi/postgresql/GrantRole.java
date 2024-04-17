@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var grantRoot = new GrantRole(&#34;grantRoot&#34;, GrantRoleArgs.builder()        
- *             .grantRole(&#34;application&#34;)
  *             .role(&#34;root&#34;)
+ *             .grantRole(&#34;application&#34;)
  *             .withAdminOption(true)
  *             .build());
  * 
@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.postgresql.Role;
+ * import com.pulumi.postgresql.RoleArgs;
  * import com.pulumi.postgresql.GrantRole;
  * import com.pulumi.postgresql.GrantRoleArgs;
  * import java.util.List;
@@ -81,7 +82,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bob = new Role(&#34;bob&#34;);
+ *         var bob = new Role(&#34;bob&#34;, RoleArgs.builder()        
+ *             .name(&#34;bob&#34;)
+ *             .build());
  * 
  *         var bobAdmin = new GrantRole(&#34;bobAdmin&#34;, GrantRoleArgs.builder()        
  *             .role(&#34;bob&#34;)

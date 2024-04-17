@@ -35,8 +35,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Grant SELECT privileges on 2 tables
-//			_, err := postgresql.NewGrant(ctx, "readonlyTables", &postgresql.GrantArgs{
+//			_, err := postgresql.NewGrant(ctx, "readonly_tables", &postgresql.GrantArgs{
 //				Database:   pulumi.String("test_db"),
+//				Role:       pulumi.String("test_role"),
+//				Schema:     pulumi.String("public"),
 //				ObjectType: pulumi.String("table"),
 //				Objects: pulumi.StringArray{
 //					pulumi.String("table1"),
@@ -45,29 +47,27 @@ import (
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("SELECT"),
 //				},
-//				Role:   pulumi.String("test_role"),
-//				Schema: pulumi.String("public"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Grant SELECT & INSERT privileges on 2 columns in 1 table
-//			_, err = postgresql.NewGrant(ctx, "readInsertColumn", &postgresql.GrantArgs{
-//				Columns: pulumi.StringArray{
-//					pulumi.String("col1"),
-//					pulumi.String("col2"),
-//				},
+//			_, err = postgresql.NewGrant(ctx, "read_insert_column", &postgresql.GrantArgs{
 //				Database:   pulumi.String("test_db"),
+//				Role:       pulumi.String("test_role"),
+//				Schema:     pulumi.String("public"),
 //				ObjectType: pulumi.String("column"),
 //				Objects: pulumi.StringArray{
 //					pulumi.String("table1"),
+//				},
+//				Columns: pulumi.StringArray{
+//					pulumi.String("col1"),
+//					pulumi.String("col2"),
 //				},
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("UPDATE"),
 //					pulumi.String("INSERT"),
 //				},
-//				Role:   pulumi.String("test_role"),
-//				Schema: pulumi.String("public"),
 //			})
 //			if err != nil {
 //				return err
@@ -96,12 +96,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.NewGrant(ctx, "revokePublic", &postgresql.GrantArgs{
+//			_, err := postgresql.NewGrant(ctx, "revoke_public", &postgresql.GrantArgs{
 //				Database:   pulumi.String("test_db"),
-//				ObjectType: pulumi.String("schema"),
-//				Privileges: pulumi.StringArray{},
 //				Role:       pulumi.String("public"),
 //				Schema:     pulumi.String("public"),
+//				ObjectType: pulumi.String("schema"),
+//				Privileges: pulumi.StringArray{},
 //			})
 //			if err != nil {
 //				return err

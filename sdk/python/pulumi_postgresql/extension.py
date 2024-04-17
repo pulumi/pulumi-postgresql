@@ -242,7 +242,7 @@ class Extension(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        my_extension = postgresql.Extension("myExtension")
+        my_extension = postgresql.Extension("my_extension", name="pg_trgm")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -280,7 +280,7 @@ class Extension(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        my_extension = postgresql.Extension("myExtension")
+        my_extension = postgresql.Extension("my_extension", name="pg_trgm")
         ```
         <!--End PulumiCodeChooser -->
 

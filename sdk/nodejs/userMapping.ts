@@ -14,8 +14,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const extPostgresFdw = new postgresql.Extension("extPostgresFdw", {});
- * const myserverPostgres = new postgresql.Server("myserverPostgres", {
+ * const extPostgresFdw = new postgresql.Extension("ext_postgres_fdw", {name: "postgres_fdw"});
+ * const myserverPostgres = new postgresql.Server("myserver_postgres", {
  *     serverName: "myserver_postgres",
  *     fdwName: "postgres_fdw",
  *     options: {
@@ -26,10 +26,10 @@ import * as utilities from "./utilities";
  * }, {
  *     dependsOn: [extPostgresFdw],
  * });
- * const remoteRole = new postgresql.Role("remoteRole", {});
- * const remoteUserMapping = new postgresql.UserMapping("remoteUserMapping", {
+ * const remote = new postgresql.Role("remote", {name: "remote"});
+ * const remoteUserMapping = new postgresql.UserMapping("remote", {
  *     serverName: myserverPostgres.serverName,
- *     userName: remoteRole.name,
+ *     userName: remote.name,
  *     options: {
  *         user: "admin",
  *         password: "pass",

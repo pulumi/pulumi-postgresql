@@ -27,10 +27,10 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var grantRoot = new PostgreSql.GrantRole("grantRoot", new()
+    ///     var grantRoot = new PostgreSql.GrantRole("grant_root", new()
     ///     {
-    ///         GrantRoleName = "application",
     ///         Role = "root",
+    ///         GrantRoleName = "application",
     ///         WithAdminOption = true,
     ///     });
     /// 
@@ -48,9 +48,12 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var bob = new PostgreSql.Role("bob");
+    ///     var bob = new PostgreSql.Role("bob", new()
+    ///     {
+    ///         Name = "bob",
+    ///     });
     /// 
-    ///     var bobAdmin = new PostgreSql.GrantRole("bobAdmin", new()
+    ///     var bobAdmin = new PostgreSql.GrantRole("bob_admin", new()
     ///     {
     ///         Role = "bob",
     ///         GrantRoleName = "admin",

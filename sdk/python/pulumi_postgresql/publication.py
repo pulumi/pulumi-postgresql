@@ -308,10 +308,12 @@ class Publication(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        publication = postgresql.Publication("publication", tables=[
-            "public.test",
-            "another_schema.test",
-        ])
+        publication = postgresql.Publication("publication",
+            name="publication",
+            tables=[
+                "public.test",
+                "another_schema.test",
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -347,10 +349,12 @@ class Publication(pulumi.CustomResource):
         import pulumi
         import pulumi_postgresql as postgresql
 
-        publication = postgresql.Publication("publication", tables=[
-            "public.test",
-            "another_schema.test",
-        ])
+        publication = postgresql.Publication("publication",
+            name="publication",
+            tables=[
+                "public.test",
+                "another_schema.test",
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

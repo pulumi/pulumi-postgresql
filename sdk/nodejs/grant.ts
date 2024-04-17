@@ -20,32 +20,32 @@ import * as utilities from "./utilities";
  * import * as postgresql from "@pulumi/postgresql";
  *
  * // Grant SELECT privileges on 2 tables
- * const readonlyTables = new postgresql.Grant("readonlyTables", {
+ * const readonlyTables = new postgresql.Grant("readonly_tables", {
  *     database: "test_db",
+ *     role: "test_role",
+ *     schema: "public",
  *     objectType: "table",
  *     objects: [
  *         "table1",
  *         "table2",
  *     ],
  *     privileges: ["SELECT"],
- *     role: "test_role",
- *     schema: "public",
  * });
  * // Grant SELECT & INSERT privileges on 2 columns in 1 table
- * const readInsertColumn = new postgresql.Grant("readInsertColumn", {
+ * const readInsertColumn = new postgresql.Grant("read_insert_column", {
+ *     database: "test_db",
+ *     role: "test_role",
+ *     schema: "public",
+ *     objectType: "column",
+ *     objects: ["table1"],
  *     columns: [
  *         "col1",
  *         "col2",
  *     ],
- *     database: "test_db",
- *     objectType: "column",
- *     objects: ["table1"],
  *     privileges: [
  *         "UPDATE",
  *         "INSERT",
  *     ],
- *     role: "test_role",
- *     schema: "public",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -59,12 +59,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const revokePublic = new postgresql.Grant("revokePublic", {
+ * const revokePublic = new postgresql.Grant("revoke_public", {
  *     database: "test_db",
- *     objectType: "schema",
- *     privileges: [],
  *     role: "public",
  *     schema: "public",
+ *     objectType: "schema",
+ *     privileges: [],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

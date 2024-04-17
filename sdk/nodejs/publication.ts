@@ -15,10 +15,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const publication = new postgresql.Publication("publication", {tables: [
- *     "public.test",
- *     "another_schema.test",
- * ]});
+ * const publication = new postgresql.Publication("publication", {
+ *     name: "publication",
+ *     tables: [
+ *         "public.test",
+ *         "another_schema.test",
+ *     ],
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

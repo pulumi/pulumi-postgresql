@@ -47,12 +47,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var readOnlyTables = new DefaultPrivileges(&#34;readOnlyTables&#34;, DefaultPrivilegesArgs.builder()        
- *             .database(&#34;test_db&#34;)
- *             .objectType(&#34;table&#34;)
- *             .owner(&#34;db_owner&#34;)
- *             .privileges(&#34;SELECT&#34;)
  *             .role(&#34;test_role&#34;)
+ *             .database(&#34;test_db&#34;)
  *             .schema(&#34;public&#34;)
+ *             .owner(&#34;db_owner&#34;)
+ *             .objectType(&#34;table&#34;)
+ *             .privileges(&#34;SELECT&#34;)
  *             .build());
  * 
  *     }
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var revokePublic = new DefaultPrivileges(&#34;revokePublic&#34;, DefaultPrivilegesArgs.builder()        
- *             .database(postgresql_database.example_db().name())
+ *             .database(exampleDb.name())
  *             .role(&#34;public&#34;)
  *             .owner(&#34;object_owner&#34;)
  *             .objectType(&#34;function&#34;)

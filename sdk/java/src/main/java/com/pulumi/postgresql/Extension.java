@@ -29,6 +29,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.postgresql.Extension;
+ * import com.pulumi.postgresql.ExtensionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,7 +43,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myExtension = new Extension(&#34;myExtension&#34;);
+ *         var myExtension = new Extension(&#34;myExtension&#34;, ExtensionArgs.builder()        
+ *             .name(&#34;pg_trgm&#34;)
+ *             .build());
  * 
  *     }
  * }
