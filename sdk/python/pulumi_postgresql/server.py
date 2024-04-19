@@ -291,7 +291,6 @@ class Server(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -307,9 +306,7 @@ class Server(pulumi.CustomResource):
             },
             opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -320,7 +317,6 @@ class Server(pulumi.CustomResource):
             fdw_name="file_fdw",
             opts=pulumi.ResourceOptions(depends_on=[ext_file_fdw]))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -349,7 +345,6 @@ class Server(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -365,9 +360,7 @@ class Server(pulumi.CustomResource):
             },
             opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -378,7 +371,6 @@ class Server(pulumi.CustomResource):
             fdw_name="file_fdw",
             opts=pulumi.ResourceOptions(depends_on=[ext_file_fdw]))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ServerArgs args: The arguments to use to populate this resource's properties.

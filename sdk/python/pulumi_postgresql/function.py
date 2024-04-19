@@ -452,7 +452,6 @@ class Function(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -470,7 +469,6 @@ class Function(pulumi.CustomResource):
         END;
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -516,7 +514,6 @@ class Function(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -534,7 +531,6 @@ class Function(pulumi.CustomResource):
         END;
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -303,7 +303,6 @@ class Publication(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -315,7 +314,6 @@ class Publication(pulumi.CustomResource):
                 "another_schema.test",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import Example
 
@@ -344,7 +342,6 @@ class Publication(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -356,7 +353,6 @@ class Publication(pulumi.CustomResource):
                 "another_schema.test",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import Example
 
