@@ -42,7 +42,7 @@ namespace Pulumi.PostgreSql
     ///     {
     ///         DependsOn =
     ///         {
-    ///             extPostgresFdw, 
+    ///             extPostgresFdw,
     ///         },
     ///     });
     /// 
@@ -72,7 +72,7 @@ namespace Pulumi.PostgreSql
     ///     {
     ///         DependsOn =
     ///         {
-    ///             extFileFdw, 
+    ///             extFileFdw,
     ///         },
     ///     });
     /// 
