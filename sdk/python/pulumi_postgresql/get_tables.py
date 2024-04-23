@@ -134,14 +134,12 @@ def get_tables(database: Optional[str] = None,
 
     ## Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_postgresql as postgresql
 
     my_tables = postgresql.get_tables(database="my_database")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str database: The PostgreSQL database which will be queried for table names.
@@ -191,14 +189,12 @@ def get_tables_output(database: Optional[pulumi.Input[str]] = None,
 
     ## Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_postgresql as postgresql
 
     my_tables = postgresql.get_tables(database="my_database")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str database: The PostgreSQL database which will be queried for table names.

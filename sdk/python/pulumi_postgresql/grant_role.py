@@ -139,7 +139,6 @@ class GrantRole(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -149,10 +148,8 @@ class GrantRole(pulumi.CustomResource):
             grant_role="application",
             with_admin_option=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         > **Note:** If you use `GrantRole` for a role that you also manage with a `Role` resource, you need to ignore the changes of the `roles` attribute in the `Role` resource or they will fight over what your role grants should be. e.g.:
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -162,7 +159,6 @@ class GrantRole(pulumi.CustomResource):
             role="bob",
             grant_role="admin")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -185,7 +181,6 @@ class GrantRole(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -195,10 +190,8 @@ class GrantRole(pulumi.CustomResource):
             grant_role="application",
             with_admin_option=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         > **Note:** If you use `GrantRole` for a role that you also manage with a `Role` resource, you need to ignore the changes of the `roles` attribute in the `Role` resource or they will fight over what your role grants should be. e.g.:
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -208,7 +201,6 @@ class GrantRole(pulumi.CustomResource):
             role="bob",
             grant_role="admin")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param GrantRoleArgs args: The arguments to use to populate this resource's properties.

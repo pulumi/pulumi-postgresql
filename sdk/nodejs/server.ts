@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
@@ -27,9 +26,7 @@ import * as utilities from "./utilities";
  *     dependsOn: [extPostgresFdw],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
@@ -42,7 +39,6 @@ import * as utilities from "./utilities";
  *     dependsOn: [extFileFdw],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Server extends pulumi.CustomResource {
     /**

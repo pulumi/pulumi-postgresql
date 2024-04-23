@@ -159,14 +159,14 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.language);
     }
     /**
-     * The name of the argument.
+     * The name of the function.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the argument.
+     * @return The name of the function.
      * 
      */
     public Output<String> name() {
