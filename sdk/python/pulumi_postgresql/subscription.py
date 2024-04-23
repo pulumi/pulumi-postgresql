@@ -235,7 +235,6 @@ class Subscription(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -245,7 +244,6 @@ class Subscription(pulumi.CustomResource):
             conninfo="host=localhost port=5432 dbname=mydb user=postgres password=postgres",
             publications=["publication"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Postgres documentation
 
@@ -272,7 +270,6 @@ class Subscription(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
@@ -282,7 +279,6 @@ class Subscription(pulumi.CustomResource):
             conninfo="host=localhost port=5432 dbname=mydb user=postgres password=postgres",
             publications=["publication"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Postgres documentation
 

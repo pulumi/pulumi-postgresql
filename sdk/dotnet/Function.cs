@@ -15,7 +15,6 @@ namespace Pulumi.PostgreSql
     /// 
     /// ## Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.PostgreSql
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -97,7 +95,7 @@ namespace Pulumi.PostgreSql
         public Output<string?> Language { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the argument.
+        /// The name of the function.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -225,7 +223,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Language { get; set; }
 
         /// <summary>
-        /// The name of the argument.
+        /// The name of the function.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -315,7 +313,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Language { get; set; }
 
         /// <summary>
-        /// The name of the argument.
+        /// The name of the function.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

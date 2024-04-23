@@ -14,7 +14,6 @@ namespace Pulumi.PostgreSql
     /// 
     /// ## Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -42,7 +41,7 @@ namespace Pulumi.PostgreSql
     ///     {
     ///         DependsOn =
     ///         {
-    ///             extPostgresFdw, 
+    ///             extPostgresFdw,
     ///         },
     ///     });
     /// 
@@ -64,7 +63,6 @@ namespace Pulumi.PostgreSql
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/userMapping:UserMapping")]
     public partial class UserMapping : global::Pulumi.CustomResource

@@ -17,7 +17,6 @@ import (
 //
 // ## Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,7 +49,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -80,7 +78,7 @@ type Function struct {
 	DropCascade pulumi.BoolPtrOutput `pulumi:"dropCascade"`
 	// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
 	Language pulumi.StringPtrOutput `pulumi:"language"`
-	// The name of the argument.
+	// The name of the function.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
 	Parallel pulumi.StringPtrOutput `pulumi:"parallel"`
@@ -143,7 +141,7 @@ type functionState struct {
 	DropCascade *bool `pulumi:"dropCascade"`
 	// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
 	Language *string `pulumi:"language"`
-	// The name of the argument.
+	// The name of the function.
 	Name *string `pulumi:"name"`
 	// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
 	Parallel *string `pulumi:"parallel"`
@@ -174,7 +172,7 @@ type FunctionState struct {
 	DropCascade pulumi.BoolPtrInput
 	// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
 	Language pulumi.StringPtrInput
-	// The name of the argument.
+	// The name of the function.
 	Name pulumi.StringPtrInput
 	// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
 	Parallel pulumi.StringPtrInput
@@ -209,7 +207,7 @@ type functionArgs struct {
 	DropCascade *bool `pulumi:"dropCascade"`
 	// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
 	Language *string `pulumi:"language"`
-	// The name of the argument.
+	// The name of the function.
 	Name *string `pulumi:"name"`
 	// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
 	Parallel *string `pulumi:"parallel"`
@@ -241,7 +239,7 @@ type FunctionArgs struct {
 	DropCascade pulumi.BoolPtrInput
 	// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
 	Language pulumi.StringPtrInput
-	// The name of the argument.
+	// The name of the function.
 	Name pulumi.StringPtrInput
 	// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
 	Parallel pulumi.StringPtrInput
@@ -373,7 +371,7 @@ func (o FunctionOutput) Language() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Language }).(pulumi.StringPtrOutput)
 }
 
-// The name of the argument.
+// The name of the function.
 func (o FunctionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
