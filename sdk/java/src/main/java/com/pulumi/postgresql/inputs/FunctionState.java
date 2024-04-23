@@ -100,14 +100,14 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the argument.
+     * The name of the function.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the argument.
+     * @return The name of the function.
      * 
      */
     public Optional<Output<String>> name() {
@@ -363,7 +363,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the argument.
+         * @param name The name of the function.
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the argument.
+         * @param name The name of the function.
          * 
          * @return builder
          * 

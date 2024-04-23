@@ -14,7 +14,6 @@ namespace Pulumi.PostgreSql
     /// 
     /// ## Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -42,15 +41,13 @@ namespace Pulumi.PostgreSql
     ///     {
     ///         DependsOn =
     ///         {
-    ///             extPostgresFdw, 
+    ///             extPostgresFdw,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -72,13 +69,12 @@ namespace Pulumi.PostgreSql
     ///     {
     ///         DependsOn =
     ///         {
-    ///             extFileFdw, 
+    ///             extFileFdw,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/server:Server")]
     public partial class Server : global::Pulumi.CustomResource
