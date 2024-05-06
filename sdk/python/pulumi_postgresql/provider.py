@@ -43,8 +43,6 @@ class ProviderArgs:
         :param pulumi.Input[str] aws_rds_iam_region: AWS region to use for IAM auth
         :param pulumi.Input[bool] azure_identity_auth: Use MS Azure identity OAuth token (see:
                https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
-        :param pulumi.Input[str] azure_tenant_id: MS Azure tenant ID (see:
-               https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
         :param pulumi.Input['ProviderClientcertArgs'] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[int] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         :param pulumi.Input[str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
@@ -162,10 +160,6 @@ class ProviderArgs:
     @property
     @pulumi.getter(name="azureTenantId")
     def azure_tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        MS Azure tenant ID (see:
-        https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
-        """
         return pulumi.get(self, "azure_tenant_id")
 
     @azure_tenant_id.setter
@@ -392,8 +386,6 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] aws_rds_iam_region: AWS region to use for IAM auth
         :param pulumi.Input[bool] azure_identity_auth: Use MS Azure identity OAuth token (see:
                https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
-        :param pulumi.Input[str] azure_tenant_id: MS Azure tenant ID (see:
-               https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
         :param pulumi.Input[pulumi.InputType['ProviderClientcertArgs']] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[int] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         :param pulumi.Input[str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
@@ -517,10 +509,6 @@ class Provider(pulumi.ProviderResource):
     @property
     @pulumi.getter(name="azureTenantId")
     def azure_tenant_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        MS Azure tenant ID (see:
-        https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
-        """
         return pulumi.get(self, "azure_tenant_id")
 
     @property

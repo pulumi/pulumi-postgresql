@@ -22,9 +22,7 @@ type Provider struct {
 	AwsRdsIamProfile pulumi.StringPtrOutput `pulumi:"awsRdsIamProfile"`
 	// AWS region to use for IAM auth
 	AwsRdsIamRegion pulumi.StringPtrOutput `pulumi:"awsRdsIamRegion"`
-	// MS Azure tenant ID (see:
-	// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
-	AzureTenantId pulumi.StringPtrOutput `pulumi:"azureTenantId"`
+	AzureTenantId   pulumi.StringPtrOutput `pulumi:"azureTenantId"`
 	// The name of the database to connect to in order to conenct to (defaults to `postgres`).
 	Database pulumi.StringPtrOutput `pulumi:"database"`
 	// Database username associated to the connected user (for user name maps)
@@ -81,7 +79,7 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// Use rds_iam instead of password authentication (see:
+	// Use rdsIam instead of password authentication (see:
 	// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
 	AwsRdsIamAuth *bool `pulumi:"awsRdsIamAuth"`
 	// AWS profile to use for IAM auth
@@ -90,10 +88,8 @@ type providerArgs struct {
 	AwsRdsIamRegion *string `pulumi:"awsRdsIamRegion"`
 	// Use MS Azure identity OAuth token (see:
 	// https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
-	AzureIdentityAuth *bool `pulumi:"azureIdentityAuth"`
-	// MS Azure tenant ID (see:
-	// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
-	AzureTenantId *string `pulumi:"azureTenantId"`
+	AzureIdentityAuth *bool   `pulumi:"azureIdentityAuth"`
+	AzureTenantId     *string `pulumi:"azureTenantId"`
 	// SSL client certificate if required by the database.
 	Clientcert *ProviderClientcert `pulumi:"clientcert"`
 	// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
@@ -129,7 +125,7 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// Use rds_iam instead of password authentication (see:
+	// Use rdsIam instead of password authentication (see:
 	// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
 	AwsRdsIamAuth pulumi.BoolPtrInput
 	// AWS profile to use for IAM auth
@@ -139,9 +135,7 @@ type ProviderArgs struct {
 	// Use MS Azure identity OAuth token (see:
 	// https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
 	AzureIdentityAuth pulumi.BoolPtrInput
-	// MS Azure tenant ID (see:
-	// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
-	AzureTenantId pulumi.StringPtrInput
+	AzureTenantId     pulumi.StringPtrInput
 	// SSL client certificate if required by the database.
 	Clientcert ProviderClientcertPtrInput
 	// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
@@ -222,8 +216,6 @@ func (o ProviderOutput) AwsRdsIamRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AwsRdsIamRegion }).(pulumi.StringPtrOutput)
 }
 
-// MS Azure tenant ID (see:
-// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
 func (o ProviderOutput) AzureTenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AzureTenantId }).(pulumi.StringPtrOutput)
 }
