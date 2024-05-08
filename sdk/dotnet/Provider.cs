@@ -30,10 +30,6 @@ namespace Pulumi.PostgreSql
         [Output("awsRdsIamRegion")]
         public Output<string?> AwsRdsIamRegion { get; private set; } = null!;
 
-        /// <summary>
-        /// MS Azure tenant ID (see:
-        /// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
-        /// </summary>
         [Output("azureTenantId")]
         public Output<string?> AzureTenantId { get; private set; } = null!;
 
@@ -150,10 +146,6 @@ namespace Pulumi.PostgreSql
         [Input("azureIdentityAuth", json: true)]
         public Input<bool>? AzureIdentityAuth { get; set; }
 
-        /// <summary>
-        /// MS Azure tenant ID (see:
-        /// https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
-        /// </summary>
         [Input("azureTenantId")]
         public Input<string>? AzureTenantId { get; set; }
 
