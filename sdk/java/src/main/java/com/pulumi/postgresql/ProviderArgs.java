@@ -83,19 +83,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.azureIdentityAuth);
     }
 
-    /**
-     * MS Azure tenant ID (see:
-     * https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
-     * 
-     */
     @Import(name="azureTenantId")
     private @Nullable Output<String> azureTenantId;
 
-    /**
-     * @return MS Azure tenant ID (see:
-     * https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
-     * 
-     */
     public Optional<Output<String>> azureTenantId() {
         return Optional.ofNullable(this.azureTenantId);
     }
@@ -456,25 +446,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return azureIdentityAuth(Output.of(azureIdentityAuth));
         }
 
-        /**
-         * @param azureTenantId MS Azure tenant ID (see:
-         * https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
-         * 
-         * @return builder
-         * 
-         */
         public Builder azureTenantId(@Nullable Output<String> azureTenantId) {
             $.azureTenantId = azureTenantId;
             return this;
         }
 
-        /**
-         * @param azureTenantId MS Azure tenant ID (see:
-         * https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
-         * 
-         * @return builder
-         * 
-         */
         public Builder azureTenantId(String azureTenantId) {
             return azureTenantId(Output.of(azureTenantId));
         }
