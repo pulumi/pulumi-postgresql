@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,13 +43,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mySlot = new PhysicalReplicationSlot(&#34;mySlot&#34;, PhysicalReplicationSlotArgs.builder()        
- *             .name(&#34;my_slot&#34;)
+ *         var mySlot = new PhysicalReplicationSlot("mySlot", PhysicalReplicationSlotArgs.builder()        
+ *             .name("my_slot")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

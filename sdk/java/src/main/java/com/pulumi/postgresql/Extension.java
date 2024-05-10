@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,13 +44,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myExtension = new Extension(&#34;myExtension&#34;, ExtensionArgs.builder()        
- *             .name(&#34;pg_trgm&#34;)
+ *         var myExtension = new Extension("myExtension", ExtensionArgs.builder()        
+ *             .name("pg_trgm")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,16 +45,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var publication = new Publication(&#34;publication&#34;, PublicationArgs.builder()        
- *             .name(&#34;publication&#34;)
+ *         var publication = new Publication("publication", PublicationArgs.builder()        
+ *             .name("publication")
  *             .tables(            
- *                 &#34;public.test&#34;,
- *                 &#34;another_schema.test&#34;)
+ *                 "public.test",
+ *                 "another_schema.test")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import Example

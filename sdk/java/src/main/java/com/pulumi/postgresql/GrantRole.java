@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,20 +47,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var grantRoot = new GrantRole(&#34;grantRoot&#34;, GrantRoleArgs.builder()        
- *             .role(&#34;root&#34;)
- *             .grantRole(&#34;application&#34;)
+ *         var grantRoot = new GrantRole("grantRoot", GrantRoleArgs.builder()        
+ *             .role("root")
+ *             .grantRole("application")
  *             .withAdminOption(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; **Note:** If you use `postgresql.GrantRole` for a role that you also manage with a `postgresql.Role` resource, you need to ignore the changes of the `roles` attribute in the `postgresql.Role` resource or they will fight over what your role grants should be. e.g.:
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -82,18 +85,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bob = new Role(&#34;bob&#34;, RoleArgs.builder()        
- *             .name(&#34;bob&#34;)
+ *         var bob = new Role("bob", RoleArgs.builder()        
+ *             .name("bob")
  *             .build());
  * 
- *         var bobAdmin = new GrantRole(&#34;bobAdmin&#34;, GrantRoleArgs.builder()        
- *             .role(&#34;bob&#34;)
- *             .grantRole(&#34;admin&#34;)
+ *         var bobAdmin = new GrantRole("bobAdmin", GrantRoleArgs.builder()        
+ *             .role("bob")
+ *             .grantRole("admin")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
