@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,24 +47,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var increment = new Function(&#34;increment&#34;, FunctionArgs.builder()        
- *             .name(&#34;increment&#34;)
+ *         var increment = new Function("increment", FunctionArgs.builder()        
+ *             .name("increment")
  *             .args(FunctionArgArgs.builder()
- *                 .name(&#34;i&#34;)
- *                 .type(&#34;integer&#34;)
+ *                 .name("i")
+ *                 .type("integer")
  *                 .build())
- *             .returns(&#34;integer&#34;)
- *             .language(&#34;plpgsql&#34;)
- *             .body(&#34;&#34;&#34;
+ *             .returns("integer")
+ *             .language("plpgsql")
+ *             .body("""
  * BEGIN
  *     RETURN i + 1;
  * END;
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

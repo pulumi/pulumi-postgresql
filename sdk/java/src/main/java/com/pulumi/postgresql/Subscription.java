@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,15 +45,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var subscription = new Subscription(&#34;subscription&#34;, SubscriptionArgs.builder()        
- *             .name(&#34;subscription&#34;)
- *             .conninfo(&#34;host=localhost port=5432 dbname=mydb user=postgres password=postgres&#34;)
- *             .publications(&#34;publication&#34;)
+ *         var subscription = new Subscription("subscription", SubscriptionArgs.builder()        
+ *             .name("subscription")
+ *             .conninfo("host=localhost port=5432 dbname=mydb user=postgres password=postgres")
+ *             .publications("publication")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Postgres documentation
