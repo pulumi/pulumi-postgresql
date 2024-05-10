@@ -325,8 +325,7 @@
                 "description": "Use MS Azure identity OAuth token (see:\nhttps://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)\n"
             },
             "azureTenantId": {
-                "type": "string",
-                "description": "MS Azure tenant ID (see:\nhttps://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)\n"
+                "type": "string"
             },
             "clientcert": {
                 "$ref": "#/types/postgresql:index/ProviderClientcert:ProviderClientcert",
@@ -407,8 +406,7 @@
                 "description": "Use MS Azure identity OAuth token (see:\nhttps://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)\n"
             },
             "azureTenantId": {
-                "type": "string",
-                "description": "MS Azure tenant ID (see:\nhttps://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)\n"
+                "type": "string"
             },
             "clientcert": {
                 "$ref": "#/types/postgresql:index/ProviderClientcert:ProviderClientcert",
