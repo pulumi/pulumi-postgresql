@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/postgresql",
-    "version": "${VERSION}",
+    "version": "3.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing postgresql cloud resources.",
     "keywords": [
         "pulumi",
@@ -22,6 +22,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "postgresql"
+        "name": "postgresql",
+        "version": "3.0.0-alpha.0+dev"
     }
 }
