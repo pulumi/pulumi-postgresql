@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var readOnlyTables = new DefaultPrivileges("readOnlyTables", DefaultPrivilegesArgs.builder()        
+ *         var readOnlyTables = new DefaultPrivileges("readOnlyTables", DefaultPrivilegesArgs.builder()
  *             .role("test_role")
  *             .database("test_db")
  *             .schema("public")
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var revokePublic = new DefaultPrivileges("revokePublic", DefaultPrivilegesArgs.builder()        
+ *         var revokePublic = new DefaultPrivileges("revokePublic", DefaultPrivilegesArgs.builder()
  *             .database(exampleDb.name())
  *             .role("public")
  *             .owner("object_owner")

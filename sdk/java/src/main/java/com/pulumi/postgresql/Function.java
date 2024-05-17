@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var increment = new Function("increment", FunctionArgs.builder()        
+ *         var increment = new Function("increment", FunctionArgs.builder()
  *             .name("increment")
  *             .args(FunctionArgArgs.builder()
  *                 .name("i")

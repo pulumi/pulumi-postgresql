@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var publication = new Publication("publication", PublicationArgs.builder()        
+ *         var publication = new Publication("publication", PublicationArgs.builder()
  *             .name("publication")
  *             .tables(            
  *                 "public.test",
