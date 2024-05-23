@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var subscription = new Subscription("subscription", SubscriptionArgs.builder()        
+ *         var subscription = new Subscription("subscription", SubscriptionArgs.builder()
  *             .name("subscription")
  *             .conninfo("host=localhost port=5432 dbname=mydb user=postgres password=postgres")
  *             .publications("publication")

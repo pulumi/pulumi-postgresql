@@ -47,11 +47,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var extPostgresFdw = new Extension("extPostgresFdw", ExtensionArgs.builder()        
+ *         var extPostgresFdw = new Extension("extPostgresFdw", ExtensionArgs.builder()
  *             .name("postgres_fdw")
  *             .build());
  * 
- *         var myserverPostgres = new Server("myserverPostgres", ServerArgs.builder()        
+ *         var myserverPostgres = new Server("myserverPostgres", ServerArgs.builder()
  *             .serverName("myserver_postgres")
  *             .fdwName("postgres_fdw")
  *             .options(Map.ofEntries(
@@ -95,11 +95,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var extFileFdw = new Extension("extFileFdw", ExtensionArgs.builder()        
+ *         var extFileFdw = new Extension("extFileFdw", ExtensionArgs.builder()
  *             .name("file_fdw")
  *             .build());
  * 
- *         var myserverFile = new Server("myserverFile", ServerArgs.builder()        
+ *         var myserverFile = new Server("myserverFile", ServerArgs.builder()
  *             .serverName("myserver_file")
  *             .fdwName("file_fdw")
  *             .build(), CustomResourceOptions.builder()

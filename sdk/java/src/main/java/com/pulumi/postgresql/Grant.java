@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Grant SELECT privileges on 2 tables
- *         var readonlyTables = new Grant("readonlyTables", GrantArgs.builder()        
+ *         var readonlyTables = new Grant("readonlyTables", GrantArgs.builder()
  *             .database("test_db")
  *             .role("test_role")
  *             .schema("public")
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Grant SELECT & INSERT privileges on 2 columns in 1 table
- *         var readInsertColumn = new Grant("readInsertColumn", GrantArgs.builder()        
+ *         var readInsertColumn = new Grant("readInsertColumn", GrantArgs.builder()
  *             .database("test_db")
  *             .role("test_role")
  *             .schema("public")
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var revokePublic = new Grant("revokePublic", GrantArgs.builder()        
+ *         var revokePublic = new Grant("revokePublic", GrantArgs.builder()
  *             .database("test_db")
  *             .role("public")
  *             .schema("public")
