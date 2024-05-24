@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myExtension = new Extension("myExtension", ExtensionArgs.builder()        
+ *         var myExtension = new Extension("myExtension", ExtensionArgs.builder()
  *             .name("pg_trgm")
  *             .build());
  * 

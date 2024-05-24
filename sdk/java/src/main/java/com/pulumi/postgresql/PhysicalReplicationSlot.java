@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mySlot = new PhysicalReplicationSlot("mySlot", PhysicalReplicationSlotArgs.builder()        
+ *         var mySlot = new PhysicalReplicationSlot("mySlot", PhysicalReplicationSlotArgs.builder()
  *             .name("my_slot")
  *             .build());
  * 

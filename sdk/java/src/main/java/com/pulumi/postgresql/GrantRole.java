@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var grantRoot = new GrantRole("grantRoot", GrantRoleArgs.builder()        
+ *         var grantRoot = new GrantRole("grantRoot", GrantRoleArgs.builder()
  *             .role("root")
  *             .grantRole("application")
  *             .withAdminOption(true)
@@ -85,11 +85,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bob = new Role("bob", RoleArgs.builder()        
+ *         var bob = new Role("bob", RoleArgs.builder()
  *             .name("bob")
  *             .build());
  * 
- *         var bobAdmin = new GrantRole("bobAdmin", GrantRoleArgs.builder()        
+ *         var bobAdmin = new GrantRole("bobAdmin", GrantRoleArgs.builder()
  *             .role("bob")
  *             .grantRole("admin")
  *             .build());
