@@ -50,11 +50,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var extPostgresFdw = new Extension("extPostgresFdw", ExtensionArgs.builder()        
+ *         var extPostgresFdw = new Extension("extPostgresFdw", ExtensionArgs.builder()
  *             .name("postgres_fdw")
  *             .build());
  * 
- *         var myserverPostgres = new Server("myserverPostgres", ServerArgs.builder()        
+ *         var myserverPostgres = new Server("myserverPostgres", ServerArgs.builder()
  *             .serverName("myserver_postgres")
  *             .fdwName("postgres_fdw")
  *             .options(Map.ofEntries(
@@ -66,11 +66,11 @@ import javax.annotation.Nullable;
  *                 .dependsOn(extPostgresFdw)
  *                 .build());
  * 
- *         var remote = new Role("remote", RoleArgs.builder()        
+ *         var remote = new Role("remote", RoleArgs.builder()
  *             .name("remote")
  *             .build());
  * 
- *         var remoteUserMapping = new UserMapping("remoteUserMapping", UserMappingArgs.builder()        
+ *         var remoteUserMapping = new UserMapping("remoteUserMapping", UserMappingArgs.builder()
  *             .serverName(myserverPostgres.serverName())
  *             .userName(remote.name())
  *             .options(Map.ofEntries(

@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mySlot = new ReplicationSlot("mySlot", ReplicationSlotArgs.builder()        
+ *         var mySlot = new ReplicationSlot("mySlot", ReplicationSlotArgs.builder()
  *             .name("my_slot")
  *             .plugin("test_decoding")
  *             .build());
