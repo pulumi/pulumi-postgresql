@@ -271,38 +271,34 @@ class DefaultPrivileg(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
-        read_only_tables = postgresql.DefaultPrivileges("readOnlyTables",
-            database="test_db",
-            object_type="table",
-            owner="db_owner",
-            privileges=["SELECT"],
+        read_only_tables = postgresql.DefaultPrivileges("read_only_tables",
             role="test_role",
-            schema="public")
+            database="test_db",
+            schema="public",
+            owner="db_owner",
+            object_type="table",
+            privileges=["SELECT"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Examples
 
         Revoke default privileges for functions for "public" role:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
-        revoke_public = postgresql.DefaultPrivileges("revokePublic",
-            database=postgresql_database["example_db"]["name"],
+        revoke_public = postgresql.DefaultPrivileges("revoke_public",
+            database=example_db["name"],
             role="public",
             owner="object_owner",
             object_type="function",
             privileges=[])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -327,38 +323,34 @@ class DefaultPrivileg(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
-        read_only_tables = postgresql.DefaultPrivileges("readOnlyTables",
-            database="test_db",
-            object_type="table",
-            owner="db_owner",
-            privileges=["SELECT"],
+        read_only_tables = postgresql.DefaultPrivileges("read_only_tables",
             role="test_role",
-            schema="public")
+            database="test_db",
+            schema="public",
+            owner="db_owner",
+            object_type="table",
+            privileges=["SELECT"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Examples
 
         Revoke default privileges for functions for "public" role:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
-        revoke_public = postgresql.DefaultPrivileges("revokePublic",
-            database=postgresql_database["example_db"]["name"],
+        revoke_public = postgresql.DefaultPrivileges("revoke_public",
+            database=example_db["name"],
             role="public",
             owner="object_owner",
             object_type="function",
             privileges=[])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param DefaultPrivilegArgs args: The arguments to use to populate this resource's properties.

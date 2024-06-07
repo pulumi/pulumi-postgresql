@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,24 +47,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var increment = new Function(&#34;increment&#34;, FunctionArgs.builder()        
+ *         var increment = new Function("increment", FunctionArgs.builder()
+ *             .name("increment")
  *             .args(FunctionArgArgs.builder()
- *                 .name(&#34;i&#34;)
- *                 .type(&#34;integer&#34;)
+ *                 .name("i")
+ *                 .type("integer")
  *                 .build())
- *             .body(&#34;&#34;&#34;
- *     BEGIN
- *         RETURN i + 1;
- *     END;
- * 
- *             &#34;&#34;&#34;)
- *             .language(&#34;plpgsql&#34;)
- *             .returns(&#34;integer&#34;)
+ *             .returns("integer")
+ *             .language("plpgsql")
+ *             .body("""
+ * BEGIN
+ *     RETURN i + 1;
+ * END;
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -159,14 +161,14 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.language);
     }
     /**
-     * The name of the argument.
+     * The name of the function.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the argument.
+     * @return The name of the function.
      * 
      */
     public Output<String> name() {

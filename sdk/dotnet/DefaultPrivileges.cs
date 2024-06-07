@@ -16,7 +16,6 @@ namespace Pulumi.PostgreSql
     /// 
     /// ## Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -25,28 +24,26 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var readOnlyTables = new PostgreSql.DefaultPrivileges("readOnlyTables", new()
+    ///     var readOnlyTables = new PostgreSql.DefaultPrivileges("read_only_tables", new()
     ///     {
+    ///         Role = "test_role",
     ///         Database = "test_db",
-    ///         ObjectType = "table",
+    ///         Schema = "public",
     ///         Owner = "db_owner",
+    ///         ObjectType = "table",
     ///         Privileges = new[]
     ///         {
     ///             "SELECT",
     ///         },
-    ///         Role = "test_role",
-    ///         Schema = "public",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Examples
     /// 
     /// Revoke default privileges for functions for "public" role:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,9 +52,9 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var revokePublic = new PostgreSql.DefaultPrivileges("revokePublic", new()
+    ///     var revokePublic = new PostgreSql.DefaultPrivileges("revoke_public", new()
     ///     {
-    ///         Database = postgresql_database.Example_db.Name,
+    ///         Database = exampleDb.Name,
     ///         Role = "public",
     ///         Owner = "object_owner",
     ///         ObjectType = "function",
@@ -66,7 +63,6 @@ namespace Pulumi.PostgreSql
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/defaultPrivileges:DefaultPrivileges")]
     public partial class DefaultPrivileges : global::Pulumi.CustomResource

@@ -18,7 +18,6 @@ import (
 //
 // ## Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -31,15 +30,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.NewDefaultPrivileges(ctx, "readOnlyTables", &postgresql.DefaultPrivilegesArgs{
+//			_, err := postgresql.NewDefaultPrivileges(ctx, "read_only_tables", &postgresql.DefaultPrivilegesArgs{
+//				Role:       pulumi.String("test_role"),
 //				Database:   pulumi.String("test_db"),
-//				ObjectType: pulumi.String("table"),
+//				Schema:     pulumi.String("public"),
 //				Owner:      pulumi.String("db_owner"),
+//				ObjectType: pulumi.String("table"),
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("SELECT"),
 //				},
-//				Role:   pulumi.String("test_role"),
-//				Schema: pulumi.String("public"),
 //			})
 //			if err != nil {
 //				return err
@@ -49,13 +48,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Examples
 //
 // Revoke default privileges for functions for "public" role:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,8 +65,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.NewDefaultPrivileges(ctx, "revokePublic", &postgresql.DefaultPrivilegesArgs{
-//				Database:   pulumi.Any(postgresql_database.Example_db.Name),
+//			_, err := postgresql.NewDefaultPrivileges(ctx, "revoke_public", &postgresql.DefaultPrivilegesArgs{
+//				Database:   pulumi.Any(exampleDb.Name),
 //				Role:       pulumi.String("public"),
 //				Owner:      pulumi.String("object_owner"),
 //				ObjectType: pulumi.String("function"),
@@ -83,7 +80,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Deprecated: postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges
 type DefaultPrivileg struct {

@@ -12,26 +12,24 @@ import * as utilities from "./utilities";
  *
  * ## Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
  * const increment = new postgresql.Function("increment", {
+ *     name: "increment",
  *     args: [{
  *         name: "i",
  *         type: "integer",
  *     }],
- *     body: `    BEGIN
- *         RETURN i + 1;
- *     END;
- *
- * `,
- *     language: "plpgsql",
  *     returns: "integer",
+ *     language: "plpgsql",
+ *     body: `BEGIN
+ *     RETURN i + 1;
+ * END;
+ * `,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -98,7 +96,7 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly language!: pulumi.Output<string | undefined>;
     /**
-     * The name of the argument.
+     * The name of the function.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -203,7 +201,7 @@ export interface FunctionState {
      */
     language?: pulumi.Input<string>;
     /**
-     * The name of the argument.
+     * The name of the function.
      */
     name?: pulumi.Input<string>;
     /**
@@ -261,7 +259,7 @@ export interface FunctionArgs {
      */
     language?: pulumi.Input<string>;
     /**
-     * The name of the argument.
+     * The name of the function.
      */
     name?: pulumi.Input<string>;
     /**

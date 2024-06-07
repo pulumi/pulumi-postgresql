@@ -73,14 +73,12 @@ class PhysicalReplicationSlot(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
-        my_slot = postgresql.PhysicalReplicationSlot("mySlot")
+        my_slot = postgresql.PhysicalReplicationSlot("my_slot", name="my_slot")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -99,14 +97,12 @@ class PhysicalReplicationSlot(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
-        my_slot = postgresql.PhysicalReplicationSlot("mySlot")
+        my_slot = postgresql.PhysicalReplicationSlot("my_slot", name="my_slot")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param PhysicalReplicationSlotArgs args: The arguments to use to populate this resource's properties.

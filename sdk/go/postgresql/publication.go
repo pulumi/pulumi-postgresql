@@ -16,7 +16,6 @@ import (
 //
 // ## Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -30,6 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := postgresql.NewPublication(ctx, "publication", &postgresql.PublicationArgs{
+//				Name: pulumi.String("publication"),
 //				Tables: pulumi.StringArray{
 //					pulumi.String("public.test"),
 //					pulumi.String("another_schema.test"),
@@ -43,7 +43,10 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
+//
+// ## Import Example
+//
+// Publication can be imported using this format:
 type Publication struct {
 	pulumi.CustomResourceState
 

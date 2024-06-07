@@ -19,7 +19,6 @@ namespace Pulumi.PostgreSql
     /// 
     /// ## Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -29,9 +28,11 @@ namespace Pulumi.PostgreSql
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Grant SELECT privileges on 2 tables
-    ///     var readonlyTables = new PostgreSql.Grant("readonlyTables", new()
+    ///     var readonlyTables = new PostgreSql.Grant("readonly_tables", new()
     ///     {
     ///         Database = "test_db",
+    ///         Role = "test_role",
+    ///         Schema = "public",
     ///         ObjectType = "table",
     ///         Objects = new[]
     ///         {
@@ -42,42 +43,38 @@ namespace Pulumi.PostgreSql
     ///         {
     ///             "SELECT",
     ///         },
-    ///         Role = "test_role",
-    ///         Schema = "public",
     ///     });
     /// 
     ///     // Grant SELECT &amp; INSERT privileges on 2 columns in 1 table
-    ///     var readInsertColumn = new PostgreSql.Grant("readInsertColumn", new()
+    ///     var readInsertColumn = new PostgreSql.Grant("read_insert_column", new()
     ///     {
-    ///         Columns = new[]
-    ///         {
-    ///             "col1",
-    ///             "col2",
-    ///         },
     ///         Database = "test_db",
+    ///         Role = "test_role",
+    ///         Schema = "public",
     ///         ObjectType = "column",
     ///         Objects = new[]
     ///         {
     ///             "table1",
+    ///         },
+    ///         Columns = new[]
+    ///         {
+    ///             "col1",
+    ///             "col2",
     ///         },
     ///         Privileges = new[]
     ///         {
     ///             "UPDATE",
     ///             "INSERT",
     ///         },
-    ///         Role = "test_role",
-    ///         Schema = "public",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Examples
     /// 
     /// Revoke default accesses for public schema:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -86,18 +83,17 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var revokePublic = new PostgreSql.Grant("revokePublic", new()
+    ///     var revokePublic = new PostgreSql.Grant("revoke_public", new()
     ///     {
     ///         Database = "test_db",
-    ///         ObjectType = "schema",
-    ///         Privileges = new[] {},
     ///         Role = "public",
     ///         Schema = "public",
+    ///         ObjectType = "schema",
+    ///         Privileges = new[] {},
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/grant:Grant")]
     public partial class Grant : global::Pulumi.CustomResource

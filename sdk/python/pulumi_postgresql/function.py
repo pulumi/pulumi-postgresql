@@ -38,7 +38,7 @@ class FunctionArgs:
         :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as
                operators or triggers), and in turn all objects that depend on those objects. Default is false.
         :param pulumi.Input[str] language: The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
-        :param pulumi.Input[str] name: The name of the argument.
+        :param pulumi.Input[str] name: The name of the function.
         :param pulumi.Input[str] parallel: Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
         :param pulumi.Input[str] returns: Type that the function returns. It can be computed from the OUT arguments. Default is void.
         :param pulumi.Input[str] schema: The schema where the function is located.
@@ -138,7 +138,7 @@ class FunctionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the argument.
+        The name of the function.
         """
         return pulumi.get(self, "name")
 
@@ -245,7 +245,7 @@ class _FunctionState:
         :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as
                operators or triggers), and in turn all objects that depend on those objects. Default is false.
         :param pulumi.Input[str] language: The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
-        :param pulumi.Input[str] name: The name of the argument.
+        :param pulumi.Input[str] name: The name of the function.
         :param pulumi.Input[str] parallel: Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
         :param pulumi.Input[str] returns: Type that the function returns. It can be computed from the OUT arguments. Default is void.
         :param pulumi.Input[str] schema: The schema where the function is located.
@@ -346,7 +346,7 @@ class _FunctionState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the argument.
+        The name of the function.
         """
         return pulumi.get(self, "name")
 
@@ -452,25 +452,23 @@ class Function(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
         increment = postgresql.Function("increment",
+            name="increment",
             args=[postgresql.FunctionArgArgs(
                 name="i",
                 type="integer",
             )],
-            body=\"\"\"    BEGIN
-                RETURN i + 1;
-            END;
-
-        \"\"\",
+            returns="integer",
             language="plpgsql",
-            returns="integer")
+            body=\"\"\"BEGIN
+            RETURN i + 1;
+        END;
+        \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -495,7 +493,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as
                operators or triggers), and in turn all objects that depend on those objects. Default is false.
         :param pulumi.Input[str] language: The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
-        :param pulumi.Input[str] name: The name of the argument.
+        :param pulumi.Input[str] name: The name of the function.
         :param pulumi.Input[str] parallel: Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
         :param pulumi.Input[str] returns: Type that the function returns. It can be computed from the OUT arguments. Default is void.
         :param pulumi.Input[str] schema: The schema where the function is located.
@@ -516,25 +514,23 @@ class Function(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
         increment = postgresql.Function("increment",
+            name="increment",
             args=[postgresql.FunctionArgArgs(
                 name="i",
                 type="integer",
             )],
-            body=\"\"\"    BEGIN
-                RETURN i + 1;
-            END;
-
-        \"\"\",
+            returns="integer",
             language="plpgsql",
-            returns="integer")
+            body=\"\"\"BEGIN
+            RETURN i + 1;
+        END;
+        \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -636,7 +632,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[bool] drop_cascade: True to automatically drop objects that depend on the function (such as
                operators or triggers), and in turn all objects that depend on those objects. Default is false.
         :param pulumi.Input[str] language: The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
-        :param pulumi.Input[str] name: The name of the argument.
+        :param pulumi.Input[str] name: The name of the function.
         :param pulumi.Input[str] parallel: Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
         :param pulumi.Input[str] returns: Type that the function returns. It can be computed from the OUT arguments. Default is void.
         :param pulumi.Input[str] schema: The schema where the function is located.
@@ -710,7 +706,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the argument.
+        The name of the function.
         """
         return pulumi.get(self, "name")
 

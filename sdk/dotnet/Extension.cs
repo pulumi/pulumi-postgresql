@@ -15,7 +15,6 @@ namespace Pulumi.PostgreSql
     /// 
     /// ## Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -24,11 +23,13 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myExtension = new PostgreSql.Extension("myExtension");
+    ///     var myExtension = new PostgreSql.Extension("my_extension", new()
+    ///     {
+    ///         Name = "pg_trgm",
+    ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

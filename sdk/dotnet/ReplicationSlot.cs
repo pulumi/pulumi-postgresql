@@ -15,7 +15,6 @@ namespace Pulumi.PostgreSql
     /// 
     /// ## Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -24,14 +23,14 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mySlot = new PostgreSql.ReplicationSlot("mySlot", new()
+    ///     var mySlot = new PostgreSql.ReplicationSlot("my_slot", new()
     ///     {
+    ///         Name = "my_slot",
     ///         Plugin = "test_decoding",
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/replicationSlot:ReplicationSlot")]
     public partial class ReplicationSlot : global::Pulumi.CustomResource

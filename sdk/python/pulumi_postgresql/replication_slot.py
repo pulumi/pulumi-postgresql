@@ -137,14 +137,14 @@ class ReplicationSlot(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
-        my_slot = postgresql.ReplicationSlot("mySlot", plugin="test_decoding")
+        my_slot = postgresql.ReplicationSlot("my_slot",
+            name="my_slot",
+            plugin="test_decoding")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -164,14 +164,14 @@ class ReplicationSlot(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
-        my_slot = postgresql.ReplicationSlot("mySlot", plugin="test_decoding")
+        my_slot = postgresql.ReplicationSlot("my_slot",
+            name="my_slot",
+            plugin="test_decoding")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ReplicationSlotArgs args: The arguments to use to populate this resource's properties.

@@ -9,13 +9,12 @@ import * as utilities from "./utilities";
  *
  * ## Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const extPostgresFdw = new postgresql.Extension("extPostgresFdw", {});
- * const myserverPostgres = new postgresql.Server("myserverPostgres", {
+ * const extPostgresFdw = new postgresql.Extension("ext_postgres_fdw", {name: "postgres_fdw"});
+ * const myserverPostgres = new postgresql.Server("myserver_postgres", {
  *     serverName: "myserver_postgres",
  *     fdwName: "postgres_fdw",
  *     options: {
@@ -27,22 +26,19 @@ import * as utilities from "./utilities";
  *     dependsOn: [extPostgresFdw],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const extFileFdw = new postgresql.Extension("extFileFdw", {});
- * const myserverFile = new postgresql.Server("myserverFile", {
+ * const extFileFdw = new postgresql.Extension("ext_file_fdw", {name: "file_fdw"});
+ * const myserverFile = new postgresql.Server("myserver_file", {
  *     serverName: "myserver_file",
  *     fdwName: "file_fdw",
  * }, {
  *     dependsOn: [extFileFdw],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Server extends pulumi.CustomResource {
     /**

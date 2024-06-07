@@ -20,7 +20,6 @@ import (
 //
 // ## Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -33,9 +32,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.NewGrantRole(ctx, "grantRoot", &postgresql.GrantRoleArgs{
-//				GrantRole:       pulumi.String("application"),
+//			_, err := postgresql.NewGrantRole(ctx, "grant_root", &postgresql.GrantRoleArgs{
 //				Role:            pulumi.String("root"),
+//				GrantRole:       pulumi.String("application"),
 //				WithAdminOption: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -46,10 +45,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // > **Note:** If you use `GrantRole` for a role that you also manage with a `Role` resource, you need to ignore the changes of the `roles` attribute in the `Role` resource or they will fight over what your role grants should be. e.g.:
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,11 +59,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.NewRole(ctx, "bob", nil)
+//			_, err := postgresql.NewRole(ctx, "bob", &postgresql.RoleArgs{
+//				Name: pulumi.String("bob"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = postgresql.NewGrantRole(ctx, "bobAdmin", &postgresql.GrantRoleArgs{
+//			_, err = postgresql.NewGrantRole(ctx, "bob_admin", &postgresql.GrantRoleArgs{
 //				Role:      pulumi.String("bob"),
 //				GrantRole: pulumi.String("admin"),
 //			})
@@ -78,7 +77,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type GrantRole struct {
 	pulumi.CustomResourceState
 

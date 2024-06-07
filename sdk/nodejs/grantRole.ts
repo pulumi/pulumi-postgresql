@@ -13,32 +13,28 @@ import * as utilities from "./utilities";
  *
  * ## Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const grantRoot = new postgresql.GrantRole("grantRoot", {
- *     grantRole: "application",
+ * const grantRoot = new postgresql.GrantRole("grant_root", {
  *     role: "root",
+ *     grantRole: "application",
  *     withAdminOption: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * > **Note:** If you use `postgresql.GrantRole` for a role that you also manage with a `postgresql.Role` resource, you need to ignore the changes of the `roles` attribute in the `postgresql.Role` resource or they will fight over what your role grants should be. e.g.:
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const bob = new postgresql.Role("bob", {});
- * const bobAdmin = new postgresql.GrantRole("bobAdmin", {
+ * const bob = new postgresql.Role("bob", {name: "bob"});
+ * const bobAdmin = new postgresql.GrantRole("bob_admin", {
  *     role: "bob",
  *     grantRole: "admin",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class GrantRole extends pulumi.CustomResource {
     /**

@@ -16,7 +16,6 @@ import (
 //
 // ## Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -29,7 +28,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.NewExtension(ctx, "myExtension", nil)
+//			_, err := postgresql.NewExtension(ctx, "my_extension", &postgresql.ExtensionArgs{
+//				Name: pulumi.String("pg_trgm"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -38,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

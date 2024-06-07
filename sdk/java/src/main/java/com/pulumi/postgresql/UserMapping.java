@@ -21,16 +21,19 @@ import javax.annotation.Nullable;
  * ## Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.postgresql.Extension;
+ * import com.pulumi.postgresql.ExtensionArgs;
  * import com.pulumi.postgresql.Server;
  * import com.pulumi.postgresql.ServerArgs;
  * import com.pulumi.postgresql.Role;
+ * import com.pulumi.postgresql.RoleArgs;
  * import com.pulumi.postgresql.UserMapping;
  * import com.pulumi.postgresql.UserMappingArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -47,34 +50,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var extPostgresFdw = new Extension(&#34;extPostgresFdw&#34;);
+ *         var extPostgresFdw = new Extension("extPostgresFdw", ExtensionArgs.builder()
+ *             .name("postgres_fdw")
+ *             .build());
  * 
- *         var myserverPostgres = new Server(&#34;myserverPostgres&#34;, ServerArgs.builder()        
- *             .serverName(&#34;myserver_postgres&#34;)
- *             .fdwName(&#34;postgres_fdw&#34;)
+ *         var myserverPostgres = new Server("myserverPostgres", ServerArgs.builder()
+ *             .serverName("myserver_postgres")
+ *             .fdwName("postgres_fdw")
  *             .options(Map.ofEntries(
- *                 Map.entry(&#34;host&#34;, &#34;foo&#34;),
- *                 Map.entry(&#34;dbname&#34;, &#34;foodb&#34;),
- *                 Map.entry(&#34;port&#34;, &#34;5432&#34;)
+ *                 Map.entry("host", "foo"),
+ *                 Map.entry("dbname", "foodb"),
+ *                 Map.entry("port", "5432")
  *             ))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(extPostgresFdw)
  *                 .build());
  * 
- *         var remoteRole = new Role(&#34;remoteRole&#34;);
+ *         var remote = new Role("remote", RoleArgs.builder()
+ *             .name("remote")
+ *             .build());
  * 
- *         var remoteUserMapping = new UserMapping(&#34;remoteUserMapping&#34;, UserMappingArgs.builder()        
+ *         var remoteUserMapping = new UserMapping("remoteUserMapping", UserMappingArgs.builder()
  *             .serverName(myserverPostgres.serverName())
- *             .userName(remoteRole.name())
+ *             .userName(remote.name())
  *             .options(Map.ofEntries(
- *                 Map.entry(&#34;user&#34;, &#34;admin&#34;),
- *                 Map.entry(&#34;password&#34;, &#34;pass&#34;)
+ *                 Map.entry("user", "admin"),
+ *                 Map.entry("password", "pass")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

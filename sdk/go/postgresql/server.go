@@ -16,7 +16,6 @@ import (
 //
 // ## Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -29,11 +28,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			extPostgresFdw, err := postgresql.NewExtension(ctx, "extPostgresFdw", nil)
+//			extPostgresFdw, err := postgresql.NewExtension(ctx, "ext_postgres_fdw", &postgresql.ExtensionArgs{
+//				Name: pulumi.String("postgres_fdw"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = postgresql.NewServer(ctx, "myserverPostgres", &postgresql.ServerArgs{
+//			_, err = postgresql.NewServer(ctx, "myserver_postgres", &postgresql.ServerArgs{
 //				ServerName: pulumi.String("myserver_postgres"),
 //				FdwName:    pulumi.String("postgres_fdw"),
 //				Options: pulumi.StringMap{
@@ -52,9 +53,7 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,11 +66,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			extFileFdw, err := postgresql.NewExtension(ctx, "extFileFdw", nil)
+//			extFileFdw, err := postgresql.NewExtension(ctx, "ext_file_fdw", &postgresql.ExtensionArgs{
+//				Name: pulumi.String("file_fdw"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = postgresql.NewServer(ctx, "myserverFile", &postgresql.ServerArgs{
+//			_, err = postgresql.NewServer(ctx, "myserver_file", &postgresql.ServerArgs{
 //				ServerName: pulumi.String("myserver_file"),
 //				FdwName:    pulumi.String("file_fdw"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -85,7 +86,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type Server struct {
 	pulumi.CustomResourceState
 

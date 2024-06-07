@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,35 +50,36 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Grant SELECT privileges on 2 tables
- *         var readonlyTables = new Grant(&#34;readonlyTables&#34;, GrantArgs.builder()        
- *             .database(&#34;test_db&#34;)
- *             .objectType(&#34;table&#34;)
+ *         var readonlyTables = new Grant("readonlyTables", GrantArgs.builder()
+ *             .database("test_db")
+ *             .role("test_role")
+ *             .schema("public")
+ *             .objectType("table")
  *             .objects(            
- *                 &#34;table1&#34;,
- *                 &#34;table2&#34;)
- *             .privileges(&#34;SELECT&#34;)
- *             .role(&#34;test_role&#34;)
- *             .schema(&#34;public&#34;)
+ *                 "table1",
+ *                 "table2")
+ *             .privileges("SELECT")
  *             .build());
  * 
- *         // Grant SELECT &amp; INSERT privileges on 2 columns in 1 table
- *         var readInsertColumn = new Grant(&#34;readInsertColumn&#34;, GrantArgs.builder()        
+ *         // Grant SELECT & INSERT privileges on 2 columns in 1 table
+ *         var readInsertColumn = new Grant("readInsertColumn", GrantArgs.builder()
+ *             .database("test_db")
+ *             .role("test_role")
+ *             .schema("public")
+ *             .objectType("column")
+ *             .objects("table1")
  *             .columns(            
- *                 &#34;col1&#34;,
- *                 &#34;col2&#34;)
- *             .database(&#34;test_db&#34;)
- *             .objectType(&#34;column&#34;)
- *             .objects(&#34;table1&#34;)
+ *                 "col1",
+ *                 "col2")
  *             .privileges(            
- *                 &#34;UPDATE&#34;,
- *                 &#34;INSERT&#34;)
- *             .role(&#34;test_role&#34;)
- *             .schema(&#34;public&#34;)
+ *                 "UPDATE",
+ *                 "INSERT")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Examples
@@ -85,7 +87,8 @@ import javax.annotation.Nullable;
  * Revoke default accesses for public schema:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -106,17 +109,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var revokePublic = new Grant(&#34;revokePublic&#34;, GrantArgs.builder()        
- *             .database(&#34;test_db&#34;)
- *             .objectType(&#34;schema&#34;)
+ *         var revokePublic = new Grant("revokePublic", GrantArgs.builder()
+ *             .database("test_db")
+ *             .role("public")
+ *             .schema("public")
+ *             .objectType("schema")
  *             .privileges()
- *             .role(&#34;public&#34;)
- *             .schema(&#34;public&#34;)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,18 +46,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var readOnlyTables = new DefaultPrivileges(&#34;readOnlyTables&#34;, DefaultPrivilegesArgs.builder()        
- *             .database(&#34;test_db&#34;)
- *             .objectType(&#34;table&#34;)
- *             .owner(&#34;db_owner&#34;)
- *             .privileges(&#34;SELECT&#34;)
- *             .role(&#34;test_role&#34;)
- *             .schema(&#34;public&#34;)
+ *         var readOnlyTables = new DefaultPrivileges("readOnlyTables", DefaultPrivilegesArgs.builder()
+ *             .role("test_role")
+ *             .database("test_db")
+ *             .schema("public")
+ *             .owner("db_owner")
+ *             .objectType("table")
+ *             .privileges("SELECT")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Examples
@@ -64,7 +66,8 @@ import javax.annotation.Nullable;
  * Revoke default privileges for functions for &#34;public&#34; role:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -85,17 +88,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var revokePublic = new DefaultPrivileges(&#34;revokePublic&#34;, DefaultPrivilegesArgs.builder()        
- *             .database(postgresql_database.example_db().name())
- *             .role(&#34;public&#34;)
- *             .owner(&#34;object_owner&#34;)
- *             .objectType(&#34;function&#34;)
+ *         var revokePublic = new DefaultPrivileges("revokePublic", DefaultPrivilegesArgs.builder()
+ *             .database(exampleDb.name())
+ *             .role("public")
+ *             .owner("object_owner")
+ *             .objectType("function")
  *             .privileges()
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * @deprecated

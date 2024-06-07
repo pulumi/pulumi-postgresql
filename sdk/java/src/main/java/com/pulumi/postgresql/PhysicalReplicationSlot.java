@@ -21,13 +21,15 @@ import javax.annotation.Nullable;
  * ## Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.postgresql.PhysicalReplicationSlot;
+ * import com.pulumi.postgresql.PhysicalReplicationSlotArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -41,11 +43,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mySlot = new PhysicalReplicationSlot(&#34;mySlot&#34;);
+ *         var mySlot = new PhysicalReplicationSlot("mySlot", PhysicalReplicationSlotArgs.builder()
+ *             .name("my_slot")
+ *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

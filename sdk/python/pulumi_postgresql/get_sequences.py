@@ -124,14 +124,12 @@ def get_sequences(database: Optional[str] = None,
 
     ## Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_postgresql as postgresql
 
     my_sequences = postgresql.get_sequences(database="my_database")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str database: The PostgreSQL database which will be queried for sequence names.
@@ -177,14 +175,12 @@ def get_sequences_output(database: Optional[pulumi.Input[str]] = None,
 
     ## Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_postgresql as postgresql
 
     my_sequences = postgresql.get_sequences(database="my_database")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str database: The PostgreSQL database which will be queried for sequence names.

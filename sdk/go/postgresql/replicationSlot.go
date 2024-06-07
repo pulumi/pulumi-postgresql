@@ -17,7 +17,6 @@ import (
 //
 // ## Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -30,7 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := postgresql.NewReplicationSlot(ctx, "mySlot", &postgresql.ReplicationSlotArgs{
+//			_, err := postgresql.NewReplicationSlot(ctx, "my_slot", &postgresql.ReplicationSlotArgs{
+//				Name:   pulumi.String("my_slot"),
 //				Plugin: pulumi.String("test_decoding"),
 //			})
 //			if err != nil {
@@ -41,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type ReplicationSlot struct {
 	pulumi.CustomResourceState
 

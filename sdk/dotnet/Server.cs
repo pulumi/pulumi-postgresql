@@ -14,7 +14,6 @@ namespace Pulumi.PostgreSql
     /// 
     /// ## Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -23,9 +22,12 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var extPostgresFdw = new PostgreSql.Extension("extPostgresFdw");
+    ///     var extPostgresFdw = new PostgreSql.Extension("ext_postgres_fdw", new()
+    ///     {
+    ///         Name = "postgres_fdw",
+    ///     });
     /// 
-    ///     var myserverPostgres = new PostgreSql.Server("myserverPostgres", new()
+    ///     var myserverPostgres = new PostgreSql.Server("myserver_postgres", new()
     ///     {
     ///         ServerName = "myserver_postgres",
     ///         FdwName = "postgres_fdw",
@@ -39,15 +41,13 @@ namespace Pulumi.PostgreSql
     ///     {
     ///         DependsOn =
     ///         {
-    ///             extPostgresFdw, 
+    ///             extPostgresFdw,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,9 +56,12 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var extFileFdw = new PostgreSql.Extension("extFileFdw");
+    ///     var extFileFdw = new PostgreSql.Extension("ext_file_fdw", new()
+    ///     {
+    ///         Name = "file_fdw",
+    ///     });
     /// 
-    ///     var myserverFile = new PostgreSql.Server("myserverFile", new()
+    ///     var myserverFile = new PostgreSql.Server("myserver_file", new()
     ///     {
     ///         ServerName = "myserver_file",
     ///         FdwName = "file_fdw",
@@ -66,13 +69,12 @@ namespace Pulumi.PostgreSql
     ///     {
     ///         DependsOn =
     ///         {
-    ///             extFileFdw, 
+    ///             extFileFdw,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/server:Server")]
     public partial class Server : global::Pulumi.CustomResource

@@ -10,14 +10,15 @@ import * as utilities from "./utilities";
  *
  * ## Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const mySlot = new postgresql.ReplicationSlot("mySlot", {plugin: "test_decoding"});
+ * const mySlot = new postgresql.ReplicationSlot("my_slot", {
+ *     name: "my_slot",
+ *     plugin: "test_decoding",
+ * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class ReplicationSlot extends pulumi.CustomResource {
     /**

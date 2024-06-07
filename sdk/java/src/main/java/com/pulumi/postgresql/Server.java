@@ -22,13 +22,15 @@ import javax.annotation.Nullable;
  * ## Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.postgresql.Extension;
+ * import com.pulumi.postgresql.ExtensionArgs;
  * import com.pulumi.postgresql.Server;
  * import com.pulumi.postgresql.ServerArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -45,15 +47,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var extPostgresFdw = new Extension(&#34;extPostgresFdw&#34;);
+ *         var extPostgresFdw = new Extension("extPostgresFdw", ExtensionArgs.builder()
+ *             .name("postgres_fdw")
+ *             .build());
  * 
- *         var myserverPostgres = new Server(&#34;myserverPostgres&#34;, ServerArgs.builder()        
- *             .serverName(&#34;myserver_postgres&#34;)
- *             .fdwName(&#34;postgres_fdw&#34;)
+ *         var myserverPostgres = new Server("myserverPostgres", ServerArgs.builder()
+ *             .serverName("myserver_postgres")
+ *             .fdwName("postgres_fdw")
  *             .options(Map.ofEntries(
- *                 Map.entry(&#34;host&#34;, &#34;foo&#34;),
- *                 Map.entry(&#34;dbname&#34;, &#34;foodb&#34;),
- *                 Map.entry(&#34;port&#34;, &#34;5432&#34;)
+ *                 Map.entry("host", "foo"),
+ *                 Map.entry("dbname", "foodb"),
+ *                 Map.entry("port", "5432")
  *             ))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(extPostgresFdw)
@@ -61,17 +65,20 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.postgresql.Extension;
+ * import com.pulumi.postgresql.ExtensionArgs;
  * import com.pulumi.postgresql.Server;
  * import com.pulumi.postgresql.ServerArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -88,18 +95,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var extFileFdw = new Extension(&#34;extFileFdw&#34;);
+ *         var extFileFdw = new Extension("extFileFdw", ExtensionArgs.builder()
+ *             .name("file_fdw")
+ *             .build());
  * 
- *         var myserverFile = new Server(&#34;myserverFile&#34;, ServerArgs.builder()        
- *             .serverName(&#34;myserver_file&#34;)
- *             .fdwName(&#34;file_fdw&#34;)
+ *         var myserverFile = new Server("myserverFile", ServerArgs.builder()
+ *             .serverName("myserver_file")
+ *             .fdwName("file_fdw")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(extFileFdw)
  *                 .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

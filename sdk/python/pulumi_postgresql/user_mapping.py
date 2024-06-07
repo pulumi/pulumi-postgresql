@@ -159,13 +159,12 @@ class UserMapping(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
-        ext_postgres_fdw = postgresql.Extension("extPostgresFdw")
-        myserver_postgres = postgresql.Server("myserverPostgres",
+        ext_postgres_fdw = postgresql.Extension("ext_postgres_fdw", name="postgres_fdw")
+        myserver_postgres = postgresql.Server("myserver_postgres",
             server_name="myserver_postgres",
             fdw_name="postgres_fdw",
             options={
@@ -174,16 +173,15 @@ class UserMapping(pulumi.CustomResource):
                 "port": "5432",
             },
             opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
-        remote_role = postgresql.Role("remoteRole")
-        remote_user_mapping = postgresql.UserMapping("remoteUserMapping",
+        remote = postgresql.Role("remote", name="remote")
+        remote_user_mapping = postgresql.UserMapping("remote",
             server_name=myserver_postgres.server_name,
-            user_name=remote_role.name,
+            user_name=remote.name,
             options={
                 "user": "admin",
                 "password": "pass",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -208,13 +206,12 @@ class UserMapping(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
-        ext_postgres_fdw = postgresql.Extension("extPostgresFdw")
-        myserver_postgres = postgresql.Server("myserverPostgres",
+        ext_postgres_fdw = postgresql.Extension("ext_postgres_fdw", name="postgres_fdw")
+        myserver_postgres = postgresql.Server("myserver_postgres",
             server_name="myserver_postgres",
             fdw_name="postgres_fdw",
             options={
@@ -223,16 +220,15 @@ class UserMapping(pulumi.CustomResource):
                 "port": "5432",
             },
             opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
-        remote_role = postgresql.Role("remoteRole")
-        remote_user_mapping = postgresql.UserMapping("remoteUserMapping",
+        remote = postgresql.Role("remote", name="remote")
+        remote_user_mapping = postgresql.UserMapping("remote",
             server_name=myserver_postgres.server_name,
-            user_name=remote_role.name,
+            user_name=remote.name,
             options={
                 "user": "admin",
                 "password": "pass",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param UserMappingArgs args: The arguments to use to populate this resource's properties.

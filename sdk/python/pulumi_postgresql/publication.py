@@ -303,17 +303,21 @@ class Publication(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
-        publication = postgresql.Publication("publication", tables=[
-            "public.test",
-            "another_schema.test",
-        ])
+        publication = postgresql.Publication("publication",
+            name="publication",
+            tables=[
+                "public.test",
+                "another_schema.test",
+            ])
         ```
-        <!--End PulumiCodeChooser -->
+
+        ## Import Example
+
+        Publication can be imported using this format:
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -338,17 +342,21 @@ class Publication(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
-        publication = postgresql.Publication("publication", tables=[
-            "public.test",
-            "another_schema.test",
-        ])
+        publication = postgresql.Publication("publication",
+            name="publication",
+            tables=[
+                "public.test",
+                "another_schema.test",
+            ])
         ```
-        <!--End PulumiCodeChooser -->
+
+        ## Import Example
+
+        Publication can be imported using this format:
 
         :param str resource_name: The name of the resource.
         :param PublicationArgs args: The arguments to use to populate this resource's properties.

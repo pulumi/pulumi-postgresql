@@ -303,57 +303,53 @@ class Grant(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
         # Grant SELECT privileges on 2 tables
-        readonly_tables = postgresql.Grant("readonlyTables",
+        readonly_tables = postgresql.Grant("readonly_tables",
             database="test_db",
+            role="test_role",
+            schema="public",
             object_type="table",
             objects=[
                 "table1",
                 "table2",
             ],
-            privileges=["SELECT"],
-            role="test_role",
-            schema="public")
+            privileges=["SELECT"])
         # Grant SELECT & INSERT privileges on 2 columns in 1 table
-        read_insert_column = postgresql.Grant("readInsertColumn",
+        read_insert_column = postgresql.Grant("read_insert_column",
+            database="test_db",
+            role="test_role",
+            schema="public",
+            object_type="column",
+            objects=["table1"],
             columns=[
                 "col1",
                 "col2",
             ],
-            database="test_db",
-            object_type="column",
-            objects=["table1"],
             privileges=[
                 "UPDATE",
                 "INSERT",
-            ],
-            role="test_role",
-            schema="public")
+            ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Examples
 
         Revoke default accesses for public schema:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
-        revoke_public = postgresql.Grant("revokePublic",
+        revoke_public = postgresql.Grant("revoke_public",
             database="test_db",
-            object_type="schema",
-            privileges=[],
             role="public",
-            schema="public")
+            schema="public",
+            object_type="schema",
+            privileges=[])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -382,57 +378,53 @@ class Grant(pulumi.CustomResource):
 
         ## Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
         # Grant SELECT privileges on 2 tables
-        readonly_tables = postgresql.Grant("readonlyTables",
+        readonly_tables = postgresql.Grant("readonly_tables",
             database="test_db",
+            role="test_role",
+            schema="public",
             object_type="table",
             objects=[
                 "table1",
                 "table2",
             ],
-            privileges=["SELECT"],
-            role="test_role",
-            schema="public")
+            privileges=["SELECT"])
         # Grant SELECT & INSERT privileges on 2 columns in 1 table
-        read_insert_column = postgresql.Grant("readInsertColumn",
+        read_insert_column = postgresql.Grant("read_insert_column",
+            database="test_db",
+            role="test_role",
+            schema="public",
+            object_type="column",
+            objects=["table1"],
             columns=[
                 "col1",
                 "col2",
             ],
-            database="test_db",
-            object_type="column",
-            objects=["table1"],
             privileges=[
                 "UPDATE",
                 "INSERT",
-            ],
-            role="test_role",
-            schema="public")
+            ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Examples
 
         Revoke default accesses for public schema:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_postgresql as postgresql
 
-        revoke_public = postgresql.Grant("revokePublic",
+        revoke_public = postgresql.Grant("revoke_public",
             database="test_db",
-            object_type="schema",
-            privileges=[],
             role="public",
-            schema="public")
+            schema="public",
+            object_type="schema",
+            privileges=[])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param GrantArgs args: The arguments to use to populate this resource's properties.

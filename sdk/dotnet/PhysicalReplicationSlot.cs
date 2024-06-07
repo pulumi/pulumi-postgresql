@@ -16,7 +16,6 @@ namespace Pulumi.PostgreSql
     /// 
     /// ## Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -25,11 +24,13 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mySlot = new PostgreSql.PhysicalReplicationSlot("mySlot");
+    ///     var mySlot = new PostgreSql.PhysicalReplicationSlot("my_slot", new()
+    ///     {
+    ///         Name = "my_slot",
+    ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot")]
     public partial class PhysicalReplicationSlot : global::Pulumi.CustomResource

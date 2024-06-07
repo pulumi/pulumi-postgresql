@@ -11,40 +11,36 @@ import * as utilities from "./utilities";
  *
  * ## Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const readOnlyTables = new postgresql.DefaultPrivileges("readOnlyTables", {
- *     database: "test_db",
- *     objectType: "table",
- *     owner: "db_owner",
- *     privileges: ["SELECT"],
+ * const readOnlyTables = new postgresql.DefaultPrivileges("read_only_tables", {
  *     role: "test_role",
+ *     database: "test_db",
  *     schema: "public",
+ *     owner: "db_owner",
+ *     objectType: "table",
+ *     privileges: ["SELECT"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Examples
  *
  * Revoke default privileges for functions for "public" role:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as postgresql from "@pulumi/postgresql";
  *
- * const revokePublic = new postgresql.DefaultPrivileges("revokePublic", {
- *     database: postgresql_database.example_db.name,
+ * const revokePublic = new postgresql.DefaultPrivileges("revoke_public", {
+ *     database: exampleDb.name,
  *     role: "public",
  *     owner: "object_owner",
  *     objectType: "function",
  *     privileges: [],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * @deprecated postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges
  */
