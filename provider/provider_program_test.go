@@ -99,6 +99,9 @@ func testProgram(t *testing.T, dir string) {
 	require.NoError(t, err)
 	t.Setenv("PGSSLMODE", "disable")
 	t.Setenv("PGHOST", "localhost")
+	t.Setenv("PGPORT", "5432")
+	t.Setenv("PGUSER", "postgres")
+	t.Setenv("PGPASSWORD", "password")
 	test := pulumitest.NewPulumiTest(t, dir,
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
 		opttest.SkipInstall(),
