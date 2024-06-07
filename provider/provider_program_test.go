@@ -24,7 +24,6 @@ const defaultBaselineVersion = "3.11.0"
 var programs = []string{
 	"test-programs/index_defaultprivileg",
 	"test-programs/index_role",
-	"test-programs/.DS_Store",
 	"test-programs/index_schema",
 	"test-programs/index_database",
 	"test-programs/index_grant",
