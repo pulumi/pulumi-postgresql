@@ -97,6 +97,8 @@ func testProgram(t *testing.T, dir string) {
 	}
 	cwd, err := os.Getwd()
 	require.NoError(t, err)
+	t.Setenv("PGSSLMODE", "disable")
+	t.Setenv("PGHOST", "localhost")
 	test := pulumitest.NewPulumiTest(t, dir,
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
 		opttest.SkipInstall(),
