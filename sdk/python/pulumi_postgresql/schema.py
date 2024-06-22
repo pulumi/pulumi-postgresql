@@ -112,14 +112,12 @@ class SchemaArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use Grant resource instead (with object_type=\"schema\")""")
     def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]]:
         """
         Can be specified multiple times for each policy.  Each
         policy block supports fields documented below.
         """
-        warnings.warn("""Use Grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
-        pulumi.log.warn("""policies is deprecated: Use Grant resource instead (with object_type=\"schema\")""")
-
         return pulumi.get(self, "policies")
 
     @policies.setter
@@ -226,14 +224,12 @@ class _SchemaState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use Grant resource instead (with object_type=\"schema\")""")
     def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]]:
         """
         Can be specified multiple times for each policy.  Each
         policy block supports fields documented below.
         """
-        warnings.warn("""Use Grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
-        pulumi.log.warn("""policies is deprecated: Use Grant resource instead (with object_type=\"schema\")""")
-
         return pulumi.get(self, "policies")
 
     @policies.setter
@@ -397,13 +393,11 @@ class Schema(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use Grant resource instead (with object_type=\"schema\")""")
     def policies(self) -> pulumi.Output[Sequence['outputs.SchemaPolicy']]:
         """
         Can be specified multiple times for each policy.  Each
         policy block supports fields documented below.
         """
-        warnings.warn("""Use Grant resource instead (with object_type=\"schema\")""", DeprecationWarning)
-        pulumi.log.warn("""policies is deprecated: Use Grant resource instead (with object_type=\"schema\")""")
-
         return pulumi.get(self, "policies")
 
