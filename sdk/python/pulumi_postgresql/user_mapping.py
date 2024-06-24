@@ -172,7 +172,7 @@ class UserMapping(pulumi.CustomResource):
                 "dbname": "foodb",
                 "port": "5432",
             },
-            opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
+            opts = pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
         remote = postgresql.Role("remote", name="remote")
         remote_user_mapping = postgresql.UserMapping("remote",
             server_name=myserver_postgres.server_name,
@@ -219,7 +219,7 @@ class UserMapping(pulumi.CustomResource):
                 "dbname": "foodb",
                 "port": "5432",
             },
-            opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
+            opts = pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
         remote = postgresql.Role("remote", name="remote")
         remote_user_mapping = postgresql.UserMapping("remote",
             server_name=myserver_postgres.server_name,

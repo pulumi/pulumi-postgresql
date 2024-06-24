@@ -304,7 +304,7 @@ class Server(pulumi.CustomResource):
                 "dbname": "foodb",
                 "port": "5432",
             },
-            opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
+            opts = pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
         ```
 
         ```python
@@ -315,7 +315,7 @@ class Server(pulumi.CustomResource):
         myserver_file = postgresql.Server("myserver_file",
             server_name="myserver_file",
             fdw_name="file_fdw",
-            opts=pulumi.ResourceOptions(depends_on=[ext_file_fdw]))
+            opts = pulumi.ResourceOptions(depends_on=[ext_file_fdw]))
         ```
 
         :param str resource_name: The name of the resource.
@@ -358,7 +358,7 @@ class Server(pulumi.CustomResource):
                 "dbname": "foodb",
                 "port": "5432",
             },
-            opts=pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
+            opts = pulumi.ResourceOptions(depends_on=[ext_postgres_fdw]))
         ```
 
         ```python
@@ -369,7 +369,7 @@ class Server(pulumi.CustomResource):
         myserver_file = postgresql.Server("myserver_file",
             server_name="myserver_file",
             fdw_name="file_fdw",
-            opts=pulumi.ResourceOptions(depends_on=[ext_file_fdw]))
+            opts = pulumi.ResourceOptions(depends_on=[ext_file_fdw]))
         ```
 
         :param str resource_name: The name of the resource.
