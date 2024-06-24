@@ -285,10 +285,8 @@ class ProviderArgs:
 
     @property
     @pulumi.getter(name="sslMode")
+    @_utilities.deprecated("""Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""")
     def ssl_mode(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""", DeprecationWarning)
-        pulumi.log.warn("""ssl_mode is deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""")
-
         return pulumi.get(self, "ssl_mode")
 
     @ssl_mode.setter
@@ -558,10 +556,8 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter(name="sslMode")
+    @_utilities.deprecated("""Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""")
     def ssl_mode(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""", DeprecationWarning)
-        pulumi.log.warn("""ssl_mode is deprecated: Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""")
-
         return pulumi.get(self, "ssl_mode")
 
     @property
