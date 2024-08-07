@@ -137,6 +137,7 @@ func Provider() tfbridge.ProviderInfo {
 				mainPkg: "PostgreSql",
 			},
 		},
+		EnableZeroDefaultSchemaVersion: true,
 	}
 
 	prov.RenameResourceWithAlias("postgresql_default_privileges", makeResource(mainMod, "DefaultPrivileg"),
