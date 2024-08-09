@@ -212,7 +212,7 @@ public class DefaultPrivileg extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DefaultPrivileg(String name) {
+    public DefaultPrivileg(java.lang.String name) {
         this(name, DefaultPrivilegArgs.Empty);
     }
     /**
@@ -220,7 +220,7 @@ public class DefaultPrivileg extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DefaultPrivileg(String name, DefaultPrivilegArgs args) {
+    public DefaultPrivileg(java.lang.String name, DefaultPrivilegArgs args) {
         this(name, args, null);
     }
     /**
@@ -229,15 +229,22 @@ public class DefaultPrivileg extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DefaultPrivileg(String name, DefaultPrivilegArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("postgresql:index/defaultPrivileg:DefaultPrivileg", name, args == null ? DefaultPrivilegArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DefaultPrivileg(java.lang.String name, DefaultPrivilegArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("postgresql:index/defaultPrivileg:DefaultPrivileg", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DefaultPrivileg(String name, Output<String> id, @Nullable DefaultPrivilegState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("postgresql:index/defaultPrivileg:DefaultPrivileg", name, state, makeResourceOptions(options, id));
+    private DefaultPrivileg(java.lang.String name, Output<java.lang.String> id, @Nullable DefaultPrivilegState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("postgresql:index/defaultPrivileg:DefaultPrivileg", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DefaultPrivilegArgs makeArgs(DefaultPrivilegArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DefaultPrivilegArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -253,7 +260,7 @@ public class DefaultPrivileg extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DefaultPrivileg get(String name, Output<String> id, @Nullable DefaultPrivilegState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DefaultPrivileg get(java.lang.String name, Output<java.lang.String> id, @Nullable DefaultPrivilegState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DefaultPrivileg(name, id, state, options);
     }
 }

@@ -103,7 +103,7 @@ public class ReplicationSlot extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ReplicationSlot(String name) {
+    public ReplicationSlot(java.lang.String name) {
         this(name, ReplicationSlotArgs.Empty);
     }
     /**
@@ -111,7 +111,7 @@ public class ReplicationSlot extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ReplicationSlot(String name, ReplicationSlotArgs args) {
+    public ReplicationSlot(java.lang.String name, ReplicationSlotArgs args) {
         this(name, args, null);
     }
     /**
@@ -120,15 +120,22 @@ public class ReplicationSlot extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ReplicationSlot(String name, ReplicationSlotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("postgresql:index/replicationSlot:ReplicationSlot", name, args == null ? ReplicationSlotArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ReplicationSlot(java.lang.String name, ReplicationSlotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("postgresql:index/replicationSlot:ReplicationSlot", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ReplicationSlot(String name, Output<String> id, @Nullable ReplicationSlotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("postgresql:index/replicationSlot:ReplicationSlot", name, state, makeResourceOptions(options, id));
+    private ReplicationSlot(java.lang.String name, Output<java.lang.String> id, @Nullable ReplicationSlotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("postgresql:index/replicationSlot:ReplicationSlot", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ReplicationSlotArgs makeArgs(ReplicationSlotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ReplicationSlotArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -144,7 +151,7 @@ public class ReplicationSlot extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ReplicationSlot get(String name, Output<String> id, @Nullable ReplicationSlotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ReplicationSlot get(java.lang.String name, Output<java.lang.String> id, @Nullable ReplicationSlotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ReplicationSlot(name, id, state, options);
     }
 }
