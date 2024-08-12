@@ -354,7 +354,7 @@ class Provider(pulumi.ProviderResource):
                  aws_rds_iam_region: Optional[pulumi.Input[str]] = None,
                  azure_identity_auth: Optional[pulumi.Input[bool]] = None,
                  azure_tenant_id: Optional[pulumi.Input[str]] = None,
-                 clientcert: Optional[pulumi.Input[pulumi.InputType['ProviderClientcertArgs']]] = None,
+                 clientcert: Optional[pulumi.Input[Union['ProviderClientcertArgs', 'ProviderClientcertArgsDict']]] = None,
                  connect_timeout: Optional[pulumi.Input[int]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  database_username: Optional[pulumi.Input[str]] = None,
@@ -384,7 +384,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] aws_rds_iam_region: AWS region to use for IAM auth
         :param pulumi.Input[bool] azure_identity_auth: Use MS Azure identity OAuth token (see:
                https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
-        :param pulumi.Input[pulumi.InputType['ProviderClientcertArgs']] clientcert: SSL client certificate if required by the database.
+        :param pulumi.Input[Union['ProviderClientcertArgs', 'ProviderClientcertArgsDict']] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[int] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         :param pulumi.Input[str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
         :param pulumi.Input[str] database_username: Database username associated to the connected user (for user name maps)
@@ -432,7 +432,7 @@ class Provider(pulumi.ProviderResource):
                  aws_rds_iam_region: Optional[pulumi.Input[str]] = None,
                  azure_identity_auth: Optional[pulumi.Input[bool]] = None,
                  azure_tenant_id: Optional[pulumi.Input[str]] = None,
-                 clientcert: Optional[pulumi.Input[pulumi.InputType['ProviderClientcertArgs']]] = None,
+                 clientcert: Optional[pulumi.Input[Union['ProviderClientcertArgs', 'ProviderClientcertArgsDict']]] = None,
                  connect_timeout: Optional[pulumi.Input[int]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  database_username: Optional[pulumi.Input[str]] = None,
