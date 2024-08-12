@@ -433,7 +433,7 @@ class Function(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionArgArgs']]]]] = None,
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionArgArgs', 'FunctionArgArgsDict']]]]] = None,
                  body: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
@@ -458,10 +458,10 @@ class Function(pulumi.CustomResource):
 
         increment = postgresql.Function("increment",
             name="increment",
-            args=[postgresql.FunctionArgArgs(
-                name="i",
-                type="integer",
-            )],
+            args=[{
+                "name": "i",
+                "type": "integer",
+            }],
             returns="integer",
             language="plpgsql",
             body=\"\"\"BEGIN
@@ -485,7 +485,7 @@ class Function(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionArgArgs']]]] args: List of arguments for the function.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionArgArgs', 'FunctionArgArgsDict']]]] args: List of arguments for the function.
         :param pulumi.Input[str] body: Function body.
                This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         :param pulumi.Input[str] database: The database where the function is located.
@@ -520,10 +520,10 @@ class Function(pulumi.CustomResource):
 
         increment = postgresql.Function("increment",
             name="increment",
-            args=[postgresql.FunctionArgArgs(
-                name="i",
-                type="integer",
-            )],
+            args=[{
+                "name": "i",
+                "type": "integer",
+            }],
             returns="integer",
             language="plpgsql",
             body=\"\"\"BEGIN
@@ -560,7 +560,7 @@ class Function(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionArgArgs']]]]] = None,
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionArgArgs', 'FunctionArgArgsDict']]]]] = None,
                  body: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  drop_cascade: Optional[pulumi.Input[bool]] = None,
@@ -605,7 +605,7 @@ class Function(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionArgArgs']]]]] = None,
+            args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionArgArgs', 'FunctionArgArgsDict']]]]] = None,
             body: Optional[pulumi.Input[str]] = None,
             database: Optional[pulumi.Input[str]] = None,
             drop_cascade: Optional[pulumi.Input[bool]] = None,
@@ -624,7 +624,7 @@ class Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionArgArgs']]]] args: List of arguments for the function.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionArgArgs', 'FunctionArgArgsDict']]]] args: List of arguments for the function.
         :param pulumi.Input[str] body: Function body.
                This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         :param pulumi.Input[str] database: The database where the function is located.

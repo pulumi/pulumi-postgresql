@@ -147,7 +147,7 @@ public class UserMapping extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UserMapping(String name) {
+    public UserMapping(java.lang.String name) {
         this(name, UserMappingArgs.Empty);
     }
     /**
@@ -155,7 +155,7 @@ public class UserMapping extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UserMapping(String name, UserMappingArgs args) {
+    public UserMapping(java.lang.String name, UserMappingArgs args) {
         this(name, args, null);
     }
     /**
@@ -164,15 +164,22 @@ public class UserMapping extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UserMapping(String name, UserMappingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("postgresql:index/userMapping:UserMapping", name, args == null ? UserMappingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public UserMapping(java.lang.String name, UserMappingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("postgresql:index/userMapping:UserMapping", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UserMapping(String name, Output<String> id, @Nullable UserMappingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("postgresql:index/userMapping:UserMapping", name, state, makeResourceOptions(options, id));
+    private UserMapping(java.lang.String name, Output<java.lang.String> id, @Nullable UserMappingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("postgresql:index/userMapping:UserMapping", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static UserMappingArgs makeArgs(UserMappingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UserMappingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -188,7 +195,7 @@ public class UserMapping extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UserMapping get(String name, Output<String> id, @Nullable UserMappingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UserMapping get(java.lang.String name, Output<java.lang.String> id, @Nullable UserMappingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UserMapping(name, id, state, options);
     }
 }
