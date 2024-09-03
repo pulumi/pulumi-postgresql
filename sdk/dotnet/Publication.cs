@@ -10,6 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.PostgreSql
 {
     /// <summary>
+    /// layout: "postgresql"
+    /// page_title: "PostgreSQL: postgresql.Publication"
+    /// sidebar_current: "docs-postgresql-resource-postgresql_publication"
+    /// description: |-
+    /// Creates and manages a publication in a PostgreSQL server database.
+    /// &lt;!-- yaml: line 6: could not find expected ':' --&gt;
+    /// 
+    /// # postgresql.Publication
+    /// 
     /// The `postgresql.Publication` resource creates and manages a publication on a PostgreSQL
     /// server.
     /// 

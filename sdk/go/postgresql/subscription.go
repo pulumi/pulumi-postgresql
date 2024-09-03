@@ -12,6 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// layout: "postgresql"
+// page_title: "PostgreSQL: postgresqlSusbcription"
+// sidebar_current: "docs-postgresql-resource-postgresql_subscription"
+// description: |-
+// Creates and manages a subscription in a PostgreSQL server database.
+// <!-- yaml: line 6: could not find expected ':' -->
+//
+// # Subscription
+//
 // The `Subscription` resource creates and manages a publication on a PostgreSQL
 // server.
 //
@@ -47,7 +56,7 @@ import (
 //
 // ## Postgres documentation
 //
-// - https://www.postgresql.org/docs/current/sql-createsubscription.html
+// - <https://www.postgresql.org/docs/current/sql-createsubscription.html>
 type Subscription struct {
 	pulumi.CustomResourceState
 

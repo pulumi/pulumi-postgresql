@@ -7,7 +7,16 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql.Function`` resource creates and manages a function on a PostgreSQL
+ * layout: "postgresql"
+ * page_title: "PostgreSQL: postgresql.Function"
+ * sidebar_current: "docs-postgresql-resource-postgresql_function"
+ * description: |-
+ * Creates and manages a function on a PostgreSQL server.
+ * <!-- yaml: line 6: could not find expected ':' -->
+ *
+ * # postgresql\_function
+ *
+ * The `postgresql.Function` resource creates and manages a function on a PostgreSQL
  * server.
  *
  * ## Usage

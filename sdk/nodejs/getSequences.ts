@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
+ * The `postgresql.getSequences` data source retrieves a list of sequence names from a specified PostgreSQL database.
  *
  * ## Usage
  *
@@ -42,19 +42,19 @@ export interface GetSequencesArgs {
      */
     database: string;
     /**
-     * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ALL`` operators.
+     * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `LIKE ALL` operators.
      */
     likeAllPatterns?: string[];
     /**
-     * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ANY`` operators.
+     * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `LIKE ANY` operators.
      */
     likeAnyPatterns?: string[];
     /**
-     * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+     * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `NOT LIKE ALL` operators.
      */
     notLikeAllPatterns?: string[];
     /**
-     * Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     * Expression which will be pattern matched against sequence names in the query using the PostgreSQL `~` (regular expression match) operator.
      *
      * Note that all optional arguments can be used in conjunction.
      */
@@ -81,12 +81,12 @@ export interface GetSequencesResult {
     readonly schemas?: string[];
     /**
      * A list of PostgreSQL sequences retrieved by this data source. Each sequence consists of the fields documented below.
-     * ___
+     * ---
      */
     readonly sequences: outputs.GetSequencesSequence[];
 }
 /**
- * The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
+ * The `postgresql.getSequences` data source retrieves a list of sequence names from a specified PostgreSQL database.
  *
  * ## Usage
  *
@@ -112,19 +112,19 @@ export interface GetSequencesOutputArgs {
      */
     database: pulumi.Input<string>;
     /**
-     * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ALL`` operators.
+     * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `LIKE ALL` operators.
      */
     likeAllPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ANY`` operators.
+     * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `LIKE ANY` operators.
      */
     likeAnyPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+     * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `NOT LIKE ALL` operators.
      */
     notLikeAllPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     * Expression which will be pattern matched against sequence names in the query using the PostgreSQL `~` (regular expression match) operator.
      *
      * Note that all optional arguments can be used in conjunction.
      */

@@ -99,7 +99,7 @@ class GetTablesResult:
     def tables(self) -> Sequence['outputs.GetTablesTableResult']:
         """
         A list of PostgreSQL tables retrieved by this data source. Each table consists of the fields documented below.
-        ___
+        ---
         """
         return pulumi.get(self, "tables")
 
@@ -130,7 +130,7 @@ def get_tables(database: Optional[str] = None,
                table_types: Optional[Sequence[str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTablesResult:
     """
-    The ``get_tables`` data source retrieves a list of table names from a specified PostgreSQL database.
+    The `get_tables` data source retrieves a list of table names from a specified PostgreSQL database.
 
     ## Usage
 
@@ -143,10 +143,10 @@ def get_tables(database: Optional[str] = None,
 
 
     :param str database: The PostgreSQL database which will be queried for table names.
-    :param Sequence[str] like_all_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
-    :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
-    :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
-    :param str regex_pattern: Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+    :param Sequence[str] like_all_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ALL` operators.
+    :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ANY` operators.
+    :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL `NOT LIKE ALL` operators.
+    :param str regex_pattern: Expression which will be pattern matched against table names in the query using the PostgreSQL `~` (regular expression match) operator.
            
            Note that all optional arguments can be used in conjunction.
     :param Sequence[str] schemas: List of PostgreSQL schema(s) which will be queried for table names. Queries all schemas in the database by default.
@@ -185,7 +185,7 @@ def get_tables_output(database: Optional[pulumi.Input[str]] = None,
                       table_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTablesResult]:
     """
-    The ``get_tables`` data source retrieves a list of table names from a specified PostgreSQL database.
+    The `get_tables` data source retrieves a list of table names from a specified PostgreSQL database.
 
     ## Usage
 
@@ -198,10 +198,10 @@ def get_tables_output(database: Optional[pulumi.Input[str]] = None,
 
 
     :param str database: The PostgreSQL database which will be queried for table names.
-    :param Sequence[str] like_all_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
-    :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
-    :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
-    :param str regex_pattern: Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+    :param Sequence[str] like_all_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ALL` operators.
+    :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ANY` operators.
+    :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched against table names in the query using the PostgreSQL `NOT LIKE ALL` operators.
+    :param str regex_pattern: Expression which will be pattern matched against table names in the query using the PostgreSQL `~` (regular expression match) operator.
            
            Note that all optional arguments can be used in conjunction.
     :param Sequence[str] schemas: List of PostgreSQL schema(s) which will be queried for table names. Queries all schemas in the database by default.

@@ -12,7 +12,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The “Function“ resource creates and manages a function on a PostgreSQL
+// layout: "postgresql"
+// page_title: "PostgreSQL: Function"
+// sidebar_current: "docs-postgresql-resource-postgresql_function"
+// description: |-
+// Creates and manages a function on a PostgreSQL server.
+// <!-- yaml: line 6: could not find expected ':' -->
+//
+// # postgresql\_function
+//
+// The `Function` resource creates and manages a function on a PostgreSQL
 // server.
 //
 // ## Usage

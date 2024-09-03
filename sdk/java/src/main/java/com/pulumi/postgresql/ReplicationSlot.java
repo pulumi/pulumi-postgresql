@@ -14,7 +14,16 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The ``postgresql.ReplicationSlot`` resource creates and manages a replication slot on a PostgreSQL
+ * layout: &#34;postgresql&#34;
+ * page_title: &#34;PostgreSQL: postgresql.ReplicationSlot&#34;
+ * sidebar_current: &#34;docs-postgresql-resource-postgresql_replication_slot&#34;
+ * description: |-
+ * Creates and manages a replication slot on a PostgreSQL server.
+ * &lt;!-- yaml: line 6: could not find expected &#39;:&#39; --&gt;
+ * 
+ * # postgresql\_replication\_slot
+ * 
+ * The `postgresql.ReplicationSlot` resource creates and manages a replication slot on a PostgreSQL
  * server.
  * 
  * ## Usage

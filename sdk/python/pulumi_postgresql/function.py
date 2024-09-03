@@ -447,7 +447,16 @@ class Function(pulumi.CustomResource):
                  volatility: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The ``Function`` resource creates and manages a function on a PostgreSQL
+        layout: "postgresql"
+        page_title: "PostgreSQL: Function"
+        sidebar_current: "docs-postgresql-resource-postgresql_function"
+        description: |-
+        Creates and manages a function on a PostgreSQL server.
+        <!-- yaml: line 6: could not find expected ':' -->
+
+        # postgresql\\_function
+
+        The `Function` resource creates and manages a function on a PostgreSQL
         server.
 
         ## Usage
@@ -509,7 +518,16 @@ class Function(pulumi.CustomResource):
                  args: FunctionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The ``Function`` resource creates and manages a function on a PostgreSQL
+        layout: "postgresql"
+        page_title: "PostgreSQL: Function"
+        sidebar_current: "docs-postgresql-resource-postgresql_function"
+        description: |-
+        Creates and manages a function on a PostgreSQL server.
+        <!-- yaml: line 6: could not find expected ':' -->
+
+        # postgresql\\_function
+
+        The `Function` resource creates and manages a function on a PostgreSQL
         server.
 
         ## Usage

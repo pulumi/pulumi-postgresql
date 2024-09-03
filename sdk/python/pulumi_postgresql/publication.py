@@ -298,6 +298,15 @@ class Publication(pulumi.CustomResource):
                  tables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        layout: "postgresql"
+        page_title: "PostgreSQL: Publication"
+        sidebar_current: "docs-postgresql-resource-postgresql_publication"
+        description: |-
+        Creates and manages a publication in a PostgreSQL server database.
+        <!-- yaml: line 6: could not find expected ':' -->
+
+        # Publication
+
         The `Publication` resource creates and manages a publication on a PostgreSQL
         server.
 
@@ -337,6 +346,15 @@ class Publication(pulumi.CustomResource):
                  args: Optional[PublicationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        layout: "postgresql"
+        page_title: "PostgreSQL: Publication"
+        sidebar_current: "docs-postgresql-resource-postgresql_publication"
+        description: |-
+        Creates and manages a publication in a PostgreSQL server database.
+        <!-- yaml: line 6: could not find expected ':' -->
+
+        # Publication
+
         The `Publication` resource creates and manages a publication on a PostgreSQL
         server.
 

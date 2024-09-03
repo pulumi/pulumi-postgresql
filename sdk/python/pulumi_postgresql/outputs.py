@@ -167,7 +167,7 @@ class GetSequencesSequenceResult(dict):
                  object_name: str,
                  schema_name: str):
         """
-        :param str data_type: The sequence's data type as defined in ``information_schema.sequences``.
+        :param str data_type: The sequence's data type as defined in `information_schema.sequences`.
         :param str object_name: The sequence name.
         :param str schema_name: The parent schema.
         """
@@ -179,7 +179,7 @@ class GetSequencesSequenceResult(dict):
     @pulumi.getter(name="dataType")
     def data_type(self) -> str:
         """
-        The sequence's data type as defined in ``information_schema.sequences``.
+        The sequence's data type as defined in `information_schema.sequences`.
         """
         return pulumi.get(self, "data_type")
 
@@ -209,7 +209,7 @@ class GetTablesTableResult(dict):
         """
         :param str object_name: The table name.
         :param str schema_name: The parent schema.
-        :param str table_type: The table type as defined in ``information_schema.tables``.
+        :param str table_type: The table type as defined in `information_schema.tables`.
         """
         pulumi.set(__self__, "object_name", object_name)
         pulumi.set(__self__, "schema_name", schema_name)
@@ -235,7 +235,7 @@ class GetTablesTableResult(dict):
     @pulumi.getter(name="tableType")
     def table_type(self) -> str:
         """
-        The table type as defined in ``information_schema.tables``.
+        The table type as defined in `information_schema.tables`.
         """
         return pulumi.get(self, "table_type")
 

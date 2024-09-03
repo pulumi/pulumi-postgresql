@@ -17,12 +17,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The ``postgresql.Grant`` resource creates and manages privileges given to a user for a database schema.
+ * The `postgresql.Grant` resource creates and manages privileges given to a user for a database schema.
  * 
  * See [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)
  * 
  * &gt; **Note:** This resource needs Postgresql version 9 or above.
- * **Note:** Using column &amp; table grants on the _same_ table with the _same_ privileges can lead to unexpected behaviours.
+ * **Note:** Using column &amp; table grants on the *same* table with the *same* privileges can lead to unexpected behaviours.
  * 
  * ## Usage
  * 

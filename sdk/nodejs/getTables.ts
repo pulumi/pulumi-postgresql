@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
+ * The `postgresql.getTables` data source retrieves a list of table names from a specified PostgreSQL database.
  *
  * ## Usage
  *
@@ -43,19 +43,19 @@ export interface GetTablesArgs {
      */
     database: string;
     /**
-     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
+     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ALL` operators.
      */
     likeAllPatterns?: string[];
     /**
-     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
+     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ANY` operators.
      */
     likeAnyPatterns?: string[];
     /**
-     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL `NOT LIKE ALL` operators.
      */
     notLikeAllPatterns?: string[];
     /**
-     * Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     * Expression which will be pattern matched against table names in the query using the PostgreSQL `~` (regular expression match) operator.
      *
      * Note that all optional arguments can be used in conjunction.
      */
@@ -87,12 +87,12 @@ export interface GetTablesResult {
     readonly tableTypes?: string[];
     /**
      * A list of PostgreSQL tables retrieved by this data source. Each table consists of the fields documented below.
-     * ___
+     * ---
      */
     readonly tables: outputs.GetTablesTable[];
 }
 /**
- * The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
+ * The `postgresql.getTables` data source retrieves a list of table names from a specified PostgreSQL database.
  *
  * ## Usage
  *
@@ -118,19 +118,19 @@ export interface GetTablesOutputArgs {
      */
     database: pulumi.Input<string>;
     /**
-     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
+     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ALL` operators.
      */
     likeAllPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
+     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ANY` operators.
      */
     likeAnyPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL `NOT LIKE ALL` operators.
      */
     notLikeAllPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     * Expression which will be pattern matched against table names in the query using the PostgreSQL `~` (regular expression match) operator.
      *
      * Note that all optional arguments can be used in conjunction.
      */

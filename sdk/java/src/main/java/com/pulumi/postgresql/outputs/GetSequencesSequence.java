@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSequencesSequence {
     /**
-     * @return The sequence&#39;s data type as defined in ``information_schema.sequences``.
+     * @return The sequence&#39;s data type as defined in `information_schema.sequences`.
      * 
      */
     private String dataType;
@@ -28,7 +28,7 @@ public final class GetSequencesSequence {
 
     private GetSequencesSequence() {}
     /**
-     * @return The sequence&#39;s data type as defined in ``information_schema.sequences``.
+     * @return The sequence&#39;s data type as defined in `information_schema.sequences`.
      * 
      */
     public String dataType() {

@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql.GrantRole`` resource creates and manages membership in a role to one or more other roles in a non-authoritative way.
+ * The `postgresql.GrantRole` resource creates and manages membership in a role to one or more other roles in a non-authoritative way.
  *
- * When using ``postgresql.GrantRole`` resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.
+ * When using `postgresql.GrantRole` resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.
  *
  * > **Note:** This resource needs PostgreSQL version 9 or above.
  *

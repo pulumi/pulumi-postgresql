@@ -12,12 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The “Grant“ resource creates and manages privileges given to a user for a database schema.
+// The `Grant` resource creates and manages privileges given to a user for a database schema.
 //
 // See [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)
 //
 // > **Note:** This resource needs Postgresql version 9 or above.
-// **Note:** Using column & table grants on the _same_ table with the _same_ privileges can lead to unexpected behaviours.
+// **Note:** Using column & table grants on the *same* table with the *same* privileges can lead to unexpected behaviours.
 //
 // ## Usage
 //

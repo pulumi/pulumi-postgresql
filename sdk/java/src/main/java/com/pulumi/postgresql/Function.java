@@ -18,7 +18,16 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The ``postgresql.Function`` resource creates and manages a function on a PostgreSQL
+ * layout: &#34;postgresql&#34;
+ * page_title: &#34;PostgreSQL: postgresql.Function&#34;
+ * sidebar_current: &#34;docs-postgresql-resource-postgresql_function&#34;
+ * description: |-
+ * Creates and manages a function on a PostgreSQL server.
+ * &lt;!-- yaml: line 6: could not find expected &#39;:&#39; --&gt;
+ * 
+ * # postgresql\_function
+ * 
+ * The `postgresql.Function` resource creates and manages a function on a PostgreSQL
  * server.
  * 
  * ## Usage

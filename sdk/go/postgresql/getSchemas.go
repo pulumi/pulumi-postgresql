@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The “getSchemas“ data source retrieves a list of schema names from a specified PostgreSQL database.
+// The `getSchemas` data source retrieves a list of schema names from a specified PostgreSQL database.
 //
 // ## Usage
 //
@@ -52,15 +52,15 @@ func GetSchemas(ctx *pulumi.Context, args *GetSchemasArgs, opts ...pulumi.Invoke
 type GetSchemasArgs struct {
 	// The PostgreSQL database which will be queried for schema names.
 	Database string `pulumi:"database"`
-	// Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to ``false``.
+	// Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to `false`.
 	IncludeSystemSchemas *bool `pulumi:"includeSystemSchemas"`
-	// List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ALL`` operators.
+	// List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ALL` operators.
 	LikeAllPatterns []string `pulumi:"likeAllPatterns"`
-	// List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
+	// List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ANY` operators.
 	LikeAnyPatterns []string `pulumi:"likeAnyPatterns"`
-	// List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+	// List of expressions which will be pattern matched in the query using the PostgreSQL `NOT LIKE ALL` operators.
 	NotLikeAllPatterns []string `pulumi:"notLikeAllPatterns"`
-	// Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+	// Expression which will be pattern matched in the query using the PostgreSQL `~` (regular expression match) operator.
 	//
 	// Note that all optional arguments can be used in conjunction.
 	RegexPattern *string `pulumi:"regexPattern"`
@@ -97,15 +97,15 @@ func GetSchemasOutput(ctx *pulumi.Context, args GetSchemasOutputArgs, opts ...pu
 type GetSchemasOutputArgs struct {
 	// The PostgreSQL database which will be queried for schema names.
 	Database pulumi.StringInput `pulumi:"database"`
-	// Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to ``false``.
+	// Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to `false`.
 	IncludeSystemSchemas pulumi.BoolPtrInput `pulumi:"includeSystemSchemas"`
-	// List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ALL`` operators.
+	// List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ALL` operators.
 	LikeAllPatterns pulumi.StringArrayInput `pulumi:"likeAllPatterns"`
-	// List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
+	// List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ANY` operators.
 	LikeAnyPatterns pulumi.StringArrayInput `pulumi:"likeAnyPatterns"`
-	// List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+	// List of expressions which will be pattern matched in the query using the PostgreSQL `NOT LIKE ALL` operators.
 	NotLikeAllPatterns pulumi.StringArrayInput `pulumi:"notLikeAllPatterns"`
-	// Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+	// Expression which will be pattern matched in the query using the PostgreSQL `~` (regular expression match) operator.
 	//
 	// Note that all optional arguments can be used in conjunction.
 	RegexPattern pulumi.StringPtrInput `pulumi:"regexPattern"`

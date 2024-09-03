@@ -118,7 +118,7 @@ def get_schemas(database: Optional[str] = None,
                 regex_pattern: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSchemasResult:
     """
-    The ``get_schemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
+    The `get_schemas` data source retrieves a list of schema names from a specified PostgreSQL database.
 
     ## Usage
 
@@ -131,11 +131,11 @@ def get_schemas(database: Optional[str] = None,
 
 
     :param str database: The PostgreSQL database which will be queried for schema names.
-    :param bool include_system_schemas: Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to ``false``.
-    :param Sequence[str] like_all_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ALL`` operators.
-    :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
-    :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
-    :param str regex_pattern: Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+    :param bool include_system_schemas: Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to `false`.
+    :param Sequence[str] like_all_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ALL` operators.
+    :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ANY` operators.
+    :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL `NOT LIKE ALL` operators.
+    :param str regex_pattern: Expression which will be pattern matched in the query using the PostgreSQL `~` (regular expression match) operator.
            
            Note that all optional arguments can be used in conjunction.
     """
@@ -169,7 +169,7 @@ def get_schemas_output(database: Optional[pulumi.Input[str]] = None,
                        regex_pattern: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSchemasResult]:
     """
-    The ``get_schemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
+    The `get_schemas` data source retrieves a list of schema names from a specified PostgreSQL database.
 
     ## Usage
 
@@ -182,11 +182,11 @@ def get_schemas_output(database: Optional[pulumi.Input[str]] = None,
 
 
     :param str database: The PostgreSQL database which will be queried for schema names.
-    :param bool include_system_schemas: Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to ``false``.
-    :param Sequence[str] like_all_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ALL`` operators.
-    :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
-    :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
-    :param str regex_pattern: Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+    :param bool include_system_schemas: Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to `false`.
+    :param Sequence[str] like_all_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ALL` operators.
+    :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ANY` operators.
+    :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched in the query using the PostgreSQL `NOT LIKE ALL` operators.
+    :param str regex_pattern: Expression which will be pattern matched in the query using the PostgreSQL `~` (regular expression match) operator.
            
            Note that all optional arguments can be used in conjunction.
     """

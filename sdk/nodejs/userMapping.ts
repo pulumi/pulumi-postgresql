@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql.UserMapping`` resource creates and manages a user mapping on a PostgreSQL server.
+ * The `postgresql.UserMapping` resource creates and manages a user mapping on a PostgreSQL server.
  *
  * ## Usage
  *

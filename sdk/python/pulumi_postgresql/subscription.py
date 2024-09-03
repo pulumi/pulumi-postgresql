@@ -230,6 +230,15 @@ class Subscription(pulumi.CustomResource):
                  slot_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        layout: "postgresql"
+        page_title: "PostgreSQL: postgresql_susbcription"
+        sidebar_current: "docs-postgresql-resource-postgresql_subscription"
+        description: |-
+        Creates and manages a subscription in a PostgreSQL server database.
+        <!-- yaml: line 6: could not find expected ':' -->
+
+        # Subscription
+
         The `Subscription` resource creates and manages a publication on a PostgreSQL
         server.
 
@@ -247,7 +256,7 @@ class Subscription(pulumi.CustomResource):
 
         ## Postgres documentation
 
-        - https://www.postgresql.org/docs/current/sql-createsubscription.html
+        - <https://www.postgresql.org/docs/current/sql-createsubscription.html>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -265,6 +274,15 @@ class Subscription(pulumi.CustomResource):
                  args: SubscriptionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        layout: "postgresql"
+        page_title: "PostgreSQL: postgresql_susbcription"
+        sidebar_current: "docs-postgresql-resource-postgresql_subscription"
+        description: |-
+        Creates and manages a subscription in a PostgreSQL server database.
+        <!-- yaml: line 6: could not find expected ':' -->
+
+        # Subscription
+
         The `Subscription` resource creates and manages a publication on a PostgreSQL
         server.
 
@@ -282,7 +300,7 @@ class Subscription(pulumi.CustomResource):
 
         ## Postgres documentation
 
-        - https://www.postgresql.org/docs/current/sql-createsubscription.html
+        - <https://www.postgresql.org/docs/current/sql-createsubscription.html>
 
         :param str resource_name: The name of the resource.
         :param SubscriptionArgs args: The arguments to use to populate this resource's properties.

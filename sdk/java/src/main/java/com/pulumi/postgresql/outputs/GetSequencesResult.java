@@ -27,7 +27,7 @@ public final class GetSequencesResult {
     private @Nullable List<String> schemas;
     /**
      * @return A list of PostgreSQL sequences retrieved by this data source. Each sequence consists of the fields documented below.
-     * ***
+     * ---
      * 
      */
     private List<GetSequencesSequence> sequences;
@@ -60,7 +60,7 @@ public final class GetSequencesResult {
     }
     /**
      * @return A list of PostgreSQL sequences retrieved by this data source. Each sequence consists of the fields documented below.
-     * ***
+     * ---
      * 
      */
     public List<GetSequencesSequence> sequences() {

@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The ``postgresql.Server`` resource creates and manages a foreign server on a PostgreSQL server.
+ * The `postgresql.Server` resource creates and manages a foreign server on a PostgreSQL server.
  * 
  * ## Usage
  * 

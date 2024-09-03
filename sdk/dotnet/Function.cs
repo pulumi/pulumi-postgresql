@@ -10,7 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.PostgreSql
 {
     /// <summary>
-    /// The ``postgresql.Function`` resource creates and manages a function on a PostgreSQL
+    /// layout: "postgresql"
+    /// page_title: "PostgreSQL: postgresql.Function"
+    /// sidebar_current: "docs-postgresql-resource-postgresql_function"
+    /// description: |-
+    /// Creates and manages a function on a PostgreSQL server.
+    /// &lt;!-- yaml: line 6: could not find expected ':' --&gt;
+    /// 
+    /// # postgresql\_function
+    /// 
+    /// The `postgresql.Function` resource creates and manages a function on a PostgreSQL
     /// server.
     /// 
     /// ## Usage

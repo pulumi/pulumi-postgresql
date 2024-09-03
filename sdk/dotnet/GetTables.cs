@@ -12,8 +12,7 @@ namespace Pulumi.PostgreSql
     public static class GetTables
     {
         /// <summary>
-        /// The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
-        /// 
+        /// The `postgresql.getTables` data source retrieves a list of table names from a specified PostgreSQL database.
         /// 
         /// ## Usage
         /// 
@@ -37,8 +36,7 @@ namespace Pulumi.PostgreSql
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("postgresql:index/getTables:getTables", args ?? new GetTablesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
-        /// 
+        /// The `postgresql.getTables` data source retrieves a list of table names from a specified PostgreSQL database.
         /// 
         /// ## Usage
         /// 
@@ -75,7 +73,7 @@ namespace Pulumi.PostgreSql
         private List<string>? _likeAllPatterns;
 
         /// <summary>
-        /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
+        /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ALL` operators.
         /// </summary>
         public List<string> LikeAllPatterns
         {
@@ -87,7 +85,7 @@ namespace Pulumi.PostgreSql
         private List<string>? _likeAnyPatterns;
 
         /// <summary>
-        /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
+        /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ANY` operators.
         /// </summary>
         public List<string> LikeAnyPatterns
         {
@@ -99,7 +97,7 @@ namespace Pulumi.PostgreSql
         private List<string>? _notLikeAllPatterns;
 
         /// <summary>
-        /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+        /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL `NOT LIKE ALL` operators.
         /// </summary>
         public List<string> NotLikeAllPatterns
         {
@@ -108,7 +106,7 @@ namespace Pulumi.PostgreSql
         }
 
         /// <summary>
-        /// Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+        /// Expression which will be pattern matched against table names in the query using the PostgreSQL `~` (regular expression match) operator.
         /// 
         /// Note that all optional arguments can be used in conjunction.
         /// </summary>
@@ -157,7 +155,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _likeAllPatterns;
 
         /// <summary>
-        /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
+        /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ALL` operators.
         /// </summary>
         public InputList<string> LikeAllPatterns
         {
@@ -169,7 +167,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _likeAnyPatterns;
 
         /// <summary>
-        /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
+        /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ANY` operators.
         /// </summary>
         public InputList<string> LikeAnyPatterns
         {
@@ -181,7 +179,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _notLikeAllPatterns;
 
         /// <summary>
-        /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+        /// List of expressions which will be pattern matched against table names in the query using the PostgreSQL `NOT LIKE ALL` operators.
         /// </summary>
         public InputList<string> NotLikeAllPatterns
         {
@@ -190,7 +188,7 @@ namespace Pulumi.PostgreSql
         }
 
         /// <summary>
-        /// Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+        /// Expression which will be pattern matched against table names in the query using the PostgreSQL `~` (regular expression match) operator.
         /// 
         /// Note that all optional arguments can be used in conjunction.
         /// </summary>
@@ -244,7 +242,7 @@ namespace Pulumi.PostgreSql
         public readonly ImmutableArray<string> TableTypes;
         /// <summary>
         /// A list of PostgreSQL tables retrieved by this data source. Each table consists of the fields documented below.
-        /// ___
+        /// ---
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTablesTableResult> Tables;
 

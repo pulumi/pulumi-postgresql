@@ -232,7 +232,7 @@ class Extension(pulumi.CustomResource):
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The ``Extension`` resource creates and manages an extension on a PostgreSQL
+        The `Extension` resource creates and manages an extension on a PostgreSQL
         server.
 
         ## Usage
@@ -268,7 +268,7 @@ class Extension(pulumi.CustomResource):
                  args: Optional[ExtensionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The ``Extension`` resource creates and manages an extension on a PostgreSQL
+        The `Extension` resource creates and manages an extension on a PostgreSQL
         server.
 
         ## Usage

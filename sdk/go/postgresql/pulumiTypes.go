@@ -452,7 +452,7 @@ func (o SchemaPolicyArrayOutput) Index(i pulumi.IntInput) SchemaPolicyOutput {
 }
 
 type GetSequencesSequence struct {
-	// The sequence's data type as defined in ``information_schema.sequences``.
+	// The sequence's data type as defined in `information_schema.sequences`.
 	DataType string `pulumi:"dataType"`
 	// The sequence name.
 	ObjectName string `pulumi:"objectName"`
@@ -472,7 +472,7 @@ type GetSequencesSequenceInput interface {
 }
 
 type GetSequencesSequenceArgs struct {
-	// The sequence's data type as defined in ``information_schema.sequences``.
+	// The sequence's data type as defined in `information_schema.sequences`.
 	DataType pulumi.StringInput `pulumi:"dataType"`
 	// The sequence name.
 	ObjectName pulumi.StringInput `pulumi:"objectName"`
@@ -531,7 +531,7 @@ func (o GetSequencesSequenceOutput) ToGetSequencesSequenceOutputWithContext(ctx 
 	return o
 }
 
-// The sequence's data type as defined in “information_schema.sequences“.
+// The sequence's data type as defined in `information_schema.sequences`.
 func (o GetSequencesSequenceOutput) DataType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSequencesSequence) string { return v.DataType }).(pulumi.StringOutput)
 }
@@ -571,7 +571,7 @@ type GetTablesTable struct {
 	ObjectName string `pulumi:"objectName"`
 	// The parent schema.
 	SchemaName string `pulumi:"schemaName"`
-	// The table type as defined in ``information_schema.tables``.
+	// The table type as defined in `information_schema.tables`.
 	TableType string `pulumi:"tableType"`
 }
 
@@ -591,7 +591,7 @@ type GetTablesTableArgs struct {
 	ObjectName pulumi.StringInput `pulumi:"objectName"`
 	// The parent schema.
 	SchemaName pulumi.StringInput `pulumi:"schemaName"`
-	// The table type as defined in ``information_schema.tables``.
+	// The table type as defined in `information_schema.tables`.
 	TableType pulumi.StringInput `pulumi:"tableType"`
 }
 
@@ -656,7 +656,7 @@ func (o GetTablesTableOutput) SchemaName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTablesTable) string { return v.SchemaName }).(pulumi.StringOutput)
 }
 
-// The table type as defined in “information_schema.tables“.
+// The table type as defined in `information_schema.tables`.
 func (o GetTablesTableOutput) TableType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTablesTable) string { return v.TableType }).(pulumi.StringOutput)
 }

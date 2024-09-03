@@ -5,6 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * layout: "postgresql"
+ * page_title: "PostgreSQL: postgresql.Publication"
+ * sidebar_current: "docs-postgresql-resource-postgresql_publication"
+ * description: |-
+ * Creates and manages a publication in a PostgreSQL server database.
+ * <!-- yaml: line 6: could not find expected ':' -->
+ *
+ * # postgresql.Publication
+ *
  * The `postgresql.Publication` resource creates and manages a publication on a PostgreSQL
  * server.
  *

@@ -14,7 +14,7 @@ namespace Pulumi.PostgreSql.Outputs
     public sealed class GetSequencesSequenceResult
     {
         /// <summary>
-        /// The sequence's data type as defined in ``information_schema.sequences``.
+        /// The sequence's data type as defined in `information_schema.sequences`.
         /// </summary>
         public readonly string DataType;
         /// <summary>

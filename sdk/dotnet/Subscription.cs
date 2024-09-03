@@ -10,6 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.PostgreSql
 {
     /// <summary>
+    /// layout: "postgresql"
+    /// page_title: "PostgreSQL: postgresql_susbcription"
+    /// sidebar_current: "docs-postgresql-resource-postgresql_subscription"
+    /// description: |-
+    /// Creates and manages a subscription in a PostgreSQL server database.
+    /// &lt;!-- yaml: line 6: could not find expected ':' --&gt;
+    /// 
+    /// # postgresql.Subscription
+    /// 
     /// The `postgresql.Subscription` resource creates and manages a publication on a PostgreSQL
     /// server.
     /// 
@@ -38,7 +47,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// ## Postgres documentation
     /// 
-    /// - https://www.postgresql.org/docs/current/sql-createsubscription.html
+    /// - &lt;https://www.postgresql.org/docs/current/sql-createsubscription.html&gt;
     /// </summary>
     [PostgreSqlResourceType("postgresql:index/subscription:Subscription")]
     public partial class Subscription : global::Pulumi.CustomResource

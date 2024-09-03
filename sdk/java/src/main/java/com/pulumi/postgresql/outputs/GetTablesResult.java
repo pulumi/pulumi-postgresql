@@ -28,7 +28,7 @@ public final class GetTablesResult {
     private @Nullable List<String> tableTypes;
     /**
      * @return A list of PostgreSQL tables retrieved by this data source. Each table consists of the fields documented below.
-     * ***
+     * ---
      * 
      */
     private List<GetTablesTable> tables;
@@ -64,7 +64,7 @@ public final class GetTablesResult {
     }
     /**
      * @return A list of PostgreSQL tables retrieved by this data source. Each table consists of the fields documented below.
-     * ***
+     * ---
      * 
      */
     public List<GetTablesTable> tables() {

@@ -17,6 +17,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * layout: &#34;postgresql&#34;
+ * page_title: &#34;PostgreSQL: postgresql.Publication&#34;
+ * sidebar_current: &#34;docs-postgresql-resource-postgresql_publication&#34;
+ * description: |-
+ * Creates and manages a publication in a PostgreSQL server database.
+ * &lt;!-- yaml: line 6: could not find expected &#39;:&#39; --&gt;
+ * 
+ * # postgresql.Publication
+ * 
  * The `postgresql.Publication` resource creates and manages a publication on a PostgreSQL
  * server.
  * 
