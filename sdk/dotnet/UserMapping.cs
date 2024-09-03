@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.PostgreSql
 {
     /// <summary>
-    /// The ``postgresql.UserMapping`` resource creates and manages a user mapping on a PostgreSQL server.
+    /// The `postgresql.UserMapping` resource creates and manages a user mapping on a PostgreSQL server.
     /// 
     /// ## Usage
     /// 

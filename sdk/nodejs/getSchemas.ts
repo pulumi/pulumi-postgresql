@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
+ * The `postgresql.getSchemas` data source retrieves a list of schema names from a specified PostgreSQL database.
  *
  * ## Usage
  *
@@ -40,23 +40,23 @@ export interface GetSchemasArgs {
      */
     database: string;
     /**
-     * Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to ``false``.
+     * Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to `false`.
      */
     includeSystemSchemas?: boolean;
     /**
-     * List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ALL`` operators.
+     * List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ALL` operators.
      */
     likeAllPatterns?: string[];
     /**
-     * List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
+     * List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ANY` operators.
      */
     likeAnyPatterns?: string[];
     /**
-     * List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+     * List of expressions which will be pattern matched in the query using the PostgreSQL `NOT LIKE ALL` operators.
      */
     notLikeAllPatterns?: string[];
     /**
-     * Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     * Expression which will be pattern matched in the query using the PostgreSQL `~` (regular expression match) operator.
      *
      * Note that all optional arguments can be used in conjunction.
      */
@@ -83,7 +83,7 @@ export interface GetSchemasResult {
     readonly schemas: string[];
 }
 /**
- * The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
+ * The `postgresql.getSchemas` data source retrieves a list of schema names from a specified PostgreSQL database.
  *
  * ## Usage
  *
@@ -109,23 +109,23 @@ export interface GetSchemasOutputArgs {
      */
     database: pulumi.Input<string>;
     /**
-     * Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to ``false``.
+     * Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to `false`.
      */
     includeSystemSchemas?: pulumi.Input<boolean>;
     /**
-     * List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ALL`` operators.
+     * List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ALL` operators.
      */
     likeAllPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
+     * List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ANY` operators.
      */
     likeAnyPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+     * List of expressions which will be pattern matched in the query using the PostgreSQL `NOT LIKE ALL` operators.
      */
     notLikeAllPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     * Expression which will be pattern matched in the query using the PostgreSQL `~` (regular expression match) operator.
      *
      * Note that all optional arguments can be used in conjunction.
      */

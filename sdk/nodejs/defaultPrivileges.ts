@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
+ * The `postgresql.DefaultPrivileges` resource creates and manages default privileges given to a user for a database schema.
  *
  * > **Note:** This resource needs Postgresql version 9 or above.
  *

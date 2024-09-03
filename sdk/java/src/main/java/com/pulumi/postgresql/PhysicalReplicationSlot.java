@@ -14,7 +14,16 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The ``postgresql.PhysicalReplicationSlot`` resource creates and manages a physical replication slot on a PostgreSQL
+ * layout: &#34;postgresql&#34;
+ * page_title: &#34;PostgreSQL: postgresql.PhysicalReplicationSlot&#34;
+ * sidebar_current: &#34;docs-postgresql-resource-postgresql_physical_replication_slot&#34;
+ * description: |-
+ * Creates and manages a physical replication slot on a PostgreSQL server.
+ * &lt;!-- yaml: line 6: could not find expected &#39;:&#39; --&gt;
+ * 
+ * # postgresql\_physical\_replication\_slot
+ * 
+ * The `postgresql.PhysicalReplicationSlot` resource creates and manages a physical replication slot on a PostgreSQL
  * server. This is useful to setup a cross datacenter replication, with Patroni for example, or permit
  * any stand-by cluster to replicate physically data.
  * 

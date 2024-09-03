@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The “UserMapping“ resource creates and manages a user mapping on a PostgreSQL server.
+// The `UserMapping` resource creates and manages a user mapping on a PostgreSQL server.
 //
 // ## Usage
 //

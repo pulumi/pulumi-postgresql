@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The “Extension“ resource creates and manages an extension on a PostgreSQL
+// The `Extension` resource creates and manages an extension on a PostgreSQL
 // server.
 //
 // ## Usage

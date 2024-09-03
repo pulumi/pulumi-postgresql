@@ -91,7 +91,7 @@ class GetSequencesResult:
     def sequences(self) -> Sequence['outputs.GetSequencesSequenceResult']:
         """
         A list of PostgreSQL sequences retrieved by this data source. Each sequence consists of the fields documented below.
-        ___
+        ---
         """
         return pulumi.get(self, "sequences")
 
@@ -120,7 +120,7 @@ def get_sequences(database: Optional[str] = None,
                   schemas: Optional[Sequence[str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSequencesResult:
     """
-    The ``get_sequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
+    The `get_sequences` data source retrieves a list of sequence names from a specified PostgreSQL database.
 
     ## Usage
 
@@ -133,10 +133,10 @@ def get_sequences(database: Optional[str] = None,
 
 
     :param str database: The PostgreSQL database which will be queried for sequence names.
-    :param Sequence[str] like_all_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ALL`` operators.
-    :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ANY`` operators.
-    :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
-    :param str regex_pattern: Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+    :param Sequence[str] like_all_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `LIKE ALL` operators.
+    :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `LIKE ANY` operators.
+    :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `NOT LIKE ALL` operators.
+    :param str regex_pattern: Expression which will be pattern matched against sequence names in the query using the PostgreSQL `~` (regular expression match) operator.
            
            Note that all optional arguments can be used in conjunction.
     :param Sequence[str] schemas: List of PostgreSQL schema(s) which will be queried for sequence names. Queries all schemas in the database by default.
@@ -171,7 +171,7 @@ def get_sequences_output(database: Optional[pulumi.Input[str]] = None,
                          schemas: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSequencesResult]:
     """
-    The ``get_sequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
+    The `get_sequences` data source retrieves a list of sequence names from a specified PostgreSQL database.
 
     ## Usage
 
@@ -184,10 +184,10 @@ def get_sequences_output(database: Optional[pulumi.Input[str]] = None,
 
 
     :param str database: The PostgreSQL database which will be queried for sequence names.
-    :param Sequence[str] like_all_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ALL`` operators.
-    :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ANY`` operators.
-    :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
-    :param str regex_pattern: Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+    :param Sequence[str] like_all_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `LIKE ALL` operators.
+    :param Sequence[str] like_any_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `LIKE ANY` operators.
+    :param Sequence[str] not_like_all_patterns: List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `NOT LIKE ALL` operators.
+    :param str regex_pattern: Expression which will be pattern matched against sequence names in the query using the PostgreSQL `~` (regular expression match) operator.
            
            Note that all optional arguments can be used in conjunction.
     :param Sequence[str] schemas: List of PostgreSQL schema(s) which will be queried for sequence names. Queries all schemas in the database by default.

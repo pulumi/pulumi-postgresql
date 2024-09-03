@@ -33,14 +33,14 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
+     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ALL` operators.
      * 
      */
     @Import(name="likeAllPatterns")
     private @Nullable Output<List<String>> likeAllPatterns;
 
     /**
-     * @return List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
+     * @return List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ALL` operators.
      * 
      */
     public Optional<Output<List<String>>> likeAllPatterns() {
@@ -48,14 +48,14 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
+     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ANY` operators.
      * 
      */
     @Import(name="likeAnyPatterns")
     private @Nullable Output<List<String>> likeAnyPatterns;
 
     /**
-     * @return List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
+     * @return List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ANY` operators.
      * 
      */
     public Optional<Output<List<String>>> likeAnyPatterns() {
@@ -63,14 +63,14 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+     * List of expressions which will be pattern matched against table names in the query using the PostgreSQL `NOT LIKE ALL` operators.
      * 
      */
     @Import(name="notLikeAllPatterns")
     private @Nullable Output<List<String>> notLikeAllPatterns;
 
     /**
-     * @return List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+     * @return List of expressions which will be pattern matched against table names in the query using the PostgreSQL `NOT LIKE ALL` operators.
      * 
      */
     public Optional<Output<List<String>>> notLikeAllPatterns() {
@@ -78,7 +78,7 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     * Expression which will be pattern matched against table names in the query using the PostgreSQL `~` (regular expression match) operator.
      * 
      * Note that all optional arguments can be used in conjunction.
      * 
@@ -87,7 +87,7 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> regexPattern;
 
     /**
-     * @return Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     * @return Expression which will be pattern matched against table names in the query using the PostgreSQL `~` (regular expression match) operator.
      * 
      * Note that all optional arguments can be used in conjunction.
      * 
@@ -178,7 +178,7 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param likeAllPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
+         * @param likeAllPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ALL` operators.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param likeAllPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
+         * @param likeAllPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ALL` operators.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param likeAllPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
+         * @param likeAllPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ALL` operators.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param likeAnyPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
+         * @param likeAnyPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ANY` operators.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param likeAnyPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
+         * @param likeAnyPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ANY` operators.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param likeAnyPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
+         * @param likeAnyPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ANY` operators.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param notLikeAllPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+         * @param notLikeAllPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL `NOT LIKE ALL` operators.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param notLikeAllPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+         * @param notLikeAllPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL `NOT LIKE ALL` operators.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param notLikeAllPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+         * @param notLikeAllPatterns List of expressions which will be pattern matched against table names in the query using the PostgreSQL `NOT LIKE ALL` operators.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param regexPattern Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+         * @param regexPattern Expression which will be pattern matched against table names in the query using the PostgreSQL `~` (regular expression match) operator.
          * 
          * Note that all optional arguments can be used in conjunction.
          * 
@@ -284,7 +284,7 @@ public final class GetTablesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param regexPattern Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+         * @param regexPattern Expression which will be pattern matched against table names in the query using the PostgreSQL `~` (regular expression match) operator.
          * 
          * Note that all optional arguments can be used in conjunction.
          * 

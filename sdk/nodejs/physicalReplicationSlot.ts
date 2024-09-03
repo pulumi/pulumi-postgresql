@@ -5,7 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql.PhysicalReplicationSlot`` resource creates and manages a physical replication slot on a PostgreSQL
+ * layout: "postgresql"
+ * page_title: "PostgreSQL: postgresql.PhysicalReplicationSlot"
+ * sidebar_current: "docs-postgresql-resource-postgresql_physical_replication_slot"
+ * description: |-
+ * Creates and manages a physical replication slot on a PostgreSQL server.
+ * <!-- yaml: line 6: could not find expected ':' -->
+ *
+ * # postgresql\_physical\_replication\_slot
+ *
+ * The `postgresql.PhysicalReplicationSlot` resource creates and manages a physical replication slot on a PostgreSQL
  * server. This is useful to setup a cross datacenter replication, with Patroni for example, or permit
  * any stand-by cluster to replicate physically data.
  *

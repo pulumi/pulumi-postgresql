@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql.Server`` resource creates and manages a foreign server on a PostgreSQL server.
+ * The `postgresql.Server` resource creates and manages a foreign server on a PostgreSQL server.
  *
  * ## Usage
  *

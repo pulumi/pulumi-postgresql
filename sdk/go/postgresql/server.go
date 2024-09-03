@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The “Server“ resource creates and manages a foreign server on a PostgreSQL server.
+// The `Server` resource creates and manages a foreign server on a PostgreSQL server.
 //
 // ## Usage
 //

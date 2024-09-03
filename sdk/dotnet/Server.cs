@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.PostgreSql
 {
     /// <summary>
-    /// The ``postgresql.Server`` resource creates and manages a foreign server on a PostgreSQL server.
+    /// The `postgresql.Server` resource creates and manages a foreign server on a PostgreSQL server.
     /// 
     /// ## Usage
     /// 

@@ -22,7 +22,7 @@ namespace Pulumi.PostgreSql.Outputs
         /// </summary>
         public readonly string SchemaName;
         /// <summary>
-        /// The table type as defined in ``information_schema.tables``.
+        /// The table type as defined in `information_schema.tables`.
         /// </summary>
         public readonly string TableType;
 

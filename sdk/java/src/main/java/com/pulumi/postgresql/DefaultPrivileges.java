@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
+ * The `postgresql.DefaultPrivileges` resource creates and manages default privileges given to a user for a database schema.
  * 
  * &gt; **Note:** This resource needs Postgresql version 9 or above.
  * 

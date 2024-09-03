@@ -17,6 +17,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * layout: &#34;postgresql&#34;
+ * page_title: &#34;PostgreSQL: postgresql_susbcription&#34;
+ * sidebar_current: &#34;docs-postgresql-resource-postgresql_subscription&#34;
+ * description: |-
+ * Creates and manages a subscription in a PostgreSQL server database.
+ * &lt;!-- yaml: line 6: could not find expected &#39;:&#39; --&gt;
+ * 
+ * # postgresql.Subscription
+ * 
  * The `postgresql.Subscription` resource creates and manages a publication on a PostgreSQL
  * server.
  * 
@@ -59,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  * ## Postgres documentation
  * 
- * - https://www.postgresql.org/docs/current/sql-createsubscription.html
+ * - &lt;https://www.postgresql.org/docs/current/sql-createsubscription.html&gt;
  * 
  */
 @ResourceType(type="postgresql:index/subscription:Subscription")

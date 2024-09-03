@@ -21,7 +21,7 @@ public final class GetTablesTable {
      */
     private String schemaName;
     /**
-     * @return The table type as defined in ``information_schema.tables``.
+     * @return The table type as defined in `information_schema.tables`.
      * 
      */
     private String tableType;
@@ -42,7 +42,7 @@ public final class GetTablesTable {
         return this.schemaName;
     }
     /**
-     * @return The table type as defined in ``information_schema.tables``.
+     * @return The table type as defined in `information_schema.tables`.
      * 
      */
     public String tableType() {

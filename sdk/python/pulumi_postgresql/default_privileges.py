@@ -260,7 +260,7 @@ class DefaultPrivileges(pulumi.CustomResource):
                  with_grant_option: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        The ``DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
+        The `DefaultPrivileges` resource creates and manages default privileges given to a user for a database schema.
 
         > **Note:** This resource needs Postgresql version 9 or above.
 
@@ -312,7 +312,7 @@ class DefaultPrivileges(pulumi.CustomResource):
                  args: DefaultPrivilegesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The ``DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.
+        The `DefaultPrivileges` resource creates and manages default privileges given to a user for a database schema.
 
         > **Note:** This resource needs Postgresql version 9 or above.
 

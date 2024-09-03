@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The “getTables“ data source retrieves a list of table names from a specified PostgreSQL database.
+// The `getTables` data source retrieves a list of table names from a specified PostgreSQL database.
 //
 // ## Usage
 //
@@ -52,13 +52,13 @@ func GetTables(ctx *pulumi.Context, args *GetTablesArgs, opts ...pulumi.InvokeOp
 type GetTablesArgs struct {
 	// The PostgreSQL database which will be queried for table names.
 	Database string `pulumi:"database"`
-	// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
+	// List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ALL` operators.
 	LikeAllPatterns []string `pulumi:"likeAllPatterns"`
-	// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
+	// List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ANY` operators.
 	LikeAnyPatterns []string `pulumi:"likeAnyPatterns"`
-	// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+	// List of expressions which will be pattern matched against table names in the query using the PostgreSQL `NOT LIKE ALL` operators.
 	NotLikeAllPatterns []string `pulumi:"notLikeAllPatterns"`
-	// Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+	// Expression which will be pattern matched against table names in the query using the PostgreSQL `~` (regular expression match) operator.
 	//
 	// Note that all optional arguments can be used in conjunction.
 	RegexPattern *string `pulumi:"regexPattern"`
@@ -80,7 +80,7 @@ type GetTablesResult struct {
 	Schemas            []string `pulumi:"schemas"`
 	TableTypes         []string `pulumi:"tableTypes"`
 	// A list of PostgreSQL tables retrieved by this data source. Each table consists of the fields documented below.
-	// ***
+	// ---
 	Tables []GetTablesTable `pulumi:"tables"`
 }
 
@@ -101,13 +101,13 @@ func GetTablesOutput(ctx *pulumi.Context, args GetTablesOutputArgs, opts ...pulu
 type GetTablesOutputArgs struct {
 	// The PostgreSQL database which will be queried for table names.
 	Database pulumi.StringInput `pulumi:"database"`
-	// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
+	// List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ALL` operators.
 	LikeAllPatterns pulumi.StringArrayInput `pulumi:"likeAllPatterns"`
-	// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
+	// List of expressions which will be pattern matched against table names in the query using the PostgreSQL `LIKE ANY` operators.
 	LikeAnyPatterns pulumi.StringArrayInput `pulumi:"likeAnyPatterns"`
-	// List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+	// List of expressions which will be pattern matched against table names in the query using the PostgreSQL `NOT LIKE ALL` operators.
 	NotLikeAllPatterns pulumi.StringArrayInput `pulumi:"notLikeAllPatterns"`
-	// Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+	// Expression which will be pattern matched against table names in the query using the PostgreSQL `~` (regular expression match) operator.
 	//
 	// Note that all optional arguments can be used in conjunction.
 	RegexPattern pulumi.StringPtrInput `pulumi:"regexPattern"`
@@ -170,7 +170,7 @@ func (o GetTablesResultOutput) TableTypes() pulumi.StringArrayOutput {
 }
 
 // A list of PostgreSQL tables retrieved by this data source. Each table consists of the fields documented below.
-// ***
+// ---
 func (o GetTablesResultOutput) Tables() GetTablesTableArrayOutput {
 	return o.ApplyT(func(v GetTablesResult) []GetTablesTable { return v.Tables }).(GetTablesTableArrayOutput)
 }

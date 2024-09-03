@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The “getSequences“ data source retrieves a list of sequence names from a specified PostgreSQL database.
+// The `getSequences` data source retrieves a list of sequence names from a specified PostgreSQL database.
 //
 // ## Usage
 //
@@ -52,13 +52,13 @@ func GetSequences(ctx *pulumi.Context, args *GetSequencesArgs, opts ...pulumi.In
 type GetSequencesArgs struct {
 	// The PostgreSQL database which will be queried for sequence names.
 	Database string `pulumi:"database"`
-	// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ALL`` operators.
+	// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `LIKE ALL` operators.
 	LikeAllPatterns []string `pulumi:"likeAllPatterns"`
-	// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ANY`` operators.
+	// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `LIKE ANY` operators.
 	LikeAnyPatterns []string `pulumi:"likeAnyPatterns"`
-	// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+	// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `NOT LIKE ALL` operators.
 	NotLikeAllPatterns []string `pulumi:"notLikeAllPatterns"`
-	// Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+	// Expression which will be pattern matched against sequence names in the query using the PostgreSQL `~` (regular expression match) operator.
 	//
 	// Note that all optional arguments can be used in conjunction.
 	RegexPattern *string `pulumi:"regexPattern"`
@@ -77,7 +77,7 @@ type GetSequencesResult struct {
 	RegexPattern       *string  `pulumi:"regexPattern"`
 	Schemas            []string `pulumi:"schemas"`
 	// A list of PostgreSQL sequences retrieved by this data source. Each sequence consists of the fields documented below.
-	// ***
+	// ---
 	Sequences []GetSequencesSequence `pulumi:"sequences"`
 }
 
@@ -98,13 +98,13 @@ func GetSequencesOutput(ctx *pulumi.Context, args GetSequencesOutputArgs, opts .
 type GetSequencesOutputArgs struct {
 	// The PostgreSQL database which will be queried for sequence names.
 	Database pulumi.StringInput `pulumi:"database"`
-	// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ALL`` operators.
+	// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `LIKE ALL` operators.
 	LikeAllPatterns pulumi.StringArrayInput `pulumi:"likeAllPatterns"`
-	// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ANY`` operators.
+	// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `LIKE ANY` operators.
 	LikeAnyPatterns pulumi.StringArrayInput `pulumi:"likeAnyPatterns"`
-	// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+	// List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL `NOT LIKE ALL` operators.
 	NotLikeAllPatterns pulumi.StringArrayInput `pulumi:"notLikeAllPatterns"`
-	// Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
+	// Expression which will be pattern matched against sequence names in the query using the PostgreSQL `~` (regular expression match) operator.
 	//
 	// Note that all optional arguments can be used in conjunction.
 	RegexPattern pulumi.StringPtrInput `pulumi:"regexPattern"`
@@ -161,7 +161,7 @@ func (o GetSequencesResultOutput) Schemas() pulumi.StringArrayOutput {
 }
 
 // A list of PostgreSQL sequences retrieved by this data source. Each sequence consists of the fields documented below.
-// ***
+// ---
 func (o GetSequencesResultOutput) Sequences() GetSequencesSequenceArrayOutput {
 	return o.ApplyT(func(v GetSequencesResult) []GetSequencesSequence { return v.Sequences }).(GetSequencesSequenceArrayOutput)
 }

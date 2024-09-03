@@ -155,7 +155,7 @@ class UserMapping(pulumi.CustomResource):
                  user_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The ``UserMapping`` resource creates and manages a user mapping on a PostgreSQL server.
+        The `UserMapping` resource creates and manages a user mapping on a PostgreSQL server.
 
         ## Usage
 
@@ -202,7 +202,7 @@ class UserMapping(pulumi.CustomResource):
                  args: UserMappingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The ``UserMapping`` resource creates and manages a user mapping on a PostgreSQL server.
+        The `UserMapping` resource creates and manages a user mapping on a PostgreSQL server.
 
         ## Usage
 

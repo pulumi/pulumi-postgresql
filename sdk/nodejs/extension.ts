@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql.Extension`` resource creates and manages an extension on a PostgreSQL
+ * The `postgresql.Extension` resource creates and manages an extension on a PostgreSQL
  * server.
  *
  * ## Usage

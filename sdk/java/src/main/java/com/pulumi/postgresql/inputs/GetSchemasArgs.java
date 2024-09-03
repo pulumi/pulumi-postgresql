@@ -34,14 +34,14 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Determines whether to include system schemas (pg_ prefix and information_schema). &#39;public&#39; will always be included. Defaults to ``false``.
+     * Determines whether to include system schemas (pg_ prefix and information_schema). &#39;public&#39; will always be included. Defaults to `false`.
      * 
      */
     @Import(name="includeSystemSchemas")
     private @Nullable Output<Boolean> includeSystemSchemas;
 
     /**
-     * @return Determines whether to include system schemas (pg_ prefix and information_schema). &#39;public&#39; will always be included. Defaults to ``false``.
+     * @return Determines whether to include system schemas (pg_ prefix and information_schema). &#39;public&#39; will always be included. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> includeSystemSchemas() {
@@ -49,14 +49,14 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ALL`` operators.
+     * List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ALL` operators.
      * 
      */
     @Import(name="likeAllPatterns")
     private @Nullable Output<List<String>> likeAllPatterns;
 
     /**
-     * @return List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ALL`` operators.
+     * @return List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ALL` operators.
      * 
      */
     public Optional<Output<List<String>>> likeAllPatterns() {
@@ -64,14 +64,14 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
+     * List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ANY` operators.
      * 
      */
     @Import(name="likeAnyPatterns")
     private @Nullable Output<List<String>> likeAnyPatterns;
 
     /**
-     * @return List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
+     * @return List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ANY` operators.
      * 
      */
     public Optional<Output<List<String>>> likeAnyPatterns() {
@@ -79,14 +79,14 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+     * List of expressions which will be pattern matched in the query using the PostgreSQL `NOT LIKE ALL` operators.
      * 
      */
     @Import(name="notLikeAllPatterns")
     private @Nullable Output<List<String>> notLikeAllPatterns;
 
     /**
-     * @return List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+     * @return List of expressions which will be pattern matched in the query using the PostgreSQL `NOT LIKE ALL` operators.
      * 
      */
     public Optional<Output<List<String>>> notLikeAllPatterns() {
@@ -94,7 +94,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     * Expression which will be pattern matched in the query using the PostgreSQL `~` (regular expression match) operator.
      * 
      * Note that all optional arguments can be used in conjunction.
      * 
@@ -103,7 +103,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> regexPattern;
 
     /**
-     * @return Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+     * @return Expression which will be pattern matched in the query using the PostgreSQL `~` (regular expression match) operator.
      * 
      * Note that all optional arguments can be used in conjunction.
      * 
@@ -163,7 +163,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param includeSystemSchemas Determines whether to include system schemas (pg_ prefix and information_schema). &#39;public&#39; will always be included. Defaults to ``false``.
+         * @param includeSystemSchemas Determines whether to include system schemas (pg_ prefix and information_schema). &#39;public&#39; will always be included. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param includeSystemSchemas Determines whether to include system schemas (pg_ prefix and information_schema). &#39;public&#39; will always be included. Defaults to ``false``.
+         * @param includeSystemSchemas Determines whether to include system schemas (pg_ prefix and information_schema). &#39;public&#39; will always be included. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param likeAllPatterns List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ALL`` operators.
+         * @param likeAllPatterns List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ALL` operators.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param likeAllPatterns List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ALL`` operators.
+         * @param likeAllPatterns List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ALL` operators.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param likeAllPatterns List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ALL`` operators.
+         * @param likeAllPatterns List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ALL` operators.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param likeAnyPatterns List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
+         * @param likeAnyPatterns List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ANY` operators.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param likeAnyPatterns List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
+         * @param likeAnyPatterns List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ANY` operators.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param likeAnyPatterns List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
+         * @param likeAnyPatterns List of expressions which will be pattern matched in the query using the PostgreSQL `LIKE ANY` operators.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param notLikeAllPatterns List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+         * @param notLikeAllPatterns List of expressions which will be pattern matched in the query using the PostgreSQL `NOT LIKE ALL` operators.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param notLikeAllPatterns List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+         * @param notLikeAllPatterns List of expressions which will be pattern matched in the query using the PostgreSQL `NOT LIKE ALL` operators.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param notLikeAllPatterns List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
+         * @param notLikeAllPatterns List of expressions which will be pattern matched in the query using the PostgreSQL `NOT LIKE ALL` operators.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param regexPattern Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+         * @param regexPattern Expression which will be pattern matched in the query using the PostgreSQL `~` (regular expression match) operator.
          * 
          * Note that all optional arguments can be used in conjunction.
          * 
@@ -290,7 +290,7 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param regexPattern Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
+         * @param regexPattern Expression which will be pattern matched in the query using the PostgreSQL `~` (regular expression match) operator.
          * 
          * Note that all optional arguments can be used in conjunction.
          * 

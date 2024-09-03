@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// layout: "postgresql"
+// page_title: "PostgreSQL: Publication"
+// sidebar_current: "docs-postgresql-resource-postgresql_publication"
+// description: |-
+// Creates and manages a publication in a PostgreSQL server database.
+// <!-- yaml: line 6: could not find expected ':' -->
+//
+// # Publication
+//
 // The `Publication` resource creates and manages a publication on a PostgreSQL
 // server.
 //

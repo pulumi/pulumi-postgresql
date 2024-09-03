@@ -21,7 +21,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class PostgresqlFunctions {
     /**
-     * The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
+     * The `postgresql.getSchemas` data source retrieves a list of schema names from a specified PostgreSQL database.
      * 
      * ## Usage
      * 
@@ -63,7 +63,7 @@ public final class PostgresqlFunctions {
         return getSchemas(args, InvokeOptions.Empty);
     }
     /**
-     * The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
+     * The `postgresql.getSchemas` data source retrieves a list of schema names from a specified PostgreSQL database.
      * 
      * ## Usage
      * 
@@ -105,7 +105,7 @@ public final class PostgresqlFunctions {
         return getSchemasPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
+     * The `postgresql.getSchemas` data source retrieves a list of schema names from a specified PostgreSQL database.
      * 
      * ## Usage
      * 
@@ -147,7 +147,7 @@ public final class PostgresqlFunctions {
         return Deployment.getInstance().invoke("postgresql:index/getSchemas:getSchemas", TypeShape.of(GetSchemasResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
+     * The `postgresql.getSchemas` data source retrieves a list of schema names from a specified PostgreSQL database.
      * 
      * ## Usage
      * 
@@ -189,7 +189,7 @@ public final class PostgresqlFunctions {
         return Deployment.getInstance().invokeAsync("postgresql:index/getSchemas:getSchemas", TypeShape.of(GetSchemasResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
+     * The `postgresql.getSequences` data source retrieves a list of sequence names from a specified PostgreSQL database.
      * 
      * ## Usage
      * 
@@ -231,7 +231,7 @@ public final class PostgresqlFunctions {
         return getSequences(args, InvokeOptions.Empty);
     }
     /**
-     * The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
+     * The `postgresql.getSequences` data source retrieves a list of sequence names from a specified PostgreSQL database.
      * 
      * ## Usage
      * 
@@ -273,7 +273,7 @@ public final class PostgresqlFunctions {
         return getSequencesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
+     * The `postgresql.getSequences` data source retrieves a list of sequence names from a specified PostgreSQL database.
      * 
      * ## Usage
      * 
@@ -315,7 +315,7 @@ public final class PostgresqlFunctions {
         return Deployment.getInstance().invoke("postgresql:index/getSequences:getSequences", TypeShape.of(GetSequencesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
+     * The `postgresql.getSequences` data source retrieves a list of sequence names from a specified PostgreSQL database.
      * 
      * ## Usage
      * 
@@ -357,7 +357,7 @@ public final class PostgresqlFunctions {
         return Deployment.getInstance().invokeAsync("postgresql:index/getSequences:getSequences", TypeShape.of(GetSequencesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
+     * The `postgresql.getTables` data source retrieves a list of table names from a specified PostgreSQL database.
      * 
      * ## Usage
      * 
@@ -399,7 +399,7 @@ public final class PostgresqlFunctions {
         return getTables(args, InvokeOptions.Empty);
     }
     /**
-     * The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
+     * The `postgresql.getTables` data source retrieves a list of table names from a specified PostgreSQL database.
      * 
      * ## Usage
      * 
@@ -441,7 +441,7 @@ public final class PostgresqlFunctions {
         return getTablesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
+     * The `postgresql.getTables` data source retrieves a list of table names from a specified PostgreSQL database.
      * 
      * ## Usage
      * 
@@ -483,7 +483,7 @@ public final class PostgresqlFunctions {
         return Deployment.getInstance().invoke("postgresql:index/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
+     * The `postgresql.getTables` data source retrieves a list of table names from a specified PostgreSQL database.
      * 
      * ## Usage
      * 

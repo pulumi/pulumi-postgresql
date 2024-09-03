@@ -26,7 +26,7 @@ export interface FunctionArg {
 
 export interface GetSequencesSequence {
     /**
-     * The sequence's data type as defined in ``information_schema.sequences``.
+     * The sequence's data type as defined in `information_schema.sequences`.
      */
     dataType: string;
     /**
@@ -49,7 +49,7 @@ export interface GetTablesTable {
      */
     schemaName: string;
     /**
-     * The table type as defined in ``information_schema.tables``.
+     * The table type as defined in `information_schema.tables`.
      */
     tableType: string;
 }

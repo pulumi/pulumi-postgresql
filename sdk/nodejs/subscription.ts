@@ -5,6 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * layout: "postgresql"
+ * page_title: "PostgreSQL: postgresqlSusbcription"
+ * sidebar_current: "docs-postgresql-resource-postgresql_subscription"
+ * description: |-
+ * Creates and manages a subscription in a PostgreSQL server database.
+ * <!-- yaml: line 6: could not find expected ':' -->
+ *
+ * # postgresql.Subscription
+ *
  * The `postgresql.Subscription` resource creates and manages a publication on a PostgreSQL
  * server.
  *
@@ -23,7 +32,7 @@ import * as utilities from "./utilities";
  *
  * ## Postgres documentation
  *
- * - https://www.postgresql.org/docs/current/sql-createsubscription.html
+ * - <https://www.postgresql.org/docs/current/sql-createsubscription.html>
  */
 export class Subscription extends pulumi.CustomResource {
     /**

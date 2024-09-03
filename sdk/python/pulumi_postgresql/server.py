@@ -287,7 +287,7 @@ class Server(pulumi.CustomResource):
                  server_version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The ``Server`` resource creates and manages a foreign server on a PostgreSQL server.
+        The `Server` resource creates and manages a foreign server on a PostgreSQL server.
 
         ## Usage
 
@@ -341,7 +341,7 @@ class Server(pulumi.CustomResource):
                  args: ServerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The ``Server`` resource creates and manages a foreign server on a PostgreSQL server.
+        The `Server` resource creates and manages a foreign server on a PostgreSQL server.
 
         ## Usage
 

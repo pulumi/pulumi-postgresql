@@ -5,7 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``postgresql.ReplicationSlot`` resource creates and manages a replication slot on a PostgreSQL
+ * layout: "postgresql"
+ * page_title: "PostgreSQL: postgresql.ReplicationSlot"
+ * sidebar_current: "docs-postgresql-resource-postgresql_replication_slot"
+ * description: |-
+ * Creates and manages a replication slot on a PostgreSQL server.
+ * <!-- yaml: line 6: could not find expected ':' -->
+ *
+ * # postgresql\_replication\_slot
+ *
+ * The `postgresql.ReplicationSlot` resource creates and manages a replication slot on a PostgreSQL
  * server.
  *
  * ## Usage
