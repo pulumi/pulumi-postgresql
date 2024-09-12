@@ -39,6 +39,16 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly allowConnections!: pulumi.Output<boolean | undefined>;
     /**
+     * If `true`, the change of the database
+     * `owner` will also include a reassignment of the ownership of preexisting
+     * objects like tables or sequences from the previous owner to the new one.
+     * If set to `false` (the default), then the previous database `owner` will still
+     * hold the ownership of the objects in that database. To alter existing objects in
+     * the database, you must be a direct or indirect member of the specified role, or
+     * the username in the provider must be superuser.
+     */
+    public readonly alterObjectOwnership!: pulumi.Output<boolean | undefined>;
+    /**
      * How many concurrent connections can be
      * established to this database. `-1` (the default) means no limit.
      */
@@ -100,6 +110,7 @@ export class Database extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
             resourceInputs["allowConnections"] = state ? state.allowConnections : undefined;
+            resourceInputs["alterObjectOwnership"] = state ? state.alterObjectOwnership : undefined;
             resourceInputs["connectionLimit"] = state ? state.connectionLimit : undefined;
             resourceInputs["encoding"] = state ? state.encoding : undefined;
             resourceInputs["isTemplate"] = state ? state.isTemplate : undefined;
@@ -112,6 +123,7 @@ export class Database extends pulumi.CustomResource {
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
             resourceInputs["allowConnections"] = args ? args.allowConnections : undefined;
+            resourceInputs["alterObjectOwnership"] = args ? args.alterObjectOwnership : undefined;
             resourceInputs["connectionLimit"] = args ? args.connectionLimit : undefined;
             resourceInputs["encoding"] = args ? args.encoding : undefined;
             resourceInputs["isTemplate"] = args ? args.isTemplate : undefined;
@@ -137,6 +149,16 @@ export interface DatabaseState {
      * other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
      */
     allowConnections?: pulumi.Input<boolean>;
+    /**
+     * If `true`, the change of the database
+     * `owner` will also include a reassignment of the ownership of preexisting
+     * objects like tables or sequences from the previous owner to the new one.
+     * If set to `false` (the default), then the previous database `owner` will still
+     * hold the ownership of the objects in that database. To alter existing objects in
+     * the database, you must be a direct or indirect member of the specified role, or
+     * the username in the provider must be superuser.
+     */
+    alterObjectOwnership?: pulumi.Input<boolean>;
     /**
      * How many concurrent connections can be
      * established to this database. `-1` (the default) means no limit.
@@ -196,6 +218,16 @@ export interface DatabaseArgs {
      * other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
      */
     allowConnections?: pulumi.Input<boolean>;
+    /**
+     * If `true`, the change of the database
+     * `owner` will also include a reassignment of the ownership of preexisting
+     * objects like tables or sequences from the previous owner to the new one.
+     * If set to `false` (the default), then the previous database `owner` will still
+     * hold the ownership of the objects in that database. To alter existing objects in
+     * the database, you must be a direct or indirect member of the specified role, or
+     * the username in the provider must be superuser.
+     */
+    alterObjectOwnership?: pulumi.Input<boolean>;
     /**
      * How many concurrent connections can be
      * established to this database. `-1` (the default) means no limit.

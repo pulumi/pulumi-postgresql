@@ -15,6 +15,7 @@ __all__ = ['DatabaseArgs', 'Database']
 class DatabaseArgs:
     def __init__(__self__, *,
                  allow_connections: Optional[pulumi.Input[bool]] = None,
+                 alter_object_ownership: Optional[pulumi.Input[bool]] = None,
                  connection_limit: Optional[pulumi.Input[int]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  is_template: Optional[pulumi.Input[bool]] = None,
@@ -29,6 +30,13 @@ class DatabaseArgs:
         :param pulumi.Input[bool] allow_connections: If `false` then no one can connect to this
                database. The default is `true`, allowing connections (except as restricted by
                other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
+        :param pulumi.Input[bool] alter_object_ownership: If `true`, the change of the database
+               `owner` will also include a reassignment of the ownership of preexisting
+               objects like tables or sequences from the previous owner to the new one.
+               If set to `false` (the default), then the previous database `owner` will still
+               hold the ownership of the objects in that database. To alter existing objects in
+               the database, you must be a direct or indirect member of the specified role, or
+               the username in the provider must be superuser.
         :param pulumi.Input[int] connection_limit: How many concurrent connections can be
                established to this database. `-1` (the default) means no limit.
         :param pulumi.Input[str] encoding: Character set encoding to use in the new database
@@ -52,6 +60,8 @@ class DatabaseArgs:
         """
         if allow_connections is not None:
             pulumi.set(__self__, "allow_connections", allow_connections)
+        if alter_object_ownership is not None:
+            pulumi.set(__self__, "alter_object_ownership", alter_object_ownership)
         if connection_limit is not None:
             pulumi.set(__self__, "connection_limit", connection_limit)
         if encoding is not None:
@@ -84,6 +94,24 @@ class DatabaseArgs:
     @allow_connections.setter
     def allow_connections(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_connections", value)
+
+    @property
+    @pulumi.getter(name="alterObjectOwnership")
+    def alter_object_ownership(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, the change of the database
+        `owner` will also include a reassignment of the ownership of preexisting
+        objects like tables or sequences from the previous owner to the new one.
+        If set to `false` (the default), then the previous database `owner` will still
+        hold the ownership of the objects in that database. To alter existing objects in
+        the database, you must be a direct or indirect member of the specified role, or
+        the username in the provider must be superuser.
+        """
+        return pulumi.get(self, "alter_object_ownership")
+
+    @alter_object_ownership.setter
+    def alter_object_ownership(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "alter_object_ownership", value)
 
     @property
     @pulumi.getter(name="connectionLimit")
@@ -209,6 +237,7 @@ class DatabaseArgs:
 class _DatabaseState:
     def __init__(__self__, *,
                  allow_connections: Optional[pulumi.Input[bool]] = None,
+                 alter_object_ownership: Optional[pulumi.Input[bool]] = None,
                  connection_limit: Optional[pulumi.Input[int]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  is_template: Optional[pulumi.Input[bool]] = None,
@@ -223,6 +252,13 @@ class _DatabaseState:
         :param pulumi.Input[bool] allow_connections: If `false` then no one can connect to this
                database. The default is `true`, allowing connections (except as restricted by
                other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
+        :param pulumi.Input[bool] alter_object_ownership: If `true`, the change of the database
+               `owner` will also include a reassignment of the ownership of preexisting
+               objects like tables or sequences from the previous owner to the new one.
+               If set to `false` (the default), then the previous database `owner` will still
+               hold the ownership of the objects in that database. To alter existing objects in
+               the database, you must be a direct or indirect member of the specified role, or
+               the username in the provider must be superuser.
         :param pulumi.Input[int] connection_limit: How many concurrent connections can be
                established to this database. `-1` (the default) means no limit.
         :param pulumi.Input[str] encoding: Character set encoding to use in the new database
@@ -246,6 +282,8 @@ class _DatabaseState:
         """
         if allow_connections is not None:
             pulumi.set(__self__, "allow_connections", allow_connections)
+        if alter_object_ownership is not None:
+            pulumi.set(__self__, "alter_object_ownership", alter_object_ownership)
         if connection_limit is not None:
             pulumi.set(__self__, "connection_limit", connection_limit)
         if encoding is not None:
@@ -278,6 +316,24 @@ class _DatabaseState:
     @allow_connections.setter
     def allow_connections(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_connections", value)
+
+    @property
+    @pulumi.getter(name="alterObjectOwnership")
+    def alter_object_ownership(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, the change of the database
+        `owner` will also include a reassignment of the ownership of preexisting
+        objects like tables or sequences from the previous owner to the new one.
+        If set to `false` (the default), then the previous database `owner` will still
+        hold the ownership of the objects in that database. To alter existing objects in
+        the database, you must be a direct or indirect member of the specified role, or
+        the username in the provider must be superuser.
+        """
+        return pulumi.get(self, "alter_object_ownership")
+
+    @alter_object_ownership.setter
+    def alter_object_ownership(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "alter_object_ownership", value)
 
     @property
     @pulumi.getter(name="connectionLimit")
@@ -405,6 +461,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_connections: Optional[pulumi.Input[bool]] = None,
+                 alter_object_ownership: Optional[pulumi.Input[bool]] = None,
                  connection_limit: Optional[pulumi.Input[int]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  is_template: Optional[pulumi.Input[bool]] = None,
@@ -422,6 +479,13 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_connections: If `false` then no one can connect to this
                database. The default is `true`, allowing connections (except as restricted by
                other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
+        :param pulumi.Input[bool] alter_object_ownership: If `true`, the change of the database
+               `owner` will also include a reassignment of the ownership of preexisting
+               objects like tables or sequences from the previous owner to the new one.
+               If set to `false` (the default), then the previous database `owner` will still
+               hold the ownership of the objects in that database. To alter existing objects in
+               the database, you must be a direct or indirect member of the specified role, or
+               the username in the provider must be superuser.
         :param pulumi.Input[int] connection_limit: How many concurrent connections can be
                established to this database. `-1` (the default) means no limit.
         :param pulumi.Input[str] encoding: Character set encoding to use in the new database
@@ -467,6 +531,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_connections: Optional[pulumi.Input[bool]] = None,
+                 alter_object_ownership: Optional[pulumi.Input[bool]] = None,
                  connection_limit: Optional[pulumi.Input[int]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  is_template: Optional[pulumi.Input[bool]] = None,
@@ -486,6 +551,7 @@ class Database(pulumi.CustomResource):
             __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
             __props__.__dict__["allow_connections"] = allow_connections
+            __props__.__dict__["alter_object_ownership"] = alter_object_ownership
             __props__.__dict__["connection_limit"] = connection_limit
             __props__.__dict__["encoding"] = encoding
             __props__.__dict__["is_template"] = is_template
@@ -506,6 +572,7 @@ class Database(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_connections: Optional[pulumi.Input[bool]] = None,
+            alter_object_ownership: Optional[pulumi.Input[bool]] = None,
             connection_limit: Optional[pulumi.Input[int]] = None,
             encoding: Optional[pulumi.Input[str]] = None,
             is_template: Optional[pulumi.Input[bool]] = None,
@@ -525,6 +592,13 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_connections: If `false` then no one can connect to this
                database. The default is `true`, allowing connections (except as restricted by
                other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
+        :param pulumi.Input[bool] alter_object_ownership: If `true`, the change of the database
+               `owner` will also include a reassignment of the ownership of preexisting
+               objects like tables or sequences from the previous owner to the new one.
+               If set to `false` (the default), then the previous database `owner` will still
+               hold the ownership of the objects in that database. To alter existing objects in
+               the database, you must be a direct or indirect member of the specified role, or
+               the username in the provider must be superuser.
         :param pulumi.Input[int] connection_limit: How many concurrent connections can be
                established to this database. `-1` (the default) means no limit.
         :param pulumi.Input[str] encoding: Character set encoding to use in the new database
@@ -551,6 +625,7 @@ class Database(pulumi.CustomResource):
         __props__ = _DatabaseState.__new__(_DatabaseState)
 
         __props__.__dict__["allow_connections"] = allow_connections
+        __props__.__dict__["alter_object_ownership"] = alter_object_ownership
         __props__.__dict__["connection_limit"] = connection_limit
         __props__.__dict__["encoding"] = encoding
         __props__.__dict__["is_template"] = is_template
@@ -571,6 +646,20 @@ class Database(pulumi.CustomResource):
         other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
         """
         return pulumi.get(self, "allow_connections")
+
+    @property
+    @pulumi.getter(name="alterObjectOwnership")
+    def alter_object_ownership(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If `true`, the change of the database
+        `owner` will also include a reassignment of the ownership of preexisting
+        objects like tables or sequences from the previous owner to the new one.
+        If set to `false` (the default), then the previous database `owner` will still
+        hold the ownership of the objects in that database. To alter existing objects in
+        the database, you must be a direct or indirect member of the specified role, or
+        the username in the provider must be superuser.
+        """
+        return pulumi.get(self, "alter_object_ownership")
 
     @property
     @pulumi.getter(name="connectionLimit")

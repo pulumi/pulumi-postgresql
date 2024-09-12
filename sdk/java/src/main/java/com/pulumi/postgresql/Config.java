@@ -82,6 +82,13 @@ public final class Config {
         return Codegen.stringProp("expectedVersion").config(config).get();
     }
 /**
+ * Service account to impersonate when using GCP IAM authentication.
+ * 
+ */
+    public Optional<String> gcpIamImpersonateServiceAccount() {
+        return Codegen.stringProp("gcpIamImpersonateServiceAccount").config(config).get();
+    }
+/**
  * Name of PostgreSQL server address to connect to
  * 
  */

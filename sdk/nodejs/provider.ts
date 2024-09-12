@@ -49,6 +49,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly expectedVersion!: pulumi.Output<string | undefined>;
     /**
+     * Service account to impersonate when using GCP IAM authentication.
+     */
+    public readonly gcpIamImpersonateServiceAccount!: pulumi.Output<string | undefined>;
+    /**
      * Name of PostgreSQL server address to connect to
      */
     public readonly host!: pulumi.Output<string | undefined>;
@@ -96,6 +100,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["database"] = args ? args.database : undefined;
             resourceInputs["databaseUsername"] = args ? args.databaseUsername : undefined;
             resourceInputs["expectedVersion"] = args ? args.expectedVersion : undefined;
+            resourceInputs["gcpIamImpersonateServiceAccount"] = args ? args.gcpIamImpersonateServiceAccount : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["maxConnections"] = pulumi.output(args ? args.maxConnections : undefined).apply(JSON.stringify);
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
@@ -157,6 +162,10 @@ export interface ProviderArgs {
      * Specify the expected version of PostgreSQL.
      */
     expectedVersion?: pulumi.Input<string>;
+    /**
+     * Service account to impersonate when using GCP IAM authentication.
+     */
+    gcpIamImpersonateServiceAccount?: pulumi.Input<string>;
     /**
      * Name of PostgreSQL server address to connect to
      */

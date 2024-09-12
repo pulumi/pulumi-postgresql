@@ -59,6 +59,11 @@ expectedVersion: Optional[str]
 Specify the expected version of PostgreSQL.
 """
 
+gcpIamImpersonateServiceAccount: Optional[str]
+"""
+Service account to impersonate when using GCP IAM authentication.
+"""
+
 host: Optional[str]
 """
 Name of PostgreSQL server address to connect to

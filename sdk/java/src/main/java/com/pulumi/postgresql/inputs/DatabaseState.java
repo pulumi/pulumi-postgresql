@@ -37,6 +37,33 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If `true`, the change of the database
+     * `owner` will also include a reassignment of the ownership of preexisting
+     * objects like tables or sequences from the previous owner to the new one.
+     * If set to `false` (the default), then the previous database `owner` will still
+     * hold the ownership of the objects in that database. To alter existing objects in
+     * the database, you must be a direct or indirect member of the specified role, or
+     * the username in the provider must be superuser.
+     * 
+     */
+    @Import(name="alterObjectOwnership")
+    private @Nullable Output<Boolean> alterObjectOwnership;
+
+    /**
+     * @return If `true`, the change of the database
+     * `owner` will also include a reassignment of the ownership of preexisting
+     * objects like tables or sequences from the previous owner to the new one.
+     * If set to `false` (the default), then the previous database `owner` will still
+     * hold the ownership of the objects in that database. To alter existing objects in
+     * the database, you must be a direct or indirect member of the specified role, or
+     * the username in the provider must be superuser.
+     * 
+     */
+    public Optional<Output<Boolean>> alterObjectOwnership() {
+        return Optional.ofNullable(this.alterObjectOwnership);
+    }
+
+    /**
      * How many concurrent connections can be
      * established to this database. `-1` (the default) means no limit.
      * 
@@ -197,6 +224,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     private DatabaseState(DatabaseState $) {
         this.allowConnections = $.allowConnections;
+        this.alterObjectOwnership = $.alterObjectOwnership;
         this.connectionLimit = $.connectionLimit;
         this.encoding = $.encoding;
         this.isTemplate = $.isTemplate;
@@ -249,6 +277,39 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowConnections(Boolean allowConnections) {
             return allowConnections(Output.of(allowConnections));
+        }
+
+        /**
+         * @param alterObjectOwnership If `true`, the change of the database
+         * `owner` will also include a reassignment of the ownership of preexisting
+         * objects like tables or sequences from the previous owner to the new one.
+         * If set to `false` (the default), then the previous database `owner` will still
+         * hold the ownership of the objects in that database. To alter existing objects in
+         * the database, you must be a direct or indirect member of the specified role, or
+         * the username in the provider must be superuser.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alterObjectOwnership(@Nullable Output<Boolean> alterObjectOwnership) {
+            $.alterObjectOwnership = alterObjectOwnership;
+            return this;
+        }
+
+        /**
+         * @param alterObjectOwnership If `true`, the change of the database
+         * `owner` will also include a reassignment of the ownership of preexisting
+         * objects like tables or sequences from the previous owner to the new one.
+         * If set to `false` (the default), then the previous database `owner` will still
+         * hold the ownership of the objects in that database. To alter existing objects in
+         * the database, you must be a direct or indirect member of the specified role, or
+         * the username in the provider must be superuser.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alterObjectOwnership(Boolean alterObjectOwnership) {
+            return alterObjectOwnership(Output.of(alterObjectOwnership));
         }
 
         /**

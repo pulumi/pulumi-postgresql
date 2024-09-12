@@ -29,6 +29,8 @@ type Provider struct {
 	DatabaseUsername pulumi.StringPtrOutput `pulumi:"databaseUsername"`
 	// Specify the expected version of PostgreSQL.
 	ExpectedVersion pulumi.StringPtrOutput `pulumi:"expectedVersion"`
+	// Service account to impersonate when using GCP IAM authentication.
+	GcpIamImpersonateServiceAccount pulumi.StringPtrOutput `pulumi:"gcpIamImpersonateServiceAccount"`
 	// Name of PostgreSQL server address to connect to
 	Host pulumi.StringPtrOutput `pulumi:"host"`
 	// Password to be used if the PostgreSQL server demands password authentication
@@ -100,6 +102,8 @@ type providerArgs struct {
 	DatabaseUsername *string `pulumi:"databaseUsername"`
 	// Specify the expected version of PostgreSQL.
 	ExpectedVersion *string `pulumi:"expectedVersion"`
+	// Service account to impersonate when using GCP IAM authentication.
+	GcpIamImpersonateServiceAccount *string `pulumi:"gcpIamImpersonateServiceAccount"`
 	// Name of PostgreSQL server address to connect to
 	Host *string `pulumi:"host"`
 	// Maximum number of connections to establish to the database. Zero means unlimited.
@@ -146,6 +150,8 @@ type ProviderArgs struct {
 	DatabaseUsername pulumi.StringPtrInput
 	// Specify the expected version of PostgreSQL.
 	ExpectedVersion pulumi.StringPtrInput
+	// Service account to impersonate when using GCP IAM authentication.
+	GcpIamImpersonateServiceAccount pulumi.StringPtrInput
 	// Name of PostgreSQL server address to connect to
 	Host pulumi.StringPtrInput
 	// Maximum number of connections to establish to the database. Zero means unlimited.
@@ -233,6 +239,11 @@ func (o ProviderOutput) DatabaseUsername() pulumi.StringPtrOutput {
 // Specify the expected version of PostgreSQL.
 func (o ProviderOutput) ExpectedVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ExpectedVersion }).(pulumi.StringPtrOutput)
+}
+
+// Service account to impersonate when using GCP IAM authentication.
+func (o ProviderOutput) GcpIamImpersonateServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.GcpIamImpersonateServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 // Name of PostgreSQL server address to connect to

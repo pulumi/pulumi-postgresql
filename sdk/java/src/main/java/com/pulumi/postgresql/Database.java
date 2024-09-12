@@ -37,6 +37,32 @@ public class Database extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowConnections);
     }
     /**
+     * If `true`, the change of the database
+     * `owner` will also include a reassignment of the ownership of preexisting
+     * objects like tables or sequences from the previous owner to the new one.
+     * If set to `false` (the default), then the previous database `owner` will still
+     * hold the ownership of the objects in that database. To alter existing objects in
+     * the database, you must be a direct or indirect member of the specified role, or
+     * the username in the provider must be superuser.
+     * 
+     */
+    @Export(name="alterObjectOwnership", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> alterObjectOwnership;
+
+    /**
+     * @return If `true`, the change of the database
+     * `owner` will also include a reassignment of the ownership of preexisting
+     * objects like tables or sequences from the previous owner to the new one.
+     * If set to `false` (the default), then the previous database `owner` will still
+     * hold the ownership of the objects in that database. To alter existing objects in
+     * the database, you must be a direct or indirect member of the specified role, or
+     * the username in the provider must be superuser.
+     * 
+     */
+    public Output<Optional<Boolean>> alterObjectOwnership() {
+        return Codegen.optional(this.alterObjectOwnership);
+    }
+    /**
      * How many concurrent connections can be
      * established to this database. `-1` (the default) means no limit.
      * 

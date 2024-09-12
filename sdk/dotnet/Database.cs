@@ -21,6 +21,18 @@ namespace Pulumi.PostgreSql
         public Output<bool?> AllowConnections { get; private set; } = null!;
 
         /// <summary>
+        /// If `true`, the change of the database
+        /// `owner` will also include a reassignment of the ownership of preexisting
+        /// objects like tables or sequences from the previous owner to the new one.
+        /// If set to `false` (the default), then the previous database `owner` will still
+        /// hold the ownership of the objects in that database. To alter existing objects in
+        /// the database, you must be a direct or indirect member of the specified role, or
+        /// the username in the provider must be superuser.
+        /// </summary>
+        [Output("alterObjectOwnership")]
+        public Output<bool?> AlterObjectOwnership { get; private set; } = null!;
+
+        /// <summary>
         /// How many concurrent connections can be
         /// established to this database. `-1` (the default) means no limit.
         /// </summary>
@@ -140,6 +152,18 @@ namespace Pulumi.PostgreSql
         public Input<bool>? AllowConnections { get; set; }
 
         /// <summary>
+        /// If `true`, the change of the database
+        /// `owner` will also include a reassignment of the ownership of preexisting
+        /// objects like tables or sequences from the previous owner to the new one.
+        /// If set to `false` (the default), then the previous database `owner` will still
+        /// hold the ownership of the objects in that database. To alter existing objects in
+        /// the database, you must be a direct or indirect member of the specified role, or
+        /// the username in the provider must be superuser.
+        /// </summary>
+        [Input("alterObjectOwnership")]
+        public Input<bool>? AlterObjectOwnership { get; set; }
+
+        /// <summary>
         /// How many concurrent connections can be
         /// established to this database. `-1` (the default) means no limit.
         /// </summary>
@@ -219,6 +243,18 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Input("allowConnections")]
         public Input<bool>? AllowConnections { get; set; }
+
+        /// <summary>
+        /// If `true`, the change of the database
+        /// `owner` will also include a reassignment of the ownership of preexisting
+        /// objects like tables or sequences from the previous owner to the new one.
+        /// If set to `false` (the default), then the previous database `owner` will still
+        /// hold the ownership of the objects in that database. To alter existing objects in
+        /// the database, you must be a direct or indirect member of the specified role, or
+        /// the username in the provider must be superuser.
+        /// </summary>
+        [Input("alterObjectOwnership")]
+        public Input<bool>? AlterObjectOwnership { get; set; }
 
         /// <summary>
         /// How many concurrent connections can be

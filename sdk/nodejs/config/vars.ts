@@ -119,6 +119,17 @@ Object.defineProperty(exports, "expectedVersion", {
 });
 
 /**
+ * Service account to impersonate when using GCP IAM authentication.
+ */
+export declare const gcpIamImpersonateServiceAccount: string | undefined;
+Object.defineProperty(exports, "gcpIamImpersonateServiceAccount", {
+    get() {
+        return __config.get("gcpIamImpersonateServiceAccount");
+    },
+    enumerable: true,
+});
+
+/**
  * Name of PostgreSQL server address to connect to
  */
 export declare const host: string | undefined;

@@ -1,0 +1,30 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <me@iwahbe.com>
+Date: Thu, 12 Sep 2024 20:11:27 +0200
+Subject: [PATCH] fix import path
+
+
+diff --git a/go.mod b/go.mod
+index 5d4290d..e0e22b3 100644
+--- a/go.mod
++++ b/go.mod
+@@ -1,4 +1,4 @@
+-module github.com/terraform-providers/terraform-provider-postgresql
++module github.com/cyrilgdn/terraform-provider-postgresql
+ 
+ go 1.20
+ 
+diff --git a/main.go b/main.go
+index 7125ff2..d9f1406 100644
+--- a/main.go
++++ b/main.go
+@@ -1,8 +1,8 @@
+ package main
+ 
+ import (
++	"github.com/cyrilgdn/terraform-provider-postgresql/postgresql"
+ 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
+-	"github.com/terraform-providers/terraform-provider-postgresql/postgresql"
+ )
+ 
+ func main() {

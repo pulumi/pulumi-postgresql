@@ -131,6 +131,16 @@ namespace Pulumi.PostgreSql
             set => _expectedVersion.Set(value);
         }
 
+        private static readonly __Value<string?> _gcpIamImpersonateServiceAccount = new __Value<string?>(() => __config.Get("gcpIamImpersonateServiceAccount"));
+        /// <summary>
+        /// Service account to impersonate when using GCP IAM authentication.
+        /// </summary>
+        public static string? GcpIamImpersonateServiceAccount
+        {
+            get => _gcpIamImpersonateServiceAccount.Get();
+            set => _gcpIamImpersonateServiceAccount.Set(value);
+        }
+
         private static readonly __Value<string?> _host = new __Value<string?>(() => __config.Get("host"));
         /// <summary>
         /// Name of PostgreSQL server address to connect to

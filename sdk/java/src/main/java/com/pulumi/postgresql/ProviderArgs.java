@@ -166,6 +166,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Service account to impersonate when using GCP IAM authentication.
+     * 
+     */
+    @Import(name="gcpIamImpersonateServiceAccount")
+    private @Nullable Output<String> gcpIamImpersonateServiceAccount;
+
+    /**
+     * @return Service account to impersonate when using GCP IAM authentication.
+     * 
+     */
+    public Optional<Output<String>> gcpIamImpersonateServiceAccount() {
+        return Optional.ofNullable(this.gcpIamImpersonateServiceAccount);
+    }
+
+    /**
      * Name of PostgreSQL server address to connect to
      * 
      */
@@ -328,6 +343,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.database = $.database;
         this.databaseUsername = $.databaseUsername;
         this.expectedVersion = $.expectedVersion;
+        this.gcpIamImpersonateServiceAccount = $.gcpIamImpersonateServiceAccount;
         this.host = $.host;
         this.maxConnections = $.maxConnections;
         this.password = $.password;
@@ -558,6 +574,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder expectedVersion(String expectedVersion) {
             return expectedVersion(Output.of(expectedVersion));
+        }
+
+        /**
+         * @param gcpIamImpersonateServiceAccount Service account to impersonate when using GCP IAM authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpIamImpersonateServiceAccount(@Nullable Output<String> gcpIamImpersonateServiceAccount) {
+            $.gcpIamImpersonateServiceAccount = gcpIamImpersonateServiceAccount;
+            return this;
+        }
+
+        /**
+         * @param gcpIamImpersonateServiceAccount Service account to impersonate when using GCP IAM authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpIamImpersonateServiceAccount(String gcpIamImpersonateServiceAccount) {
+            return gcpIamImpersonateServiceAccount(Output.of(gcpIamImpersonateServiceAccount));
         }
 
         /**

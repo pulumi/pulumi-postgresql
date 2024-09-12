@@ -102,6 +102,10 @@
                 "type": "string",
                 "description": "Specify the expected version of PostgreSQL.\n"
             },
+            "gcpIamImpersonateServiceAccount": {
+                "type": "string",
+                "description": "Service account to impersonate when using GCP IAM authentication.\n"
+            },
             "host": {
                 "type": "string",
                 "description": "Name of PostgreSQL server address to connect to\n"
@@ -351,6 +355,10 @@
                 "type": "string",
                 "description": "Specify the expected version of PostgreSQL.\n"
             },
+            "gcpIamImpersonateServiceAccount": {
+                "type": "string",
+                "description": "Service account to impersonate when using GCP IAM authentication.\n"
+            },
             "host": {
                 "type": "string",
                 "description": "Name of PostgreSQL server address to connect to\n"
@@ -438,6 +446,10 @@
                 "type": "string",
                 "description": "Specify the expected version of PostgreSQL.\n"
             },
+            "gcpIamImpersonateServiceAccount": {
+                "type": "string",
+                "description": "Service account to impersonate when using GCP IAM authentication.\n"
+            },
             "host": {
                 "type": "string",
                 "description": "Name of PostgreSQL server address to connect to\n"
@@ -492,6 +504,10 @@
                     "type": "boolean",
                     "description": "If `false` then no one can connect to this\ndatabase. The default is `true`, allowing connections (except as restricted by\nother mechanisms, such as `GRANT` or `REVOKE CONNECT`).\n"
                 },
+                "alterObjectOwnership": {
+                    "type": "boolean",
+                    "description": "If `true`, the change of the database\n`owner` will also include a reassignment of the ownership of preexisting\nobjects like tables or sequences from the previous owner to the new one.\nIf set to `false` (the default), then the previous database `owner` will still\nhold the ownership of the objects in that database. To alter existing objects in\nthe database, you must be a direct or indirect member of the specified role, or\nthe username in the provider must be superuser.\n"
+                },
                 "connectionLimit": {
                     "type": "integer",
                     "description": "How many concurrent connections can be\nestablished to this database. `-1` (the default) means no limit.\n"
@@ -544,6 +560,10 @@
                     "type": "boolean",
                     "description": "If `false` then no one can connect to this\ndatabase. The default is `true`, allowing connections (except as restricted by\nother mechanisms, such as `GRANT` or `REVOKE CONNECT`).\n"
                 },
+                "alterObjectOwnership": {
+                    "type": "boolean",
+                    "description": "If `true`, the change of the database\n`owner` will also include a reassignment of the ownership of preexisting\nobjects like tables or sequences from the previous owner to the new one.\nIf set to `false` (the default), then the previous database `owner` will still\nhold the ownership of the objects in that database. To alter existing objects in\nthe database, you must be a direct or indirect member of the specified role, or\nthe username in the provider must be superuser.\n"
+                },
                 "connectionLimit": {
                     "type": "integer",
                     "description": "How many concurrent connections can be\nestablished to this database. `-1` (the default) means no limit.\n"
@@ -591,6 +611,10 @@
                     "allowConnections": {
                         "type": "boolean",
                         "description": "If `false` then no one can connect to this\ndatabase. The default is `true`, allowing connections (except as restricted by\nother mechanisms, such as `GRANT` or `REVOKE CONNECT`).\n"
+                    },
+                    "alterObjectOwnership": {
+                        "type": "boolean",
+                        "description": "If `true`, the change of the database\n`owner` will also include a reassignment of the ownership of preexisting\nobjects like tables or sequences from the previous owner to the new one.\nIf set to `false` (the default), then the previous database `owner` will still\nhold the ownership of the objects in that database. To alter existing objects in\nthe database, you must be a direct or indirect member of the specified role, or\nthe username in the provider must be superuser.\n"
                     },
                     "connectionLimit": {
                         "type": "integer",

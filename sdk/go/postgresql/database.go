@@ -18,6 +18,14 @@ type Database struct {
 	// database. The default is `true`, allowing connections (except as restricted by
 	// other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
 	AllowConnections pulumi.BoolPtrOutput `pulumi:"allowConnections"`
+	// If `true`, the change of the database
+	// `owner` will also include a reassignment of the ownership of preexisting
+	// objects like tables or sequences from the previous owner to the new one.
+	// If set to `false` (the default), then the previous database `owner` will still
+	// hold the ownership of the objects in that database. To alter existing objects in
+	// the database, you must be a direct or indirect member of the specified role, or
+	// the username in the provider must be superuser.
+	AlterObjectOwnership pulumi.BoolPtrOutput `pulumi:"alterObjectOwnership"`
 	// How many concurrent connections can be
 	// established to this database. `-1` (the default) means no limit.
 	ConnectionLimit pulumi.IntPtrOutput `pulumi:"connectionLimit"`
@@ -83,6 +91,14 @@ type databaseState struct {
 	// database. The default is `true`, allowing connections (except as restricted by
 	// other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
 	AllowConnections *bool `pulumi:"allowConnections"`
+	// If `true`, the change of the database
+	// `owner` will also include a reassignment of the ownership of preexisting
+	// objects like tables or sequences from the previous owner to the new one.
+	// If set to `false` (the default), then the previous database `owner` will still
+	// hold the ownership of the objects in that database. To alter existing objects in
+	// the database, you must be a direct or indirect member of the specified role, or
+	// the username in the provider must be superuser.
+	AlterObjectOwnership *bool `pulumi:"alterObjectOwnership"`
 	// How many concurrent connections can be
 	// established to this database. `-1` (the default) means no limit.
 	ConnectionLimit *int `pulumi:"connectionLimit"`
@@ -119,6 +135,14 @@ type DatabaseState struct {
 	// database. The default is `true`, allowing connections (except as restricted by
 	// other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
 	AllowConnections pulumi.BoolPtrInput
+	// If `true`, the change of the database
+	// `owner` will also include a reassignment of the ownership of preexisting
+	// objects like tables or sequences from the previous owner to the new one.
+	// If set to `false` (the default), then the previous database `owner` will still
+	// hold the ownership of the objects in that database. To alter existing objects in
+	// the database, you must be a direct or indirect member of the specified role, or
+	// the username in the provider must be superuser.
+	AlterObjectOwnership pulumi.BoolPtrInput
 	// How many concurrent connections can be
 	// established to this database. `-1` (the default) means no limit.
 	ConnectionLimit pulumi.IntPtrInput
@@ -159,6 +183,14 @@ type databaseArgs struct {
 	// database. The default is `true`, allowing connections (except as restricted by
 	// other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
 	AllowConnections *bool `pulumi:"allowConnections"`
+	// If `true`, the change of the database
+	// `owner` will also include a reassignment of the ownership of preexisting
+	// objects like tables or sequences from the previous owner to the new one.
+	// If set to `false` (the default), then the previous database `owner` will still
+	// hold the ownership of the objects in that database. To alter existing objects in
+	// the database, you must be a direct or indirect member of the specified role, or
+	// the username in the provider must be superuser.
+	AlterObjectOwnership *bool `pulumi:"alterObjectOwnership"`
 	// How many concurrent connections can be
 	// established to this database. `-1` (the default) means no limit.
 	ConnectionLimit *int `pulumi:"connectionLimit"`
@@ -196,6 +228,14 @@ type DatabaseArgs struct {
 	// database. The default is `true`, allowing connections (except as restricted by
 	// other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
 	AllowConnections pulumi.BoolPtrInput
+	// If `true`, the change of the database
+	// `owner` will also include a reassignment of the ownership of preexisting
+	// objects like tables or sequences from the previous owner to the new one.
+	// If set to `false` (the default), then the previous database `owner` will still
+	// hold the ownership of the objects in that database. To alter existing objects in
+	// the database, you must be a direct or indirect member of the specified role, or
+	// the username in the provider must be superuser.
+	AlterObjectOwnership pulumi.BoolPtrInput
 	// How many concurrent connections can be
 	// established to this database. `-1` (the default) means no limit.
 	ConnectionLimit pulumi.IntPtrInput
@@ -319,6 +359,17 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 // other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
 func (o DatabaseOutput) AllowConnections() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.AllowConnections }).(pulumi.BoolPtrOutput)
+}
+
+// If `true`, the change of the database
+// `owner` will also include a reassignment of the ownership of preexisting
+// objects like tables or sequences from the previous owner to the new one.
+// If set to `false` (the default), then the previous database `owner` will still
+// hold the ownership of the objects in that database. To alter existing objects in
+// the database, you must be a direct or indirect member of the specified role, or
+// the username in the provider must be superuser.
+func (o DatabaseOutput) AlterObjectOwnership() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.AlterObjectOwnership }).(pulumi.BoolPtrOutput)
 }
 
 // How many concurrent connections can be
