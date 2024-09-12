@@ -52,6 +52,12 @@ namespace Pulumi.PostgreSql
         public Output<string?> ExpectedVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Service account to impersonate when using GCP IAM authentication.
+        /// </summary>
+        [Output("gcpIamImpersonateServiceAccount")]
+        public Output<string?> GcpIamImpersonateServiceAccount { get; private set; } = null!;
+
+        /// <summary>
         /// Name of PostgreSQL server address to connect to
         /// </summary>
         [Output("host")]
@@ -178,6 +184,12 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Input("expectedVersion")]
         public Input<string>? ExpectedVersion { get; set; }
+
+        /// <summary>
+        /// Service account to impersonate when using GCP IAM authentication.
+        /// </summary>
+        [Input("gcpIamImpersonateServiceAccount")]
+        public Input<string>? GcpIamImpersonateServiceAccount { get; set; }
 
         /// <summary>
         /// Name of PostgreSQL server address to connect to

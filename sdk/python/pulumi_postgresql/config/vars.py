@@ -86,6 +86,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('expectedVersion')
 
     @property
+    def gcp_iam_impersonate_service_account(self) -> Optional[str]:
+        """
+        Service account to impersonate when using GCP IAM authentication.
+        """
+        return __config__.get('gcpIamImpersonateServiceAccount')
+
+    @property
     def host(self) -> Optional[str]:
         """
         Name of PostgreSQL server address to connect to

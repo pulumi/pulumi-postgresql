@@ -69,6 +69,11 @@ func GetExpectedVersion(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:expectedVersion")
 }
 
+// Service account to impersonate when using GCP IAM authentication.
+func GetGcpIamImpersonateServiceAccount(ctx *pulumi.Context) string {
+	return config.Get(ctx, "postgresql:gcpIamImpersonateServiceAccount")
+}
+
 // Name of PostgreSQL server address to connect to
 func GetHost(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:host")

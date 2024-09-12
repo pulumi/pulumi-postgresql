@@ -25,6 +25,7 @@ class ProviderArgs:
                  database: Optional[pulumi.Input[str]] = None,
                  database_username: Optional[pulumi.Input[str]] = None,
                  expected_version: Optional[pulumi.Input[str]] = None,
+                 gcp_iam_impersonate_service_account: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  max_connections: Optional[pulumi.Input[int]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -48,6 +49,7 @@ class ProviderArgs:
         :param pulumi.Input[str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
         :param pulumi.Input[str] database_username: Database username associated to the connected user (for user name maps)
         :param pulumi.Input[str] expected_version: Specify the expected version of PostgreSQL.
+        :param pulumi.Input[str] gcp_iam_impersonate_service_account: Service account to impersonate when using GCP IAM authentication.
         :param pulumi.Input[str] host: Name of PostgreSQL server address to connect to
         :param pulumi.Input[int] max_connections: Maximum number of connections to establish to the database. Zero means unlimited.
         :param pulumi.Input[str] password: Password to be used if the PostgreSQL server demands password authentication
@@ -81,6 +83,8 @@ class ProviderArgs:
             pulumi.set(__self__, "database_username", database_username)
         if expected_version is not None:
             pulumi.set(__self__, "expected_version", expected_version)
+        if gcp_iam_impersonate_service_account is not None:
+            pulumi.set(__self__, "gcp_iam_impersonate_service_account", gcp_iam_impersonate_service_account)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if max_connections is not None:
@@ -227,6 +231,18 @@ class ProviderArgs:
         pulumi.set(self, "expected_version", value)
 
     @property
+    @pulumi.getter(name="gcpIamImpersonateServiceAccount")
+    def gcp_iam_impersonate_service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service account to impersonate when using GCP IAM authentication.
+        """
+        return pulumi.get(self, "gcp_iam_impersonate_service_account")
+
+    @gcp_iam_impersonate_service_account.setter
+    def gcp_iam_impersonate_service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcp_iam_impersonate_service_account", value)
+
+    @property
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
@@ -359,6 +375,7 @@ class Provider(pulumi.ProviderResource):
                  database: Optional[pulumi.Input[str]] = None,
                  database_username: Optional[pulumi.Input[str]] = None,
                  expected_version: Optional[pulumi.Input[str]] = None,
+                 gcp_iam_impersonate_service_account: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  max_connections: Optional[pulumi.Input[int]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -389,6 +406,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
         :param pulumi.Input[str] database_username: Database username associated to the connected user (for user name maps)
         :param pulumi.Input[str] expected_version: Specify the expected version of PostgreSQL.
+        :param pulumi.Input[str] gcp_iam_impersonate_service_account: Service account to impersonate when using GCP IAM authentication.
         :param pulumi.Input[str] host: Name of PostgreSQL server address to connect to
         :param pulumi.Input[int] max_connections: Maximum number of connections to establish to the database. Zero means unlimited.
         :param pulumi.Input[str] password: Password to be used if the PostgreSQL server demands password authentication
@@ -437,6 +455,7 @@ class Provider(pulumi.ProviderResource):
                  database: Optional[pulumi.Input[str]] = None,
                  database_username: Optional[pulumi.Input[str]] = None,
                  expected_version: Optional[pulumi.Input[str]] = None,
+                 gcp_iam_impersonate_service_account: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  max_connections: Optional[pulumi.Input[int]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -468,6 +487,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["database"] = database
             __props__.__dict__["database_username"] = database_username
             __props__.__dict__["expected_version"] = expected_version
+            __props__.__dict__["gcp_iam_impersonate_service_account"] = gcp_iam_impersonate_service_account
             __props__.__dict__["host"] = host
             __props__.__dict__["max_connections"] = pulumi.Output.from_input(max_connections).apply(pulumi.runtime.to_json) if max_connections is not None else None
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
@@ -532,6 +552,14 @@ class Provider(pulumi.ProviderResource):
         Specify the expected version of PostgreSQL.
         """
         return pulumi.get(self, "expected_version")
+
+    @property
+    @pulumi.getter(name="gcpIamImpersonateServiceAccount")
+    def gcp_iam_impersonate_service_account(self) -> pulumi.Output[Optional[str]]:
+        """
+        Service account to impersonate when using GCP IAM authentication.
+        """
+        return pulumi.get(self, "gcp_iam_impersonate_service_account")
 
     @property
     @pulumi.getter

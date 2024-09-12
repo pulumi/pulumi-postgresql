@@ -100,6 +100,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.expectedVersion);
     }
     /**
+     * Service account to impersonate when using GCP IAM authentication.
+     * 
+     */
+    @Export(name="gcpIamImpersonateServiceAccount", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gcpIamImpersonateServiceAccount;
+
+    /**
+     * @return Service account to impersonate when using GCP IAM authentication.
+     * 
+     */
+    public Output<Optional<String>> gcpIamImpersonateServiceAccount() {
+        return Codegen.optional(this.gcpIamImpersonateServiceAccount);
+    }
+    /**
      * Name of PostgreSQL server address to connect to
      * 
      */
