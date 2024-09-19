@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getSchemas(args: GetSchemasArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemasResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("postgresql:index/getSchemas:getSchemas", {
         "database": args.database,
@@ -97,7 +96,15 @@ export interface GetSchemasResult {
  * ```
  */
 export function getSchemasOutput(args: GetSchemasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchemasResult> {
-    return pulumi.output(args).apply((a: any) => getSchemas(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("postgresql:index/getSchemas:getSchemas", {
+        "database": args.database,
+        "includeSystemSchemas": args.includeSystemSchemas,
+        "likeAllPatterns": args.likeAllPatterns,
+        "likeAnyPatterns": args.likeAnyPatterns,
+        "notLikeAllPatterns": args.notLikeAllPatterns,
+        "regexPattern": args.regexPattern,
+    }, opts);
 }
 
 /**
