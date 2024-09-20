@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getSequences(args: GetSequencesArgs, opts?: pulumi.InvokeOptions): Promise<GetSequencesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("postgresql:index/getSequences:getSequences", {
         "database": args.database,
@@ -100,7 +99,15 @@ export interface GetSequencesResult {
  * ```
  */
 export function getSequencesOutput(args: GetSequencesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSequencesResult> {
-    return pulumi.output(args).apply((a: any) => getSequences(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("postgresql:index/getSequences:getSequences", {
+        "database": args.database,
+        "likeAllPatterns": args.likeAllPatterns,
+        "likeAnyPatterns": args.likeAnyPatterns,
+        "notLikeAllPatterns": args.notLikeAllPatterns,
+        "regexPattern": args.regexPattern,
+        "schemas": args.schemas,
+    }, opts);
 }
 
 /**
