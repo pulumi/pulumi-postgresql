@@ -16,7 +16,6 @@ package postgresql
 
 import (
 	"fmt"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	"path/filepath"
 	"unicode"
 
@@ -24,6 +23,7 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
@@ -164,8 +164,8 @@ func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 	)
 }
 
-// Removes a "Warnings" section that includes TF-specific recommendations
 var skipInstallationSections = []tfbridge.DocsEdit{
+	// TF Variable do not apply to Pulumi
 	{
 		Path: "index.html.markdown",
 		Edit: func(_ string, content []byte) ([]byte, error) {
@@ -174,6 +174,7 @@ var skipInstallationSections = []tfbridge.DocsEdit{
 			})
 		},
 	},
+	// This section had TF specific instructions as well
 	{
 		Path: "index.html.markdown",
 		Edit: func(_ string, content []byte) ([]byte, error) {
