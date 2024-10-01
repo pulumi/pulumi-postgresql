@@ -16,6 +16,7 @@ package postgresql
 
 import (
 	"fmt"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	"path/filepath"
 	"unicode"
 
@@ -70,6 +71,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:       "https://github.com/pulumi/pulumi-postgresql",
 		GitHubOrg:        "cyrilgdn",
 		UpstreamRepoPath: "./upstream",
+		DocRules:         &tfbridge.DocRuleInfo{EditRules: docEditRules},
 		Config: map[string]*tfbridge.SchemaInfo{
 			"sslmode": {
 				Default: &tfbridge.DefaultInfo{
@@ -153,4 +155,31 @@ func Provider() tfbridge.ProviderInfo {
 	prov.SetAutonaming(255, "-")
 
 	return prov
+}
+
+func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+	return append(
+		defaults,
+		skipInstallationSections...,
+	)
+}
+
+// Removes a "Warnings" section that includes TF-specific recommendations
+var skipInstallationSections = []tfbridge.DocsEdit{
+	{
+		Path: "index.html.markdown",
+		Edit: func(_ string, content []byte) ([]byte, error) {
+			return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+				return headerText == "Terraform Variables"
+			})
+		},
+	},
+	{
+		Path: "index.html.markdown",
+		Edit: func(_ string, content []byte) ([]byte, error) {
+			return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+				return headerText == "Data Sources and Resources"
+			})
+		},
+	},
 }
