@@ -23,6 +23,7 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
@@ -70,6 +71,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:       "https://github.com/pulumi/pulumi-postgresql",
 		GitHubOrg:        "cyrilgdn",
 		UpstreamRepoPath: "./upstream",
+		DocRules:         &tfbridge.DocRuleInfo{EditRules: docEditRules},
 		Config: map[string]*tfbridge.SchemaInfo{
 			"sslmode": {
 				Default: &tfbridge.DefaultInfo{
@@ -147,4 +149,32 @@ func Provider() tfbridge.ProviderInfo {
 	prov.SetAutonaming(255, "-")
 
 	return prov
+}
+
+func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+	return append(
+		defaults,
+		skipInstallationSections...,
+	)
+}
+
+var skipInstallationSections = []tfbridge.DocsEdit{
+	// TF Variable do not apply to Pulumi
+	{
+		Path: "index.html.markdown",
+		Edit: func(_ string, content []byte) ([]byte, error) {
+			return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+				return headerText == "Terraform Variables"
+			})
+		},
+	},
+	// This section had TF specific instructions as well
+	{
+		Path: "index.html.markdown",
+		Edit: func(_ string, content []byte) ([]byte, error) {
+			return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+				return headerText == "Data Sources and Resources"
+			})
+		},
+	},
 }
