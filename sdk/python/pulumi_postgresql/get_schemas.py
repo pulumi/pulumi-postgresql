@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -158,9 +163,6 @@ def get_schemas(database: Optional[str] = None,
         not_like_all_patterns=pulumi.get(__ret__, 'not_like_all_patterns'),
         regex_pattern=pulumi.get(__ret__, 'regex_pattern'),
         schemas=pulumi.get(__ret__, 'schemas'))
-
-
-@_utilities.lift_output_func(get_schemas)
 def get_schemas_output(database: Optional[pulumi.Input[str]] = None,
                        include_system_schemas: Optional[pulumi.Input[Optional[bool]]] = None,
                        like_all_patterns: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -190,4 +192,21 @@ def get_schemas_output(database: Optional[pulumi.Input[str]] = None,
            
            Note that all optional arguments can be used in conjunction.
     """
-    ...
+    __args__ = dict()
+    __args__['database'] = database
+    __args__['includeSystemSchemas'] = include_system_schemas
+    __args__['likeAllPatterns'] = like_all_patterns
+    __args__['likeAnyPatterns'] = like_any_patterns
+    __args__['notLikeAllPatterns'] = not_like_all_patterns
+    __args__['regexPattern'] = regex_pattern
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('postgresql:index/getSchemas:getSchemas', __args__, opts=opts, typ=GetSchemasResult)
+    return __ret__.apply(lambda __response__: GetSchemasResult(
+        database=pulumi.get(__response__, 'database'),
+        id=pulumi.get(__response__, 'id'),
+        include_system_schemas=pulumi.get(__response__, 'include_system_schemas'),
+        like_all_patterns=pulumi.get(__response__, 'like_all_patterns'),
+        like_any_patterns=pulumi.get(__response__, 'like_any_patterns'),
+        not_like_all_patterns=pulumi.get(__response__, 'not_like_all_patterns'),
+        regex_pattern=pulumi.get(__response__, 'regex_pattern'),
+        schemas=pulumi.get(__response__, 'schemas')))
