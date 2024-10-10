@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -173,9 +178,6 @@ def get_tables(database: Optional[str] = None,
         schemas=pulumi.get(__ret__, 'schemas'),
         table_types=pulumi.get(__ret__, 'table_types'),
         tables=pulumi.get(__ret__, 'tables'))
-
-
-@_utilities.lift_output_func(get_tables)
 def get_tables_output(database: Optional[pulumi.Input[str]] = None,
                       like_all_patterns: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       like_any_patterns: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -207,4 +209,23 @@ def get_tables_output(database: Optional[pulumi.Input[str]] = None,
     :param Sequence[str] schemas: List of PostgreSQL schema(s) which will be queried for table names. Queries all schemas in the database by default.
     :param Sequence[str] table_types: List of PostgreSQL table types which will be queried for table names. Includes all table types by default (including views and temp tables). Use 'BASE TABLE' for normal tables only.
     """
-    ...
+    __args__ = dict()
+    __args__['database'] = database
+    __args__['likeAllPatterns'] = like_all_patterns
+    __args__['likeAnyPatterns'] = like_any_patterns
+    __args__['notLikeAllPatterns'] = not_like_all_patterns
+    __args__['regexPattern'] = regex_pattern
+    __args__['schemas'] = schemas
+    __args__['tableTypes'] = table_types
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('postgresql:index/getTables:getTables', __args__, opts=opts, typ=GetTablesResult)
+    return __ret__.apply(lambda __response__: GetTablesResult(
+        database=pulumi.get(__response__, 'database'),
+        id=pulumi.get(__response__, 'id'),
+        like_all_patterns=pulumi.get(__response__, 'like_all_patterns'),
+        like_any_patterns=pulumi.get(__response__, 'like_any_patterns'),
+        not_like_all_patterns=pulumi.get(__response__, 'not_like_all_patterns'),
+        regex_pattern=pulumi.get(__response__, 'regex_pattern'),
+        schemas=pulumi.get(__response__, 'schemas'),
+        table_types=pulumi.get(__response__, 'table_types'),
+        tables=pulumi.get(__response__, 'tables')))
