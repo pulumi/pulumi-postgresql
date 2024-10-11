@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -160,9 +165,6 @@ def get_sequences(database: Optional[str] = None,
         regex_pattern=pulumi.get(__ret__, 'regex_pattern'),
         schemas=pulumi.get(__ret__, 'schemas'),
         sequences=pulumi.get(__ret__, 'sequences'))
-
-
-@_utilities.lift_output_func(get_sequences)
 def get_sequences_output(database: Optional[pulumi.Input[str]] = None,
                          like_all_patterns: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          like_any_patterns: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -192,4 +194,21 @@ def get_sequences_output(database: Optional[pulumi.Input[str]] = None,
            Note that all optional arguments can be used in conjunction.
     :param Sequence[str] schemas: List of PostgreSQL schema(s) which will be queried for sequence names. Queries all schemas in the database by default.
     """
-    ...
+    __args__ = dict()
+    __args__['database'] = database
+    __args__['likeAllPatterns'] = like_all_patterns
+    __args__['likeAnyPatterns'] = like_any_patterns
+    __args__['notLikeAllPatterns'] = not_like_all_patterns
+    __args__['regexPattern'] = regex_pattern
+    __args__['schemas'] = schemas
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('postgresql:index/getSequences:getSequences', __args__, opts=opts, typ=GetSequencesResult)
+    return __ret__.apply(lambda __response__: GetSequencesResult(
+        database=pulumi.get(__response__, 'database'),
+        id=pulumi.get(__response__, 'id'),
+        like_all_patterns=pulumi.get(__response__, 'like_all_patterns'),
+        like_any_patterns=pulumi.get(__response__, 'like_any_patterns'),
+        not_like_all_patterns=pulumi.get(__response__, 'not_like_all_patterns'),
+        regex_pattern=pulumi.get(__response__, 'regex_pattern'),
+        schemas=pulumi.get(__response__, 'schemas'),
+        sequences=pulumi.get(__response__, 'sequences')))
