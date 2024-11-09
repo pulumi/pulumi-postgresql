@@ -58,8 +58,7 @@ func makeResource(mod string, res string) tokens.Type {
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	p := shimv2.NewProvider(postgresql.Provider(),
-		shimv2.WithPlanResourceChange(func(string) bool { return true }))
+	p := shimv2.NewProvider(postgresql.Provider())
 
 	prov := tfbridge.ProviderInfo{
 		P:                p,
