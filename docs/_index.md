@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The postgresql provider is available as a package in all Pulumi languages:
+The Postgresql provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/postgresql`](https://www.npmjs.com/package/@pulumi/postgresql)
 * Python: [`pulumi-postgresql`](https://pypi.org/project/pulumi-postgresql/)
