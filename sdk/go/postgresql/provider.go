@@ -20,6 +20,8 @@ type Provider struct {
 
 	// AWS profile to use for IAM auth
 	AwsRdsIamProfile pulumi.StringPtrOutput `pulumi:"awsRdsIamProfile"`
+	// AWS IAM role to assume for IAM auth
+	AwsRdsIamProviderRoleArn pulumi.StringPtrOutput `pulumi:"awsRdsIamProviderRoleArn"`
 	// AWS region to use for IAM auth
 	AwsRdsIamRegion pulumi.StringPtrOutput `pulumi:"awsRdsIamRegion"`
 	AzureTenantId   pulumi.StringPtrOutput `pulumi:"azureTenantId"`
@@ -86,6 +88,8 @@ type providerArgs struct {
 	AwsRdsIamAuth *bool `pulumi:"awsRdsIamAuth"`
 	// AWS profile to use for IAM auth
 	AwsRdsIamProfile *string `pulumi:"awsRdsIamProfile"`
+	// AWS IAM role to assume for IAM auth
+	AwsRdsIamProviderRoleArn *string `pulumi:"awsRdsIamProviderRoleArn"`
 	// AWS region to use for IAM auth
 	AwsRdsIamRegion *string `pulumi:"awsRdsIamRegion"`
 	// Use MS Azure identity OAuth token (see:
@@ -134,6 +138,8 @@ type ProviderArgs struct {
 	AwsRdsIamAuth pulumi.BoolPtrInput
 	// AWS profile to use for IAM auth
 	AwsRdsIamProfile pulumi.StringPtrInput
+	// AWS IAM role to assume for IAM auth
+	AwsRdsIamProviderRoleArn pulumi.StringPtrInput
 	// AWS region to use for IAM auth
 	AwsRdsIamRegion pulumi.StringPtrInput
 	// Use MS Azure identity OAuth token (see:
@@ -215,6 +221,11 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 // AWS profile to use for IAM auth
 func (o ProviderOutput) AwsRdsIamProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AwsRdsIamProfile }).(pulumi.StringPtrOutput)
+}
+
+// AWS IAM role to assume for IAM auth
+func (o ProviderOutput) AwsRdsIamProviderRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AwsRdsIamProviderRoleArn }).(pulumi.StringPtrOutput)
 }
 
 // AWS region to use for IAM auth

@@ -53,6 +53,16 @@ namespace Pulumi.PostgreSql
             set => _awsRdsIamProfile.Set(value);
         }
 
+        private static readonly __Value<string?> _awsRdsIamProviderRoleArn = new __Value<string?>(() => __config.Get("awsRdsIamProviderRoleArn"));
+        /// <summary>
+        /// AWS IAM role to assume for IAM auth
+        /// </summary>
+        public static string? AwsRdsIamProviderRoleArn
+        {
+            get => _awsRdsIamProviderRoleArn.Get();
+            set => _awsRdsIamProviderRoleArn.Set(value);
+        }
+
         private static readonly __Value<string?> _awsRdsIamRegion = new __Value<string?>(() => __config.Get("awsRdsIamRegion"));
         /// <summary>
         /// AWS region to use for IAM auth

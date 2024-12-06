@@ -29,6 +29,13 @@ public final class Config {
         return Codegen.stringProp("awsRdsIamProfile").config(config).get();
     }
 /**
+ * AWS IAM role to assume for IAM auth
+ * 
+ */
+    public Optional<String> awsRdsIamProviderRoleArn() {
+        return Codegen.stringProp("awsRdsIamProviderRoleArn").config(config).get();
+    }
+/**
  * AWS region to use for IAM auth
  * 
  */

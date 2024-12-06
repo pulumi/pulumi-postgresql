@@ -27,7 +27,28 @@ import * as utilities from "./utilities";
  *
  * ## Examples
  *
- * Revoke default privileges for functions for "public" role:
+ * ### Grant default privileges for tables to "currentRole" role:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * const grantTablePrivileges = new postgresql.DefaultPrivileges("grant_table_privileges", {
+ *     database: exampleDb.name,
+ *     role: "current_role",
+ *     owner: "owner_role",
+ *     schema: "public",
+ *     objectType: "table",
+ *     privileges: [
+ *         "SELECT",
+ *         "INSERT",
+ *         "UPDATE",
+ *     ],
+ * });
+ * ```
+ * Whenever the `ownerRole` creates a new table in the `public` schema, the `currentRole` is automatically granted SELECT, INSERT, and UPDATE privileges on that table.
+ *
+ * ### Revoke default privileges for functions for "public" role:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -82,15 +103,15 @@ export class DefaultPrivileg extends pulumi.CustomResource {
      */
     public readonly objectType!: pulumi.Output<string>;
     /**
-     * Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+     * Specifies the role that creates objects for which the default privileges will be applied.
      */
     public readonly owner!: pulumi.Output<string>;
     /**
-     * The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+     * List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
      */
     public readonly privileges!: pulumi.Output<string[]>;
     /**
-     * The name of the role to which grant default privileges on.
+     * The role that will automatically be granted the specified privileges on new objects created by the owner.
      */
     public readonly role!: pulumi.Output<string>;
     /**
@@ -168,15 +189,15 @@ export interface DefaultPrivilegState {
      */
     objectType?: pulumi.Input<string>;
     /**
-     * Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+     * Specifies the role that creates objects for which the default privileges will be applied.
      */
     owner?: pulumi.Input<string>;
     /**
-     * The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+     * List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
      */
     privileges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the role to which grant default privileges on.
+     * The role that will automatically be granted the specified privileges on new objects created by the owner.
      */
     role?: pulumi.Input<string>;
     /**
@@ -202,15 +223,15 @@ export interface DefaultPrivilegArgs {
      */
     objectType: pulumi.Input<string>;
     /**
-     * Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+     * Specifies the role that creates objects for which the default privileges will be applied.
      */
     owner: pulumi.Input<string>;
     /**
-     * The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+     * List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
      */
     privileges: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the role to which grant default privileges on.
+     * The role that will automatically be granted the specified privileges on new objects created by the owner.
      */
     role: pulumi.Input<string>;
     /**

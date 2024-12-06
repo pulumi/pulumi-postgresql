@@ -22,6 +22,11 @@ func GetAwsRdsIamProfile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:awsRdsIamProfile")
 }
 
+// AWS IAM role to assume for IAM auth
+func GetAwsRdsIamProviderRoleArn(ctx *pulumi.Context) string {
+	return config.Get(ctx, "postgresql:awsRdsIamProviderRoleArn")
+}
+
 // AWS region to use for IAM auth
 func GetAwsRdsIamRegion(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:awsRdsIamRegion")

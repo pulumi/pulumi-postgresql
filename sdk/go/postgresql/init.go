@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Role{}
 	case "postgresql:index/schema:Schema":
 		r = &Schema{}
+	case "postgresql:index/securityLabel:SecurityLabel":
+		r = &SecurityLabel{}
 	case "postgresql:index/server:Server":
 		r = &Server{}
 	case "postgresql:index/subscription:Subscription":
@@ -140,6 +142,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"postgresql",
 		"index/schema",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"postgresql",
+		"index/securityLabel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

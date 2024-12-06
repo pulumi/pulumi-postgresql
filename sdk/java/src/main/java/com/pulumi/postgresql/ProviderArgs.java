@@ -52,6 +52,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * AWS IAM role to assume for IAM auth
+     * 
+     */
+    @Import(name="awsRdsIamProviderRoleArn")
+    private @Nullable Output<String> awsRdsIamProviderRoleArn;
+
+    /**
+     * @return AWS IAM role to assume for IAM auth
+     * 
+     */
+    public Optional<Output<String>> awsRdsIamProviderRoleArn() {
+        return Optional.ofNullable(this.awsRdsIamProviderRoleArn);
+    }
+
+    /**
      * AWS region to use for IAM auth
      * 
      */
@@ -335,6 +350,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderArgs(ProviderArgs $) {
         this.awsRdsIamAuth = $.awsRdsIamAuth;
         this.awsRdsIamProfile = $.awsRdsIamProfile;
+        this.awsRdsIamProviderRoleArn = $.awsRdsIamProviderRoleArn;
         this.awsRdsIamRegion = $.awsRdsIamRegion;
         this.azureIdentityAuth = $.azureIdentityAuth;
         this.azureTenantId = $.azureTenantId;
@@ -416,6 +432,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder awsRdsIamProfile(String awsRdsIamProfile) {
             return awsRdsIamProfile(Output.of(awsRdsIamProfile));
+        }
+
+        /**
+         * @param awsRdsIamProviderRoleArn AWS IAM role to assume for IAM auth
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsRdsIamProviderRoleArn(@Nullable Output<String> awsRdsIamProviderRoleArn) {
+            $.awsRdsIamProviderRoleArn = awsRdsIamProviderRoleArn;
+            return this;
+        }
+
+        /**
+         * @param awsRdsIamProviderRoleArn AWS IAM role to assume for IAM auth
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsRdsIamProviderRoleArn(String awsRdsIamProviderRoleArn) {
+            return awsRdsIamProviderRoleArn(Output.of(awsRdsIamProviderRoleArn));
         }
 
         /**

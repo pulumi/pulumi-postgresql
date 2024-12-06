@@ -42,7 +42,36 @@ namespace Pulumi.PostgreSql
     /// 
     /// ## Examples
     /// 
-    /// Revoke default privileges for functions for "public" role:
+    /// ### Grant default privileges for tables to "current_role" role:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var grantTablePrivileges = new PostgreSql.DefaultPrivileges("grant_table_privileges", new()
+    ///     {
+    ///         Database = exampleDb.Name,
+    ///         Role = "current_role",
+    ///         Owner = "owner_role",
+    ///         Schema = "public",
+    ///         ObjectType = "table",
+    ///         Privileges = new[]
+    ///         {
+    ///             "SELECT",
+    ///             "INSERT",
+    ///             "UPDATE",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// Whenever the `owner_role` creates a new table in the `public` schema, the `current_role` is automatically granted SELECT, INSERT, and UPDATE privileges on that table.
+    /// 
+    /// ### Revoke default privileges for functions for "public" role:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -81,19 +110,19 @@ namespace Pulumi.PostgreSql
         public Output<string> ObjectType { get; private set; } = null!;
 
         /// <summary>
-        /// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+        /// Specifies the role that creates objects for which the default privileges will be applied.
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+        /// List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
         /// </summary>
         [Output("privileges")]
         public Output<ImmutableArray<string>> Privileges { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the role to which grant default privileges on.
+        /// The role that will automatically be granted the specified privileges on new objects created by the owner.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -169,7 +198,7 @@ namespace Pulumi.PostgreSql
         public Input<string> ObjectType { get; set; } = null!;
 
         /// <summary>
-        /// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+        /// Specifies the role that creates objects for which the default privileges will be applied.
         /// </summary>
         [Input("owner", required: true)]
         public Input<string> Owner { get; set; } = null!;
@@ -178,7 +207,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _privileges;
 
         /// <summary>
-        /// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+        /// List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
         /// </summary>
         public InputList<string> Privileges
         {
@@ -187,7 +216,7 @@ namespace Pulumi.PostgreSql
         }
 
         /// <summary>
-        /// The name of the role to which grant default privileges on.
+        /// The role that will automatically be granted the specified privileges on new objects created by the owner.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -225,7 +254,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? ObjectType { get; set; }
 
         /// <summary>
-        /// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+        /// Specifies the role that creates objects for which the default privileges will be applied.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -234,7 +263,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _privileges;
 
         /// <summary>
-        /// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+        /// List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
         /// </summary>
         public InputList<string> Privileges
         {
@@ -243,7 +272,7 @@ namespace Pulumi.PostgreSql
         }
 
         /// <summary>
-        /// The name of the role to which grant default privileges on.
+        /// The role that will automatically be granted the specified privileges on new objects created by the owner.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
