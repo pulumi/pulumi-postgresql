@@ -171,7 +171,7 @@ def get_sequences_output(database: Optional[pulumi.Input[str]] = None,
                          not_like_all_patterns: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          regex_pattern: Optional[pulumi.Input[Optional[str]]] = None,
                          schemas: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSequencesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSequencesResult]:
     """
     The ``get_sequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
 
@@ -201,7 +201,7 @@ def get_sequences_output(database: Optional[pulumi.Input[str]] = None,
     __args__['notLikeAllPatterns'] = not_like_all_patterns
     __args__['regexPattern'] = regex_pattern
     __args__['schemas'] = schemas
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('postgresql:index/getSequences:getSequences', __args__, opts=opts, typ=GetSequencesResult)
     return __ret__.apply(lambda __response__: GetSequencesResult(
         database=pulumi.get(__response__, 'database'),
