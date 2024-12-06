@@ -1,3 +1,0 @@
-name: postgresql-database
-runtime: nodejs
-description: A postgresql Database
