@@ -64,7 +64,51 @@ import javax.annotation.Nullable;
  * 
  * ## Examples
  * 
- * Revoke default privileges for functions for &#34;public&#34; role:
+ * ### Grant default privileges for tables to &#34;current_role&#34; role:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.postgresql.DefaultPrivileges;
+ * import com.pulumi.postgresql.DefaultPrivilegesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var grantTablePrivileges = new DefaultPrivileges("grantTablePrivileges", DefaultPrivilegesArgs.builder()
+ *             .database(exampleDb.name())
+ *             .role("current_role")
+ *             .owner("owner_role")
+ *             .schema("public")
+ *             .objectType("table")
+ *             .privileges(            
+ *                 "SELECT",
+ *                 "INSERT",
+ *                 "UPDATE")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * Whenever the `owner_role` creates a new table in the `public` schema, the `current_role` is automatically granted SELECT, INSERT, and UPDATE privileges on that table.
+ * 
+ * ### Revoke default privileges for functions for &#34;public&#34; role:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -135,42 +179,42 @@ public class DefaultPrivileges extends com.pulumi.resources.CustomResource {
         return this.objectType;
     }
     /**
-     * Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+     * Specifies the role that creates objects for which the default privileges will be applied.
      * 
      */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
-     * @return Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+     * @return Specifies the role that creates objects for which the default privileges will be applied.
      * 
      */
     public Output<String> owner() {
         return this.owner;
     }
     /**
-     * The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+     * List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
      * 
      */
     @Export(name="privileges", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> privileges;
 
     /**
-     * @return The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+     * @return List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
      * 
      */
     public Output<List<String>> privileges() {
         return this.privileges;
     }
     /**
-     * The name of the role to which grant default privileges on.
+     * The role that will automatically be granted the specified privileges on new objects created by the owner.
      * 
      */
     @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
-     * @return The name of the role to which grant default privileges on.
+     * @return The role that will automatically be granted the specified privileges on new objects created by the owner.
      * 
      */
     public Output<String> role() {

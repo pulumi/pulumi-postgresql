@@ -38,6 +38,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.awsRdsIamProfile);
     }
     /**
+     * AWS IAM role to assume for IAM auth
+     * 
+     */
+    @Export(name="awsRdsIamProviderRoleArn", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> awsRdsIamProviderRoleArn;
+
+    /**
+     * @return AWS IAM role to assume for IAM auth
+     * 
+     */
+    public Output<Optional<String>> awsRdsIamProviderRoleArn() {
+        return Codegen.optional(this.awsRdsIamProviderRoleArn);
+    }
+    /**
      * AWS region to use for IAM auth
      * 
      */

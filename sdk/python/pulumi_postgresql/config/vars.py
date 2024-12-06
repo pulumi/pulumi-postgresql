@@ -37,6 +37,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('awsRdsIamProfile')
 
     @property
+    def aws_rds_iam_provider_role_arn(self) -> Optional[str]:
+        """
+        AWS IAM role to assume for IAM auth
+        """
+        return __config__.get('awsRdsIamProviderRoleArn')
+
+    @property
     def aws_rds_iam_region(self) -> Optional[str]:
         """
         AWS region to use for IAM auth

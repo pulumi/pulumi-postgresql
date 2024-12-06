@@ -33,6 +33,17 @@ Object.defineProperty(exports, "awsRdsIamProfile", {
 });
 
 /**
+ * AWS IAM role to assume for IAM auth
+ */
+export declare const awsRdsIamProviderRoleArn: string | undefined;
+Object.defineProperty(exports, "awsRdsIamProviderRoleArn", {
+    get() {
+        return __config.get("awsRdsIamProviderRoleArn");
+    },
+    enumerable: true,
+});
+
+/**
  * AWS region to use for IAM auth
  */
 export declare const awsRdsIamRegion: string | undefined;

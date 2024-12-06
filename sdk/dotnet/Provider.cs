@@ -25,6 +25,12 @@ namespace Pulumi.PostgreSql
         public Output<string?> AwsRdsIamProfile { get; private set; } = null!;
 
         /// <summary>
+        /// AWS IAM role to assume for IAM auth
+        /// </summary>
+        [Output("awsRdsIamProviderRoleArn")]
+        public Output<string?> AwsRdsIamProviderRoleArn { get; private set; } = null!;
+
+        /// <summary>
         /// AWS region to use for IAM auth
         /// </summary>
         [Output("awsRdsIamRegion")]
@@ -138,6 +144,12 @@ namespace Pulumi.PostgreSql
         /// </summary>
         [Input("awsRdsIamProfile")]
         public Input<string>? AwsRdsIamProfile { get; set; }
+
+        /// <summary>
+        /// AWS IAM role to assume for IAM auth
+        /// </summary>
+        [Input("awsRdsIamProviderRoleArn")]
+        public Input<string>? AwsRdsIamProviderRoleArn { get; set; }
 
         /// <summary>
         /// AWS region to use for IAM auth

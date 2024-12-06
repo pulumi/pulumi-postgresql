@@ -59,6 +59,10 @@
                 "type": "string",
                 "description": "AWS profile to use for IAM auth\n"
             },
+            "awsRdsIamProviderRoleArn": {
+                "type": "string",
+                "description": "AWS IAM role to assume for IAM auth\n"
+            },
             "awsRdsIamRegion": {
                 "type": "string",
                 "description": "AWS region to use for IAM auth\n"
@@ -318,6 +322,10 @@
                 "type": "string",
                 "description": "AWS profile to use for IAM auth\n"
             },
+            "awsRdsIamProviderRoleArn": {
+                "type": "string",
+                "description": "AWS IAM role to assume for IAM auth\n"
+            },
             "awsRdsIamRegion": {
                 "type": "string",
                 "description": "AWS region to use for IAM auth\n"
@@ -402,6 +410,10 @@
             "awsRdsIamProfile": {
                 "type": "string",
                 "description": "AWS profile to use for IAM auth\n"
+            },
+            "awsRdsIamProviderRoleArn": {
+                "type": "string",
+                "description": "AWS IAM role to assume for IAM auth\n"
             },
             "awsRdsIamRegion": {
                 "type": "string",
@@ -655,7 +667,7 @@
             }
         },
         "postgresql:index/defaultPrivileg:DefaultPrivileg": {
-            "description": "The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readOnlyTables = new postgresql.DefaultPrivileges(\"read_only_tables\", {\n    role: \"test_role\",\n    database: \"test_db\",\n    schema: \"public\",\n    owner: \"db_owner\",\n    objectType: \"table\",\n    privileges: [\"SELECT\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nread_only_tables = postgresql.DefaultPrivileges(\"read_only_tables\",\n    role=\"test_role\",\n    database=\"test_db\",\n    schema=\"public\",\n    owner=\"db_owner\",\n    object_type=\"table\",\n    privileges=[\"SELECT\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var readOnlyTables = new PostgreSql.DefaultPrivileges(\"read_only_tables\", new()\n    {\n        Role = \"test_role\",\n        Database = \"test_db\",\n        Schema = \"public\",\n        Owner = \"db_owner\",\n        ObjectType = \"table\",\n        Privileges = new[]\n        {\n            \"SELECT\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"read_only_tables\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tRole:       pulumi.String(\"test_role\"),\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tSchema:     pulumi.String(\"public\"),\n\t\t\tOwner:      pulumi.String(\"db_owner\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.DefaultPrivileges;\nimport com.pulumi.postgresql.DefaultPrivilegesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readOnlyTables = new DefaultPrivileges(\"readOnlyTables\", DefaultPrivilegesArgs.builder()\n            .role(\"test_role\")\n            .database(\"test_db\")\n            .schema(\"public\")\n            .owner(\"db_owner\")\n            .objectType(\"table\")\n            .privileges(\"SELECT\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  readOnlyTables:\n    type: postgresql:DefaultPrivileges\n    name: read_only_tables\n    properties:\n      role: test_role\n      database: test_db\n      schema: public\n      owner: db_owner\n      objectType: table\n      privileges:\n        - SELECT\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Examples\n\nRevoke default privileges for functions for \"public\" role:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.DefaultPrivileges(\"revoke_public\", {\n    database: exampleDb.name,\n    role: \"public\",\n    owner: \"object_owner\",\n    objectType: \"function\",\n    privileges: [],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.DefaultPrivileges(\"revoke_public\",\n    database=example_db[\"name\"],\n    role=\"public\",\n    owner=\"object_owner\",\n    object_type=\"function\",\n    privileges=[])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var revokePublic = new PostgreSql.DefaultPrivileges(\"revoke_public\", new()\n    {\n        Database = exampleDb.Name,\n        Role = \"public\",\n        Owner = \"object_owner\",\n        ObjectType = \"function\",\n        Privileges = new[] {},\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"revoke_public\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.Any(exampleDb.Name),\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tOwner:      pulumi.String(\"object_owner\"),\n\t\t\tObjectType: pulumi.String(\"function\"),\n\t\t\tPrivileges: pulumi.StringArray{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.DefaultPrivileges;\nimport com.pulumi.postgresql.DefaultPrivilegesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var revokePublic = new DefaultPrivileges(\"revokePublic\", DefaultPrivilegesArgs.builder()\n            .database(exampleDb.name())\n            .role(\"public\")\n            .owner(\"object_owner\")\n            .objectType(\"function\")\n            .privileges()\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  revokePublic:\n    type: postgresql:DefaultPrivileges\n    name: revoke_public\n    properties:\n      database: ${exampleDb.name}\n      role: public\n      owner: object_owner\n      objectType: function\n      privileges: []\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readOnlyTables = new postgresql.DefaultPrivileges(\"read_only_tables\", {\n    role: \"test_role\",\n    database: \"test_db\",\n    schema: \"public\",\n    owner: \"db_owner\",\n    objectType: \"table\",\n    privileges: [\"SELECT\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nread_only_tables = postgresql.DefaultPrivileges(\"read_only_tables\",\n    role=\"test_role\",\n    database=\"test_db\",\n    schema=\"public\",\n    owner=\"db_owner\",\n    object_type=\"table\",\n    privileges=[\"SELECT\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var readOnlyTables = new PostgreSql.DefaultPrivileges(\"read_only_tables\", new()\n    {\n        Role = \"test_role\",\n        Database = \"test_db\",\n        Schema = \"public\",\n        Owner = \"db_owner\",\n        ObjectType = \"table\",\n        Privileges = new[]\n        {\n            \"SELECT\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"read_only_tables\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tRole:       pulumi.String(\"test_role\"),\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tSchema:     pulumi.String(\"public\"),\n\t\t\tOwner:      pulumi.String(\"db_owner\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.DefaultPrivileges;\nimport com.pulumi.postgresql.DefaultPrivilegesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readOnlyTables = new DefaultPrivileges(\"readOnlyTables\", DefaultPrivilegesArgs.builder()\n            .role(\"test_role\")\n            .database(\"test_db\")\n            .schema(\"public\")\n            .owner(\"db_owner\")\n            .objectType(\"table\")\n            .privileges(\"SELECT\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  readOnlyTables:\n    type: postgresql:DefaultPrivileges\n    name: read_only_tables\n    properties:\n      role: test_role\n      database: test_db\n      schema: public\n      owner: db_owner\n      objectType: table\n      privileges:\n        - SELECT\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Examples\n\n### Grant default privileges for tables to \"current_role\" role:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst grantTablePrivileges = new postgresql.DefaultPrivileges(\"grant_table_privileges\", {\n    database: exampleDb.name,\n    role: \"current_role\",\n    owner: \"owner_role\",\n    schema: \"public\",\n    objectType: \"table\",\n    privileges: [\n        \"SELECT\",\n        \"INSERT\",\n        \"UPDATE\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\ngrant_table_privileges = postgresql.DefaultPrivileges(\"grant_table_privileges\",\n    database=example_db[\"name\"],\n    role=\"current_role\",\n    owner=\"owner_role\",\n    schema=\"public\",\n    object_type=\"table\",\n    privileges=[\n        \"SELECT\",\n        \"INSERT\",\n        \"UPDATE\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var grantTablePrivileges = new PostgreSql.DefaultPrivileges(\"grant_table_privileges\", new()\n    {\n        Database = exampleDb.Name,\n        Role = \"current_role\",\n        Owner = \"owner_role\",\n        Schema = \"public\",\n        ObjectType = \"table\",\n        Privileges = new[]\n        {\n            \"SELECT\",\n            \"INSERT\",\n            \"UPDATE\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"grant_table_privileges\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.Any(exampleDb.Name),\n\t\t\tRole:       pulumi.String(\"current_role\"),\n\t\t\tOwner:      pulumi.String(\"owner_role\"),\n\t\t\tSchema:     pulumi.String(\"public\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t\tpulumi.String(\"INSERT\"),\n\t\t\t\tpulumi.String(\"UPDATE\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.DefaultPrivileges;\nimport com.pulumi.postgresql.DefaultPrivilegesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var grantTablePrivileges = new DefaultPrivileges(\"grantTablePrivileges\", DefaultPrivilegesArgs.builder()\n            .database(exampleDb.name())\n            .role(\"current_role\")\n            .owner(\"owner_role\")\n            .schema(\"public\")\n            .objectType(\"table\")\n            .privileges(            \n                \"SELECT\",\n                \"INSERT\",\n                \"UPDATE\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  grantTablePrivileges:\n    type: postgresql:DefaultPrivileges\n    name: grant_table_privileges\n    properties:\n      database: ${exampleDb.name}\n      role: current_role\n      owner: owner_role\n      schema: public\n      objectType: table\n      privileges:\n        - SELECT\n        - INSERT\n        - UPDATE\n```\n\u003c!--End PulumiCodeChooser --\u003e\nWhenever the `owner_role` creates a new table in the `public` schema, the `current_role` is automatically granted SELECT, INSERT, and UPDATE privileges on that table.\n\n### Revoke default privileges for functions for \"public\" role:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.DefaultPrivileges(\"revoke_public\", {\n    database: exampleDb.name,\n    role: \"public\",\n    owner: \"object_owner\",\n    objectType: \"function\",\n    privileges: [],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.DefaultPrivileges(\"revoke_public\",\n    database=example_db[\"name\"],\n    role=\"public\",\n    owner=\"object_owner\",\n    object_type=\"function\",\n    privileges=[])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var revokePublic = new PostgreSql.DefaultPrivileges(\"revoke_public\", new()\n    {\n        Database = exampleDb.Name,\n        Role = \"public\",\n        Owner = \"object_owner\",\n        ObjectType = \"function\",\n        Privileges = new[] {},\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"revoke_public\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.Any(exampleDb.Name),\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tOwner:      pulumi.String(\"object_owner\"),\n\t\t\tObjectType: pulumi.String(\"function\"),\n\t\t\tPrivileges: pulumi.StringArray{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.DefaultPrivileges;\nimport com.pulumi.postgresql.DefaultPrivilegesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var revokePublic = new DefaultPrivileges(\"revokePublic\", DefaultPrivilegesArgs.builder()\n            .database(exampleDb.name())\n            .role(\"public\")\n            .owner(\"object_owner\")\n            .objectType(\"function\")\n            .privileges()\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  revokePublic:\n    type: postgresql:DefaultPrivileges\n    name: revoke_public\n    properties:\n      database: ${exampleDb.name}\n      role: public\n      owner: object_owner\n      objectType: function\n      privileges: []\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "database": {
                     "type": "string",
@@ -667,18 +679,18 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).\n"
+                    "description": "Specifies the role that creates objects for which the default privileges will be applied.\n"
                 },
                 "privileges": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.\n"
+                    "description": "List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.\n"
                 },
                 "role": {
                     "type": "string",
-                    "description": "The name of the role to which grant default privileges on.\n"
+                    "description": "The role that will automatically be granted the specified privileges on new objects created by the owner.\n"
                 },
                 "schema": {
                     "type": "string",
@@ -709,7 +721,7 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).\n",
+                    "description": "Specifies the role that creates objects for which the default privileges will be applied.\n",
                     "willReplaceOnChanges": true
                 },
                 "privileges": {
@@ -717,11 +729,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.\n"
+                    "description": "List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.\n"
                 },
                 "role": {
                     "type": "string",
-                    "description": "The name of the role to which grant default privileges on.\n",
+                    "description": "The role that will automatically be granted the specified privileges on new objects created by the owner.\n",
                     "willReplaceOnChanges": true
                 },
                 "schema": {
@@ -757,7 +769,7 @@
                     },
                     "owner": {
                         "type": "string",
-                        "description": "Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).\n",
+                        "description": "Specifies the role that creates objects for which the default privileges will be applied.\n",
                         "willReplaceOnChanges": true
                     },
                     "privileges": {
@@ -765,11 +777,11 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.\n"
+                        "description": "List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.\n"
                     },
                     "role": {
                         "type": "string",
-                        "description": "The name of the role to which grant default privileges on.\n",
+                        "description": "The role that will automatically be granted the specified privileges on new objects created by the owner.\n",
                         "willReplaceOnChanges": true
                     },
                     "schema": {
@@ -788,7 +800,7 @@
             "deprecationMessage": "postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges"
         },
         "postgresql:index/defaultPrivileges:DefaultPrivileges": {
-            "description": "The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readOnlyTables = new postgresql.DefaultPrivileges(\"read_only_tables\", {\n    role: \"test_role\",\n    database: \"test_db\",\n    schema: \"public\",\n    owner: \"db_owner\",\n    objectType: \"table\",\n    privileges: [\"SELECT\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nread_only_tables = postgresql.DefaultPrivileges(\"read_only_tables\",\n    role=\"test_role\",\n    database=\"test_db\",\n    schema=\"public\",\n    owner=\"db_owner\",\n    object_type=\"table\",\n    privileges=[\"SELECT\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var readOnlyTables = new PostgreSql.DefaultPrivileges(\"read_only_tables\", new()\n    {\n        Role = \"test_role\",\n        Database = \"test_db\",\n        Schema = \"public\",\n        Owner = \"db_owner\",\n        ObjectType = \"table\",\n        Privileges = new[]\n        {\n            \"SELECT\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"read_only_tables\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tRole:       pulumi.String(\"test_role\"),\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tSchema:     pulumi.String(\"public\"),\n\t\t\tOwner:      pulumi.String(\"db_owner\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.DefaultPrivileges;\nimport com.pulumi.postgresql.DefaultPrivilegesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readOnlyTables = new DefaultPrivileges(\"readOnlyTables\", DefaultPrivilegesArgs.builder()\n            .role(\"test_role\")\n            .database(\"test_db\")\n            .schema(\"public\")\n            .owner(\"db_owner\")\n            .objectType(\"table\")\n            .privileges(\"SELECT\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  readOnlyTables:\n    type: postgresql:DefaultPrivileges\n    name: read_only_tables\n    properties:\n      role: test_role\n      database: test_db\n      schema: public\n      owner: db_owner\n      objectType: table\n      privileges:\n        - SELECT\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Examples\n\nRevoke default privileges for functions for \"public\" role:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.DefaultPrivileges(\"revoke_public\", {\n    database: exampleDb.name,\n    role: \"public\",\n    owner: \"object_owner\",\n    objectType: \"function\",\n    privileges: [],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.DefaultPrivileges(\"revoke_public\",\n    database=example_db[\"name\"],\n    role=\"public\",\n    owner=\"object_owner\",\n    object_type=\"function\",\n    privileges=[])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var revokePublic = new PostgreSql.DefaultPrivileges(\"revoke_public\", new()\n    {\n        Database = exampleDb.Name,\n        Role = \"public\",\n        Owner = \"object_owner\",\n        ObjectType = \"function\",\n        Privileges = new[] {},\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"revoke_public\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.Any(exampleDb.Name),\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tOwner:      pulumi.String(\"object_owner\"),\n\t\t\tObjectType: pulumi.String(\"function\"),\n\t\t\tPrivileges: pulumi.StringArray{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.DefaultPrivileges;\nimport com.pulumi.postgresql.DefaultPrivilegesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var revokePublic = new DefaultPrivileges(\"revokePublic\", DefaultPrivilegesArgs.builder()\n            .database(exampleDb.name())\n            .role(\"public\")\n            .owner(\"object_owner\")\n            .objectType(\"function\")\n            .privileges()\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  revokePublic:\n    type: postgresql:DefaultPrivileges\n    name: revoke_public\n    properties:\n      database: ${exampleDb.name}\n      role: public\n      owner: object_owner\n      objectType: function\n      privileges: []\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "The ``postgresql.DefaultPrivileges`` resource creates and manages default privileges given to a user for a database schema.\n\n\u003e **Note:** This resource needs Postgresql version 9 or above.\n\n## Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst readOnlyTables = new postgresql.DefaultPrivileges(\"read_only_tables\", {\n    role: \"test_role\",\n    database: \"test_db\",\n    schema: \"public\",\n    owner: \"db_owner\",\n    objectType: \"table\",\n    privileges: [\"SELECT\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nread_only_tables = postgresql.DefaultPrivileges(\"read_only_tables\",\n    role=\"test_role\",\n    database=\"test_db\",\n    schema=\"public\",\n    owner=\"db_owner\",\n    object_type=\"table\",\n    privileges=[\"SELECT\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var readOnlyTables = new PostgreSql.DefaultPrivileges(\"read_only_tables\", new()\n    {\n        Role = \"test_role\",\n        Database = \"test_db\",\n        Schema = \"public\",\n        Owner = \"db_owner\",\n        ObjectType = \"table\",\n        Privileges = new[]\n        {\n            \"SELECT\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"read_only_tables\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tRole:       pulumi.String(\"test_role\"),\n\t\t\tDatabase:   pulumi.String(\"test_db\"),\n\t\t\tSchema:     pulumi.String(\"public\"),\n\t\t\tOwner:      pulumi.String(\"db_owner\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.DefaultPrivileges;\nimport com.pulumi.postgresql.DefaultPrivilegesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readOnlyTables = new DefaultPrivileges(\"readOnlyTables\", DefaultPrivilegesArgs.builder()\n            .role(\"test_role\")\n            .database(\"test_db\")\n            .schema(\"public\")\n            .owner(\"db_owner\")\n            .objectType(\"table\")\n            .privileges(\"SELECT\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  readOnlyTables:\n    type: postgresql:DefaultPrivileges\n    name: read_only_tables\n    properties:\n      role: test_role\n      database: test_db\n      schema: public\n      owner: db_owner\n      objectType: table\n      privileges:\n        - SELECT\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Examples\n\n### Grant default privileges for tables to \"current_role\" role:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst grantTablePrivileges = new postgresql.DefaultPrivileges(\"grant_table_privileges\", {\n    database: exampleDb.name,\n    role: \"current_role\",\n    owner: \"owner_role\",\n    schema: \"public\",\n    objectType: \"table\",\n    privileges: [\n        \"SELECT\",\n        \"INSERT\",\n        \"UPDATE\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\ngrant_table_privileges = postgresql.DefaultPrivileges(\"grant_table_privileges\",\n    database=example_db[\"name\"],\n    role=\"current_role\",\n    owner=\"owner_role\",\n    schema=\"public\",\n    object_type=\"table\",\n    privileges=[\n        \"SELECT\",\n        \"INSERT\",\n        \"UPDATE\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var grantTablePrivileges = new PostgreSql.DefaultPrivileges(\"grant_table_privileges\", new()\n    {\n        Database = exampleDb.Name,\n        Role = \"current_role\",\n        Owner = \"owner_role\",\n        Schema = \"public\",\n        ObjectType = \"table\",\n        Privileges = new[]\n        {\n            \"SELECT\",\n            \"INSERT\",\n            \"UPDATE\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"grant_table_privileges\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.Any(exampleDb.Name),\n\t\t\tRole:       pulumi.String(\"current_role\"),\n\t\t\tOwner:      pulumi.String(\"owner_role\"),\n\t\t\tSchema:     pulumi.String(\"public\"),\n\t\t\tObjectType: pulumi.String(\"table\"),\n\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t\tpulumi.String(\"INSERT\"),\n\t\t\t\tpulumi.String(\"UPDATE\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.DefaultPrivileges;\nimport com.pulumi.postgresql.DefaultPrivilegesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var grantTablePrivileges = new DefaultPrivileges(\"grantTablePrivileges\", DefaultPrivilegesArgs.builder()\n            .database(exampleDb.name())\n            .role(\"current_role\")\n            .owner(\"owner_role\")\n            .schema(\"public\")\n            .objectType(\"table\")\n            .privileges(            \n                \"SELECT\",\n                \"INSERT\",\n                \"UPDATE\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  grantTablePrivileges:\n    type: postgresql:DefaultPrivileges\n    name: grant_table_privileges\n    properties:\n      database: ${exampleDb.name}\n      role: current_role\n      owner: owner_role\n      schema: public\n      objectType: table\n      privileges:\n        - SELECT\n        - INSERT\n        - UPDATE\n```\n\u003c!--End PulumiCodeChooser --\u003e\nWhenever the `owner_role` creates a new table in the `public` schema, the `current_role` is automatically granted SELECT, INSERT, and UPDATE privileges on that table.\n\n### Revoke default privileges for functions for \"public\" role:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst revokePublic = new postgresql.DefaultPrivileges(\"revoke_public\", {\n    database: exampleDb.name,\n    role: \"public\",\n    owner: \"object_owner\",\n    objectType: \"function\",\n    privileges: [],\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nrevoke_public = postgresql.DefaultPrivileges(\"revoke_public\",\n    database=example_db[\"name\"],\n    role=\"public\",\n    owner=\"object_owner\",\n    object_type=\"function\",\n    privileges=[])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var revokePublic = new PostgreSql.DefaultPrivileges(\"revoke_public\", new()\n    {\n        Database = exampleDb.Name,\n        Role = \"public\",\n        Owner = \"object_owner\",\n        ObjectType = \"function\",\n        Privileges = new[] {},\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := postgresql.NewDefaultPrivileges(ctx, \"revoke_public\", \u0026postgresql.DefaultPrivilegesArgs{\n\t\t\tDatabase:   pulumi.Any(exampleDb.Name),\n\t\t\tRole:       pulumi.String(\"public\"),\n\t\t\tOwner:      pulumi.String(\"object_owner\"),\n\t\t\tObjectType: pulumi.String(\"function\"),\n\t\t\tPrivileges: pulumi.StringArray{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.DefaultPrivileges;\nimport com.pulumi.postgresql.DefaultPrivilegesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var revokePublic = new DefaultPrivileges(\"revokePublic\", DefaultPrivilegesArgs.builder()\n            .database(exampleDb.name())\n            .role(\"public\")\n            .owner(\"object_owner\")\n            .objectType(\"function\")\n            .privileges()\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  revokePublic:\n    type: postgresql:DefaultPrivileges\n    name: revoke_public\n    properties:\n      database: ${exampleDb.name}\n      role: public\n      owner: object_owner\n      objectType: function\n      privileges: []\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "database": {
                     "type": "string",
@@ -800,18 +812,18 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).\n"
+                    "description": "Specifies the role that creates objects for which the default privileges will be applied.\n"
                 },
                 "privileges": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.\n"
+                    "description": "List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.\n"
                 },
                 "role": {
                     "type": "string",
-                    "description": "The name of the role to which grant default privileges on.\n"
+                    "description": "The role that will automatically be granted the specified privileges on new objects created by the owner.\n"
                 },
                 "schema": {
                     "type": "string",
@@ -842,7 +854,7 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).\n",
+                    "description": "Specifies the role that creates objects for which the default privileges will be applied.\n",
                     "willReplaceOnChanges": true
                 },
                 "privileges": {
@@ -850,11 +862,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.\n"
+                    "description": "List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.\n"
                 },
                 "role": {
                     "type": "string",
-                    "description": "The name of the role to which grant default privileges on.\n",
+                    "description": "The role that will automatically be granted the specified privileges on new objects created by the owner.\n",
                     "willReplaceOnChanges": true
                 },
                 "schema": {
@@ -890,7 +902,7 @@
                     },
                     "owner": {
                         "type": "string",
-                        "description": "Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).\n",
+                        "description": "Specifies the role that creates objects for which the default privileges will be applied.\n",
                         "willReplaceOnChanges": true
                     },
                     "privileges": {
@@ -898,11 +910,11 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.\n"
+                        "description": "List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.\n"
                     },
                     "role": {
                         "type": "string",
-                        "description": "The name of the role to which grant default privileges on.\n",
+                        "description": "The role that will automatically be granted the specified privileges on new objects created by the owner.\n",
                         "willReplaceOnChanges": true
                     },
                     "schema": {
@@ -1290,8 +1302,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.\n"
                 },
                 "role": {
                     "type": "string",
@@ -1349,8 +1360,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.\n"
                     },
                     "role": {
                         "type": "string",
@@ -2056,6 +2066,85 @@
                         },
                         "description": "Can be specified multiple times for each policy.  Each\npolicy block supports fields documented below.\n",
                         "deprecationMessage": "Use postgresql.Grant resource instead (with object_type=\"schema\")"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "postgresql:index/securityLabel:SecurityLabel": {
+            "description": "The ``postgresql.SecurityLabel`` resource creates and manages security labels.\n\nSee [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-security-label.html)\n\n\u003e **Note:** This resource needs Postgresql version 11 or above.\n\n## Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as postgresql from \"@pulumi/postgresql\";\n\nconst myRole = new postgresql.Role(\"my_role\", {\n    name: \"my_role\",\n    login: true,\n});\nconst workload = new postgresql.SecurityLabel(\"workload\", {\n    objectType: \"role\",\n    objectName: myRole.name,\n    labelProvider: \"pgaadauth\",\n    label: \"aadauth,oid=00000000-0000-0000-0000-000000000000,type=service\",\n});\n```\n```python\nimport pulumi\nimport pulumi_postgresql as postgresql\n\nmy_role = postgresql.Role(\"my_role\",\n    name=\"my_role\",\n    login=True)\nworkload = postgresql.SecurityLabel(\"workload\",\n    object_type=\"role\",\n    object_name=my_role.name,\n    label_provider=\"pgaadauth\",\n    label=\"aadauth,oid=00000000-0000-0000-0000-000000000000,type=service\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing PostgreSql = Pulumi.PostgreSql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myRole = new PostgreSql.Role(\"my_role\", new()\n    {\n        Name = \"my_role\",\n        Login = true,\n    });\n\n    var workload = new PostgreSql.SecurityLabel(\"workload\", new()\n    {\n        ObjectType = \"role\",\n        ObjectName = myRole.Name,\n        LabelProvider = \"pgaadauth\",\n        Label = \"aadauth,oid=00000000-0000-0000-0000-000000000000,type=service\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyRole, err := postgresql.NewRole(ctx, \"my_role\", \u0026postgresql.RoleArgs{\n\t\t\tName:  pulumi.String(\"my_role\"),\n\t\t\tLogin: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = postgresql.NewSecurityLabel(ctx, \"workload\", \u0026postgresql.SecurityLabelArgs{\n\t\t\tObjectType:    pulumi.String(\"role\"),\n\t\t\tObjectName:    myRole.Name,\n\t\t\tLabelProvider: pulumi.String(\"pgaadauth\"),\n\t\t\tLabel:         pulumi.String(\"aadauth,oid=00000000-0000-0000-0000-000000000000,type=service\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.postgresql.Role;\nimport com.pulumi.postgresql.RoleArgs;\nimport com.pulumi.postgresql.SecurityLabel;\nimport com.pulumi.postgresql.SecurityLabelArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myRole = new Role(\"myRole\", RoleArgs.builder()\n            .name(\"my_role\")\n            .login(true)\n            .build());\n\n        var workload = new SecurityLabel(\"workload\", SecurityLabelArgs.builder()\n            .objectType(\"role\")\n            .objectName(myRole.name())\n            .labelProvider(\"pgaadauth\")\n            .label(\"aadauth,oid=00000000-0000-0000-0000-000000000000,type=service\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myRole:\n    type: postgresql:Role\n    name: my_role\n    properties:\n      name: my_role\n      login: true\n  workload:\n    type: postgresql:SecurityLabel\n    properties:\n      objectType: role\n      objectName: ${myRole.name}\n      labelProvider: pgaadauth\n      label: aadauth,oid=00000000-0000-0000-0000-000000000000,type=service\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nSecurity label is an attribute that can be added multiple times, so no import is needed, simply apply again.\n\n",
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "description": "The value of the security label.\n"
+                },
+                "labelProvider": {
+                    "type": "string",
+                    "description": "The name of the provider with which this label is to be associated.\n"
+                },
+                "objectName": {
+                    "type": "string",
+                    "description": "The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.\n"
+                },
+                "objectType": {
+                    "type": "string",
+                    "description": "The PostgreSQL object type to apply this security label to.\n"
+                }
+            },
+            "required": [
+                "label",
+                "labelProvider",
+                "objectName",
+                "objectType"
+            ],
+            "inputProperties": {
+                "label": {
+                    "type": "string",
+                    "description": "The value of the security label.\n"
+                },
+                "labelProvider": {
+                    "type": "string",
+                    "description": "The name of the provider with which this label is to be associated.\n",
+                    "willReplaceOnChanges": true
+                },
+                "objectName": {
+                    "type": "string",
+                    "description": "The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.\n",
+                    "willReplaceOnChanges": true
+                },
+                "objectType": {
+                    "type": "string",
+                    "description": "The PostgreSQL object type to apply this security label to.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "label",
+                "labelProvider",
+                "objectName",
+                "objectType"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SecurityLabel resources.\n",
+                "properties": {
+                    "label": {
+                        "type": "string",
+                        "description": "The value of the security label.\n"
+                    },
+                    "labelProvider": {
+                        "type": "string",
+                        "description": "The name of the provider with which this label is to be associated.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "objectName": {
+                        "type": "string",
+                        "description": "The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "objectType": {
+                        "type": "string",
+                        "description": "The PostgreSQL object type to apply this security label to.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"

@@ -85,6 +85,11 @@ export type Schema = import("./schema").Schema;
 export const Schema: typeof import("./schema").Schema = null as any;
 utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
 
+export { SecurityLabelArgs, SecurityLabelState } from "./securityLabel";
+export type SecurityLabel = import("./securityLabel").SecurityLabel;
+export const SecurityLabel: typeof import("./securityLabel").SecurityLabel = null as any;
+utilities.lazyLoad(exports, ["SecurityLabel"], () => require("./securityLabel"));
+
 export { ServerArgs, ServerState } from "./server";
 export type Server = import("./server").Server;
 export const Server: typeof import("./server").Server = null as any;
@@ -138,6 +143,8 @@ const _module = {
                 return new Role(name, <any>undefined, { urn })
             case "postgresql:index/schema:Schema":
                 return new Schema(name, <any>undefined, { urn })
+            case "postgresql:index/securityLabel:SecurityLabel":
+                return new SecurityLabel(name, <any>undefined, { urn })
             case "postgresql:index/server:Server":
                 return new Server(name, <any>undefined, { urn })
             case "postgresql:index/subscription:Subscription":
@@ -161,6 +168,7 @@ pulumi.runtime.registerResourceModule("postgresql", "index/publication", _module
 pulumi.runtime.registerResourceModule("postgresql", "index/replicationSlot", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/role", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/schema", _module)
+pulumi.runtime.registerResourceModule("postgresql", "index/securityLabel", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/server", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/subscription", _module)
 pulumi.runtime.registerResourceModule("postgresql", "index/userMapping", _module)

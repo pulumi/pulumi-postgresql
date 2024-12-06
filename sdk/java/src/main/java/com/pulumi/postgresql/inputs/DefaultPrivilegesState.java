@@ -48,14 +48,14 @@ public final class DefaultPrivilegesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+     * Specifies the role that creates objects for which the default privileges will be applied.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+     * @return Specifies the role that creates objects for which the default privileges will be applied.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -63,14 +63,14 @@ public final class DefaultPrivilegesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+     * List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
      * 
      */
     @Import(name="privileges")
     private @Nullable Output<List<String>> privileges;
 
     /**
-     * @return The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+     * @return List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
      * 
      */
     public Optional<Output<List<String>>> privileges() {
@@ -78,14 +78,14 @@ public final class DefaultPrivilegesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the role to which grant default privileges on.
+     * The role that will automatically be granted the specified privileges on new objects created by the owner.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return The name of the role to which grant default privileges on.
+     * @return The role that will automatically be granted the specified privileges on new objects created by the owner.
      * 
      */
     public Optional<Output<String>> role() {
@@ -195,7 +195,7 @@ public final class DefaultPrivilegesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param owner Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+         * @param owner Specifies the role that creates objects for which the default privileges will be applied.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class DefaultPrivilegesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param owner Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+         * @param owner Specifies the role that creates objects for which the default privileges will be applied.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class DefaultPrivilegesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param privileges The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+         * @param privileges List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class DefaultPrivilegesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param privileges The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+         * @param privileges List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class DefaultPrivilegesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param privileges The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+         * @param privileges List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class DefaultPrivilegesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param role The name of the role to which grant default privileges on.
+         * @param role The role that will automatically be granted the specified privileges on new objects created by the owner.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class DefaultPrivilegesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param role The name of the role to which grant default privileges on.
+         * @param role The role that will automatically be granted the specified privileges on new objects created by the owner.
          * 
          * @return builder
          * 

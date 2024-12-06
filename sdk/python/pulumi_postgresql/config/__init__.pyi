@@ -26,6 +26,11 @@ awsRdsIamProfile: Optional[str]
 AWS profile to use for IAM auth
 """
 
+awsRdsIamProviderRoleArn: Optional[str]
+"""
+AWS IAM role to assume for IAM auth
+"""
+
 awsRdsIamRegion: Optional[str]
 """
 AWS region to use for IAM auth

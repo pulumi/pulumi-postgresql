@@ -32,6 +32,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly awsRdsIamProfile!: pulumi.Output<string | undefined>;
     /**
+     * AWS IAM role to assume for IAM auth
+     */
+    public readonly awsRdsIamProviderRoleArn!: pulumi.Output<string | undefined>;
+    /**
      * AWS region to use for IAM auth
      */
     public readonly awsRdsIamRegion!: pulumi.Output<string | undefined>;
@@ -92,6 +96,7 @@ export class Provider extends pulumi.ProviderResource {
         {
             resourceInputs["awsRdsIamAuth"] = pulumi.output(args ? args.awsRdsIamAuth : undefined).apply(JSON.stringify);
             resourceInputs["awsRdsIamProfile"] = args ? args.awsRdsIamProfile : undefined;
+            resourceInputs["awsRdsIamProviderRoleArn"] = args ? args.awsRdsIamProviderRoleArn : undefined;
             resourceInputs["awsRdsIamRegion"] = args ? args.awsRdsIamRegion : undefined;
             resourceInputs["azureIdentityAuth"] = pulumi.output(args ? args.azureIdentityAuth : undefined).apply(JSON.stringify);
             resourceInputs["azureTenantId"] = args ? args.azureTenantId : undefined;
@@ -132,6 +137,10 @@ export interface ProviderArgs {
      * AWS profile to use for IAM auth
      */
     awsRdsIamProfile?: pulumi.Input<string>;
+    /**
+     * AWS IAM role to assume for IAM auth
+     */
+    awsRdsIamProviderRoleArn?: pulumi.Input<string>;
     /**
      * AWS region to use for IAM auth
      */

@@ -21,6 +21,7 @@ from .publication import *
 from .replication_slot import *
 from .role import *
 from .schema import *
+from .security_label import *
 from .server import *
 from .subscription import *
 from .user_mapping import *
@@ -131,6 +132,14 @@ _utilities.register(
   "fqn": "pulumi_postgresql",
   "classes": {
    "postgresql:index/schema:Schema": "Schema"
+  }
+ },
+ {
+  "pkg": "postgresql",
+  "mod": "index/securityLabel",
+  "fqn": "pulumi_postgresql",
+  "classes": {
+   "postgresql:index/securityLabel:SecurityLabel": "SecurityLabel"
   }
  },
  {

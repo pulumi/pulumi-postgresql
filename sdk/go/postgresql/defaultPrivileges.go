@@ -51,7 +51,43 @@ import (
 //
 // ## Examples
 //
-// Revoke default privileges for functions for "public" role:
+// ### Grant default privileges for tables to "currentRole" role:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewDefaultPrivileges(ctx, "grant_table_privileges", &postgresql.DefaultPrivilegesArgs{
+//				Database:   pulumi.Any(exampleDb.Name),
+//				Role:       pulumi.String("current_role"),
+//				Owner:      pulumi.String("owner_role"),
+//				Schema:     pulumi.String("public"),
+//				ObjectType: pulumi.String("table"),
+//				Privileges: pulumi.StringArray{
+//					pulumi.String("SELECT"),
+//					pulumi.String("INSERT"),
+//					pulumi.String("UPDATE"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// Whenever the `ownerRole` creates a new table in the `public` schema, the `currentRole` is automatically granted SELECT, INSERT, and UPDATE privileges on that table.
+//
+// ### Revoke default privileges for functions for "public" role:
 //
 // ```go
 // package main
@@ -87,11 +123,11 @@ type DefaultPrivileges struct {
 	Database pulumi.StringOutput `pulumi:"database"`
 	// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
-	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+	// Specifies the role that creates objects for which the default privileges will be applied.
 	Owner pulumi.StringOutput `pulumi:"owner"`
-	// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+	// List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
 	Privileges pulumi.StringArrayOutput `pulumi:"privileges"`
-	// The name of the role to which grant default privileges on.
+	// The role that will automatically be granted the specified privileges on new objects created by the owner.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// The database schema to set default privileges for this role.
 	Schema pulumi.StringPtrOutput `pulumi:"schema"`
@@ -154,11 +190,11 @@ type defaultPrivilegesState struct {
 	Database *string `pulumi:"database"`
 	// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
 	ObjectType *string `pulumi:"objectType"`
-	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+	// Specifies the role that creates objects for which the default privileges will be applied.
 	Owner *string `pulumi:"owner"`
-	// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+	// List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
 	Privileges []string `pulumi:"privileges"`
-	// The name of the role to which grant default privileges on.
+	// The role that will automatically be granted the specified privileges on new objects created by the owner.
 	Role *string `pulumi:"role"`
 	// The database schema to set default privileges for this role.
 	Schema *string `pulumi:"schema"`
@@ -171,11 +207,11 @@ type DefaultPrivilegesState struct {
 	Database pulumi.StringPtrInput
 	// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
 	ObjectType pulumi.StringPtrInput
-	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+	// Specifies the role that creates objects for which the default privileges will be applied.
 	Owner pulumi.StringPtrInput
-	// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+	// List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
 	Privileges pulumi.StringArrayInput
-	// The name of the role to which grant default privileges on.
+	// The role that will automatically be granted the specified privileges on new objects created by the owner.
 	Role pulumi.StringPtrInput
 	// The database schema to set default privileges for this role.
 	Schema pulumi.StringPtrInput
@@ -192,11 +228,11 @@ type defaultPrivilegesArgs struct {
 	Database string `pulumi:"database"`
 	// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
 	ObjectType string `pulumi:"objectType"`
-	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+	// Specifies the role that creates objects for which the default privileges will be applied.
 	Owner string `pulumi:"owner"`
-	// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+	// List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
 	Privileges []string `pulumi:"privileges"`
-	// The name of the role to which grant default privileges on.
+	// The role that will automatically be granted the specified privileges on new objects created by the owner.
 	Role string `pulumi:"role"`
 	// The database schema to set default privileges for this role.
 	Schema *string `pulumi:"schema"`
@@ -210,11 +246,11 @@ type DefaultPrivilegesArgs struct {
 	Database pulumi.StringInput
 	// The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
 	ObjectType pulumi.StringInput
-	// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+	// Specifies the role that creates objects for which the default privileges will be applied.
 	Owner pulumi.StringInput
-	// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+	// List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
 	Privileges pulumi.StringArrayInput
-	// The name of the role to which grant default privileges on.
+	// The role that will automatically be granted the specified privileges on new objects created by the owner.
 	Role pulumi.StringInput
 	// The database schema to set default privileges for this role.
 	Schema pulumi.StringPtrInput
@@ -319,17 +355,17 @@ func (o DefaultPrivilegesOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultPrivileges) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
 }
 
-// Role for which apply default privileges (You can change default privileges only for objects that will be created by yourself or by roles that you are a member of).
+// Specifies the role that creates objects for which the default privileges will be applied.
 func (o DefaultPrivilegesOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultPrivileges) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// The list of privileges to apply as default privileges. An empty list could be provided to revoke all default privileges for this role.
+// List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
 func (o DefaultPrivilegesOutput) Privileges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DefaultPrivileges) pulumi.StringArrayOutput { return v.Privileges }).(pulumi.StringArrayOutput)
 }
 
-// The name of the role to which grant default privileges on.
+// The role that will automatically be granted the specified privileges on new objects created by the owner.
 func (o DefaultPrivilegesOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultPrivileges) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
