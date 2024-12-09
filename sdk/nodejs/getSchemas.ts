@@ -95,7 +95,7 @@ export interface GetSchemasResult {
  * });
  * ```
  */
-export function getSchemasOutput(args: GetSchemasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchemasResult> {
+export function getSchemasOutput(args: GetSchemasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSchemasResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("postgresql:index/getSchemas:getSchemas", {
         "database": args.database,
