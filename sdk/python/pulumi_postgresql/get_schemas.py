@@ -169,7 +169,7 @@ def get_schemas_output(database: Optional[pulumi.Input[str]] = None,
                        like_any_patterns: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        not_like_all_patterns: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        regex_pattern: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSchemasResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSchemasResult]:
     """
     The ``get_schemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
 
@@ -199,7 +199,7 @@ def get_schemas_output(database: Optional[pulumi.Input[str]] = None,
     __args__['likeAnyPatterns'] = like_any_patterns
     __args__['notLikeAllPatterns'] = not_like_all_patterns
     __args__['regexPattern'] = regex_pattern
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('postgresql:index/getSchemas:getSchemas', __args__, opts=opts, typ=GetSchemasResult)
     return __ret__.apply(lambda __response__: GetSchemasResult(
         database=pulumi.get(__response__, 'database'),
