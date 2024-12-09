@@ -98,7 +98,7 @@ export interface GetSequencesResult {
  * });
  * ```
  */
-export function getSequencesOutput(args: GetSequencesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSequencesResult> {
+export function getSequencesOutput(args: GetSequencesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSequencesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("postgresql:index/getSequences:getSequences", {
         "database": args.database,
