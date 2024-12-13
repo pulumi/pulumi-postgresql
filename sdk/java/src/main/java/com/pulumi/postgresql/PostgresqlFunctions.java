@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.postgresql.Utilities;
 import com.pulumi.postgresql.inputs.GetSchemasArgs;
 import com.pulumi.postgresql.inputs.GetSchemasPlainArgs;
@@ -144,6 +145,48 @@ public final class PostgresqlFunctions {
      * 
      */
     public static Output<GetSchemasResult> getSchemas(GetSchemasArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("postgresql:index/getSchemas:getSchemas", TypeShape.of(GetSchemasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
+     * 
+     * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.postgresql.PostgresqlFunctions;
+     * import com.pulumi.postgresql.inputs.GetSchemasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mySchemas = PostgresqlFunctions.getSchemas(GetSchemasArgs.builder()
+     *             .database("my_database")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemasResult> getSchemas(GetSchemasArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("postgresql:index/getSchemas:getSchemas", TypeShape.of(GetSchemasResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -353,6 +396,48 @@ public final class PostgresqlFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSequencesResult> getSequences(GetSequencesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("postgresql:index/getSequences:getSequences", TypeShape.of(GetSequencesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
+     * 
+     * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.postgresql.PostgresqlFunctions;
+     * import com.pulumi.postgresql.inputs.GetSequencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mySequences = PostgresqlFunctions.getSequences(GetSequencesArgs.builder()
+     *             .database("my_database")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSequencesResult> getSequencesPlain(GetSequencesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("postgresql:index/getSequences:getSequences", TypeShape.of(GetSequencesResult.class), args, Utilities.withVersion(options));
     }
@@ -480,6 +565,48 @@ public final class PostgresqlFunctions {
      * 
      */
     public static Output<GetTablesResult> getTables(GetTablesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("postgresql:index/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
+     * 
+     * ## Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.postgresql.PostgresqlFunctions;
+     * import com.pulumi.postgresql.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myTables = PostgresqlFunctions.getTables(GetTablesArgs.builder()
+     *             .database("my_database")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTablesResult> getTables(GetTablesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("postgresql:index/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
