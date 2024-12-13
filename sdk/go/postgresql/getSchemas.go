@@ -81,21 +81,11 @@ type GetSchemasResult struct {
 }
 
 func GetSchemasOutput(ctx *pulumi.Context, args GetSchemasOutputArgs, opts ...pulumi.InvokeOption) GetSchemasResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSchemasResultOutput, error) {
 			args := v.(GetSchemasArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSchemasResult
-			secret, err := ctx.InvokePackageRaw("postgresql:index/getSchemas:getSchemas", args, &rv, "", opts...)
-			if err != nil {
-				return GetSchemasResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSchemasResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSchemasResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("postgresql:index/getSchemas:getSchemas", args, GetSchemasResultOutput{}, options).(GetSchemasResultOutput), nil
 		}).(GetSchemasResultOutput)
 }
 

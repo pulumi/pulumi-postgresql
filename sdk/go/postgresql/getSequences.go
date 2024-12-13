@@ -82,21 +82,11 @@ type GetSequencesResult struct {
 }
 
 func GetSequencesOutput(ctx *pulumi.Context, args GetSequencesOutputArgs, opts ...pulumi.InvokeOption) GetSequencesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSequencesResultOutput, error) {
 			args := v.(GetSequencesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSequencesResult
-			secret, err := ctx.InvokePackageRaw("postgresql:index/getSequences:getSequences", args, &rv, "", opts...)
-			if err != nil {
-				return GetSequencesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSequencesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSequencesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("postgresql:index/getSequences:getSequences", args, GetSequencesResultOutput{}, options).(GetSequencesResultOutput), nil
 		}).(GetSequencesResultOutput)
 }
 
