@@ -133,6 +133,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		EnableZeroDefaultSchemaVersion: true,
+		EnableAccurateBridgePreview:    true,
 	}
 
 	prov.RenameResourceWithAlias("postgresql_default_privileges", makeResource(mainMod, "DefaultPrivileg"),
