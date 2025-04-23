@@ -66,6 +66,9 @@ class _PhysicalReplicationSlotState:
 
 
 class PhysicalReplicationSlot(pulumi.CustomResource):
+
+    pulumi_type = "postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
