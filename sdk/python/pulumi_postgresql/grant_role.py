@@ -128,6 +128,9 @@ class _GrantRoleState:
 
 
 class GrantRole(pulumi.CustomResource):
+
+    pulumi_type = "postgresql:index/grantRole:GrantRole"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
