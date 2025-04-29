@@ -129,6 +129,9 @@ class _ReplicationSlotState:
 
 
 class ReplicationSlot(pulumi.CustomResource):
+
+    pulumi_type = "postgresql:index/replicationSlot:ReplicationSlot"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -152,6 +152,9 @@ class _UserMappingState:
 
 
 class UserMapping(pulumi.CustomResource):
+
+    pulumi_type = "postgresql:index/userMapping:UserMapping"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
