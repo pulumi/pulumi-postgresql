@@ -244,6 +244,9 @@ class _SchemaState:
 
 
 class Schema(pulumi.CustomResource):
+
+    pulumi_type = "postgresql:index/schema:Schema"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
