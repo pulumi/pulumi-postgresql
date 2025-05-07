@@ -60,10 +60,8 @@ export type PhysicalReplicationSlot = import("./physicalReplicationSlot").Physic
 export const PhysicalReplicationSlot: typeof import("./physicalReplicationSlot").PhysicalReplicationSlot = null as any;
 utilities.lazyLoad(exports, ["PhysicalReplicationSlot"], () => require("./physicalReplicationSlot"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { PublicationArgs, PublicationState } from "./publication";
 export type Publication = import("./publication").Publication;

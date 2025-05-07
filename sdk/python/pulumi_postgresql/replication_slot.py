@@ -128,10 +128,8 @@ class _ReplicationSlotState:
         pulumi.set(self, "plugin", value)
 
 
+@pulumi.type_token("postgresql:index/replicationSlot:ReplicationSlot")
 class ReplicationSlot(pulumi.CustomResource):
-
-    pulumi_type = "postgresql:index/replicationSlot:ReplicationSlot"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

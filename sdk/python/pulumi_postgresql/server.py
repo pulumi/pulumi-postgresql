@@ -279,10 +279,8 @@ class _ServerState:
         pulumi.set(self, "server_version", value)
 
 
+@pulumi.type_token("postgresql:index/server:Server")
 class Server(pulumi.CustomResource):
-
-    pulumi_type = "postgresql:index/server:Server"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

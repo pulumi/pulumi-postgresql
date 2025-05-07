@@ -243,10 +243,8 @@ class _SchemaState:
         pulumi.set(self, "policies", value)
 
 
+@pulumi.type_token("postgresql:index/schema:Schema")
 class Schema(pulumi.CustomResource):
-
-    pulumi_type = "postgresql:index/schema:Schema"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
