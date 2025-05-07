@@ -501,6 +501,9 @@
                 "type": "string",
                 "description": "PostgreSQL user name to connect as\n"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:postgresql/terraformConfig"
         }
     },
     "resources": {
@@ -2766,6 +2769,35 @@
                     "database",
                     "tables",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:postgresql/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:postgresql"
+                    }
+                },
+                "type": "pulumi:providers:postgresql/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }
