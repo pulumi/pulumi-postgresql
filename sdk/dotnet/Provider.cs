@@ -128,6 +128,12 @@ namespace Pulumi.PostgreSql
             merged.Id = id ?? merged.Id;
             return merged;
         }
+
+        /// <summary>
+        /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+        /// </summary>
+        public global::Pulumi.Output<ProviderTerraformConfigResult> TerraformConfig()
+            => global::Pulumi.Deployment.Instance.Call<ProviderTerraformConfigResult>("pulumi:providers:postgresql/terraformConfig", CallArgs.Empty, this);
     }
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
@@ -275,5 +281,20 @@ namespace Pulumi.PostgreSql
             Sslmode = Utilities.GetEnv("PGSSLMODE");
         }
         public static new ProviderArgs Empty => new ProviderArgs();
+    }
+
+    /// <summary>
+    /// The results of the <see cref="Provider.TerraformConfig"/> method.
+    /// </summary>
+    [OutputType]
+    public sealed class ProviderTerraformConfigResult
+    {
+        public readonly ImmutableDictionary<string, object> Result;
+
+        [OutputConstructor]
+        private ProviderTerraformConfigResult(ImmutableDictionary<string, object> result)
+        {
+            Result = result;
+        }
     }
 }

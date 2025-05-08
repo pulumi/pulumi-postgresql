@@ -289,10 +289,8 @@ class _PublicationState:
         pulumi.set(self, "tables", value)
 
 
+@pulumi.type_token("postgresql:index/publication:Publication")
 class Publication(pulumi.CustomResource):
-
-    pulumi_type = "postgresql:index/publication:Publication"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

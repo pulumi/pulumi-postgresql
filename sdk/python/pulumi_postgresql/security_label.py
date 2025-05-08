@@ -157,10 +157,8 @@ class _SecurityLabelState:
         pulumi.set(self, "object_type", value)
 
 
+@pulumi.type_token("postgresql:index/securityLabel:SecurityLabel")
 class SecurityLabel(pulumi.CustomResource):
-
-    pulumi_type = "postgresql:index/securityLabel:SecurityLabel"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -225,10 +225,8 @@ class _ExtensionState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("postgresql:index/extension:Extension")
 class Extension(pulumi.CustomResource):
-
-    pulumi_type = "postgresql:index/extension:Extension"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
