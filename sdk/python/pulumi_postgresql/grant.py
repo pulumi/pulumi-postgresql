@@ -285,10 +285,8 @@ class _GrantState:
         pulumi.set(self, "with_grant_option", value)
 
 
+@pulumi.type_token("postgresql:index/grant:Grant")
 class Grant(pulumi.CustomResource):
-
-    pulumi_type = "postgresql:index/grant:Grant"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

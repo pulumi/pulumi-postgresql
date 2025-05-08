@@ -825,10 +825,8 @@ class _RoleState:
         pulumi.set(self, "valid_until", value)
 
 
+@pulumi.type_token("postgresql:index/role:Role")
 class Role(pulumi.CustomResource):
-
-    pulumi_type = "postgresql:index/role:Role"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

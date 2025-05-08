@@ -252,10 +252,8 @@ class _DefaultPrivilegesState:
         pulumi.set(self, "with_grant_option", value)
 
 
+@pulumi.type_token("postgresql:index/defaultPrivileges:DefaultPrivileges")
 class DefaultPrivileges(pulumi.CustomResource):
-
-    pulumi_type = "postgresql:index/defaultPrivileges:DefaultPrivileges"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

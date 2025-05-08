@@ -255,11 +255,9 @@ class _DefaultPrivilegState:
 warnings.warn("""postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges""", DeprecationWarning)
 
 
+@pulumi.type_token("postgresql:index/defaultPrivileg:DefaultPrivileg")
 class DefaultPrivileg(pulumi.CustomResource):
     warnings.warn("""postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges""", DeprecationWarning)
-
-
-    pulumi_type = "postgresql:index/defaultPrivileg:DefaultPrivileg"
 
     @overload
     def __init__(__self__,

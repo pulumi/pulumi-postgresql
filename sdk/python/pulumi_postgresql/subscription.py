@@ -223,10 +223,8 @@ class _SubscriptionState:
         pulumi.set(self, "slot_name", value)
 
 
+@pulumi.type_token("postgresql:index/subscription:Subscription")
 class Subscription(pulumi.CustomResource):
-
-    pulumi_type = "postgresql:index/subscription:Subscription"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

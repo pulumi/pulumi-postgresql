@@ -382,10 +382,8 @@ class ProviderArgs:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("pulumi:providers:postgresql")
 class Provider(pulumi.ProviderResource):
-
-    pulumi_type = "pulumi:providers:postgresql"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -649,4 +647,24 @@ class Provider(pulumi.ProviderResource):
         PostgreSQL user name to connect as
         """
         return pulumi.get(self, "username")
+
+    @pulumi.output_type
+    class TerraformConfigResult:
+        def __init__(__self__, result=None):
+            if result and not isinstance(result, dict):
+                raise TypeError("Expected argument 'result' to be a dict")
+            pulumi.set(__self__, "result", result)
+
+        @property
+        @pulumi.getter
+        def result(self) -> Mapping[str, Any]:
+            return pulumi.get(self, "result")
+
+    def terraform_config(__self__) -> pulumi.Output['Provider.TerraformConfigResult']:
+        """
+        This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+        """
+        __args__ = dict()
+        __args__['__self__'] = __self__
+        return pulumi.runtime.call('pulumi:providers:postgresql/terraformConfig', __args__, res=__self__, typ=Provider.TerraformConfigResult)
 
