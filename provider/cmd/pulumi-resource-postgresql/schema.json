@@ -53,34 +53,34 @@
         "variables": {
             "awsRdsIamAuth": {
                 "type": "boolean",
-                "description": "Use rds_iam instead of password authentication (see:\nhttps://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)\n"
+                "description": "Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)"
             },
             "awsRdsIamProfile": {
                 "type": "string",
-                "description": "AWS profile to use for IAM auth\n"
+                "description": "AWS profile to use for IAM auth"
             },
             "awsRdsIamProviderRoleArn": {
                 "type": "string",
-                "description": "AWS IAM role to assume for IAM auth\n"
+                "description": "AWS IAM role to assume for IAM auth"
             },
             "awsRdsIamRegion": {
                 "type": "string",
-                "description": "AWS region to use for IAM auth\n"
+                "description": "AWS region to use for IAM auth"
             },
             "azureIdentityAuth": {
                 "type": "boolean",
-                "description": "Use MS Azure identity OAuth token (see:\nhttps://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)\n"
+                "description": "Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)"
             },
             "azureTenantId": {
                 "type": "string"
             },
             "clientcert": {
                 "$ref": "#/types/postgresql:config/clientcert:clientcert",
-                "description": "SSL client certificate if required by the database.\n"
+                "description": "SSL client certificate if required by the database."
             },
             "connectTimeout": {
                 "type": "integer",
-                "description": "Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.\n",
+                "description": "Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.",
                 "default": 180,
                 "defaultInfo": {
                     "environment": [
@@ -90,36 +90,36 @@
             },
             "database": {
                 "type": "string",
-                "description": "The name of the database to connect to in order to conenct to (defaults to `postgres`).\n"
+                "description": "The name of the database to connect to in order to conenct to (defaults to `postgres`)."
             },
             "databaseUsername": {
                 "type": "string",
-                "description": "Database username associated to the connected user (for user name maps)\n"
+                "description": "Database username associated to the connected user (for user name maps)"
             },
             "expectedVersion": {
                 "type": "string",
-                "description": "Specify the expected version of PostgreSQL.\n"
+                "description": "Specify the expected version of PostgreSQL."
             },
             "gcpIamImpersonateServiceAccount": {
                 "type": "string",
-                "description": "Service account to impersonate when using GCP IAM authentication.\n"
+                "description": "Service account to impersonate when using GCP IAM authentication."
             },
             "host": {
                 "type": "string",
-                "description": "Name of PostgreSQL server address to connect to\n"
+                "description": "Name of PostgreSQL server address to connect to"
             },
             "maxConnections": {
                 "type": "integer",
-                "description": "Maximum number of connections to establish to the database. Zero means unlimited.\n"
+                "description": "Maximum number of connections to establish to the database. Zero means unlimited."
             },
             "password": {
                 "type": "string",
-                "description": "Password to be used if the PostgreSQL server demands password authentication\n",
+                "description": "Password to be used if the PostgreSQL server demands password authentication",
                 "secret": true
             },
             "port": {
                 "type": "integer",
-                "description": "The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections\n"
+                "description": "The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections"
             },
             "scheme": {
                 "type": "string"
@@ -130,7 +130,7 @@
             },
             "sslmode": {
                 "type": "string",
-                "description": "This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the\nPostgreSQL server\n",
+                "description": "This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server",
                 "defaultInfo": {
                     "environment": [
                         "PGSSLMODE"
@@ -139,15 +139,15 @@
             },
             "sslrootcert": {
                 "type": "string",
-                "description": "The SSL server root certificate file path. The file must contain PEM encoded data.\n"
+                "description": "The SSL server root certificate file path. The file must contain PEM encoded data."
             },
             "superuser": {
                 "type": "boolean",
-                "description": "Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:\nRefreshing state password from Postgres)\n"
+                "description": "Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)"
             },
             "username": {
                 "type": "string",
-                "description": "PostgreSQL user name to connect as\n"
+                "description": "PostgreSQL user name to connect as"
             }
         }
     },
@@ -316,67 +316,67 @@
         "properties": {
             "awsRdsIamAuth": {
                 "type": "boolean",
-                "description": "Use rds_iam instead of password authentication (see:\nhttps://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)\n"
+                "description": "Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)"
             },
             "awsRdsIamProfile": {
                 "type": "string",
-                "description": "AWS profile to use for IAM auth\n"
+                "description": "AWS profile to use for IAM auth"
             },
             "awsRdsIamProviderRoleArn": {
                 "type": "string",
-                "description": "AWS IAM role to assume for IAM auth\n"
+                "description": "AWS IAM role to assume for IAM auth"
             },
             "awsRdsIamRegion": {
                 "type": "string",
-                "description": "AWS region to use for IAM auth\n"
+                "description": "AWS region to use for IAM auth"
             },
             "azureIdentityAuth": {
                 "type": "boolean",
-                "description": "Use MS Azure identity OAuth token (see:\nhttps://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)\n"
+                "description": "Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)"
             },
             "azureTenantId": {
                 "type": "string"
             },
             "clientcert": {
                 "$ref": "#/types/postgresql:index/ProviderClientcert:ProviderClientcert",
-                "description": "SSL client certificate if required by the database.\n"
+                "description": "SSL client certificate if required by the database."
             },
             "connectTimeout": {
                 "type": "integer",
-                "description": "Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.\n"
+                "description": "Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely."
             },
             "database": {
                 "type": "string",
-                "description": "The name of the database to connect to in order to conenct to (defaults to `postgres`).\n"
+                "description": "The name of the database to connect to in order to conenct to (defaults to `postgres`)."
             },
             "databaseUsername": {
                 "type": "string",
-                "description": "Database username associated to the connected user (for user name maps)\n"
+                "description": "Database username associated to the connected user (for user name maps)"
             },
             "expectedVersion": {
                 "type": "string",
-                "description": "Specify the expected version of PostgreSQL.\n"
+                "description": "Specify the expected version of PostgreSQL."
             },
             "gcpIamImpersonateServiceAccount": {
                 "type": "string",
-                "description": "Service account to impersonate when using GCP IAM authentication.\n"
+                "description": "Service account to impersonate when using GCP IAM authentication."
             },
             "host": {
                 "type": "string",
-                "description": "Name of PostgreSQL server address to connect to\n"
+                "description": "Name of PostgreSQL server address to connect to"
             },
             "maxConnections": {
                 "type": "integer",
-                "description": "Maximum number of connections to establish to the database. Zero means unlimited.\n"
+                "description": "Maximum number of connections to establish to the database. Zero means unlimited."
             },
             "password": {
                 "type": "string",
-                "description": "Password to be used if the PostgreSQL server demands password authentication\n",
+                "description": "Password to be used if the PostgreSQL server demands password authentication",
                 "secret": true
             },
             "port": {
                 "type": "integer",
-                "description": "The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections\n"
+                "description": "The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections"
             },
             "scheme": {
                 "type": "string"
@@ -387,52 +387,52 @@
             },
             "sslmode": {
                 "type": "string",
-                "description": "This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the\nPostgreSQL server\n"
+                "description": "This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server"
             },
             "sslrootcert": {
                 "type": "string",
-                "description": "The SSL server root certificate file path. The file must contain PEM encoded data.\n"
+                "description": "The SSL server root certificate file path. The file must contain PEM encoded data."
             },
             "superuser": {
                 "type": "boolean",
-                "description": "Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:\nRefreshing state password from Postgres)\n"
+                "description": "Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)"
             },
             "username": {
                 "type": "string",
-                "description": "PostgreSQL user name to connect as\n"
+                "description": "PostgreSQL user name to connect as"
             }
         },
         "inputProperties": {
             "awsRdsIamAuth": {
                 "type": "boolean",
-                "description": "Use rds_iam instead of password authentication (see:\nhttps://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)\n"
+                "description": "Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)"
             },
             "awsRdsIamProfile": {
                 "type": "string",
-                "description": "AWS profile to use for IAM auth\n"
+                "description": "AWS profile to use for IAM auth"
             },
             "awsRdsIamProviderRoleArn": {
                 "type": "string",
-                "description": "AWS IAM role to assume for IAM auth\n"
+                "description": "AWS IAM role to assume for IAM auth"
             },
             "awsRdsIamRegion": {
                 "type": "string",
-                "description": "AWS region to use for IAM auth\n"
+                "description": "AWS region to use for IAM auth"
             },
             "azureIdentityAuth": {
                 "type": "boolean",
-                "description": "Use MS Azure identity OAuth token (see:\nhttps://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)\n"
+                "description": "Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)"
             },
             "azureTenantId": {
                 "type": "string"
             },
             "clientcert": {
                 "$ref": "#/types/postgresql:index/ProviderClientcert:ProviderClientcert",
-                "description": "SSL client certificate if required by the database.\n"
+                "description": "SSL client certificate if required by the database."
             },
             "connectTimeout": {
                 "type": "integer",
-                "description": "Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.\n",
+                "description": "Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.",
                 "default": 180,
                 "defaultInfo": {
                     "environment": [
@@ -442,36 +442,36 @@
             },
             "database": {
                 "type": "string",
-                "description": "The name of the database to connect to in order to conenct to (defaults to `postgres`).\n"
+                "description": "The name of the database to connect to in order to conenct to (defaults to `postgres`)."
             },
             "databaseUsername": {
                 "type": "string",
-                "description": "Database username associated to the connected user (for user name maps)\n"
+                "description": "Database username associated to the connected user (for user name maps)"
             },
             "expectedVersion": {
                 "type": "string",
-                "description": "Specify the expected version of PostgreSQL.\n"
+                "description": "Specify the expected version of PostgreSQL."
             },
             "gcpIamImpersonateServiceAccount": {
                 "type": "string",
-                "description": "Service account to impersonate when using GCP IAM authentication.\n"
+                "description": "Service account to impersonate when using GCP IAM authentication."
             },
             "host": {
                 "type": "string",
-                "description": "Name of PostgreSQL server address to connect to\n"
+                "description": "Name of PostgreSQL server address to connect to"
             },
             "maxConnections": {
                 "type": "integer",
-                "description": "Maximum number of connections to establish to the database. Zero means unlimited.\n"
+                "description": "Maximum number of connections to establish to the database. Zero means unlimited."
             },
             "password": {
                 "type": "string",
-                "description": "Password to be used if the PostgreSQL server demands password authentication\n",
+                "description": "Password to be used if the PostgreSQL server demands password authentication",
                 "secret": true
             },
             "port": {
                 "type": "integer",
-                "description": "The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections\n"
+                "description": "The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections"
             },
             "scheme": {
                 "type": "string"
@@ -482,7 +482,7 @@
             },
             "sslmode": {
                 "type": "string",
-                "description": "This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the\nPostgreSQL server\n",
+                "description": "This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server",
                 "defaultInfo": {
                     "environment": [
                         "PGSSLMODE"
@@ -491,15 +491,15 @@
             },
             "sslrootcert": {
                 "type": "string",
-                "description": "The SSL server root certificate file path. The file must contain PEM encoded data.\n"
+                "description": "The SSL server root certificate file path. The file must contain PEM encoded data."
             },
             "superuser": {
                 "type": "boolean",
-                "description": "Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:\nRefreshing state password from Postgres)\n"
+                "description": "Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)"
             },
             "username": {
                 "type": "string",
-                "description": "PostgreSQL user name to connect as\n"
+                "description": "PostgreSQL user name to connect as"
             }
         },
         "methods": {
@@ -523,7 +523,7 @@
                 },
                 "encoding": {
                     "type": "string",
-                    "description": "Character set encoding to use in the new database\n"
+                    "description": "Character set encoding to use in the new database"
                 },
                 "isTemplate": {
                     "type": "boolean",
@@ -531,11 +531,11 @@
                 },
                 "lcCollate": {
                     "type": "string",
-                    "description": "Collation order (LC_COLLATE) to use in the new database\n"
+                    "description": "Collation order (LC_COLLATE) to use in the new database"
                 },
                 "lcCtype": {
                     "type": "string",
-                    "description": "Character classification (LC_CTYPE) to use in the new database\n"
+                    "description": "Character classification (LC_CTYPE) to use in the new database"
                 },
                 "name": {
                     "type": "string",
@@ -551,7 +551,7 @@
                 },
                 "template": {
                     "type": "string",
-                    "description": "The name of the template from which to create the new database\n"
+                    "description": "The name of the template from which to create the new database"
                 }
             },
             "required": [
@@ -579,7 +579,7 @@
                 },
                 "encoding": {
                     "type": "string",
-                    "description": "Character set encoding to use in the new database\n",
+                    "description": "Character set encoding to use in the new database",
                     "willReplaceOnChanges": true
                 },
                 "isTemplate": {
@@ -588,12 +588,12 @@
                 },
                 "lcCollate": {
                     "type": "string",
-                    "description": "Collation order (LC_COLLATE) to use in the new database\n",
+                    "description": "Collation order (LC_COLLATE) to use in the new database",
                     "willReplaceOnChanges": true
                 },
                 "lcCtype": {
                     "type": "string",
-                    "description": "Character classification (LC_CTYPE) to use in the new database\n",
+                    "description": "Character classification (LC_CTYPE) to use in the new database",
                     "willReplaceOnChanges": true
                 },
                 "name": {
@@ -610,7 +610,7 @@
                 },
                 "template": {
                     "type": "string",
-                    "description": "The name of the template from which to create the new database\n",
+                    "description": "The name of the template from which to create the new database",
                     "willReplaceOnChanges": true
                 }
             },
@@ -631,7 +631,7 @@
                     },
                     "encoding": {
                         "type": "string",
-                        "description": "Character set encoding to use in the new database\n",
+                        "description": "Character set encoding to use in the new database",
                         "willReplaceOnChanges": true
                     },
                     "isTemplate": {
@@ -640,12 +640,12 @@
                     },
                     "lcCollate": {
                         "type": "string",
-                        "description": "Collation order (LC_COLLATE) to use in the new database\n",
+                        "description": "Collation order (LC_COLLATE) to use in the new database",
                         "willReplaceOnChanges": true
                     },
                     "lcCtype": {
                         "type": "string",
-                        "description": "Character classification (LC_CTYPE) to use in the new database\n",
+                        "description": "Character classification (LC_CTYPE) to use in the new database",
                         "willReplaceOnChanges": true
                     },
                     "name": {
@@ -662,7 +662,7 @@
                     },
                     "template": {
                         "type": "string",
-                        "description": "The name of the template from which to create the new database\n",
+                        "description": "The name of the template from which to create the new database",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -701,7 +701,7 @@
                 },
                 "withGrantOption": {
                     "type": "boolean",
-                    "description": "Permit the grant recipient to grant it to others\n"
+                    "description": "Permit the grant recipient to grant it to others"
                 }
             },
             "required": [
@@ -746,7 +746,7 @@
                 },
                 "withGrantOption": {
                     "type": "boolean",
-                    "description": "Permit the grant recipient to grant it to others\n",
+                    "description": "Permit the grant recipient to grant it to others",
                     "willReplaceOnChanges": true
                 }
             },
@@ -794,7 +794,7 @@
                     },
                     "withGrantOption": {
                         "type": "boolean",
-                        "description": "Permit the grant recipient to grant it to others\n",
+                        "description": "Permit the grant recipient to grant it to others",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -834,7 +834,7 @@
                 },
                 "withGrantOption": {
                     "type": "boolean",
-                    "description": "Permit the grant recipient to grant it to others\n"
+                    "description": "Permit the grant recipient to grant it to others"
                 }
             },
             "required": [
@@ -879,7 +879,7 @@
                 },
                 "withGrantOption": {
                     "type": "boolean",
-                    "description": "Permit the grant recipient to grant it to others\n",
+                    "description": "Permit the grant recipient to grant it to others",
                     "willReplaceOnChanges": true
                 }
             },
@@ -927,7 +927,7 @@
                     },
                     "withGrantOption": {
                         "type": "boolean",
-                        "description": "Permit the grant recipient to grant it to others\n",
+                        "description": "Permit the grant recipient to grant it to others",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -1726,7 +1726,7 @@
                 },
                 "idleInTransactionSessionTimeout": {
                     "type": "integer",
-                    "description": "Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds\n"
+                    "description": "Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds"
                 },
                 "inherit": {
                     "type": "boolean",
@@ -1818,7 +1818,7 @@
                 },
                 "idleInTransactionSessionTimeout": {
                     "type": "integer",
-                    "description": "Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds\n"
+                    "description": "Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds"
                 },
                 "inherit": {
                     "type": "boolean",
@@ -1909,7 +1909,7 @@
                     },
                     "idleInTransactionSessionTimeout": {
                         "type": "integer",
-                        "description": "Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds\n"
+                        "description": "Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds"
                     },
                     "inherit": {
                         "type": "boolean",
@@ -2515,7 +2515,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "includeSystemSchemas": {
@@ -2613,7 +2613,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "likeAllPatterns": {
@@ -2721,7 +2721,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "likeAllPatterns": {

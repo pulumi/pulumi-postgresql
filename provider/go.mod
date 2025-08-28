@@ -1,14 +1,14 @@
 module github.com/pulumi/pulumi-postgresql/provider/v3
 
-go 1.23.0
+go 1.23.11
 
-toolchain go1.23.2
+toolchain go1.24.6
 
 require (
 	github.com/cyrilgdn/terraform-provider-postgresql v0.0.0
 	github.com/pulumi/providertest v0.3.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.112.0
-	github.com/pulumi/pulumi/sdk/v3 v3.185.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.112.1-0.20250828182930-cb6455637cd8
+	github.com/pulumi/pulumi/sdk/v3 v3.190.0
 	github.com/stretchr/testify v1.10.0
 )
 
@@ -154,11 +154,11 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
-	github.com/pulumi/esc v0.14.3 // indirect
+	github.com/pulumi/esc v0.17.0 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
 	github.com/pulumi/pulumi-java/pkg v1.12.0 // indirect
 	github.com/pulumi/pulumi-yaml v1.19.1 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.185.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.190.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
