@@ -56,27 +56,27 @@ export class Extension extends pulumi.CustomResource {
     /**
      * When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
      */
-    public readonly createCascade!: pulumi.Output<boolean | undefined>;
+    declare public readonly createCascade: pulumi.Output<boolean | undefined>;
     /**
      * Which database to create the extension on. Defaults to provider database.
      */
-    public readonly database!: pulumi.Output<string>;
+    declare public readonly database: pulumi.Output<string>;
     /**
      * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
      */
-    public readonly dropCascade!: pulumi.Output<boolean | undefined>;
+    declare public readonly dropCascade: pulumi.Output<boolean | undefined>;
     /**
      * The name of the extension.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Sets the schema of an extension.
      */
-    public readonly schema!: pulumi.Output<string>;
+    declare public readonly schema: pulumi.Output<string>;
     /**
      * Sets the version number of the extension.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
 
     /**
      * Create a Extension resource with the given unique name, arguments, and options.
@@ -91,20 +91,20 @@ export class Extension extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExtensionState | undefined;
-            resourceInputs["createCascade"] = state ? state.createCascade : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["dropCascade"] = state ? state.dropCascade : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["createCascade"] = state?.createCascade;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["dropCascade"] = state?.dropCascade;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as ExtensionArgs | undefined;
-            resourceInputs["createCascade"] = args ? args.createCascade : undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["dropCascade"] = args ? args.dropCascade : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["schema"] = args ? args.schema : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["createCascade"] = args?.createCascade;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["dropCascade"] = args?.dropCascade;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["schema"] = args?.schema;
+            resourceInputs["version"] = args?.version;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Extension.__pulumiType, name, resourceInputs, opts);

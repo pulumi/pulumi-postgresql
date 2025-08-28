@@ -17,8 +17,7 @@ from . import outputs
 
 awsRdsIamAuth: Optional[bool]
 """
-Use rds_iam instead of password authentication (see:
-https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
 """
 
 awsRdsIamProfile: Optional[str]
@@ -38,8 +37,7 @@ AWS region to use for IAM auth
 
 azureIdentityAuth: Optional[bool]
 """
-Use MS Azure identity OAuth token (see:
-https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
 """
 
 azureTenantId: Optional[str]
@@ -100,8 +98,7 @@ sslMode: Optional[str]
 
 sslmode: Optional[str]
 """
-This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-PostgreSQL server
+This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
 """
 
 sslrootcert: Optional[str]
@@ -111,8 +108,7 @@ The SSL server root certificate file path. The file must contain PEM encoded dat
 
 superuser: Optional[bool]
 """
-Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-Refreshing state password from Postgres)
+Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
 """
 
 username: Optional[str]

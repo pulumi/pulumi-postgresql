@@ -64,19 +64,19 @@ export class SecurityLabel extends pulumi.CustomResource {
     /**
      * The value of the security label.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * The name of the provider with which this label is to be associated.
      */
-    public readonly labelProvider!: pulumi.Output<string>;
+    declare public readonly labelProvider: pulumi.Output<string>;
     /**
      * The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.
      */
-    public readonly objectName!: pulumi.Output<string>;
+    declare public readonly objectName: pulumi.Output<string>;
     /**
      * The PostgreSQL object type to apply this security label to.
      */
-    public readonly objectType!: pulumi.Output<string>;
+    declare public readonly objectType: pulumi.Output<string>;
 
     /**
      * Create a SecurityLabel resource with the given unique name, arguments, and options.
@@ -91,28 +91,28 @@ export class SecurityLabel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityLabelState | undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["labelProvider"] = state ? state.labelProvider : undefined;
-            resourceInputs["objectName"] = state ? state.objectName : undefined;
-            resourceInputs["objectType"] = state ? state.objectType : undefined;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["labelProvider"] = state?.labelProvider;
+            resourceInputs["objectName"] = state?.objectName;
+            resourceInputs["objectType"] = state?.objectType;
         } else {
             const args = argsOrState as SecurityLabelArgs | undefined;
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.labelProvider === undefined) && !opts.urn) {
+            if (args?.labelProvider === undefined && !opts.urn) {
                 throw new Error("Missing required property 'labelProvider'");
             }
-            if ((!args || args.objectName === undefined) && !opts.urn) {
+            if (args?.objectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectName'");
             }
-            if ((!args || args.objectType === undefined) && !opts.urn) {
+            if (args?.objectType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectType'");
             }
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["labelProvider"] = args ? args.labelProvider : undefined;
-            resourceInputs["objectName"] = args ? args.objectName : undefined;
-            resourceInputs["objectType"] = args ? args.objectType : undefined;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["labelProvider"] = args?.labelProvider;
+            resourceInputs["objectName"] = args?.objectName;
+            resourceInputs["objectType"] = args?.objectType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecurityLabel.__pulumiType, name, resourceInputs, opts);

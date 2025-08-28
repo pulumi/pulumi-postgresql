@@ -11,8 +11,7 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// Use rdsIam instead of password authentication (see:
-// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+// Use rdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
 func GetAwsRdsIamAuth(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "postgresql:awsRdsIamAuth")
 }
@@ -32,8 +31,7 @@ func GetAwsRdsIamRegion(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:awsRdsIamRegion")
 }
 
-// Use MS Azure identity OAuth token (see:
-// https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+// Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
 func GetAzureIdentityAuth(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "postgresql:azureIdentityAuth")
 }
@@ -107,8 +105,7 @@ func GetSslMode(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:sslMode")
 }
 
-// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-// PostgreSQL server
+// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
 func GetSslmode(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "postgresql:sslmode")
 	if err == nil {
@@ -126,8 +123,7 @@ func GetSslrootcert(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:sslrootcert")
 }
 
-// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-// Refreshing state password from Postgres)
+// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
 func GetSuperuser(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "postgresql:superuser")
 }

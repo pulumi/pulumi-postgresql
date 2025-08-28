@@ -97,31 +97,31 @@ export class DefaultPrivileg extends pulumi.CustomResource {
     /**
      * The database to grant default privileges for this role.
      */
-    public readonly database!: pulumi.Output<string>;
+    declare public readonly database: pulumi.Output<string>;
     /**
      * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
      */
-    public readonly objectType!: pulumi.Output<string>;
+    declare public readonly objectType: pulumi.Output<string>;
     /**
      * Specifies the role that creates objects for which the default privileges will be applied.
      */
-    public readonly owner!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
     /**
      * List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
      */
-    public readonly privileges!: pulumi.Output<string[]>;
+    declare public readonly privileges: pulumi.Output<string[]>;
     /**
      * The role that will automatically be granted the specified privileges on new objects created by the owner.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * The database schema to set default privileges for this role.
      */
-    public readonly schema!: pulumi.Output<string | undefined>;
+    declare public readonly schema: pulumi.Output<string | undefined>;
     /**
      * Permit the grant recipient to grant it to others
      */
-    public readonly withGrantOption!: pulumi.Output<boolean | undefined>;
+    declare public readonly withGrantOption: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a DefaultPrivileg resource with the given unique name, arguments, and options.
@@ -139,37 +139,37 @@ export class DefaultPrivileg extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DefaultPrivilegState | undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["objectType"] = state ? state.objectType : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["privileges"] = state ? state.privileges : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["withGrantOption"] = state ? state.withGrantOption : undefined;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["objectType"] = state?.objectType;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["privileges"] = state?.privileges;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["withGrantOption"] = state?.withGrantOption;
         } else {
             const args = argsOrState as DefaultPrivilegArgs | undefined;
-            if ((!args || args.database === undefined) && !opts.urn) {
+            if (args?.database === undefined && !opts.urn) {
                 throw new Error("Missing required property 'database'");
             }
-            if ((!args || args.objectType === undefined) && !opts.urn) {
+            if (args?.objectType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectType'");
             }
-            if ((!args || args.owner === undefined) && !opts.urn) {
+            if (args?.owner === undefined && !opts.urn) {
                 throw new Error("Missing required property 'owner'");
             }
-            if ((!args || args.privileges === undefined) && !opts.urn) {
+            if (args?.privileges === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privileges'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["objectType"] = args ? args.objectType : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["privileges"] = args ? args.privileges : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["schema"] = args ? args.schema : undefined;
-            resourceInputs["withGrantOption"] = args ? args.withGrantOption : undefined;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["objectType"] = args?.objectType;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["privileges"] = args?.privileges;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["schema"] = args?.schema;
+            resourceInputs["withGrantOption"] = args?.withGrantOption;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DefaultPrivileg.__pulumiType, name, resourceInputs, opts);

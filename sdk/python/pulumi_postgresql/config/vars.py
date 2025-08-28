@@ -24,8 +24,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def aws_rds_iam_auth(self) -> Optional[bool]:
         """
-        Use rds_iam instead of password authentication (see:
-        https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+        Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
         """
         return __config__.get_bool('awsRdsIamAuth')
 
@@ -53,8 +52,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def azure_identity_auth(self) -> Optional[bool]:
         """
-        Use MS Azure identity OAuth token (see:
-        https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+        Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
         """
         return __config__.get_bool('azureIdentityAuth')
 
@@ -143,8 +141,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def sslmode(self) -> Optional[str]:
         """
-        This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-        PostgreSQL server
+        This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
         """
         return __config__.get('sslmode') or _utilities.get_env('PGSSLMODE')
 
@@ -158,8 +155,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def superuser(self) -> Optional[bool]:
         """
-        Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-        Refreshing state password from Postgres)
+        Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
         """
         return __config__.get_bool('superuser')
 

@@ -40,8 +40,7 @@ type Provider struct {
 	Scheme   pulumi.StringPtrOutput `pulumi:"scheme"`
 	// Deprecated: Rename PostgreSQL provider `sslMode` attribute to `sslmode`
 	SslMode pulumi.StringPtrOutput `pulumi:"sslMode"`
-	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-	// PostgreSQL server
+	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
 	Sslmode pulumi.StringPtrOutput `pulumi:"sslmode"`
 	// The SSL server root certificate file path. The file must contain PEM encoded data.
 	Sslrootcert pulumi.StringPtrOutput `pulumi:"sslrootcert"`
@@ -83,8 +82,7 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// Use rdsIam instead of password authentication (see:
-	// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+	// Use rdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
 	AwsRdsIamAuth *bool `pulumi:"awsRdsIamAuth"`
 	// AWS profile to use for IAM auth
 	AwsRdsIamProfile *string `pulumi:"awsRdsIamProfile"`
@@ -92,8 +90,7 @@ type providerArgs struct {
 	AwsRdsIamProviderRoleArn *string `pulumi:"awsRdsIamProviderRoleArn"`
 	// AWS region to use for IAM auth
 	AwsRdsIamRegion *string `pulumi:"awsRdsIamRegion"`
-	// Use MS Azure identity OAuth token (see:
-	// https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+	// Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
 	AzureIdentityAuth *bool   `pulumi:"azureIdentityAuth"`
 	AzureTenantId     *string `pulumi:"azureTenantId"`
 	// SSL client certificate if required by the database.
@@ -119,13 +116,11 @@ type providerArgs struct {
 	Scheme *string `pulumi:"scheme"`
 	// Deprecated: Rename PostgreSQL provider `sslMode` attribute to `sslmode`
 	SslMode *string `pulumi:"sslMode"`
-	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-	// PostgreSQL server
+	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
 	Sslmode *string `pulumi:"sslmode"`
 	// The SSL server root certificate file path. The file must contain PEM encoded data.
 	Sslrootcert *string `pulumi:"sslrootcert"`
-	// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-	// Refreshing state password from Postgres)
+	// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
 	Superuser *bool `pulumi:"superuser"`
 	// PostgreSQL user name to connect as
 	Username *string `pulumi:"username"`
@@ -133,8 +128,7 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// Use rdsIam instead of password authentication (see:
-	// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+	// Use rdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
 	AwsRdsIamAuth pulumi.BoolPtrInput
 	// AWS profile to use for IAM auth
 	AwsRdsIamProfile pulumi.StringPtrInput
@@ -142,8 +136,7 @@ type ProviderArgs struct {
 	AwsRdsIamProviderRoleArn pulumi.StringPtrInput
 	// AWS region to use for IAM auth
 	AwsRdsIamRegion pulumi.StringPtrInput
-	// Use MS Azure identity OAuth token (see:
-	// https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+	// Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
 	AzureIdentityAuth pulumi.BoolPtrInput
 	AzureTenantId     pulumi.StringPtrInput
 	// SSL client certificate if required by the database.
@@ -169,13 +162,11 @@ type ProviderArgs struct {
 	Scheme pulumi.StringPtrInput
 	// Deprecated: Rename PostgreSQL provider `sslMode` attribute to `sslmode`
 	SslMode pulumi.StringPtrInput
-	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-	// PostgreSQL server
+	// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
 	Sslmode pulumi.StringPtrInput
 	// The SSL server root certificate file path. The file must contain PEM encoded data.
 	Sslrootcert pulumi.StringPtrInput
-	// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-	// Refreshing state password from Postgres)
+	// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
 	Superuser pulumi.BoolPtrInput
 	// PostgreSQL user name to connect as
 	Username pulumi.StringPtrInput
@@ -299,8 +290,7 @@ func (o ProviderOutput) SslMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SslMode }).(pulumi.StringPtrOutput)
 }
 
-// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-// PostgreSQL server
+// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
 func (o ProviderOutput) Sslmode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Sslmode }).(pulumi.StringPtrOutput)
 }

@@ -96,35 +96,35 @@ export class Grant extends pulumi.CustomResource {
     /**
      * The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
      */
-    public readonly columns!: pulumi.Output<string[] | undefined>;
+    declare public readonly columns: pulumi.Output<string[] | undefined>;
     /**
      * The database to grant privileges on for this role.
      */
-    public readonly database!: pulumi.Output<string>;
+    declare public readonly database: pulumi.Output<string>;
     /**
      * The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).
      */
-    public readonly objectType!: pulumi.Output<string>;
+    declare public readonly objectType: pulumi.Output<string>;
     /**
      * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`. When `objectType` is `column`, only one value is allowed.
      */
-    public readonly objects!: pulumi.Output<string[] | undefined>;
+    declare public readonly objects: pulumi.Output<string[] | undefined>;
     /**
      * The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
      */
-    public readonly privileges!: pulumi.Output<string[]>;
+    declare public readonly privileges: pulumi.Output<string[]>;
     /**
      * The name of the role to grant privileges on, Set it to "public" for all roles.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * The database schema to grant privileges on for this role (Required except if objectType is "database")
      */
-    public readonly schema!: pulumi.Output<string | undefined>;
+    declare public readonly schema: pulumi.Output<string | undefined>;
     /**
      * Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
      */
-    public readonly withGrantOption!: pulumi.Output<boolean | undefined>;
+    declare public readonly withGrantOption: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Grant resource with the given unique name, arguments, and options.
@@ -139,36 +139,36 @@ export class Grant extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GrantState | undefined;
-            resourceInputs["columns"] = state ? state.columns : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["objectType"] = state ? state.objectType : undefined;
-            resourceInputs["objects"] = state ? state.objects : undefined;
-            resourceInputs["privileges"] = state ? state.privileges : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["withGrantOption"] = state ? state.withGrantOption : undefined;
+            resourceInputs["columns"] = state?.columns;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["objectType"] = state?.objectType;
+            resourceInputs["objects"] = state?.objects;
+            resourceInputs["privileges"] = state?.privileges;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["withGrantOption"] = state?.withGrantOption;
         } else {
             const args = argsOrState as GrantArgs | undefined;
-            if ((!args || args.database === undefined) && !opts.urn) {
+            if (args?.database === undefined && !opts.urn) {
                 throw new Error("Missing required property 'database'");
             }
-            if ((!args || args.objectType === undefined) && !opts.urn) {
+            if (args?.objectType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectType'");
             }
-            if ((!args || args.privileges === undefined) && !opts.urn) {
+            if (args?.privileges === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privileges'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["columns"] = args ? args.columns : undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["objectType"] = args ? args.objectType : undefined;
-            resourceInputs["objects"] = args ? args.objects : undefined;
-            resourceInputs["privileges"] = args ? args.privileges : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["schema"] = args ? args.schema : undefined;
-            resourceInputs["withGrantOption"] = args ? args.withGrantOption : undefined;
+            resourceInputs["columns"] = args?.columns;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["objectType"] = args?.objectType;
+            resourceInputs["objects"] = args?.objects;
+            resourceInputs["privileges"] = args?.privileges;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["schema"] = args?.schema;
+            resourceInputs["withGrantOption"] = args?.withGrantOption;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Grant.__pulumiType, name, resourceInputs, opts);

@@ -4,6 +4,7 @@ title: Postgresql Provider
 meta_desc: Provides an overview on how to configure the Pulumi Postgresql provider.
 layout: package
 ---
+
 ## Installation
 
 The Postgresql provider is available as a package in all Pulumi languages:
@@ -13,6 +14,7 @@ The Postgresql provider is available as a package in all Pulumi languages:
 * Go: [`github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql`](https://github.com/pulumi/pulumi-postgresql)
 * .NET: [`Pulumi.Postgresql`](https://www.nuget.org/packages/Pulumi.Postgresql)
 * Java: [`com.pulumi/postgresql`](https://central.sonatype.com/artifact/com.pulumi/postgresql)
+
 ## Overview
 
 The PostgreSQL provider gives the ability to deploy and configure resources in a PostgreSQL server.
@@ -20,12 +22,10 @@ The PostgreSQL provider gives the ability to deploy and configure resources in a
 Use the navigation to the left to read about the available resources.
 ## Usage
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 config:
     postgresql:connectTimeout:
         value: 15
@@ -43,138 +43,13 @@ config:
         value: postgres_user
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-config:
-    postgresql:connectTimeout:
-        value: 15
-    postgresql:database:
-        value: postgres
-    postgresql:host:
-        value: postgres_server_ip
-    postgresql:password:
-        value: postgres_password
-    postgresql:port:
-        value: 5432
-    postgresql:sslmode:
-        value: require
-    postgresql:username:
-        value: postgres_user
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-config:
-    postgresql:connectTimeout:
-        value: 15
-    postgresql:database:
-        value: postgres
-    postgresql:host:
-        value: postgres_server_ip
-    postgresql:password:
-        value: postgres_password
-    postgresql:port:
-        value: 5432
-    postgresql:sslmode:
-        value: require
-    postgresql:username:
-        value: postgres_user
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-config:
-    postgresql:connectTimeout:
-        value: 15
-    postgresql:database:
-        value: postgres
-    postgresql:host:
-        value: postgres_server_ip
-    postgresql:password:
-        value: postgres_password
-    postgresql:port:
-        value: 5432
-    postgresql:sslmode:
-        value: require
-    postgresql:username:
-        value: postgres_user
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-config:
-    postgresql:connectTimeout:
-        value: 15
-    postgresql:database:
-        value: postgres
-    postgresql:host:
-        value: postgres_server_ip
-    postgresql:password:
-        value: postgres_password
-    postgresql:port:
-        value: 5432
-    postgresql:sslmode:
-        value: require
-    postgresql:username:
-        value: postgres_user
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-config:
-    postgresql:connectTimeout:
-        value: 15
-    postgresql:database:
-        value: postgres
-    postgresql:host:
-        value: postgres_server_ip
-    postgresql:password:
-        value: postgres_password
-    postgresql:port:
-        value: 5432
-    postgresql:sslmode:
-        value: require
-    postgresql:username:
-        value: postgres_user
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 
 An SSL client certificate can be configured using the `clientcert` sub-resource.
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 config:
     postgresql:database:
         value: postgres
@@ -190,119 +65,6 @@ config:
         value: postgres_user
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-config:
-    postgresql:database:
-        value: postgres
-    postgresql:host:
-        value: postgres_server_ip
-    postgresql:password:
-        value: postgres_password
-    postgresql:port:
-        value: 5432
-    postgresql:sslmode:
-        value: require
-    postgresql:username:
-        value: postgres_user
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-config:
-    postgresql:database:
-        value: postgres
-    postgresql:host:
-        value: postgres_server_ip
-    postgresql:password:
-        value: postgres_password
-    postgresql:port:
-        value: 5432
-    postgresql:sslmode:
-        value: require
-    postgresql:username:
-        value: postgres_user
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-config:
-    postgresql:database:
-        value: postgres
-    postgresql:host:
-        value: postgres_server_ip
-    postgresql:password:
-        value: postgres_password
-    postgresql:port:
-        value: 5432
-    postgresql:sslmode:
-        value: require
-    postgresql:username:
-        value: postgres_user
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-config:
-    postgresql:database:
-        value: postgres
-    postgresql:host:
-        value: postgres_server_ip
-    postgresql:password:
-        value: postgres_password
-    postgresql:port:
-        value: 5432
-    postgresql:sslmode:
-        value: require
-    postgresql:username:
-        value: postgres_user
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-config:
-    postgresql:database:
-        value: postgres
-    postgresql:host:
-        value: postgres_server_ip
-    postgresql:password:
-        value: postgres_password
-    postgresql:port:
-        value: 5432
-    postgresql:sslmode:
-        value: require
-    postgresql:username:
-        value: postgres_user
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 
 Configuring multiple servers can be done by specifying the alias option.
 
@@ -482,6 +244,7 @@ The following configuration inputs are supported:
   from the environment (or the given profile, see `awsRdsIamProfile`)
 * `awsRdsIamProfile` - (Optional) The AWS IAM Profile to use while using AWS RDS IAM Auth.
 * `awsRdsIamRegion` - (Optional) The AWS region to use while using AWS RDS IAM Auth.
+* `awsRdsIamProviderRoleArn` - (Optional) AWS IAM role to assume while using AWS RDS IAM Auth.
 * `azureIdentityAuth` - (Optional) If set to `true`, call the Azure OAuth token endpoint for temporary token
 * `azureTenantId` - (Optional) (Required if `azureIdentityAuth` is `true`) Azure tenant ID read more
 ## GoCloud
@@ -492,12 +255,10 @@ By default, the provider uses the [lib/pq](https://pkg.go.dev/github.com/lib/pq)
 To enable GoCloud based connections to AWS RDS instances, set `scheme` to `awspostgres` and `host` to the RDS database's endpoint value.
 (e.g.: `instance.xxxxxx.region.rds.amazonaws.com`)
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 config:
     postgresql:host:
         value: test-instance.cvvrsv6scpgd.eu-central-1.rds.amazonaws.com
@@ -513,119 +274,6 @@ config:
         value: postgres
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-config:
-    postgresql:host:
-        value: test-instance.cvvrsv6scpgd.eu-central-1.rds.amazonaws.com
-    postgresql:password:
-        value: test1234
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: awspostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: postgres
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-config:
-    postgresql:host:
-        value: test-instance.cvvrsv6scpgd.eu-central-1.rds.amazonaws.com
-    postgresql:password:
-        value: test1234
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: awspostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: postgres
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-config:
-    postgresql:host:
-        value: test-instance.cvvrsv6scpgd.eu-central-1.rds.amazonaws.com
-    postgresql:password:
-        value: test1234
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: awspostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: postgres
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-config:
-    postgresql:host:
-        value: test-instance.cvvrsv6scpgd.eu-central-1.rds.amazonaws.com
-    postgresql:password:
-        value: test1234
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: awspostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: postgres
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-config:
-    postgresql:host:
-        value: test-instance.cvvrsv6scpgd.eu-central-1.rds.amazonaws.com
-    postgresql:password:
-        value: test1234
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: awspostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: postgres
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 ### GCP
 
 To enable GoCloud for GCP SQL, set `scheme` to `gcppostgres` and `host` to the connection name of the instance in following format: `project/region/instance` (or `project:region:instance`).
@@ -638,12 +286,10 @@ In addition, the provider supports service account impersonation with the `gcpIa
 - The IAM database user has sufficient permissions to connect to the database, e.g., `roles/cloudsql.instanceUser`
 - The principal (IAM user or IAM service account) behind the `GOOGLE_APPLICATION_CREDENTIALS` has sufficient permissions to impersonate the provided service account. Learn more from [roles for service account authentication](https://cloud.google.com/iam/docs/service-account-permissions).
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 config:
     postgresql:gcpIamImpersonateServiceAccount:
         value: service_account_id@$project_id.iam.gserviceaccount.com
@@ -659,119 +305,6 @@ config:
         value: service_account_id@$project_id.iam
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-config:
-    postgresql:gcpIamImpersonateServiceAccount:
-        value: service_account_id@$project_id.iam.gserviceaccount.com
-    postgresql:host:
-        value: test-project/europe-west3/test-instance
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: gcppostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: service_account_id@$project_id.iam
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-config:
-    postgresql:gcpIamImpersonateServiceAccount:
-        value: service_account_id@$project_id.iam.gserviceaccount.com
-    postgresql:host:
-        value: test-project/europe-west3/test-instance
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: gcppostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: service_account_id@$project_id.iam
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-config:
-    postgresql:gcpIamImpersonateServiceAccount:
-        value: service_account_id@$project_id.iam.gserviceaccount.com
-    postgresql:host:
-        value: test-project/europe-west3/test-instance
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: gcppostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: service_account_id@$project_id.iam
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-config:
-    postgresql:gcpIamImpersonateServiceAccount:
-        value: service_account_id@$project_id.iam.gserviceaccount.com
-    postgresql:host:
-        value: test-project/europe-west3/test-instance
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: gcppostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: service_account_id@$project_id.iam
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-config:
-    postgresql:gcpIamImpersonateServiceAccount:
-        value: service_account_id@$project_id.iam.gserviceaccount.com
-    postgresql:host:
-        value: test-project/europe-west3/test-instance
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: gcppostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: service_account_id@$project_id.iam
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 
 See also:
 
@@ -785,12 +318,10 @@ See also:
 
 ---
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 config:
     postgresql:host:
         value: test-project/europe-west3/test-instance
@@ -806,119 +337,6 @@ config:
         value: postgres
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-config:
-    postgresql:host:
-        value: test-project/europe-west3/test-instance
-    postgresql:password:
-        value: test1234
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: gcppostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: postgres
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-config:
-    postgresql:host:
-        value: test-project/europe-west3/test-instance
-    postgresql:password:
-        value: test1234
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: gcppostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: postgres
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-config:
-    postgresql:host:
-        value: test-project/europe-west3/test-instance
-    postgresql:password:
-        value: test1234
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: gcppostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: postgres
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-config:
-    postgresql:host:
-        value: test-project/europe-west3/test-instance
-    postgresql:password:
-        value: test1234
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: gcppostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: postgres
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-config:
-    postgresql:host:
-        value: test-project/europe-west3/test-instance
-    postgresql:password:
-        value: test1234
-    postgresql:port:
-        value: 5432
-    postgresql:scheme:
-        value: gcppostgres
-    postgresql:superuser:
-        value: false
-    postgresql:username:
-        value: postgres
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 
 Example with GCP resources:
 
@@ -1481,8 +899,8 @@ resources:
 variables:
   current:
     fn::invoke:
-      Function: azure:core:getClientConfig
-      Arguments: {}
+      function: azure:core:getClientConfig
+      arguments: {}
 ```
 {{% /choosable %}}
 {{% choosable language java %}}
@@ -1532,14 +950,14 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var current = CoreFunctions.getClientConfig();
+        final var current = CoreFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
 
         // https://registry.pulumi.io/providers/pulumi/azurerm/latest/docs/resources/postgresql_flexible_server
         var pgsql = new FlexibleServer("pgsql", FlexibleServerArgs.builder()
             .authentication(FlexibleServerAuthenticationArgs.builder()
                 .activeDirectoryAuthEnabled(true)
                 .passwordAuthEnabled(false)
-                .tenantId(current.applyValue(getClientConfigResult -> getClientConfigResult.tenantId()))
+                .tenantId(current.tenantId())
                 .build())
             .build());
 
@@ -1550,7 +968,7 @@ public class App {
             .principalType("Group")
             .resourceGroupName(rgName)
             .serverName(pgsql.name())
-            .tenantId(current.applyValue(getClientConfigResult -> getClientConfigResult.tenantId()))
+            .tenantId(current.tenantId())
             .build());
 
     }

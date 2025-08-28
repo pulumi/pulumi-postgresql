@@ -14,8 +14,7 @@ public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("postgresql");
 /**
- * Use rds_iam instead of password authentication (see:
- * https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+ * Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
  * 
  */
     public Optional<Boolean> awsRdsIamAuth() {
@@ -43,8 +42,7 @@ public final class Config {
         return Codegen.stringProp("awsRdsIamRegion").config(config).get();
     }
 /**
- * Use MS Azure identity OAuth token (see:
- * https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+ * Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
  * 
  */
     public Optional<Boolean> azureIdentityAuth() {
@@ -130,8 +128,7 @@ public final class Config {
         return Codegen.stringProp("sslMode").config(config).get();
     }
 /**
- * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
- * PostgreSQL server
+ * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
  * 
  */
     public Optional<String> sslmode() {
@@ -145,8 +142,7 @@ public final class Config {
         return Codegen.stringProp("sslrootcert").config(config).get();
     }
 /**
- * Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
- * Refreshing state password from Postgres)
+ * Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
  * 
  */
     public Optional<Boolean> superuser() {

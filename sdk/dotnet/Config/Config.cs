@@ -34,8 +34,7 @@ namespace Pulumi.PostgreSql
 
         private static readonly __Value<bool?> _awsRdsIamAuth = new __Value<bool?>(() => __config.GetBoolean("awsRdsIamAuth"));
         /// <summary>
-        /// Use rds_iam instead of password authentication (see:
-        /// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+        /// Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
         /// </summary>
         public static bool? AwsRdsIamAuth
         {
@@ -75,8 +74,7 @@ namespace Pulumi.PostgreSql
 
         private static readonly __Value<bool?> _azureIdentityAuth = new __Value<bool?>(() => __config.GetBoolean("azureIdentityAuth"));
         /// <summary>
-        /// Use MS Azure identity OAuth token (see:
-        /// https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+        /// Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
         /// </summary>
         public static bool? AzureIdentityAuth
         {
@@ -207,8 +205,7 @@ namespace Pulumi.PostgreSql
 
         private static readonly __Value<string?> _sslmode = new __Value<string?>(() => __config.Get("sslmode") ?? Utilities.GetEnv("PGSSLMODE"));
         /// <summary>
-        /// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-        /// PostgreSQL server
+        /// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
         /// </summary>
         public static string? Sslmode
         {
@@ -228,8 +225,7 @@ namespace Pulumi.PostgreSql
 
         private static readonly __Value<bool?> _superuser = new __Value<bool?>(() => __config.GetBoolean("superuser"));
         /// <summary>
-        /// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-        /// Refreshing state password from Postgres)
+        /// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
         /// </summary>
         public static bool? Superuser
         {

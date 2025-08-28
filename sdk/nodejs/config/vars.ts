@@ -10,8 +10,7 @@ declare var exports: any;
 const __config = new pulumi.Config("postgresql");
 
 /**
- * Use rdsIam instead of password authentication (see:
- * https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+ * Use rdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
  */
 export declare const awsRdsIamAuth: boolean | undefined;
 Object.defineProperty(exports, "awsRdsIamAuth", {
@@ -55,8 +54,7 @@ Object.defineProperty(exports, "awsRdsIamRegion", {
 });
 
 /**
- * Use MS Azure identity OAuth token (see:
- * https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+ * Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
  */
 export declare const azureIdentityAuth: boolean | undefined;
 Object.defineProperty(exports, "azureIdentityAuth", {
@@ -201,8 +199,7 @@ Object.defineProperty(exports, "sslMode", {
 });
 
 /**
- * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
- * PostgreSQL server
+ * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
  */
 export declare const sslmode: string | undefined;
 Object.defineProperty(exports, "sslmode", {
@@ -224,8 +221,7 @@ Object.defineProperty(exports, "sslrootcert", {
 });
 
 /**
- * Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
- * Refreshing state password from Postgres)
+ * Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
  */
 export declare const superuser: boolean | undefined;
 Object.defineProperty(exports, "superuser", {

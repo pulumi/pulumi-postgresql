@@ -82,8 +82,7 @@ namespace Pulumi.PostgreSql
         public Output<string?> SslMode { get; private set; } = null!;
 
         /// <summary>
-        /// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-        /// PostgreSQL server
+        /// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
         /// </summary>
         [Output("sslmode")]
         public Output<string?> Sslmode { get; private set; } = null!;
@@ -139,8 +138,7 @@ namespace Pulumi.PostgreSql
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use rds_iam instead of password authentication (see:
-        /// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+        /// Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
         /// </summary>
         [Input("awsRdsIamAuth", json: true)]
         public Input<bool>? AwsRdsIamAuth { get; set; }
@@ -164,8 +162,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? AwsRdsIamRegion { get; set; }
 
         /// <summary>
-        /// Use MS Azure identity OAuth token (see:
-        /// https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+        /// Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
         /// </summary>
         [Input("azureIdentityAuth", json: true)]
         public Input<bool>? AzureIdentityAuth { get; set; }
@@ -250,8 +247,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? SslMode { get; set; }
 
         /// <summary>
-        /// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-        /// PostgreSQL server
+        /// This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
         /// </summary>
         [Input("sslmode")]
         public Input<string>? Sslmode { get; set; }
@@ -263,8 +259,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Sslrootcert { get; set; }
 
         /// <summary>
-        /// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-        /// Refreshing state password from Postgres)
+        /// Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
         /// </summary>
         [Input("superuser", json: true)]
         public Input<bool>? Superuser { get; set; }
