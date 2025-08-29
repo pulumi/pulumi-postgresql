@@ -44,13 +44,11 @@ class ProviderArgs:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[_builtins.bool] aws_rds_iam_auth: Use rds_iam instead of password authentication (see:
-               https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+        :param pulumi.Input[_builtins.bool] aws_rds_iam_auth: Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
         :param pulumi.Input[_builtins.str] aws_rds_iam_profile: AWS profile to use for IAM auth
         :param pulumi.Input[_builtins.str] aws_rds_iam_provider_role_arn: AWS IAM role to assume for IAM auth
         :param pulumi.Input[_builtins.str] aws_rds_iam_region: AWS region to use for IAM auth
-        :param pulumi.Input[_builtins.bool] azure_identity_auth: Use MS Azure identity OAuth token (see:
-               https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+        :param pulumi.Input[_builtins.bool] azure_identity_auth: Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
         :param pulumi.Input['ProviderClientcertArgs'] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[_builtins.int] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         :param pulumi.Input[_builtins.str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
@@ -61,11 +59,9 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.int] max_connections: Maximum number of connections to establish to the database. Zero means unlimited.
         :param pulumi.Input[_builtins.str] password: Password to be used if the PostgreSQL server demands password authentication
         :param pulumi.Input[_builtins.int] port: The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
-        :param pulumi.Input[_builtins.str] sslmode: This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-               PostgreSQL server
+        :param pulumi.Input[_builtins.str] sslmode: This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
         :param pulumi.Input[_builtins.str] sslrootcert: The SSL server root certificate file path. The file must contain PEM encoded data.
-        :param pulumi.Input[_builtins.bool] superuser: Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-               Refreshing state password from Postgres)
+        :param pulumi.Input[_builtins.bool] superuser: Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
         :param pulumi.Input[_builtins.str] username: PostgreSQL user name to connect as
         """
         if aws_rds_iam_auth is not None:
@@ -124,8 +120,7 @@ class ProviderArgs:
     @pulumi.getter(name="awsRdsIamAuth")
     def aws_rds_iam_auth(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Use rds_iam instead of password authentication (see:
-        https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+        Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
         """
         return pulumi.get(self, "aws_rds_iam_auth")
 
@@ -173,8 +168,7 @@ class ProviderArgs:
     @pulumi.getter(name="azureIdentityAuth")
     def azure_identity_auth(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Use MS Azure identity OAuth token (see:
-        https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+        Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
         """
         return pulumi.get(self, "azure_identity_auth")
 
@@ -334,8 +328,7 @@ class ProviderArgs:
     @pulumi.getter
     def sslmode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-        PostgreSQL server
+        This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
         """
         return pulumi.get(self, "sslmode")
 
@@ -359,8 +352,7 @@ class ProviderArgs:
     @pulumi.getter
     def superuser(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-        Refreshing state password from Postgres)
+        Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
         """
         return pulumi.get(self, "superuser")
 
@@ -418,13 +410,11 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] aws_rds_iam_auth: Use rds_iam instead of password authentication (see:
-               https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+        :param pulumi.Input[_builtins.bool] aws_rds_iam_auth: Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
         :param pulumi.Input[_builtins.str] aws_rds_iam_profile: AWS profile to use for IAM auth
         :param pulumi.Input[_builtins.str] aws_rds_iam_provider_role_arn: AWS IAM role to assume for IAM auth
         :param pulumi.Input[_builtins.str] aws_rds_iam_region: AWS region to use for IAM auth
-        :param pulumi.Input[_builtins.bool] azure_identity_auth: Use MS Azure identity OAuth token (see:
-               https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+        :param pulumi.Input[_builtins.bool] azure_identity_auth: Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
         :param pulumi.Input[Union['ProviderClientcertArgs', 'ProviderClientcertArgsDict']] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[_builtins.int] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         :param pulumi.Input[_builtins.str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
@@ -435,11 +425,9 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.int] max_connections: Maximum number of connections to establish to the database. Zero means unlimited.
         :param pulumi.Input[_builtins.str] password: Password to be used if the PostgreSQL server demands password authentication
         :param pulumi.Input[_builtins.int] port: The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
-        :param pulumi.Input[_builtins.str] sslmode: This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-               PostgreSQL server
+        :param pulumi.Input[_builtins.str] sslmode: This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
         :param pulumi.Input[_builtins.str] sslrootcert: The SSL server root certificate file path. The file must contain PEM encoded data.
-        :param pulumi.Input[_builtins.bool] superuser: Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-               Refreshing state password from Postgres)
+        :param pulumi.Input[_builtins.bool] superuser: Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
         :param pulumi.Input[_builtins.str] username: PostgreSQL user name to connect as
         """
         ...
@@ -626,8 +614,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def sslmode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-        PostgreSQL server
+        This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
         """
         return pulumi.get(self, "sslmode")
 

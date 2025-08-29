@@ -71,37 +71,37 @@ export class Server extends pulumi.CustomResource {
     /**
      * When true, will drop objects that depend on the server (such as user mappings), and in turn all objects that depend on those objects . (Default: false)
      */
-    public readonly dropCascade!: pulumi.Output<boolean | undefined>;
+    declare public readonly dropCascade: pulumi.Output<boolean | undefined>;
     /**
      * The name of the foreign-data wrapper that manages the server.
      * Changing this value
      * will force the creation of a new resource as this value can only be set
      * when the foreign server is created.
      */
-    public readonly fdwName!: pulumi.Output<string>;
+    declare public readonly fdwName: pulumi.Output<string>;
     /**
      * This clause specifies the options for the server. The options typically define the connection details of the server, but the actual names and values are dependent on the server's foreign-data wrapper.
      */
-    public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly options: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the foreign server to be created.
      */
-    public readonly serverName!: pulumi.Output<string>;
+    declare public readonly serverName: pulumi.Output<string>;
     /**
      * By default, the user who defines the server becomes its owner. Set this value to configure the new owner of the foreign server.
      */
-    public readonly serverOwner!: pulumi.Output<string>;
+    declare public readonly serverOwner: pulumi.Output<string>;
     /**
      * Optional server type, potentially useful to foreign-data wrappers.
      * Changing this value
      * will force the creation of a new resource as this value can only be set
      * when the foreign server is created.
      */
-    public readonly serverType!: pulumi.Output<string | undefined>;
+    declare public readonly serverType: pulumi.Output<string | undefined>;
     /**
      * Optional server version, potentially useful to foreign-data wrappers.
      */
-    public readonly serverVersion!: pulumi.Output<string | undefined>;
+    declare public readonly serverVersion: pulumi.Output<string | undefined>;
 
     /**
      * Create a Server resource with the given unique name, arguments, and options.
@@ -116,28 +116,28 @@ export class Server extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerState | undefined;
-            resourceInputs["dropCascade"] = state ? state.dropCascade : undefined;
-            resourceInputs["fdwName"] = state ? state.fdwName : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["serverName"] = state ? state.serverName : undefined;
-            resourceInputs["serverOwner"] = state ? state.serverOwner : undefined;
-            resourceInputs["serverType"] = state ? state.serverType : undefined;
-            resourceInputs["serverVersion"] = state ? state.serverVersion : undefined;
+            resourceInputs["dropCascade"] = state?.dropCascade;
+            resourceInputs["fdwName"] = state?.fdwName;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["serverName"] = state?.serverName;
+            resourceInputs["serverOwner"] = state?.serverOwner;
+            resourceInputs["serverType"] = state?.serverType;
+            resourceInputs["serverVersion"] = state?.serverVersion;
         } else {
             const args = argsOrState as ServerArgs | undefined;
-            if ((!args || args.fdwName === undefined) && !opts.urn) {
+            if (args?.fdwName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fdwName'");
             }
-            if ((!args || args.serverName === undefined) && !opts.urn) {
+            if (args?.serverName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverName'");
             }
-            resourceInputs["dropCascade"] = args ? args.dropCascade : undefined;
-            resourceInputs["fdwName"] = args ? args.fdwName : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["serverName"] = args ? args.serverName : undefined;
-            resourceInputs["serverOwner"] = args ? args.serverOwner : undefined;
-            resourceInputs["serverType"] = args ? args.serverType : undefined;
-            resourceInputs["serverVersion"] = args ? args.serverVersion : undefined;
+            resourceInputs["dropCascade"] = args?.dropCascade;
+            resourceInputs["fdwName"] = args?.fdwName;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["serverName"] = args?.serverName;
+            resourceInputs["serverOwner"] = args?.serverOwner;
+            resourceInputs["serverType"] = args?.serverType;
+            resourceInputs["serverVersion"] = args?.serverVersion;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Server.__pulumiType, name, resourceInputs, opts);

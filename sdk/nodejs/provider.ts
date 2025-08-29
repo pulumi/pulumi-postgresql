@@ -30,58 +30,57 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * AWS profile to use for IAM auth
      */
-    public readonly awsRdsIamProfile!: pulumi.Output<string | undefined>;
+    declare public readonly awsRdsIamProfile: pulumi.Output<string | undefined>;
     /**
      * AWS IAM role to assume for IAM auth
      */
-    public readonly awsRdsIamProviderRoleArn!: pulumi.Output<string | undefined>;
+    declare public readonly awsRdsIamProviderRoleArn: pulumi.Output<string | undefined>;
     /**
      * AWS region to use for IAM auth
      */
-    public readonly awsRdsIamRegion!: pulumi.Output<string | undefined>;
-    public readonly azureTenantId!: pulumi.Output<string | undefined>;
+    declare public readonly awsRdsIamRegion: pulumi.Output<string | undefined>;
+    declare public readonly azureTenantId: pulumi.Output<string | undefined>;
     /**
      * The name of the database to connect to in order to conenct to (defaults to `postgres`).
      */
-    public readonly database!: pulumi.Output<string | undefined>;
+    declare public readonly database: pulumi.Output<string | undefined>;
     /**
      * Database username associated to the connected user (for user name maps)
      */
-    public readonly databaseUsername!: pulumi.Output<string | undefined>;
+    declare public readonly databaseUsername: pulumi.Output<string | undefined>;
     /**
      * Specify the expected version of PostgreSQL.
      */
-    public readonly expectedVersion!: pulumi.Output<string | undefined>;
+    declare public readonly expectedVersion: pulumi.Output<string | undefined>;
     /**
      * Service account to impersonate when using GCP IAM authentication.
      */
-    public readonly gcpIamImpersonateServiceAccount!: pulumi.Output<string | undefined>;
+    declare public readonly gcpIamImpersonateServiceAccount: pulumi.Output<string | undefined>;
     /**
      * Name of PostgreSQL server address to connect to
      */
-    public readonly host!: pulumi.Output<string | undefined>;
+    declare public readonly host: pulumi.Output<string | undefined>;
     /**
      * Password to be used if the PostgreSQL server demands password authentication
      */
-    public readonly password!: pulumi.Output<string | undefined>;
-    public readonly scheme!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
+    declare public readonly scheme: pulumi.Output<string | undefined>;
     /**
      * @deprecated Rename PostgreSQL provider `sslMode` attribute to `sslmode`
      */
-    public readonly sslMode!: pulumi.Output<string | undefined>;
+    declare public readonly sslMode: pulumi.Output<string | undefined>;
     /**
-     * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-     * PostgreSQL server
+     * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
      */
-    public readonly sslmode!: pulumi.Output<string | undefined>;
+    declare public readonly sslmode: pulumi.Output<string | undefined>;
     /**
      * The SSL server root certificate file path. The file must contain PEM encoded data.
      */
-    public readonly sslrootcert!: pulumi.Output<string | undefined>;
+    declare public readonly sslrootcert: pulumi.Output<string | undefined>;
     /**
      * PostgreSQL user name to connect as
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -94,28 +93,28 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["awsRdsIamAuth"] = pulumi.output(args ? args.awsRdsIamAuth : undefined).apply(JSON.stringify);
-            resourceInputs["awsRdsIamProfile"] = args ? args.awsRdsIamProfile : undefined;
-            resourceInputs["awsRdsIamProviderRoleArn"] = args ? args.awsRdsIamProviderRoleArn : undefined;
-            resourceInputs["awsRdsIamRegion"] = args ? args.awsRdsIamRegion : undefined;
-            resourceInputs["azureIdentityAuth"] = pulumi.output(args ? args.azureIdentityAuth : undefined).apply(JSON.stringify);
-            resourceInputs["azureTenantId"] = args ? args.azureTenantId : undefined;
-            resourceInputs["clientcert"] = pulumi.output(args ? args.clientcert : undefined).apply(JSON.stringify);
-            resourceInputs["connectTimeout"] = pulumi.output((args ? args.connectTimeout : undefined) ?? (utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180)).apply(JSON.stringify);
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["databaseUsername"] = args ? args.databaseUsername : undefined;
-            resourceInputs["expectedVersion"] = args ? args.expectedVersion : undefined;
-            resourceInputs["gcpIamImpersonateServiceAccount"] = args ? args.gcpIamImpersonateServiceAccount : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["maxConnections"] = pulumi.output(args ? args.maxConnections : undefined).apply(JSON.stringify);
+            resourceInputs["awsRdsIamAuth"] = pulumi.output(args?.awsRdsIamAuth).apply(JSON.stringify);
+            resourceInputs["awsRdsIamProfile"] = args?.awsRdsIamProfile;
+            resourceInputs["awsRdsIamProviderRoleArn"] = args?.awsRdsIamProviderRoleArn;
+            resourceInputs["awsRdsIamRegion"] = args?.awsRdsIamRegion;
+            resourceInputs["azureIdentityAuth"] = pulumi.output(args?.azureIdentityAuth).apply(JSON.stringify);
+            resourceInputs["azureTenantId"] = args?.azureTenantId;
+            resourceInputs["clientcert"] = pulumi.output(args?.clientcert).apply(JSON.stringify);
+            resourceInputs["connectTimeout"] = pulumi.output((args?.connectTimeout) ?? (utilities.getEnvNumber("PGCONNECT_TIMEOUT") || 180)).apply(JSON.stringify);
+            resourceInputs["database"] = args?.database;
+            resourceInputs["databaseUsername"] = args?.databaseUsername;
+            resourceInputs["expectedVersion"] = args?.expectedVersion;
+            resourceInputs["gcpIamImpersonateServiceAccount"] = args?.gcpIamImpersonateServiceAccount;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["maxConnections"] = pulumi.output(args?.maxConnections).apply(JSON.stringify);
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["port"] = pulumi.output(args ? args.port : undefined).apply(JSON.stringify);
-            resourceInputs["scheme"] = args ? args.scheme : undefined;
-            resourceInputs["sslMode"] = args ? args.sslMode : undefined;
-            resourceInputs["sslmode"] = (args ? args.sslmode : undefined) ?? utilities.getEnv("PGSSLMODE");
-            resourceInputs["sslrootcert"] = args ? args.sslrootcert : undefined;
-            resourceInputs["superuser"] = pulumi.output(args ? args.superuser : undefined).apply(JSON.stringify);
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["port"] = pulumi.output(args?.port).apply(JSON.stringify);
+            resourceInputs["scheme"] = args?.scheme;
+            resourceInputs["sslMode"] = args?.sslMode;
+            resourceInputs["sslmode"] = (args?.sslmode) ?? utilities.getEnv("PGSSLMODE");
+            resourceInputs["sslrootcert"] = args?.sslrootcert;
+            resourceInputs["superuser"] = pulumi.output(args?.superuser).apply(JSON.stringify);
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
@@ -138,8 +137,7 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * Use rdsIam instead of password authentication (see:
-     * https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+     * Use rdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
      */
     awsRdsIamAuth?: pulumi.Input<boolean>;
     /**
@@ -155,8 +153,7 @@ export interface ProviderArgs {
      */
     awsRdsIamRegion?: pulumi.Input<string>;
     /**
-     * Use MS Azure identity OAuth token (see:
-     * https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+     * Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
      */
     azureIdentityAuth?: pulumi.Input<boolean>;
     azureTenantId?: pulumi.Input<string>;
@@ -206,8 +203,7 @@ export interface ProviderArgs {
      */
     sslMode?: pulumi.Input<string>;
     /**
-     * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-     * PostgreSQL server
+     * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
      */
     sslmode?: pulumi.Input<string>;
     /**
@@ -215,8 +211,7 @@ export interface ProviderArgs {
      */
     sslrootcert?: pulumi.Input<string>;
     /**
-     * Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-     * Refreshing state password from Postgres)
+     * Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
      */
     superuser?: pulumi.Input<boolean>;
     /**

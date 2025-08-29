@@ -37,31 +37,31 @@ export class Schema extends pulumi.CustomResource {
     /**
      * The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
      */
-    public readonly database!: pulumi.Output<string>;
+    declare public readonly database: pulumi.Output<string>;
     /**
      * When true, will also drop all the objects that are contained in the schema. (Default: false)
      */
-    public readonly dropCascade!: pulumi.Output<boolean | undefined>;
+    declare public readonly dropCascade: pulumi.Output<boolean | undefined>;
     /**
      * When true, use the existing schema if it exists. (Default: true)
      */
-    public readonly ifNotExists!: pulumi.Output<boolean | undefined>;
+    declare public readonly ifNotExists: pulumi.Output<boolean | undefined>;
     /**
      * The name of the schema. Must be unique in the PostgreSQL
      * database instance where it is configured.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ROLE who owns the schema.
      */
-    public readonly owner!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
     /**
      * Can be specified multiple times for each policy.  Each
      * policy block supports fields documented below.
      *
      * @deprecated Use postgresql.Grant resource instead (with object_type="schema")
      */
-    public readonly policies!: pulumi.Output<outputs.SchemaPolicy[]>;
+    declare public readonly policies: pulumi.Output<outputs.SchemaPolicy[]>;
 
     /**
      * Create a Schema resource with the given unique name, arguments, and options.
@@ -76,20 +76,20 @@ export class Schema extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SchemaState | undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["dropCascade"] = state ? state.dropCascade : undefined;
-            resourceInputs["ifNotExists"] = state ? state.ifNotExists : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["dropCascade"] = state?.dropCascade;
+            resourceInputs["ifNotExists"] = state?.ifNotExists;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["policies"] = state?.policies;
         } else {
             const args = argsOrState as SchemaArgs | undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["dropCascade"] = args ? args.dropCascade : undefined;
-            resourceInputs["ifNotExists"] = args ? args.ifNotExists : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["dropCascade"] = args?.dropCascade;
+            resourceInputs["ifNotExists"] = args?.ifNotExists;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["policies"] = args?.policies;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Schema.__pulumiType, name, resourceInputs, opts);

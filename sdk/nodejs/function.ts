@@ -75,55 +75,55 @@ export class Function extends pulumi.CustomResource {
     /**
      * List of arguments for the function.
      */
-    public readonly args!: pulumi.Output<outputs.FunctionArg[] | undefined>;
+    declare public readonly args: pulumi.Output<outputs.FunctionArg[] | undefined>;
     /**
      * Function body.
      * This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      */
-    public readonly body!: pulumi.Output<string>;
+    declare public readonly body: pulumi.Output<string>;
     /**
      * The database where the function is located.
      * If not specified, the function is created in the current database.
      */
-    public readonly database!: pulumi.Output<string>;
+    declare public readonly database: pulumi.Output<string>;
     /**
      * True to automatically drop objects that depend on the function (such as
      * operators or triggers), and in turn all objects that depend on those objects. Default is false.
      */
-    public readonly dropCascade!: pulumi.Output<boolean | undefined>;
+    declare public readonly dropCascade: pulumi.Output<boolean | undefined>;
     /**
      * The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
      */
-    public readonly language!: pulumi.Output<string | undefined>;
+    declare public readonly language: pulumi.Output<string | undefined>;
     /**
      * The name of the function.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
      */
-    public readonly parallel!: pulumi.Output<string | undefined>;
+    declare public readonly parallel: pulumi.Output<string | undefined>;
     /**
      * Type that the function returns. It can be computed from the OUT arguments. Default is void.
      */
-    public readonly returns!: pulumi.Output<string>;
+    declare public readonly returns: pulumi.Output<string>;
     /**
      * The schema where the function is located.
      * If not specified, the function is created in the current schema.
      */
-    public readonly schema!: pulumi.Output<string>;
+    declare public readonly schema: pulumi.Output<string>;
     /**
      * If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
      */
-    public readonly securityDefiner!: pulumi.Output<boolean | undefined>;
+    declare public readonly securityDefiner: pulumi.Output<boolean | undefined>;
     /**
      * If the function should always return NULL when any of the inputs is NULL. Default is false.
      */
-    public readonly strict!: pulumi.Output<boolean | undefined>;
+    declare public readonly strict: pulumi.Output<boolean | undefined>;
     /**
      * Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
      */
-    public readonly volatility!: pulumi.Output<string | undefined>;
+    declare public readonly volatility: pulumi.Output<string | undefined>;
 
     /**
      * Create a Function resource with the given unique name, arguments, and options.
@@ -138,35 +138,35 @@ export class Function extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FunctionState | undefined;
-            resourceInputs["args"] = state ? state.args : undefined;
-            resourceInputs["body"] = state ? state.body : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["dropCascade"] = state ? state.dropCascade : undefined;
-            resourceInputs["language"] = state ? state.language : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parallel"] = state ? state.parallel : undefined;
-            resourceInputs["returns"] = state ? state.returns : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["securityDefiner"] = state ? state.securityDefiner : undefined;
-            resourceInputs["strict"] = state ? state.strict : undefined;
-            resourceInputs["volatility"] = state ? state.volatility : undefined;
+            resourceInputs["args"] = state?.args;
+            resourceInputs["body"] = state?.body;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["dropCascade"] = state?.dropCascade;
+            resourceInputs["language"] = state?.language;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parallel"] = state?.parallel;
+            resourceInputs["returns"] = state?.returns;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["securityDefiner"] = state?.securityDefiner;
+            resourceInputs["strict"] = state?.strict;
+            resourceInputs["volatility"] = state?.volatility;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
-            if ((!args || args.body === undefined) && !opts.urn) {
+            if (args?.body === undefined && !opts.urn) {
                 throw new Error("Missing required property 'body'");
             }
-            resourceInputs["args"] = args ? args.args : undefined;
-            resourceInputs["body"] = args ? args.body : undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["dropCascade"] = args ? args.dropCascade : undefined;
-            resourceInputs["language"] = args ? args.language : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parallel"] = args ? args.parallel : undefined;
-            resourceInputs["returns"] = args ? args.returns : undefined;
-            resourceInputs["schema"] = args ? args.schema : undefined;
-            resourceInputs["securityDefiner"] = args ? args.securityDefiner : undefined;
-            resourceInputs["strict"] = args ? args.strict : undefined;
-            resourceInputs["volatility"] = args ? args.volatility : undefined;
+            resourceInputs["args"] = args?.args;
+            resourceInputs["body"] = args?.body;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["dropCascade"] = args?.dropCascade;
+            resourceInputs["language"] = args?.language;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parallel"] = args?.parallel;
+            resourceInputs["returns"] = args?.returns;
+            resourceInputs["schema"] = args?.schema;
+            resourceInputs["securityDefiner"] = args?.securityDefiner;
+            resourceInputs["strict"] = args?.strict;
+            resourceInputs["volatility"] = args?.volatility;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Function.__pulumiType, name, resourceInputs, opts);
