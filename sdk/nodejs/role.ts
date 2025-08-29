@@ -35,33 +35,33 @@ export class Role extends pulumi.CustomResource {
     /**
      * Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
      */
-    public readonly assumeRole!: pulumi.Output<string | undefined>;
+    declare public readonly assumeRole: pulumi.Output<string | undefined>;
     /**
      * Defines whether a role bypasses every
      * row-level security (RLS) policy.  Default value is `false`.
      */
-    public readonly bypassRowLevelSecurity!: pulumi.Output<boolean | undefined>;
+    declare public readonly bypassRowLevelSecurity: pulumi.Output<boolean | undefined>;
     /**
      * If this role can log in, this specifies how
      * many concurrent connections the role can establish. `-1` (the default) means no
      * limit.
      */
-    public readonly connectionLimit!: pulumi.Output<number | undefined>;
+    declare public readonly connectionLimit: pulumi.Output<number | undefined>;
     /**
      * Defines a role's ability to execute `CREATE
      * DATABASE`.  Default value is `false`.
      */
-    public readonly createDatabase!: pulumi.Output<boolean | undefined>;
+    declare public readonly createDatabase: pulumi.Output<boolean | undefined>;
     /**
      * Defines a role's ability to execute `CREATE ROLE`.
      * A role with this privilege can also alter and drop other roles.  Default value
      * is `false`.
      */
-    public readonly createRole!: pulumi.Output<boolean | undefined>;
+    declare public readonly createRole: pulumi.Output<boolean | undefined>;
     /**
      * @deprecated Rename PostgreSQL role resource attribute "encrypted" to "encryptedPassword"
      */
-    public readonly encrypted!: pulumi.Output<string | undefined>;
+    declare public readonly encrypted: pulumi.Output<string | undefined>;
     /**
      * Defines whether the password is stored
      * encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
@@ -69,48 +69,48 @@ export class Role extends pulumi.CustomResource {
      * behavior of
      * [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
      */
-    public readonly encryptedPassword!: pulumi.Output<boolean | undefined>;
+    declare public readonly encryptedPassword: pulumi.Output<boolean | undefined>;
     /**
      * Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
      */
-    public readonly idleInTransactionSessionTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly idleInTransactionSessionTimeout: pulumi.Output<number | undefined>;
     /**
      * Defines whether a role "inherits" the privileges of
      * roles it is a member of.  Default value is `true`.
      */
-    public readonly inherit!: pulumi.Output<boolean | undefined>;
+    declare public readonly inherit: pulumi.Output<boolean | undefined>;
     /**
      * Defines whether role is allowed to log in.  Roles without
      * this attribute are useful for managing database privileges, but are not users
      * in the usual sense of the word.  Default value is `false`.
      */
-    public readonly login!: pulumi.Output<boolean | undefined>;
+    declare public readonly login: pulumi.Output<boolean | undefined>;
     /**
      * The name of the role. Must be unique on the PostgreSQL
      * server instance where it is configured.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Sets the role's password. A password is only of use
      * for roles having the `login` attribute set to true.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Defines whether a role is allowed to initiate
      * streaming replication or put the system in and out of backup mode.  Default
      * value is `false`
      */
-    public readonly replication!: pulumi.Output<boolean | undefined>;
+    declare public readonly replication: pulumi.Output<boolean | undefined>;
     /**
      * Defines list of roles which will be granted to this new role.
      */
-    public readonly roles!: pulumi.Output<string[] | undefined>;
+    declare public readonly roles: pulumi.Output<string[] | undefined>;
     /**
      * Alters the search path of this new role. Note that
      * due to limitations in the implementation, values cannot contain the substring
      * `", "`.
      */
-    public readonly searchPaths!: pulumi.Output<string[] | undefined>;
+    declare public readonly searchPaths: pulumi.Output<string[] | undefined>;
     /**
      * When a PostgreSQL ROLE exists in multiple
      * databases and the ROLE is dropped, the
@@ -120,7 +120,7 @@ export class Role extends pulumi.CustomResource {
      * in a PostgreSQL cluster using the same PostgreSQL ROLE for object ownership.
      * This is the third and final step taken when removing a ROLE from a database.
      */
-    public readonly skipDropRole!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipDropRole: pulumi.Output<boolean | undefined>;
     /**
      * When a PostgreSQL ROLE exists in multiple
      * databases and the ROLE is dropped, a
@@ -131,17 +131,17 @@ export class Role extends pulumi.CustomResource {
      * an implicit
      * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
      */
-    public readonly skipReassignOwned!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipReassignOwned: pulumi.Output<boolean | undefined>;
     /**
      * Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
      */
-    public readonly statementTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly statementTimeout: pulumi.Output<number | undefined>;
     /**
      * Defines whether the role is a "superuser", and
      * therefore can override all access restrictions within the database.  Default
      * value is `false`.
      */
-    public readonly superuser!: pulumi.Output<boolean | undefined>;
+    declare public readonly superuser: pulumi.Output<boolean | undefined>;
     /**
      * Defines the date and time after which the role's
      * password is no longer valid.  Established connections past this `validTime`
@@ -149,7 +149,7 @@ export class Role extends pulumi.CustomResource {
      * datetime. If omitted or the magic value `NULL` is used, `validUntil` will be
      * set to `infinity`.  Default is `NULL`, therefore `infinity`.
      */
-    public readonly validUntil!: pulumi.Output<string | undefined>;
+    declare public readonly validUntil: pulumi.Output<string | undefined>;
 
     /**
      * Create a Role resource with the given unique name, arguments, and options.
@@ -164,48 +164,48 @@ export class Role extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
-            resourceInputs["assumeRole"] = state ? state.assumeRole : undefined;
-            resourceInputs["bypassRowLevelSecurity"] = state ? state.bypassRowLevelSecurity : undefined;
-            resourceInputs["connectionLimit"] = state ? state.connectionLimit : undefined;
-            resourceInputs["createDatabase"] = state ? state.createDatabase : undefined;
-            resourceInputs["createRole"] = state ? state.createRole : undefined;
-            resourceInputs["encrypted"] = state ? state.encrypted : undefined;
-            resourceInputs["encryptedPassword"] = state ? state.encryptedPassword : undefined;
-            resourceInputs["idleInTransactionSessionTimeout"] = state ? state.idleInTransactionSessionTimeout : undefined;
-            resourceInputs["inherit"] = state ? state.inherit : undefined;
-            resourceInputs["login"] = state ? state.login : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["replication"] = state ? state.replication : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
-            resourceInputs["searchPaths"] = state ? state.searchPaths : undefined;
-            resourceInputs["skipDropRole"] = state ? state.skipDropRole : undefined;
-            resourceInputs["skipReassignOwned"] = state ? state.skipReassignOwned : undefined;
-            resourceInputs["statementTimeout"] = state ? state.statementTimeout : undefined;
-            resourceInputs["superuser"] = state ? state.superuser : undefined;
-            resourceInputs["validUntil"] = state ? state.validUntil : undefined;
+            resourceInputs["assumeRole"] = state?.assumeRole;
+            resourceInputs["bypassRowLevelSecurity"] = state?.bypassRowLevelSecurity;
+            resourceInputs["connectionLimit"] = state?.connectionLimit;
+            resourceInputs["createDatabase"] = state?.createDatabase;
+            resourceInputs["createRole"] = state?.createRole;
+            resourceInputs["encrypted"] = state?.encrypted;
+            resourceInputs["encryptedPassword"] = state?.encryptedPassword;
+            resourceInputs["idleInTransactionSessionTimeout"] = state?.idleInTransactionSessionTimeout;
+            resourceInputs["inherit"] = state?.inherit;
+            resourceInputs["login"] = state?.login;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["replication"] = state?.replication;
+            resourceInputs["roles"] = state?.roles;
+            resourceInputs["searchPaths"] = state?.searchPaths;
+            resourceInputs["skipDropRole"] = state?.skipDropRole;
+            resourceInputs["skipReassignOwned"] = state?.skipReassignOwned;
+            resourceInputs["statementTimeout"] = state?.statementTimeout;
+            resourceInputs["superuser"] = state?.superuser;
+            resourceInputs["validUntil"] = state?.validUntil;
         } else {
             const args = argsOrState as RoleArgs | undefined;
-            resourceInputs["assumeRole"] = args ? args.assumeRole : undefined;
-            resourceInputs["bypassRowLevelSecurity"] = args ? args.bypassRowLevelSecurity : undefined;
-            resourceInputs["connectionLimit"] = args ? args.connectionLimit : undefined;
-            resourceInputs["createDatabase"] = args ? args.createDatabase : undefined;
-            resourceInputs["createRole"] = args ? args.createRole : undefined;
-            resourceInputs["encrypted"] = args ? args.encrypted : undefined;
-            resourceInputs["encryptedPassword"] = args ? args.encryptedPassword : undefined;
-            resourceInputs["idleInTransactionSessionTimeout"] = args ? args.idleInTransactionSessionTimeout : undefined;
-            resourceInputs["inherit"] = args ? args.inherit : undefined;
-            resourceInputs["login"] = args ? args.login : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["assumeRole"] = args?.assumeRole;
+            resourceInputs["bypassRowLevelSecurity"] = args?.bypassRowLevelSecurity;
+            resourceInputs["connectionLimit"] = args?.connectionLimit;
+            resourceInputs["createDatabase"] = args?.createDatabase;
+            resourceInputs["createRole"] = args?.createRole;
+            resourceInputs["encrypted"] = args?.encrypted;
+            resourceInputs["encryptedPassword"] = args?.encryptedPassword;
+            resourceInputs["idleInTransactionSessionTimeout"] = args?.idleInTransactionSessionTimeout;
+            resourceInputs["inherit"] = args?.inherit;
+            resourceInputs["login"] = args?.login;
+            resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["replication"] = args ? args.replication : undefined;
-            resourceInputs["roles"] = args ? args.roles : undefined;
-            resourceInputs["searchPaths"] = args ? args.searchPaths : undefined;
-            resourceInputs["skipDropRole"] = args ? args.skipDropRole : undefined;
-            resourceInputs["skipReassignOwned"] = args ? args.skipReassignOwned : undefined;
-            resourceInputs["statementTimeout"] = args ? args.statementTimeout : undefined;
-            resourceInputs["superuser"] = args ? args.superuser : undefined;
-            resourceInputs["validUntil"] = args ? args.validUntil : undefined;
+            resourceInputs["replication"] = args?.replication;
+            resourceInputs["roles"] = args?.roles;
+            resourceInputs["searchPaths"] = args?.searchPaths;
+            resourceInputs["skipDropRole"] = args?.skipDropRole;
+            resourceInputs["skipReassignOwned"] = args?.skipReassignOwned;
+            resourceInputs["statementTimeout"] = args?.statementTimeout;
+            resourceInputs["superuser"] = args?.superuser;
+            resourceInputs["validUntil"] = args?.validUntil;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

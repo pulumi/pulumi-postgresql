@@ -67,21 +67,21 @@ export class UserMapping extends pulumi.CustomResource {
     /**
      * This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.
      */
-    public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly options: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of an existing server for which the user mapping is to be created.
      * Changing this value
      * will force the creation of a new resource as this value can only be set
      * when the user mapping is created.
      */
-    public readonly serverName!: pulumi.Output<string>;
+    declare public readonly serverName: pulumi.Output<string>;
     /**
      * The name of an existing user that is mapped to foreign server. CURRENT_ROLE, CURRENT_USER, and USER match the name of the current user. When PUBLIC is specified, a so-called public mapping is created that is used when no user-specific mapping is applicable.
      * Changing this value
      * will force the creation of a new resource as this value can only be set
      * when the user mapping is created.
      */
-    public readonly userName!: pulumi.Output<string>;
+    declare public readonly userName: pulumi.Output<string>;
 
     /**
      * Create a UserMapping resource with the given unique name, arguments, and options.
@@ -96,20 +96,20 @@ export class UserMapping extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserMappingState | undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["serverName"] = state ? state.serverName : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["serverName"] = state?.serverName;
+            resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as UserMappingArgs | undefined;
-            if ((!args || args.serverName === undefined) && !opts.urn) {
+            if (args?.serverName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverName'");
             }
-            if ((!args || args.userName === undefined) && !opts.urn) {
+            if (args?.userName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["serverName"] = args ? args.serverName : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["serverName"] = args?.serverName;
+            resourceInputs["userName"] = args?.userName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserMapping.__pulumiType, name, resourceInputs, opts);

@@ -51,15 +51,15 @@ export class ReplicationSlot extends pulumi.CustomResource {
     /**
      * Which database to create the replication slot on. Defaults to provider database.
      */
-    public readonly database!: pulumi.Output<string>;
+    declare public readonly database: pulumi.Output<string>;
     /**
      * The name of the replication slot.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Sets the output plugin.
      */
-    public readonly plugin!: pulumi.Output<string>;
+    declare public readonly plugin: pulumi.Output<string>;
 
     /**
      * Create a ReplicationSlot resource with the given unique name, arguments, and options.
@@ -74,17 +74,17 @@ export class ReplicationSlot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReplicationSlotState | undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["plugin"] = state ? state.plugin : undefined;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["plugin"] = state?.plugin;
         } else {
             const args = argsOrState as ReplicationSlotArgs | undefined;
-            if ((!args || args.plugin === undefined) && !opts.urn) {
+            if (args?.plugin === undefined && !opts.urn) {
                 throw new Error("Missing required property 'plugin'");
             }
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["plugin"] = args ? args.plugin : undefined;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["plugin"] = args?.plugin;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ReplicationSlot.__pulumiType, name, resourceInputs, opts);

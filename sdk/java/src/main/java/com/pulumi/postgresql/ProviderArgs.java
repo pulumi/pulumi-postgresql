@@ -20,16 +20,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
-     * Use rds_iam instead of password authentication (see:
-     * https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+     * Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
      * 
      */
     @Import(name="awsRdsIamAuth", json=true)
     private @Nullable Output<Boolean> awsRdsIamAuth;
 
     /**
-     * @return Use rds_iam instead of password authentication (see:
-     * https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+     * @return Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
      * 
      */
     public Optional<Output<Boolean>> awsRdsIamAuth() {
@@ -82,16 +80,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Use MS Azure identity OAuth token (see:
-     * https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+     * Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
      * 
      */
     @Import(name="azureIdentityAuth", json=true)
     private @Nullable Output<Boolean> azureIdentityAuth;
 
     /**
-     * @return Use MS Azure identity OAuth token (see:
-     * https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+     * @return Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
      * 
      */
     public Optional<Output<Boolean>> azureIdentityAuth() {
@@ -282,16 +278,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-     * PostgreSQL server
+     * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
      * 
      */
     @Import(name="sslmode")
     private @Nullable Output<String> sslmode;
 
     /**
-     * @return This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-     * PostgreSQL server
+     * @return This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
      * 
      */
     public Optional<Output<String>> sslmode() {
@@ -314,16 +308,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-     * Refreshing state password from Postgres)
+     * Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
      * 
      */
     @Import(name="superuser", json=true)
     private @Nullable Output<Boolean> superuser;
 
     /**
-     * @return Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-     * Refreshing state password from Postgres)
+     * @return Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
      * 
      */
     public Optional<Output<Boolean>> superuser() {
@@ -391,8 +383,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param awsRdsIamAuth Use rds_iam instead of password authentication (see:
-         * https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+         * @param awsRdsIamAuth Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
          * 
          * @return builder
          * 
@@ -403,8 +394,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param awsRdsIamAuth Use rds_iam instead of password authentication (see:
-         * https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+         * @param awsRdsIamAuth Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
          * 
          * @return builder
          * 
@@ -477,8 +467,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param azureIdentityAuth Use MS Azure identity OAuth token (see:
-         * https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+         * @param azureIdentityAuth Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
          * 
          * @return builder
          * 
@@ -489,8 +478,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param azureIdentityAuth Use MS Azure identity OAuth token (see:
-         * https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+         * @param azureIdentityAuth Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
          * 
          * @return builder
          * 
@@ -753,8 +741,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslmode This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-         * PostgreSQL server
+         * @param sslmode This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
          * 
          * @return builder
          * 
@@ -765,8 +752,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslmode This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-         * PostgreSQL server
+         * @param sslmode This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
          * 
          * @return builder
          * 
@@ -797,8 +783,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param superuser Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-         * Refreshing state password from Postgres)
+         * @param superuser Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
          * 
          * @return builder
          * 
@@ -809,8 +794,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param superuser Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.:
-         * Refreshing state password from Postgres)
+         * @param superuser Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
          * 
          * @return builder
          * 

@@ -56,27 +56,27 @@ export class Subscription extends pulumi.CustomResource {
     /**
      * The connection string to the publisher. It should follow the [keyword/value format](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
      */
-    public readonly conninfo!: pulumi.Output<string>;
+    declare public readonly conninfo: pulumi.Output<string>;
     /**
      * Specifies whether the command should create the replication slot on the publisher. Default behavior is true
      */
-    public readonly createSlot!: pulumi.Output<boolean | undefined>;
+    declare public readonly createSlot: pulumi.Output<boolean | undefined>;
     /**
      * Which database to create the subscription on. Defaults to provider database.
      */
-    public readonly database!: pulumi.Output<string>;
+    declare public readonly database: pulumi.Output<string>;
     /**
      * The name of the publication.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Names of the publications on the publisher to subscribe to
      */
-    public readonly publications!: pulumi.Output<string[]>;
+    declare public readonly publications: pulumi.Output<string[]>;
     /**
      * Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name
      */
-    public readonly slotName!: pulumi.Output<string | undefined>;
+    declare public readonly slotName: pulumi.Output<string | undefined>;
 
     /**
      * Create a Subscription resource with the given unique name, arguments, and options.
@@ -91,26 +91,26 @@ export class Subscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubscriptionState | undefined;
-            resourceInputs["conninfo"] = state ? state.conninfo : undefined;
-            resourceInputs["createSlot"] = state ? state.createSlot : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["publications"] = state ? state.publications : undefined;
-            resourceInputs["slotName"] = state ? state.slotName : undefined;
+            resourceInputs["conninfo"] = state?.conninfo;
+            resourceInputs["createSlot"] = state?.createSlot;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["publications"] = state?.publications;
+            resourceInputs["slotName"] = state?.slotName;
         } else {
             const args = argsOrState as SubscriptionArgs | undefined;
-            if ((!args || args.conninfo === undefined) && !opts.urn) {
+            if (args?.conninfo === undefined && !opts.urn) {
                 throw new Error("Missing required property 'conninfo'");
             }
-            if ((!args || args.publications === undefined) && !opts.urn) {
+            if (args?.publications === undefined && !opts.urn) {
                 throw new Error("Missing required property 'publications'");
             }
             resourceInputs["conninfo"] = args?.conninfo ? pulumi.secret(args.conninfo) : undefined;
-            resourceInputs["createSlot"] = args ? args.createSlot : undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["publications"] = args ? args.publications : undefined;
-            resourceInputs["slotName"] = args ? args.slotName : undefined;
+            resourceInputs["createSlot"] = args?.createSlot;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["publications"] = args?.publications;
+            resourceInputs["slotName"] = args?.slotName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["conninfo"] };

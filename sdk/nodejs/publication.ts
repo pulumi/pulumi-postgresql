@@ -58,35 +58,35 @@ export class Publication extends pulumi.CustomResource {
     /**
      * Should be ALL TABLES added to the publication. Defaults to 'false'
      */
-    public readonly allTables!: pulumi.Output<boolean>;
+    declare public readonly allTables: pulumi.Output<boolean>;
     /**
      * Which database to create the publication on. Defaults to provider database.
      */
-    public readonly database!: pulumi.Output<string>;
+    declare public readonly database: pulumi.Output<string>;
     /**
      * Should all subsequent resources of the publication be dropped. Defaults to 'false'
      */
-    public readonly dropCascade!: pulumi.Output<boolean | undefined>;
+    declare public readonly dropCascade: pulumi.Output<boolean | undefined>;
     /**
      * The name of the publication.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Who owns the publication. Defaults to provider user.
      */
-    public readonly owner!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
     /**
      * Which 'publish' options should be turned on. Default to 'insert','update','delete'
      */
-    public readonly publishParams!: pulumi.Output<string[]>;
+    declare public readonly publishParams: pulumi.Output<string[]>;
     /**
      * Should be option 'publish_via_partition_root' be turned on. Default to 'false'
      */
-    public readonly publishViaPartitionRootParam!: pulumi.Output<boolean | undefined>;
+    declare public readonly publishViaPartitionRootParam: pulumi.Output<boolean | undefined>;
     /**
      * Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
      */
-    public readonly tables!: pulumi.Output<string[]>;
+    declare public readonly tables: pulumi.Output<string[]>;
 
     /**
      * Create a Publication resource with the given unique name, arguments, and options.
@@ -101,24 +101,24 @@ export class Publication extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublicationState | undefined;
-            resourceInputs["allTables"] = state ? state.allTables : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["dropCascade"] = state ? state.dropCascade : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["publishParams"] = state ? state.publishParams : undefined;
-            resourceInputs["publishViaPartitionRootParam"] = state ? state.publishViaPartitionRootParam : undefined;
-            resourceInputs["tables"] = state ? state.tables : undefined;
+            resourceInputs["allTables"] = state?.allTables;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["dropCascade"] = state?.dropCascade;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["publishParams"] = state?.publishParams;
+            resourceInputs["publishViaPartitionRootParam"] = state?.publishViaPartitionRootParam;
+            resourceInputs["tables"] = state?.tables;
         } else {
             const args = argsOrState as PublicationArgs | undefined;
-            resourceInputs["allTables"] = args ? args.allTables : undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["dropCascade"] = args ? args.dropCascade : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["publishParams"] = args ? args.publishParams : undefined;
-            resourceInputs["publishViaPartitionRootParam"] = args ? args.publishViaPartitionRootParam : undefined;
-            resourceInputs["tables"] = args ? args.tables : undefined;
+            resourceInputs["allTables"] = args?.allTables;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["dropCascade"] = args?.dropCascade;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["publishParams"] = args?.publishParams;
+            resourceInputs["publishViaPartitionRootParam"] = args?.publishViaPartitionRootParam;
+            resourceInputs["tables"] = args?.tables;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Publication.__pulumiType, name, resourceInputs, opts);

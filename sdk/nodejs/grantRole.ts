@@ -67,15 +67,15 @@ export class GrantRole extends pulumi.CustomResource {
     /**
      * The name of the role that is added to `role`.
      */
-    public readonly grantRole!: pulumi.Output<string>;
+    declare public readonly grantRole: pulumi.Output<string>;
     /**
      * The name of the role that is granted a new membership.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * Giving ability to grant membership to others or not for `role`. (Default: false)
      */
-    public readonly withAdminOption!: pulumi.Output<boolean | undefined>;
+    declare public readonly withAdminOption: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a GrantRole resource with the given unique name, arguments, and options.
@@ -90,20 +90,20 @@ export class GrantRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GrantRoleState | undefined;
-            resourceInputs["grantRole"] = state ? state.grantRole : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["withAdminOption"] = state ? state.withAdminOption : undefined;
+            resourceInputs["grantRole"] = state?.grantRole;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["withAdminOption"] = state?.withAdminOption;
         } else {
             const args = argsOrState as GrantRoleArgs | undefined;
-            if ((!args || args.grantRole === undefined) && !opts.urn) {
+            if (args?.grantRole === undefined && !opts.urn) {
                 throw new Error("Missing required property 'grantRole'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["grantRole"] = args ? args.grantRole : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["withAdminOption"] = args ? args.withAdminOption : undefined;
+            resourceInputs["grantRole"] = args?.grantRole;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["withAdminOption"] = args?.withAdminOption;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GrantRole.__pulumiType, name, resourceInputs, opts);

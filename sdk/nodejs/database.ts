@@ -37,7 +37,7 @@ export class Database extends pulumi.CustomResource {
      * database. The default is `true`, allowing connections (except as restricted by
      * other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
      */
-    public readonly allowConnections!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowConnections: pulumi.Output<boolean | undefined>;
     /**
      * If `true`, the change of the database
      * `owner` will also include a reassignment of the ownership of preexisting
@@ -47,35 +47,35 @@ export class Database extends pulumi.CustomResource {
      * the database, you must be a direct or indirect member of the specified role, or
      * the username in the provider must be superuser.
      */
-    public readonly alterObjectOwnership!: pulumi.Output<boolean | undefined>;
+    declare public readonly alterObjectOwnership: pulumi.Output<boolean | undefined>;
     /**
      * How many concurrent connections can be
      * established to this database. `-1` (the default) means no limit.
      */
-    public readonly connectionLimit!: pulumi.Output<number | undefined>;
+    declare public readonly connectionLimit: pulumi.Output<number | undefined>;
     /**
      * Character set encoding to use in the new database
      */
-    public readonly encoding!: pulumi.Output<string>;
+    declare public readonly encoding: pulumi.Output<string>;
     /**
      * If `true`, then this database can be cloned by any
      * user with `CREATEDB` privileges; if `false` (the default), then only
      * superusers or the owner of the database can clone it.
      */
-    public readonly isTemplate!: pulumi.Output<boolean>;
+    declare public readonly isTemplate: pulumi.Output<boolean>;
     /**
      * Collation order (LC_COLLATE) to use in the new database
      */
-    public readonly lcCollate!: pulumi.Output<string>;
+    declare public readonly lcCollate: pulumi.Output<string>;
     /**
      * Character classification (LC_CTYPE) to use in the new database
      */
-    public readonly lcCtype!: pulumi.Output<string>;
+    declare public readonly lcCtype: pulumi.Output<string>;
     /**
      * The name of the database. Must be unique on the PostgreSQL
      * server instance where it is configured.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The role name of the user who will own the database, or
      * `DEFAULT` to use the default (namely, the user executing the command). To
@@ -83,18 +83,18 @@ export class Database extends pulumi.CustomResource {
      * database, you must be a direct or indirect member of the specified role, or
      * the username in the provider is a superuser.
      */
-    public readonly owner!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
     /**
      * The name of the tablespace that will be
      * associated with the database, or `DEFAULT` to use the template database's
      * tablespace.  This tablespace will be the default tablespace used for objects
      * created in this database.
      */
-    public readonly tablespaceName!: pulumi.Output<string>;
+    declare public readonly tablespaceName: pulumi.Output<string>;
     /**
      * The name of the template from which to create the new database
      */
-    public readonly template!: pulumi.Output<string>;
+    declare public readonly template: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -109,30 +109,30 @@ export class Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            resourceInputs["allowConnections"] = state ? state.allowConnections : undefined;
-            resourceInputs["alterObjectOwnership"] = state ? state.alterObjectOwnership : undefined;
-            resourceInputs["connectionLimit"] = state ? state.connectionLimit : undefined;
-            resourceInputs["encoding"] = state ? state.encoding : undefined;
-            resourceInputs["isTemplate"] = state ? state.isTemplate : undefined;
-            resourceInputs["lcCollate"] = state ? state.lcCollate : undefined;
-            resourceInputs["lcCtype"] = state ? state.lcCtype : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["tablespaceName"] = state ? state.tablespaceName : undefined;
-            resourceInputs["template"] = state ? state.template : undefined;
+            resourceInputs["allowConnections"] = state?.allowConnections;
+            resourceInputs["alterObjectOwnership"] = state?.alterObjectOwnership;
+            resourceInputs["connectionLimit"] = state?.connectionLimit;
+            resourceInputs["encoding"] = state?.encoding;
+            resourceInputs["isTemplate"] = state?.isTemplate;
+            resourceInputs["lcCollate"] = state?.lcCollate;
+            resourceInputs["lcCtype"] = state?.lcCtype;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["tablespaceName"] = state?.tablespaceName;
+            resourceInputs["template"] = state?.template;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            resourceInputs["allowConnections"] = args ? args.allowConnections : undefined;
-            resourceInputs["alterObjectOwnership"] = args ? args.alterObjectOwnership : undefined;
-            resourceInputs["connectionLimit"] = args ? args.connectionLimit : undefined;
-            resourceInputs["encoding"] = args ? args.encoding : undefined;
-            resourceInputs["isTemplate"] = args ? args.isTemplate : undefined;
-            resourceInputs["lcCollate"] = args ? args.lcCollate : undefined;
-            resourceInputs["lcCtype"] = args ? args.lcCtype : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["tablespaceName"] = args ? args.tablespaceName : undefined;
-            resourceInputs["template"] = args ? args.template : undefined;
+            resourceInputs["allowConnections"] = args?.allowConnections;
+            resourceInputs["alterObjectOwnership"] = args?.alterObjectOwnership;
+            resourceInputs["connectionLimit"] = args?.connectionLimit;
+            resourceInputs["encoding"] = args?.encoding;
+            resourceInputs["isTemplate"] = args?.isTemplate;
+            resourceInputs["lcCollate"] = args?.lcCollate;
+            resourceInputs["lcCtype"] = args?.lcCtype;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["tablespaceName"] = args?.tablespaceName;
+            resourceInputs["template"] = args?.template;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Database.__pulumiType, name, resourceInputs, opts);

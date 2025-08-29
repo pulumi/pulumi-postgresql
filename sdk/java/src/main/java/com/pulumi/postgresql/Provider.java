@@ -174,16 +174,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.sslMode);
     }
     /**
-     * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-     * PostgreSQL server
+     * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
      * 
      */
     @Export(name="sslmode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslmode;
 
     /**
-     * @return This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the
-     * PostgreSQL server
+     * @return This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
      * 
      */
     public Output<Optional<String>> sslmode() {
