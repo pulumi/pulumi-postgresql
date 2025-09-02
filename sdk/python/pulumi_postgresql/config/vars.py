@@ -77,7 +77,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def database(self) -> Optional[str]:
         """
-        The name of the database to connect to in order to conenct to (defaults to `postgres`).
+        The name of the database to connect to in order to connect to (defaults to `postgres`).
         """
         return __config__.get('database')
 

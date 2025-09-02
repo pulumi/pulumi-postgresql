@@ -233,6 +233,27 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Prevents applies from updating the role password on every
+     * apply unless the value changes. This version string should be updated whenever you want to
+     * change the password specified in `password_wo`. Must be used together with `password_wo`.
+     * Conflicts with `password`.
+     * 
+     */
+    @Import(name="passwordWoVersion")
+    private @Nullable Output<String> passwordWoVersion;
+
+    /**
+     * @return Prevents applies from updating the role password on every
+     * apply unless the value changes. This version string should be updated whenever you want to
+     * change the password specified in `password_wo`. Must be used together with `password_wo`.
+     * Conflicts with `password`.
+     * 
+     */
+    public Optional<Output<String>> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
+    }
+
+    /**
      * Defines whether a role is allowed to initiate
      * streaming replication or put the system in and out of backup mode.  Default
      * value is `false`
@@ -317,7 +338,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
      * databases and the ROLE is dropped, a
      * [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
      * must be executed on each of the respective databases before the `DROP ROLE`
-     * can be executed to dropped the ROLE from the catalog.  This is the first and
+     * can be executed to drop the ROLE from the catalog.  This is the first and
      * second steps taken when removing a ROLE from a database (the second step being
      * an implicit
      * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -331,7 +352,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
      * databases and the ROLE is dropped, a
      * [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
      * must be executed on each of the respective databases before the `DROP ROLE`
-     * can be executed to dropped the ROLE from the catalog.  This is the first and
+     * can be executed to drop the ROLE from the catalog.  This is the first and
      * second steps taken when removing a ROLE from a database (the second step being
      * an implicit
      * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -413,6 +434,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         this.login = $.login;
         this.name = $.name;
         this.password = $.password;
+        this.passwordWoVersion = $.passwordWoVersion;
         this.replication = $.replication;
         this.roles = $.roles;
         this.searchPaths = $.searchPaths;
@@ -728,6 +750,33 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param passwordWoVersion Prevents applies from updating the role password on every
+         * apply unless the value changes. This version string should be updated whenever you want to
+         * change the password specified in `password_wo`. Must be used together with `password_wo`.
+         * Conflicts with `password`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(@Nullable Output<String> passwordWoVersion) {
+            $.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param passwordWoVersion Prevents applies from updating the role password on every
+         * apply unless the value changes. This version string should be updated whenever you want to
+         * change the password specified in `password_wo`. Must be used together with `password_wo`.
+         * Conflicts with `password`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(String passwordWoVersion) {
+            return passwordWoVersion(Output.of(passwordWoVersion));
+        }
+
+        /**
          * @param replication Defines whether a role is allowed to initiate
          * streaming replication or put the system in and out of backup mode.  Default
          * value is `false`
@@ -858,7 +907,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          * databases and the ROLE is dropped, a
          * [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
          * must be executed on each of the respective databases before the `DROP ROLE`
-         * can be executed to dropped the ROLE from the catalog.  This is the first and
+         * can be executed to drop the ROLE from the catalog.  This is the first and
          * second steps taken when removing a ROLE from a database (the second step being
          * an implicit
          * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -876,7 +925,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          * databases and the ROLE is dropped, a
          * [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
          * must be executed on each of the respective databases before the `DROP ROLE`
-         * can be executed to dropped the ROLE from the catalog.  This is the first and
+         * can be executed to drop the ROLE from the catalog.  This is the first and
          * second steps taken when removing a ROLE from a database (the second step being
          * an implicit
          * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).

@@ -31,6 +31,7 @@ class RoleArgs:
                  login: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  replication: Optional[pulumi.Input[_builtins.bool]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  search_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -67,6 +68,10 @@ class RoleArgs:
                server instance where it is configured.
         :param pulumi.Input[_builtins.str] password: Sets the role's password. A password is only of use
                for roles having the `login` attribute set to true.
+        :param pulumi.Input[_builtins.str] password_wo_version: Prevents applies from updating the role password on every
+               apply unless the value changes. This version string should be updated whenever you want to
+               change the password specified in `password_wo`. Must be used together with `password_wo`.
+               Conflicts with `password`.
         :param pulumi.Input[_builtins.bool] replication: Defines whether a role is allowed to initiate
                streaming replication or put the system in and out of backup mode.  Default
                value is `false`
@@ -85,7 +90,7 @@ class RoleArgs:
                databases and the ROLE is dropped, a
                [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
                must be executed on each of the respective databases before the `DROP ROLE`
-               can be executed to dropped the ROLE from the catalog.  This is the first and
+               can be executed to drop the ROLE from the catalog.  This is the first and
                second steps taken when removing a ROLE from a database (the second step being
                an implicit
                [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -126,6 +131,8 @@ class RoleArgs:
             pulumi.set(__self__, "name", name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if replication is not None:
             pulumi.set(__self__, "replication", replication)
         if roles is not None:
@@ -301,6 +308,21 @@ class RoleArgs:
         pulumi.set(self, "password", value)
 
     @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Prevents applies from updating the role password on every
+        apply unless the value changes. This version string should be updated whenever you want to
+        change the password specified in `password_wo`. Must be used together with `password_wo`.
+        Conflicts with `password`.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def replication(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -366,7 +388,7 @@ class RoleArgs:
         databases and the ROLE is dropped, a
         [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
         must be executed on each of the respective databases before the `DROP ROLE`
-        can be executed to dropped the ROLE from the catalog.  This is the first and
+        can be executed to drop the ROLE from the catalog.  This is the first and
         second steps taken when removing a ROLE from a database (the second step being
         an implicit
         [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -435,6 +457,7 @@ class _RoleState:
                  login: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  replication: Optional[pulumi.Input[_builtins.bool]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  search_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -471,6 +494,10 @@ class _RoleState:
                server instance where it is configured.
         :param pulumi.Input[_builtins.str] password: Sets the role's password. A password is only of use
                for roles having the `login` attribute set to true.
+        :param pulumi.Input[_builtins.str] password_wo_version: Prevents applies from updating the role password on every
+               apply unless the value changes. This version string should be updated whenever you want to
+               change the password specified in `password_wo`. Must be used together with `password_wo`.
+               Conflicts with `password`.
         :param pulumi.Input[_builtins.bool] replication: Defines whether a role is allowed to initiate
                streaming replication or put the system in and out of backup mode.  Default
                value is `false`
@@ -489,7 +516,7 @@ class _RoleState:
                databases and the ROLE is dropped, a
                [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
                must be executed on each of the respective databases before the `DROP ROLE`
-               can be executed to dropped the ROLE from the catalog.  This is the first and
+               can be executed to drop the ROLE from the catalog.  This is the first and
                second steps taken when removing a ROLE from a database (the second step being
                an implicit
                [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -530,6 +557,8 @@ class _RoleState:
             pulumi.set(__self__, "name", name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if replication is not None:
             pulumi.set(__self__, "replication", replication)
         if roles is not None:
@@ -705,6 +734,21 @@ class _RoleState:
         pulumi.set(self, "password", value)
 
     @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Prevents applies from updating the role password on every
+        apply unless the value changes. This version string should be updated whenever you want to
+        change the password specified in `password_wo`. Must be used together with `password_wo`.
+        Conflicts with `password`.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def replication(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -770,7 +814,7 @@ class _RoleState:
         databases and the ROLE is dropped, a
         [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
         must be executed on each of the respective databases before the `DROP ROLE`
-        can be executed to dropped the ROLE from the catalog.  This is the first and
+        can be executed to drop the ROLE from the catalog.  This is the first and
         second steps taken when removing a ROLE from a database (the second step being
         an implicit
         [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -842,6 +886,7 @@ class Role(pulumi.CustomResource):
                  login: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  replication: Optional[pulumi.Input[_builtins.bool]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  search_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -881,6 +926,10 @@ class Role(pulumi.CustomResource):
                server instance where it is configured.
         :param pulumi.Input[_builtins.str] password: Sets the role's password. A password is only of use
                for roles having the `login` attribute set to true.
+        :param pulumi.Input[_builtins.str] password_wo_version: Prevents applies from updating the role password on every
+               apply unless the value changes. This version string should be updated whenever you want to
+               change the password specified in `password_wo`. Must be used together with `password_wo`.
+               Conflicts with `password`.
         :param pulumi.Input[_builtins.bool] replication: Defines whether a role is allowed to initiate
                streaming replication or put the system in and out of backup mode.  Default
                value is `false`
@@ -899,7 +948,7 @@ class Role(pulumi.CustomResource):
                databases and the ROLE is dropped, a
                [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
                must be executed on each of the respective databases before the `DROP ROLE`
-               can be executed to dropped the ROLE from the catalog.  This is the first and
+               can be executed to drop the ROLE from the catalog.  This is the first and
                second steps taken when removing a ROLE from a database (the second step being
                an implicit
                [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -948,6 +997,7 @@ class Role(pulumi.CustomResource):
                  login: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  replication: Optional[pulumi.Input[_builtins.bool]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  search_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -977,6 +1027,7 @@ class Role(pulumi.CustomResource):
             __props__.__dict__["login"] = login
             __props__.__dict__["name"] = name
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["password_wo_version"] = password_wo_version
             __props__.__dict__["replication"] = replication
             __props__.__dict__["roles"] = roles
             __props__.__dict__["search_paths"] = search_paths
@@ -1009,6 +1060,7 @@ class Role(pulumi.CustomResource):
             login: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             password: Optional[pulumi.Input[_builtins.str]] = None,
+            password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
             replication: Optional[pulumi.Input[_builtins.bool]] = None,
             roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             search_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1050,6 +1102,10 @@ class Role(pulumi.CustomResource):
                server instance where it is configured.
         :param pulumi.Input[_builtins.str] password: Sets the role's password. A password is only of use
                for roles having the `login` attribute set to true.
+        :param pulumi.Input[_builtins.str] password_wo_version: Prevents applies from updating the role password on every
+               apply unless the value changes. This version string should be updated whenever you want to
+               change the password specified in `password_wo`. Must be used together with `password_wo`.
+               Conflicts with `password`.
         :param pulumi.Input[_builtins.bool] replication: Defines whether a role is allowed to initiate
                streaming replication or put the system in and out of backup mode.  Default
                value is `false`
@@ -1068,7 +1124,7 @@ class Role(pulumi.CustomResource):
                databases and the ROLE is dropped, a
                [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
                must be executed on each of the respective databases before the `DROP ROLE`
-               can be executed to dropped the ROLE from the catalog.  This is the first and
+               can be executed to drop the ROLE from the catalog.  This is the first and
                second steps taken when removing a ROLE from a database (the second step being
                an implicit
                [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -1098,6 +1154,7 @@ class Role(pulumi.CustomResource):
         __props__.__dict__["login"] = login
         __props__.__dict__["name"] = name
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_wo_version"] = password_wo_version
         __props__.__dict__["replication"] = replication
         __props__.__dict__["roles"] = roles
         __props__.__dict__["search_paths"] = search_paths
@@ -1218,6 +1275,17 @@ class Role(pulumi.CustomResource):
         return pulumi.get(self, "password")
 
     @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Prevents applies from updating the role password on every
+        apply unless the value changes. This version string should be updated whenever you want to
+        change the password specified in `password_wo`. Must be used together with `password_wo`.
+        Conflicts with `password`.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @_builtins.property
     @pulumi.getter
     def replication(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -1267,7 +1335,7 @@ class Role(pulumi.CustomResource):
         databases and the ROLE is dropped, a
         [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
         must be executed on each of the respective databases before the `DROP ROLE`
-        can be executed to dropped the ROLE from the catalog.  This is the first and
+        can be executed to drop the ROLE from the catalog.  This is the first and
         second steps taken when removing a ROLE from a database (the second step being
         an implicit
         [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).

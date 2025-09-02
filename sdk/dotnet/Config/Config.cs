@@ -111,7 +111,7 @@ namespace Pulumi.PostgreSql
 
         private static readonly __Value<string?> _database = new __Value<string?>(() => __config.Get("database"));
         /// <summary>
-        /// The name of the database to connect to in order to conenct to (defaults to `postgres`).
+        /// The name of the database to connect to in order to connect to (defaults to `postgres`).
         /// </summary>
         public static string? Database
         {

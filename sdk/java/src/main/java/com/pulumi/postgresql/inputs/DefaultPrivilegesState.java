@@ -33,14 +33,14 @@ public final class DefaultPrivilegesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
+     * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
      * 
      */
     @Import(name="objectType")
     private @Nullable Output<String> objectType;
 
     /**
-     * @return The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
+     * @return The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
      * 
      */
     public Optional<Output<String>> objectType() {
@@ -174,7 +174,7 @@ public final class DefaultPrivilegesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param objectType The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
+         * @param objectType The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class DefaultPrivilegesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param objectType The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
+         * @param objectType The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
          * 
          * @return builder
          * 

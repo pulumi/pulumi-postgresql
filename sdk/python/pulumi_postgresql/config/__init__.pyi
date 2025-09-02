@@ -54,7 +54,7 @@ Maximum wait for connection, in seconds. Zero or not specified means wait indefi
 
 database: Optional[str]
 """
-The name of the database to connect to in order to conenct to (defaults to `postgres`).
+The name of the database to connect to in order to connect to (defaults to `postgres`).
 """
 
 databaseUsername: Optional[str]

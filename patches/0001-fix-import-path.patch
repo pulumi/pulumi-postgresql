@@ -5,14 +5,14 @@ Subject: [PATCH] fix import path
 
 
 diff --git a/go.mod b/go.mod
-index eebe8c4..3ca2fa4 100644
+index 7f8e1ba..f9e0a8e 100644
 --- a/go.mod
 +++ b/go.mod
 @@ -1,4 +1,4 @@
 -module github.com/terraform-providers/terraform-provider-postgresql
 +module github.com/cyrilgdn/terraform-provider-postgresql
  
- go 1.23
+ go 1.24.0
  
 diff --git a/main.go b/main.go
 index 7125ff2..d9f1406 100644

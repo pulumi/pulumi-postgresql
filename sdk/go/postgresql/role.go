@@ -53,6 +53,11 @@ type Role struct {
 	// Sets the role's password. A password is only of use
 	// for roles having the `login` attribute set to true.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// Prevents applies from updating the role password on every
+	// apply unless the value changes. This version string should be updated whenever you want to
+	// change the password specified in `passwordWo`. Must be used together with `passwordWo`.
+	// Conflicts with `password`.
+	PasswordWoVersion pulumi.StringPtrOutput `pulumi:"passwordWoVersion"`
 	// Defines whether a role is allowed to initiate
 	// streaming replication or put the system in and out of backup mode.  Default
 	// value is `false`
@@ -75,7 +80,7 @@ type Role struct {
 	// databases and the ROLE is dropped, a
 	// [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
 	// must be executed on each of the respective databases before the `DROP ROLE`
-	// can be executed to dropped the ROLE from the catalog.  This is the first and
+	// can be executed to drop the ROLE from the catalog.  This is the first and
 	// second steps taken when removing a ROLE from a database (the second step being
 	// an implicit
 	// [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -170,6 +175,11 @@ type roleState struct {
 	// Sets the role's password. A password is only of use
 	// for roles having the `login` attribute set to true.
 	Password *string `pulumi:"password"`
+	// Prevents applies from updating the role password on every
+	// apply unless the value changes. This version string should be updated whenever you want to
+	// change the password specified in `passwordWo`. Must be used together with `passwordWo`.
+	// Conflicts with `password`.
+	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// Defines whether a role is allowed to initiate
 	// streaming replication or put the system in and out of backup mode.  Default
 	// value is `false`
@@ -192,7 +202,7 @@ type roleState struct {
 	// databases and the ROLE is dropped, a
 	// [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
 	// must be executed on each of the respective databases before the `DROP ROLE`
-	// can be executed to dropped the ROLE from the catalog.  This is the first and
+	// can be executed to drop the ROLE from the catalog.  This is the first and
 	// second steps taken when removing a ROLE from a database (the second step being
 	// an implicit
 	// [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -251,6 +261,11 @@ type RoleState struct {
 	// Sets the role's password. A password is only of use
 	// for roles having the `login` attribute set to true.
 	Password pulumi.StringPtrInput
+	// Prevents applies from updating the role password on every
+	// apply unless the value changes. This version string should be updated whenever you want to
+	// change the password specified in `passwordWo`. Must be used together with `passwordWo`.
+	// Conflicts with `password`.
+	PasswordWoVersion pulumi.StringPtrInput
 	// Defines whether a role is allowed to initiate
 	// streaming replication or put the system in and out of backup mode.  Default
 	// value is `false`
@@ -273,7 +288,7 @@ type RoleState struct {
 	// databases and the ROLE is dropped, a
 	// [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
 	// must be executed on each of the respective databases before the `DROP ROLE`
-	// can be executed to dropped the ROLE from the catalog.  This is the first and
+	// can be executed to drop the ROLE from the catalog.  This is the first and
 	// second steps taken when removing a ROLE from a database (the second step being
 	// an implicit
 	// [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -336,6 +351,11 @@ type roleArgs struct {
 	// Sets the role's password. A password is only of use
 	// for roles having the `login` attribute set to true.
 	Password *string `pulumi:"password"`
+	// Prevents applies from updating the role password on every
+	// apply unless the value changes. This version string should be updated whenever you want to
+	// change the password specified in `passwordWo`. Must be used together with `passwordWo`.
+	// Conflicts with `password`.
+	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// Defines whether a role is allowed to initiate
 	// streaming replication or put the system in and out of backup mode.  Default
 	// value is `false`
@@ -358,7 +378,7 @@ type roleArgs struct {
 	// databases and the ROLE is dropped, a
 	// [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
 	// must be executed on each of the respective databases before the `DROP ROLE`
-	// can be executed to dropped the ROLE from the catalog.  This is the first and
+	// can be executed to drop the ROLE from the catalog.  This is the first and
 	// second steps taken when removing a ROLE from a database (the second step being
 	// an implicit
 	// [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -418,6 +438,11 @@ type RoleArgs struct {
 	// Sets the role's password. A password is only of use
 	// for roles having the `login` attribute set to true.
 	Password pulumi.StringPtrInput
+	// Prevents applies from updating the role password on every
+	// apply unless the value changes. This version string should be updated whenever you want to
+	// change the password specified in `passwordWo`. Must be used together with `passwordWo`.
+	// Conflicts with `password`.
+	PasswordWoVersion pulumi.StringPtrInput
 	// Defines whether a role is allowed to initiate
 	// streaming replication or put the system in and out of backup mode.  Default
 	// value is `false`
@@ -440,7 +465,7 @@ type RoleArgs struct {
 	// databases and the ROLE is dropped, a
 	// [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
 	// must be executed on each of the respective databases before the `DROP ROLE`
-	// can be executed to dropped the ROLE from the catalog.  This is the first and
+	// can be executed to drop the ROLE from the catalog.  This is the first and
 	// second steps taken when removing a ROLE from a database (the second step being
 	// an implicit
 	// [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -621,6 +646,14 @@ func (o RoleOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// Prevents applies from updating the role password on every
+// apply unless the value changes. This version string should be updated whenever you want to
+// change the password specified in `passwordWo`. Must be used together with `passwordWo`.
+// Conflicts with `password`.
+func (o RoleOutput) PasswordWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.PasswordWoVersion }).(pulumi.StringPtrOutput)
+}
+
 // Defines whether a role is allowed to initiate
 // streaming replication or put the system in and out of backup mode.  Default
 // value is `false`
@@ -655,7 +688,7 @@ func (o RoleOutput) SkipDropRole() pulumi.BoolPtrOutput {
 // databases and the ROLE is dropped, a
 // [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
 // must be executed on each of the respective databases before the `DROP ROLE`
-// can be executed to dropped the ROLE from the catalog.  This is the first and
+// can be executed to drop the ROLE from the catalog.  This is the first and
 // second steps taken when removing a ROLE from a database (the second step being
 // an implicit
 // [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).

@@ -25,7 +25,7 @@ type Provider struct {
 	// AWS region to use for IAM auth
 	AwsRdsIamRegion pulumi.StringPtrOutput `pulumi:"awsRdsIamRegion"`
 	AzureTenantId   pulumi.StringPtrOutput `pulumi:"azureTenantId"`
-	// The name of the database to connect to in order to conenct to (defaults to `postgres`).
+	// The name of the database to connect to in order to connect to (defaults to `postgres`).
 	Database pulumi.StringPtrOutput `pulumi:"database"`
 	// Database username associated to the connected user (for user name maps)
 	DatabaseUsername pulumi.StringPtrOutput `pulumi:"databaseUsername"`
@@ -97,7 +97,7 @@ type providerArgs struct {
 	Clientcert *ProviderClientcert `pulumi:"clientcert"`
 	// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
 	ConnectTimeout *int `pulumi:"connectTimeout"`
-	// The name of the database to connect to in order to conenct to (defaults to `postgres`).
+	// The name of the database to connect to in order to connect to (defaults to `postgres`).
 	Database *string `pulumi:"database"`
 	// Database username associated to the connected user (for user name maps)
 	DatabaseUsername *string `pulumi:"databaseUsername"`
@@ -143,7 +143,7 @@ type ProviderArgs struct {
 	Clientcert ProviderClientcertPtrInput
 	// Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
 	ConnectTimeout pulumi.IntPtrInput
-	// The name of the database to connect to in order to conenct to (defaults to `postgres`).
+	// The name of the database to connect to in order to connect to (defaults to `postgres`).
 	Database pulumi.StringPtrInput
 	// Database username associated to the connected user (for user name maps)
 	DatabaseUsername pulumi.StringPtrInput
@@ -251,7 +251,7 @@ func (o ProviderOutput) AzureTenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AzureTenantId }).(pulumi.StringPtrOutput)
 }
 
-// The name of the database to connect to in order to conenct to (defaults to `postgres`).
+// The name of the database to connect to in order to connect to (defaults to `postgres`).
 func (o ProviderOutput) Database() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Database }).(pulumi.StringPtrOutput)
 }

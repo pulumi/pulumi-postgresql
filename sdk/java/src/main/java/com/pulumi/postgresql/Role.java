@@ -216,6 +216,26 @@ public class Role extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
+     * Prevents applies from updating the role password on every
+     * apply unless the value changes. This version string should be updated whenever you want to
+     * change the password specified in `password_wo`. Must be used together with `password_wo`.
+     * Conflicts with `password`.
+     * 
+     */
+    @Export(name="passwordWoVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> passwordWoVersion;
+
+    /**
+     * @return Prevents applies from updating the role password on every
+     * apply unless the value changes. This version string should be updated whenever you want to
+     * change the password specified in `password_wo`. Must be used together with `password_wo`.
+     * Conflicts with `password`.
+     * 
+     */
+    public Output<Optional<String>> passwordWoVersion() {
+        return Codegen.optional(this.passwordWoVersion);
+    }
+    /**
      * Defines whether a role is allowed to initiate
      * streaming replication or put the system in and out of backup mode.  Default
      * value is `false`
@@ -296,7 +316,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * databases and the ROLE is dropped, a
      * [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
      * must be executed on each of the respective databases before the `DROP ROLE`
-     * can be executed to dropped the ROLE from the catalog.  This is the first and
+     * can be executed to drop the ROLE from the catalog.  This is the first and
      * second steps taken when removing a ROLE from a database (the second step being
      * an implicit
      * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -310,7 +330,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * databases and the ROLE is dropped, a
      * [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
      * must be executed on each of the respective databases before the `DROP ROLE`
-     * can be executed to dropped the ROLE from the catalog.  This is the first and
+     * can be executed to drop the ROLE from the catalog.  This is the first and
      * second steps taken when removing a ROLE from a database (the second step being
      * an implicit
      * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).

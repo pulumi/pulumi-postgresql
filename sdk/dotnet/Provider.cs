@@ -40,7 +40,7 @@ namespace Pulumi.PostgreSql
         public Output<string?> AzureTenantId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the database to connect to in order to conenct to (defaults to `postgres`).
+        /// The name of the database to connect to in order to connect to (defaults to `postgres`).
         /// </summary>
         [Output("database")]
         public Output<string?> Database { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.PostgreSql
         public Input<int>? ConnectTimeout { get; set; }
 
         /// <summary>
-        /// The name of the database to connect to in order to conenct to (defaults to `postgres`).
+        /// The name of the database to connect to in order to connect to (defaults to `postgres`).
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }

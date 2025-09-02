@@ -41,7 +41,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly awsRdsIamRegion: pulumi.Output<string | undefined>;
     declare public readonly azureTenantId: pulumi.Output<string | undefined>;
     /**
-     * The name of the database to connect to in order to conenct to (defaults to `postgres`).
+     * The name of the database to connect to in order to connect to (defaults to `postgres`).
      */
     declare public readonly database: pulumi.Output<string | undefined>;
     /**
@@ -166,7 +166,7 @@ export interface ProviderArgs {
      */
     connectTimeout?: pulumi.Input<number>;
     /**
-     * The name of the database to connect to in order to conenct to (defaults to `postgres`).
+     * The name of the database to connect to in order to connect to (defaults to `postgres`).
      */
     database?: pulumi.Input<string>;
     /**
