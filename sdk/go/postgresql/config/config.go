@@ -57,7 +57,7 @@ func GetConnectTimeout(ctx *pulumi.Context) int {
 	return value
 }
 
-// The name of the database to connect to in order to conenct to (defaults to `postgres`).
+// The name of the database to connect to in order to connect to (defaults to `postgres`).
 func GetDatabase(ctx *pulumi.Context) string {
 	return config.Get(ctx, "postgresql:database")
 }

@@ -132,14 +132,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the database to connect to in order to conenct to (defaults to `postgres`).
+     * The name of the database to connect to in order to connect to (defaults to `postgres`).
      * 
      */
     @Import(name="database")
     private @Nullable Output<String> database;
 
     /**
-     * @return The name of the database to connect to in order to conenct to (defaults to `postgres`).
+     * @return The name of the database to connect to in order to connect to (defaults to `postgres`).
      * 
      */
     public Optional<Output<String>> database() {
@@ -539,7 +539,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param database The name of the database to connect to in order to conenct to (defaults to `postgres`).
+         * @param database The name of the database to connect to in order to connect to (defaults to `postgres`).
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param database The name of the database to connect to in order to conenct to (defaults to `postgres`).
+         * @param database The name of the database to connect to in order to connect to (defaults to `postgres`).
          * 
          * @return builder
          * 

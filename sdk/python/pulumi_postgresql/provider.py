@@ -51,7 +51,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.bool] azure_identity_auth: Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
         :param pulumi.Input['ProviderClientcertArgs'] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[_builtins.int] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
-        :param pulumi.Input[_builtins.str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
+        :param pulumi.Input[_builtins.str] database: The name of the database to connect to in order to connect to (defaults to `postgres`).
         :param pulumi.Input[_builtins.str] database_username: Database username associated to the connected user (for user name maps)
         :param pulumi.Input[_builtins.str] expected_version: Specify the expected version of PostgreSQL.
         :param pulumi.Input[_builtins.str] gcp_iam_impersonate_service_account: Service account to impersonate when using GCP IAM authentication.
@@ -213,7 +213,7 @@ class ProviderArgs:
     @pulumi.getter
     def database(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the database to connect to in order to conenct to (defaults to `postgres`).
+        The name of the database to connect to in order to connect to (defaults to `postgres`).
         """
         return pulumi.get(self, "database")
 
@@ -417,7 +417,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.bool] azure_identity_auth: Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
         :param pulumi.Input[Union['ProviderClientcertArgs', 'ProviderClientcertArgsDict']] clientcert: SSL client certificate if required by the database.
         :param pulumi.Input[_builtins.int] connect_timeout: Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
-        :param pulumi.Input[_builtins.str] database: The name of the database to connect to in order to conenct to (defaults to `postgres`).
+        :param pulumi.Input[_builtins.str] database: The name of the database to connect to in order to connect to (defaults to `postgres`).
         :param pulumi.Input[_builtins.str] database_username: Database username associated to the connected user (for user name maps)
         :param pulumi.Input[_builtins.str] expected_version: Specify the expected version of PostgreSQL.
         :param pulumi.Input[_builtins.str] gcp_iam_impersonate_service_account: Service account to impersonate when using GCP IAM authentication.
@@ -555,7 +555,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def database(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the database to connect to in order to conenct to (defaults to `postgres`).
+        The name of the database to connect to in order to connect to (defaults to `postgres`).
         """
         return pulumi.get(self, "database")
 

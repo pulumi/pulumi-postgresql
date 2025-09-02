@@ -72,14 +72,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.azureTenantId);
     }
     /**
-     * The name of the database to connect to in order to conenct to (defaults to `postgres`).
+     * The name of the database to connect to in order to connect to (defaults to `postgres`).
      * 
      */
     @Export(name="database", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> database;
 
     /**
-     * @return The name of the database to connect to in order to conenct to (defaults to `postgres`).
+     * @return The name of the database to connect to in order to connect to (defaults to `postgres`).
      * 
      */
     public Output<Optional<String>> database() {

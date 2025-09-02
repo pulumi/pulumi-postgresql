@@ -66,7 +66,7 @@ public final class Config {
         return Codegen.integerProp("connectTimeout").config(config).env("PGCONNECT_TIMEOUT").def(180).get();
     }
 /**
- * The name of the database to connect to in order to conenct to (defaults to `postgres`).
+ * The name of the database to connect to in order to connect to (defaults to `postgres`).
  * 
  */
     public Optional<String> database() {

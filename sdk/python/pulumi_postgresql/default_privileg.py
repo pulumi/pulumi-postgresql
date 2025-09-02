@@ -29,7 +29,7 @@ class DefaultPrivilegArgs:
         """
         The set of arguments for constructing a DefaultPrivileg resource.
         :param pulumi.Input[_builtins.str] database: The database to grant default privileges for this role.
-        :param pulumi.Input[_builtins.str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
+        :param pulumi.Input[_builtins.str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
         :param pulumi.Input[_builtins.str] owner: Specifies the role that creates objects for which the default privileges will be applied.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] privileges: List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
         :param pulumi.Input[_builtins.str] role: The role that will automatically be granted the specified privileges on new objects created by the owner.
@@ -62,7 +62,7 @@ class DefaultPrivilegArgs:
     @pulumi.getter(name="objectType")
     def object_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
+        The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
         """
         return pulumi.get(self, "object_type")
 
@@ -144,7 +144,7 @@ class _DefaultPrivilegState:
         """
         Input properties used for looking up and filtering DefaultPrivileg resources.
         :param pulumi.Input[_builtins.str] database: The database to grant default privileges for this role.
-        :param pulumi.Input[_builtins.str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
+        :param pulumi.Input[_builtins.str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
         :param pulumi.Input[_builtins.str] owner: Specifies the role that creates objects for which the default privileges will be applied.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] privileges: List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
         :param pulumi.Input[_builtins.str] role: The role that will automatically be granted the specified privileges on new objects created by the owner.
@@ -182,7 +182,7 @@ class _DefaultPrivilegState:
     @pulumi.getter(name="objectType")
     def object_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
+        The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
         """
         return pulumi.get(self, "object_type")
 
@@ -329,7 +329,7 @@ class DefaultPrivileg(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database: The database to grant default privileges for this role.
-        :param pulumi.Input[_builtins.str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
+        :param pulumi.Input[_builtins.str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
         :param pulumi.Input[_builtins.str] owner: Specifies the role that creates objects for which the default privileges will be applied.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] privileges: List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
         :param pulumi.Input[_builtins.str] role: The role that will automatically be granted the specified privileges on new objects created by the owner.
@@ -472,7 +472,7 @@ class DefaultPrivileg(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database: The database to grant default privileges for this role.
-        :param pulumi.Input[_builtins.str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
+        :param pulumi.Input[_builtins.str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
         :param pulumi.Input[_builtins.str] owner: Specifies the role that creates objects for which the default privileges will be applied.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] privileges: List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
         :param pulumi.Input[_builtins.str] role: The role that will automatically be granted the specified privileges on new objects created by the owner.
@@ -504,7 +504,7 @@ class DefaultPrivileg(pulumi.CustomResource):
     @pulumi.getter(name="objectType")
     def object_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).
+        The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
         """
         return pulumi.get(self, "object_type")
 

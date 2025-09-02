@@ -96,6 +96,13 @@ export class Role extends pulumi.CustomResource {
      */
     declare public readonly password: pulumi.Output<string | undefined>;
     /**
+     * Prevents applies from updating the role password on every
+     * apply unless the value changes. This version string should be updated whenever you want to
+     * change the password specified in `passwordWo`. Must be used together with `passwordWo`.
+     * Conflicts with `password`.
+     */
+    declare public readonly passwordWoVersion: pulumi.Output<string | undefined>;
+    /**
      * Defines whether a role is allowed to initiate
      * streaming replication or put the system in and out of backup mode.  Default
      * value is `false`
@@ -126,7 +133,7 @@ export class Role extends pulumi.CustomResource {
      * databases and the ROLE is dropped, a
      * [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
      * must be executed on each of the respective databases before the `DROP ROLE`
-     * can be executed to dropped the ROLE from the catalog.  This is the first and
+     * can be executed to drop the ROLE from the catalog.  This is the first and
      * second steps taken when removing a ROLE from a database (the second step being
      * an implicit
      * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -176,6 +183,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["login"] = state?.login;
             resourceInputs["name"] = state?.name;
             resourceInputs["password"] = state?.password;
+            resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
             resourceInputs["replication"] = state?.replication;
             resourceInputs["roles"] = state?.roles;
             resourceInputs["searchPaths"] = state?.searchPaths;
@@ -198,6 +206,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["login"] = args?.login;
             resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
             resourceInputs["replication"] = args?.replication;
             resourceInputs["roles"] = args?.roles;
             resourceInputs["searchPaths"] = args?.searchPaths;
@@ -282,6 +291,13 @@ export interface RoleState {
      */
     password?: pulumi.Input<string>;
     /**
+     * Prevents applies from updating the role password on every
+     * apply unless the value changes. This version string should be updated whenever you want to
+     * change the password specified in `passwordWo`. Must be used together with `passwordWo`.
+     * Conflicts with `password`.
+     */
+    passwordWoVersion?: pulumi.Input<string>;
+    /**
      * Defines whether a role is allowed to initiate
      * streaming replication or put the system in and out of backup mode.  Default
      * value is `false`
@@ -312,7 +328,7 @@ export interface RoleState {
      * databases and the ROLE is dropped, a
      * [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
      * must be executed on each of the respective databases before the `DROP ROLE`
-     * can be executed to dropped the ROLE from the catalog.  This is the first and
+     * can be executed to drop the ROLE from the catalog.  This is the first and
      * second steps taken when removing a ROLE from a database (the second step being
      * an implicit
      * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
@@ -406,6 +422,13 @@ export interface RoleArgs {
      */
     password?: pulumi.Input<string>;
     /**
+     * Prevents applies from updating the role password on every
+     * apply unless the value changes. This version string should be updated whenever you want to
+     * change the password specified in `passwordWo`. Must be used together with `passwordWo`.
+     * Conflicts with `password`.
+     */
+    passwordWoVersion?: pulumi.Input<string>;
+    /**
      * Defines whether a role is allowed to initiate
      * streaming replication or put the system in and out of backup mode.  Default
      * value is `false`
@@ -436,7 +459,7 @@ export interface RoleArgs {
      * databases and the ROLE is dropped, a
      * [`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in
      * must be executed on each of the respective databases before the `DROP ROLE`
-     * can be executed to dropped the ROLE from the catalog.  This is the first and
+     * can be executed to drop the ROLE from the catalog.  This is the first and
      * second steps taken when removing a ROLE from a database (the second step being
      * an implicit
      * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
