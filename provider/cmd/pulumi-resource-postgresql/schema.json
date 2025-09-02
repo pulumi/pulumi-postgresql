@@ -90,7 +90,7 @@
             },
             "database": {
                 "type": "string",
-                "description": "The name of the database to connect to in order to conenct to (defaults to `postgres`)."
+                "description": "The name of the database to connect to in order to connect to (defaults to `postgres`)."
             },
             "databaseUsername": {
                 "type": "string",
@@ -347,7 +347,7 @@
             },
             "database": {
                 "type": "string",
-                "description": "The name of the database to connect to in order to conenct to (defaults to `postgres`)."
+                "description": "The name of the database to connect to in order to connect to (defaults to `postgres`)."
             },
             "databaseUsername": {
                 "type": "string",
@@ -442,7 +442,7 @@
             },
             "database": {
                 "type": "string",
-                "description": "The name of the database to connect to in order to conenct to (defaults to `postgres`)."
+                "description": "The name of the database to connect to in order to connect to (defaults to `postgres`)."
             },
             "databaseUsername": {
                 "type": "string",
@@ -678,7 +678,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).\n"
+                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).\n"
                 },
                 "owner": {
                     "type": "string",
@@ -719,7 +719,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).\n",
+                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).\n",
                     "willReplaceOnChanges": true
                 },
                 "owner": {
@@ -767,7 +767,7 @@
                     },
                     "objectType": {
                         "type": "string",
-                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).\n",
+                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).\n",
                         "willReplaceOnChanges": true
                     },
                     "owner": {
@@ -811,7 +811,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).\n"
+                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).\n"
                 },
                 "owner": {
                     "type": "string",
@@ -852,7 +852,7 @@
                 },
                 "objectType": {
                     "type": "string",
-                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).\n",
+                    "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).\n",
                     "willReplaceOnChanges": true
                 },
                 "owner": {
@@ -900,7 +900,7 @@
                     },
                     "objectType": {
                         "type": "string",
-                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, type, schema).\n",
+                        "description": "The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).\n",
                         "willReplaceOnChanges": true
                     },
                     "owner": {
@@ -1745,6 +1745,10 @@
                     "description": "Sets the role's password. A password is only of use\nfor roles having the `login` attribute set to true.\n",
                     "secret": true
                 },
+                "passwordWoVersion": {
+                    "type": "string",
+                    "description": "Prevents applies from updating the role password on every\napply unless the value changes. This version string should be updated whenever you want to\nchange the password specified in `password_wo`. Must be used together with `password_wo`.\nConflicts with `password`.\n"
+                },
                 "replication": {
                     "type": "boolean",
                     "description": "Defines whether a role is allowed to initiate\nstreaming replication or put the system in and out of backup mode.  Default\nvalue is `false`\n"
@@ -1769,7 +1773,7 @@
                 },
                 "skipReassignOwned": {
                     "type": "boolean",
-                    "description": "When a PostgreSQL ROLE exists in multiple\ndatabases and the ROLE is dropped, a\n[`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in\nmust be executed on each of the respective databases before the `DROP ROLE`\ncan be executed to dropped the ROLE from the catalog.  This is the first and\nsecond steps taken when removing a ROLE from a database (the second step being\nan implicit\n[`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).\n"
+                    "description": "When a PostgreSQL ROLE exists in multiple\ndatabases and the ROLE is dropped, a\n[`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in\nmust be executed on each of the respective databases before the `DROP ROLE`\ncan be executed to drop the ROLE from the catalog.  This is the first and\nsecond steps taken when removing a ROLE from a database (the second step being\nan implicit\n[`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).\n"
                 },
                 "statementTimeout": {
                     "type": "integer",
@@ -1837,6 +1841,10 @@
                     "description": "Sets the role's password. A password is only of use\nfor roles having the `login` attribute set to true.\n",
                     "secret": true
                 },
+                "passwordWoVersion": {
+                    "type": "string",
+                    "description": "Prevents applies from updating the role password on every\napply unless the value changes. This version string should be updated whenever you want to\nchange the password specified in `password_wo`. Must be used together with `password_wo`.\nConflicts with `password`.\n"
+                },
                 "replication": {
                     "type": "boolean",
                     "description": "Defines whether a role is allowed to initiate\nstreaming replication or put the system in and out of backup mode.  Default\nvalue is `false`\n"
@@ -1861,7 +1869,7 @@
                 },
                 "skipReassignOwned": {
                     "type": "boolean",
-                    "description": "When a PostgreSQL ROLE exists in multiple\ndatabases and the ROLE is dropped, a\n[`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in\nmust be executed on each of the respective databases before the `DROP ROLE`\ncan be executed to dropped the ROLE from the catalog.  This is the first and\nsecond steps taken when removing a ROLE from a database (the second step being\nan implicit\n[`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).\n"
+                    "description": "When a PostgreSQL ROLE exists in multiple\ndatabases and the ROLE is dropped, a\n[`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in\nmust be executed on each of the respective databases before the `DROP ROLE`\ncan be executed to drop the ROLE from the catalog.  This is the first and\nsecond steps taken when removing a ROLE from a database (the second step being\nan implicit\n[`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).\n"
                 },
                 "statementTimeout": {
                     "type": "integer",
@@ -1928,6 +1936,10 @@
                         "description": "Sets the role's password. A password is only of use\nfor roles having the `login` attribute set to true.\n",
                         "secret": true
                     },
+                    "passwordWoVersion": {
+                        "type": "string",
+                        "description": "Prevents applies from updating the role password on every\napply unless the value changes. This version string should be updated whenever you want to\nchange the password specified in `password_wo`. Must be used together with `password_wo`.\nConflicts with `password`.\n"
+                    },
                     "replication": {
                         "type": "boolean",
                         "description": "Defines whether a role is allowed to initiate\nstreaming replication or put the system in and out of backup mode.  Default\nvalue is `false`\n"
@@ -1952,7 +1964,7 @@
                     },
                     "skipReassignOwned": {
                         "type": "boolean",
-                        "description": "When a PostgreSQL ROLE exists in multiple\ndatabases and the ROLE is dropped, a\n[`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in\nmust be executed on each of the respective databases before the `DROP ROLE`\ncan be executed to dropped the ROLE from the catalog.  This is the first and\nsecond steps taken when removing a ROLE from a database (the second step being\nan implicit\n[`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).\n"
+                        "description": "When a PostgreSQL ROLE exists in multiple\ndatabases and the ROLE is dropped, a\n[`REASSIGN OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html) in\nmust be executed on each of the respective databases before the `DROP ROLE`\ncan be executed to drop the ROLE from the catalog.  This is the first and\nsecond steps taken when removing a ROLE from a database (the second step being\nan implicit\n[`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).\n"
                     },
                     "statementTimeout": {
                         "type": "integer",
