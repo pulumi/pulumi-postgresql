@@ -20,14 +20,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
-     * Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+     * Use rdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
      * 
      */
     @Import(name="awsRdsIamAuth", json=true)
     private @Nullable Output<Boolean> awsRdsIamAuth;
 
     /**
-     * @return Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+     * @return Use rdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
      * 
      */
     public Optional<Output<Boolean>> awsRdsIamAuth() {
@@ -260,19 +260,19 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @deprecated
-     * Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
+     * Rename PostgreSQL provider `sslMode` attribute to `sslmode`
      * 
      */
-    @Deprecated /* Rename PostgreSQL provider `ssl_mode` attribute to `sslmode` */
+    @Deprecated /* Rename PostgreSQL provider `sslMode` attribute to `sslmode` */
     @Import(name="sslMode")
     private @Nullable Output<String> sslMode;
 
     /**
      * @deprecated
-     * Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
+     * Rename PostgreSQL provider `sslMode` attribute to `sslmode`
      * 
      */
-    @Deprecated /* Rename PostgreSQL provider `ssl_mode` attribute to `sslmode` */
+    @Deprecated /* Rename PostgreSQL provider `sslMode` attribute to `sslmode` */
     public Optional<Output<String>> sslMode() {
         return Optional.ofNullable(this.sslMode);
     }
@@ -383,7 +383,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param awsRdsIamAuth Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+         * @param awsRdsIamAuth Use rdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param awsRdsIamAuth Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+         * @param awsRdsIamAuth Use rdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
          * 
          * @return builder
          * 
@@ -719,10 +719,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
+         * Rename PostgreSQL provider `sslMode` attribute to `sslmode`
          * 
          */
-        @Deprecated /* Rename PostgreSQL provider `ssl_mode` attribute to `sslmode` */
+        @Deprecated /* Rename PostgreSQL provider `sslMode` attribute to `sslmode` */
         public Builder sslMode(@Nullable Output<String> sslMode) {
             $.sslMode = sslMode;
             return this;
@@ -732,10 +732,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`
+         * Rename PostgreSQL provider `sslMode` attribute to `sslmode`
          * 
          */
-        @Deprecated /* Rename PostgreSQL provider `ssl_mode` attribute to `sslmode` */
+        @Deprecated /* Rename PostgreSQL provider `sslMode` attribute to `sslmode` */
         public Builder sslMode(String sslMode) {
             return sslMode(Output.of(sslMode));
         }

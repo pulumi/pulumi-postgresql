@@ -14,7 +14,7 @@ public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("postgresql");
 /**
- * Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+ * Use rdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
  * 
  */
     public Optional<Boolean> awsRdsIamAuth() {

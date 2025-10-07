@@ -103,10 +103,10 @@ public class Role extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Rename PostgreSQL role resource attribute &#34;encrypted&#34; to &#34;encrypted_password&#34;
+     * Rename PostgreSQL role resource attribute &#34;encrypted&#34; to &#34;encryptedPassword&#34;
      * 
      */
-    @Deprecated /* Rename PostgreSQL role resource attribute ""encrypted"" to ""encrypted_password"" */
+    @Deprecated /* Rename PostgreSQL role resource attribute ""encrypted"" to ""encryptedPassword"" */
     @Export(name="encrypted", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encrypted;
 
@@ -118,7 +118,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
      * is always set (to the conservative and safe value), but may interfere with the
      * behavior of
-     * [PostgreSQL&#39;s `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
+     * [PostgreSQL&#39;s `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
      * 
      */
     @Export(name="encryptedPassword", refs={Boolean.class}, tree="[0]")
@@ -129,7 +129,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
      * is always set (to the conservative and safe value), but may interfere with the
      * behavior of
-     * [PostgreSQL&#39;s `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
+     * [PostgreSQL&#39;s `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
      * 
      */
     public Output<Optional<Boolean>> encryptedPassword() {
@@ -218,7 +218,7 @@ public class Role extends com.pulumi.resources.CustomResource {
     /**
      * Prevents applies from updating the role password on every
      * apply unless the value changes. This version string should be updated whenever you want to
-     * change the password specified in `password_wo`. Must be used together with `password_wo`.
+     * change the password specified in `passwordWo`. Must be used together with `passwordWo`.
      * Conflicts with `password`.
      * 
      */
@@ -228,7 +228,7 @@ public class Role extends com.pulumi.resources.CustomResource {
     /**
      * @return Prevents applies from updating the role password on every
      * apply unless the value changes. This version string should be updated whenever you want to
-     * change the password specified in `password_wo`. Must be used together with `password_wo`.
+     * change the password specified in `passwordWo`. Must be used together with `passwordWo`.
      * Conflicts with `password`.
      * 
      */
@@ -340,14 +340,14 @@ public class Role extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.skipReassignOwned);
     }
     /**
-     * Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+     * Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
      * 
      */
     @Export(name="statementTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> statementTimeout;
 
     /**
-     * @return Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+     * @return Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
      * 
      */
     public Output<Optional<Integer>> statementTimeout() {
@@ -373,9 +373,9 @@ public class Role extends com.pulumi.resources.CustomResource {
     }
     /**
      * Defines the date and time after which the role&#39;s
-     * password is no longer valid.  Established connections past this `valid_time`
+     * password is no longer valid.  Established connections past this `validTime`
      * will have to be manually terminated.  This value corresponds to a PostgreSQL
-     * datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
+     * datetime. If omitted or the magic value `NULL` is used, `validUntil` will be
      * set to `infinity`.  Default is `NULL`, therefore `infinity`.
      * 
      */
@@ -384,9 +384,9 @@ public class Role extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Defines the date and time after which the role&#39;s
-     * password is no longer valid.  Established connections past this `valid_time`
+     * password is no longer valid.  Established connections past this `validTime`
      * will have to be manually terminated.  This value corresponds to a PostgreSQL
-     * datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
+     * datetime. If omitted or the magic value `NULL` is used, `validUntil` will be
      * set to `infinity`.  Default is `NULL`, therefore `infinity`.
      * 
      */

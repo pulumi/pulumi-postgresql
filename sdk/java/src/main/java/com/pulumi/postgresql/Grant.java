@@ -123,14 +123,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="postgresql:index/grant:Grant")
 public class Grant extends com.pulumi.resources.CustomResource {
     /**
-     * The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+     * The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
      * 
      */
     @Export(name="columns", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> columns;
 
     /**
-     * @return The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+     * @return The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
      * 
      */
     public Output<Optional<List<String>>> columns() {
@@ -165,14 +165,14 @@ public class Grant extends com.pulumi.resources.CustomResource {
         return this.objectType;
     }
     /**
-     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
+     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`. When `objectType` is `column`, only one value is allowed.
      * 
      */
     @Export(name="objects", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> objects;
 
     /**
-     * @return The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
+     * @return The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`. When `objectType` is `column`, only one value is allowed.
      * 
      */
     public Output<Optional<List<String>>> objects() {
@@ -207,14 +207,14 @@ public class Grant extends com.pulumi.resources.CustomResource {
         return this.role;
     }
     /**
-     * The database schema to grant privileges on for this role (Required except if object_type is &#34;database&#34;)
+     * The database schema to grant privileges on for this role (Required except if objectType is &#34;database&#34;)
      * 
      */
     @Export(name="schema", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schema;
 
     /**
-     * @return The database schema to grant privileges on for this role (Required except if object_type is &#34;database&#34;)
+     * @return The database schema to grant privileges on for this role (Required except if objectType is &#34;database&#34;)
      * 
      */
     public Output<Optional<String>> schema() {
