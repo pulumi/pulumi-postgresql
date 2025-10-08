@@ -19,14 +19,14 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
     public static final GrantArgs Empty = new GrantArgs();
 
     /**
-     * The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+     * The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
      * 
      */
     @Import(name="columns")
     private @Nullable Output<List<String>> columns;
 
     /**
-     * @return The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+     * @return The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
      * 
      */
     public Optional<Output<List<String>>> columns() {
@@ -64,14 +64,14 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
+     * The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`. When `objectType` is `column`, only one value is allowed.
      * 
      */
     @Import(name="objects")
     private @Nullable Output<List<String>> objects;
 
     /**
-     * @return The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
+     * @return The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`. When `objectType` is `column`, only one value is allowed.
      * 
      */
     public Optional<Output<List<String>>> objects() {
@@ -109,14 +109,14 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The database schema to grant privileges on for this role (Required except if object_type is &#34;database&#34;)
+     * The database schema to grant privileges on for this role (Required except if objectType is &#34;database&#34;)
      * 
      */
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
     /**
-     * @return The database schema to grant privileges on for this role (Required except if object_type is &#34;database&#34;)
+     * @return The database schema to grant privileges on for this role (Required except if objectType is &#34;database&#34;)
      * 
      */
     public Optional<Output<String>> schema() {
@@ -170,7 +170,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param columns The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+         * @param columns The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param columns The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+         * @param columns The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param columns The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+         * @param columns The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objects The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
+         * @param objects The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`. When `objectType` is `column`, only one value is allowed.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objects The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
+         * @param objects The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`. When `objectType` is `column`, only one value is allowed.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objects The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
+         * @param objects The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`. When `objectType` is `column`, only one value is allowed.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schema The database schema to grant privileges on for this role (Required except if object_type is &#34;database&#34;)
+         * @param schema The database schema to grant privileges on for this role (Required except if objectType is &#34;database&#34;)
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schema The database schema to grant privileges on for this role (Required except if object_type is &#34;database&#34;)
+         * @param schema The database schema to grant privileges on for this role (Required except if objectType is &#34;database&#34;)
          * 
          * @return builder
          * 
