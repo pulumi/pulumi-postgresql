@@ -99,7 +99,7 @@ namespace Pulumi.PostgreSql
     public partial class Grant : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+        /// The columns upon which to grant the privileges. Required when `ObjectType` is `Column`. You cannot specify this option if the `ObjectType` is not `Column`.
         /// </summary>
         [Output("columns")]
         public Output<ImmutableArray<string>> Columns { get; private set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.PostgreSql
         public Output<string> ObjectType { get; private set; } = null!;
 
         /// <summary>
-        /// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
+        /// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `ObjectType` is `Database` or `Schema`. When `ObjectType` is `Column`, only one value is allowed.
         /// </summary>
         [Output("objects")]
         public Output<ImmutableArray<string>> Objects { get; private set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.PostgreSql
         public Output<string> Role { get; private set; } = null!;
 
         /// <summary>
-        /// The database schema to grant privileges on for this role (Required except if object_type is "database")
+        /// The database schema to grant privileges on for this role (Required except if ObjectType is "database")
         /// </summary>
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _columns;
 
         /// <summary>
-        /// The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+        /// The columns upon which to grant the privileges. Required when `ObjectType` is `Column`. You cannot specify this option if the `ObjectType` is not `Column`.
         /// </summary>
         public InputList<string> Columns
         {
@@ -220,7 +220,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _objects;
 
         /// <summary>
-        /// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
+        /// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `ObjectType` is `Database` or `Schema`. When `ObjectType` is `Column`, only one value is allowed.
         /// </summary>
         public InputList<string> Objects
         {
@@ -247,7 +247,7 @@ namespace Pulumi.PostgreSql
         public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// The database schema to grant privileges on for this role (Required except if object_type is "database")
+        /// The database schema to grant privileges on for this role (Required except if ObjectType is "database")
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
@@ -270,7 +270,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _columns;
 
         /// <summary>
-        /// The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+        /// The columns upon which to grant the privileges. Required when `ObjectType` is `Column`. You cannot specify this option if the `ObjectType` is not `Column`.
         /// </summary>
         public InputList<string> Columns
         {
@@ -294,7 +294,7 @@ namespace Pulumi.PostgreSql
         private InputList<string>? _objects;
 
         /// <summary>
-        /// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
+        /// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `ObjectType` is `Database` or `Schema`. When `ObjectType` is `Column`, only one value is allowed.
         /// </summary>
         public InputList<string> Objects
         {
@@ -321,7 +321,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// The database schema to grant privileges on for this role (Required except if object_type is "database")
+        /// The database schema to grant privileges on for this role (Required except if ObjectType is "database")
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
