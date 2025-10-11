@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  * ## Examples
  * 
- * ### Grant default privileges for tables to &#34;current_role&#34; role:
+ * ### Grant default privileges for tables to &#34;currentRole&#34; role:
  * 
  * <pre>
  * {@code
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * Whenever the `owner_role` creates a new table in the `public` schema, the `current_role` is automatically granted SELECT, INSERT, and UPDATE privileges on that table.
+ * Whenever the `ownerRole` creates a new table in the `public` schema, the `currentRole` is automatically granted SELECT, INSERT, and UPDATE privileges on that table.
  * 
  * ### Revoke default privileges for functions for &#34;public&#34; role:
  * 

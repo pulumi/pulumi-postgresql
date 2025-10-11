@@ -20,7 +20,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Defines whether a role bypasses every
-        /// row-level security (RLS) policy.  Default value is `false`.
+        /// row-level security (RLS) policy.  Default value is `False`.
         /// </summary>
         [Output("bypassRowLevelSecurity")]
         public Output<bool?> BypassRowLevelSecurity { get; private set; } = null!;
@@ -35,7 +35,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Defines a role's ability to execute `CREATE
-        /// DATABASE`.  Default value is `false`.
+        /// DATABASE`.  Default value is `False`.
         /// </summary>
         [Output("createDatabase")]
         public Output<bool?> CreateDatabase { get; private set; } = null!;
@@ -43,7 +43,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Defines a role's ability to execute `CREATE ROLE`.
         /// A role with this privilege can also alter and drop other roles.  Default value
-        /// is `false`.
+        /// is `False`.
         /// </summary>
         [Output("createRole")]
         public Output<bool?> CreateRole { get; private set; } = null!;
@@ -53,10 +53,10 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Defines whether the password is stored
-        /// encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
+        /// encrypted in the system catalogs.  Default value is `True`.  NOTE: this value
         /// is always set (to the conservative and safe value), but may interfere with the
         /// behavior of
-        /// [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
+        /// [PostgreSQL's `PasswordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
         /// </summary>
         [Output("encryptedPassword")]
         public Output<bool?> EncryptedPassword { get; private set; } = null!;
@@ -69,7 +69,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Defines whether a role "inherits" the privileges of
-        /// roles it is a member of.  Default value is `true`.
+        /// roles it is a member of.  Default value is `True`.
         /// </summary>
         [Output("inherit")]
         public Output<bool?> Inherit { get; private set; } = null!;
@@ -77,7 +77,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Defines whether role is allowed to log in.  Roles without
         /// this attribute are useful for managing database privileges, but are not users
-        /// in the usual sense of the word.  Default value is `false`.
+        /// in the usual sense of the word.  Default value is `False`.
         /// </summary>
         [Output("login")]
         public Output<bool?> Login { get; private set; } = null!;
@@ -91,7 +91,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Sets the role's password. A password is only of use
-        /// for roles having the `login` attribute set to true.
+        /// for roles having the `Login` attribute set to true.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -99,8 +99,8 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Prevents applies from updating the role password on every
         /// apply unless the value changes. This version string should be updated whenever you want to
-        /// change the password specified in `password_wo`. Must be used together with `password_wo`.
-        /// Conflicts with `password`.
+        /// change the password specified in `PasswordWo`. Must be used together with `PasswordWo`.
+        /// Conflicts with `Password`.
         /// </summary>
         [Output("passwordWoVersion")]
         public Output<string?> PasswordWoVersion { get; private set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Defines whether a role is allowed to initiate
         /// streaming replication or put the system in and out of backup mode.  Default
-        /// value is `false`
+        /// value is `False`
         /// </summary>
         [Output("replication")]
         public Output<bool?> Replication { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.PostgreSql
         public Output<bool?> SkipReassignOwned { get; private set; } = null!;
 
         /// <summary>
-        /// Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+        /// Defines [`StatementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
         /// </summary>
         [Output("statementTimeout")]
         public Output<int?> StatementTimeout { get; private set; } = null!;
@@ -161,17 +161,17 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Defines whether the role is a "superuser", and
         /// therefore can override all access restrictions within the database.  Default
-        /// value is `false`.
+        /// value is `False`.
         /// </summary>
         [Output("superuser")]
         public Output<bool?> Superuser { get; private set; } = null!;
 
         /// <summary>
         /// Defines the date and time after which the role's
-        /// password is no longer valid.  Established connections past this `valid_time`
+        /// password is no longer valid.  Established connections past this `ValidTime`
         /// will have to be manually terminated.  This value corresponds to a PostgreSQL
-        /// datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
-        /// set to `infinity`.  Default is `NULL`, therefore `infinity`.
+        /// datetime. If omitted or the magic value `NULL` is used, `ValidUntil` will be
+        /// set to `Infinity`.  Default is `NULL`, therefore `Infinity`.
         /// </summary>
         [Output("validUntil")]
         public Output<string?> ValidUntil { get; private set; } = null!;
@@ -234,7 +234,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Defines whether a role bypasses every
-        /// row-level security (RLS) policy.  Default value is `false`.
+        /// row-level security (RLS) policy.  Default value is `False`.
         /// </summary>
         [Input("bypassRowLevelSecurity")]
         public Input<bool>? BypassRowLevelSecurity { get; set; }
@@ -249,7 +249,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Defines a role's ability to execute `CREATE
-        /// DATABASE`.  Default value is `false`.
+        /// DATABASE`.  Default value is `False`.
         /// </summary>
         [Input("createDatabase")]
         public Input<bool>? CreateDatabase { get; set; }
@@ -257,7 +257,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Defines a role's ability to execute `CREATE ROLE`.
         /// A role with this privilege can also alter and drop other roles.  Default value
-        /// is `false`.
+        /// is `False`.
         /// </summary>
         [Input("createRole")]
         public Input<bool>? CreateRole { get; set; }
@@ -267,10 +267,10 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Defines whether the password is stored
-        /// encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
+        /// encrypted in the system catalogs.  Default value is `True`.  NOTE: this value
         /// is always set (to the conservative and safe value), but may interfere with the
         /// behavior of
-        /// [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
+        /// [PostgreSQL's `PasswordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
         /// </summary>
         [Input("encryptedPassword")]
         public Input<bool>? EncryptedPassword { get; set; }
@@ -283,7 +283,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Defines whether a role "inherits" the privileges of
-        /// roles it is a member of.  Default value is `true`.
+        /// roles it is a member of.  Default value is `True`.
         /// </summary>
         [Input("inherit")]
         public Input<bool>? Inherit { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Defines whether role is allowed to log in.  Roles without
         /// this attribute are useful for managing database privileges, but are not users
-        /// in the usual sense of the word.  Default value is `false`.
+        /// in the usual sense of the word.  Default value is `False`.
         /// </summary>
         [Input("login")]
         public Input<bool>? Login { get; set; }
@@ -308,7 +308,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Sets the role's password. A password is only of use
-        /// for roles having the `login` attribute set to true.
+        /// for roles having the `Login` attribute set to true.
         /// </summary>
         public Input<string>? Password
         {
@@ -323,8 +323,8 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Prevents applies from updating the role password on every
         /// apply unless the value changes. This version string should be updated whenever you want to
-        /// change the password specified in `password_wo`. Must be used together with `password_wo`.
-        /// Conflicts with `password`.
+        /// change the password specified in `PasswordWo`. Must be used together with `PasswordWo`.
+        /// Conflicts with `Password`.
         /// </summary>
         [Input("passwordWoVersion")]
         public Input<string>? PasswordWoVersion { get; set; }
@@ -332,7 +332,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Defines whether a role is allowed to initiate
         /// streaming replication or put the system in and out of backup mode.  Default
-        /// value is `false`
+        /// value is `False`
         /// </summary>
         [Input("replication")]
         public Input<bool>? Replication { get; set; }
@@ -389,7 +389,7 @@ namespace Pulumi.PostgreSql
         public Input<bool>? SkipReassignOwned { get; set; }
 
         /// <summary>
-        /// Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+        /// Defines [`StatementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
         /// </summary>
         [Input("statementTimeout")]
         public Input<int>? StatementTimeout { get; set; }
@@ -397,17 +397,17 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Defines whether the role is a "superuser", and
         /// therefore can override all access restrictions within the database.  Default
-        /// value is `false`.
+        /// value is `False`.
         /// </summary>
         [Input("superuser")]
         public Input<bool>? Superuser { get; set; }
 
         /// <summary>
         /// Defines the date and time after which the role's
-        /// password is no longer valid.  Established connections past this `valid_time`
+        /// password is no longer valid.  Established connections past this `ValidTime`
         /// will have to be manually terminated.  This value corresponds to a PostgreSQL
-        /// datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
-        /// set to `infinity`.  Default is `NULL`, therefore `infinity`.
+        /// datetime. If omitted or the magic value `NULL` is used, `ValidUntil` will be
+        /// set to `Infinity`.  Default is `NULL`, therefore `Infinity`.
         /// </summary>
         [Input("validUntil")]
         public Input<string>? ValidUntil { get; set; }
@@ -428,7 +428,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Defines whether a role bypasses every
-        /// row-level security (RLS) policy.  Default value is `false`.
+        /// row-level security (RLS) policy.  Default value is `False`.
         /// </summary>
         [Input("bypassRowLevelSecurity")]
         public Input<bool>? BypassRowLevelSecurity { get; set; }
@@ -443,7 +443,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Defines a role's ability to execute `CREATE
-        /// DATABASE`.  Default value is `false`.
+        /// DATABASE`.  Default value is `False`.
         /// </summary>
         [Input("createDatabase")]
         public Input<bool>? CreateDatabase { get; set; }
@@ -451,7 +451,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Defines a role's ability to execute `CREATE ROLE`.
         /// A role with this privilege can also alter and drop other roles.  Default value
-        /// is `false`.
+        /// is `False`.
         /// </summary>
         [Input("createRole")]
         public Input<bool>? CreateRole { get; set; }
@@ -461,10 +461,10 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Defines whether the password is stored
-        /// encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
+        /// encrypted in the system catalogs.  Default value is `True`.  NOTE: this value
         /// is always set (to the conservative and safe value), but may interfere with the
         /// behavior of
-        /// [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
+        /// [PostgreSQL's `PasswordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
         /// </summary>
         [Input("encryptedPassword")]
         public Input<bool>? EncryptedPassword { get; set; }
@@ -477,7 +477,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Defines whether a role "inherits" the privileges of
-        /// roles it is a member of.  Default value is `true`.
+        /// roles it is a member of.  Default value is `True`.
         /// </summary>
         [Input("inherit")]
         public Input<bool>? Inherit { get; set; }
@@ -485,7 +485,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Defines whether role is allowed to log in.  Roles without
         /// this attribute are useful for managing database privileges, but are not users
-        /// in the usual sense of the word.  Default value is `false`.
+        /// in the usual sense of the word.  Default value is `False`.
         /// </summary>
         [Input("login")]
         public Input<bool>? Login { get; set; }
@@ -502,7 +502,7 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// Sets the role's password. A password is only of use
-        /// for roles having the `login` attribute set to true.
+        /// for roles having the `Login` attribute set to true.
         /// </summary>
         public Input<string>? Password
         {
@@ -517,8 +517,8 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Prevents applies from updating the role password on every
         /// apply unless the value changes. This version string should be updated whenever you want to
-        /// change the password specified in `password_wo`. Must be used together with `password_wo`.
-        /// Conflicts with `password`.
+        /// change the password specified in `PasswordWo`. Must be used together with `PasswordWo`.
+        /// Conflicts with `Password`.
         /// </summary>
         [Input("passwordWoVersion")]
         public Input<string>? PasswordWoVersion { get; set; }
@@ -526,7 +526,7 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Defines whether a role is allowed to initiate
         /// streaming replication or put the system in and out of backup mode.  Default
-        /// value is `false`
+        /// value is `False`
         /// </summary>
         [Input("replication")]
         public Input<bool>? Replication { get; set; }
@@ -583,7 +583,7 @@ namespace Pulumi.PostgreSql
         public Input<bool>? SkipReassignOwned { get; set; }
 
         /// <summary>
-        /// Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+        /// Defines [`StatementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
         /// </summary>
         [Input("statementTimeout")]
         public Input<int>? StatementTimeout { get; set; }
@@ -591,17 +591,17 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// Defines whether the role is a "superuser", and
         /// therefore can override all access restrictions within the database.  Default
-        /// value is `false`.
+        /// value is `False`.
         /// </summary>
         [Input("superuser")]
         public Input<bool>? Superuser { get; set; }
 
         /// <summary>
         /// Defines the date and time after which the role's
-        /// password is no longer valid.  Established connections past this `valid_time`
+        /// password is no longer valid.  Established connections past this `ValidTime`
         /// will have to be manually terminated.  This value corresponds to a PostgreSQL
-        /// datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
-        /// set to `infinity`.  Default is `NULL`, therefore `infinity`.
+        /// datetime. If omitted or the magic value `NULL` is used, `ValidUntil` will be
+        /// set to `Infinity`.  Default is `NULL`, therefore `Infinity`.
         /// </summary>
         [Input("validUntil")]
         public Input<string>? ValidUntil { get; set; }
