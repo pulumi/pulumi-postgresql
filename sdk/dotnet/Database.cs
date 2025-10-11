@@ -13,18 +13,18 @@ namespace Pulumi.PostgreSql
     public partial class Database : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If `false` then no one can connect to this
-        /// database. The default is `true`, allowing connections (except as restricted by
+        /// If `False` then no one can connect to this
+        /// database. The default is `True`, allowing connections (except as restricted by
         /// other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
         /// </summary>
         [Output("allowConnections")]
         public Output<bool?> AllowConnections { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, the change of the database
-        /// `owner` will also include a reassignment of the ownership of preexisting
+        /// If `True`, the change of the database
+        /// `Owner` will also include a reassignment of the ownership of preexisting
         /// objects like tables or sequences from the previous owner to the new one.
-        /// If set to `false` (the default), then the previous database `owner` will still
+        /// If set to `False` (the default), then the previous database `Owner` will still
         /// hold the ownership of the objects in that database. To alter existing objects in
         /// the database, you must be a direct or indirect member of the specified role, or
         /// the username in the provider must be superuser.
@@ -46,8 +46,8 @@ namespace Pulumi.PostgreSql
         public Output<string> Encoding { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, then this database can be cloned by any
-        /// user with `CREATEDB` privileges; if `false` (the default), then only
+        /// If `True`, then this database can be cloned by any
+        /// user with `CREATEDB` privileges; if `False` (the default), then only
         /// superusers or the owner of the database can clone it.
         /// </summary>
         [Output("isTemplate")]
@@ -144,18 +144,18 @@ namespace Pulumi.PostgreSql
     public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `false` then no one can connect to this
-        /// database. The default is `true`, allowing connections (except as restricted by
+        /// If `False` then no one can connect to this
+        /// database. The default is `True`, allowing connections (except as restricted by
         /// other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
         /// </summary>
         [Input("allowConnections")]
         public Input<bool>? AllowConnections { get; set; }
 
         /// <summary>
-        /// If `true`, the change of the database
-        /// `owner` will also include a reassignment of the ownership of preexisting
+        /// If `True`, the change of the database
+        /// `Owner` will also include a reassignment of the ownership of preexisting
         /// objects like tables or sequences from the previous owner to the new one.
-        /// If set to `false` (the default), then the previous database `owner` will still
+        /// If set to `False` (the default), then the previous database `Owner` will still
         /// hold the ownership of the objects in that database. To alter existing objects in
         /// the database, you must be a direct or indirect member of the specified role, or
         /// the username in the provider must be superuser.
@@ -177,8 +177,8 @@ namespace Pulumi.PostgreSql
         public Input<string>? Encoding { get; set; }
 
         /// <summary>
-        /// If `true`, then this database can be cloned by any
-        /// user with `CREATEDB` privileges; if `false` (the default), then only
+        /// If `True`, then this database can be cloned by any
+        /// user with `CREATEDB` privileges; if `False` (the default), then only
         /// superusers or the owner of the database can clone it.
         /// </summary>
         [Input("isTemplate")]
@@ -237,18 +237,18 @@ namespace Pulumi.PostgreSql
     public sealed class DatabaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `false` then no one can connect to this
-        /// database. The default is `true`, allowing connections (except as restricted by
+        /// If `False` then no one can connect to this
+        /// database. The default is `True`, allowing connections (except as restricted by
         /// other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
         /// </summary>
         [Input("allowConnections")]
         public Input<bool>? AllowConnections { get; set; }
 
         /// <summary>
-        /// If `true`, the change of the database
-        /// `owner` will also include a reassignment of the ownership of preexisting
+        /// If `True`, the change of the database
+        /// `Owner` will also include a reassignment of the ownership of preexisting
         /// objects like tables or sequences from the previous owner to the new one.
-        /// If set to `false` (the default), then the previous database `owner` will still
+        /// If set to `False` (the default), then the previous database `Owner` will still
         /// hold the ownership of the objects in that database. To alter existing objects in
         /// the database, you must be a direct or indirect member of the specified role, or
         /// the username in the provider must be superuser.
@@ -270,8 +270,8 @@ namespace Pulumi.PostgreSql
         public Input<string>? Encoding { get; set; }
 
         /// <summary>
-        /// If `true`, then this database can be cloned by any
-        /// user with `CREATEDB` privileges; if `false` (the default), then only
+        /// If `True`, then this database can be cloned by any
+        /// user with `CREATEDB` privileges; if `False` (the default), then only
         /// superusers or the owner of the database can clone it.
         /// </summary>
         [Input("isTemplate")]

@@ -491,7 +491,7 @@ config:
 package main
 
 import (
-	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )

@@ -97,7 +97,7 @@ namespace Pulumi.PostgreSql
         public string Database { get; set; } = null!;
 
         /// <summary>
-        /// Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to ``false``.
+        /// Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to ``False``.
         /// </summary>
         [Input("includeSystemSchemas")]
         public bool? IncludeSystemSchemas { get; set; }
@@ -161,7 +161,7 @@ namespace Pulumi.PostgreSql
         public Input<string> Database { get; set; } = null!;
 
         /// <summary>
-        /// Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to ``false``.
+        /// Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to ``False``.
         /// </summary>
         [Input("includeSystemSchemas")]
         public Input<bool>? IncludeSystemSchemas { get; set; }

@@ -36,7 +36,7 @@ namespace Pulumi.PostgreSql
     /// });
     /// ```
     /// 
-    /// &gt; **Note:** If you use `postgresql.GrantRole` for a role that you also manage with a `postgresql.Role` resource, you need to ignore the changes of the `roles` attribute in the `postgresql.Role` resource or they will fight over what your role grants should be. e.g.:
+    /// &gt; **Note:** If you use `postgresql.GrantRole` for a role that you also manage with a `postgresql.Role` resource, you need to ignore the changes of the `Roles` attribute in the `postgresql.Role` resource or they will fight over what your role grants should be. e.g.:
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -63,7 +63,7 @@ namespace Pulumi.PostgreSql
     public partial class GrantRole : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the role that is added to `role`.
+        /// The name of the role that is added to `Role`.
         /// </summary>
         [Output("grantRole")]
         public Output<string> GrantRoleName { get; private set; } = null!;
@@ -75,7 +75,7 @@ namespace Pulumi.PostgreSql
         public Output<string> Role { get; private set; } = null!;
 
         /// <summary>
-        /// Giving ability to grant membership to others or not for `role`. (Default: false)
+        /// Giving ability to grant membership to others or not for `Role`. (Default: false)
         /// </summary>
         [Output("withAdminOption")]
         public Output<bool?> WithAdminOption { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.PostgreSql
     public sealed class GrantRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the role that is added to `role`.
+        /// The name of the role that is added to `Role`.
         /// </summary>
         [Input("grantRole", required: true)]
         public Input<string> GrantRoleName { get; set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.PostgreSql
         public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// Giving ability to grant membership to others or not for `role`. (Default: false)
+        /// Giving ability to grant membership to others or not for `Role`. (Default: false)
         /// </summary>
         [Input("withAdminOption")]
         public Input<bool>? WithAdminOption { get; set; }
@@ -153,7 +153,7 @@ namespace Pulumi.PostgreSql
     public sealed class GrantRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the role that is added to `role`.
+        /// The name of the role that is added to `Role`.
         /// </summary>
         [Input("grantRole")]
         public Input<string>? GrantRoleName { get; set; }
@@ -165,7 +165,7 @@ namespace Pulumi.PostgreSql
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// Giving ability to grant membership to others or not for `role`. (Default: false)
+        /// Giving ability to grant membership to others or not for `Role`. (Default: false)
         /// </summary>
         [Input("withAdminOption")]
         public Input<bool>? WithAdminOption { get; set; }

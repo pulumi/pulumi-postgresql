@@ -42,7 +42,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// ## Examples
     /// 
-    /// ### Grant default privileges for tables to "current_role" role:
+    /// ### Grant default privileges for tables to "CurrentRole" role:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -69,7 +69,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// });
     /// ```
-    /// Whenever the `owner_role` creates a new table in the `public` schema, the `current_role` is automatically granted SELECT, INSERT, and UPDATE privileges on that table.
+    /// Whenever the `OwnerRole` creates a new table in the `Public` schema, the `CurrentRole` is automatically granted SELECT, INSERT, and UPDATE privileges on that table.
     /// 
     /// ### Revoke default privileges for functions for "public" role:
     /// 

@@ -34,7 +34,7 @@ namespace Pulumi.PostgreSql
 
         private static readonly __Value<bool?> _awsRdsIamAuth = new __Value<bool?>(() => __config.GetBoolean("awsRdsIamAuth"));
         /// <summary>
-        /// Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+        /// Use RdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
         /// </summary>
         public static bool? AwsRdsIamAuth
         {
@@ -111,7 +111,7 @@ namespace Pulumi.PostgreSql
 
         private static readonly __Value<string?> _database = new __Value<string?>(() => __config.Get("database"));
         /// <summary>
-        /// The name of the database to connect to in order to connect to (defaults to `postgres`).
+        /// The name of the database to connect to in order to connect to (defaults to `Postgres`).
         /// </summary>
         public static string? Database
         {

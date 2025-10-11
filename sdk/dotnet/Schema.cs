@@ -13,7 +13,7 @@ namespace Pulumi.PostgreSql
     public partial class Schema : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
+        /// The DATABASE in which where this schema will be created. (Default: The database used by your `Provider` configuration)
         /// </summary>
         [Output("database")]
         public Output<string> Database { get; private set; } = null!;
@@ -97,7 +97,7 @@ namespace Pulumi.PostgreSql
     public sealed class SchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
+        /// The DATABASE in which where this schema will be created. (Default: The database used by your `Provider` configuration)
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
@@ -150,7 +150,7 @@ namespace Pulumi.PostgreSql
     public sealed class SchemaState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
+        /// The DATABASE in which where this schema will be created. (Default: The database used by your `Provider` configuration)
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
