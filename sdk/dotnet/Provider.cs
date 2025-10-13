@@ -40,7 +40,7 @@ namespace Pulumi.PostgreSql
         public Output<string?> AzureTenantId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the database to connect to in order to connect to (defaults to `postgres`).
+        /// The name of the database to connect to in order to connect to (defaults to `Postgres`).
         /// </summary>
         [Output("database")]
         public Output<string?> Database { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.PostgreSql
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+        /// Use RdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
         /// </summary>
         [Input("awsRdsIamAuth", json: true)]
         public Input<bool>? AwsRdsIamAuth { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.PostgreSql
         public Input<int>? ConnectTimeout { get; set; }
 
         /// <summary>
-        /// The name of the database to connect to in order to connect to (defaults to `postgres`).
+        /// The name of the database to connect to in order to connect to (defaults to `Postgres`).
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }

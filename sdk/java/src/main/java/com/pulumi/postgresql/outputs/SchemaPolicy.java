@@ -35,7 +35,7 @@ public final class SchemaPolicy {
     /**
      * @return Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
      * 
-     * &gt; **NOTE on `policy`:** The permissions of a role specified in multiple policy blocks is cumulative.  For example, if the same role is specified in two different `policy` each with different permissions (e.g. `create` and `usage_with_grant`, respectively), then the specified role with have both `create` and `usage_with_grant` privileges.
+     * &gt; **NOTE on `policy`:** The permissions of a role specified in multiple policy blocks is cumulative.  For example, if the same role is specified in two different `policy` each with different permissions (e.g. `create` and `usageWithGrant`, respectively), then the specified role with have both `create` and `usageWithGrant` privileges.
      * 
      */
     private @Nullable Boolean usageWithGrant;
@@ -72,7 +72,7 @@ public final class SchemaPolicy {
     /**
      * @return Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
      * 
-     * &gt; **NOTE on `policy`:** The permissions of a role specified in multiple policy blocks is cumulative.  For example, if the same role is specified in two different `policy` each with different permissions (e.g. `create` and `usage_with_grant`, respectively), then the specified role with have both `create` and `usage_with_grant` privileges.
+     * &gt; **NOTE on `policy`:** The permissions of a role specified in multiple policy blocks is cumulative.  For example, if the same role is specified in two different `policy` each with different permissions (e.g. `create` and `usageWithGrant`, respectively), then the specified role with have both `create` and `usageWithGrant` privileges.
      * 
      */
     public Optional<Boolean> usageWithGrant() {
