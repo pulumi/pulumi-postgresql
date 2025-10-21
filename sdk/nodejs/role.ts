@@ -96,6 +96,13 @@ export class Role extends pulumi.CustomResource {
      */
     declare public readonly password: pulumi.Output<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Sets the role's password without storing it in the state file.
+     * This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+     * Conflicts with `password`.
+     */
+    declare public readonly passwordWo: pulumi.Output<string | undefined>;
+    /**
      * Prevents applies from updating the role password on every
      * apply unless the value changes. This version string should be updated whenever you want to
      * change the password specified in `passwordWo`. Must be used together with `passwordWo`.
@@ -183,6 +190,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["login"] = state?.login;
             resourceInputs["name"] = state?.name;
             resourceInputs["password"] = state?.password;
+            resourceInputs["passwordWo"] = state?.passwordWo;
             resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
             resourceInputs["replication"] = state?.replication;
             resourceInputs["roles"] = state?.roles;
@@ -206,6 +214,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["login"] = args?.login;
             resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["passwordWo"] = args?.passwordWo ? pulumi.secret(args.passwordWo) : undefined;
             resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
             resourceInputs["replication"] = args?.replication;
             resourceInputs["roles"] = args?.roles;
@@ -217,7 +226,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["validUntil"] = args?.validUntil;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["password"] };
+        const secretOpts = { additionalSecretOutputs: ["password", "passwordWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Role.__pulumiType, name, resourceInputs, opts);
     }
@@ -290,6 +299,13 @@ export interface RoleState {
      * for roles having the `login` attribute set to true.
      */
     password?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Sets the role's password without storing it in the state file.
+     * This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+     * Conflicts with `password`.
+     */
+    passwordWo?: pulumi.Input<string>;
     /**
      * Prevents applies from updating the role password on every
      * apply unless the value changes. This version string should be updated whenever you want to
@@ -421,6 +437,13 @@ export interface RoleArgs {
      * for roles having the `login` attribute set to true.
      */
     password?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Sets the role's password without storing it in the state file.
+     * This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+     * Conflicts with `password`.
+     */
+    passwordWo?: pulumi.Input<string>;
     /**
      * Prevents applies from updating the role password on every
      * apply unless the value changes. This version string should be updated whenever you want to
