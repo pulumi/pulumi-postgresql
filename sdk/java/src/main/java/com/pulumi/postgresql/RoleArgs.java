@@ -233,6 +233,27 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Sets the role&#39;s password without storing it in the state file.
+     * This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+     * Conflicts with `password`.
+     * 
+     */
+    @Import(name="passwordWo")
+    private @Nullable Output<String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Sets the role&#39;s password without storing it in the state file.
+     * This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+     * Conflicts with `password`.
+     * 
+     */
+    public Optional<Output<String>> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+
+    /**
      * Prevents applies from updating the role password on every
      * apply unless the value changes. This version string should be updated whenever you want to
      * change the password specified in `passwordWo`. Must be used together with `passwordWo`.
@@ -434,6 +455,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         this.login = $.login;
         this.name = $.name;
         this.password = $.password;
+        this.passwordWo = $.passwordWo;
         this.passwordWoVersion = $.passwordWoVersion;
         this.replication = $.replication;
         this.roles = $.roles;
@@ -747,6 +769,33 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Sets the role&#39;s password without storing it in the state file.
+         * This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+         * Conflicts with `password`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(@Nullable Output<String> passwordWo) {
+            $.passwordWo = passwordWo;
+            return this;
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Sets the role&#39;s password without storing it in the state file.
+         * This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+         * Conflicts with `password`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(String passwordWo) {
+            return passwordWo(Output.of(passwordWo));
         }
 
         /**

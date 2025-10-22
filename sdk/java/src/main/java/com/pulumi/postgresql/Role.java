@@ -216,6 +216,26 @@ public class Role extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Sets the role&#39;s password without storing it in the state file.
+     * This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+     * Conflicts with `password`.
+     * 
+     */
+    @Export(name="passwordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Sets the role&#39;s password without storing it in the state file.
+     * This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+     * Conflicts with `password`.
+     * 
+     */
+    public Output<Optional<String>> passwordWo() {
+        return Codegen.optional(this.passwordWo);
+    }
+    /**
      * Prevents applies from updating the role password on every
      * apply unless the value changes. This version string should be updated whenever you want to
      * change the password specified in `passwordWo`. Must be used together with `passwordWo`.
@@ -434,7 +454,8 @@ public class Role extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "password"
+                "password",
+                "passwordWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

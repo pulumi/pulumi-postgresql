@@ -1745,6 +1745,11 @@
                     "description": "Sets the role's password. A password is only of use\nfor roles having the \u003cspan pulumi-lang-nodejs=\"`login`\" pulumi-lang-dotnet=\"`Login`\" pulumi-lang-go=\"`login`\" pulumi-lang-python=\"`login`\" pulumi-lang-yaml=\"`login`\" pulumi-lang-java=\"`login`\"\u003e`login`\u003c/span\u003e attribute set to true.\n",
                     "secret": true
                 },
+                "passwordWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nSets the role's password without storing it in the state file.\nThis is useful for managing passwords securely. Must be used together with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\"\u003e`password_wo_version`\u003c/span\u003e.\nConflicts with \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\"\u003e`password`\u003c/span\u003e.\n",
+                    "secret": true
+                },
                 "passwordWoVersion": {
                     "type": "string",
                     "description": "Prevents applies from updating the role password on every\napply unless the value changes. This version string should be updated whenever you want to\nchange the password specified in \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Must be used together with \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e.\nConflicts with \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\"\u003e`password`\u003c/span\u003e.\n"
@@ -1841,6 +1846,11 @@
                     "description": "Sets the role's password. A password is only of use\nfor roles having the \u003cspan pulumi-lang-nodejs=\"`login`\" pulumi-lang-dotnet=\"`Login`\" pulumi-lang-go=\"`login`\" pulumi-lang-python=\"`login`\" pulumi-lang-yaml=\"`login`\" pulumi-lang-java=\"`login`\"\u003e`login`\u003c/span\u003e attribute set to true.\n",
                     "secret": true
                 },
+                "passwordWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nSets the role's password without storing it in the state file.\nThis is useful for managing passwords securely. Must be used together with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\"\u003e`password_wo_version`\u003c/span\u003e.\nConflicts with \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\"\u003e`password`\u003c/span\u003e.\n",
+                    "secret": true
+                },
                 "passwordWoVersion": {
                     "type": "string",
                     "description": "Prevents applies from updating the role password on every\napply unless the value changes. This version string should be updated whenever you want to\nchange the password specified in \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e. Must be used together with \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`password_wo`\u003c/span\u003e.\nConflicts with \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\"\u003e`password`\u003c/span\u003e.\n"
@@ -1934,6 +1944,11 @@
                     "password": {
                         "type": "string",
                         "description": "Sets the role's password. A password is only of use\nfor roles having the \u003cspan pulumi-lang-nodejs=\"`login`\" pulumi-lang-dotnet=\"`Login`\" pulumi-lang-go=\"`login`\" pulumi-lang-python=\"`login`\" pulumi-lang-yaml=\"`login`\" pulumi-lang-java=\"`login`\"\u003e`login`\u003c/span\u003e attribute set to true.\n",
+                        "secret": true
+                    },
+                    "passwordWo": {
+                        "type": "string",
+                        "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nSets the role's password without storing it in the state file.\nThis is useful for managing passwords securely. Must be used together with \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\"\u003e`password_wo_version`\u003c/span\u003e.\nConflicts with \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\"\u003e`password`\u003c/span\u003e.\n",
                         "secret": true
                     },
                     "passwordWoVersion": {

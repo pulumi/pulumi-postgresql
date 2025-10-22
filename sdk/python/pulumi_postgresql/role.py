@@ -31,6 +31,7 @@ class RoleArgs:
                  login: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
                  password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  replication: Optional[pulumi.Input[_builtins.bool]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -68,6 +69,10 @@ class RoleArgs:
                server instance where it is configured.
         :param pulumi.Input[_builtins.str] password: Sets the role's password. A password is only of use
                for roles having the `login` attribute set to true.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Sets the role's password without storing it in the state file.
+               This is useful for managing passwords securely. Must be used together with `password_wo_version`.
+               Conflicts with `password`.
         :param pulumi.Input[_builtins.str] password_wo_version: Prevents applies from updating the role password on every
                apply unless the value changes. This version string should be updated whenever you want to
                change the password specified in `password_wo`. Must be used together with `password_wo`.
@@ -131,6 +136,8 @@ class RoleArgs:
             pulumi.set(__self__, "name", name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
         if password_wo_version is not None:
             pulumi.set(__self__, "password_wo_version", password_wo_version)
         if replication is not None:
@@ -306,6 +313,21 @@ class RoleArgs:
     @password.setter
     def password(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Sets the role's password without storing it in the state file.
+        This is useful for managing passwords securely. Must be used together with `password_wo_version`.
+        Conflicts with `password`.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWoVersion")
@@ -457,6 +479,7 @@ class _RoleState:
                  login: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
                  password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  replication: Optional[pulumi.Input[_builtins.bool]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -494,6 +517,10 @@ class _RoleState:
                server instance where it is configured.
         :param pulumi.Input[_builtins.str] password: Sets the role's password. A password is only of use
                for roles having the `login` attribute set to true.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Sets the role's password without storing it in the state file.
+               This is useful for managing passwords securely. Must be used together with `password_wo_version`.
+               Conflicts with `password`.
         :param pulumi.Input[_builtins.str] password_wo_version: Prevents applies from updating the role password on every
                apply unless the value changes. This version string should be updated whenever you want to
                change the password specified in `password_wo`. Must be used together with `password_wo`.
@@ -557,6 +584,8 @@ class _RoleState:
             pulumi.set(__self__, "name", name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
         if password_wo_version is not None:
             pulumi.set(__self__, "password_wo_version", password_wo_version)
         if replication is not None:
@@ -732,6 +761,21 @@ class _RoleState:
     @password.setter
     def password(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Sets the role's password without storing it in the state file.
+        This is useful for managing passwords securely. Must be used together with `password_wo_version`.
+        Conflicts with `password`.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWoVersion")
@@ -886,6 +930,7 @@ class Role(pulumi.CustomResource):
                  login: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
                  password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  replication: Optional[pulumi.Input[_builtins.bool]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -926,6 +971,10 @@ class Role(pulumi.CustomResource):
                server instance where it is configured.
         :param pulumi.Input[_builtins.str] password: Sets the role's password. A password is only of use
                for roles having the `login` attribute set to true.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Sets the role's password without storing it in the state file.
+               This is useful for managing passwords securely. Must be used together with `password_wo_version`.
+               Conflicts with `password`.
         :param pulumi.Input[_builtins.str] password_wo_version: Prevents applies from updating the role password on every
                apply unless the value changes. This version string should be updated whenever you want to
                change the password specified in `password_wo`. Must be used together with `password_wo`.
@@ -997,6 +1046,7 @@ class Role(pulumi.CustomResource):
                  login: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
                  password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  replication: Optional[pulumi.Input[_builtins.bool]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1027,6 +1077,7 @@ class Role(pulumi.CustomResource):
             __props__.__dict__["login"] = login
             __props__.__dict__["name"] = name
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["password_wo"] = None if password_wo is None else pulumi.Output.secret(password_wo)
             __props__.__dict__["password_wo_version"] = password_wo_version
             __props__.__dict__["replication"] = replication
             __props__.__dict__["roles"] = roles
@@ -1036,7 +1087,7 @@ class Role(pulumi.CustomResource):
             __props__.__dict__["statement_timeout"] = statement_timeout
             __props__.__dict__["superuser"] = superuser
             __props__.__dict__["valid_until"] = valid_until
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "passwordWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Role, __self__).__init__(
             'postgresql:index/role:Role',
@@ -1060,6 +1111,7 @@ class Role(pulumi.CustomResource):
             login: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             password: Optional[pulumi.Input[_builtins.str]] = None,
+            password_wo: Optional[pulumi.Input[_builtins.str]] = None,
             password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
             replication: Optional[pulumi.Input[_builtins.bool]] = None,
             roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1102,6 +1154,10 @@ class Role(pulumi.CustomResource):
                server instance where it is configured.
         :param pulumi.Input[_builtins.str] password: Sets the role's password. A password is only of use
                for roles having the `login` attribute set to true.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Sets the role's password without storing it in the state file.
+               This is useful for managing passwords securely. Must be used together with `password_wo_version`.
+               Conflicts with `password`.
         :param pulumi.Input[_builtins.str] password_wo_version: Prevents applies from updating the role password on every
                apply unless the value changes. This version string should be updated whenever you want to
                change the password specified in `password_wo`. Must be used together with `password_wo`.
@@ -1154,6 +1210,7 @@ class Role(pulumi.CustomResource):
         __props__.__dict__["login"] = login
         __props__.__dict__["name"] = name
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_wo"] = password_wo
         __props__.__dict__["password_wo_version"] = password_wo_version
         __props__.__dict__["replication"] = replication
         __props__.__dict__["roles"] = roles
@@ -1273,6 +1330,17 @@ class Role(pulumi.CustomResource):
         for roles having the `login` attribute set to true.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Sets the role's password without storing it in the state file.
+        This is useful for managing passwords securely. Must be used together with `password_wo_version`.
+        Conflicts with `password`.
+        """
+        return pulumi.get(self, "password_wo")
 
     @_builtins.property
     @pulumi.getter(name="passwordWoVersion")
