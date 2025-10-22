@@ -97,6 +97,15 @@ namespace Pulumi.PostgreSql
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Sets the role's password without storing it in the state file.
+        /// This is useful for managing passwords securely. Must be used together with `PasswordWoVersion`.
+        /// Conflicts with `Password`.
+        /// </summary>
+        [Output("passwordWo")]
+        public Output<string?> PasswordWo { get; private set; } = null!;
+
+        /// <summary>
         /// Prevents applies from updating the role password on every
         /// apply unless the value changes. This version string should be updated whenever you want to
         /// change the password specified in `PasswordWo`. Must be used together with `PasswordWo`.
@@ -202,6 +211,7 @@ namespace Pulumi.PostgreSql
                 AdditionalSecretOutputs =
                 {
                     "password",
+                    "passwordWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -317,6 +327,25 @@ namespace Pulumi.PostgreSql
             {
                 var emptySecret = Output.CreateSecret(0);
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Sets the role's password without storing it in the state file.
+        /// This is useful for managing passwords securely. Must be used together with `PasswordWoVersion`.
+        /// Conflicts with `Password`.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
 
@@ -511,6 +540,25 @@ namespace Pulumi.PostgreSql
             {
                 var emptySecret = Output.CreateSecret(0);
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Sets the role's password without storing it in the state file.
+        /// This is useful for managing passwords securely. Must be used together with `PasswordWoVersion`.
+        /// Conflicts with `Password`.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
 

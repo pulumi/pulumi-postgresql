@@ -53,6 +53,11 @@ type Role struct {
 	// Sets the role's password. A password is only of use
 	// for roles having the `login` attribute set to true.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Sets the role's password without storing it in the state file.
+	// This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+	// Conflicts with `password`.
+	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
 	// Prevents applies from updating the role password on every
 	// apply unless the value changes. This version string should be updated whenever you want to
 	// change the password specified in `passwordWo`. Must be used together with `passwordWo`.
@@ -109,8 +114,12 @@ func NewRole(ctx *pulumi.Context,
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
+	if args.PasswordWo != nil {
+		args.PasswordWo = pulumi.ToSecret(args.PasswordWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"password",
+		"passwordWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -175,6 +184,11 @@ type roleState struct {
 	// Sets the role's password. A password is only of use
 	// for roles having the `login` attribute set to true.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Sets the role's password without storing it in the state file.
+	// This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+	// Conflicts with `password`.
+	PasswordWo *string `pulumi:"passwordWo"`
 	// Prevents applies from updating the role password on every
 	// apply unless the value changes. This version string should be updated whenever you want to
 	// change the password specified in `passwordWo`. Must be used together with `passwordWo`.
@@ -261,6 +275,11 @@ type RoleState struct {
 	// Sets the role's password. A password is only of use
 	// for roles having the `login` attribute set to true.
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Sets the role's password without storing it in the state file.
+	// This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+	// Conflicts with `password`.
+	PasswordWo pulumi.StringPtrInput
 	// Prevents applies from updating the role password on every
 	// apply unless the value changes. This version string should be updated whenever you want to
 	// change the password specified in `passwordWo`. Must be used together with `passwordWo`.
@@ -351,6 +370,11 @@ type roleArgs struct {
 	// Sets the role's password. A password is only of use
 	// for roles having the `login` attribute set to true.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Sets the role's password without storing it in the state file.
+	// This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+	// Conflicts with `password`.
+	PasswordWo *string `pulumi:"passwordWo"`
 	// Prevents applies from updating the role password on every
 	// apply unless the value changes. This version string should be updated whenever you want to
 	// change the password specified in `passwordWo`. Must be used together with `passwordWo`.
@@ -438,6 +462,11 @@ type RoleArgs struct {
 	// Sets the role's password. A password is only of use
 	// for roles having the `login` attribute set to true.
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Sets the role's password without storing it in the state file.
+	// This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+	// Conflicts with `password`.
+	PasswordWo pulumi.StringPtrInput
 	// Prevents applies from updating the role password on every
 	// apply unless the value changes. This version string should be updated whenever you want to
 	// change the password specified in `passwordWo`. Must be used together with `passwordWo`.
@@ -644,6 +673,14 @@ func (o RoleOutput) Name() pulumi.StringOutput {
 // for roles having the `login` attribute set to true.
 func (o RoleOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Sets the role's password without storing it in the state file.
+// This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
+// Conflicts with `password`.
+func (o RoleOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }
 
 // Prevents applies from updating the role password on every
