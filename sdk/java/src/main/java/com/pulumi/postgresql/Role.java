@@ -17,6 +17,174 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The ``postgresql.Role`` resource creates and manages a role on a PostgreSQL
+ * server.
+ * 
+ * When a ``postgresql.Role`` resource is removed, the PostgreSQL ROLE will
+ * automatically run a [`REASSIGN
+ * OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html)
+ * and [`DROP
+ * OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html) to
+ * the `CURRENT_USER` (normally the connected user for the provider).  If the
+ * specified PostgreSQL ROLE owns objects in multiple PostgreSQL databases in the
+ * same PostgreSQL Cluster, one PostgreSQL provider per database must be created
+ * and all but the final ``postgresql.Role`` must specify a `skipDropRole`.
+ * 
+ * &gt; **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
+ * Read more about sensitive data in state.
+ * 
+ * &gt; **Note:** For enhanced security, consider using the `passwordWo` and `passwordWoVersion` attributes
+ * instead of `password`. The write-only password attributes prevent the password from being stored in
+ * the Terraform state file while still allowing password management through version-controlled updates.
+ * 
+ * ## Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.postgresql.Role;
+ * import com.pulumi.postgresql.RoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myRole = new Role("myRole", RoleArgs.builder()
+ *             .name("my_role")
+ *             .login(true)
+ *             .password("mypass")
+ *             .build());
+ * 
+ *         var myReplicationRole = new Role("myReplicationRole", RoleArgs.builder()
+ *             .name("replication_role")
+ *             .replication(true)
+ *             .login(true)
+ *             .connectionLimit(5)
+ *             .password("md5c98cbfeb6a347a47eb8e96cfb4c4b890")
+ *             .build());
+ * 
+ *         // Example using write-only password (password not stored in state)
+ *         var secureRole = new Role("secureRole", RoleArgs.builder()
+ *             .name("secure_role")
+ *             .login(true)
+ *             .passwordWo("secure_password_123")
+ *             .passwordWoVersion("1")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Write-Only Password Management
+ * 
+ * The `passwordWo` and `passwordWoVersion` attributes provide a secure way to manage role passwords
+ * without storing them in the Terraform state file:
+ * 
+ * * **Security**: The password value is never stored in the state file, reducing the risk of exposure
+ * * **Version Control**: Password updates are controlled through the `passwordWoVersion` attribute
+ * * **Idempotency**: Terraform only updates the password when the version changes, not on every apply
+ * 
+ * To change a password when using write-only attributes:
+ * 
+ * 1. Update the `passwordWo` value with the new password
+ * 2. Increment or change the `passwordWoVersion` value
+ * 3. Apply the configuration
+ * 
+ * **Example of password rotation:**
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.postgresql.Role;
+ * import com.pulumi.postgresql.RoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Initial password setup
+ *         var appUser = new Role("appUser", RoleArgs.builder()
+ *             .name("app_user")
+ *             .login(true)
+ *             .passwordWo("initial_password_123")
+ *             .passwordWoVersion("1")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Import Example
+ * 
+ * `postgresql.Role` supports importing resources.  Supposing the following
+ * Terraform:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.postgresql.Role;
+ * import com.pulumi.postgresql.RoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var replicationRole = new Role("replicationRole", RoleArgs.builder()
+ *             .name("replication_name")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * It is possible to import a `postgresql.Role` resource with the following
+ * command:
+ * 
+ * Where `replicationName` is the name of the role to import and
+ * `postgresql_role.replication_role` is the name of the resource whose state will
+ * be populated as a result of the command.
+ * 
+ */
 @ResourceType(type="postgresql:index/role:Role")
 public class Role extends com.pulumi.resources.CustomResource {
     /**

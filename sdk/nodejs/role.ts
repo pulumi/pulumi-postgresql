@@ -4,6 +4,103 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The ``postgresql.Role`` resource creates and manages a role on a PostgreSQL
+ * server.
+ *
+ * When a ``postgresql.Role`` resource is removed, the PostgreSQL ROLE will
+ * automatically run a [`REASSIGN
+ * OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html)
+ * and [`DROP
+ * OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html) to
+ * the `CURRENT_USER` (normally the connected user for the provider).  If the
+ * specified PostgreSQL ROLE owns objects in multiple PostgreSQL databases in the
+ * same PostgreSQL Cluster, one PostgreSQL provider per database must be created
+ * and all but the final ``postgresql.Role`` must specify a `skipDropRole`.
+ *
+ * > **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
+ * Read more about sensitive data in state.
+ *
+ * > **Note:** For enhanced security, consider using the `passwordWo` and `passwordWoVersion` attributes
+ * instead of `password`. The write-only password attributes prevent the password from being stored in
+ * the Terraform state file while still allowing password management through version-controlled updates.
+ *
+ * ## Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * const myRole = new postgresql.Role("my_role", {
+ *     name: "my_role",
+ *     login: true,
+ *     password: "mypass",
+ * });
+ * const myReplicationRole = new postgresql.Role("my_replication_role", {
+ *     name: "replication_role",
+ *     replication: true,
+ *     login: true,
+ *     connectionLimit: 5,
+ *     password: "md5c98cbfeb6a347a47eb8e96cfb4c4b890",
+ * });
+ * // Example using write-only password (password not stored in state)
+ * const secureRole = new postgresql.Role("secure_role", {
+ *     name: "secure_role",
+ *     login: true,
+ *     passwordWo: "secure_password_123",
+ *     passwordWoVersion: "1",
+ * });
+ * ```
+ *
+ * ## Write-Only Password Management
+ *
+ * The `passwordWo` and `passwordWoVersion` attributes provide a secure way to manage role passwords
+ * without storing them in the Terraform state file:
+ *
+ * * **Security**: The password value is never stored in the state file, reducing the risk of exposure
+ * * **Version Control**: Password updates are controlled through the `passwordWoVersion` attribute
+ * * **Idempotency**: Terraform only updates the password when the version changes, not on every apply
+ *
+ * To change a password when using write-only attributes:
+ *
+ * 1. Update the `passwordWo` value with the new password
+ * 2. Increment or change the `passwordWoVersion` value
+ * 3. Apply the configuration
+ *
+ * **Example of password rotation:**
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * // Initial password setup
+ * const appUser = new postgresql.Role("app_user", {
+ *     name: "app_user",
+ *     login: true,
+ *     passwordWo: "initial_password_123",
+ *     passwordWoVersion: "1",
+ * });
+ * ```
+ *
+ * ## Import Example
+ *
+ * `postgresql.Role` supports importing resources.  Supposing the following
+ * Terraform:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * const replicationRole = new postgresql.Role("replication_role", {name: "replication_name"});
+ * ```
+ *
+ * It is possible to import a `postgresql.Role` resource with the following
+ * command:
+ *
+ * Where `replicationName` is the name of the role to import and
+ * `postgresql_role.replication_role` is the name of the resource whose state will
+ * be populated as a result of the command.
+ */
 export class Role extends pulumi.CustomResource {
     /**
      * Get an existing Role resource's state with the given name, ID, and optional extra

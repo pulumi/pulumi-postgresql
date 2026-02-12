@@ -9,6 +9,107 @@ using Pulumi.Serialization;
 
 namespace Pulumi.PostgreSql
 {
+    /// <summary>
+    /// The ``postgresql.Schema`` resource creates and manages [schema
+    /// objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
+    /// a PostgreSQL database.
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var appWww = new PostgreSql.Role("app_www", new()
+    ///     {
+    ///         Name = "app_www",
+    ///     });
+    /// 
+    ///     var appDba = new PostgreSql.Role("app_dba", new()
+    ///     {
+    ///         Name = "app_dba",
+    ///     });
+    /// 
+    ///     var appReleng = new PostgreSql.Role("app_releng", new()
+    ///     {
+    ///         Name = "app_releng",
+    ///     });
+    /// 
+    ///     var mySchema = new PostgreSql.Schema("my_schema", new()
+    ///     {
+    ///         Name = "my_schema",
+    ///         Owner = "postgres",
+    ///         Policies = new[]
+    ///         {
+    ///             new PostgreSql.Inputs.SchemaPolicyArgs
+    ///             {
+    ///                 Usage = true,
+    ///                 Role = appWww.Name,
+    ///             },
+    ///             new PostgreSql.Inputs.SchemaPolicyArgs
+    ///             {
+    ///                 Create = true,
+    ///                 Usage = true,
+    ///                 Role = appReleng.Name,
+    ///             },
+    ///             new PostgreSql.Inputs.SchemaPolicyArgs
+    ///             {
+    ///                 CreateWithGrant = true,
+    ///                 UsageWithGrant = true,
+    ///                 Role = appDba.Name,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import Example
+    /// 
+    /// `postgresql.Schema` supports importing resources.  Supposing the following
+    /// Terraform:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @public = new PostgreSql.Schema("public", new()
+    ///     {
+    ///         Name = "public",
+    ///     });
+    /// 
+    ///     var schemaFoo = new PostgreSql.Schema("schema_foo", new()
+    ///     {
+    ///         Name = "my_schema",
+    ///         Owner = "postgres",
+    ///         Policies = new[]
+    ///         {
+    ///             new PostgreSql.Inputs.SchemaPolicyArgs
+    ///             {
+    ///                 Usage = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// It is possible to import a `postgresql.Schema` resource with the following
+    /// command:
+    /// 
+    /// Where `MyDatabase` is the name of the database containing the schema,
+    /// `MySchema` is the name of the schema in the PostgreSQL database and
+    /// `postgresql_schema.schema_foo` is the name of the resource whose state will be
+    /// populated as a result of the command.
+    /// </summary>
     [PostgreSqlResourceType("postgresql:index/schema:Schema")]
     public partial class Schema : global::Pulumi.CustomResource
     {

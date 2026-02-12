@@ -9,6 +9,130 @@ using Pulumi.Serialization;
 
 namespace Pulumi.PostgreSql
 {
+    /// <summary>
+    /// The ``postgresql.Role`` resource creates and manages a role on a PostgreSQL
+    /// server.
+    /// 
+    /// When a ``postgresql.Role`` resource is removed, the PostgreSQL ROLE will
+    /// automatically run a [`REASSIGN
+    /// OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html)
+    /// and [`DROP
+    /// OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html) to
+    /// the `CURRENT_USER` (normally the connected user for the provider).  If the
+    /// specified PostgreSQL ROLE owns objects in multiple PostgreSQL databases in the
+    /// same PostgreSQL Cluster, one PostgreSQL provider per database must be created
+    /// and all but the final ``postgresql.Role`` must specify a `SkipDropRole`.
+    /// 
+    /// &gt; **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
+    /// Read more about sensitive data in state.
+    /// 
+    /// &gt; **Note:** For enhanced security, consider using the `PasswordWo` and `PasswordWoVersion` attributes
+    /// instead of `Password`. The write-only password attributes prevent the password from being stored in
+    /// the Terraform state file while still allowing password management through version-controlled updates.
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myRole = new PostgreSql.Role("my_role", new()
+    ///     {
+    ///         Name = "my_role",
+    ///         Login = true,
+    ///         Password = "mypass",
+    ///     });
+    /// 
+    ///     var myReplicationRole = new PostgreSql.Role("my_replication_role", new()
+    ///     {
+    ///         Name = "replication_role",
+    ///         Replication = true,
+    ///         Login = true,
+    ///         ConnectionLimit = 5,
+    ///         Password = "md5c98cbfeb6a347a47eb8e96cfb4c4b890",
+    ///     });
+    /// 
+    ///     // Example using write-only password (password not stored in state)
+    ///     var secureRole = new PostgreSql.Role("secure_role", new()
+    ///     {
+    ///         Name = "secure_role",
+    ///         Login = true,
+    ///         PasswordWo = "secure_password_123",
+    ///         PasswordWoVersion = "1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Write-Only Password Management
+    /// 
+    /// The `PasswordWo` and `PasswordWoVersion` attributes provide a secure way to manage role passwords
+    /// without storing them in the Terraform state file:
+    /// 
+    /// * **Security**: The password value is never stored in the state file, reducing the risk of exposure
+    /// * **Version Control**: Password updates are controlled through the `PasswordWoVersion` attribute
+    /// * **Idempotency**: Terraform only updates the password when the version changes, not on every apply
+    /// 
+    /// To change a password when using write-only attributes:
+    /// 
+    /// 1. Update the `PasswordWo` value with the new password
+    /// 2. Increment or change the `PasswordWoVersion` value
+    /// 3. Apply the configuration
+    /// 
+    /// **Example of password rotation:**
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Initial password setup
+    ///     var appUser = new PostgreSql.Role("app_user", new()
+    ///     {
+    ///         Name = "app_user",
+    ///         Login = true,
+    ///         PasswordWo = "initial_password_123",
+    ///         PasswordWoVersion = "1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import Example
+    /// 
+    /// `postgresql.Role` supports importing resources.  Supposing the following
+    /// Terraform:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var replicationRole = new PostgreSql.Role("replication_role", new()
+    ///     {
+    ///         Name = "replication_name",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// It is possible to import a `postgresql.Role` resource with the following
+    /// command:
+    /// 
+    /// Where `ReplicationName` is the name of the role to import and
+    /// `postgresql_role.replication_role` is the name of the resource whose state will
+    /// be populated as a result of the command.
+    /// </summary>
     [PostgreSqlResourceType("postgresql:index/role:Role")]
     public partial class Role : global::Pulumi.CustomResource
     {

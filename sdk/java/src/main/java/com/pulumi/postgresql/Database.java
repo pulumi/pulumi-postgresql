@@ -16,6 +16,94 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The ``postgresql.Database`` resource creates and manages [database
+ * objects](https://www.postgresql.org/docs/current/static/managing-databases.html)
+ * within a PostgreSQL server instance.
+ * 
+ * ## Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.postgresql.Database;
+ * import com.pulumi.postgresql.DatabaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myDb = new Database("myDb", DatabaseArgs.builder()
+ *             .name("my_db")
+ *             .owner("my_role")
+ *             .template("template0")
+ *             .lcCollate("C")
+ *             .connectionLimit(-1)
+ *             .allowConnections(true)
+ *             .alterObjectOwnership(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Import Example
+ * 
+ * `postgresql.Database` supports importing resources.  Supposing the following
+ * Terraform:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.postgresql.Database;
+ * import com.pulumi.postgresql.DatabaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var db1 = new Database("db1", DatabaseArgs.builder()
+ *             .name("testdb1")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * It is possible to import a `postgresql.Database` resource with the following
+ * command:
+ * 
+ * Where `testdb1` is the name of the database to import and
+ * `postgresql_database.db1` is the name of the resource whose state will be
+ * populated as a result of the command.
+ * 
+ */
 @ResourceType(type="postgresql:index/database:Database")
 public class Database extends com.pulumi.resources.CustomResource {
     /**
@@ -79,14 +167,24 @@ public class Database extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connectionLimit);
     }
     /**
-     * Character set encoding to use in the new database
+     * Character set encoding to use in the database.
+     * Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
+     * number.  If unset or set to an empty string the default encoding is set to
+     * `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
+     * template database.  Changing this value will force the creation of a new
+     * resource as this value can only be changed when a database is created.
      * 
      */
     @Export(name="encoding", refs={String.class}, tree="[0]")
     private Output<String> encoding;
 
     /**
-     * @return Character set encoding to use in the new database
+     * @return Character set encoding to use in the database.
+     * Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
+     * number.  If unset or set to an empty string the default encoding is set to
+     * `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
+     * template database.  Changing this value will force the creation of a new
+     * resource as this value can only be changed when a database is created.
      * 
      */
     public Output<String> encoding() {
@@ -111,28 +209,52 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.isTemplate;
     }
     /**
-     * Collation order (LC_COLLATE) to use in the new database
+     * Collation order (`LC_COLLATE`) to use in the
+     * database.  This affects the sort order applied to strings, e.g. in queries
+     * with `ORDER BY`, as well as the order used in indexes on text columns. If
+     * unset or set to an empty string the default collation is set to `C`.  If set
+     * to `DEFAULT` Terraform will use the same collation order as the specified
+     * `template` database.  Changing this value will force the creation of a new
+     * resource as this value can only be changed when a database is created.
      * 
      */
     @Export(name="lcCollate", refs={String.class}, tree="[0]")
     private Output<String> lcCollate;
 
     /**
-     * @return Collation order (LC_COLLATE) to use in the new database
+     * @return Collation order (`LC_COLLATE`) to use in the
+     * database.  This affects the sort order applied to strings, e.g. in queries
+     * with `ORDER BY`, as well as the order used in indexes on text columns. If
+     * unset or set to an empty string the default collation is set to `C`.  If set
+     * to `DEFAULT` Terraform will use the same collation order as the specified
+     * `template` database.  Changing this value will force the creation of a new
+     * resource as this value can only be changed when a database is created.
      * 
      */
     public Output<String> lcCollate() {
         return this.lcCollate;
     }
     /**
-     * Character classification (LC_CTYPE) to use in the new database
+     * Character classification (`LC_CTYPE`) to use in the
+     * database. This affects the categorization of characters, e.g. lower, upper and
+     * digit. If unset or set to an empty string the default character classification
+     * is set to `C`.  If set to `DEFAULT` Terraform will use the character
+     * classification of the specified `template` database.  Changing this value will
+     * force the creation of a new resource as this value can only be changed when a
+     * database is created.
      * 
      */
     @Export(name="lcCtype", refs={String.class}, tree="[0]")
     private Output<String> lcCtype;
 
     /**
-     * @return Character classification (LC_CTYPE) to use in the new database
+     * @return Character classification (`LC_CTYPE`) to use in the
+     * database. This affects the categorization of characters, e.g. lower, upper and
+     * digit. If unset or set to an empty string the default character classification
+     * is set to `C`.  If set to `DEFAULT` Terraform will use the character
+     * classification of the specified `template` database.  Changing this value will
+     * force the creation of a new resource as this value can only be changed when a
+     * database is created.
      * 
      */
     public Output<String> lcCtype() {
@@ -197,14 +319,22 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.tablespaceName;
     }
     /**
-     * The name of the template from which to create the new database
+     * The name of the template database from which to create
+     * the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
+     * the default in Terraform is `template0`, not `template1`.  Changing this value
+     * will force the creation of a new resource as this value can only be changed
+     * when a database is created.
      * 
      */
     @Export(name="template", refs={String.class}, tree="[0]")
     private Output<String> template;
 
     /**
-     * @return The name of the template from which to create the new database
+     * @return The name of the template database from which to create
+     * the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
+     * the default in Terraform is `template0`, not `template1`.  Changing this value
+     * will force the creation of a new resource as this value can only be changed
+     * when a database is created.
      * 
      */
     public Output<String> template() {

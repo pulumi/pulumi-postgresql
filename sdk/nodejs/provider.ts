@@ -39,6 +39,9 @@ export class Provider extends pulumi.ProviderResource {
      * AWS region to use for IAM auth
      */
     declare public readonly awsRdsIamRegion: pulumi.Output<string | undefined>;
+    /**
+     * MS Azure tenant ID (see: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+     */
     declare public readonly azureTenantId: pulumi.Output<string | undefined>;
     /**
      * The name of the database to connect to in order to connect to (defaults to `postgres`).
@@ -156,6 +159,9 @@ export interface ProviderArgs {
      * Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
      */
     azureIdentityAuth?: pulumi.Input<boolean>;
+    /**
+     * MS Azure tenant ID (see: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+     */
     azureTenantId?: pulumi.Input<string>;
     /**
      * SSL client certificate if required by the database.

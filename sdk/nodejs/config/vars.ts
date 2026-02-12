@@ -64,6 +64,9 @@ Object.defineProperty(exports, "azureIdentityAuth", {
     enumerable: true,
 });
 
+/**
+ * MS Azure tenant ID (see: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+ */
 export declare const azureTenantId: string | undefined;
 Object.defineProperty(exports, "azureTenantId", {
     get() {

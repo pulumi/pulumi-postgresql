@@ -23,28 +23,23 @@ __all__ = [
     'SchemaPolicyArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class FunctionArgArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of the argument.
-        """
-        default: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An expression to be used as default value if the parameter is not specified.
-        """
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the argument.
-        """
-elif False:
-    FunctionArgArgsDict: TypeAlias = Mapping[str, Any]
+class FunctionArgArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the argument.
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An expression to be used as default value if the parameter is not specified.
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the argument.
+    """
 
 @pulumi.input_type
 class FunctionArgArgs:
@@ -116,22 +111,19 @@ class FunctionArgArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class ProviderClientcertArgsDict(TypedDict):
-        cert: pulumi.Input[_builtins.str]
-        """
-        The SSL client certificate file path. The file must contain PEM encoded data.
-        """
-        key: pulumi.Input[_builtins.str]
-        """
-        The SSL client certificate private key file path. The file must contain PEM encoded data.
-        """
-        sslinline: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Must be set to true if you are inlining the cert/key instead of using a file path.
-        """
-elif False:
-    ProviderClientcertArgsDict: TypeAlias = Mapping[str, Any]
+class ProviderClientcertArgsDict(TypedDict):
+    cert: pulumi.Input[_builtins.str]
+    """
+    The SSL client certificate file path. The file must contain PEM encoded data.
+    """
+    key: pulumi.Input[_builtins.str]
+    """
+    The SSL client certificate private key file path. The file must contain PEM encoded data.
+    """
+    sslinline: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Must be set to true if you are inlining the cert/key instead of using a file path.
+    """
 
 @pulumi.input_type
 class ProviderClientcertArgs:
@@ -186,32 +178,29 @@ class ProviderClientcertArgs:
         pulumi.set(self, "sslinline", value)
 
 
-if not MYPY:
-    class SchemaPolicyArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Should the specified ROLE have CREATE privileges to the specified SCHEMA.
-        """
-        create_with_grant: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
-        """
-        role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
-        """
-        usage: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Should the specified ROLE have USAGE privileges to the specified SCHEMA.
-        """
-        usage_with_grant: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
+class SchemaPolicyArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Should the specified ROLE have CREATE privileges to the specified SCHEMA.
+    """
+    create_with_grant: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
+    """
+    role: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
+    """
+    usage: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Should the specified ROLE have USAGE privileges to the specified SCHEMA.
+    """
+    usage_with_grant: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
 
-        > **NOTE on `policy`:** The permissions of a role specified in multiple policy blocks is cumulative.  For example, if the same role is specified in two different `policy` each with different permissions (e.g. `create` and `usage_with_grant`, respectively), then the specified role with have both `create` and `usage_with_grant` privileges.
-        """
-elif False:
-    SchemaPolicyArgsDict: TypeAlias = Mapping[str, Any]
+    > **NOTE on `policy`:** The permissions of a role specified in multiple policy blocks is cumulative.  For example, if the same role is specified in two different `policy` each with different permissions (e.g. `create` and `usage_with_grant`, respectively), then the specified role with have both `create` and `usage_with_grant` privileges.
+    """
 
 @pulumi.input_type
 class SchemaPolicyArgs:

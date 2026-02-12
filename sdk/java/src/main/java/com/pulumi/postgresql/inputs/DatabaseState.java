@@ -81,14 +81,24 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Character set encoding to use in the new database
+     * Character set encoding to use in the database.
+     * Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
+     * number.  If unset or set to an empty string the default encoding is set to
+     * `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
+     * template database.  Changing this value will force the creation of a new
+     * resource as this value can only be changed when a database is created.
      * 
      */
     @Import(name="encoding")
     private @Nullable Output<String> encoding;
 
     /**
-     * @return Character set encoding to use in the new database
+     * @return Character set encoding to use in the database.
+     * Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
+     * number.  If unset or set to an empty string the default encoding is set to
+     * `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
+     * template database.  Changing this value will force the creation of a new
+     * resource as this value can only be changed when a database is created.
      * 
      */
     public Optional<Output<String>> encoding() {
@@ -115,14 +125,26 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Collation order (LC_COLLATE) to use in the new database
+     * Collation order (`LC_COLLATE`) to use in the
+     * database.  This affects the sort order applied to strings, e.g. in queries
+     * with `ORDER BY`, as well as the order used in indexes on text columns. If
+     * unset or set to an empty string the default collation is set to `C`.  If set
+     * to `DEFAULT` Terraform will use the same collation order as the specified
+     * `template` database.  Changing this value will force the creation of a new
+     * resource as this value can only be changed when a database is created.
      * 
      */
     @Import(name="lcCollate")
     private @Nullable Output<String> lcCollate;
 
     /**
-     * @return Collation order (LC_COLLATE) to use in the new database
+     * @return Collation order (`LC_COLLATE`) to use in the
+     * database.  This affects the sort order applied to strings, e.g. in queries
+     * with `ORDER BY`, as well as the order used in indexes on text columns. If
+     * unset or set to an empty string the default collation is set to `C`.  If set
+     * to `DEFAULT` Terraform will use the same collation order as the specified
+     * `template` database.  Changing this value will force the creation of a new
+     * resource as this value can only be changed when a database is created.
      * 
      */
     public Optional<Output<String>> lcCollate() {
@@ -130,14 +152,26 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Character classification (LC_CTYPE) to use in the new database
+     * Character classification (`LC_CTYPE`) to use in the
+     * database. This affects the categorization of characters, e.g. lower, upper and
+     * digit. If unset or set to an empty string the default character classification
+     * is set to `C`.  If set to `DEFAULT` Terraform will use the character
+     * classification of the specified `template` database.  Changing this value will
+     * force the creation of a new resource as this value can only be changed when a
+     * database is created.
      * 
      */
     @Import(name="lcCtype")
     private @Nullable Output<String> lcCtype;
 
     /**
-     * @return Character classification (LC_CTYPE) to use in the new database
+     * @return Character classification (`LC_CTYPE`) to use in the
+     * database. This affects the categorization of characters, e.g. lower, upper and
+     * digit. If unset or set to an empty string the default character classification
+     * is set to `C`.  If set to `DEFAULT` Terraform will use the character
+     * classification of the specified `template` database.  Changing this value will
+     * force the creation of a new resource as this value can only be changed when a
+     * database is created.
      * 
      */
     public Optional<Output<String>> lcCtype() {
@@ -206,14 +240,22 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the template from which to create the new database
+     * The name of the template database from which to create
+     * the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
+     * the default in Terraform is `template0`, not `template1`.  Changing this value
+     * will force the creation of a new resource as this value can only be changed
+     * when a database is created.
      * 
      */
     @Import(name="template")
     private @Nullable Output<String> template;
 
     /**
-     * @return The name of the template from which to create the new database
+     * @return The name of the template database from which to create
+     * the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
+     * the default in Terraform is `template0`, not `template1`.  Changing this value
+     * will force the creation of a new resource as this value can only be changed
+     * when a database is created.
      * 
      */
     public Optional<Output<String>> template() {
@@ -336,7 +378,12 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encoding Character set encoding to use in the new database
+         * @param encoding Character set encoding to use in the database.
+         * Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
+         * number.  If unset or set to an empty string the default encoding is set to
+         * `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
+         * template database.  Changing this value will force the creation of a new
+         * resource as this value can only be changed when a database is created.
          * 
          * @return builder
          * 
@@ -347,7 +394,12 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encoding Character set encoding to use in the new database
+         * @param encoding Character set encoding to use in the database.
+         * Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
+         * number.  If unset or set to an empty string the default encoding is set to
+         * `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
+         * template database.  Changing this value will force the creation of a new
+         * resource as this value can only be changed when a database is created.
          * 
          * @return builder
          * 
@@ -382,7 +434,13 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lcCollate Collation order (LC_COLLATE) to use in the new database
+         * @param lcCollate Collation order (`LC_COLLATE`) to use in the
+         * database.  This affects the sort order applied to strings, e.g. in queries
+         * with `ORDER BY`, as well as the order used in indexes on text columns. If
+         * unset or set to an empty string the default collation is set to `C`.  If set
+         * to `DEFAULT` Terraform will use the same collation order as the specified
+         * `template` database.  Changing this value will force the creation of a new
+         * resource as this value can only be changed when a database is created.
          * 
          * @return builder
          * 
@@ -393,7 +451,13 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lcCollate Collation order (LC_COLLATE) to use in the new database
+         * @param lcCollate Collation order (`LC_COLLATE`) to use in the
+         * database.  This affects the sort order applied to strings, e.g. in queries
+         * with `ORDER BY`, as well as the order used in indexes on text columns. If
+         * unset or set to an empty string the default collation is set to `C`.  If set
+         * to `DEFAULT` Terraform will use the same collation order as the specified
+         * `template` database.  Changing this value will force the creation of a new
+         * resource as this value can only be changed when a database is created.
          * 
          * @return builder
          * 
@@ -403,7 +467,13 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lcCtype Character classification (LC_CTYPE) to use in the new database
+         * @param lcCtype Character classification (`LC_CTYPE`) to use in the
+         * database. This affects the categorization of characters, e.g. lower, upper and
+         * digit. If unset or set to an empty string the default character classification
+         * is set to `C`.  If set to `DEFAULT` Terraform will use the character
+         * classification of the specified `template` database.  Changing this value will
+         * force the creation of a new resource as this value can only be changed when a
+         * database is created.
          * 
          * @return builder
          * 
@@ -414,7 +484,13 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lcCtype Character classification (LC_CTYPE) to use in the new database
+         * @param lcCtype Character classification (`LC_CTYPE`) to use in the
+         * database. This affects the categorization of characters, e.g. lower, upper and
+         * digit. If unset or set to an empty string the default character classification
+         * is set to `C`.  If set to `DEFAULT` Terraform will use the character
+         * classification of the specified `template` database.  Changing this value will
+         * force the creation of a new resource as this value can only be changed when a
+         * database is created.
          * 
          * @return builder
          * 
@@ -503,7 +579,11 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param template The name of the template from which to create the new database
+         * @param template The name of the template database from which to create
+         * the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
+         * the default in Terraform is `template0`, not `template1`.  Changing this value
+         * will force the creation of a new resource as this value can only be changed
+         * when a database is created.
          * 
          * @return builder
          * 
@@ -514,7 +594,11 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param template The name of the template from which to create the new database
+         * @param template The name of the template database from which to create
+         * the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
+         * the default in Terraform is `template0`, not `template1`.  Changing this value
+         * will force the creation of a new resource as this value can only be changed
+         * when a database is created.
          * 
          * @return builder
          * 
