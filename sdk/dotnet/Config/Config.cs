@@ -83,6 +83,9 @@ namespace Pulumi.PostgreSql
         }
 
         private static readonly __Value<string?> _azureTenantId = new __Value<string?>(() => __config.Get("azureTenantId"));
+        /// <summary>
+        /// MS Azure tenant ID (see: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+        /// </summary>
         public static string? AzureTenantId
         {
             get => _azureTenantId.Get();

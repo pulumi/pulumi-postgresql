@@ -256,7 +256,66 @@ class Schema(pulumi.CustomResource):
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SchemaPolicyArgs', 'SchemaPolicyArgsDict']]]]] = None,
                  __props__=None):
         """
-        Create a Schema resource with the given unique name, props, and options.
+        The ``Schema`` resource creates and manages [schema
+        objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
+        a PostgreSQL database.
+
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        app_www = postgresql.Role("app_www", name="app_www")
+        app_dba = postgresql.Role("app_dba", name="app_dba")
+        app_releng = postgresql.Role("app_releng", name="app_releng")
+        my_schema = postgresql.Schema("my_schema",
+            name="my_schema",
+            owner="postgres",
+            policies=[
+                {
+                    "usage": True,
+                    "role": app_www.name,
+                },
+                {
+                    "create": True,
+                    "usage": True,
+                    "role": app_releng.name,
+                },
+                {
+                    "create_with_grant": True,
+                    "usage_with_grant": True,
+                    "role": app_dba.name,
+                },
+            ])
+        ```
+
+        ## Import Example
+
+        `Schema` supports importing resources.  Supposing the following
+        Terraform:
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        public = postgresql.Schema("public", name="public")
+        schema_foo = postgresql.Schema("schema_foo",
+            name="my_schema",
+            owner="postgres",
+            policies=[{
+                "usage": True,
+            }])
+        ```
+
+        It is possible to import a `Schema` resource with the following
+        command:
+
+        Where `my_database` is the name of the database containing the schema,
+        `my_schema` is the name of the schema in the PostgreSQL database and
+        `postgresql_schema.schema_foo` is the name of the resource whose state will be
+        populated as a result of the command.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database: The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
@@ -275,7 +334,66 @@ class Schema(pulumi.CustomResource):
                  args: Optional[SchemaArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Schema resource with the given unique name, props, and options.
+        The ``Schema`` resource creates and manages [schema
+        objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
+        a PostgreSQL database.
+
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        app_www = postgresql.Role("app_www", name="app_www")
+        app_dba = postgresql.Role("app_dba", name="app_dba")
+        app_releng = postgresql.Role("app_releng", name="app_releng")
+        my_schema = postgresql.Schema("my_schema",
+            name="my_schema",
+            owner="postgres",
+            policies=[
+                {
+                    "usage": True,
+                    "role": app_www.name,
+                },
+                {
+                    "create": True,
+                    "usage": True,
+                    "role": app_releng.name,
+                },
+                {
+                    "create_with_grant": True,
+                    "usage_with_grant": True,
+                    "role": app_dba.name,
+                },
+            ])
+        ```
+
+        ## Import Example
+
+        `Schema` supports importing resources.  Supposing the following
+        Terraform:
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        public = postgresql.Schema("public", name="public")
+        schema_foo = postgresql.Schema("schema_foo",
+            name="my_schema",
+            owner="postgres",
+            policies=[{
+                "usage": True,
+            }])
+        ```
+
+        It is possible to import a `Schema` resource with the following
+        command:
+
+        Where `my_database` is the name of the database containing the schema,
+        `my_schema` is the name of the schema in the PostgreSQL database and
+        `postgresql_schema.schema_foo` is the name of the resource whose state will be
+        populated as a result of the command.
+
         :param str resource_name: The name of the resource.
         :param SchemaArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

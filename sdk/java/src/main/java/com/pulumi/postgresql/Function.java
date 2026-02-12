@@ -68,14 +68,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * It is possible to import a `postgresql_function` resource with the following
+ * It is possible to import a `postgresql.Function` resource with the following
  * command:
  * 
  * ```sh
  * $ pulumi import postgresql:index/function:Function function_foo &#34;my_database.my_schema.my_function_name(arguments)&#34;
  * ```
- * Where `my_database` is the name of the database containing the schema,
- * `my_schema` is the name of the schema in the PostgreSQL database, `my_function_name` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and
+ * 
+ * Where `myDatabase` is the name of the database containing the schema,
+ * `mySchema` is the name of the schema in the PostgreSQL database, `myFunctionName` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and
  * `postgresql_schema.function_foo` is the name of the resource whose state will be
  * populated as a result of the command.
  * 

@@ -44,9 +44,7 @@ import (
 //
 // PostgreSQL Extensions can be imported using the database name and the extension's resource name, e.g.
 //
-// ```sh
-// $ pulumi import postgresql:index/extension:Extension uuid_ossp example-database.uuid-ossp`
-// ```
+// `terraform import postgresql_extension.uuid_ossp example-database.uuid-ossp`
 type Extension struct {
 	pulumi.CustomResourceState
 

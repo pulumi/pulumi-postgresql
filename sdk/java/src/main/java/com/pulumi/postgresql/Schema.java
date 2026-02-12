@@ -17,6 +17,129 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The ``postgresql.Schema`` resource creates and manages [schema
+ * objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
+ * a PostgreSQL database.
+ * 
+ * ## Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.postgresql.Role;
+ * import com.pulumi.postgresql.RoleArgs;
+ * import com.pulumi.postgresql.Schema;
+ * import com.pulumi.postgresql.SchemaArgs;
+ * import com.pulumi.postgresql.inputs.SchemaPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var appWww = new Role("appWww", RoleArgs.builder()
+ *             .name("app_www")
+ *             .build());
+ * 
+ *         var appDba = new Role("appDba", RoleArgs.builder()
+ *             .name("app_dba")
+ *             .build());
+ * 
+ *         var appReleng = new Role("appReleng", RoleArgs.builder()
+ *             .name("app_releng")
+ *             .build());
+ * 
+ *         var mySchema = new Schema("mySchema", SchemaArgs.builder()
+ *             .name("my_schema")
+ *             .owner("postgres")
+ *             .policies(            
+ *                 SchemaPolicyArgs.builder()
+ *                     .usage(true)
+ *                     .role(appWww.name())
+ *                     .build(),
+ *                 SchemaPolicyArgs.builder()
+ *                     .create(true)
+ *                     .usage(true)
+ *                     .role(appReleng.name())
+ *                     .build(),
+ *                 SchemaPolicyArgs.builder()
+ *                     .createWithGrant(true)
+ *                     .usageWithGrant(true)
+ *                     .role(appDba.name())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Import Example
+ * 
+ * `postgresql.Schema` supports importing resources.  Supposing the following
+ * Terraform:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.postgresql.Schema;
+ * import com.pulumi.postgresql.SchemaArgs;
+ * import com.pulumi.postgresql.inputs.SchemaPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var public_ = new Schema("public", SchemaArgs.builder()
+ *             .name("public")
+ *             .build());
+ * 
+ *         var schemaFoo = new Schema("schemaFoo", SchemaArgs.builder()
+ *             .name("my_schema")
+ *             .owner("postgres")
+ *             .policies(SchemaPolicyArgs.builder()
+ *                 .usage(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * It is possible to import a `postgresql.Schema` resource with the following
+ * command:
+ * 
+ * Where `myDatabase` is the name of the database containing the schema,
+ * `mySchema` is the name of the schema in the PostgreSQL database and
+ * `postgresql_schema.schema_foo` is the name of the resource whose state will be
+ * populated as a result of the command.
+ * 
+ */
 @ResourceType(type="postgresql:index/schema:Schema")
 public class Schema extends com.pulumi.resources.CustomResource {
     /**

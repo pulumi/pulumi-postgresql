@@ -48,6 +48,10 @@ public final class Config {
     public Optional<Boolean> azureIdentityAuth() {
         return Codegen.booleanProp("azureIdentityAuth").config(config).get();
     }
+/**
+ * MS Azure tenant ID (see: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+ * 
+ */
     public Optional<String> azureTenantId() {
         return Codegen.stringProp("azureTenantId").config(config).get();
     }

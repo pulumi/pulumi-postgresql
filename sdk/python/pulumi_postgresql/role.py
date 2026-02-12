@@ -942,7 +942,98 @@ class Role(pulumi.CustomResource):
                  valid_until: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a Role resource with the given unique name, props, and options.
+        The ``Role`` resource creates and manages a role on a PostgreSQL
+        server.
+
+        When a ``Role`` resource is removed, the PostgreSQL ROLE will
+        automatically run a [`REASSIGN
+        OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html)
+        and [`DROP
+        OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html) to
+        the `CURRENT_USER` (normally the connected user for the provider).  If the
+        specified PostgreSQL ROLE owns objects in multiple PostgreSQL databases in the
+        same PostgreSQL Cluster, one PostgreSQL provider per database must be created
+        and all but the final ``Role`` must specify a `skip_drop_role`.
+
+        > **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
+        Read more about sensitive data in state.
+
+        > **Note:** For enhanced security, consider using the `password_wo` and `password_wo_version` attributes
+        instead of `password`. The write-only password attributes prevent the password from being stored in
+        the Terraform state file while still allowing password management through version-controlled updates.
+
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        my_role = postgresql.Role("my_role",
+            name="my_role",
+            login=True,
+            password="mypass")
+        my_replication_role = postgresql.Role("my_replication_role",
+            name="replication_role",
+            replication=True,
+            login=True,
+            connection_limit=5,
+            password="md5c98cbfeb6a347a47eb8e96cfb4c4b890")
+        # Example using write-only password (password not stored in state)
+        secure_role = postgresql.Role("secure_role",
+            name="secure_role",
+            login=True,
+            password_wo="secure_password_123",
+            password_wo_version="1")
+        ```
+
+        ## Write-Only Password Management
+
+        The `password_wo` and `password_wo_version` attributes provide a secure way to manage role passwords
+        without storing them in the Terraform state file:
+
+        * **Security**: The password value is never stored in the state file, reducing the risk of exposure
+        * **Version Control**: Password updates are controlled through the `password_wo_version` attribute
+        * **Idempotency**: Terraform only updates the password when the version changes, not on every apply
+
+        To change a password when using write-only attributes:
+
+        1. Update the `password_wo` value with the new password
+        2. Increment or change the `password_wo_version` value
+        3. Apply the configuration
+
+        **Example of password rotation:**
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        # Initial password setup
+        app_user = postgresql.Role("app_user",
+            name="app_user",
+            login=True,
+            password_wo="initial_password_123",
+            password_wo_version="1")
+        ```
+
+        ## Import Example
+
+        `Role` supports importing resources.  Supposing the following
+        Terraform:
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        replication_role = postgresql.Role("replication_role", name="replication_name")
+        ```
+
+        It is possible to import a `Role` resource with the following
+        command:
+
+        Where `replication_name` is the name of the role to import and
+        `postgresql_role.replication_role` is the name of the resource whose state will
+        be populated as a result of the command.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assume_role: Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
@@ -1018,7 +1109,98 @@ class Role(pulumi.CustomResource):
                  args: Optional[RoleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Role resource with the given unique name, props, and options.
+        The ``Role`` resource creates and manages a role on a PostgreSQL
+        server.
+
+        When a ``Role`` resource is removed, the PostgreSQL ROLE will
+        automatically run a [`REASSIGN
+        OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html)
+        and [`DROP
+        OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html) to
+        the `CURRENT_USER` (normally the connected user for the provider).  If the
+        specified PostgreSQL ROLE owns objects in multiple PostgreSQL databases in the
+        same PostgreSQL Cluster, one PostgreSQL provider per database must be created
+        and all but the final ``Role`` must specify a `skip_drop_role`.
+
+        > **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
+        Read more about sensitive data in state.
+
+        > **Note:** For enhanced security, consider using the `password_wo` and `password_wo_version` attributes
+        instead of `password`. The write-only password attributes prevent the password from being stored in
+        the Terraform state file while still allowing password management through version-controlled updates.
+
+        ## Usage
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        my_role = postgresql.Role("my_role",
+            name="my_role",
+            login=True,
+            password="mypass")
+        my_replication_role = postgresql.Role("my_replication_role",
+            name="replication_role",
+            replication=True,
+            login=True,
+            connection_limit=5,
+            password="md5c98cbfeb6a347a47eb8e96cfb4c4b890")
+        # Example using write-only password (password not stored in state)
+        secure_role = postgresql.Role("secure_role",
+            name="secure_role",
+            login=True,
+            password_wo="secure_password_123",
+            password_wo_version="1")
+        ```
+
+        ## Write-Only Password Management
+
+        The `password_wo` and `password_wo_version` attributes provide a secure way to manage role passwords
+        without storing them in the Terraform state file:
+
+        * **Security**: The password value is never stored in the state file, reducing the risk of exposure
+        * **Version Control**: Password updates are controlled through the `password_wo_version` attribute
+        * **Idempotency**: Terraform only updates the password when the version changes, not on every apply
+
+        To change a password when using write-only attributes:
+
+        1. Update the `password_wo` value with the new password
+        2. Increment or change the `password_wo_version` value
+        3. Apply the configuration
+
+        **Example of password rotation:**
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        # Initial password setup
+        app_user = postgresql.Role("app_user",
+            name="app_user",
+            login=True,
+            password_wo="initial_password_123",
+            password_wo_version="1")
+        ```
+
+        ## Import Example
+
+        `Role` supports importing resources.  Supposing the following
+        Terraform:
+
+        ```python
+        import pulumi
+        import pulumi_postgresql as postgresql
+
+        replication_role = postgresql.Role("replication_role", name="replication_name")
+        ```
+
+        It is possible to import a `Role` resource with the following
+        command:
+
+        Where `replication_name` is the name of the role to import and
+        `postgresql_role.replication_role` is the name of the resource whose state will
+        be populated as a result of the command.
+
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -478,12 +478,13 @@ class Function(pulumi.CustomResource):
 
         ## Import
 
-        It is possible to import a `postgresql_function` resource with the following
+        It is possible to import a `Function` resource with the following
         command:
 
         ```sh
         $ pulumi import postgresql:index/function:Function function_foo "my_database.my_schema.my_function_name(arguments)"
         ```
+
         Where `my_database` is the name of the database containing the schema,
         `my_schema` is the name of the schema in the PostgreSQL database, `my_function_name` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and
         `postgresql_schema.function_foo` is the name of the resource whose state will be
@@ -540,12 +541,13 @@ class Function(pulumi.CustomResource):
 
         ## Import
 
-        It is possible to import a `postgresql_function` resource with the following
+        It is possible to import a `Function` resource with the following
         command:
 
         ```sh
         $ pulumi import postgresql:index/function:Function function_foo "my_database.my_schema.my_function_name(arguments)"
         ```
+
         Where `my_database` is the name of the database containing the schema,
         `my_schema` is the name of the schema in the PostgreSQL database, `my_function_name` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and
         `postgresql_schema.function_foo` is the name of the resource whose state will be

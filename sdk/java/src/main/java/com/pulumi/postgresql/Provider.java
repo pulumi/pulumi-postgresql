@@ -65,9 +65,17 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> awsRdsIamRegion() {
         return Codegen.optional(this.awsRdsIamRegion);
     }
+    /**
+     * MS Azure tenant ID (see: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+     * 
+     */
     @Export(name="azureTenantId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> azureTenantId;
 
+    /**
+     * @return MS Azure tenant ID (see: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+     * 
+     */
     public Output<Optional<String>> azureTenantId() {
         return Codegen.optional(this.azureTenantId);
     }

@@ -11,6 +11,119 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The “Schema“ resource creates and manages [schema
+// objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
+// a PostgreSQL database.
+//
+// ## Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			appWww, err := postgresql.NewRole(ctx, "app_www", &postgresql.RoleArgs{
+//				Name: pulumi.String("app_www"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			appDba, err := postgresql.NewRole(ctx, "app_dba", &postgresql.RoleArgs{
+//				Name: pulumi.String("app_dba"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			appReleng, err := postgresql.NewRole(ctx, "app_releng", &postgresql.RoleArgs{
+//				Name: pulumi.String("app_releng"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = postgresql.NewSchema(ctx, "my_schema", &postgresql.SchemaArgs{
+//				Name:  pulumi.String("my_schema"),
+//				Owner: pulumi.String("postgres"),
+//				Policies: postgresql.SchemaPolicyArray{
+//					&postgresql.SchemaPolicyArgs{
+//						Usage: pulumi.Bool(true),
+//						Role:  appWww.Name,
+//					},
+//					&postgresql.SchemaPolicyArgs{
+//						Create: pulumi.Bool(true),
+//						Usage:  pulumi.Bool(true),
+//						Role:   appReleng.Name,
+//					},
+//					&postgresql.SchemaPolicyArgs{
+//						CreateWithGrant: pulumi.Bool(true),
+//						UsageWithGrant:  pulumi.Bool(true),
+//						Role:            appDba.Name,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import Example
+//
+// `Schema` supports importing resources.  Supposing the following
+// Terraform:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewSchema(ctx, "public", &postgresql.SchemaArgs{
+//				Name: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = postgresql.NewSchema(ctx, "schema_foo", &postgresql.SchemaArgs{
+//				Name:  pulumi.String("my_schema"),
+//				Owner: pulumi.String("postgres"),
+//				Policies: postgresql.SchemaPolicyArray{
+//					&postgresql.SchemaPolicyArgs{
+//						Usage: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// It is possible to import a `Schema` resource with the following
+// command:
+//
+// Where `myDatabase` is the name of the database containing the schema,
+// `mySchema` is the name of the schema in the PostgreSQL database and
+// `postgresql_schema.schema_foo` is the name of the resource whose state will be
+// populated as a result of the command.
 type Schema struct {
 	pulumi.CustomResourceState
 

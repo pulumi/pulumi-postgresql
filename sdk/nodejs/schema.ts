@@ -6,6 +6,69 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The ``postgresql.Schema`` resource creates and manages [schema
+ * objects](https://www.postgresql.org/docs/current/static/ddl-schemas.html) within
+ * a PostgreSQL database.
+ *
+ * ## Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * const appWww = new postgresql.Role("app_www", {name: "app_www"});
+ * const appDba = new postgresql.Role("app_dba", {name: "app_dba"});
+ * const appReleng = new postgresql.Role("app_releng", {name: "app_releng"});
+ * const mySchema = new postgresql.Schema("my_schema", {
+ *     name: "my_schema",
+ *     owner: "postgres",
+ *     policies: [
+ *         {
+ *             usage: true,
+ *             role: appWww.name,
+ *         },
+ *         {
+ *             create: true,
+ *             usage: true,
+ *             role: appReleng.name,
+ *         },
+ *         {
+ *             createWithGrant: true,
+ *             usageWithGrant: true,
+ *             role: appDba.name,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import Example
+ *
+ * `postgresql.Schema` supports importing resources.  Supposing the following
+ * Terraform:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as postgresql from "@pulumi/postgresql";
+ *
+ * const _public = new postgresql.Schema("public", {name: "public"});
+ * const schemaFoo = new postgresql.Schema("schema_foo", {
+ *     name: "my_schema",
+ *     owner: "postgres",
+ *     policies: [{
+ *         usage: true,
+ *     }],
+ * });
+ * ```
+ *
+ * It is possible to import a `postgresql.Schema` resource with the following
+ * command:
+ *
+ * Where `myDatabase` is the name of the database containing the schema,
+ * `mySchema` is the name of the schema in the PostgreSQL database and
+ * `postgresql_schema.schema_foo` is the name of the resource whose state will be
+ * populated as a result of the command.
+ */
 export class Schema extends pulumi.CustomResource {
     /**
      * Get an existing Schema resource's state with the given name, ID, and optional extra

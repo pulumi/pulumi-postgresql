@@ -11,6 +11,154 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The “Role“ resource creates and manages a role on a PostgreSQL
+// server.
+//
+// When a “Role“ resource is removed, the PostgreSQL ROLE will
+// automatically run a [`REASSIGN
+// OWNED`](https://www.postgresql.org/docs/current/static/sql-reassign-owned.html)
+// and [`DROP
+// OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html) to
+// the `CURRENT_USER` (normally the connected user for the provider).  If the
+// specified PostgreSQL ROLE owns objects in multiple PostgreSQL databases in the
+// same PostgreSQL Cluster, one PostgreSQL provider per database must be created
+// and all but the final “Role“ must specify a `skipDropRole`.
+//
+// > **Note:** All arguments including role name and password will be stored in the raw state as plain-text.
+// Read more about sensitive data in state.
+//
+// > **Note:** For enhanced security, consider using the `passwordWo` and `passwordWoVersion` attributes
+// instead of `password`. The write-only password attributes prevent the password from being stored in
+// the Terraform state file while still allowing password management through version-controlled updates.
+//
+// ## Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewRole(ctx, "my_role", &postgresql.RoleArgs{
+//				Name:     pulumi.String("my_role"),
+//				Login:    pulumi.Bool(true),
+//				Password: pulumi.String("mypass"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = postgresql.NewRole(ctx, "my_replication_role", &postgresql.RoleArgs{
+//				Name:            pulumi.String("replication_role"),
+//				Replication:     pulumi.Bool(true),
+//				Login:           pulumi.Bool(true),
+//				ConnectionLimit: pulumi.Int(5),
+//				Password:        pulumi.String("md5c98cbfeb6a347a47eb8e96cfb4c4b890"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example using write-only password (password not stored in state)
+//			_, err = postgresql.NewRole(ctx, "secure_role", &postgresql.RoleArgs{
+//				Name:              pulumi.String("secure_role"),
+//				Login:             pulumi.Bool(true),
+//				PasswordWo:        pulumi.String("secure_password_123"),
+//				PasswordWoVersion: pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Write-Only Password Management
+//
+// The `passwordWo` and `passwordWoVersion` attributes provide a secure way to manage role passwords
+// without storing them in the Terraform state file:
+//
+// * **Security**: The password value is never stored in the state file, reducing the risk of exposure
+// * **Version Control**: Password updates are controlled through the `passwordWoVersion` attribute
+// * **Idempotency**: Terraform only updates the password when the version changes, not on every apply
+//
+// To change a password when using write-only attributes:
+//
+// 1. Update the `passwordWo` value with the new password
+// 2. Increment or change the `passwordWoVersion` value
+// 3. Apply the configuration
+//
+// **Example of password rotation:**
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Initial password setup
+//			_, err := postgresql.NewRole(ctx, "app_user", &postgresql.RoleArgs{
+//				Name:              pulumi.String("app_user"),
+//				Login:             pulumi.Bool(true),
+//				PasswordWo:        pulumi.String("initial_password_123"),
+//				PasswordWoVersion: pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import Example
+//
+// `Role` supports importing resources.  Supposing the following
+// Terraform:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-postgresql/sdk/v3/go/postgresql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := postgresql.NewRole(ctx, "replication_role", &postgresql.RoleArgs{
+//				Name: pulumi.String("replication_name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// It is possible to import a `Role` resource with the following
+// command:
+//
+// Where `replicationName` is the name of the role to import and
+// `postgresql_role.replication_role` is the name of the resource whose state will
+// be populated as a result of the command.
 type Role struct {
 	pulumi.CustomResourceState
 

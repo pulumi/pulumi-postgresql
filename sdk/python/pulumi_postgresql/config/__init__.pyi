@@ -41,6 +41,9 @@ Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/
 """
 
 azureTenantId: Optional[str]
+"""
+MS Azure tenant ID (see: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
+"""
 
 clientcert: Optional[str]
 """

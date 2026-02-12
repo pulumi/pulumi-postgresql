@@ -9,6 +9,63 @@ using Pulumi.Serialization;
 
 namespace Pulumi.PostgreSql
 {
+    /// <summary>
+    /// The ``postgresql.Database`` resource creates and manages [database
+    /// objects](https://www.postgresql.org/docs/current/static/managing-databases.html)
+    /// within a PostgreSQL server instance.
+    /// 
+    /// ## Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myDb = new PostgreSql.Database("my_db", new()
+    ///     {
+    ///         Name = "my_db",
+    ///         Owner = "my_role",
+    ///         Template = "template0",
+    ///         LcCollate = "C",
+    ///         ConnectionLimit = -1,
+    ///         AllowConnections = true,
+    ///         AlterObjectOwnership = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import Example
+    /// 
+    /// `postgresql.Database` supports importing resources.  Supposing the following
+    /// Terraform:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using PostgreSql = Pulumi.PostgreSql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var db1 = new PostgreSql.Database("db1", new()
+    ///     {
+    ///         Name = "testdb1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// It is possible to import a `postgresql.Database` resource with the following
+    /// command:
+    /// 
+    /// Where `Testdb1` is the name of the database to import and
+    /// `postgresql_database.db1` is the name of the resource whose state will be
+    /// populated as a result of the command.
+    /// </summary>
     [PostgreSqlResourceType("postgresql:index/database:Database")]
     public partial class Database : global::Pulumi.CustomResource
     {
@@ -40,7 +97,12 @@ namespace Pulumi.PostgreSql
         public Output<int?> ConnectionLimit { get; private set; } = null!;
 
         /// <summary>
-        /// Character set encoding to use in the new database
+        /// Character set encoding to use in the database.
+        /// Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
+        /// number.  If unset or set to an empty string the default encoding is set to
+        /// `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
+        /// template database.  Changing this value will force the creation of a new
+        /// resource as this value can only be changed when a database is created.
         /// </summary>
         [Output("encoding")]
         public Output<string> Encoding { get; private set; } = null!;
@@ -54,13 +116,25 @@ namespace Pulumi.PostgreSql
         public Output<bool> IsTemplate { get; private set; } = null!;
 
         /// <summary>
-        /// Collation order (LC_COLLATE) to use in the new database
+        /// Collation order (`LC_COLLATE`) to use in the
+        /// database.  This affects the sort order applied to strings, e.g. in queries
+        /// with `ORDER BY`, as well as the order used in indexes on text columns. If
+        /// unset or set to an empty string the default collation is set to `C`.  If set
+        /// to `DEFAULT` Terraform will use the same collation order as the specified
+        /// `Template` database.  Changing this value will force the creation of a new
+        /// resource as this value can only be changed when a database is created.
         /// </summary>
         [Output("lcCollate")]
         public Output<string> LcCollate { get; private set; } = null!;
 
         /// <summary>
-        /// Character classification (LC_CTYPE) to use in the new database
+        /// Character classification (`LC_CTYPE`) to use in the
+        /// database. This affects the categorization of characters, e.g. lower, upper and
+        /// digit. If unset or set to an empty string the default character classification
+        /// is set to `C`.  If set to `DEFAULT` Terraform will use the character
+        /// classification of the specified `Template` database.  Changing this value will
+        /// force the creation of a new resource as this value can only be changed when a
+        /// database is created.
         /// </summary>
         [Output("lcCtype")]
         public Output<string> LcCtype { get; private set; } = null!;
@@ -92,7 +166,11 @@ namespace Pulumi.PostgreSql
         public Output<string> TablespaceName { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the template from which to create the new database
+        /// The name of the template database from which to create
+        /// the database, or `DEFAULT` to use the default template (`Template0`).  NOTE:
+        /// the default in Terraform is `Template0`, not `Template1`.  Changing this value
+        /// will force the creation of a new resource as this value can only be changed
+        /// when a database is created.
         /// </summary>
         [Output("template")]
         public Output<string> Template { get; private set; } = null!;
@@ -171,7 +249,12 @@ namespace Pulumi.PostgreSql
         public Input<int>? ConnectionLimit { get; set; }
 
         /// <summary>
-        /// Character set encoding to use in the new database
+        /// Character set encoding to use in the database.
+        /// Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
+        /// number.  If unset or set to an empty string the default encoding is set to
+        /// `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
+        /// template database.  Changing this value will force the creation of a new
+        /// resource as this value can only be changed when a database is created.
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
@@ -185,13 +268,25 @@ namespace Pulumi.PostgreSql
         public Input<bool>? IsTemplate { get; set; }
 
         /// <summary>
-        /// Collation order (LC_COLLATE) to use in the new database
+        /// Collation order (`LC_COLLATE`) to use in the
+        /// database.  This affects the sort order applied to strings, e.g. in queries
+        /// with `ORDER BY`, as well as the order used in indexes on text columns. If
+        /// unset or set to an empty string the default collation is set to `C`.  If set
+        /// to `DEFAULT` Terraform will use the same collation order as the specified
+        /// `Template` database.  Changing this value will force the creation of a new
+        /// resource as this value can only be changed when a database is created.
         /// </summary>
         [Input("lcCollate")]
         public Input<string>? LcCollate { get; set; }
 
         /// <summary>
-        /// Character classification (LC_CTYPE) to use in the new database
+        /// Character classification (`LC_CTYPE`) to use in the
+        /// database. This affects the categorization of characters, e.g. lower, upper and
+        /// digit. If unset or set to an empty string the default character classification
+        /// is set to `C`.  If set to `DEFAULT` Terraform will use the character
+        /// classification of the specified `Template` database.  Changing this value will
+        /// force the creation of a new resource as this value can only be changed when a
+        /// database is created.
         /// </summary>
         [Input("lcCtype")]
         public Input<string>? LcCtype { get; set; }
@@ -223,7 +318,11 @@ namespace Pulumi.PostgreSql
         public Input<string>? TablespaceName { get; set; }
 
         /// <summary>
-        /// The name of the template from which to create the new database
+        /// The name of the template database from which to create
+        /// the database, or `DEFAULT` to use the default template (`Template0`).  NOTE:
+        /// the default in Terraform is `Template0`, not `Template1`.  Changing this value
+        /// will force the creation of a new resource as this value can only be changed
+        /// when a database is created.
         /// </summary>
         [Input("template")]
         public Input<string>? Template { get; set; }
@@ -264,7 +363,12 @@ namespace Pulumi.PostgreSql
         public Input<int>? ConnectionLimit { get; set; }
 
         /// <summary>
-        /// Character set encoding to use in the new database
+        /// Character set encoding to use in the database.
+        /// Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
+        /// number.  If unset or set to an empty string the default encoding is set to
+        /// `UTF8`.  If set to `DEFAULT` Terraform will use the same encoding as the
+        /// template database.  Changing this value will force the creation of a new
+        /// resource as this value can only be changed when a database is created.
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
@@ -278,13 +382,25 @@ namespace Pulumi.PostgreSql
         public Input<bool>? IsTemplate { get; set; }
 
         /// <summary>
-        /// Collation order (LC_COLLATE) to use in the new database
+        /// Collation order (`LC_COLLATE`) to use in the
+        /// database.  This affects the sort order applied to strings, e.g. in queries
+        /// with `ORDER BY`, as well as the order used in indexes on text columns. If
+        /// unset or set to an empty string the default collation is set to `C`.  If set
+        /// to `DEFAULT` Terraform will use the same collation order as the specified
+        /// `Template` database.  Changing this value will force the creation of a new
+        /// resource as this value can only be changed when a database is created.
         /// </summary>
         [Input("lcCollate")]
         public Input<string>? LcCollate { get; set; }
 
         /// <summary>
-        /// Character classification (LC_CTYPE) to use in the new database
+        /// Character classification (`LC_CTYPE`) to use in the
+        /// database. This affects the categorization of characters, e.g. lower, upper and
+        /// digit. If unset or set to an empty string the default character classification
+        /// is set to `C`.  If set to `DEFAULT` Terraform will use the character
+        /// classification of the specified `Template` database.  Changing this value will
+        /// force the creation of a new resource as this value can only be changed when a
+        /// database is created.
         /// </summary>
         [Input("lcCtype")]
         public Input<string>? LcCtype { get; set; }
@@ -316,7 +432,11 @@ namespace Pulumi.PostgreSql
         public Input<string>? TablespaceName { get; set; }
 
         /// <summary>
-        /// The name of the template from which to create the new database
+        /// The name of the template database from which to create
+        /// the database, or `DEFAULT` to use the default template (`Template0`).  NOTE:
+        /// the default in Terraform is `Template0`, not `Template1`.  Changing this value
+        /// will force the creation of a new resource as this value can only be changed
+        /// when a database is created.
         /// </summary>
         [Input("template")]
         public Input<string>? Template { get; set; }
