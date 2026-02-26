@@ -32,6 +32,7 @@ class DatabaseArgs:
                  template: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
+
         :param pulumi.Input[_builtins.bool] allow_connections: If `false` then no one can connect to this
                database. The default is `true`, allowing connections (except as restricted by
                other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
@@ -296,6 +297,7 @@ class _DatabaseState:
                  template: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
+
         :param pulumi.Input[_builtins.bool] allow_connections: If `false` then no one can connect to this
                database. The default is `true`, allowing connections (except as restricted by
                other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
@@ -602,6 +604,7 @@ class Database(pulumi.CustomResource):
         `postgresql_database.db1` is the name of the resource whose state will be
         populated as a result of the command.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_connections: If `false` then no one can connect to this
@@ -701,6 +704,7 @@ class Database(pulumi.CustomResource):
         Where `testdb1` is the name of the database to import and
         `postgresql_database.db1` is the name of the resource whose state will be
         populated as a result of the command.
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.

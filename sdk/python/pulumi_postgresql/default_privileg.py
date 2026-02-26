@@ -28,6 +28,7 @@ class DefaultPrivilegArgs:
                  with_grant_option: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DefaultPrivileg resource.
+
         :param pulumi.Input[_builtins.str] database: The database to grant default privileges for this role.
         :param pulumi.Input[_builtins.str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
         :param pulumi.Input[_builtins.str] owner: Specifies the role that creates objects for which the default privileges will be applied.
@@ -143,6 +144,7 @@ class _DefaultPrivilegState:
                  with_grant_option: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering DefaultPrivileg resources.
+
         :param pulumi.Input[_builtins.str] database: The database to grant default privileges for this role.
         :param pulumi.Input[_builtins.str] object_type: The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
         :param pulumi.Input[_builtins.str] owner: Specifies the role that creates objects for which the default privileges will be applied.
@@ -326,6 +328,7 @@ class DefaultPrivileg(pulumi.CustomResource):
             privileges=[])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database: The database to grant default privileges for this role.
@@ -397,6 +400,7 @@ class DefaultPrivileg(pulumi.CustomResource):
             object_type="function",
             privileges=[])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DefaultPrivilegArgs args: The arguments to use to populate this resource's properties.

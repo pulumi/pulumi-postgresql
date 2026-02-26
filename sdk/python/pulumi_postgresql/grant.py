@@ -29,6 +29,7 @@ class GrantArgs:
                  with_grant_option: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Grant resource.
+
         :param pulumi.Input[_builtins.str] database: The database to grant privileges on for this role.
         :param pulumi.Input[_builtins.str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] privileges: The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
@@ -161,6 +162,7 @@ class _GrantState:
                  with_grant_option: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Grant resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
         :param pulumi.Input[_builtins.str] database: The database to grant privileges on for this role.
         :param pulumi.Input[_builtins.str] object_type: The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).
@@ -357,6 +359,7 @@ class Grant(pulumi.CustomResource):
             privileges=[])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
@@ -431,6 +434,7 @@ class Grant(pulumi.CustomResource):
             object_type="schema",
             privileges=[])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GrantArgs args: The arguments to use to populate this resource's properties.

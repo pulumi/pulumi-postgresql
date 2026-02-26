@@ -24,6 +24,7 @@ class UserMappingArgs:
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a UserMapping resource.
+
         :param pulumi.Input[_builtins.str] server_name: The name of an existing server for which the user mapping is to be created.
                Changing this value
                will force the creation of a new resource as this value can only be set
@@ -90,6 +91,7 @@ class _UserMappingState:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserMapping resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.
         :param pulumi.Input[_builtins.str] server_name: The name of an existing server for which the user mapping is to be created.
                Changing this value
@@ -189,6 +191,7 @@ class UserMapping(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.
@@ -235,6 +238,7 @@ class UserMapping(pulumi.CustomResource):
                 "password": "pass",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserMappingArgs args: The arguments to use to populate this resource's properties.

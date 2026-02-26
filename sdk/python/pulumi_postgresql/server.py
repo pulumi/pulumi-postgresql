@@ -28,6 +28,7 @@ class ServerArgs:
                  server_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Server resource.
+
         :param pulumi.Input[_builtins.str] fdw_name: The name of the foreign-data wrapper that manages the server.
                Changing this value
                will force the creation of a new resource as this value can only be set
@@ -158,6 +159,7 @@ class _ServerState:
                  server_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Server resources.
+
         :param pulumi.Input[_builtins.bool] drop_cascade: When true, will drop objects that depend on the server (such as user mappings), and in turn all objects that depend on those objects . (Default: false)
         :param pulumi.Input[_builtins.str] fdw_name: The name of the foreign-data wrapper that manages the server.
                Changing this value
@@ -324,6 +326,7 @@ class Server(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[ext_file_fdw]))
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] drop_cascade: When true, will drop objects that depend on the server (such as user mappings), and in turn all objects that depend on those objects . (Default: false)
@@ -377,6 +380,7 @@ class Server(pulumi.CustomResource):
             fdw_name="file_fdw",
             opts = pulumi.ResourceOptions(depends_on=[ext_file_fdw]))
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServerArgs args: The arguments to use to populate this resource's properties.

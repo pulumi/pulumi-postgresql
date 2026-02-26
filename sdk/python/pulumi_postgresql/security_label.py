@@ -25,6 +25,7 @@ class SecurityLabelArgs:
                  object_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SecurityLabel resource.
+
         :param pulumi.Input[_builtins.str] label: The value of the security label.
         :param pulumi.Input[_builtins.str] label_provider: The name of the provider with which this label is to be associated.
         :param pulumi.Input[_builtins.str] object_name: The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.
@@ -93,6 +94,7 @@ class _SecurityLabelState:
                  object_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityLabel resources.
+
         :param pulumi.Input[_builtins.str] label: The value of the security label.
         :param pulumi.Input[_builtins.str] label_provider: The name of the provider with which this label is to be associated.
         :param pulumi.Input[_builtins.str] object_name: The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.
@@ -194,6 +196,7 @@ class SecurityLabel(pulumi.CustomResource):
 
         Security label is an attribute that can be added multiple times, so no import is needed, simply apply again.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] label: The value of the security label.
@@ -233,6 +236,7 @@ class SecurityLabel(pulumi.CustomResource):
         ## Import
 
         Security label is an attribute that can be added multiple times, so no import is needed, simply apply again.
+
 
         :param str resource_name: The name of the resource.
         :param SecurityLabelArgs args: The arguments to use to populate this resource's properties.

@@ -35,6 +35,7 @@ class FunctionArgs:
                  volatility: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Function resource.
+
         :param pulumi.Input[_builtins.str] body: Function body.
                This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]] args: List of arguments for the function.
@@ -242,6 +243,7 @@ class _FunctionState:
                  volatility: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Function resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]] args: List of arguments for the function.
         :param pulumi.Input[_builtins.str] body: Function body.
                This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
@@ -490,6 +492,7 @@ class Function(pulumi.CustomResource):
         `postgresql_schema.function_foo` is the name of the resource whose state will be
         populated as a result of the command.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionArgArgs', 'FunctionArgArgsDict']]]] args: List of arguments for the function.
@@ -552,6 +555,7 @@ class Function(pulumi.CustomResource):
         `my_schema` is the name of the schema in the PostgreSQL database, `my_function_name` is the function name to be imported, `arguments` is the argument signature of the function including all non OUT types and
         `postgresql_schema.function_foo` is the name of the resource whose state will be
         populated as a result of the command.
+
 
         :param str resource_name: The name of the resource.
         :param FunctionArgs args: The arguments to use to populate this resource's properties.
