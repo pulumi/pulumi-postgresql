@@ -10,6 +10,12 @@ PROVIDER := pulumi-resource-$(PACK)
 TESTPARALLELISM := 10
 GOTESTARGS := ""
 WORKING_DIR := $(shell pwd)
+# Use gotestsum on CI for human-readable output, fall back to go test locally
+ifdef CI
+GO_TEST_EXEC ?= gotestsum --format dots-v2 --
+else
+GO_TEST_EXEC ?= go test
+endif
 PULUMI_PROVIDER_BUILD_PARALLELISM ?=
 PULUMI_CONVERT := 1
 PULUMI_MISSING_DOCS_ERROR := false
@@ -245,16 +251,15 @@ provider: bin/$(PROVIDER)
 # To create a release ready binary, you should use `make provider`.
 provider_no_deps:
 	$(call build_provider_cmd,$(shell go env GOOS),$(shell go env GOARCH),$(WORKING_DIR)/bin/$(PROVIDER))
-# Traditional approach: Provider depends on schema (schema must exist first)
 bin/$(PROVIDER): .make/schema
 	$(call build_provider_cmd,$(shell go env GOOS),$(shell go env GOARCH),$(WORKING_DIR)/bin/$(PROVIDER))
 .PHONY: provider provider_no_deps
 
 test: export PATH := $(WORKING_DIR)/bin:$(PATH)
 test:
-	cd examples && go test -v -tags=all -parallel $(TESTPARALLELISM) -timeout 2h $(value GOTESTARGS)
+	cd examples && $(GO_TEST_EXEC) -v -tags=all -parallel $(TESTPARALLELISM) -timeout 2h $(value GOTESTARGS)
 .PHONY: test
-test_provider_cmd = cd provider && go test -v -short \
+test_provider_cmd = cd provider && $(GO_TEST_EXEC) -v -short \
 	-coverprofile="coverage.txt" \
 	-coverpkg="./...,github.com/hashicorp/terraform-provider-..." \
 	-parallel $(TESTPARALLELISM) \
@@ -264,7 +269,7 @@ test_provider:
 .PHONY: test_provider
 
 tfgen: schema
-schema: .make/schema
+schema: .make/schema 
 # This does actually have dependencies, but we're keeping it around for backwards compatibility for now
 tfgen_no_deps: .make/schema
 .make/schema: export PULUMI_HOME := $(WORKING_DIR)/.pulumi
@@ -272,7 +277,6 @@ tfgen_no_deps: .make/schema
 .make/schema: export PULUMI_CONVERT_EXAMPLES_CACHE_DIR := $(WORKING_DIR)/.pulumi/examples-cache
 .make/schema: export PULUMI_DISABLE_AUTOMATIC_PLUGIN_ACQUISITION := $(PULUMI_CONVERT)
 .make/schema: export PULUMI_MISSING_DOCS_ERROR := $(PULUMI_MISSING_DOCS_ERROR)
-# Traditional approach: Use codegen binary for schema generation
 .make/schema: bin/$(CODEGEN) .make/mise_install .make/upstream
 .make/schema: | mise_env
 	$(WORKING_DIR)/bin/$(CODEGEN) schema --out provider/cmd/$(PROVIDER)
