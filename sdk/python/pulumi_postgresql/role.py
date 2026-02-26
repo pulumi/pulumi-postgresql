@@ -43,6 +43,7 @@ class RoleArgs:
                  valid_until: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Role resource.
+
         :param pulumi.Input[_builtins.str] assume_role: Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
         :param pulumi.Input[_builtins.bool] bypass_row_level_security: Defines whether a role bypasses every
                row-level security (RLS) policy.  Default value is `false`.
@@ -491,6 +492,7 @@ class _RoleState:
                  valid_until: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Role resources.
+
         :param pulumi.Input[_builtins.str] assume_role: Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
         :param pulumi.Input[_builtins.bool] bypass_row_level_security: Defines whether a role bypasses every
                row-level security (RLS) policy.  Default value is `false`.
@@ -1034,6 +1036,7 @@ class Role(pulumi.CustomResource):
         `postgresql_role.replication_role` is the name of the resource whose state will
         be populated as a result of the command.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assume_role: Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
@@ -1200,6 +1203,7 @@ class Role(pulumi.CustomResource):
         Where `replication_name` is the name of the role to import and
         `postgresql_role.replication_role` is the name of the resource whose state will
         be populated as a result of the command.
+
 
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.

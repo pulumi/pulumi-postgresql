@@ -27,6 +27,7 @@ class SubscriptionArgs:
                  slot_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Subscription resource.
+
         :param pulumi.Input[_builtins.str] conninfo: The connection string to the publisher. It should follow the [keyword/value format](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] publications: Names of the publications on the publisher to subscribe to
         :param pulumi.Input[_builtins.bool] create_slot: Specifies whether the command should create the replication slot on the publisher. Default behavior is true
@@ -129,6 +130,7 @@ class _SubscriptionState:
                  slot_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Subscription resources.
+
         :param pulumi.Input[_builtins.str] conninfo: The connection string to the publisher. It should follow the [keyword/value format](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
         :param pulumi.Input[_builtins.bool] create_slot: Specifies whether the command should create the replication slot on the publisher. Default behavior is true
         :param pulumi.Input[_builtins.str] database: Which database to create the subscription on. Defaults to provider database.
@@ -255,6 +257,7 @@ class Subscription(pulumi.CustomResource):
 
         - https://www.postgresql.org/docs/current/sql-createsubscription.html
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] conninfo: The connection string to the publisher. It should follow the [keyword/value format](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
@@ -289,6 +292,7 @@ class Subscription(pulumi.CustomResource):
         ## Postgres documentation
 
         - https://www.postgresql.org/docs/current/sql-createsubscription.html
+
 
         :param str resource_name: The name of the resource.
         :param SubscriptionArgs args: The arguments to use to populate this resource's properties.

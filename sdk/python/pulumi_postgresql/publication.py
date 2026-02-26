@@ -29,6 +29,7 @@ class PublicationArgs:
                  tables: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Publication resource.
+
         :param pulumi.Input[_builtins.bool] all_tables: Should be ALL TABLES added to the publication. Defaults to 'false'
         :param pulumi.Input[_builtins.str] database: Which database to create the publication on. Defaults to provider database.
         :param pulumi.Input[_builtins.bool] drop_cascade: Should all subsequent resources of the publication be dropped. Defaults to 'false'
@@ -165,6 +166,7 @@ class _PublicationState:
                  tables: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Publication resources.
+
         :param pulumi.Input[_builtins.bool] all_tables: Should be ALL TABLES added to the publication. Defaults to 'false'
         :param pulumi.Input[_builtins.str] database: Which database to create the publication on. Defaults to provider database.
         :param pulumi.Input[_builtins.bool] drop_cascade: Should all subsequent resources of the publication be dropped. Defaults to 'false'
@@ -325,6 +327,7 @@ class Publication(pulumi.CustomResource):
 
         Publication can be imported using this format:
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] all_tables: Should be ALL TABLES added to the publication. Defaults to 'false'
@@ -363,6 +366,7 @@ class Publication(pulumi.CustomResource):
         ## Import Example
 
         Publication can be imported using this format:
+
 
         :param str resource_name: The name of the resource.
         :param PublicationArgs args: The arguments to use to populate this resource's properties.

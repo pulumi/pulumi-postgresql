@@ -24,6 +24,7 @@ class ReplicationSlotArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReplicationSlot resource.
+
         :param pulumi.Input[_builtins.str] plugin: Sets the output plugin.
         :param pulumi.Input[_builtins.str] database: Which database to create the replication slot on. Defaults to provider database.
         :param pulumi.Input[_builtins.str] name: The name of the replication slot.
@@ -79,6 +80,7 @@ class _ReplicationSlotState:
                  plugin: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReplicationSlot resources.
+
         :param pulumi.Input[_builtins.str] database: Which database to create the replication slot on. Defaults to provider database.
         :param pulumi.Input[_builtins.str] name: The name of the replication slot.
         :param pulumi.Input[_builtins.str] plugin: Sets the output plugin.
@@ -152,6 +154,7 @@ class ReplicationSlot(pulumi.CustomResource):
             plugin="test_decoding")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database: Which database to create the replication slot on. Defaults to provider database.
@@ -178,6 +181,7 @@ class ReplicationSlot(pulumi.CustomResource):
             name="my_slot",
             plugin="test_decoding")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReplicationSlotArgs args: The arguments to use to populate this resource's properties.

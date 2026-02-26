@@ -24,6 +24,7 @@ class GrantRoleArgs:
                  with_admin_option: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GrantRole resource.
+
         :param pulumi.Input[_builtins.str] grant_role: The name of the role that is added to `role`.
         :param pulumi.Input[_builtins.str] role: The name of the role that is granted a new membership.
         :param pulumi.Input[_builtins.bool] with_admin_option: Giving ability to grant membership to others or not for `role`. (Default: false)
@@ -78,6 +79,7 @@ class _GrantRoleState:
                  with_admin_option: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GrantRole resources.
+
         :param pulumi.Input[_builtins.str] grant_role: The name of the role that is added to `role`.
         :param pulumi.Input[_builtins.str] role: The name of the role that is granted a new membership.
         :param pulumi.Input[_builtins.bool] with_admin_option: Giving ability to grant membership to others or not for `role`. (Default: false)
@@ -166,6 +168,7 @@ class GrantRole(pulumi.CustomResource):
             grant_role="admin")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] grant_role: The name of the role that is added to `role`.
@@ -207,6 +210,7 @@ class GrantRole(pulumi.CustomResource):
             role="bob",
             grant_role="admin")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GrantRoleArgs args: The arguments to use to populate this resource's properties.

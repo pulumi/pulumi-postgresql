@@ -29,6 +29,7 @@ class SchemaArgs:
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]] = None):
         """
         The set of arguments for constructing a Schema resource.
+
         :param pulumi.Input[_builtins.str] database: The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
         :param pulumi.Input[_builtins.bool] drop_cascade: When true, will also drop all the objects that are contained in the schema. (Default: false)
         :param pulumi.Input[_builtins.bool] if_not_exists: When true, use the existing schema if it exists. (Default: true)
@@ -141,6 +142,7 @@ class _SchemaState:
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]] = None):
         """
         Input properties used for looking up and filtering Schema resources.
+
         :param pulumi.Input[_builtins.str] database: The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
         :param pulumi.Input[_builtins.bool] drop_cascade: When true, will also drop all the objects that are contained in the schema. (Default: false)
         :param pulumi.Input[_builtins.bool] if_not_exists: When true, use the existing schema if it exists. (Default: true)
@@ -316,6 +318,7 @@ class Schema(pulumi.CustomResource):
         `postgresql_schema.schema_foo` is the name of the resource whose state will be
         populated as a result of the command.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database: The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
@@ -393,6 +396,7 @@ class Schema(pulumi.CustomResource):
         `my_schema` is the name of the schema in the PostgreSQL database and
         `postgresql_schema.schema_foo` is the name of the resource whose state will be
         populated as a result of the command.
+
 
         :param str resource_name: The name of the resource.
         :param SchemaArgs args: The arguments to use to populate this resource's properties.

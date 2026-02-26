@@ -22,6 +22,7 @@ class PhysicalReplicationSlotArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PhysicalReplicationSlot resource.
+
         :param pulumi.Input[_builtins.str] name: The name of the replication slot.
         """
         if name is not None:
@@ -46,6 +47,7 @@ class _PhysicalReplicationSlotState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PhysicalReplicationSlot resources.
+
         :param pulumi.Input[_builtins.str] name: The name of the replication slot.
         """
         if name is not None:
@@ -86,6 +88,7 @@ class PhysicalReplicationSlot(pulumi.CustomResource):
         my_slot = postgresql.PhysicalReplicationSlot("my_slot", name="my_slot")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the replication slot.
@@ -109,6 +112,7 @@ class PhysicalReplicationSlot(pulumi.CustomResource):
 
         my_slot = postgresql.PhysicalReplicationSlot("my_slot", name="my_slot")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PhysicalReplicationSlotArgs args: The arguments to use to populate this resource's properties.
