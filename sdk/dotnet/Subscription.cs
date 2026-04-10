@@ -23,7 +23,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var subscription = new PostgreSql.Subscription("subscription", new()
+    ///     var subscription = new PostgreSql.Index.Subscription("subscription", new()
     ///     {
     ///         Name = "subscription",
     ///         Conninfo = "host=localhost port=5432 dbname=mydb user=postgres password=postgres",

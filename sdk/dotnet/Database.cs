@@ -24,7 +24,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myDb = new PostgreSql.Database("my_db", new()
+    ///     var myDb = new PostgreSql.Index.Database("my_db", new()
     ///     {
     ///         Name = "my_db",
     ///         Owner = "my_role",
@@ -51,7 +51,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var db1 = new PostgreSql.Database("db1", new()
+    ///     var db1 = new PostgreSql.Index.Database("db1", new()
     ///     {
     ///         Name = "testdb1",
     ///     });

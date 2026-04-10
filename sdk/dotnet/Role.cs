@@ -40,14 +40,14 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myRole = new PostgreSql.Role("my_role", new()
+    ///     var myRole = new PostgreSql.Index.Role("my_role", new()
     ///     {
     ///         Name = "my_role",
     ///         Login = true,
     ///         Password = "mypass",
     ///     });
     /// 
-    ///     var myReplicationRole = new PostgreSql.Role("my_replication_role", new()
+    ///     var myReplicationRole = new PostgreSql.Index.Role("my_replication_role", new()
     ///     {
     ///         Name = "replication_role",
     ///         Replication = true,
@@ -57,7 +57,7 @@ namespace Pulumi.PostgreSql
     ///     });
     /// 
     ///     // Example using write-only password (password not stored in state)
-    ///     var secureRole = new PostgreSql.Role("secure_role", new()
+    ///     var secureRole = new PostgreSql.Index.Role("secure_role", new()
     ///     {
     ///         Name = "secure_role",
     ///         Login = true,
@@ -94,7 +94,7 @@ namespace Pulumi.PostgreSql
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Initial password setup
-    ///     var appUser = new PostgreSql.Role("app_user", new()
+    ///     var appUser = new PostgreSql.Index.Role("app_user", new()
     ///     {
     ///         Name = "app_user",
     ///         Login = true,
@@ -118,7 +118,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var replicationRole = new PostgreSql.Role("replication_role", new()
+    ///     var replicationRole = new PostgreSql.Index.Role("replication_role", new()
     ///     {
     ///         Name = "replication_name",
     ///     });

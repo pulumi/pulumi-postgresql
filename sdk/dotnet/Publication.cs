@@ -23,7 +23,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var publication = new PostgreSql.Publication("publication", new()
+    ///     var publication = new PostgreSql.Index.Publication("publication", new()
     ///     {
     ///         Name = "publication",
     ///         Tables = new[]
