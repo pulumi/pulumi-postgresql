@@ -24,7 +24,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var readOnlyTables = new PostgreSql.DefaultPrivileges("read_only_tables", new()
+    ///     var readOnlyTables = new PostgreSql.Index.DefaultPrivileges("read_only_tables", new()
     ///     {
     ///         Role = "test_role",
     ///         Database = "test_db",
@@ -52,7 +52,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var grantTablePrivileges = new PostgreSql.DefaultPrivileges("grant_table_privileges", new()
+    ///     var grantTablePrivileges = new PostgreSql.Index.DefaultPrivileges("grant_table_privileges", new()
     ///     {
     ///         Database = exampleDb.Name,
     ///         Role = "current_role",
@@ -81,7 +81,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var revokePublic = new PostgreSql.DefaultPrivileges("revoke_public", new()
+    ///     var revokePublic = new PostgreSql.Index.DefaultPrivileges("revoke_public", new()
     ///     {
     ///         Database = exampleDb.Name,
     ///         Role = "public",

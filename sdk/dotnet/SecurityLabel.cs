@@ -26,13 +26,13 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myRole = new PostgreSql.Role("my_role", new()
+    ///     var myRole = new PostgreSql.Index.Role("my_role", new()
     ///     {
     ///         Name = "my_role",
     ///         Login = true,
     ///     });
     /// 
-    ///     var workload = new PostgreSql.SecurityLabel("workload", new()
+    ///     var workload = new PostgreSql.Index.SecurityLabel("workload", new()
     ///     {
     ///         ObjectType = "role",
     ///         ObjectName = myRole.Name,
