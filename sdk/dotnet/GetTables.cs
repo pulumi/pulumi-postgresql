@@ -25,7 +25,7 @@ namespace Pulumi.PostgreSql
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myTables = PostgreSql.Index.GetTables.Invoke(new()
+        ///     var myTables = PostgreSql.GetTables.Invoke(new()
         ///     {
         ///         Database = "my_database",
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.PostgreSql
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myTables = PostgreSql.Index.GetTables.Invoke(new()
+        ///     var myTables = PostgreSql.GetTables.Invoke(new()
         ///     {
         ///         Database = "my_database",
         ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.PostgreSql
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myTables = PostgreSql.Index.GetTables.Invoke(new()
+        ///     var myTables = PostgreSql.GetTables.Invoke(new()
         ///     {
         ///         Database = "my_database",
         ///     });

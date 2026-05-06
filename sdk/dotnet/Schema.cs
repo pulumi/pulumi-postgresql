@@ -24,22 +24,22 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var appWww = new PostgreSql.Index.Role("app_www", new()
+    ///     var appWww = new PostgreSql.Role("app_www", new()
     ///     {
     ///         Name = "app_www",
     ///     });
     /// 
-    ///     var appDba = new PostgreSql.Index.Role("app_dba", new()
+    ///     var appDba = new PostgreSql.Role("app_dba", new()
     ///     {
     ///         Name = "app_dba",
     ///     });
     /// 
-    ///     var appReleng = new PostgreSql.Index.Role("app_releng", new()
+    ///     var appReleng = new PostgreSql.Role("app_releng", new()
     ///     {
     ///         Name = "app_releng",
     ///     });
     /// 
-    ///     var mySchema = new PostgreSql.Index.Schema("my_schema", new()
+    ///     var mySchema = new PostgreSql.Schema("my_schema", new()
     ///     {
     ///         Name = "my_schema",
     ///         Owner = "postgres",
@@ -81,12 +81,12 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @public = new PostgreSql.Index.Schema("public", new()
+    ///     var @public = new PostgreSql.Schema("public", new()
     ///     {
     ///         Name = "public",
     ///     });
     /// 
-    ///     var schemaFoo = new PostgreSql.Index.Schema("schema_foo", new()
+    ///     var schemaFoo = new PostgreSql.Schema("schema_foo", new()
     ///     {
     ///         Name = "my_schema",
     ///         Owner = "postgres",

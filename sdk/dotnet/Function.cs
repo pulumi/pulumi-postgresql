@@ -23,7 +23,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var increment = new PostgreSql.Index.Function("increment", new()
+    ///     var increment = new PostgreSql.Function("increment", new()
     ///     {
     ///         Name = "increment",
     ///         Args = new[]

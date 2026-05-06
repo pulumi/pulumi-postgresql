@@ -24,7 +24,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mySlot = new PostgreSql.Index.PhysicalReplicationSlot("my_slot", new()
+    ///     var mySlot = new PostgreSql.PhysicalReplicationSlot("my_slot", new()
     ///     {
     ///         Name = "my_slot",
     ///     });
