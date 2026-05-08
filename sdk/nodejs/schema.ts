@@ -166,31 +166,31 @@ export interface SchemaState {
     /**
      * The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * When true, will also drop all the objects that are contained in the schema. (Default: false)
      */
-    dropCascade?: pulumi.Input<boolean>;
+    dropCascade?: pulumi.Input<boolean | undefined>;
     /**
      * When true, use the existing schema if it exists. (Default: true)
      */
-    ifNotExists?: pulumi.Input<boolean>;
+    ifNotExists?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the schema. Must be unique in the PostgreSQL
      * database instance where it is configured.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ROLE who owns the schema.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Can be specified multiple times for each policy.  Each
      * policy block supports fields documented below.
      *
      * @deprecated Use postgresql.Grant resource instead (with object_type="schema")
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.SchemaPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.SchemaPolicy>[] | undefined>;
 }
 
 /**
@@ -200,29 +200,29 @@ export interface SchemaArgs {
     /**
      * The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * When true, will also drop all the objects that are contained in the schema. (Default: false)
      */
-    dropCascade?: pulumi.Input<boolean>;
+    dropCascade?: pulumi.Input<boolean | undefined>;
     /**
      * When true, use the existing schema if it exists. (Default: true)
      */
-    ifNotExists?: pulumi.Input<boolean>;
+    ifNotExists?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the schema. Must be unique in the PostgreSQL
      * database instance where it is configured.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ROLE who owns the schema.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Can be specified multiple times for each policy.  Each
      * policy block supports fields documented below.
      *
      * @deprecated Use postgresql.Grant resource instead (with object_type="schema")
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.SchemaPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.SchemaPolicy>[] | undefined>;
 }

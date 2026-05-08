@@ -21,10 +21,10 @@ class SubscriptionArgs:
     def __init__(__self__, *,
                  conninfo: pulumi.Input[_builtins.str],
                  publications: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 create_slot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 slot_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_slot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 slot_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Subscription resource.
 
@@ -72,62 +72,62 @@ class SubscriptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="createSlot")
-    def create_slot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_slot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the command should create the replication slot on the publisher. Default behavior is true
         """
         return pulumi.get(self, "create_slot")
 
     @create_slot.setter
-    def create_slot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_slot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_slot", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which database to create the subscription on. Defaults to provider database.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the publication.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="slotName")
-    def slot_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slot_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name
         """
         return pulumi.get(self, "slot_name")
 
     @slot_name.setter
-    def slot_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slot_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slot_name", value)
 
 
 @pulumi.input_type
 class _SubscriptionState:
     def __init__(__self__, *,
-                 conninfo: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_slot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 publications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 slot_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 conninfo: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_slot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 publications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slot_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Subscription resources.
 
@@ -153,74 +153,74 @@ class _SubscriptionState:
 
     @_builtins.property
     @pulumi.getter
-    def conninfo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def conninfo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection string to the publisher. It should follow the [keyword/value format](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
         """
         return pulumi.get(self, "conninfo")
 
     @conninfo.setter
-    def conninfo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def conninfo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "conninfo", value)
 
     @_builtins.property
     @pulumi.getter(name="createSlot")
-    def create_slot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_slot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the command should create the replication slot on the publisher. Default behavior is true
         """
         return pulumi.get(self, "create_slot")
 
     @create_slot.setter
-    def create_slot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_slot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_slot", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which database to create the subscription on. Defaults to provider database.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the publication.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def publications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def publications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Names of the publications on the publisher to subscribe to
         """
         return pulumi.get(self, "publications")
 
     @publications.setter
-    def publications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def publications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "publications", value)
 
     @_builtins.property
     @pulumi.getter(name="slotName")
-    def slot_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slot_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name
         """
         return pulumi.get(self, "slot_name")
 
     @slot_name.setter
-    def slot_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slot_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slot_name", value)
 
 
@@ -230,12 +230,12 @@ class Subscription(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conninfo: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_slot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 publications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 slot_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 conninfo: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_slot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 publications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slot_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `Subscription` resource creates and manages a publication on a PostgreSQL
@@ -309,12 +309,12 @@ class Subscription(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conninfo: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_slot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 publications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 slot_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 conninfo: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_slot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 publications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slot_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -346,12 +346,12 @@ class Subscription(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            conninfo: Optional[pulumi.Input[_builtins.str]] = None,
-            create_slot: Optional[pulumi.Input[_builtins.bool]] = None,
-            database: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            publications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            slot_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Subscription':
+            conninfo: pulumi.Input[Optional[_builtins.str]] = None,
+            create_slot: pulumi.Input[Optional[_builtins.bool]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            publications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            slot_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Subscription':
         """
         Get an existing Subscription resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

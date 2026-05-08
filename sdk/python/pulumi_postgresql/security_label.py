@@ -88,10 +88,10 @@ class SecurityLabelArgs:
 @pulumi.input_type
 class _SecurityLabelState:
     def __init__(__self__, *,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 label_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 label_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityLabel resources.
 
@@ -111,50 +111,50 @@ class _SecurityLabelState:
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the security label.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter(name="labelProvider")
-    def label_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the provider with which this label is to be associated.
         """
         return pulumi.get(self, "label_provider")
 
     @label_provider.setter
-    def label_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label_provider", value)
 
     @_builtins.property
     @pulumi.getter(name="objectName")
-    def object_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.
         """
         return pulumi.get(self, "object_name")
 
     @object_name.setter
-    def object_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_name", value)
 
     @_builtins.property
     @pulumi.getter(name="objectType")
-    def object_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PostgreSQL object type to apply this security label to.
         """
         return pulumi.get(self, "object_type")
 
     @object_type.setter
-    def object_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_type", value)
 
 
@@ -164,10 +164,10 @@ class SecurityLabel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 label_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 label_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The ``SecurityLabel`` resource creates and manages security labels.
@@ -253,10 +253,10 @@ class SecurityLabel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 label_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 label_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -288,10 +288,10 @@ class SecurityLabel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            label_provider: Optional[pulumi.Input[_builtins.str]] = None,
-            object_name: Optional[pulumi.Input[_builtins.str]] = None,
-            object_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecurityLabel':
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            label_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            object_name: pulumi.Input[Optional[_builtins.str]] = None,
+            object_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityLabel':
         """
         Get an existing SecurityLabel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

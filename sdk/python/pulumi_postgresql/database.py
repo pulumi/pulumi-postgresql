@@ -19,17 +19,17 @@ __all__ = ['DatabaseArgs', 'Database']
 @pulumi.input_type
 class DatabaseArgs:
     def __init__(__self__, *,
-                 allow_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alter_object_ownership: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lc_collate: Optional[pulumi.Input[_builtins.str]] = None,
-                 lc_ctype: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 tablespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alter_object_ownership: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lc_collate: pulumi.Input[Optional[_builtins.str]] = None,
+                 lc_ctype: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 tablespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
 
@@ -110,7 +110,7 @@ class DatabaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowConnections")
-    def allow_connections(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_connections(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `false` then no one can connect to this
         database. The default is `true`, allowing connections (except as restricted by
@@ -119,12 +119,12 @@ class DatabaseArgs:
         return pulumi.get(self, "allow_connections")
 
     @allow_connections.setter
-    def allow_connections(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_connections(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_connections", value)
 
     @_builtins.property
     @pulumi.getter(name="alterObjectOwnership")
-    def alter_object_ownership(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def alter_object_ownership(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, the change of the database
         `owner` will also include a reassignment of the ownership of preexisting
@@ -137,12 +137,12 @@ class DatabaseArgs:
         return pulumi.get(self, "alter_object_ownership")
 
     @alter_object_ownership.setter
-    def alter_object_ownership(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def alter_object_ownership(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "alter_object_ownership", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionLimit")
-    def connection_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How many concurrent connections can be
         established to this database. `-1` (the default) means no limit.
@@ -150,12 +150,12 @@ class DatabaseArgs:
         return pulumi.get(self, "connection_limit")
 
     @connection_limit.setter
-    def connection_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Character set encoding to use in the database.
         Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
@@ -167,12 +167,12 @@ class DatabaseArgs:
         return pulumi.get(self, "encoding")
 
     @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="isTemplate")
-    def is_template(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_template(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, then this database can be cloned by any
         user with `CREATEDB` privileges; if `false` (the default), then only
@@ -181,12 +181,12 @@ class DatabaseArgs:
         return pulumi.get(self, "is_template")
 
     @is_template.setter
-    def is_template(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_template(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_template", value)
 
     @_builtins.property
     @pulumi.getter(name="lcCollate")
-    def lc_collate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lc_collate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Collation order (`LC_COLLATE`) to use in the
         database.  This affects the sort order applied to strings, e.g. in queries
@@ -199,12 +199,12 @@ class DatabaseArgs:
         return pulumi.get(self, "lc_collate")
 
     @lc_collate.setter
-    def lc_collate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lc_collate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lc_collate", value)
 
     @_builtins.property
     @pulumi.getter(name="lcCtype")
-    def lc_ctype(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lc_ctype(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Character classification (`LC_CTYPE`) to use in the
         database. This affects the categorization of characters, e.g. lower, upper and
@@ -217,12 +217,12 @@ class DatabaseArgs:
         return pulumi.get(self, "lc_ctype")
 
     @lc_ctype.setter
-    def lc_ctype(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lc_ctype(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lc_ctype", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database. Must be unique on the PostgreSQL
         server instance where it is configured.
@@ -230,12 +230,12 @@ class DatabaseArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role name of the user who will own the database, or
         `DEFAULT` to use the default (namely, the user executing the command). To
@@ -246,12 +246,12 @@ class DatabaseArgs:
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="tablespaceName")
-    def tablespace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tablespace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the tablespace that will be
         associated with the database, or `DEFAULT` to use the template database's
@@ -261,12 +261,12 @@ class DatabaseArgs:
         return pulumi.get(self, "tablespace_name")
 
     @tablespace_name.setter
-    def tablespace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tablespace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tablespace_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the template database from which to create
         the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
@@ -277,24 +277,24 @@ class DatabaseArgs:
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template", value)
 
 
 @pulumi.input_type
 class _DatabaseState:
     def __init__(__self__, *,
-                 allow_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alter_object_ownership: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lc_collate: Optional[pulumi.Input[_builtins.str]] = None,
-                 lc_ctype: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 tablespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alter_object_ownership: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lc_collate: pulumi.Input[Optional[_builtins.str]] = None,
+                 lc_ctype: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 tablespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
 
@@ -375,7 +375,7 @@ class _DatabaseState:
 
     @_builtins.property
     @pulumi.getter(name="allowConnections")
-    def allow_connections(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_connections(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `false` then no one can connect to this
         database. The default is `true`, allowing connections (except as restricted by
@@ -384,12 +384,12 @@ class _DatabaseState:
         return pulumi.get(self, "allow_connections")
 
     @allow_connections.setter
-    def allow_connections(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_connections(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_connections", value)
 
     @_builtins.property
     @pulumi.getter(name="alterObjectOwnership")
-    def alter_object_ownership(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def alter_object_ownership(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, the change of the database
         `owner` will also include a reassignment of the ownership of preexisting
@@ -402,12 +402,12 @@ class _DatabaseState:
         return pulumi.get(self, "alter_object_ownership")
 
     @alter_object_ownership.setter
-    def alter_object_ownership(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def alter_object_ownership(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "alter_object_ownership", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionLimit")
-    def connection_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How many concurrent connections can be
         established to this database. `-1` (the default) means no limit.
@@ -415,12 +415,12 @@ class _DatabaseState:
         return pulumi.get(self, "connection_limit")
 
     @connection_limit.setter
-    def connection_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Character set encoding to use in the database.
         Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
@@ -432,12 +432,12 @@ class _DatabaseState:
         return pulumi.get(self, "encoding")
 
     @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="isTemplate")
-    def is_template(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_template(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, then this database can be cloned by any
         user with `CREATEDB` privileges; if `false` (the default), then only
@@ -446,12 +446,12 @@ class _DatabaseState:
         return pulumi.get(self, "is_template")
 
     @is_template.setter
-    def is_template(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_template(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_template", value)
 
     @_builtins.property
     @pulumi.getter(name="lcCollate")
-    def lc_collate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lc_collate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Collation order (`LC_COLLATE`) to use in the
         database.  This affects the sort order applied to strings, e.g. in queries
@@ -464,12 +464,12 @@ class _DatabaseState:
         return pulumi.get(self, "lc_collate")
 
     @lc_collate.setter
-    def lc_collate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lc_collate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lc_collate", value)
 
     @_builtins.property
     @pulumi.getter(name="lcCtype")
-    def lc_ctype(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lc_ctype(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Character classification (`LC_CTYPE`) to use in the
         database. This affects the categorization of characters, e.g. lower, upper and
@@ -482,12 +482,12 @@ class _DatabaseState:
         return pulumi.get(self, "lc_ctype")
 
     @lc_ctype.setter
-    def lc_ctype(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lc_ctype(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lc_ctype", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database. Must be unique on the PostgreSQL
         server instance where it is configured.
@@ -495,12 +495,12 @@ class _DatabaseState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role name of the user who will own the database, or
         `DEFAULT` to use the default (namely, the user executing the command). To
@@ -511,12 +511,12 @@ class _DatabaseState:
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="tablespaceName")
-    def tablespace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tablespace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the tablespace that will be
         associated with the database, or `DEFAULT` to use the template database's
@@ -526,12 +526,12 @@ class _DatabaseState:
         return pulumi.get(self, "tablespace_name")
 
     @tablespace_name.setter
-    def tablespace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tablespace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tablespace_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the template database from which to create
         the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
@@ -542,7 +542,7 @@ class _DatabaseState:
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template", value)
 
 
@@ -552,17 +552,17 @@ class Database(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alter_object_ownership: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lc_collate: Optional[pulumi.Input[_builtins.str]] = None,
-                 lc_ctype: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 tablespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alter_object_ownership: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lc_collate: pulumi.Input[Optional[_builtins.str]] = None,
+                 lc_ctype: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 tablespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The ``Database`` resource creates and manages [database
@@ -721,17 +721,17 @@ class Database(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alter_object_ownership: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lc_collate: Optional[pulumi.Input[_builtins.str]] = None,
-                 lc_ctype: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 tablespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alter_object_ownership: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lc_collate: pulumi.Input[Optional[_builtins.str]] = None,
+                 lc_ctype: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 tablespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -762,17 +762,17 @@ class Database(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_connections: Optional[pulumi.Input[_builtins.bool]] = None,
-            alter_object_ownership: Optional[pulumi.Input[_builtins.bool]] = None,
-            connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            encoding: Optional[pulumi.Input[_builtins.str]] = None,
-            is_template: Optional[pulumi.Input[_builtins.bool]] = None,
-            lc_collate: Optional[pulumi.Input[_builtins.str]] = None,
-            lc_ctype: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            tablespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-            template: Optional[pulumi.Input[_builtins.str]] = None) -> 'Database':
+            allow_connections: pulumi.Input[Optional[_builtins.bool]] = None,
+            alter_object_ownership: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            is_template: pulumi.Input[Optional[_builtins.bool]] = None,
+            lc_collate: pulumi.Input[Optional[_builtins.str]] = None,
+            lc_ctype: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            tablespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            template: pulumi.Input[Optional[_builtins.str]] = None) -> 'Database':
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

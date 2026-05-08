@@ -132,35 +132,35 @@ export interface PublicationState {
     /**
      * Should be ALL TABLES added to the publication. Defaults to 'false'
      */
-    allTables?: pulumi.Input<boolean>;
+    allTables?: pulumi.Input<boolean | undefined>;
     /**
      * Which database to create the publication on. Defaults to provider database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Should all subsequent resources of the publication be dropped. Defaults to 'false'
      */
-    dropCascade?: pulumi.Input<boolean>;
+    dropCascade?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the publication.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Who owns the publication. Defaults to provider user.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Which 'publish' options should be turned on. Default to 'insert','update','delete'
      */
-    publishParams?: pulumi.Input<pulumi.Input<string>[]>;
+    publishParams?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Should be option 'publish_via_partition_root' be turned on. Default to 'false'
      */
-    publishViaPartitionRootParam?: pulumi.Input<boolean>;
+    publishViaPartitionRootParam?: pulumi.Input<boolean | undefined>;
     /**
      * Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
      */
-    tables?: pulumi.Input<pulumi.Input<string>[]>;
+    tables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -170,33 +170,33 @@ export interface PublicationArgs {
     /**
      * Should be ALL TABLES added to the publication. Defaults to 'false'
      */
-    allTables?: pulumi.Input<boolean>;
+    allTables?: pulumi.Input<boolean | undefined>;
     /**
      * Which database to create the publication on. Defaults to provider database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Should all subsequent resources of the publication be dropped. Defaults to 'false'
      */
-    dropCascade?: pulumi.Input<boolean>;
+    dropCascade?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the publication.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Who owns the publication. Defaults to provider user.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Which 'publish' options should be turned on. Default to 'insert','update','delete'
      */
-    publishParams?: pulumi.Input<pulumi.Input<string>[]>;
+    publishParams?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Should be option 'publish_via_partition_root' be turned on. Default to 'false'
      */
-    publishViaPartitionRootParam?: pulumi.Input<boolean>;
+    publishViaPartitionRootParam?: pulumi.Input<boolean | undefined>;
     /**
      * Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
      */
-    tables?: pulumi.Input<pulumi.Input<string>[]>;
+    tables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

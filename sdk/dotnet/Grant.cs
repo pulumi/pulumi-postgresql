@@ -28,7 +28,7 @@ namespace Pulumi.PostgreSql
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Grant SELECT privileges on 2 tables
-    ///     var readonlyTables = new PostgreSql.Index.Grant("readonly_tables", new()
+    ///     var readonlyTables = new PostgreSql.Grant("readonly_tables", new()
     ///     {
     ///         Database = "test_db",
     ///         Role = "test_role",
@@ -46,7 +46,7 @@ namespace Pulumi.PostgreSql
     ///     });
     /// 
     ///     // Grant SELECT &amp; INSERT privileges on 2 columns in 1 table
-    ///     var readInsertColumn = new PostgreSql.Index.Grant("read_insert_column", new()
+    ///     var readInsertColumn = new PostgreSql.Grant("read_insert_column", new()
     ///     {
     ///         Database = "test_db",
     ///         Role = "test_role",
@@ -83,7 +83,7 @@ namespace Pulumi.PostgreSql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var revokePublic = new PostgreSql.Index.Grant("revoke_public", new()
+    ///     var revokePublic = new PostgreSql.Grant("revoke_public", new()
     ///     {
     ///         Database = "test_db",
     ///         Role = "public",

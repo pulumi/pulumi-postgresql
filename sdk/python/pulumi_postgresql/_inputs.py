@@ -28,15 +28,15 @@ class FunctionArgArgsDict(TypedDict):
     """
     The type of the argument.
     """
-    default: NotRequired[pulumi.Input[_builtins.str]]
+    default: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An expression to be used as default value if the parameter is not specified.
     """
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the argument.
     """
@@ -45,9 +45,9 @@ class FunctionArgArgsDict(TypedDict):
 class FunctionArgArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 default: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 default: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: The type of the argument.
         :param pulumi.Input[_builtins.str] default: An expression to be used as default value if the parameter is not specified.
@@ -76,38 +76,38 @@ class FunctionArgArgs:
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An expression to be used as default value if the parameter is not specified.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the argument.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -120,7 +120,7 @@ class ProviderClientcertArgsDict(TypedDict):
     """
     The SSL client certificate private key file path. The file must contain PEM encoded data.
     """
-    sslinline: NotRequired[pulumi.Input[_builtins.bool]]
+    sslinline: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Must be set to true if you are inlining the cert/key instead of using a file path.
     """
@@ -130,7 +130,7 @@ class ProviderClientcertArgs:
     def __init__(__self__, *,
                  cert: pulumi.Input[_builtins.str],
                  key: pulumi.Input[_builtins.str],
-                 sslinline: Optional[pulumi.Input[_builtins.bool]] = None):
+                 sslinline: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] cert: The SSL client certificate file path. The file must contain PEM encoded data.
         :param pulumi.Input[_builtins.str] key: The SSL client certificate private key file path. The file must contain PEM encoded data.
@@ -167,35 +167,35 @@ class ProviderClientcertArgs:
 
     @_builtins.property
     @pulumi.getter
-    def sslinline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sslinline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Must be set to true if you are inlining the cert/key instead of using a file path.
         """
         return pulumi.get(self, "sslinline")
 
     @sslinline.setter
-    def sslinline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sslinline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sslinline", value)
 
 
 class SchemaPolicyArgsDict(TypedDict):
-    create: NotRequired[pulumi.Input[_builtins.bool]]
+    create: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Should the specified ROLE have CREATE privileges to the specified SCHEMA.
     """
-    create_with_grant: NotRequired[pulumi.Input[_builtins.bool]]
+    create_with_grant: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
     """
-    role: NotRequired[pulumi.Input[_builtins.str]]
+    role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
     """
-    usage: NotRequired[pulumi.Input[_builtins.bool]]
+    usage: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Should the specified ROLE have USAGE privileges to the specified SCHEMA.
     """
-    usage_with_grant: NotRequired[pulumi.Input[_builtins.bool]]
+    usage_with_grant: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
 
@@ -205,11 +205,11 @@ class SchemaPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class SchemaPolicyArgs:
     def __init__(__self__, *,
-                 create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_with_grant: Optional[pulumi.Input[_builtins.bool]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage: Optional[pulumi.Input[_builtins.bool]] = None,
-                 usage_with_grant: Optional[pulumi.Input[_builtins.bool]] = None):
+                 create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_with_grant: pulumi.Input[Optional[_builtins.bool]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage: pulumi.Input[Optional[_builtins.bool]] = None,
+                 usage_with_grant: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] create: Should the specified ROLE have CREATE privileges to the specified SCHEMA.
         :param pulumi.Input[_builtins.bool] create_with_grant: Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
@@ -232,55 +232,55 @@ class SchemaPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Should the specified ROLE have CREATE privileges to the specified SCHEMA.
         """
         return pulumi.get(self, "create")
 
     @create.setter
-    def create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create", value)
 
     @_builtins.property
     @pulumi.getter(name="createWithGrant")
-    def create_with_grant(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_with_grant(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
         """
         return pulumi.get(self, "create_with_grant")
 
     @create_with_grant.setter
-    def create_with_grant(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_with_grant(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_with_grant", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter
-    def usage(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def usage(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Should the specified ROLE have USAGE privileges to the specified SCHEMA.
         """
         return pulumi.get(self, "usage")
 
     @usage.setter
-    def usage(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def usage(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "usage", value)
 
     @_builtins.property
     @pulumi.getter(name="usageWithGrant")
-    def usage_with_grant(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def usage_with_grant(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
 
@@ -289,7 +289,7 @@ class SchemaPolicyArgs:
         return pulumi.get(self, "usage_with_grant")
 
     @usage_with_grant.setter
-    def usage_with_grant(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def usage_with_grant(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "usage_with_grant", value)
 
 

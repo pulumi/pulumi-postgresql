@@ -121,23 +121,23 @@ export interface GetSequencesOutputArgs {
     /**
      * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ALL`` operators.
      */
-    likeAllPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    likeAllPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``LIKE ANY`` operators.
      */
-    likeAnyPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    likeAnyPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
      */
-    notLikeAllPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    notLikeAllPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
      *
      * Note that all optional arguments can be used in conjunction.
      */
-    regexPattern?: pulumi.Input<string>;
+    regexPattern?: pulumi.Input<string | undefined>;
     /**
      * List of PostgreSQL schema(s) which will be queried for sequence names. Queries all schemas in the database by default.
      */
-    schemas?: pulumi.Input<pulumi.Input<string>[]>;
+    schemas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

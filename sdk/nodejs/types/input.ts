@@ -9,15 +9,15 @@ export interface FunctionArg {
     /**
      * An expression to be used as default value if the parameter is not specified.
      */
-    default?: pulumi.Input<string>;
+    default?: pulumi.Input<string | undefined>;
     /**
      * Can be one of IN, INOUT, OUT, or VARIADIC. Default is IN.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The name of the argument.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of the argument.
      */
@@ -36,32 +36,32 @@ export interface ProviderClientcert {
     /**
      * Must be set to true if you are inlining the cert/key instead of using a file path.
      */
-    sslinline?: pulumi.Input<boolean>;
+    sslinline?: pulumi.Input<boolean | undefined>;
 }
 
 export interface SchemaPolicy {
     /**
      * Should the specified ROLE have CREATE privileges to the specified SCHEMA.
      */
-    create?: pulumi.Input<boolean>;
+    create?: pulumi.Input<boolean | undefined>;
     /**
      * Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
      */
-    createWithGrant?: pulumi.Input<boolean>;
+    createWithGrant?: pulumi.Input<boolean | undefined>;
     /**
      * The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Should the specified ROLE have USAGE privileges to the specified SCHEMA.
      */
-    usage?: pulumi.Input<boolean>;
+    usage?: pulumi.Input<boolean | undefined>;
     /**
      * Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
      *
      * > **NOTE on `policy`:** The permissions of a role specified in multiple policy blocks is cumulative.  For example, if the same role is specified in two different `policy` each with different permissions (e.g. `create` and `usageWithGrant`, respectively), then the specified role with have both `create` and `usageWithGrant` privileges.
      */
-    usageWithGrant?: pulumi.Input<boolean>;
+    usageWithGrant?: pulumi.Input<boolean | undefined>;
 }
 export namespace config {
 }

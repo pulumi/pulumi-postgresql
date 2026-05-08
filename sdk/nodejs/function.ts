@@ -181,55 +181,55 @@ export interface FunctionState {
     /**
      * List of arguments for the function.
      */
-    args?: pulumi.Input<pulumi.Input<inputs.FunctionArg>[]>;
+    args?: pulumi.Input<pulumi.Input<inputs.FunctionArg>[] | undefined>;
     /**
      * Function body.
      * This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
      */
-    body?: pulumi.Input<string>;
+    body?: pulumi.Input<string | undefined>;
     /**
      * The database where the function is located.
      * If not specified, the function is created in the current database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * True to automatically drop objects that depend on the function (such as
      * operators or triggers), and in turn all objects that depend on those objects. Default is false.
      */
-    dropCascade?: pulumi.Input<boolean>;
+    dropCascade?: pulumi.Input<boolean | undefined>;
     /**
      * The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * The name of the function.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
      */
-    parallel?: pulumi.Input<string>;
+    parallel?: pulumi.Input<string | undefined>;
     /**
      * Type that the function returns. It can be computed from the OUT arguments. Default is void.
      */
-    returns?: pulumi.Input<string>;
+    returns?: pulumi.Input<string | undefined>;
     /**
      * The schema where the function is located.
      * If not specified, the function is created in the current schema.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
      */
-    securityDefiner?: pulumi.Input<boolean>;
+    securityDefiner?: pulumi.Input<boolean | undefined>;
     /**
      * If the function should always return NULL when any of the inputs is NULL. Default is false.
      */
-    strict?: pulumi.Input<boolean>;
+    strict?: pulumi.Input<boolean | undefined>;
     /**
      * Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
      */
-    volatility?: pulumi.Input<string>;
+    volatility?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -239,7 +239,7 @@ export interface FunctionArgs {
     /**
      * List of arguments for the function.
      */
-    args?: pulumi.Input<pulumi.Input<inputs.FunctionArg>[]>;
+    args?: pulumi.Input<pulumi.Input<inputs.FunctionArg>[] | undefined>;
     /**
      * Function body.
      * This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
@@ -249,43 +249,43 @@ export interface FunctionArgs {
      * The database where the function is located.
      * If not specified, the function is created in the current database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * True to automatically drop objects that depend on the function (such as
      * operators or triggers), and in turn all objects that depend on those objects. Default is false.
      */
-    dropCascade?: pulumi.Input<boolean>;
+    dropCascade?: pulumi.Input<boolean | undefined>;
     /**
      * The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * The name of the function.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
      */
-    parallel?: pulumi.Input<string>;
+    parallel?: pulumi.Input<string | undefined>;
     /**
      * Type that the function returns. It can be computed from the OUT arguments. Default is void.
      */
-    returns?: pulumi.Input<string>;
+    returns?: pulumi.Input<string | undefined>;
     /**
      * The schema where the function is located.
      * If not specified, the function is created in the current schema.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
      */
-    securityDefiner?: pulumi.Input<boolean>;
+    securityDefiner?: pulumi.Input<boolean | undefined>;
     /**
      * If the function should always return NULL when any of the inputs is NULL. Default is false.
      */
-    strict?: pulumi.Input<boolean>;
+    strict?: pulumi.Input<boolean | undefined>;
     /**
      * Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
      */
-    volatility?: pulumi.Input<string>;
+    volatility?: pulumi.Input<string | undefined>;
 }

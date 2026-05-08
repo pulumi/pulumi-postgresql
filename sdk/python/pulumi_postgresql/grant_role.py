@@ -21,7 +21,7 @@ class GrantRoleArgs:
     def __init__(__self__, *,
                  grant_role: pulumi.Input[_builtins.str],
                  role: pulumi.Input[_builtins.str],
-                 with_admin_option: Optional[pulumi.Input[_builtins.bool]] = None):
+                 with_admin_option: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GrantRole resource.
 
@@ -60,23 +60,23 @@ class GrantRoleArgs:
 
     @_builtins.property
     @pulumi.getter(name="withAdminOption")
-    def with_admin_option(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def with_admin_option(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Giving ability to grant membership to others or not for `role`. (Default: false)
         """
         return pulumi.get(self, "with_admin_option")
 
     @with_admin_option.setter
-    def with_admin_option(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def with_admin_option(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "with_admin_option", value)
 
 
 @pulumi.input_type
 class _GrantRoleState:
     def __init__(__self__, *,
-                 grant_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 with_admin_option: Optional[pulumi.Input[_builtins.bool]] = None):
+                 grant_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 with_admin_option: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GrantRole resources.
 
@@ -93,38 +93,38 @@ class _GrantRoleState:
 
     @_builtins.property
     @pulumi.getter(name="grantRole")
-    def grant_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grant_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the role that is added to `role`.
         """
         return pulumi.get(self, "grant_role")
 
     @grant_role.setter
-    def grant_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grant_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grant_role", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the role that is granted a new membership.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="withAdminOption")
-    def with_admin_option(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def with_admin_option(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Giving ability to grant membership to others or not for `role`. (Default: false)
         """
         return pulumi.get(self, "with_admin_option")
 
     @with_admin_option.setter
-    def with_admin_option(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def with_admin_option(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "with_admin_option", value)
 
 
@@ -134,9 +134,9 @@ class GrantRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 grant_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 with_admin_option: Optional[pulumi.Input[_builtins.bool]] = None,
+                 grant_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 with_admin_option: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The ``GrantRole`` resource creates and manages membership in a role to one or more other roles in a non-authoritative way.
@@ -227,9 +227,9 @@ class GrantRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 grant_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 with_admin_option: Optional[pulumi.Input[_builtins.bool]] = None,
+                 grant_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 with_admin_option: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -256,9 +256,9 @@ class GrantRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            grant_role: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            with_admin_option: Optional[pulumi.Input[_builtins.bool]] = None) -> 'GrantRole':
+            grant_role: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            with_admin_option: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GrantRole':
         """
         Get an existing GrantRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

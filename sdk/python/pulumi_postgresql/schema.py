@@ -21,12 +21,12 @@ __all__ = ['SchemaArgs', 'Schema']
 @pulumi.input_type
 class SchemaArgs:
     def __init__(__self__, *,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 if_not_exists: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]] = None):
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 if_not_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input['SchemaPolicyArgs']]]] = None):
         """
         The set of arguments for constructing a Schema resource.
 
@@ -57,43 +57,43 @@ class SchemaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="dropCascade")
-    def drop_cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drop_cascade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, will also drop all the objects that are contained in the schema. (Default: false)
         """
         return pulumi.get(self, "drop_cascade")
 
     @drop_cascade.setter
-    def drop_cascade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drop_cascade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drop_cascade", value)
 
     @_builtins.property
     @pulumi.getter(name="ifNotExists")
-    def if_not_exists(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def if_not_exists(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, use the existing schema if it exists. (Default: true)
         """
         return pulumi.get(self, "if_not_exists")
 
     @if_not_exists.setter
-    def if_not_exists(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def if_not_exists(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "if_not_exists", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the schema. Must be unique in the PostgreSQL
         database instance where it is configured.
@@ -101,25 +101,25 @@ class SchemaArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ROLE who owns the schema.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Use Grant resource instead (with object_type=\"schema\")""")
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]]:
+    def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SchemaPolicyArgs']]]]:
         """
         Can be specified multiple times for each policy.  Each
         policy block supports fields documented below.
@@ -127,19 +127,19 @@ class SchemaArgs:
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]]):
+    def policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SchemaPolicyArgs']]]]):
         pulumi.set(self, "policies", value)
 
 
 @pulumi.input_type
 class _SchemaState:
     def __init__(__self__, *,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 if_not_exists: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]] = None):
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 if_not_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input['SchemaPolicyArgs']]]] = None):
         """
         Input properties used for looking up and filtering Schema resources.
 
@@ -170,43 +170,43 @@ class _SchemaState:
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="dropCascade")
-    def drop_cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drop_cascade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, will also drop all the objects that are contained in the schema. (Default: false)
         """
         return pulumi.get(self, "drop_cascade")
 
     @drop_cascade.setter
-    def drop_cascade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drop_cascade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drop_cascade", value)
 
     @_builtins.property
     @pulumi.getter(name="ifNotExists")
-    def if_not_exists(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def if_not_exists(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, use the existing schema if it exists. (Default: true)
         """
         return pulumi.get(self, "if_not_exists")
 
     @if_not_exists.setter
-    def if_not_exists(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def if_not_exists(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "if_not_exists", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the schema. Must be unique in the PostgreSQL
         database instance where it is configured.
@@ -214,25 +214,25 @@ class _SchemaState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ROLE who owns the schema.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Use Grant resource instead (with object_type=\"schema\")""")
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]]:
+    def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SchemaPolicyArgs']]]]:
         """
         Can be specified multiple times for each policy.  Each
         policy block supports fields documented below.
@@ -240,7 +240,7 @@ class _SchemaState:
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaPolicyArgs']]]]):
+    def policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SchemaPolicyArgs']]]]):
         pulumi.set(self, "policies", value)
 
 
@@ -250,12 +250,12 @@ class Schema(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 if_not_exists: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SchemaPolicyArgs', 'SchemaPolicyArgsDict']]]]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 if_not_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SchemaPolicyArgs', 'SchemaPolicyArgsDict']]]]] = None,
                  __props__=None):
         """
         The ``Schema`` resource creates and manages [schema
@@ -413,12 +413,12 @@ class Schema(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 if_not_exists: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SchemaPolicyArgs', 'SchemaPolicyArgsDict']]]]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 if_not_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SchemaPolicyArgs', 'SchemaPolicyArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -444,12 +444,12 @@ class Schema(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            database: Optional[pulumi.Input[_builtins.str]] = None,
-            drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-            if_not_exists: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SchemaPolicyArgs', 'SchemaPolicyArgsDict']]]]] = None) -> 'Schema':
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+            if_not_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SchemaPolicyArgs', 'SchemaPolicyArgsDict']]]]] = None) -> 'Schema':
         """
         Get an existing Schema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

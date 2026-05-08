@@ -117,15 +117,15 @@ export interface GrantRoleState {
     /**
      * The name of the role that is added to `role`.
      */
-    grantRole?: pulumi.Input<string>;
+    grantRole?: pulumi.Input<string | undefined>;
     /**
      * The name of the role that is granted a new membership.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Giving ability to grant membership to others or not for `role`. (Default: false)
      */
-    withAdminOption?: pulumi.Input<boolean>;
+    withAdminOption?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -143,5 +143,5 @@ export interface GrantRoleArgs {
     /**
      * Giving ability to grant membership to others or not for `role`. (Default: false)
      */
-    withAdminOption?: pulumi.Input<boolean>;
+    withAdminOption?: pulumi.Input<boolean | undefined>;
 }

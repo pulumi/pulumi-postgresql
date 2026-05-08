@@ -128,27 +128,27 @@ export interface GetTablesOutputArgs {
     /**
      * List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ALL`` operators.
      */
-    likeAllPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    likeAllPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``LIKE ANY`` operators.
      */
-    likeAnyPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    likeAnyPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of expressions which will be pattern matched against table names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
      */
-    notLikeAllPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    notLikeAllPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Expression which will be pattern matched against table names in the query using the PostgreSQL ``~`` (regular expression match) operator.
      *
      * Note that all optional arguments can be used in conjunction.
      */
-    regexPattern?: pulumi.Input<string>;
+    regexPattern?: pulumi.Input<string | undefined>;
     /**
      * List of PostgreSQL schema(s) which will be queried for table names. Queries all schemas in the database by default.
      */
-    schemas?: pulumi.Input<pulumi.Input<string>[]>;
+    schemas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of PostgreSQL table types which will be queried for table names. Includes all table types by default (including views and temp tables). Use 'BASE TABLE' for normal tables only.
      */
-    tableTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    tableTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

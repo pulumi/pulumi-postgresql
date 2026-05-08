@@ -21,11 +21,11 @@ class ServerArgs:
     def __init__(__self__, *,
                  fdw_name: pulumi.Input[_builtins.str],
                  server_name: pulumi.Input[_builtins.str],
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 server_owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 server_owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Server resource.
 
@@ -85,43 +85,43 @@ class ServerArgs:
 
     @_builtins.property
     @pulumi.getter(name="dropCascade")
-    def drop_cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drop_cascade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, will drop objects that depend on the server (such as user mappings), and in turn all objects that depend on those objects . (Default: false)
         """
         return pulumi.get(self, "drop_cascade")
 
     @drop_cascade.setter
-    def drop_cascade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drop_cascade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drop_cascade", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         This clause specifies the options for the server. The options typically define the connection details of the server, but the actual names and values are dependent on the server's foreign-data wrapper.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="serverOwner")
-    def server_owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         By default, the user who defines the server becomes its owner. Set this value to configure the new owner of the foreign server.
         """
         return pulumi.get(self, "server_owner")
 
     @server_owner.setter
-    def server_owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_owner", value)
 
     @_builtins.property
     @pulumi.getter(name="serverType")
-    def server_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional server type, potentially useful to foreign-data wrappers.
         Changing this value
@@ -131,32 +131,32 @@ class ServerArgs:
         return pulumi.get(self, "server_type")
 
     @server_type.setter
-    def server_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_type", value)
 
     @_builtins.property
     @pulumi.getter(name="serverVersion")
-    def server_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional server version, potentially useful to foreign-data wrappers.
         """
         return pulumi.get(self, "server_version")
 
     @server_version.setter
-    def server_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_version", value)
 
 
 @pulumi.input_type
 class _ServerState:
     def __init__(__self__, *,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fdw_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 server_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fdw_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 server_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Server resources.
 
@@ -191,19 +191,19 @@ class _ServerState:
 
     @_builtins.property
     @pulumi.getter(name="dropCascade")
-    def drop_cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drop_cascade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, will drop objects that depend on the server (such as user mappings), and in turn all objects that depend on those objects . (Default: false)
         """
         return pulumi.get(self, "drop_cascade")
 
     @drop_cascade.setter
-    def drop_cascade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drop_cascade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drop_cascade", value)
 
     @_builtins.property
     @pulumi.getter(name="fdwName")
-    def fdw_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fdw_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the foreign-data wrapper that manages the server.
         Changing this value
@@ -213,48 +213,48 @@ class _ServerState:
         return pulumi.get(self, "fdw_name")
 
     @fdw_name.setter
-    def fdw_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fdw_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fdw_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         This clause specifies the options for the server. The options typically define the connection details of the server, but the actual names and values are dependent on the server's foreign-data wrapper.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="serverName")
-    def server_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the foreign server to be created.
         """
         return pulumi.get(self, "server_name")
 
     @server_name.setter
-    def server_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_name", value)
 
     @_builtins.property
     @pulumi.getter(name="serverOwner")
-    def server_owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         By default, the user who defines the server becomes its owner. Set this value to configure the new owner of the foreign server.
         """
         return pulumi.get(self, "server_owner")
 
     @server_owner.setter
-    def server_owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_owner", value)
 
     @_builtins.property
     @pulumi.getter(name="serverType")
-    def server_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional server type, potentially useful to foreign-data wrappers.
         Changing this value
@@ -264,19 +264,19 @@ class _ServerState:
         return pulumi.get(self, "server_type")
 
     @server_type.setter
-    def server_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_type", value)
 
     @_builtins.property
     @pulumi.getter(name="serverVersion")
-    def server_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional server version, potentially useful to foreign-data wrappers.
         """
         return pulumi.get(self, "server_version")
 
     @server_version.setter
-    def server_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_version", value)
 
 
@@ -286,13 +286,13 @@ class Server(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fdw_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 server_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fdw_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 server_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The ``Server`` resource creates and manages a foreign server on a PostgreSQL server.
@@ -397,13 +397,13 @@ class Server(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fdw_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 server_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fdw_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 server_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -434,13 +434,13 @@ class Server(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-            fdw_name: Optional[pulumi.Input[_builtins.str]] = None,
-            options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            server_name: Optional[pulumi.Input[_builtins.str]] = None,
-            server_owner: Optional[pulumi.Input[_builtins.str]] = None,
-            server_type: Optional[pulumi.Input[_builtins.str]] = None,
-            server_version: Optional[pulumi.Input[_builtins.str]] = None) -> 'Server':
+            drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+            fdw_name: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            server_name: pulumi.Input[Optional[_builtins.str]] = None,
+            server_owner: pulumi.Input[Optional[_builtins.str]] = None,
+            server_type: pulumi.Input[Optional[_builtins.str]] = None,
+            server_version: pulumi.Input[Optional[_builtins.str]] = None) -> 'Server':
         """
         Get an existing Server resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

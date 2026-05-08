@@ -142,88 +142,88 @@ export interface ProviderArgs {
     /**
      * Use rdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
      */
-    awsRdsIamAuth?: pulumi.Input<boolean>;
+    awsRdsIamAuth?: pulumi.Input<boolean | undefined>;
     /**
      * AWS profile to use for IAM auth
      */
-    awsRdsIamProfile?: pulumi.Input<string>;
+    awsRdsIamProfile?: pulumi.Input<string | undefined>;
     /**
      * AWS IAM role to assume for IAM auth
      */
-    awsRdsIamProviderRoleArn?: pulumi.Input<string>;
+    awsRdsIamProviderRoleArn?: pulumi.Input<string | undefined>;
     /**
      * AWS region to use for IAM auth
      */
-    awsRdsIamRegion?: pulumi.Input<string>;
+    awsRdsIamRegion?: pulumi.Input<string | undefined>;
     /**
      * Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
      */
-    azureIdentityAuth?: pulumi.Input<boolean>;
+    azureIdentityAuth?: pulumi.Input<boolean | undefined>;
     /**
      * MS Azure tenant ID (see: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
      */
-    azureTenantId?: pulumi.Input<string>;
+    azureTenantId?: pulumi.Input<string | undefined>;
     /**
      * SSL client certificate if required by the database.
      */
-    clientcert?: pulumi.Input<inputs.ProviderClientcert>;
+    clientcert?: pulumi.Input<inputs.ProviderClientcert | undefined>;
     /**
      * Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
      */
-    connectTimeout?: pulumi.Input<number>;
+    connectTimeout?: pulumi.Input<number | undefined>;
     /**
      * The name of the database to connect to in order to connect to (defaults to `postgres`).
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Database username associated to the connected user (for user name maps)
      */
-    databaseUsername?: pulumi.Input<string>;
+    databaseUsername?: pulumi.Input<string | undefined>;
     /**
      * Specify the expected version of PostgreSQL.
      */
-    expectedVersion?: pulumi.Input<string>;
+    expectedVersion?: pulumi.Input<string | undefined>;
     /**
      * Service account to impersonate when using GCP IAM authentication.
      */
-    gcpIamImpersonateServiceAccount?: pulumi.Input<string>;
+    gcpIamImpersonateServiceAccount?: pulumi.Input<string | undefined>;
     /**
      * Name of PostgreSQL server address to connect to
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of connections to establish to the database. Zero means unlimited.
      */
-    maxConnections?: pulumi.Input<number>;
+    maxConnections?: pulumi.Input<number | undefined>;
     /**
      * Password to be used if the PostgreSQL server demands password authentication
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
      */
-    port?: pulumi.Input<number>;
-    scheme?: pulumi.Input<string>;
+    port?: pulumi.Input<number | undefined>;
+    scheme?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Rename PostgreSQL provider `sslMode` attribute to `sslmode`
      */
-    sslMode?: pulumi.Input<string>;
+    sslMode?: pulumi.Input<string | undefined>;
     /**
      * This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
      */
-    sslmode?: pulumi.Input<string>;
+    sslmode?: pulumi.Input<string | undefined>;
     /**
      * The SSL server root certificate file path. The file must contain PEM encoded data.
      */
-    sslrootcert?: pulumi.Input<string>;
+    sslrootcert?: pulumi.Input<string | undefined>;
     /**
      * Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
      */
-    superuser?: pulumi.Input<boolean>;
+    superuser?: pulumi.Input<boolean | undefined>;
     /**
      * PostgreSQL user name to connect as
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

@@ -165,12 +165,12 @@ def get_sequences(database: Optional[_builtins.str] = None,
         regex_pattern=pulumi.get(__ret__, 'regex_pattern'),
         schemas=pulumi.get(__ret__, 'schemas'),
         sequences=pulumi.get(__ret__, 'sequences'))
-def get_sequences_output(database: Optional[pulumi.Input[_builtins.str]] = None,
-                         like_all_patterns: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         like_any_patterns: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         not_like_all_patterns: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         regex_pattern: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         schemas: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_sequences_output(database: pulumi.Input[Optional[_builtins.str]] = None,
+                         like_all_patterns: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         like_any_patterns: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         not_like_all_patterns: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         regex_pattern: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         schemas: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSequencesResult]:
     """
     The ``get_sequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.

@@ -210,7 +210,7 @@ export interface DatabaseState {
      * database. The default is `true`, allowing connections (except as restricted by
      * other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
      */
-    allowConnections?: pulumi.Input<boolean>;
+    allowConnections?: pulumi.Input<boolean | undefined>;
     /**
      * If `true`, the change of the database
      * `owner` will also include a reassignment of the ownership of preexisting
@@ -220,12 +220,12 @@ export interface DatabaseState {
      * the database, you must be a direct or indirect member of the specified role, or
      * the username in the provider must be superuser.
      */
-    alterObjectOwnership?: pulumi.Input<boolean>;
+    alterObjectOwnership?: pulumi.Input<boolean | undefined>;
     /**
      * How many concurrent connections can be
      * established to this database. `-1` (the default) means no limit.
      */
-    connectionLimit?: pulumi.Input<number>;
+    connectionLimit?: pulumi.Input<number | undefined>;
     /**
      * Character set encoding to use in the database.
      * Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
@@ -234,13 +234,13 @@ export interface DatabaseState {
      * template database.  Changing this value will force the creation of a new
      * resource as this value can only be changed when a database is created.
      */
-    encoding?: pulumi.Input<string>;
+    encoding?: pulumi.Input<string | undefined>;
     /**
      * If `true`, then this database can be cloned by any
      * user with `CREATEDB` privileges; if `false` (the default), then only
      * superusers or the owner of the database can clone it.
      */
-    isTemplate?: pulumi.Input<boolean>;
+    isTemplate?: pulumi.Input<boolean | undefined>;
     /**
      * Collation order (`LC_COLLATE`) to use in the
      * database.  This affects the sort order applied to strings, e.g. in queries
@@ -250,7 +250,7 @@ export interface DatabaseState {
      * `template` database.  Changing this value will force the creation of a new
      * resource as this value can only be changed when a database is created.
      */
-    lcCollate?: pulumi.Input<string>;
+    lcCollate?: pulumi.Input<string | undefined>;
     /**
      * Character classification (`LC_CTYPE`) to use in the
      * database. This affects the categorization of characters, e.g. lower, upper and
@@ -260,12 +260,12 @@ export interface DatabaseState {
      * force the creation of a new resource as this value can only be changed when a
      * database is created.
      */
-    lcCtype?: pulumi.Input<string>;
+    lcCtype?: pulumi.Input<string | undefined>;
     /**
      * The name of the database. Must be unique on the PostgreSQL
      * server instance where it is configured.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The role name of the user who will own the database, or
      * `DEFAULT` to use the default (namely, the user executing the command). To
@@ -273,14 +273,14 @@ export interface DatabaseState {
      * database, you must be a direct or indirect member of the specified role, or
      * the username in the provider is a superuser.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * The name of the tablespace that will be
      * associated with the database, or `DEFAULT` to use the template database's
      * tablespace.  This tablespace will be the default tablespace used for objects
      * created in this database.
      */
-    tablespaceName?: pulumi.Input<string>;
+    tablespaceName?: pulumi.Input<string | undefined>;
     /**
      * The name of the template database from which to create
      * the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
@@ -288,7 +288,7 @@ export interface DatabaseState {
      * will force the creation of a new resource as this value can only be changed
      * when a database is created.
      */
-    template?: pulumi.Input<string>;
+    template?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -300,7 +300,7 @@ export interface DatabaseArgs {
      * database. The default is `true`, allowing connections (except as restricted by
      * other mechanisms, such as `GRANT` or `REVOKE CONNECT`).
      */
-    allowConnections?: pulumi.Input<boolean>;
+    allowConnections?: pulumi.Input<boolean | undefined>;
     /**
      * If `true`, the change of the database
      * `owner` will also include a reassignment of the ownership of preexisting
@@ -310,12 +310,12 @@ export interface DatabaseArgs {
      * the database, you must be a direct or indirect member of the specified role, or
      * the username in the provider must be superuser.
      */
-    alterObjectOwnership?: pulumi.Input<boolean>;
+    alterObjectOwnership?: pulumi.Input<boolean | undefined>;
     /**
      * How many concurrent connections can be
      * established to this database. `-1` (the default) means no limit.
      */
-    connectionLimit?: pulumi.Input<number>;
+    connectionLimit?: pulumi.Input<number | undefined>;
     /**
      * Character set encoding to use in the database.
      * Specify a string constant (e.g. `UTF8` or `SQL_ASCII`), or an integer encoding
@@ -324,13 +324,13 @@ export interface DatabaseArgs {
      * template database.  Changing this value will force the creation of a new
      * resource as this value can only be changed when a database is created.
      */
-    encoding?: pulumi.Input<string>;
+    encoding?: pulumi.Input<string | undefined>;
     /**
      * If `true`, then this database can be cloned by any
      * user with `CREATEDB` privileges; if `false` (the default), then only
      * superusers or the owner of the database can clone it.
      */
-    isTemplate?: pulumi.Input<boolean>;
+    isTemplate?: pulumi.Input<boolean | undefined>;
     /**
      * Collation order (`LC_COLLATE`) to use in the
      * database.  This affects the sort order applied to strings, e.g. in queries
@@ -340,7 +340,7 @@ export interface DatabaseArgs {
      * `template` database.  Changing this value will force the creation of a new
      * resource as this value can only be changed when a database is created.
      */
-    lcCollate?: pulumi.Input<string>;
+    lcCollate?: pulumi.Input<string | undefined>;
     /**
      * Character classification (`LC_CTYPE`) to use in the
      * database. This affects the categorization of characters, e.g. lower, upper and
@@ -350,12 +350,12 @@ export interface DatabaseArgs {
      * force the creation of a new resource as this value can only be changed when a
      * database is created.
      */
-    lcCtype?: pulumi.Input<string>;
+    lcCtype?: pulumi.Input<string | undefined>;
     /**
      * The name of the database. Must be unique on the PostgreSQL
      * server instance where it is configured.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The role name of the user who will own the database, or
      * `DEFAULT` to use the default (namely, the user executing the command). To
@@ -363,14 +363,14 @@ export interface DatabaseArgs {
      * database, you must be a direct or indirect member of the specified role, or
      * the username in the provider is a superuser.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * The name of the tablespace that will be
      * associated with the database, or `DEFAULT` to use the template database's
      * tablespace.  This tablespace will be the default tablespace used for objects
      * created in this database.
      */
-    tablespaceName?: pulumi.Input<string>;
+    tablespaceName?: pulumi.Input<string | undefined>;
     /**
      * The name of the template database from which to create
      * the database, or `DEFAULT` to use the default template (`template0`).  NOTE:
@@ -378,5 +378,5 @@ export interface DatabaseArgs {
      * will force the creation of a new resource as this value can only be changed
      * when a database is created.
      */
-    template?: pulumi.Input<string>;
+    template?: pulumi.Input<string | undefined>;
 }
