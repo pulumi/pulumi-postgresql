@@ -98,15 +98,15 @@ export interface ReplicationSlotState {
     /**
      * Which database to create the replication slot on. Defaults to provider database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * The name of the replication slot.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Sets the output plugin.
      */
-    plugin?: pulumi.Input<string>;
+    plugin?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -116,11 +116,11 @@ export interface ReplicationSlotArgs {
     /**
      * Which database to create the replication slot on. Defaults to provider database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * The name of the replication slot.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Sets the output plugin.
      */

@@ -19,12 +19,12 @@ __all__ = ['ExtensionArgs', 'Extension']
 @pulumi.input_type
 class ExtensionArgs:
     def __init__(__self__, *,
-                 create_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Extension resource.
 
@@ -50,86 +50,86 @@ class ExtensionArgs:
 
     @_builtins.property
     @pulumi.getter(name="createCascade")
-    def create_cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_cascade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
         """
         return pulumi.get(self, "create_cascade")
 
     @create_cascade.setter
-    def create_cascade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_cascade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_cascade", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which database to create the extension on. Defaults to provider database.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="dropCascade")
-    def drop_cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drop_cascade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         """
         return pulumi.get(self, "drop_cascade")
 
     @drop_cascade.setter
-    def drop_cascade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drop_cascade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drop_cascade", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the extension.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the schema of an extension.
         """
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the version number of the extension.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
 class _ExtensionState:
     def __init__(__self__, *,
-                 create_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Extension resources.
 
@@ -155,74 +155,74 @@ class _ExtensionState:
 
     @_builtins.property
     @pulumi.getter(name="createCascade")
-    def create_cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_cascade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
         """
         return pulumi.get(self, "create_cascade")
 
     @create_cascade.setter
-    def create_cascade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_cascade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_cascade", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which database to create the extension on. Defaults to provider database.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="dropCascade")
-    def drop_cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drop_cascade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
         """
         return pulumi.get(self, "drop_cascade")
 
     @drop_cascade.setter
-    def drop_cascade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drop_cascade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drop_cascade", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the extension.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the schema of an extension.
         """
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the version number of the extension.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -232,12 +232,12 @@ class Extension(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The ``Extension`` resource creates and manages an extension on a PostgreSQL
@@ -309,12 +309,12 @@ class Extension(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -340,12 +340,12 @@ class Extension(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-            database: Optional[pulumi.Input[_builtins.str]] = None,
-            drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            schema: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'Extension':
+            create_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'Extension':
         """
         Get an existing Extension resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

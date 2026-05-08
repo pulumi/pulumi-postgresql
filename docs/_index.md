@@ -98,12 +98,12 @@ using PostgreSql = Pulumi.PostgreSql;
 
 return await Deployment.RunAsync(() =>
 {
-    var myDb1 = new PostgreSql.Index.Database("my_db1", new()
+    var myDb1 = new PostgreSql.Database("my_db1", new()
     {
         Name = "my_db1",
     });
 
-    var myDb2 = new PostgreSql.Index.Database("my_db2", new()
+    var myDb2 = new PostgreSql.Database("my_db2", new()
     {
         Name = "my_db2",
     });
@@ -167,8 +167,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.postgresql.Database;
 import com.pulumi.postgresql.DatabaseArgs;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;
@@ -473,7 +473,7 @@ return await Deployment.RunAsync(() =>
         Password = "xxxxxxxx",
     });
 
-    var testDb = new PostgreSql.Index.Database("test_db", new()
+    var testDb = new PostgreSql.Database("test_db", new()
     {
         Name = "test_db",
     });
@@ -617,8 +617,8 @@ import com.pulumi.gcp.sql.User;
 import com.pulumi.gcp.sql.UserArgs;
 import com.pulumi.postgresql.Database;
 import com.pulumi.postgresql.DatabaseArgs;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;
@@ -966,8 +966,8 @@ import com.pulumi.azure.postgresql.FlexibleServerArgs;
 import com.pulumi.azure.postgresql.inputs.FlexibleServerAuthenticationArgs;
 import com.pulumi.azure.postgresql.FlexibleServerActiveDirectoryAdministrator;
 import com.pulumi.azure.postgresql.FlexibleServerActiveDirectoryAdministratorArgs;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;

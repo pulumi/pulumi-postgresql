@@ -19,14 +19,14 @@ __all__ = ['PublicationArgs', 'Publication']
 @pulumi.input_type
 class PublicationArgs:
     def __init__(__self__, *,
-                 all_tables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish_params: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 publish_via_partition_root_param: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tables: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 all_tables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish_params: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 publish_via_partition_root_param: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tables: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Publication resource.
 
@@ -58,112 +58,112 @@ class PublicationArgs:
 
     @_builtins.property
     @pulumi.getter(name="allTables")
-    def all_tables(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all_tables(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Should be ALL TABLES added to the publication. Defaults to 'false'
         """
         return pulumi.get(self, "all_tables")
 
     @all_tables.setter
-    def all_tables(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all_tables(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all_tables", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which database to create the publication on. Defaults to provider database.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="dropCascade")
-    def drop_cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drop_cascade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Should all subsequent resources of the publication be dropped. Defaults to 'false'
         """
         return pulumi.get(self, "drop_cascade")
 
     @drop_cascade.setter
-    def drop_cascade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drop_cascade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drop_cascade", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the publication.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Who owns the publication. Defaults to provider user.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="publishParams")
-    def publish_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def publish_params(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Which 'publish' options should be turned on. Default to 'insert','update','delete'
         """
         return pulumi.get(self, "publish_params")
 
     @publish_params.setter
-    def publish_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def publish_params(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "publish_params", value)
 
     @_builtins.property
     @pulumi.getter(name="publishViaPartitionRootParam")
-    def publish_via_partition_root_param(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def publish_via_partition_root_param(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Should be option 'publish_via_partition_root' be turned on. Default to 'false'
         """
         return pulumi.get(self, "publish_via_partition_root_param")
 
     @publish_via_partition_root_param.setter
-    def publish_via_partition_root_param(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def publish_via_partition_root_param(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "publish_via_partition_root_param", value)
 
     @_builtins.property
     @pulumi.getter
-    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
         """
         return pulumi.get(self, "tables")
 
     @tables.setter
-    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tables", value)
 
 
 @pulumi.input_type
 class _PublicationState:
     def __init__(__self__, *,
-                 all_tables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish_params: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 publish_via_partition_root_param: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tables: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 all_tables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish_params: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 publish_via_partition_root_param: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tables: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Publication resources.
 
@@ -195,98 +195,98 @@ class _PublicationState:
 
     @_builtins.property
     @pulumi.getter(name="allTables")
-    def all_tables(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all_tables(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Should be ALL TABLES added to the publication. Defaults to 'false'
         """
         return pulumi.get(self, "all_tables")
 
     @all_tables.setter
-    def all_tables(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all_tables(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all_tables", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which database to create the publication on. Defaults to provider database.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="dropCascade")
-    def drop_cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drop_cascade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Should all subsequent resources of the publication be dropped. Defaults to 'false'
         """
         return pulumi.get(self, "drop_cascade")
 
     @drop_cascade.setter
-    def drop_cascade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drop_cascade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drop_cascade", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the publication.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Who owns the publication. Defaults to provider user.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="publishParams")
-    def publish_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def publish_params(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Which 'publish' options should be turned on. Default to 'insert','update','delete'
         """
         return pulumi.get(self, "publish_params")
 
     @publish_params.setter
-    def publish_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def publish_params(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "publish_params", value)
 
     @_builtins.property
     @pulumi.getter(name="publishViaPartitionRootParam")
-    def publish_via_partition_root_param(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def publish_via_partition_root_param(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Should be option 'publish_via_partition_root' be turned on. Default to 'false'
         """
         return pulumi.get(self, "publish_via_partition_root_param")
 
     @publish_via_partition_root_param.setter
-    def publish_via_partition_root_param(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def publish_via_partition_root_param(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "publish_via_partition_root_param", value)
 
     @_builtins.property
     @pulumi.getter
-    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Which tables add to the publication. By defaults no tables added. Format of table is `<schema_name>.<table_name>`. If `<schema_name>` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
         """
         return pulumi.get(self, "tables")
 
     @tables.setter
-    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tables", value)
 
 
@@ -296,14 +296,14 @@ class Publication(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 all_tables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish_params: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 publish_via_partition_root_param: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tables: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 all_tables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish_params: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 publish_via_partition_root_param: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tables: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         The `Publication` resource creates and manages a publication on a PostgreSQL
@@ -383,14 +383,14 @@ class Publication(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 all_tables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish_params: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 publish_via_partition_root_param: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tables: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 all_tables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish_params: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 publish_via_partition_root_param: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tables: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -418,14 +418,14 @@ class Publication(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            all_tables: Optional[pulumi.Input[_builtins.bool]] = None,
-            database: Optional[pulumi.Input[_builtins.str]] = None,
-            drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            publish_params: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            publish_via_partition_root_param: Optional[pulumi.Input[_builtins.bool]] = None,
-            tables: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Publication':
+            all_tables: pulumi.Input[Optional[_builtins.bool]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            publish_params: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            publish_via_partition_root_param: pulumi.Input[Optional[_builtins.bool]] = None,
+            tables: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Publication':
         """
         Get an existing Publication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

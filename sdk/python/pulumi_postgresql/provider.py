@@ -20,28 +20,28 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 aws_rds_iam_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 aws_rds_iam_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_rds_iam_provider_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_rds_iam_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_identity_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 azure_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 clientcert: Optional[pulumi.Input['ProviderClientcertArgs']] = None,
-                 connect_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 expected_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcp_iam_impersonate_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sslmode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sslrootcert: Optional[pulumi.Input[_builtins.str]] = None,
-                 superuser: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 aws_rds_iam_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 aws_rds_iam_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_rds_iam_provider_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_rds_iam_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_identity_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 azure_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 clientcert: pulumi.Input[Optional['ProviderClientcertArgs']] = None,
+                 connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 expected_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcp_iam_impersonate_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_connections: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sslmode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sslrootcert: pulumi.Input[Optional[_builtins.str]] = None,
+                 superuser: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -120,261 +120,261 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="awsRdsIamAuth")
-    def aws_rds_iam_auth(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def aws_rds_iam_auth(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
         """
         return pulumi.get(self, "aws_rds_iam_auth")
 
     @aws_rds_iam_auth.setter
-    def aws_rds_iam_auth(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def aws_rds_iam_auth(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "aws_rds_iam_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="awsRdsIamProfile")
-    def aws_rds_iam_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_rds_iam_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS profile to use for IAM auth
         """
         return pulumi.get(self, "aws_rds_iam_profile")
 
     @aws_rds_iam_profile.setter
-    def aws_rds_iam_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_rds_iam_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_rds_iam_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="awsRdsIamProviderRoleArn")
-    def aws_rds_iam_provider_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_rds_iam_provider_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS IAM role to assume for IAM auth
         """
         return pulumi.get(self, "aws_rds_iam_provider_role_arn")
 
     @aws_rds_iam_provider_role_arn.setter
-    def aws_rds_iam_provider_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_rds_iam_provider_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_rds_iam_provider_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="awsRdsIamRegion")
-    def aws_rds_iam_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_rds_iam_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS region to use for IAM auth
         """
         return pulumi.get(self, "aws_rds_iam_region")
 
     @aws_rds_iam_region.setter
-    def aws_rds_iam_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_rds_iam_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_rds_iam_region", value)
 
     @_builtins.property
     @pulumi.getter(name="azureIdentityAuth")
-    def azure_identity_auth(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def azure_identity_auth(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use MS Azure identity OAuth token (see: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
         """
         return pulumi.get(self, "azure_identity_auth")
 
     @azure_identity_auth.setter
-    def azure_identity_auth(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def azure_identity_auth(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "azure_identity_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="azureTenantId")
-    def azure_tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def azure_tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MS Azure tenant ID (see: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
         """
         return pulumi.get(self, "azure_tenant_id")
 
     @azure_tenant_id.setter
-    def azure_tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def azure_tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "azure_tenant_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def clientcert(self) -> Optional[pulumi.Input['ProviderClientcertArgs']]:
+    def clientcert(self) -> pulumi.Input[Optional['ProviderClientcertArgs']]:
         """
         SSL client certificate if required by the database.
         """
         return pulumi.get(self, "clientcert")
 
     @clientcert.setter
-    def clientcert(self, value: Optional[pulumi.Input['ProviderClientcertArgs']]):
+    def clientcert(self, value: pulumi.Input[Optional['ProviderClientcertArgs']]):
         pulumi.set(self, "clientcert", value)
 
     @_builtins.property
     @pulumi.getter(name="connectTimeout")
-    def connect_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connect_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum wait for connection, in seconds. Zero or not specified means wait indefinitely.
         """
         return pulumi.get(self, "connect_timeout")
 
     @connect_timeout.setter
-    def connect_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connect_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connect_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database to connect to in order to connect to (defaults to `postgres`).
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseUsername")
-    def database_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database username associated to the connected user (for user name maps)
         """
         return pulumi.get(self, "database_username")
 
     @database_username.setter
-    def database_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_username", value)
 
     @_builtins.property
     @pulumi.getter(name="expectedVersion")
-    def expected_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expected_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the expected version of PostgreSQL.
         """
         return pulumi.get(self, "expected_version")
 
     @expected_version.setter
-    def expected_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expected_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expected_version", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpIamImpersonateServiceAccount")
-    def gcp_iam_impersonate_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcp_iam_impersonate_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service account to impersonate when using GCP IAM authentication.
         """
         return pulumi.get(self, "gcp_iam_impersonate_service_account")
 
     @gcp_iam_impersonate_service_account.setter
-    def gcp_iam_impersonate_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcp_iam_impersonate_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcp_iam_impersonate_service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of PostgreSQL server address to connect to
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConnections")
-    def max_connections(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_connections(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of connections to establish to the database. Zero means unlimited.
         """
         return pulumi.get(self, "max_connections")
 
     @max_connections.setter
-    def max_connections(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_connections(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_connections", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password to be used if the PostgreSQL server demands password authentication
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The PostgreSQL port number to connect to at the server host, or socket file name extension for Unix-domain connections
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheme", value)
 
     @_builtins.property
     @pulumi.getter(name="sslMode")
     @_utilities.deprecated("""Rename PostgreSQL provider `ssl_mode` attribute to `sslmode`""")
-    def ssl_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ssl_mode")
 
     @ssl_mode.setter
-    def ssl_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def sslmode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sslmode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This option determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL server
         """
         return pulumi.get(self, "sslmode")
 
     @sslmode.setter
-    def sslmode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sslmode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sslmode", value)
 
     @_builtins.property
     @pulumi.getter
-    def sslrootcert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sslrootcert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SSL server root certificate file path. The file must contain PEM encoded data.
         """
         return pulumi.get(self, "sslrootcert")
 
     @sslrootcert.setter
-    def sslrootcert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sslrootcert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sslrootcert", value)
 
     @_builtins.property
     @pulumi.getter
-    def superuser(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def superuser(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
         """
         return pulumi.get(self, "superuser")
 
     @superuser.setter
-    def superuser(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def superuser(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "superuser", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PostgreSQL user name to connect as
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -384,28 +384,28 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_rds_iam_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 aws_rds_iam_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_rds_iam_provider_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_rds_iam_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_identity_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 azure_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 clientcert: Optional[pulumi.Input[Union['ProviderClientcertArgs', 'ProviderClientcertArgsDict']]] = None,
-                 connect_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 expected_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcp_iam_impersonate_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sslmode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sslrootcert: Optional[pulumi.Input[_builtins.str]] = None,
-                 superuser: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 aws_rds_iam_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 aws_rds_iam_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_rds_iam_provider_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_rds_iam_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_identity_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 azure_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 clientcert: pulumi.Input[Optional[Union['ProviderClientcertArgs', 'ProviderClientcertArgsDict']]] = None,
+                 connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 expected_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcp_iam_impersonate_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_connections: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sslmode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sslrootcert: pulumi.Input[Optional[_builtins.str]] = None,
+                 superuser: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the postgresql package. By default, resources use package-wide configuration
@@ -465,28 +465,28 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_rds_iam_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 aws_rds_iam_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_rds_iam_provider_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_rds_iam_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_identity_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 azure_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 clientcert: Optional[pulumi.Input[Union['ProviderClientcertArgs', 'ProviderClientcertArgsDict']]] = None,
-                 connect_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 expected_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcp_iam_impersonate_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sslmode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sslrootcert: Optional[pulumi.Input[_builtins.str]] = None,
-                 superuser: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 aws_rds_iam_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 aws_rds_iam_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_rds_iam_provider_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_rds_iam_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_identity_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 azure_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 clientcert: pulumi.Input[Optional[Union['ProviderClientcertArgs', 'ProviderClientcertArgsDict']]] = None,
+                 connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 expected_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcp_iam_impersonate_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_connections: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sslmode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sslrootcert: pulumi.Input[Optional[_builtins.str]] = None,
+                 superuser: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -123,21 +123,21 @@ export interface UserMappingState {
     /**
      * This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.
      */
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of an existing server for which the user mapping is to be created.
      * Changing this value
      * will force the creation of a new resource as this value can only be set
      * when the user mapping is created.
      */
-    serverName?: pulumi.Input<string>;
+    serverName?: pulumi.Input<string | undefined>;
     /**
      * The name of an existing user that is mapped to foreign server. CURRENT_ROLE, CURRENT_USER, and USER match the name of the current user. When PUBLIC is specified, a so-called public mapping is created that is used when no user-specific mapping is applicable.
      * Changing this value
      * will force the creation of a new resource as this value can only be set
      * when the user mapping is created.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -147,7 +147,7 @@ export interface UserMappingArgs {
     /**
      * This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.
      */
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of an existing server for which the user mapping is to be created.
      * Changing this value

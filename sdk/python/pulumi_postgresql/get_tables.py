@@ -178,13 +178,13 @@ def get_tables(database: Optional[_builtins.str] = None,
         schemas=pulumi.get(__ret__, 'schemas'),
         table_types=pulumi.get(__ret__, 'table_types'),
         tables=pulumi.get(__ret__, 'tables'))
-def get_tables_output(database: Optional[pulumi.Input[_builtins.str]] = None,
-                      like_all_patterns: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                      like_any_patterns: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                      not_like_all_patterns: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                      regex_pattern: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      schemas: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                      table_types: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_tables_output(database: pulumi.Input[Optional[_builtins.str]] = None,
+                      like_all_patterns: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                      like_any_patterns: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                      not_like_all_patterns: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                      regex_pattern: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      schemas: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                      table_types: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTablesResult]:
     """
     The ``get_tables`` data source retrieves a list of table names from a specified PostgreSQL database.

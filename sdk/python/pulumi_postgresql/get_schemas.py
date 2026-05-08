@@ -163,12 +163,12 @@ def get_schemas(database: Optional[_builtins.str] = None,
         not_like_all_patterns=pulumi.get(__ret__, 'not_like_all_patterns'),
         regex_pattern=pulumi.get(__ret__, 'regex_pattern'),
         schemas=pulumi.get(__ret__, 'schemas'))
-def get_schemas_output(database: Optional[pulumi.Input[_builtins.str]] = None,
-                       include_system_schemas: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                       like_all_patterns: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                       like_any_patterns: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                       not_like_all_patterns: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                       regex_pattern: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_schemas_output(database: pulumi.Input[Optional[_builtins.str]] = None,
+                       include_system_schemas: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                       like_all_patterns: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                       like_any_patterns: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                       not_like_all_patterns: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                       regex_pattern: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSchemasResult]:
     """
     The ``get_schemas`` data source retrieves a list of schema names from a specified PostgreSQL database.

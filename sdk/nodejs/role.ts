@@ -336,33 +336,33 @@ export interface RoleState {
     /**
      * Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
      */
-    assumeRole?: pulumi.Input<string>;
+    assumeRole?: pulumi.Input<string | undefined>;
     /**
      * Defines whether a role bypasses every
      * row-level security (RLS) policy.  Default value is `false`.
      */
-    bypassRowLevelSecurity?: pulumi.Input<boolean>;
+    bypassRowLevelSecurity?: pulumi.Input<boolean | undefined>;
     /**
      * If this role can log in, this specifies how
      * many concurrent connections the role can establish. `-1` (the default) means no
      * limit.
      */
-    connectionLimit?: pulumi.Input<number>;
+    connectionLimit?: pulumi.Input<number | undefined>;
     /**
      * Defines a role's ability to execute `CREATE
      * DATABASE`.  Default value is `false`.
      */
-    createDatabase?: pulumi.Input<boolean>;
+    createDatabase?: pulumi.Input<boolean | undefined>;
     /**
      * Defines a role's ability to execute `CREATE ROLE`.
      * A role with this privilege can also alter and drop other roles.  Default value
      * is `false`.
      */
-    createRole?: pulumi.Input<boolean>;
+    createRole?: pulumi.Input<boolean | undefined>;
     /**
      * @deprecated Rename PostgreSQL role resource attribute "encrypted" to "encryptedPassword"
      */
-    encrypted?: pulumi.Input<string>;
+    encrypted?: pulumi.Input<string | undefined>;
     /**
      * Defines whether the password is stored
      * encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
@@ -370,62 +370,62 @@ export interface RoleState {
      * behavior of
      * [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
      */
-    encryptedPassword?: pulumi.Input<boolean>;
+    encryptedPassword?: pulumi.Input<boolean | undefined>;
     /**
      * Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
      */
-    idleInTransactionSessionTimeout?: pulumi.Input<number>;
+    idleInTransactionSessionTimeout?: pulumi.Input<number | undefined>;
     /**
      * Defines whether a role "inherits" the privileges of
      * roles it is a member of.  Default value is `true`.
      */
-    inherit?: pulumi.Input<boolean>;
+    inherit?: pulumi.Input<boolean | undefined>;
     /**
      * Defines whether role is allowed to log in.  Roles without
      * this attribute are useful for managing database privileges, but are not users
      * in the usual sense of the word.  Default value is `false`.
      */
-    login?: pulumi.Input<boolean>;
+    login?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the role. Must be unique on the PostgreSQL
      * server instance where it is configured.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Sets the role's password. A password is only of use
      * for roles having the `login` attribute set to true.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Sets the role's password without storing it in the state file.
      * This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
      * Conflicts with `password`.
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Prevents applies from updating the role password on every
      * apply unless the value changes. This version string should be updated whenever you want to
      * change the password specified in `passwordWo`. Must be used together with `passwordWo`.
      * Conflicts with `password`.
      */
-    passwordWoVersion?: pulumi.Input<string>;
+    passwordWoVersion?: pulumi.Input<string | undefined>;
     /**
      * Defines whether a role is allowed to initiate
      * streaming replication or put the system in and out of backup mode.  Default
      * value is `false`
      */
-    replication?: pulumi.Input<boolean>;
+    replication?: pulumi.Input<boolean | undefined>;
     /**
      * Defines list of roles which will be granted to this new role.
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Alters the search path of this new role. Note that
      * due to limitations in the implementation, values cannot contain the substring
      * `", "`.
      */
-    searchPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    searchPaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When a PostgreSQL ROLE exists in multiple
      * databases and the ROLE is dropped, the
@@ -435,7 +435,7 @@ export interface RoleState {
      * in a PostgreSQL cluster using the same PostgreSQL ROLE for object ownership.
      * This is the third and final step taken when removing a ROLE from a database.
      */
-    skipDropRole?: pulumi.Input<boolean>;
+    skipDropRole?: pulumi.Input<boolean | undefined>;
     /**
      * When a PostgreSQL ROLE exists in multiple
      * databases and the ROLE is dropped, a
@@ -446,17 +446,17 @@ export interface RoleState {
      * an implicit
      * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
      */
-    skipReassignOwned?: pulumi.Input<boolean>;
+    skipReassignOwned?: pulumi.Input<boolean | undefined>;
     /**
      * Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
      */
-    statementTimeout?: pulumi.Input<number>;
+    statementTimeout?: pulumi.Input<number | undefined>;
     /**
      * Defines whether the role is a "superuser", and
      * therefore can override all access restrictions within the database.  Default
      * value is `false`.
      */
-    superuser?: pulumi.Input<boolean>;
+    superuser?: pulumi.Input<boolean | undefined>;
     /**
      * Defines the date and time after which the role's
      * password is no longer valid.  Established connections past this `validTime`
@@ -464,7 +464,7 @@ export interface RoleState {
      * datetime. If omitted or the magic value `NULL` is used, `validUntil` will be
      * set to `infinity`.  Default is `NULL`, therefore `infinity`.
      */
-    validUntil?: pulumi.Input<string>;
+    validUntil?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -474,33 +474,33 @@ export interface RoleArgs {
     /**
      * Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
      */
-    assumeRole?: pulumi.Input<string>;
+    assumeRole?: pulumi.Input<string | undefined>;
     /**
      * Defines whether a role bypasses every
      * row-level security (RLS) policy.  Default value is `false`.
      */
-    bypassRowLevelSecurity?: pulumi.Input<boolean>;
+    bypassRowLevelSecurity?: pulumi.Input<boolean | undefined>;
     /**
      * If this role can log in, this specifies how
      * many concurrent connections the role can establish. `-1` (the default) means no
      * limit.
      */
-    connectionLimit?: pulumi.Input<number>;
+    connectionLimit?: pulumi.Input<number | undefined>;
     /**
      * Defines a role's ability to execute `CREATE
      * DATABASE`.  Default value is `false`.
      */
-    createDatabase?: pulumi.Input<boolean>;
+    createDatabase?: pulumi.Input<boolean | undefined>;
     /**
      * Defines a role's ability to execute `CREATE ROLE`.
      * A role with this privilege can also alter and drop other roles.  Default value
      * is `false`.
      */
-    createRole?: pulumi.Input<boolean>;
+    createRole?: pulumi.Input<boolean | undefined>;
     /**
      * @deprecated Rename PostgreSQL role resource attribute "encrypted" to "encryptedPassword"
      */
-    encrypted?: pulumi.Input<string>;
+    encrypted?: pulumi.Input<string | undefined>;
     /**
      * Defines whether the password is stored
      * encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
@@ -508,62 +508,62 @@ export interface RoleArgs {
      * behavior of
      * [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
      */
-    encryptedPassword?: pulumi.Input<boolean>;
+    encryptedPassword?: pulumi.Input<boolean | undefined>;
     /**
      * Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
      */
-    idleInTransactionSessionTimeout?: pulumi.Input<number>;
+    idleInTransactionSessionTimeout?: pulumi.Input<number | undefined>;
     /**
      * Defines whether a role "inherits" the privileges of
      * roles it is a member of.  Default value is `true`.
      */
-    inherit?: pulumi.Input<boolean>;
+    inherit?: pulumi.Input<boolean | undefined>;
     /**
      * Defines whether role is allowed to log in.  Roles without
      * this attribute are useful for managing database privileges, but are not users
      * in the usual sense of the word.  Default value is `false`.
      */
-    login?: pulumi.Input<boolean>;
+    login?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the role. Must be unique on the PostgreSQL
      * server instance where it is configured.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Sets the role's password. A password is only of use
      * for roles having the `login` attribute set to true.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Sets the role's password without storing it in the state file.
      * This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
      * Conflicts with `password`.
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Prevents applies from updating the role password on every
      * apply unless the value changes. This version string should be updated whenever you want to
      * change the password specified in `passwordWo`. Must be used together with `passwordWo`.
      * Conflicts with `password`.
      */
-    passwordWoVersion?: pulumi.Input<string>;
+    passwordWoVersion?: pulumi.Input<string | undefined>;
     /**
      * Defines whether a role is allowed to initiate
      * streaming replication or put the system in and out of backup mode.  Default
      * value is `false`
      */
-    replication?: pulumi.Input<boolean>;
+    replication?: pulumi.Input<boolean | undefined>;
     /**
      * Defines list of roles which will be granted to this new role.
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Alters the search path of this new role. Note that
      * due to limitations in the implementation, values cannot contain the substring
      * `", "`.
      */
-    searchPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    searchPaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When a PostgreSQL ROLE exists in multiple
      * databases and the ROLE is dropped, the
@@ -573,7 +573,7 @@ export interface RoleArgs {
      * in a PostgreSQL cluster using the same PostgreSQL ROLE for object ownership.
      * This is the third and final step taken when removing a ROLE from a database.
      */
-    skipDropRole?: pulumi.Input<boolean>;
+    skipDropRole?: pulumi.Input<boolean | undefined>;
     /**
      * When a PostgreSQL ROLE exists in multiple
      * databases and the ROLE is dropped, a
@@ -584,17 +584,17 @@ export interface RoleArgs {
      * an implicit
      * [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
      */
-    skipReassignOwned?: pulumi.Input<boolean>;
+    skipReassignOwned?: pulumi.Input<boolean | undefined>;
     /**
      * Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
      */
-    statementTimeout?: pulumi.Input<number>;
+    statementTimeout?: pulumi.Input<number | undefined>;
     /**
      * Defines whether the role is a "superuser", and
      * therefore can override all access restrictions within the database.  Default
      * value is `false`.
      */
-    superuser?: pulumi.Input<boolean>;
+    superuser?: pulumi.Input<boolean | undefined>;
     /**
      * Defines the date and time after which the role's
      * password is no longer valid.  Established connections past this `validTime`
@@ -602,5 +602,5 @@ export interface RoleArgs {
      * datetime. If omitted or the magic value `NULL` is used, `validUntil` will be
      * set to `infinity`.  Default is `NULL`, therefore `infinity`.
      */
-    validUntil?: pulumi.Input<string>;
+    validUntil?: pulumi.Input<string | undefined>;
 }

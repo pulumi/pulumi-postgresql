@@ -179,31 +179,31 @@ export interface DefaultPrivilegesState {
     /**
      * The database to grant default privileges for this role.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * The PostgreSQL object type to set the default privileges on (one of: table, sequence, function, routine, type, schema).
      */
-    objectType?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string | undefined>;
     /**
      * Specifies the role that creates objects for which the default privileges will be applied.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * List of privileges (e.g., SELECT, INSERT, UPDATE, DELETE) to grant on new objects created by the owner. An empty list could be provided to revoke all default privileges for this role.
      */
-    privileges?: pulumi.Input<pulumi.Input<string>[]>;
+    privileges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The role that will automatically be granted the specified privileges on new objects created by the owner.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The database schema to set default privileges for this role.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * Permit the grant recipient to grant it to others
      */
-    withGrantOption?: pulumi.Input<boolean>;
+    withGrantOption?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -233,9 +233,9 @@ export interface DefaultPrivilegesArgs {
     /**
      * The database schema to set default privileges for this role.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * Permit the grant recipient to grant it to others
      */
-    withGrantOption?: pulumi.Input<boolean>;
+    withGrantOption?: pulumi.Input<boolean | undefined>;
 }

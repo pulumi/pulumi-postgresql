@@ -118,23 +118,23 @@ export interface GetSchemasOutputArgs {
     /**
      * Determines whether to include system schemas (pg_ prefix and information_schema). 'public' will always be included. Defaults to ``false``.
      */
-    includeSystemSchemas?: pulumi.Input<boolean>;
+    includeSystemSchemas?: pulumi.Input<boolean | undefined>;
     /**
      * List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ALL`` operators.
      */
-    likeAllPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    likeAllPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
      */
-    likeAnyPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    likeAnyPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
      */
-    notLikeAllPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    notLikeAllPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
      *
      * Note that all optional arguments can be used in conjunction.
      */
-    regexPattern?: pulumi.Input<string>;
+    regexPattern?: pulumi.Input<string | undefined>;
 }

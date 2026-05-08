@@ -126,27 +126,27 @@ export interface SubscriptionState {
     /**
      * The connection string to the publisher. It should follow the [keyword/value format](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
      */
-    conninfo?: pulumi.Input<string>;
+    conninfo?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the command should create the replication slot on the publisher. Default behavior is true
      */
-    createSlot?: pulumi.Input<boolean>;
+    createSlot?: pulumi.Input<boolean | undefined>;
     /**
      * Which database to create the subscription on. Defaults to provider database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * The name of the publication.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Names of the publications on the publisher to subscribe to
      */
-    publications?: pulumi.Input<pulumi.Input<string>[]>;
+    publications?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name
      */
-    slotName?: pulumi.Input<string>;
+    slotName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -160,15 +160,15 @@ export interface SubscriptionArgs {
     /**
      * Specifies whether the command should create the replication slot on the publisher. Default behavior is true
      */
-    createSlot?: pulumi.Input<boolean>;
+    createSlot?: pulumi.Input<boolean | undefined>;
     /**
      * Which database to create the subscription on. Defaults to provider database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * The name of the publication.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Names of the publications on the publisher to subscribe to
      */
@@ -176,5 +176,5 @@ export interface SubscriptionArgs {
     /**
      * Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name
      */
-    slotName?: pulumi.Input<string>;
+    slotName?: pulumi.Input<string | undefined>;
 }

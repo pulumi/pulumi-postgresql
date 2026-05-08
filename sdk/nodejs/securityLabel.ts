@@ -126,19 +126,19 @@ export interface SecurityLabelState {
     /**
      * The value of the security label.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The name of the provider with which this label is to be associated.
      */
-    labelProvider?: pulumi.Input<string>;
+    labelProvider?: pulumi.Input<string | undefined>;
     /**
      * The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.
      */
-    objectName?: pulumi.Input<string>;
+    objectName?: pulumi.Input<string | undefined>;
     /**
      * The PostgreSQL object type to apply this security label to.
      */
-    objectType?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string | undefined>;
 }
 
 /**

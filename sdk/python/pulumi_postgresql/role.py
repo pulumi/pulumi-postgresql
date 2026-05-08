@@ -19,28 +19,28 @@ __all__ = ['RoleArgs', 'Role']
 @pulumi.input_type
 class RoleArgs:
     def __init__(__self__, *,
-                 assume_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 bypass_row_level_security: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_database: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idle_in_transaction_session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 search_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 skip_drop_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_reassign_owned: Optional[pulumi.Input[_builtins.bool]] = None,
-                 statement_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 superuser: Optional[pulumi.Input[_builtins.bool]] = None,
-                 valid_until: Optional[pulumi.Input[_builtins.str]] = None):
+                 assume_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 bypass_row_level_security: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_database: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idle_in_transaction_session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 search_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 skip_drop_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_reassign_owned: pulumi.Input[Optional[_builtins.bool]] = None,
+                 statement_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 superuser: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valid_until: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Role resource.
 
@@ -160,19 +160,19 @@ class RoleArgs:
 
     @_builtins.property
     @pulumi.getter(name="assumeRole")
-    def assume_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assume_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
         """
         return pulumi.get(self, "assume_role")
 
     @assume_role.setter
-    def assume_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assume_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assume_role", value)
 
     @_builtins.property
     @pulumi.getter(name="bypassRowLevelSecurity")
-    def bypass_row_level_security(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bypass_row_level_security(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether a role bypasses every
         row-level security (RLS) policy.  Default value is `false`.
@@ -180,12 +180,12 @@ class RoleArgs:
         return pulumi.get(self, "bypass_row_level_security")
 
     @bypass_row_level_security.setter
-    def bypass_row_level_security(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bypass_row_level_security(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bypass_row_level_security", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionLimit")
-    def connection_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If this role can log in, this specifies how
         many concurrent connections the role can establish. `-1` (the default) means no
@@ -194,12 +194,12 @@ class RoleArgs:
         return pulumi.get(self, "connection_limit")
 
     @connection_limit.setter
-    def connection_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="createDatabase")
-    def create_database(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_database(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines a role's ability to execute `CREATE
         DATABASE`.  Default value is `false`.
@@ -207,12 +207,12 @@ class RoleArgs:
         return pulumi.get(self, "create_database")
 
     @create_database.setter
-    def create_database(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_database(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_database", value)
 
     @_builtins.property
     @pulumi.getter(name="createRole")
-    def create_role(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_role(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines a role's ability to execute `CREATE ROLE`.
         A role with this privilege can also alter and drop other roles.  Default value
@@ -221,22 +221,22 @@ class RoleArgs:
         return pulumi.get(self, "create_role")
 
     @create_role.setter
-    def create_role(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_role(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_role", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"""")
-    def encrypted(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypted(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
-    def encrypted(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypted(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptedPassword")
-    def encrypted_password(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypted_password(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the password is stored
         encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
@@ -247,24 +247,24 @@ class RoleArgs:
         return pulumi.get(self, "encrypted_password")
 
     @encrypted_password.setter
-    def encrypted_password(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypted_password(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter(name="idleInTransactionSessionTimeout")
-    def idle_in_transaction_session_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_in_transaction_session_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
         """
         return pulumi.get(self, "idle_in_transaction_session_timeout")
 
     @idle_in_transaction_session_timeout.setter
-    def idle_in_transaction_session_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_in_transaction_session_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_in_transaction_session_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def inherit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def inherit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether a role "inherits" the privileges of
         roles it is a member of.  Default value is `true`.
@@ -272,12 +272,12 @@ class RoleArgs:
         return pulumi.get(self, "inherit")
 
     @inherit.setter
-    def inherit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def inherit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "inherit", value)
 
     @_builtins.property
     @pulumi.getter
-    def login(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def login(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether role is allowed to log in.  Roles without
         this attribute are useful for managing database privileges, but are not users
@@ -286,12 +286,12 @@ class RoleArgs:
         return pulumi.get(self, "login")
 
     @login.setter
-    def login(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def login(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "login", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the role. Must be unique on the PostgreSQL
         server instance where it is configured.
@@ -299,12 +299,12 @@ class RoleArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the role's password. A password is only of use
         for roles having the `login` attribute set to true.
@@ -312,12 +312,12 @@ class RoleArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWo")
-    def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         Sets the role's password without storing it in the state file.
@@ -327,12 +327,12 @@ class RoleArgs:
         return pulumi.get(self, "password_wo")
 
     @password_wo.setter
-    def password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWoVersion")
-    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prevents applies from updating the role password on every
         apply unless the value changes. This version string should be updated whenever you want to
@@ -342,12 +342,12 @@ class RoleArgs:
         return pulumi.get(self, "password_wo_version")
 
     @password_wo_version.setter
-    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def replication(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def replication(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether a role is allowed to initiate
         streaming replication or put the system in and out of backup mode.  Default
@@ -356,24 +356,24 @@ class RoleArgs:
         return pulumi.get(self, "replication")
 
     @replication.setter
-    def replication(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def replication(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "replication", value)
 
     @_builtins.property
     @pulumi.getter
-    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Defines list of roles which will be granted to this new role.
         """
         return pulumi.get(self, "roles")
 
     @roles.setter
-    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "roles", value)
 
     @_builtins.property
     @pulumi.getter(name="searchPaths")
-    def search_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def search_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Alters the search path of this new role. Note that
         due to limitations in the implementation, values cannot contain the substring
@@ -382,12 +382,12 @@ class RoleArgs:
         return pulumi.get(self, "search_paths")
 
     @search_paths.setter
-    def search_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def search_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "search_paths", value)
 
     @_builtins.property
     @pulumi.getter(name="skipDropRole")
-    def skip_drop_role(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_drop_role(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When a PostgreSQL ROLE exists in multiple
         databases and the ROLE is dropped, the
@@ -400,12 +400,12 @@ class RoleArgs:
         return pulumi.get(self, "skip_drop_role")
 
     @skip_drop_role.setter
-    def skip_drop_role(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_drop_role(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_drop_role", value)
 
     @_builtins.property
     @pulumi.getter(name="skipReassignOwned")
-    def skip_reassign_owned(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_reassign_owned(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When a PostgreSQL ROLE exists in multiple
         databases and the ROLE is dropped, a
@@ -419,24 +419,24 @@ class RoleArgs:
         return pulumi.get(self, "skip_reassign_owned")
 
     @skip_reassign_owned.setter
-    def skip_reassign_owned(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_reassign_owned(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_reassign_owned", value)
 
     @_builtins.property
     @pulumi.getter(name="statementTimeout")
-    def statement_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def statement_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
         """
         return pulumi.get(self, "statement_timeout")
 
     @statement_timeout.setter
-    def statement_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def statement_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "statement_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def superuser(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def superuser(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the role is a "superuser", and
         therefore can override all access restrictions within the database.  Default
@@ -445,12 +445,12 @@ class RoleArgs:
         return pulumi.get(self, "superuser")
 
     @superuser.setter
-    def superuser(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def superuser(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "superuser", value)
 
     @_builtins.property
     @pulumi.getter(name="validUntil")
-    def valid_until(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def valid_until(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the date and time after which the role's
         password is no longer valid.  Established connections past this `valid_time`
@@ -461,35 +461,35 @@ class RoleArgs:
         return pulumi.get(self, "valid_until")
 
     @valid_until.setter
-    def valid_until(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def valid_until(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "valid_until", value)
 
 
 @pulumi.input_type
 class _RoleState:
     def __init__(__self__, *,
-                 assume_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 bypass_row_level_security: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_database: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idle_in_transaction_session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 search_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 skip_drop_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_reassign_owned: Optional[pulumi.Input[_builtins.bool]] = None,
-                 statement_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 superuser: Optional[pulumi.Input[_builtins.bool]] = None,
-                 valid_until: Optional[pulumi.Input[_builtins.str]] = None):
+                 assume_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 bypass_row_level_security: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_database: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idle_in_transaction_session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 search_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 skip_drop_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_reassign_owned: pulumi.Input[Optional[_builtins.bool]] = None,
+                 statement_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 superuser: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valid_until: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Role resources.
 
@@ -609,19 +609,19 @@ class _RoleState:
 
     @_builtins.property
     @pulumi.getter(name="assumeRole")
-    def assume_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assume_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the role to switch to at login via [`SET ROLE`](https://www.postgresql.org/docs/current/sql-set-role.html).
         """
         return pulumi.get(self, "assume_role")
 
     @assume_role.setter
-    def assume_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assume_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assume_role", value)
 
     @_builtins.property
     @pulumi.getter(name="bypassRowLevelSecurity")
-    def bypass_row_level_security(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bypass_row_level_security(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether a role bypasses every
         row-level security (RLS) policy.  Default value is `false`.
@@ -629,12 +629,12 @@ class _RoleState:
         return pulumi.get(self, "bypass_row_level_security")
 
     @bypass_row_level_security.setter
-    def bypass_row_level_security(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bypass_row_level_security(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bypass_row_level_security", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionLimit")
-    def connection_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If this role can log in, this specifies how
         many concurrent connections the role can establish. `-1` (the default) means no
@@ -643,12 +643,12 @@ class _RoleState:
         return pulumi.get(self, "connection_limit")
 
     @connection_limit.setter
-    def connection_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="createDatabase")
-    def create_database(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_database(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines a role's ability to execute `CREATE
         DATABASE`.  Default value is `false`.
@@ -656,12 +656,12 @@ class _RoleState:
         return pulumi.get(self, "create_database")
 
     @create_database.setter
-    def create_database(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_database(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_database", value)
 
     @_builtins.property
     @pulumi.getter(name="createRole")
-    def create_role(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_role(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines a role's ability to execute `CREATE ROLE`.
         A role with this privilege can also alter and drop other roles.  Default value
@@ -670,22 +670,22 @@ class _RoleState:
         return pulumi.get(self, "create_role")
 
     @create_role.setter
-    def create_role(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_role(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_role", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Rename PostgreSQL role resource attribute \"encrypted\" to \"encrypted_password\"""")
-    def encrypted(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypted(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
-    def encrypted(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypted(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptedPassword")
-    def encrypted_password(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypted_password(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the password is stored
         encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
@@ -696,24 +696,24 @@ class _RoleState:
         return pulumi.get(self, "encrypted_password")
 
     @encrypted_password.setter
-    def encrypted_password(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypted_password(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter(name="idleInTransactionSessionTimeout")
-    def idle_in_transaction_session_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_in_transaction_session_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
         """
         return pulumi.get(self, "idle_in_transaction_session_timeout")
 
     @idle_in_transaction_session_timeout.setter
-    def idle_in_transaction_session_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_in_transaction_session_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_in_transaction_session_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def inherit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def inherit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether a role "inherits" the privileges of
         roles it is a member of.  Default value is `true`.
@@ -721,12 +721,12 @@ class _RoleState:
         return pulumi.get(self, "inherit")
 
     @inherit.setter
-    def inherit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def inherit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "inherit", value)
 
     @_builtins.property
     @pulumi.getter
-    def login(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def login(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether role is allowed to log in.  Roles without
         this attribute are useful for managing database privileges, but are not users
@@ -735,12 +735,12 @@ class _RoleState:
         return pulumi.get(self, "login")
 
     @login.setter
-    def login(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def login(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "login", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the role. Must be unique on the PostgreSQL
         server instance where it is configured.
@@ -748,12 +748,12 @@ class _RoleState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the role's password. A password is only of use
         for roles having the `login` attribute set to true.
@@ -761,12 +761,12 @@ class _RoleState:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWo")
-    def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         Sets the role's password without storing it in the state file.
@@ -776,12 +776,12 @@ class _RoleState:
         return pulumi.get(self, "password_wo")
 
     @password_wo.setter
-    def password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWoVersion")
-    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prevents applies from updating the role password on every
         apply unless the value changes. This version string should be updated whenever you want to
@@ -791,12 +791,12 @@ class _RoleState:
         return pulumi.get(self, "password_wo_version")
 
     @password_wo_version.setter
-    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def replication(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def replication(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether a role is allowed to initiate
         streaming replication or put the system in and out of backup mode.  Default
@@ -805,24 +805,24 @@ class _RoleState:
         return pulumi.get(self, "replication")
 
     @replication.setter
-    def replication(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def replication(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "replication", value)
 
     @_builtins.property
     @pulumi.getter
-    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Defines list of roles which will be granted to this new role.
         """
         return pulumi.get(self, "roles")
 
     @roles.setter
-    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "roles", value)
 
     @_builtins.property
     @pulumi.getter(name="searchPaths")
-    def search_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def search_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Alters the search path of this new role. Note that
         due to limitations in the implementation, values cannot contain the substring
@@ -831,12 +831,12 @@ class _RoleState:
         return pulumi.get(self, "search_paths")
 
     @search_paths.setter
-    def search_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def search_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "search_paths", value)
 
     @_builtins.property
     @pulumi.getter(name="skipDropRole")
-    def skip_drop_role(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_drop_role(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When a PostgreSQL ROLE exists in multiple
         databases and the ROLE is dropped, the
@@ -849,12 +849,12 @@ class _RoleState:
         return pulumi.get(self, "skip_drop_role")
 
     @skip_drop_role.setter
-    def skip_drop_role(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_drop_role(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_drop_role", value)
 
     @_builtins.property
     @pulumi.getter(name="skipReassignOwned")
-    def skip_reassign_owned(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_reassign_owned(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When a PostgreSQL ROLE exists in multiple
         databases and the ROLE is dropped, a
@@ -868,24 +868,24 @@ class _RoleState:
         return pulumi.get(self, "skip_reassign_owned")
 
     @skip_reassign_owned.setter
-    def skip_reassign_owned(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_reassign_owned(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_reassign_owned", value)
 
     @_builtins.property
     @pulumi.getter(name="statementTimeout")
-    def statement_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def statement_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
         """
         return pulumi.get(self, "statement_timeout")
 
     @statement_timeout.setter
-    def statement_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def statement_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "statement_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def superuser(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def superuser(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the role is a "superuser", and
         therefore can override all access restrictions within the database.  Default
@@ -894,12 +894,12 @@ class _RoleState:
         return pulumi.get(self, "superuser")
 
     @superuser.setter
-    def superuser(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def superuser(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "superuser", value)
 
     @_builtins.property
     @pulumi.getter(name="validUntil")
-    def valid_until(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def valid_until(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the date and time after which the role's
         password is no longer valid.  Established connections past this `valid_time`
@@ -910,7 +910,7 @@ class _RoleState:
         return pulumi.get(self, "valid_until")
 
     @valid_until.setter
-    def valid_until(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def valid_until(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "valid_until", value)
 
 
@@ -920,28 +920,28 @@ class Role(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assume_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 bypass_row_level_security: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_database: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idle_in_transaction_session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 search_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 skip_drop_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_reassign_owned: Optional[pulumi.Input[_builtins.bool]] = None,
-                 statement_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 superuser: Optional[pulumi.Input[_builtins.bool]] = None,
-                 valid_until: Optional[pulumi.Input[_builtins.str]] = None,
+                 assume_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 bypass_row_level_security: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_database: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idle_in_transaction_session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 search_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 skip_drop_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_reassign_owned: pulumi.Input[Optional[_builtins.bool]] = None,
+                 statement_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 superuser: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valid_until: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The ``Role`` resource creates and manages a role on a PostgreSQL
@@ -1220,28 +1220,28 @@ class Role(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assume_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 bypass_row_level_security: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_database: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idle_in_transaction_session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 search_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 skip_drop_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_reassign_owned: Optional[pulumi.Input[_builtins.bool]] = None,
-                 statement_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 superuser: Optional[pulumi.Input[_builtins.bool]] = None,
-                 valid_until: Optional[pulumi.Input[_builtins.str]] = None,
+                 assume_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 bypass_row_level_security: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_database: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idle_in_transaction_session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 search_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 skip_drop_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_reassign_owned: pulumi.Input[Optional[_builtins.bool]] = None,
+                 statement_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 superuser: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valid_until: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1285,28 +1285,28 @@ class Role(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assume_role: Optional[pulumi.Input[_builtins.str]] = None,
-            bypass_row_level_security: Optional[pulumi.Input[_builtins.bool]] = None,
-            connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            create_database: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_role: Optional[pulumi.Input[_builtins.bool]] = None,
-            encrypted: Optional[pulumi.Input[_builtins.str]] = None,
-            encrypted_password: Optional[pulumi.Input[_builtins.bool]] = None,
-            idle_in_transaction_session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-            login: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            password_wo: Optional[pulumi.Input[_builtins.str]] = None,
-            password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
-            replication: Optional[pulumi.Input[_builtins.bool]] = None,
-            roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            search_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            skip_drop_role: Optional[pulumi.Input[_builtins.bool]] = None,
-            skip_reassign_owned: Optional[pulumi.Input[_builtins.bool]] = None,
-            statement_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            superuser: Optional[pulumi.Input[_builtins.bool]] = None,
-            valid_until: Optional[pulumi.Input[_builtins.str]] = None) -> 'Role':
+            assume_role: pulumi.Input[Optional[_builtins.str]] = None,
+            bypass_row_level_security: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            create_database: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_role: pulumi.Input[Optional[_builtins.bool]] = None,
+            encrypted: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted_password: pulumi.Input[Optional[_builtins.bool]] = None,
+            idle_in_transaction_session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+            login: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+            replication: pulumi.Input[Optional[_builtins.bool]] = None,
+            roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            search_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            skip_drop_role: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_reassign_owned: pulumi.Input[Optional[_builtins.bool]] = None,
+            statement_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            superuser: pulumi.Input[Optional[_builtins.bool]] = None,
+            valid_until: pulumi.Input[Optional[_builtins.str]] = None) -> 'Role':
         """
         Get an existing Role resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -151,37 +151,37 @@ export interface ServerState {
     /**
      * When true, will drop objects that depend on the server (such as user mappings), and in turn all objects that depend on those objects . (Default: false)
      */
-    dropCascade?: pulumi.Input<boolean>;
+    dropCascade?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the foreign-data wrapper that manages the server.
      * Changing this value
      * will force the creation of a new resource as this value can only be set
      * when the foreign server is created.
      */
-    fdwName?: pulumi.Input<string>;
+    fdwName?: pulumi.Input<string | undefined>;
     /**
      * This clause specifies the options for the server. The options typically define the connection details of the server, but the actual names and values are dependent on the server's foreign-data wrapper.
      */
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the foreign server to be created.
      */
-    serverName?: pulumi.Input<string>;
+    serverName?: pulumi.Input<string | undefined>;
     /**
      * By default, the user who defines the server becomes its owner. Set this value to configure the new owner of the foreign server.
      */
-    serverOwner?: pulumi.Input<string>;
+    serverOwner?: pulumi.Input<string | undefined>;
     /**
      * Optional server type, potentially useful to foreign-data wrappers.
      * Changing this value
      * will force the creation of a new resource as this value can only be set
      * when the foreign server is created.
      */
-    serverType?: pulumi.Input<string>;
+    serverType?: pulumi.Input<string | undefined>;
     /**
      * Optional server version, potentially useful to foreign-data wrappers.
      */
-    serverVersion?: pulumi.Input<string>;
+    serverVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -191,7 +191,7 @@ export interface ServerArgs {
     /**
      * When true, will drop objects that depend on the server (such as user mappings), and in turn all objects that depend on those objects . (Default: false)
      */
-    dropCascade?: pulumi.Input<boolean>;
+    dropCascade?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the foreign-data wrapper that manages the server.
      * Changing this value
@@ -202,7 +202,7 @@ export interface ServerArgs {
     /**
      * This clause specifies the options for the server. The options typically define the connection details of the server, but the actual names and values are dependent on the server's foreign-data wrapper.
      */
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the foreign server to be created.
      */
@@ -210,16 +210,16 @@ export interface ServerArgs {
     /**
      * By default, the user who defines the server becomes its owner. Set this value to configure the new owner of the foreign server.
      */
-    serverOwner?: pulumi.Input<string>;
+    serverOwner?: pulumi.Input<string | undefined>;
     /**
      * Optional server type, potentially useful to foreign-data wrappers.
      * Changing this value
      * will force the creation of a new resource as this value can only be set
      * when the foreign server is created.
      */
-    serverType?: pulumi.Input<string>;
+    serverType?: pulumi.Input<string | undefined>;
     /**
      * Optional server version, potentially useful to foreign-data wrappers.
      */
-    serverVersion?: pulumi.Input<string>;
+    serverVersion?: pulumi.Input<string | undefined>;
 }

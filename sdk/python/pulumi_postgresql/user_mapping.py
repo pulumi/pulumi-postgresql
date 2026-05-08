@@ -21,7 +21,7 @@ class UserMappingArgs:
     def __init__(__self__, *,
                  server_name: pulumi.Input[_builtins.str],
                  user_name: pulumi.Input[_builtins.str],
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a UserMapping resource.
 
@@ -72,23 +72,23 @@ class UserMappingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "options", value)
 
 
 @pulumi.input_type
 class _UserMappingState:
     def __init__(__self__, *,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 server_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 server_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserMapping resources.
 
@@ -111,19 +111,19 @@ class _UserMappingState:
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="serverName")
-    def server_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of an existing server for which the user mapping is to be created.
         Changing this value
@@ -133,12 +133,12 @@ class _UserMappingState:
         return pulumi.get(self, "server_name")
 
     @server_name.setter
-    def server_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_name", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of an existing user that is mapped to foreign server. CURRENT_ROLE, CURRENT_USER, and USER match the name of the current user. When PUBLIC is specified, a so-called public mapping is created that is used when no user-specific mapping is applicable.
         Changing this value
@@ -148,7 +148,7 @@ class _UserMappingState:
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
@@ -158,9 +158,9 @@ class UserMapping(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 server_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 server_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The ``UserMapping`` resource creates and manages a user mapping on a PostgreSQL server.
@@ -255,9 +255,9 @@ class UserMapping(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 server_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 server_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -284,9 +284,9 @@ class UserMapping(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            server_name: Optional[pulumi.Input[_builtins.str]] = None,
-            user_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserMapping':
+            options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            server_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserMapping':
         """
         Get an existing UserMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

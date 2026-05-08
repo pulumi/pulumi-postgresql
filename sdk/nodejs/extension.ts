@@ -116,27 +116,27 @@ export interface ExtensionState {
     /**
      * When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
      */
-    createCascade?: pulumi.Input<boolean>;
+    createCascade?: pulumi.Input<boolean | undefined>;
     /**
      * Which database to create the extension on. Defaults to provider database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
      */
-    dropCascade?: pulumi.Input<boolean>;
+    dropCascade?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the extension.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Sets the schema of an extension.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * Sets the version number of the extension.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -146,25 +146,25 @@ export interface ExtensionArgs {
     /**
      * When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
      */
-    createCascade?: pulumi.Input<boolean>;
+    createCascade?: pulumi.Input<boolean | undefined>;
     /**
      * Which database to create the extension on. Defaults to provider database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
      */
-    dropCascade?: pulumi.Input<boolean>;
+    dropCascade?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the extension.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Sets the schema of an extension.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * Sets the version number of the extension.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

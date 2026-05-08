@@ -22,17 +22,17 @@ __all__ = ['FunctionArgs', 'Function']
 class FunctionArgs:
     def __init__(__self__, *,
                  body: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parallel: Optional[pulumi.Input[_builtins.str]] = None,
-                 returns: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_definer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 strict: Optional[pulumi.Input[_builtins.bool]] = None,
-                 volatility: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionArgArgs']]]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parallel: pulumi.Input[Optional[_builtins.str]] = None,
+                 returns: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_definer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 volatility: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Function resource.
 
@@ -92,19 +92,19 @@ class FunctionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FunctionArgArgs']]]]:
         """
         List of arguments for the function.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionArgArgs']]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database where the function is located.
         If not specified, the function is created in the current database.
@@ -112,12 +112,12 @@ class FunctionArgs:
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="dropCascade")
-    def drop_cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drop_cascade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True to automatically drop objects that depend on the function (such as
         operators or triggers), and in turn all objects that depend on those objects. Default is false.
@@ -125,60 +125,60 @@ class FunctionArgs:
         return pulumi.get(self, "drop_cascade")
 
     @drop_cascade.setter
-    def drop_cascade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drop_cascade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drop_cascade", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the function.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parallel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parallel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
         """
         return pulumi.get(self, "parallel")
 
     @parallel.setter
-    def parallel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parallel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parallel", value)
 
     @_builtins.property
     @pulumi.getter
-    def returns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def returns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type that the function returns. It can be computed from the OUT arguments. Default is void.
         """
         return pulumi.get(self, "returns")
 
     @returns.setter
-    def returns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def returns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "returns", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schema where the function is located.
         If not specified, the function is created in the current schema.
@@ -186,61 +186,61 @@ class FunctionArgs:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter(name="securityDefiner")
-    def security_definer(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def security_definer(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
         """
         return pulumi.get(self, "security_definer")
 
     @security_definer.setter
-    def security_definer(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def security_definer(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "security_definer", value)
 
     @_builtins.property
     @pulumi.getter
-    def strict(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def strict(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If the function should always return NULL when any of the inputs is NULL. Default is false.
         """
         return pulumi.get(self, "strict")
 
     @strict.setter
-    def strict(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def strict(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "strict", value)
 
     @_builtins.property
     @pulumi.getter
-    def volatility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volatility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
         """
         return pulumi.get(self, "volatility")
 
     @volatility.setter
-    def volatility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volatility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volatility", value)
 
 
 @pulumi.input_type
 class _FunctionState:
     def __init__(__self__, *,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]]] = None,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parallel: Optional[pulumi.Input[_builtins.str]] = None,
-                 returns: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_definer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 strict: Optional[pulumi.Input[_builtins.bool]] = None,
-                 volatility: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionArgArgs']]]] = None,
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parallel: pulumi.Input[Optional[_builtins.str]] = None,
+                 returns: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_definer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 volatility: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Function resources.
 
@@ -288,19 +288,19 @@ class _FunctionState:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FunctionArgArgs']]]]:
         """
         List of arguments for the function.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionArgArgs']]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionArgArgs']]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function body.
         This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
@@ -308,12 +308,12 @@ class _FunctionState:
         return pulumi.get(self, "body")
 
     @body.setter
-    def body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "body", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database where the function is located.
         If not specified, the function is created in the current database.
@@ -321,12 +321,12 @@ class _FunctionState:
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="dropCascade")
-    def drop_cascade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def drop_cascade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True to automatically drop objects that depend on the function (such as
         operators or triggers), and in turn all objects that depend on those objects. Default is false.
@@ -334,60 +334,60 @@ class _FunctionState:
         return pulumi.get(self, "drop_cascade")
 
     @drop_cascade.setter
-    def drop_cascade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def drop_cascade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "drop_cascade", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the function.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parallel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parallel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
         """
         return pulumi.get(self, "parallel")
 
     @parallel.setter
-    def parallel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parallel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parallel", value)
 
     @_builtins.property
     @pulumi.getter
-    def returns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def returns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type that the function returns. It can be computed from the OUT arguments. Default is void.
         """
         return pulumi.get(self, "returns")
 
     @returns.setter
-    def returns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def returns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "returns", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schema where the function is located.
         If not specified, the function is created in the current schema.
@@ -395,43 +395,43 @@ class _FunctionState:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter(name="securityDefiner")
-    def security_definer(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def security_definer(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
         """
         return pulumi.get(self, "security_definer")
 
     @security_definer.setter
-    def security_definer(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def security_definer(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "security_definer", value)
 
     @_builtins.property
     @pulumi.getter
-    def strict(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def strict(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If the function should always return NULL when any of the inputs is NULL. Default is false.
         """
         return pulumi.get(self, "strict")
 
     @strict.setter
-    def strict(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def strict(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "strict", value)
 
     @_builtins.property
     @pulumi.getter
-    def volatility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volatility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
         """
         return pulumi.get(self, "volatility")
 
     @volatility.setter
-    def volatility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volatility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volatility", value)
 
 
@@ -441,18 +441,18 @@ class Function(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionArgArgs', 'FunctionArgArgsDict']]]]] = None,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parallel: Optional[pulumi.Input[_builtins.str]] = None,
-                 returns: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_definer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 strict: Optional[pulumi.Input[_builtins.bool]] = None,
-                 volatility: Optional[pulumi.Input[_builtins.str]] = None,
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionArgArgs', 'FunctionArgArgsDict']]]]] = None,
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parallel: pulumi.Input[Optional[_builtins.str]] = None,
+                 returns: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_definer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 volatility: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The ``Function`` resource creates and manages a function on a PostgreSQL
@@ -572,18 +572,18 @@ class Function(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionArgArgs', 'FunctionArgArgsDict']]]]] = None,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parallel: Optional[pulumi.Input[_builtins.str]] = None,
-                 returns: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_definer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 strict: Optional[pulumi.Input[_builtins.bool]] = None,
-                 volatility: Optional[pulumi.Input[_builtins.str]] = None,
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionArgArgs', 'FunctionArgArgsDict']]]]] = None,
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parallel: pulumi.Input[Optional[_builtins.str]] = None,
+                 returns: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_definer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 volatility: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -617,18 +617,18 @@ class Function(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FunctionArgArgs', 'FunctionArgArgsDict']]]]] = None,
-            body: Optional[pulumi.Input[_builtins.str]] = None,
-            database: Optional[pulumi.Input[_builtins.str]] = None,
-            drop_cascade: Optional[pulumi.Input[_builtins.bool]] = None,
-            language: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parallel: Optional[pulumi.Input[_builtins.str]] = None,
-            returns: Optional[pulumi.Input[_builtins.str]] = None,
-            schema: Optional[pulumi.Input[_builtins.str]] = None,
-            security_definer: Optional[pulumi.Input[_builtins.bool]] = None,
-            strict: Optional[pulumi.Input[_builtins.bool]] = None,
-            volatility: Optional[pulumi.Input[_builtins.str]] = None) -> 'Function':
+            args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionArgArgs', 'FunctionArgArgsDict']]]]] = None,
+            body: pulumi.Input[Optional[_builtins.str]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parallel: pulumi.Input[Optional[_builtins.str]] = None,
+            returns: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            security_definer: pulumi.Input[Optional[_builtins.bool]] = None,
+            strict: pulumi.Input[Optional[_builtins.bool]] = None,
+            volatility: pulumi.Input[Optional[_builtins.str]] = None) -> 'Function':
         """
         Get an existing Function resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
