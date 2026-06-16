@@ -922,7 +922,7 @@ func main() {
 			PrincipalType:     pulumi.String("Group"),
 			ResourceGroupName: pulumi.Any(rgName),
 			ServerName:        pgsql.Name,
-			TenantId:          pulumi.String(pulumi.String(current.TenantId)),
+			TenantId:          pulumi.String(current.TenantId),
 		})
 		if err != nil {
 			return err
