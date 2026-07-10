@@ -80,7 +80,7 @@ export interface GetSequencesResult {
     readonly schemas?: string[];
     /**
      * A list of PostgreSQL sequences retrieved by this data source. Each sequence consists of the fields documented below.
-     * ___
+     * ***
      */
     readonly sequences: outputs.GetSequencesSequence[];
 }

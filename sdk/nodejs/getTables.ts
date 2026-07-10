@@ -86,7 +86,7 @@ export interface GetTablesResult {
     readonly tableTypes?: string[];
     /**
      * A list of PostgreSQL tables retrieved by this data source. Each table consists of the fields documented below.
-     * ___
+     * ***
      */
     readonly tables: outputs.GetTablesTable[];
 }

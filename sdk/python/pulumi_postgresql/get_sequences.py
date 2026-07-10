@@ -96,7 +96,7 @@ class GetSequencesResult:
     def sequences(self) -> Sequence['outputs.GetSequencesSequenceResult']:
         """
         A list of PostgreSQL sequences retrieved by this data source. Each sequence consists of the fields documented below.
-        ___
+        ***
         """
         return pulumi.get(self, "sequences")
 

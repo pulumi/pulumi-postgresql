@@ -104,7 +104,7 @@ class GetTablesResult:
     def tables(self) -> Sequence['outputs.GetTablesTableResult']:
         """
         A list of PostgreSQL tables retrieved by this data source. Each table consists of the fields documented below.
-        ___
+        ***
         """
         return pulumi.get(self, "tables")
 
