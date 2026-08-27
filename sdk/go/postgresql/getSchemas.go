@@ -81,12 +81,8 @@ type GetSchemasResult struct {
 }
 
 func GetSchemasOutput(ctx *pulumi.Context, args GetSchemasOutputArgs, opts ...pulumi.InvokeOption) GetSchemasResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSchemasResultOutput, error) {
-			args := v.(GetSchemasArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("postgresql:index/getSchemas:getSchemas", args, GetSchemasResultOutput{}, options).(GetSchemasResultOutput), nil
-		}).(GetSchemasResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("postgresql:index/getSchemas:getSchemas", args, GetSchemasResultOutput{}, options).(GetSchemasResultOutput)
 }
 
 // A collection of arguments for invoking getSchemas.
