@@ -1,3 +1,0 @@
-name: postgresql
-description: A Pulumi resource provider for postgresql.
-language: schema
