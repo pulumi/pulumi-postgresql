@@ -89,7 +89,7 @@ namespace Pulumi.PostgreSql
     ///         Role = "public",
     ///         Schema = "public",
     ///         ObjectType = "schema",
-    ///         Privileges = new[] {},
+    ///         Privileges = new() {},
     ///     });
     /// 
     /// });

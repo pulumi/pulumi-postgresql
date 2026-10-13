@@ -87,7 +87,7 @@ namespace Pulumi.PostgreSql
     ///         Role = "public",
     ///         Owner = "object_owner",
     ///         ObjectType = "function",
-    ///         Privileges = new[] {},
+    ///         Privileges = new() {},
     ///     });
     /// 
     /// });

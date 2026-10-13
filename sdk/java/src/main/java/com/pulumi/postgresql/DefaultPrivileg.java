@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var grantTablePrivileges = new DefaultPrivileges("grantTablePrivileges", DefaultPrivilegesArgs.builder()
- *             .database(exampleDb.name())
+ *             .database(exampleDb.get("name"))
  *             .role("current_role")
  *             .owner("owner_role")
  *             .schema("public")
@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var revokePublic = new DefaultPrivileges("revokePublic", DefaultPrivilegesArgs.builder()
- *             .database(exampleDb.name())
+ *             .database(exampleDb.get("name"))
  *             .role("public")
  *             .owner("object_owner")
  *             .objectType("function")
