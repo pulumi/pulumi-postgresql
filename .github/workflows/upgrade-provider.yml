@@ -73,6 +73,10 @@ jobs:
           github_token: ${{ steps.app-auth.outputs.token }}
           # only saving the cache in the prerequisites job
           cache_save: false
+          # Keep mise shims off PATH: they shadow the real tool binaries that mise env
+          # already exports, and fail when invoked outside the repo (e.g. pulumi plugins
+          # resolved from PATH while tfgen runs `pulumi convert` in a temp dir).
+          add_shims_to_path: false
       - name: Install project dependencies
         run: mise deps install
       - name: Install upgrade-provider
