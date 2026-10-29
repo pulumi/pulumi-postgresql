@@ -197,6 +197,14 @@ jobs:
         PROVIDER_VERSION: ${{ needs.prerequisites.outputs.version }}
     - name: Build registry docs
       run: make build_registry_docs
+    - name: DEBUG convert
+      continue-on-error: true
+      run: |
+        env | grep -iE '^(PULUMI|GITHUB_TOKEN|CI|MISE|PATH)' | sed -E 's/(TOKEN[^=]*)=.*/\1=***/'
+        ls -la .pulumi .pulumi/plugins || true
+        ls -d /tmp/convert-examples-repro* || true
+        for d in /tmp/convert-examples-repro*; do cat "$d/repro.sh"; (cd "$d" && bash repro.sh) 2>&1 | tail -40; done
+        for f in .pulumi/logs/*; do echo "== $f"; grep -iE 'error|fail|warn' "$f" | head -20; done
     - name: Check worktree clean
       id: worktreeClean
       uses: pulumi/git-status-check-action@0d90c81496aa8d6a31d9c6a0d6297feea2f54057 # v2.0.0
