@@ -106,20 +106,18 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Rename PostgreSQL role resource attribute &#34;encrypted&#34; to &#34;encryptedPassword&#34;
+     * @deprecated Rename PostgreSQL role resource attribute &#34;encrypted&#34; to &#34;encryptedPassword&#34;
      * 
      */
-    @Deprecated /* Rename PostgreSQL role resource attribute ""encrypted"" to ""encryptedPassword"" */
+    @Deprecated
     @Import(name="encrypted")
     private @Nullable Output<String> encrypted;
 
     /**
-     * @deprecated
-     * Rename PostgreSQL role resource attribute &#34;encrypted&#34; to &#34;encryptedPassword&#34;
+     * @deprecated Rename PostgreSQL role resource attribute &#34;encrypted&#34; to &#34;encryptedPassword&#34;
      * 
      */
-    @Deprecated /* Rename PostgreSQL role resource attribute ""encrypted"" to ""encryptedPassword"" */
+    @Deprecated
     public Optional<Output<String>> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
@@ -605,11 +603,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Rename PostgreSQL role resource attribute &#34;encrypted&#34; to &#34;encryptedPassword&#34;
+         * @deprecated Rename PostgreSQL role resource attribute &#34;encrypted&#34; to &#34;encryptedPassword&#34;
          * 
          */
-        @Deprecated /* Rename PostgreSQL role resource attribute ""encrypted"" to ""encryptedPassword"" */
+        @Deprecated
         public Builder encrypted(@Nullable Output<String> encrypted) {
             $.encrypted = encrypted;
             return this;
@@ -618,11 +615,10 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Rename PostgreSQL role resource attribute &#34;encrypted&#34; to &#34;encryptedPassword&#34;
+         * @deprecated Rename PostgreSQL role resource attribute &#34;encrypted&#34; to &#34;encryptedPassword&#34;
          * 
          */
-        @Deprecated /* Rename PostgreSQL role resource attribute ""encrypted"" to ""encryptedPassword"" */
+        @Deprecated
         public Builder encrypted(String encrypted) {
             return encrypted(Output.of(encrypted));
         }

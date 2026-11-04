@@ -532,6 +532,28 @@ class Grant(pulumi.CustomResource):
         __props__.__dict__["with_grant_option"] = with_grant_option
         return Grant(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            object_type: pulumi.Input[Optional[_builtins.str]] = None,
+            objects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            privileges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            with_grant_option: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["columns"] = columns
+        __props__["database"] = database
+        __props__["objectType"] = object_type
+        __props__["objects"] = objects
+        __props__["privileges"] = privileges
+        __props__["role"] = role
+        __props__["schema"] = schema
+        __props__["withGrantOption"] = with_grant_option
+        return pulumi.runtime.exists_resource(None, 'postgresql:index/grant:Grant', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def columns(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

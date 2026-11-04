@@ -170,11 +170,10 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.scheme);
     }
     /**
-     * @deprecated
-     * Rename PostgreSQL provider `sslMode` attribute to `sslmode`
+     * @deprecated Rename PostgreSQL provider `sslMode` attribute to `sslmode`
      * 
      */
-    @Deprecated /* Rename PostgreSQL provider `sslMode` attribute to `sslmode` */
+    @Deprecated
     @Export(name="sslMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslMode;
 

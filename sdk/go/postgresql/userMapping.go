@@ -156,6 +156,12 @@ func (UserMappingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userMappingState)(nil)).Elem()
 }
 
+// UserMappingExists checks whether an existing UserMapping resource with the given ID exists.
+func UserMappingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserMappingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("postgresql:index/userMapping:UserMapping", id, state, "", opts...)
+}
+
 type userMappingArgs struct {
 	// This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.
 	Options map[string]string `pulumi:"options"`

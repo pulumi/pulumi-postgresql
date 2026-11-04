@@ -456,6 +456,28 @@ class Publication(pulumi.CustomResource):
         __props__.__dict__["tables"] = tables
         return Publication(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            all_tables: pulumi.Input[Optional[_builtins.bool]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            publish_params: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            publish_via_partition_root_param: pulumi.Input[Optional[_builtins.bool]] = None,
+            tables: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allTables"] = all_tables
+        __props__["database"] = database
+        __props__["dropCascade"] = drop_cascade
+        __props__["name"] = name
+        __props__["owner"] = owner
+        __props__["publishParams"] = publish_params
+        __props__["publishViaPartitionRootParam"] = publish_via_partition_root_param
+        __props__["tables"] = tables
+        return pulumi.runtime.exists_resource(None, 'postgresql:index/publication:Publication', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allTables")
     def all_tables(self) -> pulumi.Output[_builtins.bool]:

@@ -137,6 +137,12 @@ func (SecurityLabelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityLabelState)(nil)).Elem()
 }
 
+// SecurityLabelExists checks whether an existing SecurityLabel resource with the given ID exists.
+func SecurityLabelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityLabelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("postgresql:index/securityLabel:SecurityLabel", id, state, "", opts...)
+}
+
 type securityLabelArgs struct {
 	// The value of the security label.
 	Label string `pulumi:"label"`

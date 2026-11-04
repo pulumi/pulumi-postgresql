@@ -1408,6 +1408,56 @@ class Role(pulumi.CustomResource):
         __props__.__dict__["valid_until"] = valid_until
         return Role(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assume_role: pulumi.Input[Optional[_builtins.str]] = None,
+            bypass_row_level_security: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            create_database: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_role: pulumi.Input[Optional[_builtins.bool]] = None,
+            encrypted: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted_password: pulumi.Input[Optional[_builtins.bool]] = None,
+            idle_in_transaction_session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+            login: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+            replication: pulumi.Input[Optional[_builtins.bool]] = None,
+            roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            search_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            skip_drop_role: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_reassign_owned: pulumi.Input[Optional[_builtins.bool]] = None,
+            statement_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            superuser: pulumi.Input[Optional[_builtins.bool]] = None,
+            valid_until: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assumeRole"] = assume_role
+        __props__["bypassRowLevelSecurity"] = bypass_row_level_security
+        __props__["connectionLimit"] = connection_limit
+        __props__["createDatabase"] = create_database
+        __props__["createRole"] = create_role
+        __props__["encrypted"] = encrypted
+        __props__["encryptedPassword"] = encrypted_password
+        __props__["idleInTransactionSessionTimeout"] = idle_in_transaction_session_timeout
+        __props__["inherit"] = inherit
+        __props__["login"] = login
+        __props__["name"] = name
+        __props__["password"] = password
+        __props__["passwordWo"] = password_wo
+        __props__["passwordWoVersion"] = password_wo_version
+        __props__["replication"] = replication
+        __props__["roles"] = roles
+        __props__["searchPaths"] = search_paths
+        __props__["skipDropRole"] = skip_drop_role
+        __props__["skipReassignOwned"] = skip_reassign_owned
+        __props__["statementTimeout"] = statement_timeout
+        __props__["superuser"] = superuser
+        __props__["validUntil"] = valid_until
+        return pulumi.runtime.exists_resource(None, 'postgresql:index/role:Role', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="assumeRole")
     def assume_role(self) -> pulumi.Output[Optional[_builtins.str]]:

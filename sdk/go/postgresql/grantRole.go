@@ -145,6 +145,12 @@ func (GrantRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*grantRoleState)(nil)).Elem()
 }
 
+// GrantRoleExists checks whether an existing GrantRole resource with the given ID exists.
+func GrantRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GrantRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("postgresql:index/grantRole:GrantRole", id, state, "", opts...)
+}
+
 type grantRoleArgs struct {
 	// The name of the role that is added to `role`.
 	GrantRole string `pulumi:"grantRole"`

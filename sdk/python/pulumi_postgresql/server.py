@@ -475,6 +475,26 @@ class Server(pulumi.CustomResource):
         __props__.__dict__["server_version"] = server_version
         return Server(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+            fdw_name: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            server_name: pulumi.Input[Optional[_builtins.str]] = None,
+            server_owner: pulumi.Input[Optional[_builtins.str]] = None,
+            server_type: pulumi.Input[Optional[_builtins.str]] = None,
+            server_version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dropCascade"] = drop_cascade
+        __props__["fdwName"] = fdw_name
+        __props__["options"] = options
+        __props__["serverName"] = server_name
+        __props__["serverOwner"] = server_owner
+        __props__["serverType"] = server_type
+        __props__["serverVersion"] = server_version
+        return pulumi.runtime.exists_resource(None, 'postgresql:index/server:Server', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dropCascade")
     def drop_cascade(self) -> pulumi.Output[Optional[_builtins.bool]]:

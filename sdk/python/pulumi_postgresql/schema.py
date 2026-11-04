@@ -478,6 +478,24 @@ class Schema(pulumi.CustomResource):
         __props__.__dict__["policies"] = policies
         return Schema(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+            if_not_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SchemaPolicyArgs', 'SchemaPolicyArgsDict', 'outputs.SchemaPolicy']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["database"] = database
+        __props__["dropCascade"] = drop_cascade
+        __props__["ifNotExists"] = if_not_exists
+        __props__["name"] = name
+        __props__["owner"] = owner
+        __props__["policies"] = policies
+        return pulumi.runtime.exists_resource(None, 'postgresql:index/schema:Schema', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def database(self) -> pulumi.Output[_builtins.str]:

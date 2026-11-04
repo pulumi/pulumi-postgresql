@@ -312,6 +312,12 @@ func (DatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseState)(nil)).Elem()
 }
 
+// DatabaseExists checks whether an existing Database resource with the given ID exists.
+func DatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("postgresql:index/database:Database", id, state, "", opts...)
+}
+
 type databaseArgs struct {
 	// If `false` then no one can connect to this
 	// database. The default is `true`, allowing connections (except as restricted by

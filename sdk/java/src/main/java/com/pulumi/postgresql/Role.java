@@ -270,11 +270,10 @@ public class Role extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.createRole);
     }
     /**
-     * @deprecated
-     * Rename PostgreSQL role resource attribute &#34;encrypted&#34; to &#34;encryptedPassword&#34;
+     * @deprecated Rename PostgreSQL role resource attribute &#34;encrypted&#34; to &#34;encryptedPassword&#34;
      * 
      */
-    @Deprecated /* Rename PostgreSQL role resource attribute ""encrypted"" to ""encryptedPassword"" */
+    @Deprecated
     @Export(name="encrypted", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encrypted;
 

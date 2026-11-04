@@ -248,6 +248,18 @@ class ReplicationSlot(pulumi.CustomResource):
         __props__.__dict__["plugin"] = plugin
         return ReplicationSlot(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["database"] = database
+        __props__["name"] = name
+        __props__["plugin"] = plugin
+        return pulumi.runtime.exists_resource(None, 'postgresql:index/replicationSlot:ReplicationSlot', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def database(self) -> pulumi.Output[_builtins.str]:

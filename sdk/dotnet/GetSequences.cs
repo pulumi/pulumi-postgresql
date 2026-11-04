@@ -14,7 +14,6 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
         /// 
-        /// 
         /// ## Usage
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
         /// 
-        /// 
         /// ## Usage
         /// 
         /// ```csharp
@@ -63,7 +61,6 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// The ``postgresql.getSequences`` data source retrieves a list of sequence names from a specified PostgreSQL database.
-        /// 
         /// 
         /// ## Usage
         /// 
@@ -244,7 +241,7 @@ namespace Pulumi.PostgreSql
         public readonly ImmutableArray<string> Schemas;
         /// <summary>
         /// A list of PostgreSQL sequences retrieved by this data source. Each sequence consists of the fields documented below.
-        /// ___
+        /// ***
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSequencesSequenceResult> Sequences;
 

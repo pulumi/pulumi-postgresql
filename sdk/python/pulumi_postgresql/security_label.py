@@ -314,6 +314,20 @@ class SecurityLabel(pulumi.CustomResource):
         __props__.__dict__["object_type"] = object_type
         return SecurityLabel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            label_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            object_name: pulumi.Input[Optional[_builtins.str]] = None,
+            object_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["label"] = label
+        __props__["labelProvider"] = label_provider
+        __props__["objectName"] = object_name
+        __props__["objectType"] = object_type
+        return pulumi.runtime.exists_resource(None, 'postgresql:index/securityLabel:SecurityLabel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def label(self) -> pulumi.Output[_builtins.str]:

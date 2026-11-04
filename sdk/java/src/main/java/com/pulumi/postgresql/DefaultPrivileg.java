@@ -140,11 +140,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * @deprecated
- * postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges
+ * @deprecated postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges
  * 
  */
-@Deprecated /* postgresql.DefaultPrivileg has been deprecated in favor of postgresql.DefaultPrivileges */
+@Deprecated
 @ResourceType(type="postgresql:index/defaultPrivileg:DefaultPrivileg")
 public class DefaultPrivileg extends com.pulumi.resources.CustomResource {
     /**
