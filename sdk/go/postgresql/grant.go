@@ -212,6 +212,12 @@ func (GrantState) ElementType() reflect.Type {
 	return reflect.TypeOf((*grantState)(nil)).Elem()
 }
 
+// GrantExists checks whether an existing Grant resource with the given ID exists.
+func GrantExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GrantState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("postgresql:index/grant:Grant", id, state, "", opts...)
+}
+
 type grantArgs struct {
 	// The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
 	Columns []string `pulumi:"columns"`

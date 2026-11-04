@@ -218,11 +218,10 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * Can be specified multiple times for each policy.  Each
      * policy block supports fields documented below.
      * 
-     * @deprecated
-     * Use postgresql.Grant resource instead (with object_type=&#34;schema&#34;)
+     * @deprecated Use postgresql.Grant resource instead (with object_type=&#34;schema&#34;)
      * 
      */
-    @Deprecated /* Use postgresql.Grant resource instead (with object_type=""schema"") */
+    @Deprecated
     @Export(name="policies", refs={List.class,SchemaPolicy.class}, tree="[0,1]")
     private Output<List<SchemaPolicy>> policies;
 

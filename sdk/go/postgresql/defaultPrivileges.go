@@ -223,6 +223,12 @@ func (DefaultPrivilegesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultPrivilegesState)(nil)).Elem()
 }
 
+// DefaultPrivilegesExists checks whether an existing DefaultPrivileges resource with the given ID exists.
+func DefaultPrivilegesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DefaultPrivilegesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("postgresql:index/defaultPrivileges:DefaultPrivileges", id, state, "", opts...)
+}
+
 type defaultPrivilegesArgs struct {
 	// The database to grant default privileges for this role.
 	Database string `pulumi:"database"`

@@ -90,6 +90,12 @@ func (PhysicalReplicationSlotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*physicalReplicationSlotState)(nil)).Elem()
 }
 
+// PhysicalReplicationSlotExists checks whether an existing PhysicalReplicationSlot resource with the given ID exists.
+func PhysicalReplicationSlotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PhysicalReplicationSlotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot", id, state, "", opts...)
+}
+
 type physicalReplicationSlotArgs struct {
 	// The name of the replication slot.
 	Name *string `pulumi:"name"`

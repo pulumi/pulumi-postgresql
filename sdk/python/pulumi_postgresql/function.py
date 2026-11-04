@@ -671,6 +671,36 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["volatility"] = volatility
         return Function(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FunctionArgArgs', 'FunctionArgArgsDict', 'outputs.FunctionArg']]]]] = None,
+            body: pulumi.Input[Optional[_builtins.str]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            drop_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parallel: pulumi.Input[Optional[_builtins.str]] = None,
+            returns: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            security_definer: pulumi.Input[Optional[_builtins.bool]] = None,
+            strict: pulumi.Input[Optional[_builtins.bool]] = None,
+            volatility: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["args"] = args
+        __props__["body"] = body
+        __props__["database"] = database
+        __props__["dropCascade"] = drop_cascade
+        __props__["language"] = language
+        __props__["name"] = name
+        __props__["parallel"] = parallel
+        __props__["returns"] = returns
+        __props__["schema"] = schema
+        __props__["securityDefiner"] = security_definer
+        __props__["strict"] = strict
+        __props__["volatility"] = volatility
+        return pulumi.runtime.exists_resource(None, 'postgresql:index/function:Function', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def args(self) -> pulumi.Output[Optional[Sequence['outputs.FunctionArg']]]:

@@ -125,6 +125,12 @@ func (ExtensionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*extensionState)(nil)).Elem()
 }
 
+// ExtensionExists checks whether an existing Extension resource with the given ID exists.
+func ExtensionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExtensionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("postgresql:index/extension:Extension", id, state, "", opts...)
+}
+
 type extensionArgs struct {
 	// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
 	CreateCascade *bool `pulumi:"createCascade"`

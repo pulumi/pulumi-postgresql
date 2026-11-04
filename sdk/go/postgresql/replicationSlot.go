@@ -106,6 +106,12 @@ func (ReplicationSlotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*replicationSlotState)(nil)).Elem()
 }
 
+// ReplicationSlotExists checks whether an existing ReplicationSlot resource with the given ID exists.
+func ReplicationSlotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReplicationSlotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("postgresql:index/replicationSlot:ReplicationSlot", id, state, "", opts...)
+}
+
 type replicationSlotArgs struct {
 	// Which database to create the replication slot on. Defaults to provider database.
 	Database *string `pulumi:"database"`

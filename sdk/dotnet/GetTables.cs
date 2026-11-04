@@ -14,7 +14,6 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
         /// 
-        /// 
         /// ## Usage
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
         /// 
-        /// 
         /// ## Usage
         /// 
         /// ```csharp
@@ -63,7 +61,6 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// The ``postgresql.getTables`` data source retrieves a list of table names from a specified PostgreSQL database.
-        /// 
         /// 
         /// ## Usage
         /// 
@@ -269,7 +266,7 @@ namespace Pulumi.PostgreSql
         public readonly ImmutableArray<string> TableTypes;
         /// <summary>
         /// A list of PostgreSQL tables retrieved by this data source. Each table consists of the fields documented below.
-        /// ___
+        /// ***
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTablesTableResult> Tables;
 

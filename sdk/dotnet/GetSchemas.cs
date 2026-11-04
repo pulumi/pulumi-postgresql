@@ -14,7 +14,6 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
         /// 
-        /// 
         /// ## Usage
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.PostgreSql
         /// <summary>
         /// The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
         /// 
-        /// 
         /// ## Usage
         /// 
         /// ```csharp
@@ -63,7 +61,6 @@ namespace Pulumi.PostgreSql
 
         /// <summary>
         /// The ``postgresql.getSchemas`` data source retrieves a list of schema names from a specified PostgreSQL database.
-        /// 
         /// 
         /// ## Usage
         /// 

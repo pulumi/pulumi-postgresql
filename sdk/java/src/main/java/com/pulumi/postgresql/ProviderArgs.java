@@ -267,20 +267,18 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Rename PostgreSQL provider `sslMode` attribute to `sslmode`
+     * @deprecated Rename PostgreSQL provider `sslMode` attribute to `sslmode`
      * 
      */
-    @Deprecated /* Rename PostgreSQL provider `sslMode` attribute to `sslmode` */
+    @Deprecated
     @Import(name="sslMode")
     private @Nullable Output<String> sslMode;
 
     /**
-     * @deprecated
-     * Rename PostgreSQL provider `sslMode` attribute to `sslmode`
+     * @deprecated Rename PostgreSQL provider `sslMode` attribute to `sslmode`
      * 
      */
-    @Deprecated /* Rename PostgreSQL provider `sslMode` attribute to `sslmode` */
+    @Deprecated
     public Optional<Output<String>> sslMode() {
         return Optional.ofNullable(this.sslMode);
     }
@@ -738,11 +736,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Rename PostgreSQL provider `sslMode` attribute to `sslmode`
+         * @deprecated Rename PostgreSQL provider `sslMode` attribute to `sslmode`
          * 
          */
-        @Deprecated /* Rename PostgreSQL provider `sslMode` attribute to `sslmode` */
+        @Deprecated
         public Builder sslMode(@Nullable Output<String> sslMode) {
             $.sslMode = sslMode;
             return this;
@@ -751,11 +748,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Rename PostgreSQL provider `sslMode` attribute to `sslmode`
+         * @deprecated Rename PostgreSQL provider `sslMode` attribute to `sslmode`
          * 
          */
-        @Deprecated /* Rename PostgreSQL provider `sslMode` attribute to `sslmode` */
+        @Deprecated
         public Builder sslMode(String sslMode) {
             return sslMode(Output.of(sslMode));
         }

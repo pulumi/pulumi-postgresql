@@ -139,6 +139,12 @@ func (PublicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicationState)(nil)).Elem()
 }
 
+// PublicationExists checks whether an existing Publication resource with the given ID exists.
+func PublicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PublicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("postgresql:index/publication:Publication", id, state, "", opts...)
+}
+
 type publicationArgs struct {
 	// Should be ALL TABLES added to the publication. Defaults to 'false'
 	AllTables *bool `pulumi:"allTables"`
